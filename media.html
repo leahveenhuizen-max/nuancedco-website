@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Media | Nuanced Co.</title>
+  <meta name="description" content="Media appearances, speaking engagements, and press enquiries for Leah Veenhuizen of Nuanced Co., neurodivergent consultancy.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream:#F6F1E9;--cream-d:#EDE6D8;--cream-dd:#DDD4C2;
+      --ink:#2A1F1A;--ink-mid:#4A3830;--ink-deep:#0F0C0A;
+      --purple:#6B4570;--sage:#7A8C6E;--gold:#C4963E;--rose:#C07A8A;--lilac:#9668A4;
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --body:'Atkinson Hyperlegible',system-ui,sans-serif;
+      --ease:cubic-bezier(0.22,1,0.36,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{font-size:18px;scroll-behavior:smooth;}
+    body{background:var(--cream);color:var(--ink);font-family:var(--body);line-height:1.7;overflow-x:hidden;}
+    a{color:inherit;text-decoration:none;}
+
+    #grain{position:fixed;inset:0;pointer-events:none;z-index:9990;opacity:.025;mix-blend-mode:overlay;}
+
+    /* NAV */
+    #nav{position:fixed;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3.5rem;background:rgba(15,12,10,.18);transition:background .4s,backdrop-filter .4s;}
+    #nav.scrolled{background:rgba(20,15,12,.82);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);}
+    .nav-logo{font-family:var(--serif);font-size:1rem;font-weight:400;letter-spacing:.25em;color:var(--cream);text-transform:uppercase;line-height:1;display:flex;flex-direction:column;gap:3px;}
+    .nav-logo em{font-style:normal;font-family:var(--body);font-size:.48rem;letter-spacing:.3em;color:var(--gold);opacity:.8;}
+    .nav-back{font-family:var(--body);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.6);display:flex;align-items:center;gap:.5rem;transition:color .2s;}
+    .nav-back:hover{color:var(--cream);}
+    .nav-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5;}
+
+    /* HERO */
+    .page-hero{background:var(--ink-deep);padding:10rem 0 6rem;position:relative;overflow:hidden;}
+    .page-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:100px;background:linear-gradient(to bottom,transparent,var(--cream));}
+    .ph-inner{max-width:1100px;margin:0 auto;padding:0 5rem;}
+    .ph-eyebrow{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;opacity:.8;}
+    .ph-title{font-family:var(--serif);font-size:clamp(3rem,7vw,5.5rem);font-weight:300;color:var(--cream);line-height:1.05;margin-bottom:1.5rem;}
+    .ph-sub{font-size:.95rem;color:rgba(246,241,233,.7);max-width:540px;line-height:1.75;}
+
+    /* CONTENT */
+    .page-body{max-width:1100px;margin:0 auto;padding:5rem 5rem 8rem;}
+    .section-rule{width:40px;height:1px;background:var(--gold);margin:0 0 2rem;}
+    .section-label{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;opacity:.8;display:block;}
+    .section-title{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:300;color:var(--ink);line-height:1.25;margin-bottom:1rem;}
+    .section-body{font-size:.92rem;color:var(--ink-mid);line-height:1.8;max-width:600px;margin-bottom:3rem;}
+
+    /* GRID */
+    .media-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.5rem;margin-bottom:5rem;}
+    .media-tile{border:1px solid rgba(42,31,26,.1);border-radius:3px;padding:1.8rem;transition:border-color .2s,box-shadow .2s;}
+    .media-tile:hover{border-color:rgba(107,69,112,.3);box-shadow:0 4px 24px rgba(0,0,0,.06);}
+    .mt-type{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:var(--purple);margin-bottom:.6rem;opacity:.8;}
+    .mt-title{font-family:var(--serif);font-size:1.25rem;font-weight:400;color:var(--ink);margin-bottom:.5rem;line-height:1.3;}
+    .mt-detail{font-size:.8rem;color:rgba(42,31,26,.55);line-height:1.6;}
+    .mt-tag{display:inline-block;font-size:.55rem;letter-spacing:.12em;text-transform:uppercase;padding:.2rem .7rem;border:1px solid rgba(42,31,26,.15);border-radius:20px;color:rgba(42,31,26,.5);margin-top:.8rem;}
+
+    /* SPEAKING */
+    .speaking-block{background:var(--ink-deep);border-radius:4px;padding:3.5rem;margin-bottom:5rem;}
+    .sb-label{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;opacity:.8;}
+    .sb-title{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.4rem);font-weight:300;color:var(--cream);margin-bottom:1.2rem;line-height:1.3;}
+    .sb-body{font-size:.88rem;color:rgba(246,241,233,.7);max-width:600px;line-height:1.75;margin-bottom:2rem;}
+    .topics-list{display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:2rem;}
+    .topic{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;padding:.35rem 1rem;border:1px solid rgba(246,241,233,.2);border-radius:20px;color:rgba(246,241,233,.65);}
+    .btn{font-family:var(--body);font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.85rem 2.2rem;border:none;border-radius:2px;transition:transform .2s var(--ease),background .2s,color .2s;display:inline-block;cursor:pointer;}
+    .btn:hover{transform:translateY(-2px);}
+    .btn-gold{background:var(--gold);color:var(--ink-deep);}
+    .btn-ghost-light{background:transparent;border:1px solid rgba(246,241,233,.3);color:rgba(246,241,233,.8);}
+    .btn-ghost-light:hover{border-color:rgba(246,241,233,.6);color:var(--cream);}
+
+    /* PRESS KIT */
+    .press-block{padding:3rem 0;border-top:1px solid rgba(42,31,26,.1);}
+    .pk-body{font-size:.88rem;color:var(--ink-mid);max-width:600px;line-height:1.75;margin-bottom:1.5rem;}
+
+    /* FOOTER */
+    footer{background:var(--ink-deep);padding:3rem 0;}
+    .ft-inner{max-width:1100px;margin:0 auto;padding:0 5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    .ft-logo{font-family:var(--serif);font-size:.9rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream);}
+    .ft-abn{font-size:.62rem;color:rgba(246,241,233,.3);letter-spacing:.06em;}
+
+    @media(max-width:768px){
+      #nav{padding:1rem 1.4rem;}
+      .ph-inner,.page-body{padding-left:1.4rem;padding-right:1.4rem;}
+      .ft-inner{padding:0 1.4rem;}
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="grain" aria-hidden="true"></canvas>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">NUANCED CO.<em>Neurodivergent Consultancy</em></a>
+  <a href="index.html" class="nav-back">
+    <svg viewBox="0 0 16 16"><path d="M10 12L6 8l4-4"/></svg>
+    Back to home
+  </a>
+</nav>
+
+<section class="page-hero">
+  <div class="ph-inner">
+    <p class="ph-eyebrow">Media &amp; Speaking</p>
+    <h1 class="ph-title">Let's talk about<br>neurodivergent experience<br>where it matters.</h1>
+    <p class="ph-sub">Leah Veenhuizen is a Registered Nurse, AuDHD person, and founder of Nuanced Co. She speaks on neurodivergence, late diagnosis, burnout, and the gap between clinical advice and lived experience.</p>
+  </div>
+</section>
+
+<div class="page-body">
+
+  <!-- PAST APPEARANCES -->
+  <span class="section-label">Past appearances</span>
+  <h2 class="section-title">Media &amp; Broadcasting</h2>
+  <p class="section-body">Leah has spoken publicly about mental health, neurodivergence, and normalising difficult conversations across radio, podcast, and community platforms.</p>
+
+  <div class="media-grid">
+    <div class="media-tile">
+      <div class="mt-type">Community Radio</div>
+      <div class="mt-title">Just a Thought</div>
+      <p class="mt-detail">Weekly program on 94.7 The Pulse, Geelong. Mental health conversations made accessible for everyday people. Ran until early 2026.</p>
+      <span class="mt-tag">Presenter</span>
+    </div>
+    <div class="media-tile">
+      <div class="mt-type">Facilitation</div>
+      <div class="mt-title">Mental Health First Aid Training</div>
+      <p class="mt-detail">Accredited MHFA facilitator delivering training to organisations including Geelong Arts Centre. Standard and specialised programs.</p>
+      <span class="mt-tag">Facilitator</span>
+    </div>
+    <div class="media-tile">
+      <div class="mt-type">Social Media</div>
+      <div class="mt-title">Leah Breaks The Cycle</div>
+      <p class="mt-detail">Creating content across TikTok, Instagram, and Facebook that translates clinical knowledge into accessible, lived-experience perspectives on ADHD, AuDHD, and mental health.</p>
+      <span class="mt-tag">@leah_breaks_the_cycle</span>
+    </div>
+  </div>
+
+  <!-- SPEAKING -->
+  <div class="speaking-block">
+    <p class="sb-label">Speaking enquiries</p>
+    <h2 class="sb-title">Bring a voice that<br>knows what it's talking about<br><em style="font-style:italic;color:rgba(196,150,62,.8)">from the inside.</em></h2>
+    <p class="sb-body">Leah speaks on neurodivergent experience with the credibility of a Registered Nurse and the authenticity of someone who lived the late diagnosis experience herself. She translates complex clinical concepts into conversations that land with real people.</p>
+    <a href="mailto:hello@nuancedco.com.au?subject=Speaking Enquiry" class="btn btn-gold" style="margin-bottom:3rem;display:inline-block;">Send a speaking enquiry</a>
+  </div>
+
+  <!-- KEYNOTE TOPICS -->
+  <span class="section-label">Keynote presentations</span>
+  <h2 class="section-title">What Leah speaks about</h2>
+  <p class="section-body">Each keynote is available as a standalone presentation, a workshop with interactive elements, or a panel contribution. All are grounded in current evidence and shaped by Leah's clinical background and lived experience.</p>
+  <div class="media-grid">
+    <div class="media-tile">
+      <div class="mt-type">Keynote 01</div>
+      <div class="mt-title">Stop Asking "Are You OK?"</div>
+      <p class="mt-detail">The most common workplace mental health intervention is also one of the least effective. This keynote challenges the surface-level approach to mental health conversations and offers a practical alternative: asking better questions, listening without fixing, and building cultures where people can actually answer honestly. Drawing on Mental Health First Aid frameworks and the reality of neurodivergent experience in the workplace.</p>
+      <span class="mt-tag">45 min keynote or 90 min workshop</span>
+      <br><a href="mailto:hello@nuancedco.com.au?subject=Speaking Enquiry: Stop Asking Are You OK" class="mt-tag" style="cursor:pointer;border-color:rgba(196,150,62,.5);color:rgba(196,150,62,.9);text-decoration:none;margin-top:.5rem;">Enquire about this talk</a>
+    </div>
+    <div class="media-tile">
+      <div class="mt-type">Keynote 02</div>
+      <div class="mt-title">The Late Diagnosis Experience: What Nobody Prepares You For</div>
+      <p class="mt-detail">For many adults, an ADHD or autism diagnosis at 30, 40, or 50 does not feel like relief. It feels like grief. This keynote explores the psychological impact of late neurodivergent diagnosis, the unmasking process, identity reconstruction, and why the clinical system is still catching up to the lived experience. Accessible for general and professional audiences, and for conferences focused on mental health, education, or inclusion.</p>
+      <span class="mt-tag">45 min keynote or 90 min workshop</span>
+      <br><a href="mailto:hello@nuancedco.com.au?subject=Speaking Enquiry: Late Diagnosis" class="mt-tag" style="cursor:pointer;border-color:rgba(196,150,62,.5);color:rgba(196,150,62,.9);text-decoration:none;margin-top:.5rem;">Enquire about this talk</a>
+    </div>
+    <div class="media-tile">
+      <div class="mt-type">Keynote 03</div>
+      <div class="mt-title">Burnout Is Not a Personal Failure</div>
+      <p class="mt-detail">Burnout is framed as a willpower problem. It is a systems problem. This keynote covers the neuroscience of burnout, why neurodivergent people are significantly more vulnerable, and what organisations and individuals can do differently. Goes beyond the standard "self-care" advice to address what burnout recovery actually requires. Grounded in current research and the Safe Work Australia psychosocial risk framework.</p>
+      <span class="mt-tag">45 min keynote or full-day workshop</span>
+      <br><a href="mailto:hello@nuancedco.com.au?subject=Speaking Enquiry: Burnout" class="mt-tag" style="cursor:pointer;border-color:rgba(196,150,62,.5);color:rgba(196,150,62,.9);text-decoration:none;margin-top:.5rem;">Enquire about this talk</a>
+    </div>
+    <div class="media-tile">
+      <div class="mt-type">Keynote 04</div>
+      <div class="mt-title">Psychological Safety Is Not a Vibe</div>
+      <p class="mt-detail">Psychological safety has become a corporate buzzword, largely stripped of the evidence base that makes it meaningful. This presentation returns to what psychological safety actually is, where the research comes from, why it matters for neurodivergent team members specifically, and what leaders can do to build it in practice rather than on paper. Designed for HR professionals, senior leaders, and people managers.</p>
+      <span class="mt-tag">45 min keynote or 90 min workshop</span>
+      <br><a href="mailto:hello@nuancedco.com.au?subject=Speaking Enquiry: Psychological Safety" class="mt-tag" style="cursor:pointer;border-color:rgba(196,150,62,.5);color:rgba(196,150,62,.9);text-decoration:none;margin-top:.5rem;">Enquire about this talk</a>
+    </div>
+    <div class="media-tile">
+      <div class="mt-type">Keynote 05</div>
+      <div class="mt-title">Masking Costs Something: The Hidden Labour of Being Neurodivergent</div>
+      <p class="mt-detail">Neurological masking — the suppression of natural neurodivergent behaviour to appear more "normal" — has significant mental and physical health costs. This keynote makes the invisible visible: what masking is, why people do it, what it costs, and what unmasking safely actually looks like. A conversation about authenticity that goes further than most, with specific implications for education, healthcare, and workplace settings.</p>
+      <span class="mt-tag">45 min keynote or 90 min workshop</span>
+      <br><a href="mailto:hello@nuancedco.com.au?subject=Speaking Enquiry: Masking" class="mt-tag" style="cursor:pointer;border-color:rgba(196,150,62,.5);color:rgba(196,150,62,.9);text-decoration:none;margin-top:.5rem;">Enquire about this talk</a>
+    </div>
+    <div class="media-tile">
+      <div class="mt-type">Keynote 06</div>
+      <div class="mt-title">ADHD in Women and Girls: Still Being Missed</div>
+      <p class="mt-detail">The median age of ADHD diagnosis for women in Australia is 34. Decades of presenting for support, being told they are fine, being told they are anxious, being told to try harder. This keynote covers the gender gap in ADHD diagnosis, why it happens, what the cumulative impact looks like, and what healthcare, education, and workplaces need to do differently. Relevant to general audiences and essential for health and education professionals.</p>
+      <span class="mt-tag">45 min keynote or 90 min workshop</span>
+      <br><a href="mailto:hello@nuancedco.com.au?subject=Speaking Enquiry: ADHD in Women" class="mt-tag" style="cursor:pointer;border-color:rgba(196,150,62,.5);color:rgba(196,150,62,.9);text-decoration:none;margin-top:.5rem;">Enquire about this talk</a>
+    </div>
+    <div class="media-tile">
+      <div class="mt-type">Keynote 07</div>
+      <div class="mt-title">AuDHD: The Intersection Nobody Is Talking About</div>
+      <p class="mt-detail">Over 50% of people with ADHD also have autism. The co-occurring profile is significantly more complex than either diagnosis alone, yet it receives a fraction of the clinical attention. This keynote covers what AuDHD is, how the two conditions interact and amplify each other, what it means for daily life, and why the clinical and support systems are currently failing this population. The most specialist presentation in Leah's repertoire, and the most needed.</p>
+      <span class="mt-tag">45 min keynote or 90 min workshop</span>
+      <br><a href="mailto:hello@nuancedco.com.au?subject=Speaking Enquiry: AuDHD" class="mt-tag" style="cursor:pointer;border-color:rgba(196,150,62,.5);color:rgba(196,150,62,.9);text-decoration:none;margin-top:.5rem;">Enquire about this talk</a>
+    </div>
+  </div>
+
+  <!-- PRESS KIT -->
+  <div class="press-block">
+    <span class="section-label">Press kit</span>
+    <h2 class="section-title">For journalists &amp; producers</h2>
+    <p class="pk-body">Need a bio, headshot, or background information? Contact hello@nuancedco.com.au with your publication, format, and deadline and we will get back to you within two business days.</p>
+    <a href="mailto:hello@nuancedco.com.au?subject=Press Kit Request" class="btn btn-ghost-light" style="background:transparent;border:1px solid rgba(42,31,26,.25);color:var(--ink-mid);">Request press kit</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="ft-inner">
+    <div class="ft-logo">Nuanced Co.</div>
+    <div class="ft-abn">ABN: 71 926 185 491 &middot; &copy; 2026 Nuanced Co.</div>
+  </div>
+</footer>
+
+<script>
+const gc=document.getElementById('grain'),gx=gc.getContext('2d');
+let gW,gH;function rg(){gW=gc.width=window.innerWidth;gH=gc.height=window.innerHeight;}rg();
+window.addEventListener('resize',rg);
+function drawGrain(){const d=gx.createImageData(gW,gH);for(let i=0;i<d.data.length;i+=4){const v=Math.random()*255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=18;}gx.putImageData(d,0,0);}
+setInterval(drawGrain,80);drawGrain();
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>70);},{passive:true});
+</script>
+</body>
+</html>

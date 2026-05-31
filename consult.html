@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>1:1 Consultancy | Nuanced Co.</title>
+  <meta name="description" content="Individual neurodivergent consultancy sessions with Leah Veenhuizen. ADHD and AuDHD support that actually meets you where you are. Based in Geelong, available Australia-wide and internationally.">
+  <link rel="canonical" href="https://nuancedco.com.au/consult">
+  <meta name="copyright" content="© 2026 Nuanced Co. ABN 71 926 185 491">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{--cream:#F6F1E9;--cream-d:#EDE6D8;--cream-dd:#DDD4C2;--ink:#2A1F1A;--ink-mid:#4A3830;--ink-deep:#0F0C0A;--purple:#6B4570;--sage:#7A8C6E;--gold:#C4963E;--rose:#C07A8A;--lilac:#9668A4;--serif:'Cormorant Garamond',Georgia,serif;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(0.22,1,0.36,1);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{font-size:18px;scroll-behavior:smooth;}
+    body{background:var(--cream);color:var(--ink);font-family:var(--body);line-height:1.7;overflow-x:hidden;}
+    a{color:inherit;text-decoration:none;}
+    #grain{position:fixed;inset:0;pointer-events:none;z-index:9990;opacity:.025;mix-blend-mode:overlay;}
+    #nav{position:fixed;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3.5rem;background:rgba(15,12,10,.18);transition:background .4s;}
+    #nav.scrolled{background:rgba(20,15,12,.82);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);}
+    .nav-logo{font-family:var(--serif);font-size:1rem;font-weight:400;letter-spacing:.25em;color:var(--cream);text-transform:uppercase;line-height:1;display:flex;flex-direction:column;gap:3px;}
+    .nav-logo em{font-style:normal;font-family:var(--body);font-size:.48rem;letter-spacing:.3em;color:var(--gold);opacity:.8;}
+    .nav-back{font-family:var(--body);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.6);display:flex;align-items:center;gap:.5rem;transition:color .2s;}
+    .nav-back:hover{color:var(--cream);}
+    .nav-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5;}
+    /* HERO */
+    .page-hero{background:var(--ink-deep);padding:11rem 0 7rem;position:relative;overflow:hidden;}
+    .page-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--cream));pointer-events:none;}
+    .ph-inner{max-width:1100px;margin:0 auto;padding:0 5rem;}
+    .ph-eyebrow{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;opacity:.8;}
+    .ph-title{font-family:var(--serif);font-size:clamp(2.8rem,6vw,5rem);font-weight:300;color:var(--cream);line-height:1.1;margin-bottom:1.5rem;}
+    .ph-title em{font-style:italic;color:var(--gold);}
+    .ph-sub{font-size:.95rem;color:rgba(246,241,233,.72);max-width:540px;line-height:1.75;}
+    /* BODY */
+    .page-body{max-width:1100px;margin:0 auto;padding:5rem 5rem 8rem;}
+    .two-col{display:grid;grid-template-columns:1fr 1fr;gap:5rem;margin-bottom:5rem;align-items:start;}
+    .section-label{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;opacity:.8;display:block;}
+    .section-title{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:300;color:var(--ink);line-height:1.25;margin-bottom:1rem;}
+    .section-body{font-size:.9rem;color:var(--ink-mid);line-height:1.85;margin-bottom:1.5rem;}
+    .rule{width:40px;height:1px;background:var(--gold);margin:0 0 2rem;}
+    /* PROCESS */
+    .process-steps{display:flex;flex-direction:column;gap:1.5rem;}
+    .ps{display:flex;gap:1.4rem;align-items:flex-start;}
+    .ps-num{font-family:var(--serif);font-size:2.5rem;font-weight:300;color:rgba(196,150,62,.35);line-height:1;min-width:2.5rem;}
+    .ps-content{}
+    .ps-title{font-family:var(--serif);font-size:1.15rem;font-weight:400;color:var(--ink);margin-bottom:.4rem;}
+    .ps-body{font-size:.84rem;color:var(--ink-mid);line-height:1.7;}
+    /* FORMATS */
+    .format-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:1.2rem;margin-bottom:4rem;}
+    .fc{border:1px solid rgba(42,31,26,.1);border-radius:3px;padding:1.8rem;}
+    .fc-label{font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--purple);margin-bottom:.5rem;opacity:.8;}
+    .fc-title{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:var(--ink);margin-bottom:.6rem;}
+    .fc-desc{font-size:.82rem;color:var(--ink-mid);line-height:1.65;}
+    .fc-detail{font-size:.75rem;color:rgba(42,31,26,.4);margin-top:.8rem;letter-spacing:.04em;}
+    /* WHO */
+    .who-list{list-style:none;display:flex;flex-direction:column;gap:.8rem;}
+    .who-list li{display:flex;gap:.8rem;align-items:flex-start;font-size:.9rem;color:var(--ink-mid);line-height:1.65;}
+    .who-list li::before{content:'';width:6px;height:6px;min-width:6px;border-radius:50%;background:var(--gold);margin-top:.55rem;}
+    /* CTA BLOCK */
+    .cta-block{background:var(--ink-deep);border-radius:4px;padding:4rem;text-align:center;}
+    .cta-block h2{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--cream);margin-bottom:1rem;line-height:1.25;}
+    .cta-block p{font-size:.9rem;color:rgba(246,241,233,.65);max-width:480px;margin:0 auto 2rem;line-height:1.7;}
+    .btn{font-family:var(--body);font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.9rem 2.4rem;border:none;border-radius:2px;cursor:pointer;transition:transform .2s var(--ease),background .2s,color .2s;display:inline-block;}
+    .btn:hover{transform:translateY(-2px);}
+    .btn-gold{background:var(--gold);color:var(--ink-deep);}
+    /* FOOTER */
+    footer{background:var(--ink-deep);padding:2.5rem 0;}
+    .ft-inner{max-width:1100px;margin:0 auto;padding:0 5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    .ft-logo{font-family:var(--serif);font-size:.9rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream);}
+    .ft-abn{font-size:.6rem;color:rgba(246,241,233,.3);letter-spacing:.06em;text-align:right;}
+    @media(max-width:768px){#nav{padding:1rem 1.4rem;}.ph-inner,.page-body,.ft-inner{padding-left:1.4rem;padding-right:1.4rem;}.two-col{grid-template-columns:1fr;gap:3rem;}}
+  </style>
+</head>
+<body>
+<canvas id="grain" aria-hidden="true"></canvas>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">NUANCED CO.<em>Neurodivergent Consultancy</em></a>
+  <a href="index.html" class="nav-back"><svg viewBox="0 0 16 16"><path d="M10 12L6 8l4-4"/></svg>Back to home</a>
+</nav>
+
+<section class="page-hero">
+  <div class="ph-inner">
+    <p class="ph-eyebrow">1:1 Consultancy</p>
+    <h1 class="ph-title">Support that starts<br>with <em>actually</em> understanding<br>how your brain works.</h1>
+    <p class="ph-sub">No scripts. No generic checklists. Individual sessions built around what is actually happening for you right now, with someone who genuinely gets it.</p>
+  </div>
+</section>
+
+<div class="page-body">
+  <div class="two-col">
+    <div>
+      <span class="section-label">What this is</span>
+      <h2 class="section-title">Real conversation. Real support.</h2>
+      <div class="rule"></div>
+      <p class="section-body">Nuanced Co. consultancy sessions are not therapy. They are not coaching in the traditional sense. They are structured, focused conversations with someone who brings both clinical knowledge and lived AuDHD experience to the table.</p>
+      <p class="section-body">Leah is a Registered Nurse who was diagnosed AuDHD as an adult. She understands the gap between what the clinical literature says and what actually happens in your life. Sessions are built around that gap.</p>
+      <p class="section-body">This is a space where you do not have to explain yourself from scratch. Where the starting assumption is that your brain is not broken, and the goal is to figure out what actually works for it.</p>
+    </div>
+    <div>
+      <span class="section-label">The process</span>
+      <div class="process-steps">
+        <div class="ps"><div class="ps-num">01</div><div class="ps-content"><div class="ps-title">Discovery call (free, 20 min)</div><p class="ps-body">A no-pressure conversation to understand where you are and whether consultancy is the right fit. No commitment required.</p></div></div>
+        <div class="ps"><div class="ps-num">02</div><div class="ps-content"><div class="ps-title">Your first session</div><p class="ps-body">We go deep on what is actually happening for you. No intake forms the length of a tax return. Just conversation, and listening.</p></div></div>
+        <div class="ps"><div class="ps-num">03</div><div class="ps-content"><div class="ps-title">A real plan</div><p class="ps-body">You leave each session with something concrete. Not a list of things to try harder at. An actual framework built around your brain.</p></div></div>
+        <div class="ps"><div class="ps-num">04</div><div class="ps-content"><div class="ps-title">Ongoing support (your choice)</div><p class="ps-body">Some people want a one-off session for clarity. Others want ongoing support. There is no pressure either way.</p></div></div>
+      </div>
+    </div>
+  </div>
+
+  <span class="section-label">Session formats</span>
+  <h2 class="section-title">How we can work together</h2>
+  <div class="rule"></div>
+  <div class="format-cards">
+    <div class="fc"><div class="fc-label">Single session</div><div class="fc-title">One-Off Clarity Session</div><p class="fc-desc">One focused session for a specific question or challenge. Good for people who know roughly what they need to work through.</p><p class="fc-detail">60 minutes &middot; Video or phone &middot; Australia-wide</p></div>
+    <div class="fc"><div class="fc-label">Short-term support</div><div class="fc-title">3-Session Package</div><p class="fc-desc">Three sessions over 6 weeks. For people who want to go deeper on a particular area, such as diagnosis integration, burnout recovery, or building sustainable routines.</p><p class="fc-detail">3 x 60 minutes &middot; Video or phone</p></div>
+    <div class="fc"><div class="fc-label">Ongoing</div><div class="fc-title">Monthly Consultancy</div><p class="fc-desc">Regular monthly sessions for people who want consistent, ongoing support as their needs evolve. Includes between-session check-ins via email.</p><p class="fc-detail">Monthly &middot; Video or phone &middot; Email support included</p></div>
+  </div>
+
+  <div class="two-col" style="margin-bottom:4rem;">
+    <div>
+      <span class="section-label">Who this is for</span>
+      <h2 class="section-title">You might be in the right place if...</h2>
+      <div class="rule"></div>
+      <ul class="who-list">
+        <li>You have an ADHD or AuDHD diagnosis and you are still figuring out what it actually means for your life</li>
+        <li>You were diagnosed as an adult and you are processing years of not understanding why things felt so hard</li>
+        <li>You keep burning out and you want to understand why, not just survive the next one</li>
+        <li>You have tried therapy and coaching and left feeling like the professional did not really understand how your brain works</li>
+        <li>You want someone to be honest with you, not just tell you what you want to hear</li>
+        <li>You are tired of generic strategies that work for neurotypical people and make things worse for you</li>
+      </ul>
+    </div>
+    <div>
+      <span class="section-label">What this is not</span>
+      <h2 class="section-title">Important to know</h2>
+      <div class="rule"></div>
+      <p class="section-body">Consultancy is not therapy and does not replace clinical mental health support. Leah is a Registered Nurse, not a psychologist or psychiatrist. Sessions are educational, supportive, and practical in nature.</p>
+      <p class="section-body">If you are in crisis or need clinical mental health intervention, your GP is the right starting point. Leah can help you navigate that system and advocate for yourself within it, but she is not a substitute for it.</p>
+      <p class="section-body">Pricing is available on request. Leah is committed to access and will discuss options with anyone for whom cost is a barrier.</p>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h2>Ready to have a real conversation?</h2>
+    <p>Book a free 20-minute discovery call. No pressure, no commitment, just a conversation about whether this is the right fit for where you are right now.</p>
+    <a href="mailto:hello@nuancedco.com.au?subject=Discovery Call Request" class="btn btn-gold">Book a free discovery call</a>
+  </div>
+</div>
+
+<footer>
+  <div class="ft-inner">
+    <div class="ft-logo">Nuanced Co.</div>
+    <div class="ft-abn">ABN: 71 926 185 491 &middot; &copy; 2026 Nuanced Co. All rights reserved.<br>Content is for general information only and does not constitute clinical advice.</div>
+  </div>
+</footer>
+<script>
+const gc=document.getElementById('grain'),gx=gc.getContext('2d');let gW,gH;function rg(){gW=gc.width=window.innerWidth;gH=gc.height=window.innerHeight;}rg();window.addEventListener('resize',rg);function drawGrain(){const d=gx.createImageData(gW,gH);for(let i=0;i<d.data.length;i+=4){const v=Math.random()*255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=18;}gx.putImageData(d,0,0);}setInterval(drawGrain,80);drawGrain();
+const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>70);},{passive:true});
+</script>
+</body>
+</html>

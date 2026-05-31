@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Leah Veenhuizen | Nuanced Co.</title>
+  <meta name="description" content="Neurodivergent consultancy for ADHD and AuDHD adults. Free quiz, 1:1 sessions, resources and more.">
+  <link rel="canonical" href="https://nuancedco.com.au/links">
+  <meta name="copyright" content="© 2026 Nuanced Co. ABN 71 926 185 491">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream: #F6F1E9;
+      --cream-d: #EDE6D8;
+      --ink: #2A1F1A;
+      --ink-mid: #4A3830;
+      --ink-deep: #0F0C0A;
+      --purple: #6B4570;
+      --sage: #7A8C6E;
+      --gold: #C4963E;
+      --rose: #C07A8A;
+      --lilac: #9668A4;
+      --serif: 'Cormorant Garamond', Georgia, serif;
+      --body: 'Atkinson Hyperlegible', system-ui, sans-serif;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; }
+    body {
+      background: var(--ink-deep);
+      color: var(--cream);
+      font-family: var(--body);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 3rem 1.2rem 4rem;
+    }
+    a { color: inherit; text-decoration: none; }
+
+    /* GRAIN */
+    #grain { position: fixed; inset: 0; pointer-events: none; z-index: 9; opacity: .018; mix-blend-mode: overlay; }
+
+    /* PROFILE */
+    .profile { text-align: center; margin-bottom: 2.4rem; position: relative; z-index: 10; }
+    .avatar {
+      width: 88px; height: 88px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--purple) 0%, var(--gold) 100%);
+      margin: 0 auto 1rem;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--serif); font-size: 2.2rem; color: var(--cream); font-weight: 300;
+      border: 2px solid rgba(196,150,62,.3);
+    }
+    .profile-name {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      font-weight: 300;
+      color: var(--cream);
+      letter-spacing: .04em;
+      margin-bottom: .25rem;
+    }
+    .profile-title {
+      font-size: .7rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: .85;
+      margin-bottom: .6rem;
+    }
+    .profile-bio {
+      font-size: .85rem;
+      color: rgba(246,241,233,.58);
+      max-width: 300px;
+      margin: 0 auto;
+      line-height: 1.65;
+    }
+
+    /* SECTION LABEL */
+    .section-label {
+      font-size: .58rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      opacity: .7;
+      margin: 2rem 0 .8rem;
+      text-align: center;
+      width: 100%;
+      max-width: 380px;
+      position: relative; z-index: 10;
+    }
+
+    /* LINK CARDS */
+    .links { width: 100%; max-width: 380px; display: flex; flex-direction: column; gap: .8rem; position: relative; z-index: 10; }
+
+    .link-card {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      background: rgba(246,241,233,.06);
+      border: 1px solid rgba(246,241,233,.1);
+      border-radius: 4px;
+      padding: 1rem 1.2rem;
+      transition: background .2s var(--ease), border-color .2s, transform .15s var(--ease);
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .link-card:hover {
+      background: rgba(246,241,233,.12);
+      border-color: rgba(196,150,62,.4);
+      transform: translateY(-1px);
+    }
+    .link-card:active { transform: translateY(0); }
+
+    .lc-icon {
+      width: 36px; height: 36px; min-width: 36px; border-radius: 3px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem;
+    }
+    .lc-icon.gold { background: rgba(196,150,62,.18); }
+    .lc-icon.purple { background: rgba(107,69,112,.25); }
+    .lc-icon.sage { background: rgba(122,140,110,.2); }
+    .lc-icon.rose { background: rgba(192,122,138,.18); }
+    .lc-icon.lilac { background: rgba(150,104,164,.2); }
+    .lc-icon.dark { background: rgba(246,241,233,.08); }
+
+    .lc-content { flex: 1; min-width: 0; }
+    .lc-title {
+      font-family: var(--body);
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--cream);
+      margin-bottom: .1rem;
+    }
+    .lc-sub {
+      font-size: .72rem;
+      color: rgba(246,241,233,.45);
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .lc-badge {
+      font-size: .58rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      background: var(--gold);
+      color: var(--ink-deep);
+      padding: .2rem .5rem;
+      border-radius: 2px;
+      font-weight: 700;
+      white-space: nowrap;
+    }
+    .lc-badge.free { background: var(--sage); color: var(--ink-deep); }
+    .lc-badge.soon { background: rgba(246,241,233,.15); color: rgba(246,241,233,.6); }
+
+    /* SOCIAL ROW */
+    .socials {
+      display: flex;
+      gap: .8rem;
+      justify-content: center;
+      margin-top: 2rem;
+      position: relative; z-index: 10;
+    }
+    .social-btn {
+      width: 44px; height: 44px; border-radius: 50%;
+      border: 1px solid rgba(246,241,233,.15);
+      display: flex; align-items: center; justify-content: center;
+      transition: border-color .2s, background .2s;
+      font-size: 1rem;
+    }
+    .social-btn:hover { border-color: var(--gold); background: rgba(196,150,62,.1); }
+
+    /* FOOTER */
+    .ft {
+      margin-top: 2.5rem;
+      text-align: center;
+      font-size: .62rem;
+      color: rgba(246,241,233,.22);
+      letter-spacing: .04em;
+      position: relative; z-index: 10;
+    }
+    .ft a { color: var(--gold); opacity: .6; }
+  </style>
+</head>
+<body>
+<canvas id="grain" aria-hidden="true"></canvas>
+
+<div class="profile">
+  <div class="avatar">L</div>
+  <div class="profile-name">Leah Veenhuizen</div>
+  <div class="profile-title">RN &middot; AuDHD &middot; Nuanced Co.</div>
+  <p class="profile-bio">Neurodivergent consultancy for ADHD and AuDHD adults. Real support. No generic advice.</p>
+</div>
+
+<!-- START HERE -->
+<div class="section-label">Start here</div>
+<div class="links">
+
+  <a href="https://nuancedco.com.au/quiz" class="link-card">
+    <div class="lc-icon gold">🧠</div>
+    <div class="lc-content">
+      <div class="lc-title">Take the free quiz</div>
+      <div class="lc-sub">Find out exactly how I can support you</div>
+    </div>
+    <span class="lc-badge free">Free</span>
+  </a>
+
+  <a href="mailto:hello@nuancedco.com.au?subject=Discovery Call Request" class="link-card">
+    <div class="lc-icon purple">💬</div>
+    <div class="lc-content">
+      <div class="lc-title">Book a free discovery call</div>
+      <div class="lc-sub">20 minutes, no commitment</div>
+    </div>
+    <span class="lc-badge free">Free</span>
+  </a>
+
+</div>
+
+<!-- WORK WITH ME -->
+<div class="section-label">Work with me</div>
+<div class="links">
+
+  <a href="https://nuancedco.com.au/consult" class="link-card">
+    <div class="lc-icon purple">🌿</div>
+    <div class="lc-content">
+      <div class="lc-title">1:1 Consultancy</div>
+      <div class="lc-sub">Individual sessions for ADHD and AuDHD adults</div>
+    </div>
+  </a>
+
+  <a href="https://nuancedco.com.au/workplace" class="link-card">
+    <div class="lc-icon sage">🏢</div>
+    <div class="lc-content">
+      <div class="lc-title">Workplace Consulting</div>
+      <div class="lc-sub">Neurodivergent inclusion for organisations</div>
+    </div>
+  </a>
+
+  <a href="https://nuancedco.com.au/pricing" class="link-card">
+    <div class="lc-icon dark">💰</div>
+    <div class="lc-content">
+      <div class="lc-title">Pricing</div>
+      <div class="lc-sub">Sessions, resources, and packages</div>
+    </div>
+  </a>
+
+</div>
+
+<!-- RESOURCES -->
+<div class="section-label">Resources</div>
+<div class="links">
+
+  <a href="https://nuancedco.com.au/courses" class="link-card">
+    <div class="lc-icon lilac">📚</div>
+    <div class="lc-content">
+      <div class="lc-title">Understanding Who You Are After Your Diagnosis</div>
+      <div class="lc-sub">Self-paced course — join the waitlist</div>
+    </div>
+    <span class="lc-badge soon">Soon</span>
+  </a>
+
+  <!-- PDF LINKS — add Stripe payment links here once set up -->
+  <!-- Example:
+  <a href="YOUR_STRIPE_PAYMENT_LINK" class="link-card">
+    <div class="lc-icon rose">📄</div>
+    <div class="lc-content">
+      <div class="lc-title">PDF Guide: ADHD After Diagnosis</div>
+      <div class="lc-sub">$19 AUD — instant download</div>
+    </div>
+    <span class="lc-badge">$19</span>
+  </a>
+  -->
+
+</div>
+
+<!-- ABOUT -->
+<div class="section-label">About</div>
+<div class="links">
+
+  <a href="https://nuancedco.com.au/about" class="link-card">
+    <div class="lc-icon gold">👤</div>
+    <div class="lc-content">
+      <div class="lc-title">About Leah</div>
+      <div class="lc-sub">RN, AuDHD, and the story behind Nuanced Co.</div>
+    </div>
+  </a>
+
+  <a href="https://nuancedco.com.au/media" class="link-card">
+    <div class="lc-icon sage">🎤</div>
+    <div class="lc-content">
+      <div class="lc-title">Speaking and Media</div>
+      <div class="lc-sub">Keynote topics and press enquiries</div>
+    </div>
+  </a>
+
+</div>
+
+<!-- SOCIALS -->
+<div class="socials">
+  <a href="https://www.tiktok.com/@leah_breaks_the_cycle" class="social-btn" aria-label="TikTok" title="TikTok">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="color:rgba(246,241,233,.7)"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.75a4.85 4.85 0 0 1-1.01-.06z"/></svg>
+  </a>
+  <a href="https://www.instagram.com/leah_breaks_the_cycle" class="social-btn" aria-label="Instagram" title="Instagram">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(246,241,233,.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+  </a>
+  <a href="https://www.facebook.com/LeahBreaksTheCycle" class="social-btn" aria-label="Facebook" title="Facebook">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="rgba(246,241,233,.7)"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+  </a>
+  <a href="https://nuancedco.com.au" class="social-btn" aria-label="Website" title="Website">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="rgba(246,241,233,.7)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+  </a>
+</div>
+
+<div class="ft">
+  <a href="https://nuancedco.com.au">nuancedco.com.au</a> &nbsp;&middot;&nbsp;
+  ABN 71 926 185 491 &nbsp;&middot;&nbsp; &copy; 2026 Nuanced Co.
+</div>
+
+<script>
+const gc=document.getElementById('grain'),gx=gc.getContext('2d');let gW,gH;function rg(){gW=gc.width=window.innerWidth;gH=gc.height=window.innerHeight;}rg();window.addEventListener('resize',rg);function drawGrain(){const d=gx.createImageData(gW,gH);for(let i=0;i<d.data.length;i+=4){const v=Math.random()*255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=15;}gx.putImageData(d,0,0);}setInterval(drawGrain,80);drawGrain();
+</script>
+</body>
+</html>

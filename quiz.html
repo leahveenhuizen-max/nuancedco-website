@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>What Kind of Support Do You Need? | Nuanced Co.</title>
+  <meta name="description" content="A free 2-minute quiz to help you understand what kind of neurodivergent support would be most useful for where you are right now.">
+  <link rel="canonical" href="https://nuancedco.com.au/quiz">
+  <meta name="copyright" content="© 2026 Nuanced Co. ABN 71 926 185 491">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream:#F6F1E9;--cream-d:#EDE6D8;--cream-dd:#DDD4C2;
+      --ink:#2A1F1A;--ink-mid:#4A3830;--ink-deep:#0F0C0A;
+      --purple:#6B4570;--sage:#7A8C6E;--gold:#C4963E;--rose:#C07A8A;--lilac:#9668A4;
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --body:'Atkinson Hyperlegible',system-ui,sans-serif;
+      --ease:cubic-bezier(0.22,1,0.36,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{font-size:18px;scroll-behavior:smooth;}
+    body{background:var(--ink-deep);color:var(--cream);font-family:var(--body);line-height:1.7;overflow-x:hidden;min-height:100vh;}
+    a{color:inherit;text-decoration:none;}
+
+    /* GRAIN */
+    #grain{position:fixed;inset:0;pointer-events:none;z-index:9990;opacity:.025;mix-blend-mode:overlay;}
+
+    /* NAV */
+    #nav{position:fixed;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3.5rem;background:rgba(15,12,10,.6);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);}
+    .nav-logo{font-family:var(--serif);font-size:1rem;font-weight:400;letter-spacing:.25em;color:var(--cream);text-transform:uppercase;line-height:1;display:flex;flex-direction:column;gap:3px;}
+    .nav-logo em{font-style:normal;font-family:var(--body);font-size:.48rem;letter-spacing:.3em;color:var(--gold);opacity:.8;}
+    .nav-back{font-family:var(--body);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.5);display:flex;align-items:center;gap:.5rem;transition:color .2s;}
+    .nav-back:hover{color:var(--cream);}
+    .nav-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5;}
+
+    /* MAIN */
+    main{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:7rem 2rem 4rem;}
+
+    /* PROGRESS */
+    .progress-wrap{width:100%;max-width:560px;margin-bottom:3rem;}
+    .progress-label{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,241,233,.4);margin-bottom:.7rem;display:flex;justify-content:space-between;}
+    .progress-track{height:2px;background:rgba(246,241,233,.1);border-radius:2px;overflow:hidden;}
+    .progress-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--gold));border-radius:2px;transition:width .5s var(--ease);}
+
+    /* QUIZ CARD */
+    .quiz-card{width:100%;max-width:560px;animation:fadeUp .5s var(--ease) both;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+    .quiz-step{display:none;}
+    .quiz-step.active{display:block;animation:fadeUp .45s var(--ease) both;}
+
+    /* QUESTION */
+    .q-label{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;opacity:.8;}
+    .q-text{font-family:var(--serif);font-size:clamp(1.6rem,3.5vw,2.2rem);font-weight:300;color:var(--cream);line-height:1.3;margin-bottom:2rem;}
+    .q-text em{font-style:italic;color:rgba(196,150,62,.9);}
+
+    /* OPTIONS */
+    .q-options{display:flex;flex-direction:column;gap:.75rem;}
+    .q-opt{position:relative;border:1px solid rgba(246,241,233,.12);border-radius:3px;padding:1.1rem 1.4rem;cursor:pointer;transition:border-color .2s,background .2s;display:flex;align-items:flex-start;gap:1rem;}
+    .q-opt:hover{border-color:rgba(196,150,62,.4);background:rgba(196,150,62,.04);}
+    .q-opt.selected{border-color:var(--gold);background:rgba(196,150,62,.08);}
+    .q-opt input{position:absolute;opacity:0;pointer-events:none;}
+    .q-opt-dot{width:16px;height:16px;min-width:16px;border-radius:50%;border:1px solid rgba(246,241,233,.25);margin-top:3px;transition:border-color .2s,background .2s;display:flex;align-items:center;justify-content:center;}
+    .q-opt.selected .q-opt-dot{border-color:var(--gold);background:var(--gold);}
+    .q-opt.selected .q-opt-dot::after{content:'';width:6px;height:6px;border-radius:50%;background:var(--ink-deep);}
+    .q-opt-text{font-size:.95rem;color:rgba(246,241,233,.82);line-height:1.55;}
+    .q-opt.selected .q-opt-text{color:var(--cream);}
+
+    /* BUTTONS */
+    .quiz-nav{margin-top:2rem;display:flex;justify-content:flex-end;gap:1rem;}
+    .btn{font-family:var(--body);font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.85rem 2rem;border:none;border-radius:2px;cursor:pointer;transition:transform .2s var(--ease),background .2s,color .2s,opacity .2s;display:inline-block;}
+    .btn:hover{transform:translateY(-2px);}
+    .btn-gold{background:var(--gold);color:var(--ink-deep);}
+    .btn-ghost{background:transparent;border:1px solid rgba(246,241,233,.25);color:rgba(246,241,233,.7);}
+    .btn-ghost:hover{border-color:rgba(246,241,233,.55);color:var(--cream);}
+    .btn:disabled{opacity:.35;cursor:not-allowed;transform:none;}
+
+    /* EMAIL STEP */
+    .email-intro{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2rem);font-weight:300;color:var(--cream);line-height:1.3;margin-bottom:.8rem;}
+    .email-sub{font-size:.9rem;color:rgba(246,241,233,.65);margin-bottom:2rem;line-height:1.65;}
+    .email-field{width:100%;background:rgba(246,241,233,.06);border:1px solid rgba(246,241,233,.15);border-radius:3px;padding:1rem 1.2rem;font-family:var(--body);font-size:.95rem;color:var(--cream);outline:none;transition:border-color .2s;}
+    .email-field::placeholder{color:rgba(246,241,233,.3);}
+    .email-field:focus{border-color:rgba(196,150,62,.5);}
+    .email-note{font-size:.72rem;color:rgba(246,241,233,.35);margin-top:.8rem;letter-spacing:.02em;}
+    .email-actions{margin-top:1.5rem;display:flex;flex-direction:column;gap:.8rem;}
+    .skip-link{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,233,.35);text-align:center;cursor:pointer;transition:color .2s;}
+    .skip-link:hover{color:rgba(246,241,233,.6);}
+
+    /* RESULT */
+    .result-step{display:none;animation:fadeUp .5s var(--ease) both;}
+    .result-step.active{display:block;}
+    .result-eyebrow{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;opacity:.8;}
+    .result-title{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--cream);line-height:1.2;margin-bottom:1.2rem;}
+    .result-body{font-size:.95rem;color:rgba(246,241,233,.78);line-height:1.75;max-width:500px;margin-bottom:2.2rem;}
+    .result-rule{width:40px;height:1px;background:var(--gold);margin:1.5rem 0;}
+    .result-cards{display:flex;flex-direction:column;gap:1rem;margin-bottom:2.5rem;}
+    .rc{border:1px solid rgba(246,241,233,.1);border-radius:3px;padding:1.2rem 1.4rem;}
+    .rc-label{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;opacity:.8;}
+    .rc-title{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:var(--cream);margin-bottom:.5rem;}
+    .rc-desc{font-size:.85rem;color:rgba(246,241,233,.65);line-height:1.6;}
+    .result-actions{display:flex;gap:1rem;flex-wrap:wrap;}
+    .disclaimer{font-size:.72rem;color:rgba(246,241,233,.3);margin-top:3rem;line-height:1.6;max-width:500px;padding-top:1.5rem;border-top:1px solid rgba(246,241,233,.07);}
+
+    /* FOOTER */
+    .quiz-footer{position:fixed;bottom:0;left:0;right:0;padding:1rem;text-align:center;font-size:.6rem;color:rgba(246,241,233,.2);letter-spacing:.1em;pointer-events:none;}
+
+    /* RESPONSIVE */
+    @media(max-width:600px){
+      #nav{padding:1rem 1.4rem;}
+      main{padding:6rem 1.2rem 4rem;}
+      .q-text{font-size:1.4rem;}
+      .result-title{font-size:1.8rem;}
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="grain" aria-hidden="true"></canvas>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">NUANCED CO.<em>Neurodivergent Consultancy</em></a>
+  <a href="index.html" class="nav-back">
+    <svg viewBox="0 0 16 16"><path d="M10 12L6 8l4-4"/></svg>
+    Back to site
+  </a>
+</nav>
+
+<main>
+
+  <!-- PROGRESS BAR -->
+  <div class="progress-wrap" id="progressWrap">
+    <div class="progress-label">
+      <span id="progressLabel">Question 1 of 5</span>
+      <span id="progressPct">0%</span>
+    </div>
+    <div class="progress-track"><div class="progress-fill" id="progressFill" style="width:0%"></div></div>
+  </div>
+
+  <!-- QUIZ STEPS -->
+  <div class="quiz-card">
+
+    <!-- Q1 -->
+    <div class="quiz-step active" data-step="1">
+      <p class="q-label">Question 1</p>
+      <h2 class="q-text">Where are you at <em>right now</em>?</h2>
+      <div class="q-options">
+        <label class="q-opt" data-value="new-diagnosis">
+          <input type="radio" name="q1" value="new-diagnosis">
+          <span class="q-opt-dot"></span>
+          <span class="q-opt-text">I was recently diagnosed and I'm still making sense of it all</span>
+        </label>
+        <label class="q-opt" data-value="diagnosed-lost">
+          <input type="radio" name="q1" value="diagnosed-lost">
+          <span class="q-opt-dot"></span>
+          <span class="q-opt-text">I've been diagnosed for a while but I still feel lost</span>
+        </label>
+        <label class="q-opt" data-value="undiagnosed">
+          <input type="radio" name="q1" value="undiagnosed">
+          <span class="q-opt-dot"></span>
+          <span class="q-opt-text">I haven't been formally diagnosed, but I know something is different about how my brain works</span>
+        </label>
+        <label class="q-opt" data-value="supporting">
+          <input type="radio" name="q1" value="supporting">
+          <span class="q-opt-dot"></span>
+          <span class="q-opt-text">I'm supporting someone I love who is neurodivergent</span>
+        </label>
+      </div>
+      <div class="quiz-nav">
+        <button class="btn btn-gold" onclick="nextStep(1)" id="next1" disabled>Next</button>
+      </div>
+    </div>
+
+    <!-- Q2 -->
+    <div class="quiz-step" data-step="2">
+      <p class="q-label">Question 2</p>
+      <h2 class="q-text">What's taking up the most <em>energy</em> right now?</h2>
+      <div class="q-options">
+        <label class="q-opt" data-value="identity">
+          <input type="radio" name="q2" value="identity">
+          <span class="q-opt-dot"></span>
+          <span class="q-opt-text">Understanding who I am and what my brain actually needs</span>
+        </label>
+        <label class="q-opt" data-value="daily">
+          <input type="radio" name="q2" value="daily">
+          <span class="q-opt-dot"></span>
+          <span class="q-opt-text">Managing the day-to-day: work, sleep, relationships, routines</span>
+        </label>
+        <label class="q-opt" data-value="burnout">
+          <input type="radio" name="q2" value="burnout">
+          <span class="q-opt-dot"></span>
+          <span class="q-opt-text">Burnout. I've hit a wall and I don't know how to get back up</span>
+        </label>
+        <label class="q-opt" data-value="workplace">
+          <input type="radio" name="q2" value="workplace">
+          <span class="q-opt-dot"></span>
+          <span class="q-opt-text">Navigating a workplace that doesn't understand me</span>
+        </label>
+      </div>
+      <div class="quiz-nav">
+        <button class="btn btn-ghost" onclick="prevStep(2)">Back</button>
+        <button class="btn btn-gold" onclick="nextStep(2)" id="next2" disabled>Next</button>
+      </div>
+    </div>
+
+    <!-- Q3 -->
+    <div class="quiz-step" data-step="3">
+      <p class="q-label">Question 3</p>
+      <h2 class="q-text">What kind of support <em>sounds like you</em>?</h2>
+      <div class="q-options">
+        <label class="q-opt" data-value="1on1">
+          <input type="radio" name="q3" value="1on1">
+          <span class="q-opt-dot"></span>
+          <span class="q-opt-text">One-on-one conversation with someone who actually gets it</span>
+        </label>
+        <label class="q-opt" data-value="learn">
+          <input type="radio" name="q3" value="learn">
+          <span class="q-opt-dot"></span>
+          <span class="q-opt-text">Information and learning, at my own pace</span>
+        </label>
+        <label class="q-opt" data-value="community">
+          <input type="radio" name="q3" value="community">
+          <span class="q-opt-dot"></span>
+          <span class="q-opt-text">Connection with others who genuinely understand</span>
+        </label>
+        <label class="q-opt" data-value="unsure">
+          <input type="radio" name="q3" value="unsure">
+          <span class="q-opt-dot"></span>
+          <span class="q-opt-text">I'm not sure yet. Some guidance would help</span>
+        </label>
+      </div>
+      <div class="quiz-nav">
+        <button class="btn btn-ghost" onclick="prevStep(3)">Back</button>
+        <button class="btn btn-gold" onclick="nextStep(3)" id="next3" disabled>Next</button>
+      </div>
+    </div>
+
+    <!-- Q4 -->
+    <div class="quiz-step" data-step="4">
+      <p class="q-label">Question 4</p>
+      <h2 class="q-text">How does <em>asking for help</em> feel?</h2>
+      <div class="q-options">
+        <label class="q-opt" data-value="ready">
+          <input type="radio" name="q4" value="ready">
+          <span class="q-opt-dot"></span>
+          <span class="q-opt-text">Ready. I've been looking for the right fit</span>
+        </label>
+        <label class="q-opt" data-value="nervous">
+          <input type="radio" name="q4" value="nervous">
+          <span class="q-opt-dot"></span>
+          <span class="q-opt-text">A bit nervous, but I'm willing to try</span>
+        </label>
+        <label class="q-opt" data-value="overwhelmed">
+          <input type="radio" name="q4" value="overwhelmed">
+          <span class="q-opt-dot"></span>
+          <span class="q-opt-text">Honestly overwhelming. I don't always know what I need</span>
+        </label>
+        <label class="q-opt" data-value="free-first">
+          <input type="radio" name="q4" value="free-first">
+          <span class="q-opt-dot"></span>
+          <span class="q-opt-text">Easier if I can start with something free first</span>
+        </label>
+      </div>
+      <div class="quiz-nav">
+        <button class="btn btn-ghost" onclick="prevStep(4)">Back</button>
+        <button class="btn btn-gold" onclick="nextStep(4)" id="next4" disabled>Next</button>
+      </div>
+    </div>
+
+    <!-- Q5 -->
+    <div class="quiz-step" data-step="5">
+      <p class="q-label">Question 5</p>
+      <h2 class="q-text">What would feel like a <em>win</em>, six months from now?</h2>
+      <div class="q-options">
+        <label class="q-opt" data-value="understand">
+          <input type="radio" name="q5" value="understand">
+          <span class="q-opt-dot"></span>
+          <span class="q-opt-text">I understand myself and my brain a lot better</span>
+        </label>
+        <label class="q-opt" data-value="strategies">
+          <input type="radio" name="q5" value="strategies">
+          <span class="q-opt-dot"></span>
+          <span class="q-opt-text">I have real strategies that actually work for me</span>
+        </label>
+        <label class="q-opt" data-value="less-exhausted">
+          <input type="radio" name="q5" value="less-exhausted">
+          <span class="q-opt-dot"></span>
+          <span class="q-opt-text">I feel less exhausted and more in control of my life</span>
+        </label>
+        <label class="q-opt" data-value="contributing">
+          <input type="radio" name="q5" value="contributing">
+          <span class="q-opt-dot"></span>
+          <span class="q-opt-text">I'm showing up in work and life in a way that feels sustainable</span>
+        </label>
+      </div>
+      <div class="quiz-nav">
+        <button class="btn btn-ghost" onclick="prevStep(5)">Back</button>
+        <button class="btn btn-gold" onclick="nextStep(5)" id="next5" disabled>See my results</button>
+      </div>
+    </div>
+
+    <!-- EMAIL CAPTURE -->
+    <div class="quiz-step" data-step="email" id="emailStep">
+      <p class="q-label">Almost there</p>
+      <h2 class="email-intro">Where should we send your results?</h2>
+      <p class="email-sub">Your personalised breakdown is ready. Pop your email below and it lands in your inbox straight away.</p>
+      <input type="email" class="email-field" id="emailInput" placeholder="your@email.com" autocomplete="email">
+      <p class="email-note">No spam. Ever. You will only receive your results and occasional updates if you choose to stay subscribed. You can unsubscribe any time.</p>
+      <div class="email-actions">
+        <button class="btn btn-gold" onclick="submitEmail()" id="emailBtn" style="width:100%;text-align:center;">Send my results</button>
+        <span class="skip-link" onclick="showResult()">Skip and see results now</span>
+      </div>
+    </div>
+
+  </div><!-- end quiz-card -->
+
+  <!-- RESULT -->
+  <div class="result-step" id="resultStep" style="max-width:560px;width:100%;">
+    <p class="result-eyebrow">Your results</p>
+    <h2 class="result-title" id="resultTitle">Loading your results...</h2>
+    <p class="result-body" id="resultBody"></p>
+    <div class="result-rule"></div>
+    <div class="result-cards" id="resultCards"></div>
+    <div class="result-actions">
+      <a href="#cta" class="btn btn-gold" onclick="window.location.href='index_v6.html#cta'">Book a free call with Leah</a>
+      <a href="index_v6.html#resources" class="btn btn-ghost">Browse free resources</a>
+    </div>
+    <p class="disclaimer">This quiz is for information purposes only. It is not a diagnostic tool and does not constitute clinical advice. Nuanced Co. is a consultancy service. If you need clinical or psychological support, please speak with your GP or a registered mental health professional. If you are in crisis, please contact Lifeline on 13 11 14.</p>
+  </div>
+
+</main>
+
+<div class="quiz-footer">Nuanced Co. &middot; ABN 71 926 185 491 &middot; nuancedco.com.au</div>
+
+<script>
+// GRAIN
+const gc=document.getElementById('grain'),gx=gc.getContext('2d');
+let gW,gH;function rg(){gW=gc.width=window.innerWidth;gH=gc.height=window.innerHeight;}rg();
+window.addEventListener('resize',rg);
+function drawGrain(){const d=gx.createImageData(gW,gH);for(let i=0;i<d.data.length;i+=4){const v=Math.random()*255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=18;}gx.putImageData(d,0,0);}
+setInterval(drawGrain,80);drawGrain();
+
+// QUIZ STATE
+let answers = {};
+let currentStep = 1;
+const totalSteps = 5;
+
+// OPTION SELECTION
+document.querySelectorAll('.q-opt').forEach(opt => {
+  opt.addEventListener('click', () => {
+    const radio = opt.querySelector('input');
+    const name = radio.name;
+    document.querySelectorAll(`input[name="${name}"]`).forEach(r => {
+      r.closest('.q-opt').classList.remove('selected');
+    });
+    radio.checked = true;
+    opt.classList.add('selected');
+    answers[name] = radio.value;
+    const stepNum = opt.closest('.quiz-step').dataset.step;
+    const nextBtn = document.getElementById('next' + stepNum);
+    if(nextBtn) nextBtn.disabled = false;
+  });
+});
+
+// NAVIGATION
+function nextStep(from) {
+  const current = document.querySelector(`.quiz-step[data-step="${from}"]`);
+  current.classList.remove('active');
+  if(from === totalSteps) {
+    document.getElementById('emailStep').classList.add('active');
+    document.getElementById('progressWrap').style.opacity = '0';
+  } else {
+    const next = document.querySelector(`.quiz-step[data-step="${from + 1}"]`);
+    next.classList.add('active');
+    currentStep = from + 1;
+    updateProgress(currentStep);
+  }
+}
+
+function prevStep(from) {
+  const current = document.querySelector(`.quiz-step[data-step="${from}"]`);
+  current.classList.remove('active');
+  const prev = document.querySelector(`.quiz-step[data-step="${from - 1}"]`);
+  prev.classList.add('active');
+  currentStep = from - 1;
+  updateProgress(currentStep);
+}
+
+function updateProgress(step) {
+  const pct = Math.round(((step - 1) / totalSteps) * 100);
+  document.getElementById('progressFill').style.width = pct + '%';
+  document.getElementById('progressLabel').textContent = `Question ${step} of ${totalSteps}`;
+  document.getElementById('progressPct').textContent = pct + '%';
+}
+
+// EMAIL SUBMIT — Kit integration (tag-based, no form ID needed)
+function submitEmail() {
+  const email = document.getElementById('emailInput').value.trim();
+  if(!email || !email.includes('@')) {
+    document.getElementById('emailInput').style.borderColor = 'var(--rose)';
+    document.getElementById('emailInput').placeholder = 'Please enter a valid email';
+    return;
+  }
+  const btn = document.getElementById('emailBtn');
+  btn.textContent = 'Sending...';
+  btn.disabled = true;
+  const resultType = getResultType();
+  const quizTagId = 19834575; // "Quiz Lead" tag in Kit
+  // Subscribe to Quiz Lead tag with result stored as custom field
+  fetch(`https://api.convertkit.com/v3/tags/${quizTagId}/subscribe`, {
+    method:'POST',
+    headers:{'Content-Type':'application/json; charset=utf-8'},
+    body: JSON.stringify({
+      api_key: '_vFocnhMfgpWU5gAweEHcQ',
+      email: email,
+      fields: { quiz_result: resultType }
+    })
+  })
+  .then(() => {
+    btn.textContent = 'Results on their way!';
+    setTimeout(showResult, 700);
+  })
+  .catch(() => {
+    // Still show results even if network fails
+    btn.textContent = 'Done!';
+    setTimeout(showResult, 500);
+  });
+}
+
+// SCORING
+function getResultType() {
+  const a = answers;
+  let scores = {consult:0, burnout:0, learn:0, workplace:0, community:0};
+
+  // Q1
+  if(a.q1 === 'new-diagnosis' || a.q1 === 'diagnosed-lost') scores.consult += 2;
+  if(a.q1 === 'undiagnosed') { scores.consult += 1; scores.learn += 1; }
+  if(a.q1 === 'supporting') scores.learn += 2;
+
+  // Q2
+  if(a.q2 === 'identity') scores.consult += 2;
+  if(a.q2 === 'burnout') scores.burnout += 3;
+  if(a.q2 === 'daily') { scores.consult += 1; scores.burnout += 1; }
+  if(a.q2 === 'workplace') scores.workplace += 3;
+
+  // Q3
+  if(a.q3 === '1on1') scores.consult += 2;
+  if(a.q3 === 'learn') scores.learn += 2;
+  if(a.q3 === 'community') scores.community += 2;
+  if(a.q3 === 'unsure') scores.consult += 1;
+
+  // Q4
+  if(a.q4 === 'ready') scores.consult += 1;
+  if(a.q4 === 'free-first') { scores.learn += 2; scores.community += 1; }
+  if(a.q4 === 'overwhelmed') scores.burnout += 1;
+
+  // Q5
+  if(a.q5 === 'understand') { scores.consult += 1; scores.learn += 1; }
+  if(a.q5 === 'strategies') scores.learn += 1;
+  if(a.q5 === 'less-exhausted') scores.burnout += 1;
+  if(a.q5 === 'contributing') scores.workplace += 1;
+
+  const sorted = Object.entries(scores).sort((a,b) => b[1] - a[1]);
+  return sorted[0][0];
+}
+
+const results = {
+  consult: {
+    title: "1:1 Consultancy is where to start",
+    body: "Based on your answers, you're at a point where talking things through with someone who truly understands neurodivergent experience would make the most difference. Not a script. Not a checklist. Real conversation that meets you where you actually are.",
+    cards: [
+      {label:"What this looks like", title:"1:1 Sessions with Leah", desc:"Individual consultancy sessions built around what is actually happening for you right now. Leah is a Registered Nurse and AuDHD person, so the starting point is genuine understanding, not assumptions."},
+      {label:"A free first step", title:"Download the free guides", desc:"Not ready to commit to a call? Start with the free resources. They are written to be genuinely useful, not to sell you anything."}
+    ]
+  },
+  burnout: {
+    title: "Burnout recovery is the right focus",
+    body: "Your answers point clearly to burnout, and if that resonates, you are not imagining it. AuDHD burnout is a real, documented experience that is still not widely understood. The good news is that recovery is possible, and the path forward does not look like trying harder.",
+    cards: [
+      {label:"Start here", title:"ADHD Burnout Guide", desc:"Download the free guide to understand what is actually happening in your nervous system, and what recovery actually requires (it is not what most people think)."},
+      {label:"When you're ready", title:"1:1 Consultancy", desc:"Once you've had a chance to understand the burnout picture, a consultation can help you build a real plan for sustainable change."}
+    ]
+  },
+  learn: {
+    title: "Self-paced learning is the right fit",
+    body: "You want information you can trust, in a format that works for your brain, on your own timeline. That is completely valid, and it is exactly what the free resources and upcoming courses are built for.",
+    cards: [
+      {label:"Free resources", title:"Three guides to download now", desc:"ADHD Burnout, Executive Dysfunction, and Getting a Diagnosis in Australia. All factual, all written for neurodivergent people, all free."},
+      {label:"Coming soon", title:"Understanding Who You Are After Your Diagnosis", desc:"A self-paced course covering late diagnosis, identity, masking, and building a life that actually works for your brain. Be the first to know when it launches."}
+    ]
+  },
+  workplace: {
+    title: "Workplace support is where to start",
+    body: "Navigating a workplace that was not designed for your brain is exhausting in a very specific way. Whether the issue is adjustments, disclosure, performance, or just surviving a role that demands too much masking, there is real help available.",
+    cards: [
+      {label:"For you", title:"Workplace Consultancy", desc:"Individual support for neurodivergent people navigating employment, adjustments, and workplace relationships. Grounded in psychosocial risk frameworks and practical reality."},
+      {label:"Free first step", title:"Download the Executive Dysfunction Guide", desc:"Understanding how AuDHD executive dysfunction actually works is often the first piece of clarity people need before they can address the workplace piece."}
+    ]
+  },
+  community: {
+    title: "Connection is what you need most",
+    body: "Sometimes information is not the missing piece. Sometimes what matters most is being in a space where your brain makes sense, and you do not have to explain yourself from scratch. The community is built for exactly that.",
+    cards: [
+      {label:"Coming soon", title:"Nuanced Co. Community", desc:"Support circles and group programs for neurodivergent people who want genuine connection. A space where you belong as you are, not as you are trying to appear."},
+      {label:"While you wait", title:"Start with the free resources", desc:"Download any of the three free guides, and follow along on social media for regular content that actually reflects neurodivergent lived experience."}
+    ]
+  }
+};
+
+function showResult() {
+  document.querySelector('.quiz-step.active')?.classList.remove('active');
+  document.getElementById('progressWrap').style.opacity = '0';
+  const type = getResultType();
+  const r = results[type] || results.consult;
+  document.getElementById('resultTitle').textContent = r.title;
+  document.getElementById('resultBody').textContent = r.body;
+  const cardsHtml = r.cards.map(c => `
+    <div class="rc">
+      <div class="rc-label">${c.label}</div>
+      <div class="rc-title">${c.title}</div>
+      <p class="rc-desc">${c.desc}</p>
+    </div>`).join('');
+  document.getElementById('resultCards').innerHTML = cardsHtml;
+  document.getElementById('resultStep').classList.add('active');
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>

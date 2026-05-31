@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuanced Co. | Neurodivergent Consultancy | Geelong, Australia</title>
+  <meta name="description" content="Nuanced Co. is a neurodivergent consultancy for people who are tired of being handed a generic checklist. Specialising in ADHD, AuDHD, and autism. Based in Geelong, working across Australia and internationally.">
+  <link rel="canonical" href="https://nuancedco.com.au/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://nuancedco.com.au/">
+  <meta property="og:title" content="Nuanced Co. | Neurodivergent Consultancy">
+  <meta property="og:description" content="Support that actually understands how your brain works.">
+  <meta property="og:image" content="https://nuancedco.com.au/leah-about-hero.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"LocalBusiness","name":"Nuanced Co.","description":"Neurodivergent consultancy specialising in ADHD, AuDHD, and autism support","url":"https://nuancedco.com.au","email":"hello@nuancedco.com.au","address":{"@type":"PostalAddress","addressLocality":"Geelong","addressRegion":"VIC","addressCountry":"AU"},"areaServed":["Australia","International"],"founder":{"@type":"Person","name":"Leah Veenhuizen"}}</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream:#F6F1E9;--cream-d:#EDE6D8;--cream-dd:#DDD4C2;--parchment:#EAE0CE;
+      --ink:#2A1F1A;--ink-mid:#4A3830;--ink-deep:#0F0C0A;
+      --purple:#6B4570;--sage:#7A8C6E;--gold:#C4963E;--rose:#C07A8A;--lilac:#9668A4;
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --body:'Atkinson Hyperlegible',system-ui,sans-serif;
+      --ease:cubic-bezier(0.22,1,0.36,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{font-size:18px;scroll-behavior:smooth;}
+    body{background:var(--cream);color:var(--ink);font-family:var(--body);line-height:1.7;overflow-x:hidden;}
+    img{display:block;max-width:100%;}
+    a{color:inherit;text-decoration:none;}
+
+    #grain{position:fixed;inset:0;pointer-events:none;z-index:9990;opacity:.025;mix-blend-mode:overlay;}
+    #sp{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--purple),var(--gold),var(--rose));z-index:9995;pointer-events:none;transition:width .08s linear;}
+
+
+    /* CONTROLS */
+    #mtoggle{position:fixed;bottom:1.5rem;left:1.5rem;z-index:900;font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mid);background:transparent;border:1px solid var(--cream-dd);padding:.45rem .9rem;border-radius:20px;transition:border-color .2s,color .2s;}
+    #mtoggle:hover{border-color:var(--purple);color:var(--purple);}
+
+    /* NAV */
+    #nav{position:fixed;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3.5rem;background:rgba(15,12,10,.18);transition:background .4s,padding .4s,backdrop-filter .4s;}
+    #nav.scrolled{background:rgba(20,15,12,.82);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);padding:1rem 3.5rem;}
+    .nav-logo{font-family:var(--serif);font-size:1rem;font-weight:400;letter-spacing:.25em;color:var(--cream);text-transform:uppercase;line-height:1;display:flex;flex-direction:column;gap:3px;}
+    .nav-logo em{font-style:normal;font-family:var(--body);font-size:.48rem;letter-spacing:.3em;color:var(--gold);opacity:.8;}
+    .nav-list{list-style:none;display:flex;align-items:center;gap:2rem;}
+    .nav-list a{font-family:var(--body);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.65);transition:color .2s;}
+    .nav-list a:hover{color:var(--cream);}
+    .nav-list .ncta{border:1px solid rgba(196,150,62,.5);color:var(--gold);padding:.4rem 1.2rem;border-radius:2px;font-size:.62rem;transition:background .2s,color .2s,border-color .2s;}
+    .nav-list .ncta:hover{background:var(--gold);color:var(--ink-deep);border-color:var(--gold);}
+    .nav-dd{position:relative;}
+    .nav-dd-menu{position:absolute;top:calc(100% + 1rem);left:50%;transform:translateX(-50%) translateY(-4px);background:rgba(15,12,10,.98);border:1px solid rgba(246,241,233,.12);min-width:210px;padding:.6rem 0;opacity:0;pointer-events:none;visibility:hidden;transition:opacity .2s,transform .2s var(--ease),visibility .2s;}
+    .nav-dd:hover .nav-dd-menu,.nav-dd:focus-within .nav-dd-menu{opacity:1;pointer-events:all;visibility:visible;transform:translateX(-50%) translateY(0);}
+    .nav-dd-menu a{display:block;padding:.75rem 1.4rem;font-size:.72rem;opacity:.9;color:rgba(246,241,233,.95);transition:opacity .2s,color .2s;}
+    .nav-dd-menu a:hover{opacity:1;color:var(--gold);}
+    .mob-nav .submenu-toggle{font-family:var(--serif);font-size:2.2rem;color:var(--cream);background:transparent;border:none;padding:0;margin:0;cursor:pointer;letter-spacing:.08em;text-align:left;width:100%;}
+    .mob-nav .submenu-toggle:hover{color:var(--gold);}
+    .mob-submenu{display:flex;flex-direction:column;gap:.5rem;max-height:0;overflow:hidden;opacity:0;transition:max-height .25s ease,opacity .25s ease;}
+    .mob-submenu.open{max-height:220px;opacity:1;}
+    .mob-submenu a{font-size:1.6rem;color:rgba(246,241,233,.92);padding-left:1rem;}
+    .mob-submenu a:hover{color:var(--gold);}
+    .hamburger{display:none;flex-direction:column;gap:5px;}
+    .hamburger span{width:22px;height:1.5px;background:var(--cream);display:block;}
+
+    /* REVEAL */
+    .rv{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+    .rvl{opacity:0;transform:translateX(-32px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+    .rvr{opacity:0;transform:translateX(32px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
+    .rv.in,.rvl.in,.rvr.in{opacity:1;transform:none;}
+    .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+
+    /* HERO */
+    #hero{min-height:100vh;background:var(--ink-deep);position:relative;display:flex;align-items:center;overflow:hidden;}
+    .ink-marks{position:absolute;inset:0;pointer-events:none;z-index:1;}
+    .ink-marks svg{position:absolute;}
+    .im-1{top:12%;right:8%;width:340px;opacity:.15;}
+    .im-2{bottom:20%;left:5%;width:260px;opacity:.10;}
+    .im-3{top:45%;right:22%;width:180px;opacity:.08;}
+
+    .hero-inner{position:relative;z-index:2;display:flex;align-items:center;width:100%;padding:0 5rem;min-height:100vh;}
+    .hero-body{padding:9rem 0 7rem;max-width:660px;flex:1;}
+
+    .hero-eyebrow{display:flex;align-items:center;gap:1.2rem;margin-bottom:3rem;}
+    .hero-eyebrow-line{width:50px;height:1px;background:var(--gold);}
+    .hero-eyebrow-text{font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);}
+    .hero-hl{position:relative;line-height:1;margin-bottom:3rem;}
+    .hl-row{display:block;overflow:visible;}
+    .hl-sm{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.8rem);font-weight:300;color:rgba(246,241,233,.55);letter-spacing:.02em;}
+    .hl-lg{font-family:var(--serif);font-size:clamp(4rem,8.5vw,8rem);font-weight:300;color:var(--cream);letter-spacing:-.01em;line-height:.9;}
+    .hl-lg em{font-style:italic;color:var(--gold);}
+    .hl-offset{margin-left:clamp(2rem,6vw,7rem);}
+    .hl-brushmark{display:block;margin-top:.5rem;margin-left:clamp(2rem,6vw,7rem);}
+    .hero-sub{font-size:1rem;color:rgba(246,241,233,.82);max-width:480px;line-height:1.75;margin-bottom:2.8rem;margin-left:.4rem;}
+    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+    .hero-micro{font-size:.66rem;color:rgba(246,241,233,.42);margin-top:1.2rem;letter-spacing:.04em;}
+    .hero-fade{position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to bottom,transparent,var(--cream));z-index:3;pointer-events:none;}
+
+    .course-intro{background:var(--ink-deep);padding:7rem 0;}
+    .course-intro .section-label{color:var(--gold);}
+    .course-intro .sh{color:var(--cream);}
+    .course-intro .sb{color:rgba(246,241,233,.85);max-width:760px;}
+    .course-video-block{margin-top:2.5rem;max-width:840px;}
+    .video-frame{position:relative;padding-top:56.25%;border-radius:22px;overflow:hidden;background:rgba(15,12,10,.95);border:1px solid rgba(196,150,62,.27);box-shadow:0 28px 60px rgba(0,0,0,.18);}
+    .video-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
+    .course-video-label{margin-top:1rem;font-family:var(--body);font-size:.88rem;color:var(--cream-d);letter-spacing:.08em;text-transform:uppercase;}
+
+    .course-modules{background:var(--ink-deep);padding:7rem 0;}
+    .course-module{display:grid;grid-template-columns:1.4fr 1fr;gap:2.5rem;padding:2.5rem 0;border-bottom:1px solid rgba(246,241,233,.08);}
+    .course-module:last-child{border-bottom:none;}
+    .course-module-copy h2{color:var(--cream);margin-bottom:.8rem;}
+    .course-module-copy p{color:rgba(246,241,233,.78);max-width:680px;}
+    .course-module-media{display:flex;align-items:center;justify-content:center;}
+    .course-video-placeholder{width:100%;min-height:240px;border-radius:22px;border:1px solid rgba(196,150,62,.25);background:rgba(246,241,233,.04);display:flex;align-items:center;justify-content:center;color:rgba(246,241,233,.72);font-family:var(--body);font-size:1rem;text-align:center;padding:1.5rem;}
+    .course-diagram-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2rem;margin-top:3rem;}
+    .course-figure{display:flex;flex-direction:column;gap:1rem;}
+    .graphic-placeholder{width:100%;min-height:260px;border-radius:22px;border:1px solid rgba(196,150,62,.25);background:linear-gradient(135deg,rgba(246,241,233,.05),rgba(15,12,10,.72));display:flex;align-items:center;justify-content:center;padding:2rem;color:var(--cream);text-align:center;font-size:1rem;font-weight:600;}
+    .course-figure p{color:rgba(246,241,233,.7);max-width:520px;}
+
+    @media(max-width:900px){
+      .course-module{grid-template-columns:1fr;}
+      .course-module-media{order:-1;}
+      .course-diagram-grid{grid-template-columns:1fr;}
+    }
+
+    /* LOGO MARK */
+    .hero-mark{position:absolute;right:6%;top:50%;transform:translateY(-50%);width:clamp(300px,40vw,520px);opacity:0;animation:markIn 2s 0.6s var(--ease) forwards;pointer-events:none;z-index:1;}
+    @keyframes markIn{to{opacity:.55;}}
+    .hero-body{position:relative;z-index:2;}
+
+    /* BUTTONS */
+    .btn{font-family:var(--body);font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.9rem 2.2rem;border:none;border-radius:2px;transition:transform .2s var(--ease),background .2s,color .2s,box-shadow .2s;display:inline-block;}
+    .btn:hover{transform:translateY(-2px);}
+    .btn-gold{background:var(--gold);color:var(--ink-deep);}
+    .btn-gold:hover{background:#d4a84e;box-shadow:0 8px 24px rgba(196,150,62,.35);}
+    .btn-ghost-light{background:transparent;color:var(--cream);border:1px solid rgba(246,241,233,.3);}
+    .btn-ghost-light:hover{border-color:var(--cream);background:rgba(246,241,233,.06);}
+    .btn-ghost-ink{background:transparent;color:var(--ink);border:1px solid rgba(42,31,26,.4);}
+
+    /* SHARED */
+    .section-label{font-family:var(--body);font-size:.6rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.6rem;}
+    .rule{width:40px;height:1px;background:var(--cream-dd);margin:.8rem 0 1.8rem;}
+    h2.sh{font-family:var(--serif);font-size:clamp(2.2rem,3.8vw,3.4rem);font-weight:300;color:var(--ink);line-height:1.18;margin-bottom:1.2rem;}
+    p.sb{font-size:.92rem;color:var(--ink-mid);line-height:1.8;max-width:520px;}
+
+    /* RIGHT PLACE */
+    #rp{background:var(--cream);padding:7rem 0 6rem;}
+    .rp-label{font-family:var(--body);font-size:.6rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);text-align:center;margin-bottom:4rem;}
+    .rp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;}
+    .rp-card{padding:2.8rem 2.4rem;position:relative;overflow:hidden;border-top:2px solid var(--cream-dd);background:var(--cream);transition:background .3s,border-color .3s;}
+    .rp-card:hover{background:var(--cream-d);}
+    .rp-card:nth-child(1):hover{border-color:var(--purple);}
+    .rp-card:nth-child(2):hover{border-color:var(--sage);}
+    .rp-card:nth-child(3):hover{border-color:var(--gold);}
+    .rp-card-num{font-family:var(--serif);font-size:5rem;font-weight:300;color:var(--cream-dd);line-height:1;position:absolute;top:1.4rem;right:1.6rem;transition:color .3s;pointer-events:none;}
+    .rp-card:nth-child(1):hover .rp-card-num{color:rgba(107,69,112,.15);}
+    .rp-card:nth-child(2):hover .rp-card-num{color:rgba(122,140,110,.15);}
+    .rp-card:nth-child(3):hover .rp-card-num{color:rgba(196,150,62,.15);}
+    .rp-icon{margin-bottom:1.4rem;width:28px;height:28px;}
+    .rp-card p{font-size:.9rem;color:var(--ink-mid);line-height:1.72;}
+
+    /* WHO I WORK WITH */
+    #who{background:var(--parchment);padding:8rem 0 7rem;}
+    .who-intro{max-width:620px;margin:0 auto 4.5rem;text-align:center;}
+    .who-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--cream-dd);border:1px solid var(--cream-dd);}
+    .who-card{background:var(--cream);padding:3rem 2.6rem;position:relative;overflow:hidden;transition:background .3s;}
+    .who-card:hover{background:var(--cream-d);}
+    .who-accent{display:inline-block;width:28px;height:3px;border-radius:2px;margin-bottom:1.4rem;}
+    .who-card:nth-child(1) .who-accent{background:var(--purple);}
+    .who-card:nth-child(2) .who-accent{background:var(--gold);}
+    .who-card:nth-child(3) .who-accent{background:var(--sage);}
+    .who-card:nth-child(4) .who-accent{background:var(--rose);}
+    .who-card-title{font-family:var(--serif);font-size:1.9rem;font-weight:400;color:var(--ink);line-height:1.1;margin-bottom:.5rem;}
+    .who-card-sub{font-family:var(--body);font-size:.6rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink-mid);opacity:.5;margin-bottom:1.1rem;display:block;}
+    .who-card-def{font-size:.88rem;color:var(--ink-mid);line-height:1.72;margin-bottom:1.6rem;}
+    .who-traits{display:flex;flex-wrap:wrap;gap:.4rem;}
+    .wtag{font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.28rem .75rem;border-radius:2px;}
+    .who-card:nth-child(1) .wtag{background:rgba(107,69,112,.1);color:var(--purple);}
+    .who-card:nth-child(2) .wtag{background:rgba(196,150,62,.1);color:#9a7820;}
+    .who-card:nth-child(3) .wtag{background:rgba(122,140,110,.1);color:#4e6245;}
+    .who-card:nth-child(4) .wtag{background:rgba(192,122,138,.1);color:var(--rose);}
+
+    /* DIVIDERS */
+    .rough-div{display:block;overflow:hidden;line-height:0;margin:0;}
+    .rough-div svg{display:block;width:100%;}
+
+    /* EXPLAINER */
+    #exp{background:var(--ink-deep);padding:8rem 0 7rem;position:relative;overflow:hidden;}
+    .exp-decor{position:absolute;pointer-events:none;opacity:.05;}
+    .exp-decor-1{top:-5%;right:-5%;width:55%;}
+    .exp-inner{display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:center;}
+    .exp-link{display:inline-flex;align-items:center;gap:.5rem;margin-top:1.8rem;font-family:var(--body);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);border-bottom:1px solid rgba(196,150,62,.3);padding-bottom:2px;transition:border-color .2s;}
+    .exp-link:hover{border-color:var(--gold);}
+    .exp-stat{display:flex;flex-direction:column;align-items:flex-start;gap:2.5rem;}
+    .stat-editorial{position:relative;padding-left:1.5rem;border-left:2px solid var(--purple);}
+    .stat-big{font-family:var(--serif);font-size:clamp(5rem,9vw,9rem);font-weight:300;color:var(--cream);line-height:.85;letter-spacing:-.02em;}
+    .stat-label-ed{font-family:var(--body);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.65);margin-top:.8rem;max-width:200px;line-height:1.5;}
+    .exp-tags{display:flex;flex-wrap:wrap;gap:.5rem;}
+    .etag{font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.3rem .85rem;border-radius:2px;}
+    .et-p{background:rgba(107,69,112,.22);color:var(--lilac);}
+    .et-s{background:rgba(122,140,110,.22);color:var(--sage);}
+    .et-g{background:rgba(196,150,62,.22);color:var(--gold);}
+    .et-r{background:rgba(192,122,138,.22);color:var(--rose);}
+
+    /* HOW I WORK */
+    #how{background:var(--cream);padding:8rem 0;}
+    .how-inner{display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:start;}
+    .how-steps{display:flex;flex-direction:column;gap:2.4rem;margin-top:1rem;}
+    .how-step{display:flex;gap:1.6rem;align-items:flex-start;}
+    .how-step-num{font-family:var(--serif);font-size:2.8rem;font-weight:300;color:var(--cream-dd);line-height:1;flex-shrink:0;width:48px;transition:color .3s;}
+    .how-step:hover .how-step-num{color:var(--purple);}
+    .how-step-title{font-family:var(--serif);font-size:1.25rem;font-weight:400;color:var(--ink);margin-bottom:.4rem;}
+    .how-step-desc{font-size:.87rem;color:var(--ink-mid);line-height:1.72;}
+    .how-note{margin-top:2.5rem;padding:1.4rem 1.6rem;border-left:3px solid var(--gold);background:var(--cream-d);}
+    .how-note p{font-family:var(--serif);font-size:.98rem;font-style:italic;color:var(--ink-mid);line-height:1.6;}
+
+    /* SERVICES */
+    #services{background:var(--parchment);padding:8rem 0;}
+    .services-header{margin-bottom:4rem;}
+    .services-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;background:var(--cream-dd);border:1px solid var(--cream-dd);}
+    .sc{background:var(--cream);padding:3rem 2.6rem;transition:background .3s;position:relative;overflow:hidden;}
+    .sc:hover{background:var(--cream-d);}
+    .sc-num{font-family:var(--serif);font-size:5.5rem;font-weight:300;line-height:1;color:var(--cream-dd);display:block;margin-bottom:.5rem;transition:color .35s;position:absolute;top:1.2rem;right:1.8rem;pointer-events:none;}
+    .sc:hover:nth-child(1) .sc-num{color:rgba(107,69,112,.12);}
+    .sc:hover:nth-child(2) .sc-num{color:rgba(122,140,110,.12);}
+    .sc:hover:nth-child(3) .sc-num{color:rgba(196,150,62,.12);}
+    .sc:hover:nth-child(4) .sc-num{color:rgba(192,122,138,.12);}
+    .sc-tag{font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mid);opacity:.55;margin-bottom:.5rem;display:block;}
+    .sc-title{font-family:var(--serif);font-size:1.7rem;font-weight:400;color:var(--ink);line-height:1.18;margin-bottom:.9rem;}
+    .sc-desc{font-size:.88rem;color:var(--ink-mid);line-height:1.72;margin-bottom:1.4rem;}
+    .sc-link{font-family:var(--body);font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--purple);display:inline-flex;align-items:center;gap:.4rem;border-bottom:1px solid rgba(107,69,112,.25);padding-bottom:1px;transition:border-color .2s,color .2s;}
+    .sc-link:hover{color:var(--ink);border-color:var(--ink);}
+    .sc:nth-child(2) .sc-link{color:var(--sage);border-color:rgba(122,140,110,.25);}
+    .sc:nth-child(3) .sc-link{color:var(--gold);border-color:rgba(196,150,62,.25);}
+    .sc:nth-child(4) .sc-link{color:var(--rose);border-color:rgba(192,122,138,.25);}
+
+    /* RESOURCES */
+    #resources{background:var(--ink-deep);padding:8rem 0;}
+    .res-inner{display:grid;grid-template-columns:1fr 1.1fr;gap:6rem;align-items:start;}
+    .res-tiles{display:flex;flex-direction:column;gap:2px;margin-top:2.5rem;}
+    .rtile{display:flex;align-items:center;justify-content:space-between;background:rgba(246,241,233,.05);padding:1.3rem 1.6rem;border-left:2px solid transparent;transition:border-color .25s,background .25s;}
+    .rtile:hover{background:rgba(246,241,233,.09);}
+    .rtile:nth-child(1):hover{border-color:var(--purple);}
+    .rtile:nth-child(2):hover{border-color:var(--sage);}
+    .rtile:nth-child(3):hover{border-color:var(--gold);}
+    .rtile-text{font-size:.88rem;color:rgba(246,241,233,.88);line-height:1.4;flex:1;}
+    .rtile-cta{font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);flex-shrink:0;margin-left:1.2rem;white-space:nowrap;}
+    .res-quiz{margin-top:1.8rem;padding:1.8rem;border:1px solid rgba(196,150,62,.25);background:rgba(196,150,62,.05);}
+    .res-quiz p{font-size:.88rem;color:rgba(246,241,233,.75);margin-bottom:1.2rem;line-height:1.65;}
+
+    /* ABOUT */
+    #about{background:var(--cream);padding:8rem 0;}
+    .about-collage{display:grid;grid-template-columns:1fr 1.15fr;gap:0;align-items:start;}
+    .about-img-frame{position:relative;}
+    .about-img-frame img{width:100%;display:block;border-radius:2px;filter:saturate(.9) brightness(1.03);}
+    .about-img-frame::before{content:'';position:absolute;top:-14px;left:-14px;right:14px;bottom:14px;border:1px solid var(--cream-dd);border-radius:2px;z-index:-1;}
+    .about-brush{position:absolute;bottom:-24px;right:-20px;width:110px;pointer-events:none;z-index:2;}
+    .about-pq{margin-top:2.4rem;position:relative;padding:1.4rem 1.6rem;background:var(--cream-d);border-left:3px solid var(--purple);}
+    .about-pq p{font-family:var(--serif);font-size:1.08rem;font-style:italic;color:var(--ink-mid);line-height:1.6;}
+    .about-text-col{padding:1rem 0 0 4.5rem;}
+    .about-creds{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 2rem;}
+    .ctag{font-family:var(--body);font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .9rem;background:var(--cream-d);color:var(--ink-mid);border-radius:2px;}
+    .about-link{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--body);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--purple);border-bottom:1px solid rgba(107,69,112,.3);padding-bottom:2px;transition:border-color .2s;}
+
+    /* COMMUNITY */
+    #community{background:var(--parchment);padding:8rem 0;}
+    .comm-inner{display:grid;grid-template-columns:1fr 1.4fr;gap:7rem;align-items:center;}
+    .comm-grid{display:flex;flex-direction:column;gap:2px;}
+    .comm-card{padding:1.8rem 2rem;background:var(--cream);border-left:2px solid var(--cream-dd);transition:border-color .25s,background .25s;}
+    .comm-card:hover{background:var(--cream-d);}
+    .comm-card:nth-child(1):hover{border-color:var(--purple);}
+    .comm-card:nth-child(2):hover{border-color:var(--sage);}
+    .comm-card:nth-child(3):hover{border-color:var(--gold);}
+    .cc-title{font-family:var(--serif);font-size:1.2rem;color:var(--ink);margin-bottom:.5rem;font-weight:400;}
+    .cc-body{font-size:.85rem;color:var(--ink-mid);line-height:1.65;}
+
+    /* CTA */
+    #cta{background:var(--ink-deep);padding:9rem 0;text-align:center;}
+    .cta-btns{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;}
+
+    /* FOOTER */
+    footer{background:#070504;padding:4.5rem 0 2rem;}
+    .ft-inner{max-width:1100px;margin:0 auto;padding:0 3.5rem 3.5rem;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:4rem;border-bottom:1px solid rgba(246,241,233,.07);}
+    .ft-logo{font-family:var(--serif);font-size:1.1rem;letter-spacing:.22em;color:var(--cream);text-transform:uppercase;font-weight:400;margin-bottom:.3rem;}
+    .ft-tag{font-family:var(--body);font-size:.55rem;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;opacity:.75;margin-bottom:1.8rem;}
+    .ft-social{display:flex;gap:.8rem;margin-bottom:1.2rem;}
+    .si{width:36px;height:36px;border:1px solid rgba(246,241,233,.12);border-radius:2px;display:flex;align-items:center;justify-content:center;transition:border-color .25s;}
+    .si:hover{border-color:var(--gold);}
+    .si svg{width:15px;height:15px;fill:rgba(246,241,233,.55);}
+    .ft-email{font-size:.8rem;color:rgba(246,241,233,.45);}
+    .ft-col h4{font-family:var(--body);font-size:.56rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:1.2rem;}
+    .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem;}
+    .ft-col ul a{font-size:.8rem;color:rgba(246,241,233,.42);transition:color .2s;}
+    .ft-col ul a:hover{color:var(--cream);}
+    .ft-bot{max-width:1100px;margin:0 auto;padding:1.8rem 3.5rem 0;display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:1rem;}
+    .ft-legal{font-size:.68rem;color:rgba(246,241,233,.3);line-height:1.65;max-width:540px;}
+    .ft-abn{font-size:.68rem;color:rgba(246,241,233,.3);text-align:right;}
+
+    /* MOBILE NAV */
+    .mob-nav{display:none;position:fixed;inset:0;background:var(--ink-deep);z-index:850;flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+    .mob-nav.open{display:flex;}
+    .mob-nav a{font-family:var(--serif);font-size:2.2rem;color:var(--cream);font-weight:300;letter-spacing:.08em;}
+    .mob-close{position:absolute;top:1.6rem;right:2rem;font-size:1.4rem;color:var(--cream);opacity:.55;}
+
+    /* RESPONSIVE */
+    @media(max-width:1100px){.hero-inner{padding:0 3.5rem;}}
+    @media(max-width:960px){
+      .nav-list{display:none;}.hamburger{display:flex;}
+      #nav{padding:1.2rem 1.8rem;}
+      .hero-inner{padding:0 1.8rem;gap:2rem;}
+      .hero-body{padding:7rem 0 5rem;}
+      .rp-grid,.who-grid,.exp-inner,.how-inner,.services-grid,.res-inner,.about-collage,.comm-inner,.ft-inner{grid-template-columns:1fr;}
+      .exp-inner,.res-inner,.comm-inner,.how-inner{gap:3.5rem;}
+      .about-text-col{padding:2.5rem 0 0;}
+      .about-img-frame::before{display:none;}
+      .container{padding:0 1.8rem;}
+    }
+    .container{max-width:1100px;margin:0 auto;padding:0 3.5rem;}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}.rv,.rvl,.rvr{opacity:1;transform:none;}}
+    body.no-motion *,body.no-motion *::before,body.no-motion *::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}
+    body.no-motion .rv,body.no-motion .rvl,body.no-motion .rvr{opacity:1;transform:none;}
+  </style>
+</head>
+<body>
+
+<canvas id="grain"></canvas>
+<div id="sp"></div>
+
+<button id="mtoggle" onclick="toggleMotion()">Pause motion</button>
+
+<nav id="nav">
+  <a href="#hero" class="nav-logo magnetic">NUANCED CO.<em>Neurodivergent Consultancy</em></a>
+  <ul class="nav-list">
+    <li class="nav-dd"><a href="#services" class="magnetic">Services &#9662;</a>
+      <div class="nav-dd-menu">
+        <a href="consult.html">1:1 Consultancy</a><a href="workplace.html">Workplace</a>
+        <a href="courses.html">Training &amp; Courses</a><a href="#community">Community</a>
+      </div>
+    </li>
+    <li><a href="#who" class="magnetic">Who I Work With</a></li>
+    <li><a href="#how" class="magnetic">How I Work</a></li>
+    <li class="nav-dd"><a href="#" class="magnetic">Courses &#9662;</a>
+      <div class="nav-dd-menu">
+        <a href="courses.html">View All Courses</a>
+        <a href="Course Workbook.html">Unmasking &amp; Identity Course</a>
+      </div>
+    </li>
+    <li><a href="#resources" class="magnetic">Free Resources</a></li>
+    <li><a href="#about" class="magnetic">About</a></li>
+    <li><a href="media.html" class="magnetic">Media</a></li>
+    <li><a href="book.html" class="ncta magnetic btn">Book a call</a></li>
+  </ul>
+  <div class="hamburger" onclick="openMob()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <span class="mob-close" onclick="closeMob()">&#x2715;</span>
+  <a href="#who" onclick="closeMob()">Who I Work With</a>
+  <a href="#how" onclick="closeMob()">How I Work</a>
+  <button class="mob-link submenu-toggle" type="button" onclick="toggleMobSubmenu()">Courses &#9662;</button>
+  <div class="mob-submenu" id="mobCoursesSub">
+    <a href="courses.html" onclick="closeMob()">View All Courses</a>
+    <a href="Course Workbook.html" onclick="closeMob()">Unmasking &amp; Identity Course</a>
+  </div>
+  <a href="#services" onclick="closeMob()">Services</a>
+  <a href="#resources" onclick="closeMob()">Resources</a>
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="media.html" onclick="closeMob()">Media</a>
+  <a href="book.html" onclick="closeMob()">Book a call</a>
+</div>
+
+<section id="hero">
+  <div class="ink-marks" aria-hidden="true">
+    <svg class="im-1" viewBox="0 0 340 220" fill="none"><path d="M12,180 C40,100 120,30 200,18 C260,8 310,30 328,80 C342,118 320,165 280,185 C240,205 185,200 140,175 C95,148 65,100 80,60" stroke="#C4963E" stroke-width="2.5" stroke-linecap="round"/><path d="M30,175 C58,98 135,35 208,22 C268,12 315,38 330,86" stroke="#6B4570" stroke-width="1.2" stroke-linecap="round" opacity=".6"/></svg>
+    <svg class="im-2" viewBox="0 0 260 60" fill="none"><path d="M8,32 C35,16 75,42 115,28 C148,16 180,38 215,26 C238,18 252,30 256,38" stroke="#7A8C6E" stroke-width="3" stroke-linecap="round"/><path d="M12,36 C40,22 78,46 118,32 C150,20 182,42 218,30" stroke="#9668A4" stroke-width="1.2" stroke-linecap="round" opacity=".55"/></svg>
+    <svg class="im-3" viewBox="0 0 180 100" fill="none"><ellipse cx="90" cy="50" rx="74" ry="38" stroke="#C07A8A" stroke-width="1.8"/><ellipse cx="90" cy="50" rx="60" ry="26" stroke="#C4963E" stroke-width="0.8" opacity=".5"/></svg>
+  </div>
+  <div class="hero-inner">
+    <div class="hero-body">
+      <div class="hero-eyebrow"><div class="hero-eyebrow-line"></div><span class="hero-eyebrow-text">Nuanced Co. &bull; Geelong, Australia</span></div>
+      <div class="hero-hl">
+        <span class="hl-row hl-sm rv" style="margin-bottom:.5rem">You've always known</span>
+        <span class="hl-row hl-lg hl-offset rv d1" style="margin-bottom:.3rem">your <em>brain</em></span>
+        <span class="hl-row hl-sm rv d2" style="margin-left:1.2rem;opacity:.4;margin-bottom:.4rem">works</span>
+        <span class="hl-row hl-lg rv d3" style="margin-left:2.5rem"><em>differently.</em></span>
+        <span class="hl-brushmark rv d4">
+          <svg viewBox="0 0 360 20" width="360" height="20" fill="none"><path d="M4,10 C50,4 120,16 190,8 C255,1 310,14 356,10" stroke="#C4963E" stroke-width="2.5" stroke-linecap="round"/><path d="M30,13 C80,7 150,18 215,11 C270,4 320,15 355,12" stroke="#C4963E" stroke-width="1" stroke-linecap="round" opacity=".45"/></svg>
+        </span>
+      </div>
+      <p class="hero-sub rv d4">Nuanced Co. is a neurodivergent consultancy for people who are tired of being handed a generic checklist and told to try harder.</p>
+      <div class="hero-btns rv" style="transition-delay:.5s">
+        <a href="quiz.html" class="btn btn-gold magnetic">Take the free quiz</a>
+        <a href="book.html" class="btn btn-ghost-light magnetic">Book a consultation</a>
+      </div>
+      <p class="hero-micro rv" style="transition-delay:.6s">3 minutes. Tells you exactly where to start.</p>
+    </div>
+  </div>
+  <!-- LOGO MARK — overlapping blobs -->
+  <svg class="hero-mark" viewBox="0 0 580 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+    <!-- purple blob top-left -->
+    <ellipse cx="195" cy="175" rx="168" ry="148" transform="rotate(-12 195 175)" fill="#6B4570" fill-opacity="0.32"/>
+    <!-- sage blob top-centre -->
+    <ellipse cx="330" cy="138" rx="155" ry="135" transform="rotate(8 330 138)" fill="#7A8C6E" fill-opacity="0.28"/>
+    <!-- lilac blob top-right -->
+    <ellipse cx="445" cy="178" rx="148" ry="160" transform="rotate(-5 445 178)" fill="#9668A4" fill-opacity="0.25"/>
+    <!-- rose blob bottom-centre -->
+    <ellipse cx="270" cy="300" rx="175" ry="140" transform="rotate(6 270 300)" fill="#C07A8A" fill-opacity="0.26"/>
+    <!-- gold blob bottom-right -->
+    <ellipse cx="400" cy="320" rx="145" ry="120" transform="rotate(-10 400 320)" fill="#C4963E" fill-opacity="0.22"/>
+  </svg>
+
+  <div class="hero-fade"></div>
+</section>
+
+<section id="course-intro" class="course-intro">
+  <div class="container">
+    <span class="section-label">Course preview</span>
+    <div class="rule"></div>
+    <h2 class="sh">Welcome &amp; How-To Video</h2>
+    <p class="sb">Start here with a short orientation to the course flow, what to expect, and how to use the multimedia elements embedded throughout the learning journey.</p>
+    <div class="course-video-block rv d1">
+      <div class="video-frame">
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID" title="Welcome &amp; How-To Video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p class="course-video-label">Welcome &amp; How-To Video</p>
+    </div>
+  </div>
+</section>
+
+<section id="course-modules" class="course-modules">
+  <div class="container">
+    <div class="course-module rv d2">
+      <div class="course-module-copy">
+        <span class="section-label">Module 1</span>
+        <h2 class="sh">Foundations of the learning experience</h2>
+        <p class="sb">A short video orientation for learners to understand how the course is structured and how to get the most from each module.</p>
+      </div>
+      <div class="course-module-media">
+        <div class="course-video-placeholder"><span>Module 1 Intro Video</span></div>
+      </div>
+    </div>
+    <div class="course-module rv d3">
+      <div class="course-module-copy">
+        <span class="section-label">Module 4</span>
+        <h2 class="sh">Grief and identity</h2>
+        <p class="sb">A dedicated learning slot for grief work, helping learners connect emotional experience to their sense of self.</p>
+      </div>
+      <div class="course-module-media">
+        <div class="course-video-placeholder"><span>Module 4 Video</span></div>
+      </div>
+    </div>
+    <div class="course-module rv d4">
+      <div class="course-module-copy">
+        <span class="section-label">Module 5</span>
+        <h2 class="sh">Identity disruption</h2>
+        <p class="sb">A practical video prompt that helps learners see the nervous system story behind identity disruption and continuity.</p>
+      </div>
+      <div class="course-module-media">
+        <div class="course-video-placeholder"><span>Module 5 Video</span></div>
+      </div>
+    </div>
+    <div class="course-diagram-grid">
+      <div class="course-figure rv d1">
+        <div class="graphic-placeholder"><span>Figure 1: The Masking Cycle Diagram</span></div>
+        <p class="sb">A clean visual anchor for the masking cycle, showing how energy spent hiding can amplify burnout and identity confusion.</p>
+      </div>
+      <div class="course-figure rv d2">
+        <div class="graphic-placeholder"><span>Figure 2: The Burnout Battery</span></div>
+        <p class="sb">A premium placeholder for the burnout battery concept, illustrating how internal energy is depleted and needs intentional replenishment.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="rp">
+  <div class="container">
+    <p class="rp-label rv">You might be in the right place if&hellip;</p>
+    <div class="rp-grid">
+      <div class="rp-card rv d1">
+        <span class="rp-card-num" aria-hidden="true">01</span>
+        <div class="rp-icon"><svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" stroke="#6B4570" stroke-width="1.4"/><path d="M10 14c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4" stroke="#6B4570" stroke-width="1.4" stroke-linecap="round"/><circle cx="14" cy="14" r="1.5" fill="#6B4570"/></svg></div>
+        <p>You have ADHD, are Autistic, or suspect you might be both. The standard advice has never quite fit.</p>
+      </div>
+      <div class="rp-card rv d2">
+        <span class="rp-card-num" aria-hidden="true">02</span>
+        <div class="rp-icon"><svg viewBox="0 0 28 28" fill="none"><path d="M16 4l-6 10h6l-2 10" stroke="#7A8C6E" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+        <p>You're smart, capable, and exhausted from working twice as hard to look half as organised as everyone else.</p>
+      </div>
+      <div class="rp-card rv d3">
+        <span class="rp-card-num" aria-hidden="true">03</span>
+        <div class="rp-icon"><svg viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="11" stroke="#C4963E" stroke-width="1.4"/><path d="M14 9v2M14 17v2M9 14h2M17 14h2" stroke="#C4963E" stroke-width="1.4" stroke-linecap="round"/><circle cx="14" cy="14" r="2.5" stroke="#C4963E" stroke-width="1.2"/></svg></div>
+        <p>You're ready to stop masking and start building a life that actually works for your brain.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rough-div" style="background:var(--cream)"><svg viewBox="0 0 1440 52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,28 C90,44 170,12 260,30 C350,48 420,14 510,32 C600,50 670,16 760,34 C850,52 920,18 1010,36 C1100,54 1175,20 1270,38 C1355,52 1410,26 1440,30 L1440,0 L0,0 Z" fill="var(--parchment)"/></svg></div>
+
+<section id="who">
+  <div class="container">
+    <div class="who-intro rv">
+      <span class="section-label" style="text-align:center;display:block">Who I work with</span>
+      <div class="rule" style="margin:.8rem auto 1.4rem"></div>
+      <h2 class="sh" style="text-align:center">Your brain has a name.<br>Probably more than one.</h2>
+      <p class="sb" style="margin:1rem auto 0;text-align:center">Neurodivergence is not one thing. Below is a plain-language guide to the profiles Leah specialises in. If you see yourself in more than one, that is not unusual.</p>
+    </div>
+    <div class="who-grid">
+      <div class="who-card rv d1"><span class="who-accent"></span><h3 class="who-card-title">ADHD</h3><span class="who-card-sub">Attention Deficit Hyperactivity Disorder</span><p class="who-card-def">A neurodevelopmental condition affecting how the brain regulates attention, impulse control, and executive function. ADHD is not a lack of focus. It is a difference in how the brain directs attention, energy, and motivation. It often looks completely different in adults, and especially in women and girls.</p><div class="who-traits"><span class="wtag">Hyperfocus</span><span class="wtag">Executive dysfunction</span><span class="wtag">Rejection sensitivity</span><span class="wtag">Time blindness</span><span class="wtag">Emotional intensity</span></div></div>
+      <div class="who-card rv d2"><span class="who-accent"></span><h3 class="who-card-title">AuDHD</h3><span class="who-card-sub">Autistic + ADHD</span><p class="who-card-def">The experience of being both Autistic and ADHD at once. Not two separate conditions sitting side by side. Its own distinct way of existing in the world, with its own strengths, real challenges, and support needs that are still widely misunderstood by most services.</p><div class="who-traits"><span class="wtag">Demand avoidance</span><span class="wtag">Intense interests</span><span class="wtag">Variable masking</span><span class="wtag">Sensory differences</span><span class="wtag">Pattern thinking</span></div></div>
+      <div class="who-card rv d3"><span class="who-accent"></span><h3 class="who-card-title">Autism</h3><span class="who-card-sub">Autistic Spectrum</span><p class="who-card-def">A neurodevelopmental difference that shapes how a person processes sensory information, communicates, and relates to the world. Autism is not a disorder to be fixed. It is a different operating system. Many Autistic people, particularly women and late-diagnosed adults, have spent years masking without understanding why.</p><div class="who-traits"><span class="wtag">Sensory processing</span><span class="wtag">Monotropism</span><span class="wtag">Social communication differences</span><span class="wtag">Need for predictability</span><span class="wtag">Autistic burnout</span></div></div>
+      <div class="who-card rv d4"><span class="who-accent"></span><h3 class="who-card-title">Other ND Profiles</h3><span class="who-card-sub">Neurodivergent &amp; Twice Exceptional</span><p class="who-card-def">Neurodivergence includes a wide range of brain differences. Leah works with people who are dyslexic, dyspraxic, twice exceptional (gifted and neurodivergent), or who simply know they think differently and have never found support that meets them where they are.</p><div class="who-traits"><span class="wtag">Dyslexia</span><span class="wtag">Dyspraxia</span><span class="wtag">Dyscalculia</span><span class="wtag">Twice exceptional</span><span class="wtag">Giftedness</span></div></div>
+    </div>
+  </div>
+</section>
+
+<div class="rough-div" style="background:var(--parchment)"><svg viewBox="0 0 1440 52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,26 C80,12 155,44 240,28 C325,12 395,42 480,30 C565,16 620,46 710,32 C800,16 870,44 960,30 C1050,14 1120,44 1210,28 C1300,12 1375,40 1440,26 L1440,52 L0,52 Z" fill="var(--ink-deep)"/></svg></div>
+
+<section id="exp">
+  <div class="container">
+    <div class="rv" style="text-align:center;padding:2rem 0 1rem;">
+      <span class="section-label" style="display:block;text-align:center;margin-bottom:3rem">The overlap is bigger than most people know</span>
+      <div style="display:inline-block;text-align:center;border-bottom:2px solid rgba(107,69,112,.4);padding-bottom:2.5rem;">
+        <div class="stat-big">up to 50%</div>
+        <div class="stat-label-ed" style="max-width:320px;margin:.8rem auto 0;text-align:center">of people with ADHD also have Autism. Most services still treat them as completely separate diagnoses.</div>
+      </div>
+      <div class="exp-tags" style="justify-content:center;margin-top:2.5rem;">
+        <span class="etag et-p">ADHD</span><span class="etag et-s">Autism</span><span class="etag et-g">AuDHD</span><span class="etag et-r">Twice Exceptional</span><span class="etag et-p">Neurodivergent</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rough-div" style="background:var(--ink-deep)"><svg viewBox="0 0 1440 52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,28 C90,44 170,12 260,30 C350,48 420,14 510,32 C600,50 670,16 760,34 C850,52 920,18 1010,36 C1100,54 1175,20 1270,38 C1355,52 1410,26 1440,30 L1440,0 L0,0 Z" fill="var(--cream)"/></svg></div>
+
+<section id="how">
+  <div class="container">
+    <div class="how-inner">
+      <div class="rvl">
+        <span class="section-label">How I work</span>
+        <div class="rule"></div>
+        <h2 class="sh">Support that fits<br>how you actually think.</h2>
+        <p class="sb" style="margin-top:.8rem">Every session is built around your brain, not a template. The approach draws on nursing practice, coaching methodology, and lived experience as an AuDHD person.</p>
+        <div class="how-note"><p>"This is not about fixing you. It is about understanding how your brain works and building a life that works with it."</p></div>
+      </div>
+      <div class="how-steps rvr">
+        <div class="how-step"><div class="how-step-num">01</div><div><div class="how-step-title">Understand the full picture</div><p class="how-step-desc">We start by mapping what is actually happening for you. No assumptions, no checklists. A real conversation about your experience, your patterns, and what you want to be different.</p></div></div>
+        <div class="how-step"><div class="how-step-num">02</div><div><div class="how-step-title">Build a strategy that holds</div><p class="how-step-desc">Using evidence-based frameworks and practical tools designed for neurodivergent brains, we work out what support actually looks like for you. Specific and actionable, not generic advice.</p></div></div>
+        <div class="how-step"><div class="how-step-num">03</div><div><div class="how-step-title">Adjust as you go</div><p class="how-step-desc">What works is not always what looks good on paper. We check in, adapt, and keep refining. The goal is sustainable change, not a one-off insight that fades by Friday.</p></div></div>
+        <div class="how-step"><div class="how-step-num">04</div><div><div class="how-step-title">Work with your nervous system</div><p class="how-step-desc">Burnout, demand avoidance, masking, shutdown. These are not character flaws. Understanding your nervous system changes everything. We build that understanding together.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rough-div" style="background:var(--cream)"><svg viewBox="0 0 1440 52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,28 C90,44 170,12 260,30 C350,48 420,14 510,32 C600,50 670,16 760,34 C850,52 920,18 1010,36 C1100,54 1175,20 1270,38 C1355,52 1410,26 1440,30 L1440,0 L0,0 Z" fill="var(--parchment)"/></svg></div>
+
+<section id="services">
+  <div class="container">
+    <div class="services-header rv"><span class="section-label">How we work together</span><div class="rule"></div><h2 class="sh">Support that actually<br>understands you.</h2></div>
+    <div class="services-grid rv d1">
+      <div class="sc"><span class="sc-num" aria-hidden="true">01</span><span class="sc-tag">For Individuals</span><h3 class="sc-title">1:1 Consultancy</h3><p class="sc-desc">Individual sessions that go deep on what is actually happening for you and what to do about it. No scripts, no checklists. Real support built around your brain.</p><a href="#cta" class="sc-link magnetic">Work with me &#8594;</a></div>
+      <div class="sc"><span class="sc-num" aria-hidden="true">02</span><span class="sc-tag">For Organisations</span><h3 class="sc-title">Workplace Consulting</h3><p class="sc-desc">For organisations that want to move beyond awareness and into genuine psychological safety for neurodivergent staff. Grounded in psychosocial risk frameworks.</p><a href="#cta" class="sc-link magnetic">Find out more &#8594;</a></div>
+      <div class="sc"><span class="sc-num" aria-hidden="true">03</span><span class="sc-tag">Self-Paced</span><h3 class="sc-title">Training &amp; Courses</h3><p class="sc-desc">Self-paced online programs built around how neurodivergent brains actually learn. No long lectures, no dense reading lists. Information in the format that sticks.</p><a href="#cta" class="sc-link magnetic">Browse courses &#8594;</a></div>
+      <div class="sc"><span class="sc-num" aria-hidden="true">04</span><span class="sc-tag">Connection</span><h3 class="sc-title">Community</h3><p class="sc-desc">Support circles and group programs for people who want connection, not just information. A space where your brain makes sense, and so do you.</p><a href="#community" class="sc-link magnetic">Join us &#8594;</a></div>
+    </div>
+  </div>
+</section>
+
+<div class="rough-div" style="background:var(--parchment)"><svg viewBox="0 0 1440 52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,26 C80,12 155,44 240,28 C325,12 395,42 480,30 C565,16 620,46 710,32 C800,16 870,44 960,30 C1050,14 1120,44 1210,28 C1300,12 1375,40 1440,26 L1440,52 L0,52 Z" fill="var(--ink-deep)"/></svg></div>
+
+<section id="resources">
+  <div class="container">
+    <div class="res-inner">
+      <div class="rvl">
+        <span class="section-label">Free Resources</span>
+        <div class="rule" style="background:rgba(196,150,62,.3)"></div>
+        <h2 class="sh" style="color:var(--cream)">Start here.<br>No cost,<br>no catch.</h2>
+        <p class="sb" style="margin-top:1rem;color:rgba(246,241,233,.85)">Not ready to book? That is completely fine. These resources are free because good information should be accessible. Full stop.</p>
+      </div>
+      <div class="rvr">
+        <div class="res-tiles">
+          <a href="ADHD-Burnout-Guide-NuancedCo.pdf" class="rtile" target="_blank"><span class="rtile-text">ADHD Burnout: what it is, why it happens, and how to recover</span><span class="rtile-cta">Download</span></a>
+          <a href="AuDHD-Executive-Dysfunction-Guide-NuancedCo.pdf" class="rtile" target="_blank"><span class="rtile-text">Understanding AuDHD Executive Dysfunction</span><span class="rtile-cta">Download</span></a>
+          <a href="ADHD-Diagnosis-Australia-Guide-NuancedCo.pdf" class="rtile" target="_blank"><span class="rtile-text">Getting an ADHD Diagnosis in Australia</span><span class="rtile-cta">Download</span></a>
+        </div>
+        <div class="res-quiz"><p>Not sure where to begin? The free quiz takes 3 minutes and tells you exactly what kind of support would help most.</p><a href="quiz.html" class="btn btn-ghost-light magnetic">Take the free quiz &#8594;</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rough-div" style="background:var(--ink-deep)"><svg viewBox="0 0 1440 52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,28 C90,44 170,12 260,30 C350,48 420,14 510,32 C600,50 670,16 760,34 C850,52 920,18 1010,36 C1100,54 1175,20 1270,38 C1355,52 1410,26 1440,30 L1440,0 L0,0 Z" fill="var(--cream)"/></svg></div>
+
+<section id="about">
+  <div class="container">
+    <div class="about-collage">
+      <div class="about-img-col rvl">
+        <div class="about-img-frame">
+          <img src="leah-about-hero.jpg" alt="Leah Veenhuizen, founder of Nuanced Co., smiling in orange glasses" loading="lazy">
+          <svg class="about-brush" viewBox="0 0 110 80" fill="none" aria-hidden="true"><path d="M8,60 C25,35 55,15 90,10 C105,7 110,20 105,35 C98,55 70,70 45,68 C22,66 5,72 8,60" stroke="#C4963E" stroke-width="2" fill="none" opacity=".7"/><path d="M18,62 C35,40 62,22 94,16" stroke="#6B4570" stroke-width="1" fill="none" opacity=".45"/></svg>
+        </div>
+        <div class="about-pq"><p>"I spent years watching people get half-answers and full blame for the way their brains work."</p></div>
+      </div>
+      <div class="about-text-col rvr">
+        <span class="section-label">About Leah</span>
+        <div class="rule"></div>
+        <h2 class="sh">Hi, I'm Leah.</h2>
+        <p class="sb" style="margin-top:.5rem">I'm a Registered Nurse, an AuDHD person, and the founder of Nuanced Co.</p>
+        <p class="sb" style="margin-top:1.2rem">I spent years working in healthcare watching people get half-answers and full blame for the way their brains work. I'm doing something different here.</p>
+        <p class="sb" style="margin-top:1.2rem">Nuanced Co. exists because neurodivergent people deserve support that actually understands them. Not support designed for someone else and quietly adapted.</p>
+        <p class="sb" style="margin-top:1.2rem">I'm based in Geelong and work with people across Australia and internationally.</p>
+        <div class="about-creds"><span class="ctag">Registered Nurse (AHPRA)</span><span class="ctag">Mental Health First Aid Facilitator</span><span class="ctag">Master of Counselling (in progress)</span><span class="ctag">AuDHD lived experience</span></div>
+        <a href="about.html" class="about-link magnetic">More about me and why I started this <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rough-div" style="background:var(--cream)"><svg viewBox="0 0 1440 52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,28 C90,44 170,12 260,30 C350,48 420,14 510,32 C600,50 670,16 760,34 C850,52 920,18 1010,36 C1100,54 1175,20 1270,38 C1355,52 1410,26 1440,30 L1440,0 L0,0 Z" fill="var(--parchment)"/></svg></div>
+
+<section id="community">
+  <div class="container">
+    <div class="comm-inner">
+      <div class="rvl">
+        <span class="section-label">Community</span><div class="rule"></div>
+        <h2 class="sh">A space that was<br>built for you.</h2>
+        <p class="sb" style="margin-top:1rem">Nuanced Co. is building a community where the first thing you feel is understood. Group programs, peer connection, and a space where your brain does not need an explanation.</p>
+        <button class="btn btn-gold magnetic" style="margin-top:2rem" onclick="document.querySelector('#cta').scrollIntoView({behavior:'smooth'})">Join the waitlist</button>
+      </div>
+      <div class="comm-grid rvr">
+        <div class="comm-card"><div class="cc-title">Group programs</div><p class="cc-body">Structured support in a small group setting. Learn strategies that actually work for neurodivergent brains, alongside people who get it.</p></div>
+        <div class="comm-card"><div class="cc-title">Peer connection</div><p class="cc-body">A moderated space to connect with other neurodivergent people navigating work, diagnosis, relationships, and the daily reality of a brain that doesn't match the manual.</p></div>
+        <div class="comm-card"><div class="cc-title">Resources library</div><p class="cc-body">A growing collection of guides, tools, and psychoeducation materials. Written for real humans, not clinical textbooks.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="rough-div" style="background:var(--parchment)"><svg viewBox="0 0 1440 52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,26 C80,12 155,44 240,28 C325,12 395,42 480,30 C565,16 620,46 710,32 C800,16 870,44 960,30 C1050,14 1120,44 1210,28 C1300,12 1375,40 1440,26 L1440,52 L0,52 Z" fill="var(--ink-deep)"/></svg></div>
+
+<section id="cta">
+  <div class="container">
+    <div class="rv" style="text-align:center">
+      <span class="section-label">Ready when you are</span>
+      <div class="rule" style="margin:.8rem auto 1.8rem;background:rgba(196,150,62,.3)"></div>
+      <h2 class="sh" style="color:var(--cream);text-align:center">Ready to stop guessing<br>and start understanding?</h2>
+      <p class="sb" style="margin:1rem auto 2.8rem;text-align:center;color:rgba(246,241,233,.72)">Whether you book a consultation, download a free guide, or just take the quiz. The next step is yours.</p>
+      <div class="cta-btns">
+        <a href="quiz.html" class="btn btn-gold magnetic">Take the free quiz</a>
+        <a href="book.html" class="btn btn-ghost-light magnetic">Book a consultation</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-inner">
+    <div>
+      <div class="ft-logo">NUANCED CO.</div>
+      <div class="ft-tag">Neurodivergent Consultancy &middot; Geelong, Australia</div>
+      <div class="ft-social">
+        <a href="https://www.instagram.com/leah_breaks_the_cycle" class="si" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
+        <a href="https://www.tiktok.com/@leah_breaks_the_cycle" class="si" aria-label="TikTok" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.74a4.85 4.85 0 0 1-1.01-.05z"/></svg></a>
+        <a href="https://www.facebook.com/LeahBreaksTheCycle" class="si" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+      </div>
+      <div class="ft-email">hello@nuancedco.com.au</div>
+    </div>
+    <div class="ft-col"><h4>Services</h4><ul><li><a href="consult.html">1:1 Consultancy</a></li><li><a href="workplace.html">Workplace Consulting</a></li><li><a href="courses.html">Courses</a></li><li><a href="#community">Community</a></li><li><a href="media.html">Media &amp; Speaking</a></li></ul></div>
+    <div class="ft-col"><h4>Free Resources</h4><ul><li><a href="ADHD-Burnout-Guide-NuancedCo.pdf" target="_blank">ADHD Burnout Guide</a></li><li><a href="AuDHD-Executive-Dysfunction-Guide-NuancedCo.pdf" target="_blank">Executive Dysfunction Guide</a></li><li><a href="ADHD-Diagnosis-Australia-Guide-NuancedCo.pdf" target="_blank">Diagnosis Guide: Australia</a></li><li><a href="quiz.html">Take the Quiz</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>
+  </div>
+  <div class="ft-bot">
+    <p class="ft-legal">Nuanced Co. is a consultancy service. Content on this site is for general information purposes only and does not constitute clinical advice, diagnosis, or treatment. If you need clinical support, please speak with a registered health professional or contact your GP. &copy; 2026 Nuanced Co. ABN 71 926 185 491. All rights reserved. Content on this website is protected by copyright. Reproduction without written permission is prohibited.</p>
+    <div class="ft-abn">ABN: 71 926 185 491 &middot; &copy; 2026 Nuanced Co. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  // GRAIN
+  const gc=document.getElementById('grain'),gx=gc.getContext('2d');let gW,gH;
+  function rg(){gW=gc.width=window.innerWidth;gH=gc.height=window.innerHeight;}rg();window.addEventListener('resize',rg);
+  function dg(){const i=gx.createImageData(gW,gH),d=i.data;for(let j=0;j<d.length;j+=4){const v=(Math.random()*255)|0;d[j]=d[j+1]=d[j+2]=v;d[j+3]=255;}gx.putImageData(i,0,0);requestAnimationFrame(dg);}dg();
+
+  // SCROLL PROGRESS
+  const sp=document.getElementById('sp');window.addEventListener('scroll',()=>{sp.style.width=Math.min(100,window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100)+'%';},{passive:true});
+
+  // NAV
+  const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>70);},{passive:true});
+  function openMob(){document.getElementById('mobNav').classList.add('open');document.body.style.overflow='hidden';}
+  function closeMob(){document.getElementById('mobNav').classList.remove('open');document.body.style.overflow='';}
+  function toggleMobSubmenu(){document.getElementById('mobCoursesSub').classList.toggle('open');}
+
+  // DARK DETECTION
+  const dkO=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)document.body.classList.add('on-dark');});},{threshold:.4});
+  const ltO=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)document.body.classList.remove('on-dark');});},{threshold:.4});
+  document.querySelectorAll('#hero,#exp,#resources,#cta,footer').forEach(s=>dkO.observe(s));
+  document.querySelectorAll('#rp,#who,#how,#services,#about,#community').forEach(s=>ltO.observe(s));
+
+  // MOTION
+  const mt=document.getElementById('mtoggle');let noM=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(noM){document.body.classList.add('no-motion');mt.textContent='Resume motion';}
+  function toggleMotion(){noM=!noM;document.body.classList.toggle('no-motion',noM);mt.textContent=noM?'Resume motion':'Pause motion';}
+
+  // REVEAL — fires early + on load
+  const re=document.querySelectorAll('.rv,.rvl,.rvr');
+  const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in');});},{threshold:.06,rootMargin:'0px 0px 80px 0px'});
+  re.forEach(el=>ro.observe(el));
+  window.addEventListener('load',()=>{re.forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight)el.classList.add('in');});});
+</script>
+</body>
+</html>

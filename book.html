@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book a Consultation | Nuanced Co.</title>
+  <meta name="description" content="Book a 1:1 consultation with Leah Veenhuizen, Registered Nurse and AuDHD consultant. No scripts, no checklists. A real conversation about your brain.">
+  <link rel="canonical" href="https://nuancedco.com.au/book">
+  <meta name="copyright" content="© 2026 Nuanced Co. ABN 71 926 185 491">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{--cream:#F6F1E9;--cream-d:#EDE6D8;--ink:#2A1F1A;--ink-mid:#4A3830;--ink-deep:#0F0C0A;--purple:#6B4570;--sage:#7A8C6E;--gold:#C4963E;--rose:#C07A8A;--lilac:#9668A4;--serif:'Cormorant Garamond',Georgia,serif;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(0.22,1,0.36,1);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{font-size:18px;scroll-behavior:smooth;}
+    body{background:var(--cream);color:var(--ink);font-family:var(--body);line-height:1.7;overflow-x:hidden;}
+    a{color:inherit;text-decoration:none;}
+    #grain{position:fixed;inset:0;pointer-events:none;z-index:9990;opacity:.025;mix-blend-mode:overlay;}
+
+    /* NAV */
+    #nav{position:fixed;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3.5rem;background:rgba(15,12,10,.18);transition:background .4s;}
+    #nav.scrolled{background:rgba(20,15,12,.82);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);}
+    .nav-logo{font-family:var(--serif);font-size:1rem;font-weight:400;letter-spacing:.25em;color:var(--cream);text-transform:uppercase;line-height:1;display:flex;flex-direction:column;gap:3px;}
+    .nav-logo em{font-style:normal;font-family:var(--body);font-size:.48rem;letter-spacing:.3em;color:var(--gold);opacity:.8;}
+    .nav-back{font-family:var(--body);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.6);display:flex;align-items:center;gap:.5rem;transition:color .2s;}
+    .nav-back:hover{color:var(--cream);}
+    .nav-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5;}
+
+    /* HERO */
+    .page-hero{background:var(--ink-deep);padding:11rem 0 7rem;position:relative;overflow:hidden;}
+    .page-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--cream));pointer-events:none;}
+    .ph-inner{max-width:1100px;margin:0 auto;padding:0 5rem;}
+    .ph-eyebrow{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;opacity:.8;}
+    .ph-title{font-family:var(--serif);font-size:clamp(2.8rem,6vw,5rem);font-weight:300;color:var(--cream);line-height:1.1;margin-bottom:1.5rem;}
+    .ph-title em{font-style:italic;color:var(--gold);}
+    .ph-sub{font-size:.95rem;color:rgba(246,241,233,.72);max-width:540px;line-height:1.75;}
+
+    /* BODY LAYOUT */
+    .page-body{max-width:1100px;margin:0 auto;padding:5rem 5rem 8rem;}
+    .two-col{display:grid;grid-template-columns:1fr 420px;gap:5rem;align-items:start;}
+
+    /* FORM STYLES */
+    .form-section{}
+    .section-label{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;opacity:.8;display:block;}
+    .section-title{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.4rem);font-weight:300;color:var(--ink);line-height:1.25;margin-bottom:.8rem;}
+    .section-body{font-size:.9rem;color:var(--ink-mid);line-height:1.85;margin-bottom:2rem;}
+    .rule{width:40px;height:1px;background:var(--gold);margin:0 0 2rem;}
+
+    .form-group{margin-bottom:1.6rem;}
+    .form-group label{display:block;font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ink);margin-bottom:.5rem;}
+    .form-group label .req{color:var(--purple);}
+    .form-group .hint{font-size:.72rem;color:var(--ink-mid);margin-top:.4rem;line-height:1.5;}
+
+    input[type="text"],input[type="email"],textarea,select{width:100%;background:var(--cream-d);border:1.5px solid transparent;padding:.85rem 1rem;font-family:var(--body);font-size:.9rem;color:var(--ink);line-height:1.5;transition:border-color .2s,background .2s;appearance:none;-webkit-appearance:none;}
+    input[type="text"]:focus,input[type="email"]:focus,textarea:focus,select:focus{outline:none;border-color:var(--purple);background:#fff;}
+    input::placeholder,textarea::placeholder{color:var(--ink-mid);opacity:.6;}
+    textarea{resize:vertical;min-height:120px;}
+    select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%234A3830' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;padding-right:2.5rem;cursor:pointer;}
+
+    .radio-group{display:flex;flex-direction:column;gap:.6rem;}
+    .radio-option{display:flex;align-items:center;gap:.8rem;padding:.8rem 1rem;background:var(--cream-d);cursor:pointer;border:1.5px solid transparent;transition:border-color .15s;}
+    .radio-option:hover{border-color:rgba(107,69,112,.25);}
+    .radio-option input[type="radio"]{width:17px;height:17px;accent-color:var(--purple);cursor:pointer;flex:none;padding:0;background:none;border:none;}
+    .radio-option span{font-size:.88rem;color:var(--ink);}
+
+    .form-divider{height:1px;background:var(--cream-d);margin:2rem 0;}
+
+    .btn-submit{background:var(--gold);color:var(--ink-deep);font-family:var(--body);font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:1rem 2.4rem;border:none;cursor:pointer;transition:transform .2s var(--ease),opacity .2s;display:inline-block;margin-top:.5rem;}
+    .btn-submit:hover{transform:translateY(-2px);}
+    .form-note{font-size:.72rem;color:var(--ink-mid);line-height:1.6;margin-top:1.2rem;}
+    .form-note a{text-decoration:underline;text-underline-offset:2px;}
+    .scope{font-size:.72rem;color:var(--ink-mid);line-height:1.65;padding:1.2rem 1.4rem;background:var(--cream-d);border-left:3px solid var(--sage);margin-top:2.5rem;}
+
+    /* SIDEBAR */
+    .sidebar{}
+    .sidebar-card{background:var(--cream-d);padding:2rem 1.8rem;margin-bottom:1.5rem;}
+    .sidebar-card h3{font-family:var(--serif);font-weight:400;font-size:1.25rem;color:var(--ink);margin-bottom:.8rem;line-height:1.2;}
+    .sidebar-card p{font-size:.85rem;color:var(--ink-mid);line-height:1.75;margin-bottom:.8rem;}
+    .sidebar-card p:last-child{margin-bottom:0;}
+    .sidebar-quote{border-left:3px solid var(--purple);padding:1.2rem 1.4rem;margin-bottom:1.5rem;background:rgba(107,69,112,.05);}
+    .sidebar-quote p{font-family:var(--serif);font-style:italic;font-size:1.05rem;color:var(--ink);line-height:1.6;}
+    .cred-list{list-style:none;display:flex;flex-direction:column;gap:.6rem;margin-top:.8rem;}
+    .cred-list li{font-size:.8rem;color:var(--ink-mid);padding-left:1rem;position:relative;line-height:1.5;}
+    .cred-list li::before{content:'';position:absolute;left:0;top:.55rem;width:5px;height:5px;border-radius:50%;background:var(--purple);}
+    .sidebar-links{display:flex;flex-direction:column;gap:.5rem;margin-top:.8rem;}
+    .sidebar-links a{font-size:.82rem;color:var(--purple);text-decoration:underline;text-underline-offset:3px;}
+
+    /* FOOTER */
+    footer{background:var(--ink-deep);padding:1.5rem 3.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    footer p{font-size:.6rem;color:rgba(246,241,233,.3);letter-spacing:.06em;}
+
+    @media(max-width:900px){
+      .two-col{grid-template-columns:1fr;}
+      .sidebar{order:-1;}
+      .page-body{padding:4rem 2rem 6rem;}
+      .ph-inner{padding:0 2rem;}
+      #nav{padding:1rem 1.5rem;}
+    }
+  </style>
+</head>
+<body>
+<canvas id="grain" aria-hidden="true"></canvas>
+
+<nav id="nav">
+  <a href="index.html" class="nav-logo">NUANCED CO.<em>Neurodivergent Consultancy</em></a>
+  <a href="index.html" class="nav-back"><svg viewBox="0 0 16 16"><path d="M10 12L6 8l4-4"/></svg>Back to home</a>
+</nav>
+
+<div class="page-hero">
+  <div class="ph-inner">
+    <div class="ph-eyebrow">1:1 Consultancy</div>
+    <h1 class="ph-title">Book a <em>consultation</em></h1>
+    <p class="ph-sub">Fill in the form below and Leah will be in touch within two business days. No scripts, no checklists. A real conversation about your brain.</p>
+  </div>
+</div>
+
+<div class="page-body">
+  <div class="two-col">
+
+    <!-- FORM -->
+    <div class="form-section">
+      <span class="section-label">Your enquiry</span>
+      <h2 class="section-title">Tell Leah a little about you</h2>
+      <p class="section-body">This helps Leah prepare so you can get straight into what matters.</p>
+      <div class="rule"></div>
+
+      <!--
+        NETLIFY FORM — submissions are sent automatically to your Netlify account email.
+        To change the notification email: Netlify dashboard → Site → Forms → Notifications.
+        The thank-you page is /thank-you — create a thank-you.html file or change the action attribute.
+      -->
+      <form name="consultation-enquiry" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" action="/thank-you">
+        <input type="hidden" name="form-name" value="consultation-enquiry">
+        <p style="display:none;"><label>Do not fill this in: <input name="bot-field"></label></p>
+
+        <div class="form-group">
+          <label for="name">Full name <span class="req">*</span></label>
+          <input type="text" id="name" name="name" placeholder="Your full name" required autocomplete="name">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email address <span class="req">*</span></label>
+          <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+        </div>
+
+        <div class="form-divider"></div>
+
+        <div class="form-group">
+          <label>How would you prefer to connect? <span class="req">*</span></label>
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="contact_method" value="Video call (Zoom or Google Meet)" required><span>Video call (Zoom or Google Meet)</span></label>
+            <label class="radio-option"><input type="radio" name="contact_method" value="Phone call"><span>Phone call</span></label>
+            <label class="radio-option"><input type="radio" name="contact_method" value="Email first, then we decide"><span>Email first, then we decide</span></label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="availability">When are you generally available? <span class="req">*</span></label>
+          <select id="availability" name="availability" required>
+            <option value="" disabled selected>Select your preference</option>
+            <option>Weekday mornings (before 12pm AEST)</option>
+            <option>Weekday afternoons (12pm to 5pm AEST)</option>
+            <option>Weekday evenings (after 5pm AEST)</option>
+            <option>Weekends</option>
+            <option>Flexible, any time works</option>
+          </select>
+          <p class="hint">Leah is based in Geelong, Victoria (AEST). International bookings welcome.</p>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <div class="form-group">
+          <label for="struggle">What are you finding most difficult right now? <span class="req">*</span></label>
+          <textarea id="struggle" name="what_is_difficult" placeholder="Tell Leah what has been happening for you. There are no wrong answers here." required></textarea>
+          <p class="hint">Write as much or as little as feels right. You do not need to have it figured out.</p>
+        </div>
+
+        <div class="form-group">
+          <label>Do you currently have a formal ADHD or autism diagnosis?</label>
+          <div class="radio-group">
+            <label class="radio-option"><input type="radio" name="diagnosis_status" value="Yes, I have a formal diagnosis"><span>Yes, I have a formal diagnosis</span></label>
+            <label class="radio-option"><input type="radio" name="diagnosis_status" value="Assessment or diagnosis in process"><span>Assessment or diagnosis in process</span></label>
+            <label class="radio-option"><input type="radio" name="diagnosis_status" value="No formal diagnosis, but I relate to the experiences"><span>No formal diagnosis, but I relate to the experiences</span></label>
+            <label class="radio-option"><input type="radio" name="diagnosis_status" value="Prefer not to say"><span>Prefer not to say</span></label>
+          </div>
+          <p class="hint">A diagnosis is not required to work with Leah.</p>
+        </div>
+
+        <div class="form-group">
+          <label for="referral">How did you hear about Nuanced Co.?</label>
+          <select id="referral" name="referral_source">
+            <option value="" disabled selected>Select an option</option>
+            <option>TikTok (@leah_breaks_the_cycle)</option>
+            <option>Instagram (@leah_breaks_the_cycle)</option>
+            <option>Google search</option>
+            <option>Referred by a friend or family member</option>
+            <option>Referred by a health professional</option>
+            <option>Downloaded a free guide</option>
+            <option>Took the free quiz</option>
+            <option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-divider"></div>
+
+        <p class="form-note">By submitting this form you agree to Leah contacting you to schedule your consultation. Your information is held confidentially and used only to facilitate this booking. <a href="privacy.html">Privacy Policy</a>.</p>
+
+        <button type="submit" class="btn-submit">Send my enquiry</button>
+      </form>
+
+      <div class="scope">
+        Nuanced Co. is a consultancy service. Consultations are not a substitute for clinical assessment, diagnosis, medical advice, or psychological treatment. If you are in crisis or need immediate support, please contact Lifeline on 13 11 14 or speak with your GP.
+      </div>
+    </div>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-card">
+        <h3>What to expect</h3>
+        <p>Your first consultation is a real conversation. Leah listens to what is actually happening for you, not what a checklist says should be happening.</p>
+        <p>You do not need to arrive with answers, a diagnosis, or a plan. You need to arrive as yourself.</p>
+      </div>
+
+      <div class="sidebar-quote">
+        <p>"You do not need to become someone else. You need to understand the person you already are."</p>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>About Leah</h3>
+        <p>Leah Veenhuizen is a Registered Nurse and AuDHD consultant based in Geelong, working with people across Australia and internationally.</p>
+        <ul class="cred-list">
+          <li>Registered Nurse (AHPRA)</li>
+          <li>Mental Health First Aid Facilitator</li>
+          <li>Master of Counselling (in progress)</li>
+          <li>AuDHD lived experience</li>
+        </ul>
+      </div>
+
+      <div class="sidebar-card">
+        <h3>Not ready to book?</h3>
+        <p>Start with the free guides or take the three-minute quiz. There is no pressure here.</p>
+        <div class="sidebar-links">
+          <a href="index.html#resources">Browse free guides →</a>
+          <a href="quiz.html">Take the free quiz →</a>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</div>
+
+<footer>
+  <p>Nuanced Co. Neurodivergent Consultancy &middot; Geelong, Australia &middot; hello@nuancedco.com.au</p>
+  <p>&copy; 2026 Nuanced Co. ABN 71 926 185 491</p>
+</footer>
+
+<script>
+const gc=document.getElementById('grain'),gx=gc.getContext('2d');let gW,gH;function rg(){gW=gc.width=window.innerWidth;gH=gc.height=window.innerHeight;}rg();window.addEventListener('resize',rg);function drawGrain(){const d=gx.createImageData(gW,gH);for(let i=0;i<d.data.length;i+=4){const v=Math.random()*255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=18;}gx.putImageData(d,0,0);}setInterval(drawGrain,80);drawGrain();
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);});
+</script>
+</body>
+</html>

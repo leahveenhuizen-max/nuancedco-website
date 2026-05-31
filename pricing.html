@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pricing | Nuanced Co.</title>
+  <meta name="description" content="Nuanced Co. pricing for 1:1 consultancy sessions, digital guides, and workplace consulting. Transparent pricing for neurodivergent support in Australia.">
+  <link rel="canonical" href="https://nuancedco.com.au/pricing">
+  <meta name="copyright" content="© 2026 Nuanced Co. ABN 71 926 185 491">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{--cream:#F6F1E9;--cream-d:#EDE6D8;--cream-dd:#DDD4C2;--ink:#2A1F1A;--ink-mid:#4A3830;--ink-deep:#0F0C0A;--purple:#6B4570;--sage:#7A8C6E;--gold:#C4963E;--rose:#C07A8A;--lilac:#9668A4;--serif:'Cormorant Garamond',Georgia,serif;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(0.22,1,0.36,1);}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{font-size:18px;scroll-behavior:smooth;}
+    body{background:var(--cream);color:var(--ink);font-family:var(--body);line-height:1.7;overflow-x:hidden;}
+    a{color:inherit;text-decoration:none;}
+    #grain{position:fixed;inset:0;pointer-events:none;z-index:9990;opacity:.025;mix-blend-mode:overlay;}
+    #nav{position:fixed;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3.5rem;background:rgba(15,12,10,.18);transition:background .4s;}
+    #nav.scrolled{background:rgba(20,15,12,.82);backdrop-filter:blur(18px);-webkit-backdrop-filter:blur(18px);}
+    .nav-logo{font-family:var(--serif);font-size:1rem;font-weight:400;letter-spacing:.25em;color:var(--cream);text-transform:uppercase;line-height:1;display:flex;flex-direction:column;gap:3px;}
+    .nav-logo em{font-style:normal;font-family:var(--body);font-size:.48rem;letter-spacing:.3em;color:var(--gold);opacity:.8;}
+    .nav-back{font-family:var(--body);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.6);display:flex;align-items:center;gap:.5rem;transition:color .2s;}
+    .nav-back:hover{color:var(--cream);}
+    .nav-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5;}
+    /* HERO */
+    .page-hero{background:var(--ink-deep);padding:11rem 0 7rem;position:relative;overflow:hidden;}
+    .page-hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:120px;background:linear-gradient(to bottom,transparent,var(--cream));pointer-events:none;}
+    .ph-inner{max-width:1100px;margin:0 auto;padding:0 5rem;}
+    .ph-eyebrow{font-size:.58rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;opacity:.8;}
+    .ph-title{font-family:var(--serif);font-size:clamp(2.8rem,6vw,5rem);font-weight:300;color:var(--cream);line-height:1.1;margin-bottom:1.5rem;}
+    .ph-title em{font-style:italic;color:var(--gold);}
+    .ph-sub{font-size:.95rem;color:rgba(246,241,233,.72);max-width:540px;line-height:1.75;}
+    /* BODY */
+    .page-body{max-width:1100px;margin:0 auto;padding:5rem 5rem 8rem;}
+    .section-label{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.6rem;opacity:.8;display:block;}
+    .section-title{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:300;color:var(--ink);line-height:1.25;margin-bottom:1rem;}
+    .section-body{font-size:.9rem;color:var(--ink-mid);line-height:1.85;margin-bottom:1.2rem;}
+    .rule{width:40px;height:1px;background:var(--gold);margin:0 0 2.5rem;}
+    /* PRICING CARDS */
+    .pricing-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.4rem;margin-bottom:5rem;}
+    .pc{border:1px solid rgba(42,31,26,.12);border-radius:4px;padding:2.2rem;display:flex;flex-direction:column;background:var(--cream);transition:box-shadow .2s var(--ease),transform .2s var(--ease);}
+    .pc:hover{box-shadow:0 8px 32px rgba(42,31,26,.1);transform:translateY(-2px);}
+    .pc.featured{border-color:var(--gold);background:var(--ink-deep);}
+    .pc-category{font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:var(--purple);margin-bottom:.5rem;opacity:.8;}
+    .pc.featured .pc-category{color:var(--gold);}
+    .pc-title{font-family:var(--serif);font-size:1.3rem;font-weight:400;color:var(--ink);margin-bottom:.5rem;}
+    .pc.featured .pc-title{color:var(--cream);}
+    .pc-price{font-family:var(--serif);font-size:2.4rem;font-weight:300;color:var(--gold);line-height:1;margin:.6rem 0;}
+    .pc-period{font-size:.72rem;color:var(--ink-mid);margin-bottom:1rem;}
+    .pc.featured .pc-period{color:rgba(246,241,233,.5);}
+    .pc-desc{font-size:.82rem;color:var(--ink-mid);line-height:1.65;margin-bottom:1.4rem;flex:1;}
+    .pc.featured .pc-desc{color:rgba(246,241,233,.65);}
+    .pc-detail{font-size:.72rem;color:rgba(42,31,26,.4);margin-bottom:1.4rem;}
+    .pc.featured .pc-detail{color:rgba(246,241,233,.3);}
+    .btn{font-family:var(--body);font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.85rem 1.8rem;border:none;border-radius:2px;cursor:pointer;transition:transform .15s var(--ease),background .2s,color .2s;display:inline-block;text-align:center;width:100%;}
+    .btn:hover{transform:translateY(-1px);}
+    .btn-gold{background:var(--gold);color:var(--ink-deep);}
+    .btn-outline{background:transparent;border:1px solid rgba(42,31,26,.2);color:var(--ink);}
+    .btn-outline:hover{border-color:var(--gold);background:rgba(196,150,62,.06);}
+    .btn-cream{background:var(--cream);color:var(--ink-deep);}
+    /* DIVIDER */
+    .section-divider{border:none;border-top:1px solid rgba(42,31,26,.08);margin:1rem 0 4rem;}
+    /* ACCESS NOTE */
+    .access-note{background:rgba(107,69,112,.06);border:1px solid rgba(107,69,112,.15);border-radius:3px;padding:1.8rem;margin-bottom:5rem;}
+    .an-title{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.5rem;}
+    .an-body{font-size:.84rem;color:var(--ink-mid);line-height:1.7;}
+    /* WORKPLACE */
+    .workplace-block{border:1px solid rgba(42,31,26,.12);border-radius:4px;padding:3rem;margin-bottom:5rem;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+    .wb-label{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:.5rem;}
+    .wb-title{font-family:var(--serif);font-size:clamp(1.5rem,2.5vw,2rem);font-weight:300;color:var(--ink);margin-bottom:1rem;}
+    .wb-body{font-size:.88rem;color:var(--ink-mid);line-height:1.8;margin-bottom:1.4rem;}
+    /* CTA */
+    .cta-block{background:var(--ink-deep);border-radius:4px;padding:4rem;text-align:center;}
+    .cta-block h2{font-family:var(--serif);font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:300;color:var(--cream);margin-bottom:1rem;line-height:1.25;}
+    .cta-block p{font-size:.88rem;color:rgba(246,241,233,.65);max-width:480px;margin:0 auto 2rem;line-height:1.7;}
+    .btn-gold-lg{background:var(--gold);color:var(--ink-deep);font-family:var(--body);font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.9rem 2.4rem;border:none;border-radius:2px;cursor:pointer;transition:transform .2s var(--ease);display:inline-block;}
+    .btn-gold-lg:hover{transform:translateY(-2px);}
+    /* FOOTER */
+    footer{background:var(--ink-deep);padding:2.5rem 0;}
+    .ft-inner{max-width:1100px;margin:0 auto;padding:0 5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    .ft-logo{font-family:var(--serif);font-size:.9rem;letter-spacing:.2em;text-transform:uppercase;color:var(--cream);}
+    .ft-abn{font-size:.6rem;color:rgba(246,241,233,.3);letter-spacing:.06em;text-align:right;}
+    @media(max-width:768px){
+      #nav{padding:1rem 1.4rem;}
+      .ph-inner,.page-body,.ft-inner{padding-left:1.4rem;padding-right:1.4rem;}
+      .workplace-block{grid-template-columns:1fr;gap:1.5rem;}
+    }
+  </style>
+</head>
+<body>
+<canvas id="grain" aria-hidden="true"></canvas>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">NUANCED CO.<em>Neurodivergent Consultancy</em></a>
+  <a href="index.html" class="nav-back"><svg viewBox="0 0 16 16"><path d="M10 12L6 8l4-4"/></svg>Back to home</a>
+</nav>
+
+<section class="page-hero">
+  <div class="ph-inner">
+    <p class="ph-eyebrow">Pricing</p>
+    <h1 class="ph-title">Clear pricing.<br><em>No surprises.</em></h1>
+    <p class="ph-sub">Transparent pricing because you deserve to know what something costs before you decide if it is right for you. Access is important and cost should never be the only barrier.</p>
+  </div>
+</section>
+
+<div class="page-body">
+
+  <!-- 1:1 CONSULTANCY -->
+  <span class="section-label">1:1 Consultancy</span>
+  <h2 class="section-title">Individual sessions</h2>
+  <div class="rule"></div>
+  <p class="section-body" style="max-width:600px;margin-bottom:2.5rem;">All sessions are conducted by Leah Veenhuizen, Registered Nurse (AHPRA) and AuDHD consultant. Sessions are educational and supportive in nature and do not constitute therapy or clinical treatment.</p>
+
+  <div class="pricing-grid">
+    <div class="pc">
+      <div class="pc-category">Single session</div>
+      <div class="pc-title">Clarity Session</div>
+      <div class="pc-price">$220</div>
+      <div class="pc-period">AUD &middot; 60 minutes</div>
+      <p class="pc-desc">One focused session for a specific question, challenge, or area you want to work through. Good if you know roughly what you need.</p>
+      <div class="pc-detail">Video or phone &middot; Australia-wide &middot; Notes provided after session</div>
+      <a href="mailto:hello@nuancedco.com.au?subject=Clarity Session Booking" class="btn btn-outline">Book this session</a>
+    </div>
+    <div class="pc featured">
+      <div class="pc-category">Most popular</div>
+      <div class="pc-title">3-Session Package</div>
+      <div class="pc-price">$590</div>
+      <div class="pc-period">AUD &middot; 3 x 60 minutes over 6 weeks</div>
+      <p class="pc-desc">Three sessions over six weeks to go deeper on a specific area. Diagnosis integration, burnout recovery, and building sustainable routines are common focuses.</p>
+      <div class="pc-detail">Video or phone &middot; Notes after each session &middot; Email check-ins between sessions</div>
+      <a href="mailto:hello@nuancedco.com.au?subject=3-Session Package Enquiry" class="btn btn-cream">Get started</a>
+    </div>
+    <div class="pc">
+      <div class="pc-category">Ongoing support</div>
+      <div class="pc-title">Monthly Consultancy</div>
+      <div class="pc-price">$240</div>
+      <div class="pc-period">AUD per month &middot; 60 min session + email support</div>
+      <p class="pc-desc">Regular monthly sessions for people who want consistent, ongoing support as their needs evolve. Includes between-session check-ins via email.</p>
+      <div class="pc-detail">Video or phone &middot; Monthly commitment &middot; Cancel anytime with notice</div>
+      <a href="mailto:hello@nuancedco.com.au?subject=Monthly Consultancy Enquiry" class="btn btn-outline">Enquire now</a>
+    </div>
+  </div>
+
+  <div class="access-note">
+    <div class="an-title">On access and affordability</div>
+    <p class="an-body">Cost should not be the only barrier to support. If pricing is a genuine obstacle for you, please reach out. Leah is committed to access and will discuss options honestly with anyone who gets in touch. hello@nuancedco.com.au</p>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- DIGITAL RESOURCES -->
+  <span class="section-label">Digital Resources</span>
+  <h2 class="section-title">Guides and workbooks</h2>
+  <div class="rule"></div>
+  <p class="section-body" style="max-width:600px;margin-bottom:2.5rem;">Practical, evidence-informed guides written for adults navigating ADHD and AuDHD. Designed to be genuinely useful, not just informative. Instant download after purchase.</p>
+
+  <div class="pricing-grid">
+    <!-- PLACEHOLDER CARDS — to be updated with Stripe payment links and final pricing -->
+    <div class="pc">
+      <div class="pc-category">Guide</div>
+      <div class="pc-title">Understanding Your ADHD Diagnosis</div>
+      <div class="pc-price" style="color:var(--purple);">Coming soon</div>
+      <div class="pc-period">Instant download &middot; PDF</div>
+      <p class="pc-desc">A practical guide to making sense of an adult ADHD diagnosis. What it means, what it does not mean, and where to start.</p>
+      <div class="pc-detail">~20 pages &middot; PDF format &middot; Printable</div>
+      <a href="https://nuancedco.com.au/courses" class="btn btn-outline">Join waitlist</a>
+    </div>
+    <div class="pc">
+      <div class="pc-category">Workbook</div>
+      <div class="pc-title">Burnout Recovery for Neurodivergent Adults</div>
+      <div class="pc-price" style="color:var(--purple);">Coming soon</div>
+      <div class="pc-period">Instant download &middot; PDF</div>
+      <p class="pc-desc">A structured workbook for understanding, recovering from, and building protection against burnout when your brain works differently.</p>
+      <div class="pc-detail">~35 pages &middot; PDF workbook &middot; Includes reflection prompts</div>
+      <a href="https://nuancedco.com.au/courses" class="btn btn-outline">Join waitlist</a>
+    </div>
+    <div class="pc">
+      <div class="pc-category">Guide</div>
+      <div class="pc-title">AuDHD: Understanding the Intersection</div>
+      <div class="pc-price" style="color:var(--purple);">Coming soon</div>
+      <div class="pc-period">Instant download &middot; PDF</div>
+      <p class="pc-desc">For people navigating both ADHD and autism. What makes AuDHD distinct, how the two profiles interact, and what that means for daily life.</p>
+      <div class="pc-detail">~25 pages &middot; PDF format &middot; Printable</div>
+      <a href="https://nuancedco.com.au/courses" class="btn btn-outline">Join waitlist</a>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- COURSE -->
+  <span class="section-label">Online course</span>
+  <h2 class="section-title">Understanding Who You Are After Your Diagnosis</h2>
+  <div class="rule"></div>
+
+  <div class="pricing-grid" style="margin-bottom:2rem;">
+    <div class="pc featured">
+      <div class="pc-category">Self-paced course</div>
+      <div class="pc-title">Full Course Access</div>
+      <div class="pc-price">Coming soon</div>
+      <div class="pc-period">7 modules &middot; Lifetime access &middot; ADHD and AuDHD versions</div>
+      <p class="pc-desc">The complete self-paced course covering diagnosis integration, your nervous system, identity after masking, and building a life that works for your brain. Includes video lessons, written content, and reflection exercises.</p>
+      <div class="pc-detail">Video + written format &middot; Self-paced &middot; AuDHD module included</div>
+      <a href="https://nuancedco.com.au/courses" class="btn btn-cream">Join the waitlist</a>
+    </div>
+  </div>
+
+  <hr class="section-divider">
+
+  <!-- WORKPLACE -->
+  <div class="workplace-block">
+    <div>
+      <span class="wb-label">Workplace consulting</span>
+      <div class="wb-title">Pricing on enquiry</div>
+      <p class="wb-body">Workplace consulting is scoped individually to your organisation's size, needs, and existing frameworks. Pricing depends on the scope of work, number of sessions, and whether the engagement includes training delivery, policy review, or ongoing consulting support.</p>
+      <p class="wb-body">Enquiries welcome from HR professionals, team leaders, and business owners.</p>
+      <a href="mailto:hello@nuancedco.com.au?subject=Workplace Consulting Enquiry" class="btn btn-outline" style="max-width:260px;display:inline-block;">Get in touch</a>
+    </div>
+    <div>
+      <span class="section-label" style="margin-top:0;">Services include</span>
+      <div style="display:flex;flex-direction:column;gap:.8rem;margin-top:.8rem;">
+        <div style="font-size:.85rem;color:var(--ink-mid);padding:.9rem 1rem;border:1px solid rgba(42,31,26,.1);border-radius:3px;">Psychosocial risk review and recommendations</div>
+        <div style="font-size:.85rem;color:var(--ink-mid);padding:.9rem 1rem;border:1px solid rgba(42,31,26,.1);border-radius:3px;">Neurodivergent inclusion training for leaders and HR</div>
+        <div style="font-size:.85rem;color:var(--ink-mid);padding:.9rem 1rem;border:1px solid rgba(42,31,26,.1);border-radius:3px;">Reasonable adjustments framework and templates</div>
+        <div style="font-size:.85rem;color:var(--ink-mid);padding:.9rem 1rem;border:1px solid rgba(42,31,26,.1);border-radius:3px;">Individual workplace support for neurodivergent employees</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-block">
+    <h2>Not sure which option is right for you?</h2>
+    <p>Book a free 20-minute discovery call. No pressure, no commitment. Just an honest conversation about where you are and what would actually help.</p>
+    <a href="mailto:hello@nuancedco.com.au?subject=Discovery Call Request" class="btn-gold-lg">Book a free discovery call</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="ft-inner">
+    <div class="ft-logo">Nuanced Co.</div>
+    <div class="ft-abn">ABN: 71 926 185 491 &middot; &copy; 2026 Nuanced Co. All rights reserved.<br>Content does not constitute clinical, legal, or financial advice.</div>
+  </div>
+</footer>
+
+<script>
+const gc=document.getElementById('grain'),gx=gc.getContext('2d');let gW,gH;function rg(){gW=gc.width=window.innerWidth;gH=gc.height=window.innerHeight;}rg();window.addEventListener('resize',rg);function drawGrain(){const d=gx.createImageData(gW,gH);for(let i=0;i<d.data.length;i+=4){const v=Math.random()*255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=18;}gx.putImageData(d,0,0);}setInterval(drawGrain,80);drawGrain();
+const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>70);},{passive:true});
+</script>
+</body>
+</html>

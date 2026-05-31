@@ -1,0 +1,25 @@
+<svg width="680" height="730" viewBox="0 0 680 730" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="fade" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F6F1E9" stop-opacity="0"/>
+      <stop offset="55%" stop-color="#F6F1E9" stop-opacity="0"/>
+      <stop offset="100%" stop-color="#F6F1E9" stop-opacity="1"/>
+    </linearGradient>
+    <clipPath id="upper">
+      <rect x="0" y="0" width="680" height="520"/>
+    </clipPath>
+  </defs>
+  <rect width="680" height="730" fill="#F6F1E9"/>
+  <g clip-path="url(#upper)">
+    <path d="M 95,110 C 200,45 390,80 415,220 C 435,330 310,390 175,355 C 45,318 -10,185 95,110" fill="#6B4570" opacity="0.32"/>
+    <path d="M 295,55 C 445,10 615,75 605,230 C 596,368 458,418 345,370 C 232,322 175,148 295,55" fill="#7A8C6E" opacity="0.28"/>
+    <path d="M 210,170 C 335,118 495,175 478,308 C 462,428 325,458 215,395 C 105,332 88,225 210,170" fill="#C4963E" opacity="0.26"/>
+    <path d="M 155,290 C 268,228 428,268 420,385 C 412,488 278,512 175,452 C 72,392 42,352 155,290" fill="#C07A8A" opacity="0.24"/>
+    <path d="M 448,48 C 568,18 652,102 628,218 C 606,318 508,342 448,268 C 388,196 328,78 448,48" fill="#9668A4" opacity="0.22"/>
+    <rect x="0" y="0" width="680" height="520" fill="url(#fade)"/>
+  </g>
+  <text x="340" y="598" font-family="Georgia,'Palatino Linotype',Palatino,'Book Antiqua',serif" font-size="68" font-weight="400" letter-spacing="10" text-anchor="middle" fill="#2A1F1A">NUANCED CO.</text>
+  <line x1="110" y1="622" x2="570" y2="622" stroke="#2A1F1A" stroke-width="0.6" opacity="0.40"/>
+  <text x="340" y="652" font-family="'Trebuchet MS','Gill Sans MT',Calibri,sans-serif" font-size="14" font-weight="300" letter-spacing="4" text-anchor="middle" fill="#2A1F1A" opacity="0.68">Neurodivergent Consultancy</text>
+  <text x="340" y="682" font-family="'Trebuchet MS','Gill Sans MT',Calibri,sans-serif" font-size="12" font-weight="400" letter-spacing="3" text-anchor="middle" fill="#2A1F1A" opacity="0.48">Geelong · Australia</text>
+</svg>
