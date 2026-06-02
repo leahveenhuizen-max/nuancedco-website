@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Member Portal, 4-Week Course | Nuanced Co.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F6F1E9; --cream-dark: #EDE6D8; --ink: #2A1F1A; --ink-mid: #4A3830;
+  --purple: #6B4570; --sage: #7A8C6E; --gold: #C4963E; --rose: #C07A8A; --lilac: #9668A4; --white: #FFFFFF;
+  --serif: 'Cormorant Garamond', Georgia, serif; --body: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --sidebar-w: 272px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 17px; scroll-behavior: smooth; }
+body { background: var(--cream); color: var(--ink); font-family: var(--body); line-height: 1.7; min-height: 100vh; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+
+/* ── GHOST SIDEBAR ──────────────────────────────────────────── */
+.sidebar-trigger {
+  position: fixed; top: 0; left: 0; width: 14px; height: 100vh; z-index: 700; cursor: pointer;
+}
+.sidebar-trigger::after {
+  content: ''; position: absolute; top: 50%; left: 7px; transform: translateY(-50%);
+  width: 2px; height: 48px; background: rgba(107,69,112,.35); border-radius: 2px;
+  transition: opacity .3s;
+}
+.sidebar-trigger:hover::after,
+body.sidebar-open .sidebar-trigger::after { opacity: 0; }
+
+.ghost-sidebar {
+  position: fixed; top: 0; left: 0; width: var(--sidebar-w); height: 100vh;
+  background: var(--ink); /* #2A1F1A */
+  border-right: 1px solid rgba(196,150,62,.22);
+  z-index: 800; display: flex; flex-direction: column;
+  transform: translateX(calc(-1 * var(--sidebar-w)));
+  transition: transform .38s var(--ease), box-shadow .38s;
+  will-change: transform;
+}
+.sidebar-trigger:hover ~ .ghost-sidebar,
+body.sidebar-open .ghost-sidebar,
+.ghost-sidebar:hover {
+  transform: translateX(0);
+  box-shadow: 6px 0 48px rgba(0,0,0,.28);
+}
+.sidebar-veil {
+  position: fixed; inset: 0; z-index: 790; pointer-events: none;
+  background: transparent; transition: background .38s;
+}
+body.sidebar-open .sidebar-veil { background: rgba(42,31,26,.2); pointer-events: all; }
+
+.sidebar-head { padding: 2rem 1.6rem 1.4rem; border-bottom: 1px solid rgba(196,150,62,.16); }
+.sidebar-logo { font-family: var(--serif); font-size: .9rem; letter-spacing: .2em; text-transform: uppercase; color: var(--cream); }
+.sidebar-logo span { display: block; font-family: var(--body); font-size: .48rem; letter-spacing: .3em; text-transform: uppercase; color: var(--gold); opacity: .75; margin-top: 3px; }
+.sidebar-nav { flex: 1; display: flex; flex-direction: column; padding: 1rem .8rem; gap: .1rem; overflow-y: auto; }
+.sidebar-section { font-size: .5rem; letter-spacing: .28em; text-transform: uppercase; color: rgba(196,150,62,.5); padding: .9rem 1rem .3rem; }
+.sidebar-item { display: flex; align-items: center; gap: .8rem; padding: .78rem 1rem; border-radius: 6px; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(246,241,233,.82); transition: background .22s, color .22s; }
+.sidebar-item:hover { background: rgba(107,69,112,.22); color: #fff; }
+.sidebar-item.active { background: rgba(107,69,112,.28); color: var(--gold); font-weight: 700; }
+.sidebar-foot { padding: 1.2rem 1.6rem; border-top: 1px solid rgba(196,150,62,.12); }
+.sidebar-user { display: flex; align-items: center; gap: .8rem; }
+.sidebar-avatar { width: 32px; height: 32px; border-radius: 50%; background: rgba(196,150,62,.18); border: 1px solid rgba(196,150,62,.3); display: grid; place-items: center; font-family: var(--serif); font-size: .9rem; color: var(--gold); }
+.sidebar-name { font-size: .74rem; color: rgba(246,241,233,.65); line-height: 1.3; }
+.sidebar-role { font-size: .55rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(196,150,62,.6); }
+
+.sidebar-toggle { position: fixed; top: 1.3rem; left: 1.3rem; z-index: 820; width: 36px; height: 36px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px; cursor: pointer; background: rgba(246,241,233,.92); border: 1px solid rgba(107,69,112,.2); border-radius: 6px; backdrop-filter: blur(8px); transition: background .2s, border-color .2s; }
+.sidebar-toggle:hover { background: var(--white); border-color: rgba(107,69,112,.4); }
+.sidebar-toggle span { width: 15px; height: 1.5px; background: var(--ink); display: block; transition: transform .3s, opacity .3s; }
+body.sidebar-open .sidebar-toggle span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+body.sidebar-open .sidebar-toggle span:nth-child(2) { opacity: 0; }
+body.sidebar-open .sidebar-toggle span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ── PORTAL LAYOUT ───────────────────────────────────────────── */
+.portal-wrap { max-width: 1060px; margin: 0 auto; padding: 5rem 2rem 4rem; }
+
+/* ── TOP BAR ─────────────────────────────────────────────────── */
+.portal-topbar { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; margin-bottom: 3rem; padding-bottom: 2rem; border-bottom: 1px solid rgba(42,31,26,.1); }
+.portal-greeting { font-family: var(--serif); font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; color: var(--ink); }
+.portal-greeting em { font-style: italic; color: var(--purple); }
+.portal-meta { text-align: right; }
+.portal-date { font-size: .68rem; letter-spacing: .14em; text-transform: uppercase; color: rgba(42,31,26,.38); }
+.portal-badge { display: inline-flex; align-items: center; gap: .5rem; margin-top: .5rem; background: rgba(107,69,112,.1); color: var(--purple); font-size: .6rem; letter-spacing: .18em; text-transform: uppercase; padding: .32rem .9rem; border-radius: 30px; }
+
+/* ── STAT STRIP ──────────────────────────────────────────────── */
+.stat-strip { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-bottom: 2.5rem; }
+.stat-chip { background: var(--white); border: 1px solid rgba(42,31,26,.08); border-radius: 14px; padding: 1.3rem 1.5rem; }
+.stat-chip-num { font-family: var(--serif); font-size: 2.2rem; font-weight: 300; color: var(--ink); line-height: 1; }
+.stat-chip-label { font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(42,31,26,.4); margin-top: .35rem; }
+.progress-bar-wrap { margin-top: .7rem; }
+.progress-bg { height: 3px; background: rgba(42,31,26,.08); border-radius: 3px; overflow: hidden; }
+.progress-fill { height: 100%; background: var(--purple); border-radius: 3px; }
+@media(max-width:700px) { .stat-strip { grid-template-columns: 1fr 1fr; } }
+
+/* ── WEEK CARDS ──────────────────────────────────────────────── */
+.weeks-stack { display: flex; flex-direction: column; gap: 2rem; margin-bottom: 3rem; }
+.section-label { font-size: .68rem; letter-spacing: .3em; text-transform: uppercase; color: var(--purple); margin-bottom: 1.4rem; display: block; }
+
+.week-card { background: var(--white); border-radius: 22px; border: 1px solid rgba(42,31,26,.08); box-shadow: 0 4px 24px rgba(42,31,26,.05); overflow: hidden; }
+
+.week-card-header { display: flex; align-items: flex-start; justify-content: space-between; gap: 1.5rem; padding: 1.8rem 2rem 1.5rem; background: var(--cream); border-bottom: 1px solid rgba(42,31,26,.07); }
+.week-header-meta { flex: 1; }
+.week-badge { display: inline-flex; align-items: center; gap: .5rem; font-size: .55rem; letter-spacing: .24em; text-transform: uppercase; color: var(--white); padding: .32rem .85rem; border-radius: 30px; margin-bottom: .8rem; }
+.wk1 .week-badge { background: var(--purple); }
+.wk2 .week-badge { background: var(--sage); }
+.wk3 .week-badge { background: var(--rose); }
+.wk4 .week-badge { background: var(--gold); color: var(--ink); }
+.week-title { font-family: var(--serif); font-size: clamp(1.1rem, 2vw, 1.55rem); font-weight: 300; color: var(--ink); line-height: 1.25; margin-bottom: .55rem; }
+.week-summary { font-size: .82rem; color: var(--ink-mid); line-height: 1.72; max-width: 620px; }
+.week-status-pill { font-size: .58rem; letter-spacing: .18em; text-transform: uppercase; padding: .3rem .85rem; border-radius: 30px; white-space: nowrap; flex-shrink: 0; margin-top: .3rem; }
+.pill-done { background: rgba(122,140,110,.15); color: var(--sage); }
+.pill-active { background: rgba(107,69,112,.1); color: var(--purple); }
+.pill-locked { background: rgba(42,31,26,.07); color: rgba(42,31,26,.4); }
+
+.week-card-body { padding: 1.8rem 2rem; display: grid; gap: 1.6rem; }
+
+/* Thought Corner */
+.thought-corner { background: var(--cream-dark); border: 1px solid rgba(107,69,112,.12); border-radius: 16px; overflow: hidden; }
+.thought-corner-head {
+  display: flex; align-items: center; gap: .7rem; padding: .8rem 1.3rem;
+  font-size: .56rem; letter-spacing: .24em; text-transform: uppercase;
+  color: var(--purple); font-family: var(--body); font-weight: 700;
+  background: transparent; border-bottom: 1px solid rgba(107,69,112,.12);
+}
+/* Light video placeholder, no dark fills */
+.video-shell {
+  position: relative; aspect-ratio: 16/9;
+  background: var(--cream);
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  gap: .6rem; overflow: hidden;
+  border-top: 1px solid rgba(107,69,112,.08);
+  border-bottom: 1px solid rgba(107,69,112,.08);
+}
+.video-bg { display: none; }
+.play-btn {
+  width: 48px; height: 48px; border-radius: 50%;
+  background: var(--white); border: 1.5px solid rgba(107,69,112,.3);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background .2s, border-color .2s, box-shadow .2s;
+  box-shadow: 0 3px 12px rgba(107,69,112,.1);
+}
+.play-btn:hover { background: var(--purple); border-color: var(--purple); }
+.play-btn:hover svg path { fill: var(--white); }
+.controls {
+  width: 100%; display: flex; align-items: center; gap: .9rem;
+  padding: .65rem 1rem; background: var(--white);
+  border-top: 1px solid rgba(42,31,26,.07);
+}
+.ctrl-prog { flex: 1; height: 2px; background: rgba(42,31,26,.1); border-radius: 3px; }
+.ctrl-prog-fill { height: 100%; border-radius: 3px; }
+.ctrl-time { font-size: .56rem; color: rgba(42,31,26,.38); white-space: nowrap; }
+.thought-corner-foot { padding: .8rem 1.3rem; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(107,69,112,.1); }
+.tc-label { font-size: .62rem; color: rgba(42,31,26,.4); }
+.tc-action { font-size: .6rem; letter-spacing: .1em; text-transform: uppercase; color: var(--purple); cursor: pointer; }
+.tc-action:hover { opacity: .7; }
+
+/* Journal links */
+.journal-links { display: grid; grid-template-columns: 1fr 1fr; gap: .85rem; }
+.jl-card { display: flex; align-items: flex-start; gap: .9rem; padding: 1.1rem 1.3rem; border-radius: 12px; border: 1px solid rgba(42,31,26,.1); background: var(--cream); transition: border-color .2s, box-shadow .2s, transform .2s; cursor: pointer; }
+.jl-card:hover { border-color: rgba(107,69,112,.25); box-shadow: 0 4px 18px rgba(107,69,112,.1); transform: translateY(-2px); }
+.jl-ico { width: 34px; height: 34px; border-radius: 8px; display: grid; place-items: center; flex-shrink: 0; }
+.jl-ico-d { background: rgba(107,69,112,.1); }
+.jl-ico-p { background: rgba(122,140,110,.12); }
+.jl-kicker { font-size: .54rem; letter-spacing: .2em; text-transform: uppercase; color: var(--purple); margin-bottom: .25rem; }
+.jl-kicker-p { color: var(--sage); }
+.jl-title { font-size: .8rem; color: var(--ink); line-height: 1.35; font-family: var(--serif); }
+.jl-sub { font-size: .62rem; color: rgba(42,31,26,.42); margin-top: .25rem; }
+@media(max-width:560px) { .journal-links { grid-template-columns: 1fr; } .week-card-header { flex-direction: column; } }
+
+/* ── SIDEBAR PANEL ───────────────────────────────────────────── */
+.portal-grid { display: grid; grid-template-columns: 1fr 300px; gap: 2rem; }
+.side-panel { display: flex; flex-direction: column; gap: 1.5rem; }
+.panel-card { background: var(--white); border: 1px solid rgba(42,31,26,.08); border-radius: 18px; padding: 1.5rem; }
+.panel-label { font-size: .6rem; letter-spacing: .26em; text-transform: uppercase; color: var(--purple); margin-bottom: 1rem; }
+.panel-heading { font-family: var(--serif); font-size: 1.1rem; color: var(--ink); margin-bottom: .6rem; }
+.panel-body { font-size: .8rem; color: var(--ink-mid); line-height: 1.7; }
+.activity-list { display: flex; flex-direction: column; gap: 0; }
+.activity-item { display: flex; gap: .85rem; padding: .8rem 0; border-bottom: 1px solid rgba(42,31,26,.07); font-size: .78rem; color: var(--ink-mid); }
+.activity-item:last-child { border-bottom: none; }
+.activity-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple); flex-shrink: 0; margin-top: .45rem; }
+.activity-text { flex: 1; line-height: 1.5; }
+.activity-time { font-size: .62rem; color: rgba(42,31,26,.35); white-space: nowrap; padding-top: .1rem; }
+.btn-sm { display: inline-block; padding: .6rem 1.4rem; font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; border-radius: 2px; transition: background .2s, color .2s; }
+.btn-sm-primary { background: var(--purple); color: var(--white); }
+.btn-sm-primary:hover { background: var(--ink); }
+.btn-sm-outline { border: 1px solid rgba(107,69,112,.35); color: var(--purple); }
+.btn-sm-outline:hover { background: var(--purple); color: var(--white); }
+@media(max-width:900px) { .portal-grid { grid-template-columns: 1fr; } .side-panel { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; } }
+@media(max-width:600px) { .side-panel { grid-template-columns: 1fr; } }
+
+/* ── FOOTER ──────────────────────────────────────────────────── */
+footer { background: var(--ink); padding: 2.5rem 2rem; margin-top: 4rem; }
+.footer-inner { max-width: 1060px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; }
+.footer-logo { font-family: var(--serif); font-size: 1.1rem; letter-spacing: .2em; color: var(--cream); }
+.footer-links { display: flex; gap: 1.8rem; flex-wrap: wrap; }
+.footer-links a { font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(246,241,233,.35); transition: color .2s; }
+.footer-links a:hover { color: var(--cream); }
+/* CONTACT MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(246,241,233,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1.5rem;}
+.modal-overlay.open{display:flex;}
+.modal-box{background:#FBF9F6;border:1px solid rgba(107,69,112,.13);border-radius:22px;width:100%;max-width:520px;padding:2.6rem;position:relative;box-shadow:0 20px 60px rgba(42,31,26,.1);}
+.modal-close{position:absolute;top:1.2rem;right:1.4rem;background:none;border:none;font-size:1.1rem;color:rgba(42,31,26,.4);cursor:pointer;line-height:1;padding:.3rem;transition:color .2s;}
+.modal-close:hover{color:var(--ink);}
+.modal-label{font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--purple);margin-bottom:.7rem;display:block;}
+.modal-heading{font-family:var(--serif);font-size:1.75rem;font-weight:300;color:var(--ink);margin-bottom:.6rem;}
+.modal-note{font-size:.82rem;color:var(--ink-mid);line-height:1.72;margin-bottom:1.8rem;}
+.modal-form{display:flex;flex-direction:column;gap:1.1rem;}
+.modal-field{display:flex;flex-direction:column;gap:.35rem;}
+.modal-field label{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--purple);font-weight:700;}
+.modal-field input,.modal-field textarea{width:100%;padding:.75rem 1rem;font-family:var(--body);font-size:.86rem;color:var(--ink);background:#fff;border:1px solid rgba(107,69,112,.16);border-radius:8px;outline:none;transition:border-color .2s,box-shadow .2s;line-height:1.6;}
+.modal-field input:focus,.modal-field textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(107,69,112,.08);}
+.modal-field textarea{resize:vertical;min-height:110px;}
+.modal-submit{background:var(--purple);color:#fff;padding:.88rem 2rem;font-family:var(--body);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border:none;border-radius:4px;cursor:pointer;transition:background .2s,transform .15s;width:100%;margin-top:.3rem;}
+.modal-submit:hover{background:var(--ink);transform:translateY(-1px);}
+.modal-success{display:none;text-align:center;padding:1.5rem 0;}
+.modal-success.visible{display:block;}
+.modal-success-icon{font-size:1.8rem;margin-bottom:.8rem;}
+.modal-success-h{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--ink);margin-bottom:.6rem;}
+.modal-success-p{font-size:.82rem;color:var(--ink-mid);line-height:1.72;}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR TOGGLE -->
+<div class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">
+  <span></span><span></span><span></span>
+</div>
+
+<!-- TRIGGER STRIP -->
+<div class="sidebar-trigger" onmouseenter="openSidebar()"></div>
+
+<!-- VEIL -->
+<div class="sidebar-veil" onclick="closeSidebar()"></div>
+
+<!-- GHOST SIDEBAR (#2A1F1A) -->
+<aside class="ghost-sidebar" id="ghostSidebar" onmouseleave="closeSidebar()">
+  <div class="sidebar-head">
+    <div class="sidebar-logo">Nuanced Co.<span>Member Portal</span></div>
+  </div>
+  <nav class="sidebar-nav">
+    <span class="sidebar-section">Portal</span>
+    <a class="sidebar-item active" href="#dashboard">Dashboard</a>
+    <a class="sidebar-item" href="#weeks">My Course</a>
+    <a class="sidebar-item" href="#">Workbook</a>
+    <span class="sidebar-section">Weeks</span>
+    <a class="sidebar-item" href="#week1">Week 01, Unpacking &amp; Grief</a>
+    <a class="sidebar-item" href="#week2">Week 02, Brain &amp; Masking</a>
+    <a class="sidebar-item" href="#week3">Week 03, Identity &amp; Support</a>
+    <a class="sidebar-item" href="#week4">Week 04, Integration</a>
+    <span class="sidebar-section">Resources</span>
+    <a class="sidebar-item" href="#">Digital Journal (PDF)</a>
+    <a class="sidebar-item" href="#">Track Linen Journal Shipment</a>
+    <span class="sidebar-section">Site</span>
+    <a class="sidebar-item" href="course.html">Course Landing Page</a>
+    <a class="sidebar-item" href="about.html">About Leah</a>
+    <a class="sidebar-item" href="book.html">Book a Call</a>
+    <a class="sidebar-item" href="index.html">← Main Site</a>
+    <a class="sidebar-item" href="#" onclick="openModal();return false;">Contact Leah</a>
+  </nav>
+  <div class="sidebar-foot">
+    <div class="sidebar-user">
+      <div class="sidebar-avatar">L</div>
+      <div>
+        <div class="sidebar-name">Leah Veenhuizen</div>
+        <div class="sidebar-role">Premium Member</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- PORTAL CONTENT -->
+<main class="portal-wrap" id="dashboard">
+
+  <!-- TOP BAR -->
+  <div class="portal-topbar">
+    <div>
+      <h1 class="portal-greeting">Welcome back, <em>Leah.</em></h1>
+    </div>
+    <div class="portal-meta">
+      <div class="portal-date" id="portalDate"></div>
+      <div class="portal-badge">4-Week Course · Active</div>
+    </div>
+  </div>
+
+  <!-- STAT STRIP -->
+  <div class="stat-strip">
+    <div class="stat-chip">
+      <div class="stat-chip-num">2 / 4</div>
+      <div class="stat-chip-label">Weeks Completed</div>
+      <div class="progress-bar-wrap">
+        <div class="progress-bg"><div class="progress-fill" style="width:50%"></div></div>
+      </div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-chip-num">8</div>
+      <div class="stat-chip-label">Journal Entries</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-chip-num">2 hrs</div>
+      <div class="stat-chip-label">Video Watched</div>
+    </div>
+    <div class="stat-chip">
+      <div class="stat-chip-num">∞</div>
+      <div class="stat-chip-label">Access Remaining</div>
+    </div>
+  </div>
+
+  <!-- MAIN + ASIDE GRID -->
+  <div class="portal-grid" id="weeks">
+
+    <!-- WEEKS COLUMN -->
+    <div>
+      <span class="section-label">Your Course</span>
+      <div class="weeks-stack">
+
+        <!-- WEEK 1 -->
+        <div class="week-card wk1" id="week1">
+          <div class="week-card-header">
+            <div class="week-header-meta">
+              <div class="week-badge">Week 01</div>
+              <h2 class="week-title">Week 01 // Unpacking &amp; The Grief</h2>
+              <p class="week-summary">Process the emotional aftermath of a late-stage diagnosis. Move gently through the shock and recontextualize your history.</p>
+            </div>
+            <span class="week-status-pill pill-done">✓ Complete</span>
+          </div>
+          <div class="week-card-body">
+            <div class="thought-corner">
+              <div class="thought-corner-head" style="border-left:3px solid var(--purple)">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(107,69,112,0.7)" stroke-width="1.3"><circle cx="8" cy="8" r="6"/><path d="M5.5 8h5M8 5.5v5"/></svg>
+                Thought Corner, Week 01 Video Session
+              </div>
+              <div class="video-shell">
+                
+                <div class="play-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="rgba(42,31,26,0.6)"><path d="M5.5 3.5l7 4.5-7 4.5V3.5z"/></svg></div>
+                <div class="controls">
+                  <div class="ctrl-prog"><div class="ctrl-prog-fill" style="width:100%;background:var(--purple)"></div></div>
+                  <span class="ctrl-time">22:14 / 22:14</span>
+                </div>
+              </div>
+              <div class="thought-corner-foot">
+                <span class="tc-label">Week 01 · 22 min · Completed</span>
+                <span class="tc-action">Replay ↗</span>
+              </div>
+            </div>
+            <div class="journal-links">
+              <a class="jl-card" href="#">
+                <div class="jl-ico jl-ico-d"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#6B4570" stroke-width="1.4"><rect x="2" y="1.5" width="12" height="13" rx="1.5"/><path d="M5 6h6M5 9h4"/></svg></div>
+                <div>
+                  <div class="jl-kicker">Link A</div>
+                  <div class="jl-title">Access 30-Day Interactive Digital Journal (Fillable PDF)</div>
+                  <div class="jl-sub">Week 1 prompts · Instant access</div>
+                </div>
+              </a>
+              <a class="jl-card" href="#">
+                <div class="jl-ico jl-ico-p"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#7A8C6E" stroke-width="1.4"><rect x="3" y="4" width="10" height="8" rx="1"/><path d="M5.5 4V2.5h5V4"/><path d="M5.5 12v1.5h5V12"/></svg></div>
+                <div>
+                  <div class="jl-kicker jl-kicker-p">Link B</div>
+                  <div class="jl-title">Track Shipment of Your Printed Linen Journal (Lulu Fulfillment)</div>
+                  <div class="jl-sub">Dispatched · 5–8 business days</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- WEEK 2 -->
+        <div class="week-card wk2" id="week2">
+          <div class="week-card-header">
+            <div class="week-header-meta">
+              <div class="week-badge">Week 02</div>
+              <h2 class="week-title">Week 02 // The Brain &amp; The Cost of Masking</h2>
+              <p class="week-summary">Dismantle traditional productivity standards. Understand your unique executive functions and map the heavy energetic cost of unmasking.</p>
+            </div>
+            <span class="week-status-pill pill-done">✓ Complete</span>
+          </div>
+          <div class="week-card-body">
+            <div class="thought-corner">
+              <div class="thought-corner-head" style="border-left:3px solid var(--sage)">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(107,69,112,0.7)" stroke-width="1.3"><circle cx="8" cy="8" r="6"/><path d="M5.5 8h5M8 5.5v5"/></svg>
+                Thought Corner, Week 02 Video Session
+              </div>
+              <div class="video-shell">
+                
+                <div class="play-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="rgba(42,31,26,0.6)"><path d="M5.5 3.5l7 4.5-7 4.5V3.5z"/></svg></div>
+                <div class="controls">
+                  <div class="ctrl-prog"><div class="ctrl-prog-fill" style="width:100%;background:var(--sage)"></div></div>
+                  <span class="ctrl-time">27:40 / 27:40</span>
+                </div>
+              </div>
+              <div class="thought-corner-foot">
+                <span class="tc-label">Week 02 · 27 min · Completed</span>
+                <span class="tc-action">Replay ↗</span>
+              </div>
+            </div>
+            <div class="journal-links">
+              <a class="jl-card" href="#">
+                <div class="jl-ico jl-ico-d"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#6B4570" stroke-width="1.4"><rect x="2" y="1.5" width="12" height="13" rx="1.5"/><path d="M5 6h6M5 9h4"/></svg></div>
+                <div>
+                  <div class="jl-kicker">Link A</div>
+                  <div class="jl-title">Access 30-Day Interactive Digital Journal (Fillable PDF)</div>
+                  <div class="jl-sub">Week 2 prompts · Instant access</div>
+                </div>
+              </a>
+              <a class="jl-card" href="#">
+                <div class="jl-ico jl-ico-p"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#7A8C6E" stroke-width="1.4"><rect x="3" y="4" width="10" height="8" rx="1"/><path d="M5.5 4V2.5h5V4"/><path d="M5.5 12v1.5h5V12"/></svg></div>
+                <div>
+                  <div class="jl-kicker jl-kicker-p">Link B</div>
+                  <div class="jl-title">Track Shipment of Your Printed Linen Journal (Lulu Fulfillment)</div>
+                  <div class="jl-sub">Dispatched · 5–8 business days</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- WEEK 3 -->
+        <div class="week-card wk3" id="week3">
+          <div class="week-card-header">
+            <div class="week-header-meta">
+              <div class="week-badge">Week 03</div>
+              <h2 class="week-title">Week 03 // Identity &amp; The Support Map</h2>
+              <p class="week-summary">Rebuild your identity from scratch. Navigate clinical, medical, and holistic support pathways within the local context.</p>
+            </div>
+            <span class="week-status-pill pill-active">In Progress</span>
+          </div>
+          <div class="week-card-body">
+            <div class="thought-corner">
+              <div class="thought-corner-head" style="border-left:3px solid var(--rose)">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(107,69,112,0.7)" stroke-width="1.3"><circle cx="8" cy="8" r="6"/><path d="M5.5 8h5M8 5.5v5"/></svg>
+                Thought Corner, Week 03 Video Session
+              </div>
+              <div class="video-shell">
+                
+                <div class="play-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="rgba(42,31,26,0.6)"><path d="M5.5 3.5l7 4.5-7 4.5V3.5z"/></svg></div>
+                <div class="controls">
+                  <div class="ctrl-prog"><div class="ctrl-prog-fill" style="width:38%;background:var(--rose)"></div></div>
+                  <span class="ctrl-time">11:52 / 31:05</span>
+                </div>
+              </div>
+              <div class="thought-corner-foot">
+                <span class="tc-label">Week 03 · 31 min · In Progress</span>
+                <span class="tc-action">Continue ↗</span>
+              </div>
+            </div>
+            <div class="journal-links">
+              <a class="jl-card" href="#">
+                <div class="jl-ico jl-ico-d"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#6B4570" stroke-width="1.4"><rect x="2" y="1.5" width="12" height="13" rx="1.5"/><path d="M5 6h6M5 9h4"/></svg></div>
+                <div>
+                  <div class="jl-kicker">Link A</div>
+                  <div class="jl-title">Access 30-Day Interactive Digital Journal (Fillable PDF)</div>
+                  <div class="jl-sub">Week 3 prompts · Instant access</div>
+                </div>
+              </a>
+              <a class="jl-card" href="#">
+                <div class="jl-ico jl-ico-p"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#7A8C6E" stroke-width="1.4"><rect x="3" y="4" width="10" height="8" rx="1"/><path d="M5.5 4V2.5h5V4"/><path d="M5.5 12v1.5h5V12"/></svg></div>
+                <div>
+                  <div class="jl-kicker jl-kicker-p">Link B</div>
+                  <div class="jl-title">Track Shipment of Your Printed Linen Journal (Lulu Fulfillment)</div>
+                  <div class="jl-sub">Dispatched · 5–8 business days</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- WEEK 4 -->
+        <div class="week-card wk4" id="week4">
+          <div class="week-card-header">
+            <div class="week-header-meta">
+              <div class="week-badge">Week 04</div>
+              <h2 class="week-title">Week 04 // Integration &amp; Sustainable Accommodation</h2>
+              <p class="week-summary">Build a life structured for your mind. Master tactical disclosure, set firm boundaries, and design systems that adapt to your focus.</p>
+            </div>
+            <span class="week-status-pill pill-locked">Unlocks Week 4</span>
+          </div>
+          <div class="week-card-body">
+            <div class="thought-corner">
+              <div class="thought-corner-head" style="border-left:3px solid var(--gold)">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(42,31,26,.7)" stroke-width="1.3"><circle cx="8" cy="8" r="6"/><path d="M5.5 8h5M8 5.5v5"/></svg>
+                <span>Thought Corner, Week 04 Video Session</span>
+              </div>
+              <div class="video-shell" style="opacity:.55;">
+                
+                <div class="play-btn" style="opacity:.5;cursor:default;"><svg width="16" height="16" viewBox="0 0 16 16" fill="rgba(42,31,26,0.6)"><path d="M5.5 3.5l7 4.5-7 4.5V3.5z"/></svg></div>
+                <div class="controls">
+                  <div class="ctrl-prog"><div class="ctrl-prog-fill" style="width:0%;background:var(--gold)"></div></div>
+                  <span class="ctrl-time">0:00 / 34:22</span>
+                </div>
+              </div>
+              <div class="thought-corner-foot">
+                <span class="tc-label">Week 04 · 34 min · Locked</span>
+                <span class="tc-action" style="opacity:.35;">Complete Week 3 to unlock</span>
+              </div>
+            </div>
+            <div class="journal-links">
+              <a class="jl-card" href="#" style="opacity:.5;pointer-events:none;">
+                <div class="jl-ico jl-ico-d"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#6B4570" stroke-width="1.4"><rect x="2" y="1.5" width="12" height="13" rx="1.5"/><path d="M5 6h6M5 9h4"/></svg></div>
+                <div>
+                  <div class="jl-kicker">Link A</div>
+                  <div class="jl-title">Access 30-Day Interactive Digital Journal (Fillable PDF)</div>
+                  <div class="jl-sub">Unlocks with Week 4</div>
+                </div>
+              </a>
+              <a class="jl-card" href="#" style="opacity:.5;pointer-events:none;">
+                <div class="jl-ico jl-ico-p"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#7A8C6E" stroke-width="1.4"><rect x="3" y="4" width="10" height="8" rx="1"/><path d="M5.5 4V2.5h5V4"/><path d="M5.5 12v1.5h5V12"/></svg></div>
+                <div>
+                  <div class="jl-kicker jl-kicker-p">Link B</div>
+                  <div class="jl-title">Track Shipment of Your Printed Linen Journal (Lulu Fulfillment)</div>
+                  <div class="jl-sub">Available on enrolment</div>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /weeks-stack -->
+    </div>
+
+    <!-- SIDE PANELS -->
+    <div class="side-panel">
+      <div class="panel-card">
+        <div class="panel-label">Progress</div>
+        <div style="font-family:var(--serif);font-size:2.2rem;font-weight:300;color:var(--ink);line-height:1;">50%</div>
+        <div style="font-size:.7rem;color:rgba(42,31,26,.4);margin:.3rem 0 .8rem;">2 of 4 weeks complete</div>
+        <div style="height:4px;background:rgba(42,31,26,.08);border-radius:4px;overflow:hidden;">
+          <div style="height:100%;width:50%;background:var(--purple);border-radius:4px;"></div>
+        </div>
+        <a href="#week3" class="btn-sm btn-sm-primary" style="margin-top:1.2rem;display:block;text-align:center;">Continue Week 3</a>
+      </div>
+
+      <div class="panel-card">
+        <div class="panel-label">Recent Activity</div>
+        <div class="activity-list">
+          <div class="activity-item"><div class="activity-dot"></div><div class="activity-text">Started Week 03 video session</div><div class="activity-time">Today</div></div>
+          <div class="activity-item"><div class="activity-dot"></div><div class="activity-text">Completed Week 02 journal entries</div><div class="activity-time">2d ago</div></div>
+          <div class="activity-item"><div class="activity-dot"></div><div class="activity-text">Finished Week 02 video session</div><div class="activity-time">3d ago</div></div>
+          <div class="activity-item"><div class="activity-dot"></div><div class="activity-text">Downloaded digital journal PDF</div><div class="activity-time">1w ago</div></div>
+        </div>
+      </div>
+
+      <div class="panel-card">
+        <div class="panel-label">Need Support?</div>
+        <p class="panel-body" style="margin-bottom:1rem;">Book a 1:1 consultancy session with Leah to work through anything that's surfaced during the course.</p>
+        <a href="book.html" class="btn-sm btn-sm-outline">Book a Call</a>
+      </div>
+
+      <div class="panel-card">
+        <div class="panel-label">Journal Access</div>
+        <div style="display:flex;flex-direction:column;gap:.7rem;margin-top:.5rem;">
+          <a class="jl-card" href="#" style="padding:.9rem;border-radius:10px;">
+            <div class="jl-ico jl-ico-d" style="width:28px;height:28px;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#6B4570" stroke-width="1.4"><rect x="2" y="1.5" width="12" height="13" rx="1.5"/><path d="M5 6h6M5 9h4"/></svg></div>
+            <div><div class="jl-kicker" style="font-size:.5rem;">Link A</div><div class="jl-title" style="font-size:.75rem;">30-Day Digital Journal (PDF)</div></div>
+          </a>
+          <a class="jl-card" href="#" style="padding:.9rem;border-radius:10px;">
+            <div class="jl-ico jl-ico-p" style="width:28px;height:28px;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#7A8C6E" stroke-width="1.4"><rect x="3" y="4" width="10" height="8" rx="1"/><path d="M5.5 4V2.5h5V4"/><path d="M5.5 12v1.5h5V12"/></svg></div>
+            <div><div class="jl-kicker jl-kicker-p" style="font-size:.5rem;">Link B</div><div class="jl-title" style="font-size:.75rem;">Track Linen Journal (Lulu)</div></div>
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /portal-grid -->
+
+</main>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">NUANCED CO.</div>
+    <nav class="footer-links">
+      <a href="course.html">4-Week Course</a>
+      <a href="about.html">About</a>
+      <a href="consult.html">Consult</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="index.html">Main Site</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+function openSidebar(){document.body.classList.add('sidebar-open');}
+function closeSidebar(){document.body.classList.remove('sidebar-open');}
+function toggleSidebar(){document.body.classList.toggle('sidebar-open');}
+document.getElementById('portalDate').textContent = new Date().toLocaleDateString('en-AU',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+</script>
+
+<!-- CONTACT MODAL -->
+<div class="modal-overlay" id="contactModal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&#x2715;</button>
+    <span class="modal-label">Direct Support</span>
+    <h2 class="modal-heading" id="modalHeading">Get in touch</h2>
+    <p class="modal-note">Take your time. Write as much or as little as you need.</p>
+    <form class="modal-form" id="contactForm" onsubmit="submitModal(event)">
+      <div class="modal-field">
+        <label for="mName">Name</label>
+        <input type="text" id="mName" name="name" placeholder="Your name" required>
+      </div>
+      <div class="modal-field">
+        <label for="mEmail">Email</label>
+        <input type="email" id="mEmail" name="email" placeholder="you@example.com" required>
+      </div>
+      <div class="modal-field">
+        <label for="mMessage">Message</label>
+        <textarea id="mMessage" name="message" placeholder="What's on your mind?" required></textarea>
+      </div>
+      <button type="submit" class="modal-submit">Send Message</button>
+    </form>
+    <div class="modal-success" id="modalSuccess">
+      <div class="modal-success-icon">&#10003;</div>
+      <h3 class="modal-success-h">Message received.</h3>
+      <p class="modal-success-p">Thank you for reaching out. Leah will get back to you within two business days.</p>
+    </div>
+  </div>
+</div>
+<script>
+function openModal(){document.getElementById('contactModal').classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(){document.getElementById('contactModal').classList.remove('open');document.body.style.overflow='';}
+function submitModal(e){
+  e.preventDefault();
+  document.getElementById('contactForm').style.display='none';
+  document.getElementById('modalSuccess').classList.add('visible');
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+</script>
+</body>
+</html>

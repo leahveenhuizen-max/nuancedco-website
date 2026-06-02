@@ -211,6 +211,120 @@
     color: #C4963E;
   }
 
+  .module-highlight-grid,
+  .workbook-notes-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.4fr) minmax(260px, 0.9fr);
+    gap: 2rem;
+    align-items: flex-start;
+  }
+
+  .framework-panel,
+  .sensory-loop,
+  .note-panel {
+    background-color: #1E1510;
+    border: 1px solid #3D2E25;
+    border-radius: 2px;
+    padding: 1.75rem;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.02);
+  }
+
+  .framework-panel {
+    border-left: 4px solid #C4963E;
+  }
+
+  .sensory-loop {
+    border-left: 4px solid #6B4570;
+  }
+
+  .note-panel {
+    border-left: 4px solid #7A5D7F;
+  }
+
+  .framework-panel h3,
+  .sensory-loop h3,
+  .note-panel h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1rem;
+    color: #F6F1E9;
+    margin-bottom: 1rem;
+    line-height: 1.35;
+  }
+
+  .framework-panel ol,
+  .sensory-loop ol {
+    list-style: decimal;
+    margin-left: 1.2rem;
+    color: #E8E0D4;
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+
+  .framework-panel ol li,
+  .sensory-loop ol li {
+    margin-bottom: 0.85rem;
+  }
+
+  .note-panel h2 {
+    font-size: 1rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .note-panel p,
+  .framework-panel p,
+  .sensory-loop p {
+    font-size: 0.95rem;
+    color: #E8E0D4;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+  }
+
+  .note-panel textarea {
+    width: 100%;
+    min-height: 9rem;
+    background-color: #221912;
+    border: 1px solid #3D2E25;
+    color: #F6F1E9;
+    padding: 1rem;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 1rem;
+    line-height: 1.6;
+    border-radius: 0.5rem;
+    resize: vertical;
+  }
+
+  .note-panel textarea::placeholder {
+    color: #7D6C5D;
+  }
+
+  .caption-note,
+  .citation-note {
+    color: #7D6C5D;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    margin-top: 1rem;
+  }
+
+  .workbook-notes-grid {
+    margin-bottom: 2.5rem;
+  }
+
+  .workbook-notes-grid .note-panel {
+    padding: 2rem;
+  }
+
+  .workbook-notes-grid .note-panel h2 {
+    font-size: 1rem;
+    color: #C4963E;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .workbook-notes-grid .note-panel p {
+    margin-bottom: 1rem;
+  }
+
   .main-content {
     max-width: 780px;
     margin: 0 auto;
@@ -411,6 +525,17 @@
     letter-spacing: 0.5em;
   }
 
+  @media (max-width: 900px) {
+    .module-highlight-grid,
+    .workbook-notes-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .module-highlight-grid {
+      gap: 1.5rem;
+    }
+  }
+
   @media (max-width: 600px) {
     html {
       font-size: 16px;
@@ -452,6 +577,7 @@
 </style>
 </head>
 <body>
+
 
 <header class="site-header">
   <p class="brand-name">Nuanced Co.</p>
@@ -526,7 +652,23 @@
 
     <p>Let's look at what actually shifts and why.</p>
 
-    <p><strong>Your story about yourself gets interrupted.</strong> Psychologist Dan McAdams has spent decades studying what he calls the narrative self, the idea that human beings fundamentally understand themselves through the stories they tell about their own lives. We have an ongoing internal narrative that includes a past, a present, and an imagined future. Diagnosis ruptures that narrative, particularly the future portion. The future you had been quietly assuming, your plans, your timelines, your sense of trajectory, suddenly becomes uncertain or requires significant revision. This is not merely disappointing. It is disorienting at a deep psychological level because the story you were living inside no longer holds its original shape.</p>
+    <div class="module-highlight-grid">
+      <div>
+        <p><strong>Your story about yourself gets interrupted.</strong> Psychologist Dan McAdams has spent decades studying what he calls the narrative self, the idea that human beings fundamentally understand themselves through the stories they tell about their own lives. We have an ongoing internal narrative that includes a past, a present, and an imagined future. Diagnosis ruptures that narrative, particularly the future portion. The future you had been quietly assuming, your plans, your timelines, your sense of trajectory, suddenly becomes uncertain or requires significant revision. This is not merely disappointing. It is disorienting at a deep psychological level because the story you were living inside no longer holds its original shape.</p>
+      </div>
+      <aside class="framework-panel">
+        <span class="section-label">Masking Cycle Framework</span>
+        <h3>A practical map for when diagnosis and masking overlap</h3>
+        <ol>
+          <li>Trigger: a diagnosis-related stressor, expectation, or interaction.</li>
+          <li>Body signal: tight shoulders, shallow breath, a heavy chest.</li>
+          <li>Internal narrative: “I must hide this part of me” or “I am only this diagnosis.”</li>
+          <li>Response: soften, overperform, withdraw, or shape yourself to fit.</li>
+          <li>Reset: notice the loop, name the sensation, and choose a more generative response.</li>
+        </ol>
+        <p class="citation-note">Source: narrative and somatic masking frameworks for chronic health adaptation.</p>
+      </aside>
+    </div>
 
     <p><strong>Your roles may be threatened or transformed.</strong> Much of how we understand ourselves is tied to what we do and what we are responsible for. Parent, professional, athlete, caregiver, partner, provider. Diagnosis can directly challenge your ability to perform these roles in the way you used to, and even the threat of that challenge, even before any actual limitation arrives, is enough to shake your sense of who you are. When someone who has always thought of themselves as strong and capable receives a diagnosis that raises questions about future capacity, the identity threat is real even if nothing has changed yet in their daily function.</p>
 
@@ -612,6 +754,19 @@
     <p>Integration tends to move through several recognizable phases, though not always in a clean linear sequence. The first phase is often dominated by disruption and acute processing, the period in which the diagnosis is genuinely all-consuming and the old sense of self feels unstable. The second phase typically involves a gradual re-engagement with the world, a tentative reaching back toward activities, relationships, and sources of meaning that existed before the diagnosis. The third phase, which is the work of genuine integration, involves a deliberate and often difficult process of re-authoring your self-narrative in a way that includes the diagnosis honestly while also reclaiming the breadth of who you are.</p>
 
     <p>This module is designed primarily to support that third phase, though the concepts and exercises here are useful at any point in the process.</p>
+
+    <div class="sensory-loop">
+      <span class="section-label">Sensory Anchoring Loop</span>
+      <h3>Ground identity integration through body-based cues</h3>
+      <p>Use this loop when your sense of self feels shaky and your diagnosis is at the center of your experience.</p>
+      <ol>
+        <li>Notice: identify a physical cue such as breath, tension, or temperature.</li>
+        <li>Name: label the sensation without judging it.</li>
+        <li>Anchor: choose one grounding action — a slow breath, a gentle stretch, or a sensory reminder of continuity.</li>
+        <li>Reflect: ask, “What does this body signal tell me about the story I am telling myself?”</li>
+      </ol>
+      <p class="citation-note">Source: embodied anchoring methods from trauma-informed adjustment practice.</p>
+    </div>
   </section>
 
   <section class="module-section" id="part-five">
@@ -619,6 +774,19 @@
     <h2>Practical Dimensions of Identity Work After Diagnosis</h2>
 
     <p>Understanding the theory of identity disruption is necessary but not sufficient. What does actual identity work look like on an ordinary Tuesday afternoon when you are trying to figure out who you are now? Here are the practical dimensions that matter most.</p>
+
+    <div class="sensory-loop">
+      <span class="section-label">Sensory Anchoring Loop</span>
+      <h3>Bring your practical work back to the body</h3>
+      <p>This loop helps you move from abstract identity thinking into immediate sensory data.</p>
+      <ol>
+        <li>Scan: notice where disruption shows up physically — throat, chest, abdomen, limbs.</li>
+        <li>Anchor: choose a small grounding signal like a steady breath or a comforting sensation.</li>
+        <li>Link: connect that anchor to a value or continuity statement about who you are.</li>
+        <li>Act: choose one small behavior that shifts the loop from threat to choice.</li>
+      </ol>
+      <p class="citation-note">Source: somatic grounding and values-based identity work.</p>
+    </div>
 
     <p><strong>Re-engaging with activities that carry pre-diagnosis self.</strong> One of the most concrete things you can do in the work of identity integration is to deliberately re-engage with activities, practices, and experiences that were meaningful to you before the diagnosis. This is not always easy, particularly if the diagnosis has affected your physical capacity or your energy levels. But re-engagement, even in modified form, sends a signal to your nervous system and your sense of self that you are still the person who values and participates in these things. It is not about pretending nothing has changed. It is about refusing to abandon your entire previous self.</p>
 
@@ -703,6 +871,19 @@
     </div>
 
     <div class="exercises-wrapper">
+
+      <div class="workbook-notes-grid">
+        <div class="note-panel">
+          <h2>Mind State Notes</h2>
+          <p>Use this space to describe your current mental landscape. Include dominant thoughts, worries, questions, and the tone of your inner narrative. Notice whether it feels fixed, uncertain, compassionate, or critical.</p>
+          <textarea placeholder="Example: I feel pulled between wanting to hold onto the past and wanting to move forward. I am tired of explaining myself, and I am also curious about what comes next."></textarea>
+        </div>
+        <div class="note-panel">
+          <h2>Somatic Body Responses</h2>
+          <p>Track what your body is doing as you read and reflect. Where do you feel tension, openness, heaviness, heat, or calm? How does your breath behave? What small physical signal is connected to the story in your mind?</p>
+          <textarea placeholder="Example: My shoulders are tight, my jaw is clenched, and my breath feels shallow when I think about the future. When I remember continuity, my heart softens slightly."></textarea>
+        </div>
+      </div>
 
       <div class="exercise-block">
         <span class="exercise-number">Exercise One</span>

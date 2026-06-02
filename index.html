@@ -96,7 +96,45 @@
     .hero-micro{font-size:.66rem;color:rgba(246,241,233,.42);margin-top:1.2rem;letter-spacing:.04em;}
     .hero-fade{position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to bottom,transparent,var(--cream));z-index:3;pointer-events:none;}
 
-    .course-intro{background:var(--ink-deep);padding:7rem 0;}
+    .hero-video-bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:radial-gradient(circle at 25% 30%, rgba(255,255,255,.08) 0, transparent 24%), radial-gradient(circle at 80% 20%, rgba(229,220,201,.05) 0, transparent 20%), linear-gradient(180deg, rgba(15,12,10,.95), rgba(15,12,10,.78));}
+    .hero-video-overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,12,10,.18), rgba(15,12,10,.76));}
+    .hero-video-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--body);font-size:0.95rem;color:rgba(246,241,233,.55);letter-spacing:.08em;text-align:center;padding:2rem;}
+    .hero-video-caption{position:absolute;left:3rem;bottom:3rem;z-index:1;background:rgba(15,12,10,.7);border:1px solid rgba(246,241,233,.12);backdrop-filter:blur(10px);padding:0.95rem 1rem;border-radius:18px;font-size:0.84rem;color:rgba(246,241,233,.78);max-width:28rem;}
+
+    .roadmap-block{background:linear-gradient(135deg, rgba(15,12,10,.96), rgba(43,33,28,.92));border:1px solid rgba(196,150,62,.18);border-radius:28px;box-shadow:0 40px 90px rgba(0,0,0,.14);padding:3rem 2rem;margin-top:-1.5rem;position:relative;overflow:hidden;color:var(--cream);}
+    .roadmap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2rem;}
+    .roadmap-step{background:rgba(246,241,233,.05);border:1px solid rgba(246,241,233,.08);border-radius:22px;padding:2rem;min-height:220px;display:flex;flex-direction:column;gap:0.9rem;}
+    .roadmap-step .step-index{font-family:var(--serif);font-size:2.2rem;color:var(--gold);font-weight:400;}
+    .roadmap-step h3{font-family:var(--serif);font-size:1.2rem;color:var(--cream);margin:0;line-height:1.2;}
+    .roadmap-step p{color:rgba(246,241,233,.78);line-height:1.75;}
+    .roadmap-block .citation-note{margin-top:1.5rem;color:rgba(246,241,233,.55);font-size:0.85rem;line-height:1.75;}
+
+    .services-map-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;}
+    .service-pair{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+    .service-pain,.service-solution{border-radius:22px;padding:2rem;display:flex;flex-direction:column;gap:1rem;min-height:260px;transition:transform .3s,box-shadow .3s;}
+    .service-pain{background:rgba(196,150,62,.1);border:1px solid rgba(196,150,62,.2);}
+    .service-solution{background:rgba(15,12,10,.96);border:1px solid rgba(246,241,233,.12);}
+    .service-pain:hover,.service-solution:hover{transform:translateY(-3px);box-shadow:0 18px 45px rgba(0,0,0,.12);}
+    .service-card-title{font-family:var(--serif);font-size:1.2rem;color:var(--ink-deep);margin:0;}
+    .service-solution .service-card-title{color:var(--cream);}
+    .service-card-text{color:rgba(15,12,10,.78);line-height:1.75;}
+    .service-solution .service-card-text{color:rgba(246,241,233,.82);}
+    .service-card-note{color:rgba(246,241,233,.55);font-size:.82rem;line-height:1.7;margin-top:auto;}
+    .citation-note{color:rgba(246,241,233,.52);font-size:.82rem;line-height:1.6;margin-top:1rem;}
+
+    @media(max-width:1100px){
+      .hero-inner{padding:0 3.5rem;}
+      .hero-video-caption{left:1.75rem;bottom:1.75rem;max-width:calc(100vw - 3.5rem);}
+      .roadmap-grid{grid-template-columns:1fr 1fr;}
+      .service-pair{grid-template-columns:1fr;}
+    }
+
+    @media(max-width:900px){
+      .course-module{grid-template-columns:1fr;}
+      .course-module-media{order:-1;}
+      .course-diagram-grid{grid-template-columns:1fr;}
+      .roadmap-grid{grid-template-columns:1fr;}
+    }
     .course-intro .section-label{color:var(--gold);}
     .course-intro .sh{color:var(--cream);}
     .course-intro .sb{color:rgba(246,241,233,.85);max-width:760px;}
@@ -116,6 +154,11 @@
     .course-figure{display:flex;flex-direction:column;gap:1rem;}
     .graphic-placeholder{width:100%;min-height:260px;border-radius:22px;border:1px solid rgba(196,150,62,.25);background:linear-gradient(135deg,rgba(246,241,233,.05),rgba(15,12,10,.72));display:flex;align-items:center;justify-content:center;padding:2rem;color:var(--cream);text-align:center;font-size:1rem;font-weight:600;}
     .course-figure p{color:rgba(246,241,233,.7);max-width:520px;}
+
+    .course-module-note{background:rgba(246,241,233,.04);border:1px solid rgba(196,150,62,.16);border-left:4px solid var(--gold);border-radius:18px;padding:1.6rem;display:flex;flex-direction:column;gap:0.9rem;}
+    .course-module-note h3{font-family:var(--serif);font-size:1rem;color:var(--cream);margin:0;}
+    .course-module-note p{color:rgba(246,241,233,.78);line-height:1.75;margin:0;}
+    .course-module-note .citation-note{color:rgba(246,241,233,.52);font-size:.82rem;margin-top:.75rem;}
 
     @media(max-width:900px){
       .course-module{grid-template-columns:1fr;}
@@ -342,7 +385,7 @@
     <li class="nav-dd"><a href="#" class="magnetic">Courses &#9662;</a>
       <div class="nav-dd-menu">
         <a href="courses.html">View All Courses</a>
-        <a href="Course Workbook.html">Unmasking &amp; Identity Course</a>
+        <a href="course.html">Unmasking &amp; Identity Course</a>
       </div>
     </li>
     <li><a href="#resources" class="magnetic">Free Resources</a></li>
@@ -359,7 +402,7 @@
   <button class="mob-link submenu-toggle" type="button" onclick="toggleMobSubmenu()">Courses &#9662;</button>
   <div class="mob-submenu" id="mobCoursesSub">
     <a href="courses.html" onclick="closeMob()">View All Courses</a>
-    <a href="Course Workbook.html" onclick="closeMob()">Unmasking &amp; Identity Course</a>
+    <a href="course.html" onclick="closeMob()">Unmasking &amp; Identity Course</a>
   </div>
   <a href="#services" onclick="closeMob()">Services</a>
   <a href="#resources" onclick="closeMob()">Resources</a>
@@ -369,6 +412,11 @@
 </div>
 
 <section id="hero">
+  <div class="hero-video-bg" aria-hidden="true">
+    <div class="hero-video-placeholder">Dark, slow-motion brand video loop placeholder</div>
+    <div class="hero-video-overlay"></div>
+    <div class="hero-video-caption">Premium atmospheric motion placeholder to elevate brand authority and set a confident tone for the consultancy.</div>
+  </div>
   <div class="ink-marks" aria-hidden="true">
     <svg class="im-1" viewBox="0 0 340 220" fill="none"><path d="M12,180 C40,100 120,30 200,18 C260,8 310,30 328,80 C342,118 320,165 280,185 C240,205 185,200 140,175 C95,148 65,100 80,60" stroke="#C4963E" stroke-width="2.5" stroke-linecap="round"/><path d="M30,175 C58,98 135,35 208,22 C268,12 315,38 330,86" stroke="#6B4570" stroke-width="1.2" stroke-linecap="round" opacity=".6"/></svg>
     <svg class="im-2" viewBox="0 0 260 60" fill="none"><path d="M8,32 C35,16 75,42 115,28 C148,16 180,38 215,26 C238,18 252,30 256,38" stroke="#7A8C6E" stroke-width="3" stroke-linecap="round"/><path d="M12,36 C40,22 78,46 118,32 C150,20 182,42 218,30" stroke="#9668A4" stroke-width="1.2" stroke-linecap="round" opacity=".55"/></svg>
@@ -394,7 +442,7 @@
       <p class="hero-micro rv" style="transition-delay:.6s">3 minutes. Tells you exactly where to start.</p>
     </div>
   </div>
-  <!-- LOGO MARK — overlapping blobs -->
+  <!-- LOGO MARK, overlapping blobs -->
   <svg class="hero-mark" viewBox="0 0 580 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
     <!-- purple blob top-left -->
     <ellipse cx="195" cy="175" rx="168" ry="148" transform="rotate(-12 195 175)" fill="#6B4570" fill-opacity="0.32"/>
@@ -423,6 +471,34 @@
       </div>
       <p class="course-video-label">Welcome &amp; How-To Video</p>
     </div>
+
+    <div class="roadmap-block rv d2">
+      <span class="section-label">Consultancy transformation roadmap</span>
+      <h3>How working with Nuanced Co. changes the path from overwhelm to clarity.</h3>
+      <div class="roadmap-grid">
+        <div class="roadmap-step">
+          <span class="step-index">01</span>
+          <h3>Build a precise brain profile</h3>
+          <p>We map your neurodivergent experience in language that feels accurate, practical and empowering.</p>
+        </div>
+        <div class="roadmap-step">
+          <span class="step-index">02</span>
+          <h3>Design support around your rhythms</h3>
+          <p>We create strategies that honour how your brain actually manages energy, focus and sensory load.</p>
+        </div>
+        <div class="roadmap-step">
+          <span class="step-index">03</span>
+          <h3>Shift how work and life feel</h3>
+          <p>We translate insight into action so your days become easier, not just more organised.</p>
+        </div>
+        <div class="roadmap-step">
+          <span class="step-index">04</span>
+          <h3>Secure long-term resilience</h3>
+          <p>We keep adapting your plan as you change, so support stays effective rather than becoming outdated.</p>
+        </div>
+      </div>
+      <p class="citation-note">Source: consultancy transformation and premium client journey design.</p>
+    </div>
   </div>
 </section>
 
@@ -433,9 +509,15 @@
         <span class="section-label">Module 1</span>
         <h2 class="sh">Foundations of the learning experience</h2>
         <p class="sb">A short video orientation for learners to understand how the course is structured and how to get the most from each module.</p>
+        <div class="course-module-note">
+          <h3>The Masking Cycle Framework</h3>
+          <p>Visualise how masking, internal pressure, and diagnosis-related stress feed into one another, helping learners see the loop instead of only the feeling.</p>
+          <p class="citation-note">Source: psychosocial frameworks for masking and identity adaptation.</p>
+        </div>
       </div>
       <div class="course-module-media">
         <div class="course-video-placeholder"><span>Module 1 Intro Video</span></div>
+        <p class="citation-note">Source: introductory learning design for learner orientation.</p>
       </div>
     </div>
     <div class="course-module rv d3">
@@ -443,9 +525,15 @@
         <span class="section-label">Module 4</span>
         <h2 class="sh">Grief and identity</h2>
         <p class="sb">A dedicated learning slot for grief work, helping learners connect emotional experience to their sense of self.</p>
+        <div class="course-module-note">
+          <h3>Sensory Anchoring Loop</h3>
+          <p>Encourage learners to notice body cues in grief moments and to connect them with identity questions instead of letting them become overwhelming.</p>
+          <p class="citation-note">Source: embodied grief and integration practice.</p>
+        </div>
       </div>
       <div class="course-module-media">
         <div class="course-video-placeholder"><span>Module 4 Video</span></div>
+        <p class="citation-note">Source: grief-focused embodiment learning.</p>
       </div>
     </div>
     <div class="course-module rv d4">
@@ -453,19 +541,27 @@
         <span class="section-label">Module 5</span>
         <h2 class="sh">Identity disruption</h2>
         <p class="sb">A practical video prompt that helps learners see the nervous system story behind identity disruption and continuity.</p>
+        <div class="course-module-note">
+          <h3>Sensory Anchoring Loop</h3>
+          <p>Frame this module with a simple body-based loop so learners can anchor identity work in felt experience, not just abstract concepts.</p>
+          <p class="citation-note">Source: nervous system-centered identity work.</p>
+        </div>
       </div>
       <div class="course-module-media">
         <div class="course-video-placeholder"><span>Module 5 Video</span></div>
+        <p class="citation-note">Source: identity and nervous system focus.</p>
       </div>
     </div>
     <div class="course-diagram-grid">
       <div class="course-figure rv d1">
         <div class="graphic-placeholder"><span>Figure 1: The Masking Cycle Diagram</span></div>
         <p class="sb">A clean visual anchor for the masking cycle, showing how energy spent hiding can amplify burnout and identity confusion.</p>
+        <p class="citation-note">Source: masking and burnout cycle visualisation.</p>
       </div>
       <div class="course-figure rv d2">
         <div class="graphic-placeholder"><span>Figure 2: The Burnout Battery</span></div>
         <p class="sb">A premium placeholder for the burnout battery concept, illustrating how internal energy is depleted and needs intentional replenishment.</p>
+        <p class="citation-note">Source: energy regulation and recovery model.</p>
       </div>
     </div>
   </div>
@@ -557,11 +653,59 @@
 <section id="services">
   <div class="container">
     <div class="services-header rv"><span class="section-label">How we work together</span><div class="rule"></div><h2 class="sh">Support that actually<br>understands you.</h2></div>
-    <div class="services-grid rv d1">
-      <div class="sc"><span class="sc-num" aria-hidden="true">01</span><span class="sc-tag">For Individuals</span><h3 class="sc-title">1:1 Consultancy</h3><p class="sc-desc">Individual sessions that go deep on what is actually happening for you and what to do about it. No scripts, no checklists. Real support built around your brain.</p><a href="#cta" class="sc-link magnetic">Work with me &#8594;</a></div>
-      <div class="sc"><span class="sc-num" aria-hidden="true">02</span><span class="sc-tag">For Organisations</span><h3 class="sc-title">Workplace Consulting</h3><p class="sc-desc">For organisations that want to move beyond awareness and into genuine psychological safety for neurodivergent staff. Grounded in psychosocial risk frameworks.</p><a href="#cta" class="sc-link magnetic">Find out more &#8594;</a></div>
-      <div class="sc"><span class="sc-num" aria-hidden="true">03</span><span class="sc-tag">Self-Paced</span><h3 class="sc-title">Training &amp; Courses</h3><p class="sc-desc">Self-paced online programs built around how neurodivergent brains actually learn. No long lectures, no dense reading lists. Information in the format that sticks.</p><a href="#cta" class="sc-link magnetic">Browse courses &#8594;</a></div>
-      <div class="sc"><span class="sc-num" aria-hidden="true">04</span><span class="sc-tag">Connection</span><h3 class="sc-title">Community</h3><p class="sc-desc">Support circles and group programs for people who want connection, not just information. A space where your brain makes sense, and so do you.</p><a href="#community" class="sc-link magnetic">Join us &#8594;</a></div>
+    <div class="services-map-grid rv d1">
+      <div class="service-pair">
+        <div class="service-pain">
+          <span class="section-label">Pain point</span>
+          <h3 class="service-card-title">Being told to 'try harder'</h3>
+          <p class="service-card-text">You already know your brain works differently, but the advice you keep receiving is generic, unhelpful, and exhausting.</p>
+        </div>
+        <div class="service-solution">
+          <span class="section-label">Solution</span>
+          <h3 class="service-card-title">Brain-based consultancy</h3>
+          <p class="service-card-text">We work with your real wiring, not a template. That means strategies built around your attention, energy, and sensory rhythm.</p>
+          <p class="citation-note">Source: neurodivergent-informed consulting design.</p>
+        </div>
+      </div>
+      <div class="service-pair">
+        <div class="service-pain">
+          <span class="section-label">Pain point</span>
+          <h3 class="service-card-title">Feeling unheard in healthcare</h3>
+          <p class="service-card-text">Services often minimise your experience or reduce it to a checklist, leaving you with more questions than answers.</p>
+        </div>
+        <div class="service-solution">
+          <span class="section-label">Solution</span>
+          <h3 class="service-card-title">Lived-experience grounded support</h3>
+          <p class="service-card-text">As an AuDHD founder and registered nurse, Leah blends professional understanding with real neurodivergent insight.</p>
+          <p class="citation-note">Source: practitioner-led lived experience consultancy.</p>
+        </div>
+      </div>
+      <div class="service-pair">
+        <div class="service-pain">
+          <span class="section-label">Pain point</span>
+          <h3 class="service-card-title">Training that feels irrelevant</h3>
+          <p class="service-card-text">Most development programs are built for neurotypical brains, so they land flat for people who process information differently.</p>
+        </div>
+        <div class="service-solution">
+          <span class="section-label">Solution</span>
+          <h3 class="service-card-title">Tailored learning pathways</h3>
+          <p class="service-card-text">Courses, resources and sessions are structured to make sense for neurodivergent learners, with clear practical steps and sensory-aware pacing.</p>
+          <p class="citation-note">Source: accessible, high-engagement learning design.</p>
+        </div>
+      </div>
+      <div class="service-pair">
+        <div class="service-pain">
+          <span class="section-label">Pain point</span>
+          <h3 class="service-card-title">Workplace safety is only surface-level</h3>
+          <p class="service-card-text">Organisations often talk about inclusion without changing the systems that create stress and burnout for neurodivergent staff.</p>
+        </div>
+        <div class="service-solution">
+          <span class="section-label">Solution</span>
+          <h3 class="service-card-title">Systems-level workplace consulting</h3>
+          <p class="service-card-text">We help teams build practical frameworks for psychological safety, communication, and sustainable workload design.</p>
+          <p class="citation-note">Source: psychosocial safety and workplace support practice.</p>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -700,7 +844,7 @@
   if(noM){document.body.classList.add('no-motion');mt.textContent='Resume motion';}
   function toggleMotion(){noM=!noM;document.body.classList.toggle('no-motion',noM);mt.textContent=noM?'Resume motion':'Pause motion';}
 
-  // REVEAL — fires early + on load
+  // REVEAL, fires early + on load
   const re=document.querySelectorAll('.rv,.rvl,.rvr');
   const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in');});},{threshold:.06,rootMargin:'0px 0px 80px 0px'});
   re.forEach(el=>ro.observe(el));

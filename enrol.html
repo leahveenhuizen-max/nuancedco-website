@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enrol, Late-Diagnosed Adult Integration Course | Nuanced Co.</title>
+<meta name="description" content="Enrol in the Nuanced Co. Late-Diagnosed Adult Integration Course. A four-week course for adults navigating a neurodivergent diagnosis.">
+<link rel="canonical" href="https://nuancedco.com.au/enrol">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#F6F1E9; --cream-dark:#EDE6D8; --card:#FBF9F6;
+  --ink:#2A1F1A; --ink-mid:#4A3830;
+  --purple:#6B4570; --sage:#7A8C6E; --gold:#C4963E; --white:#FFFFFF;
+  --serif:'Cormorant Garamond',Georgia,serif;
+  --body:'Atkinson Hyperlegible',system-ui,sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+  --border:rgba(107,69,112,.1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{font-size:17px;scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--ink);font-family:var(--body);line-height:1.72;}
+a{color:inherit;text-decoration:none;}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2.8rem;background:rgba(246,241,233,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(107,69,112,.09);}
+nav.scrolled{box-shadow:0 2px 20px rgba(42,31,26,.06);}
+.nav-logo{font-family:var(--serif);font-size:1.3rem;letter-spacing:.18em;color:var(--ink);}
+.nav-logo span{display:block;font-family:var(--body);font-size:.44rem;letter-spacing:.26em;text-transform:uppercase;color:var(--purple);margin-top:2px;}
+.nav-back{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mid);display:flex;align-items:center;gap:.5rem;transition:color .2s;}
+.nav-back:hover{color:var(--purple);}
+.nav-back::before{content:'←';}
+
+/* PAGE */
+.page{max-width:960px;margin:0 auto;padding:5rem 2rem 6rem;display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+@media(max-width:760px){.page{grid-template-columns:1fr;gap:3rem;padding:3.5rem 1.4rem 4rem;}}
+
+/* LEFT: COURSE SUMMARY */
+.course-summary{}
+.eyebrow{font-size:.6rem;letter-spacing:.32em;text-transform:uppercase;color:var(--purple);margin-bottom:1rem;display:block;}
+h1{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3rem);font-weight:300;line-height:1.14;color:var(--ink);margin-bottom:1.2rem;}
+h1 em{font-style:italic;color:var(--purple);}
+.summary-body{font-size:.88rem;color:var(--ink-mid);line-height:1.82;margin-bottom:2rem;}
+.course-details{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--border);}
+.cd-row{display:flex;align-items:baseline;gap:1rem;padding:.88rem 0;border-bottom:1px solid var(--border);}
+.cd-label{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--purple);min-width:90px;flex-shrink:0;}
+.cd-value{font-size:.84rem;color:var(--ink);}
+.weeks-mini{display:flex;flex-direction:column;gap:.5rem;margin-top:1.8rem;}
+.wm{display:flex;align-items:baseline;gap:.8rem;font-size:.78rem;color:var(--ink-mid);padding:.5rem 0;border-bottom:1px solid rgba(107,69,112,.07);}
+.wm:last-child{border-bottom:none;}
+.wm-n{font-family:var(--serif);font-size:.95rem;color:rgba(107,69,112,.4);min-width:1.4rem;}
+.wm-t{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-mid);}
+.trust-note{margin-top:2rem;font-size:.75rem;color:rgba(42,31,26,.42);line-height:1.72;}
+
+/* RIGHT: FORM */
+.enrol-form-wrap{background:var(--card);border:1px solid var(--border);border-radius:22px;padding:2.4rem;}
+.form-heading{font-family:var(--serif);font-size:1.55rem;font-weight:300;color:var(--ink);margin-bottom:.5rem;}
+.form-subhead{font-size:.82rem;color:var(--ink-mid);line-height:1.72;margin-bottom:2rem;}
+
+form{display:flex;flex-direction:column;gap:1.4rem;}
+.field{display:flex;flex-direction:column;gap:.4rem;}
+label{font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--purple);font-weight:700;}
+input[type=text],
+input[type=email],
+textarea{
+  width:100%;
+  padding:.82rem 1rem;
+  font-family:var(--body);font-size:.88rem;
+  color:var(--ink);background:var(--white);
+  border:1px solid rgba(107,69,112,.18);
+  border-radius:8px;
+  transition:border-color .2s,box-shadow .2s;
+  outline:none;
+  line-height:1.6;
+}
+input:focus,textarea:focus{
+  border-color:var(--purple);
+  box-shadow:0 0 0 3px rgba(107,69,112,.08);
+}
+textarea{resize:vertical;min-height:90px;}
+.field-note{font-size:.62rem;color:rgba(42,31,26,.4);margin-top:.15rem;}
+
+/* CHECKBOX */
+.checkbox-row{display:flex;align-items:flex-start;gap:.75rem;padding:1rem;background:rgba(107,69,112,.05);border:1px solid rgba(107,69,112,.12);border-radius:10px;}
+.checkbox-row input[type=checkbox]{
+  width:18px;height:18px;flex-shrink:0;margin-top:.15rem;
+  accent-color:var(--purple);cursor:pointer;
+}
+.checkbox-label{font-size:.8rem;color:var(--ink-mid);line-height:1.65;cursor:pointer;}
+
+/* SUBMIT */
+.submit-area{display:flex;flex-direction:column;gap:.75rem;}
+.btn-submit{
+  background:var(--purple);color:var(--white);
+  padding:1rem 2rem;
+  font-family:var(--body);font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  border:none;border-radius:4px;cursor:pointer;
+  transition:background .2s,transform .15s;
+  width:100%;
+}
+.btn-submit:hover{background:var(--ink);transform:translateY(-1px);}
+.submit-note{font-size:.66rem;color:rgba(42,31,26,.38);text-align:center;line-height:1.65;}
+
+/* FORM STATES */
+.form-success{display:none;text-align:center;padding:2rem 1rem;}
+.form-success.visible{display:block;}
+.success-icon{font-size:2rem;margin-bottom:1rem;}
+.success-h{font-family:var(--serif);font-size:1.5rem;font-weight:300;color:var(--ink);margin-bottom:.8rem;}
+.success-p{font-size:.84rem;color:var(--ink-mid);line-height:1.78;}
+
+/* FOOTER */
+footer{background:var(--ink);padding:2.4rem 2rem;}
+.foot-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.4rem;}
+.flogo{font-family:var(--serif);font-size:1rem;letter-spacing:.2em;color:#F6F1E9;}
+.flogo small{display:block;font-family:var(--body);font-size:.4rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(196,150,62,.65);margin-top:2px;}
+.flinks{display:flex;gap:1.4rem;flex-wrap:wrap;}
+.flinks a{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,233,.3);transition:color .2s;}
+.flinks a:hover{color:#F6F1E9;}
+.fcopy{max-width:960px;margin:1.4rem auto 0;padding-top:1rem;border-top:1px solid rgba(246,241,233,.05);font-size:.54rem;color:rgba(246,241,233,.18);}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">NUANCED CO.<span>Late-Diagnosed Adult Integration Course</span></a>
+  <a href="portal.html" class="nav-back">Back to Portal</a>
+</nav>
+
+<main class="page">
+
+  <!-- LEFT: COURSE OVERVIEW -->
+  <div class="course-summary">
+    <span class="eyebrow">Enrolment</span>
+    <h1>Late-Diagnosed Adult<br><em>Integration Course</em></h1>
+    <p class="summary-body">Four weeks. Built specifically for adults who received a neurodivergent diagnosis later in life and are still working out what to do with it. No checklists, no scripts. Real support built around how your brain works.</p>
+    <div class="course-details">
+      <div class="cd-row"><span class="cd-label">Format</span><span class="cd-value">Self-paced, four weeks</span></div>
+      <div class="cd-row"><span class="cd-label">Access</span><span class="cd-value">Lifetime, with video and written sessions</span></div>
+      <div class="cd-row"><span class="cd-label">Includes</span><span class="cd-value">Digital journal (PDF) + printed linen journal (Lulu)</span></div>
+      <div class="cd-row"><span class="cd-label">Designed for</span><span class="cd-value">ADHD, autism, AuDHD, late-diagnosed adults</span></div>
+    </div>
+    <div class="weeks-mini">
+      <div class="wm"><span class="wm-n">01</span><span class="wm-t">Unpacking and the Grief</span></div>
+      <div class="wm"><span class="wm-n">02</span><span class="wm-t">The Brain and the Cost of Masking</span></div>
+      <div class="wm"><span class="wm-n">03</span><span class="wm-t">Identity and the Support Map</span></div>
+      <div class="wm"><span class="wm-n">04</span><span class="wm-t">Integration and Sustainable Accommodation</span></div>
+    </div>
+    <p class="trust-note">Your information is never sold and never shared. This form is used only to confirm your enrolment and, if you opt in, to send relevant updates from Nuanced Co.</p>
+  </div>
+
+  <!-- RIGHT: FORM -->
+  <div class="enrol-form-wrap">
+    <h2 class="form-heading">Reserve your place</h2>
+    <p class="form-subhead">Fill in your details below. You will receive a confirmation with access instructions within one business day.</p>
+
+    <!--
+      BACKEND HOOK:
+      Set form action to your preferred endpoint, e.g.:
+        - Netlify Forms: action="/success" method="POST" data-netlify="true"
+        - Formspree: action="https://formspree.io/f/YOUR_ID" method="POST"
+        - Custom API: action="/api/enrol" method="POST"
+      Add a hidden CSRF or honeypot field as needed.
+    -->
+    <form id="enrolForm" action="#" method="POST" novalidate>
+
+      <!-- Honeypot (hide with CSS) -->
+      <div style="display:none;" aria-hidden="true">
+        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+      </div>
+
+      <div class="field">
+        <label for="fullName">Full Name</label>
+        <input type="text" id="fullName" name="fullName" placeholder="Your full name" required autocomplete="name">
+      </div>
+
+      <div class="field">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+      </div>
+
+      <div class="field">
+        <label for="accessibility">Accessibility or Accommodation Needs <span style="font-weight:400;opacity:.6;">(optional)</span></label>
+        <textarea id="accessibility" name="accessibility" placeholder="Let us know anything that would help us support you better. There are no wrong answers here."></textarea>
+        <span class="field-note">This is entirely optional. It helps us make sure the course works well for you.</span>
+      </div>
+
+      <div class="checkbox-row">
+        <input type="checkbox" id="newsletter" name="newsletter" value="yes">
+        <label class="checkbox-label" for="newsletter">Keep me updated with resources, insights, and community notes from Nuanced Co. You can unsubscribe at any time.</label>
+      </div>
+
+      <div class="submit-area">
+        <button type="submit" class="btn-submit">Complete Enrolment</button>
+        <p class="submit-note">By submitting this form you agree to our <a href="privacy.html" style="color:var(--purple);text-decoration:underline;">Privacy Policy</a>. No payment is collected here. You will be contacted to confirm your place and next steps.</p>
+      </div>
+
+    </form>
+
+    <!-- Success state (shown via JS on submit) -->
+    <div class="form-success" id="formSuccess">
+      <div class="success-icon">✓</div>
+      <h3 class="success-h">You're enrolled.</h3>
+      <p class="success-p">Your details have been received. Expect a confirmation email within one business day with your access link and a copy of your course schedule. Welcome.</p>
+    </div>
+
+  </div>
+
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <div class="flogo">NUANCED CO.<small>Late-Diagnosed Adult Integration Course</small></div>
+  </div>
+  <p class="fcopy">© 2026 Nuanced Co. ABN 71 926 185 491. This course is for educational purposes only and does not constitute clinical advice, diagnosis, or psychological treatment. If you need clinical support, please speak with a registered professional.</p>
+  <div style="max-width:960px;margin:2rem auto 0;background:var(--cream);border:1px solid rgba(196,150,62,.2);border-radius:16px;padding:2rem 2.4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.6rem;">
+    <div>
+      <p style="font-family:var(--serif);font-size:.55rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(196,150,62,.7);margin-bottom:.6rem;">THE PHYSICAL COMPANION</p>
+      <p style="font-size:.82rem;color:var(--ink-mid);line-height:1.78;max-width:520px;">Prefer working off-screen? Access to the digital fillable journal is included with your course. Use this space to order a beautifully bound, premium cloth linen physical copy printed and shipped directly to your door.</p>
+    </div>
+    <a href="#" style="flex-shrink:0;background:var(--ink);color:#F6F1E9;padding:.82rem 1.65rem;font-family:var(--body);font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border-radius:2px;white-space:nowrap;transition:opacity .2s;">Order Printed Edition</a>
+  </div>
+</footer>
+
+<script>
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
+
+document.getElementById('enrolForm').addEventListener('submit', function(e) {
+  // Client-side validation
+  const name = document.getElementById('fullName').value.trim();
+  const email = document.getElementById('email').value.trim();
+  if (!name || !email) {
+    e.preventDefault();
+    if (!name) document.getElementById('fullName').focus();
+    else document.getElementById('email').focus();
+    return;
+  }
+  // If using a real form backend (Netlify, Formspree, etc.),
+  // remove e.preventDefault() and let the form submit naturally.
+  // For client-only demo, show success state:
+  e.preventDefault();
+  document.getElementById('enrolForm').style.display = 'none';
+  document.getElementById('formSuccess').classList.add('visible');
+});
+</script>
+
+</body>
+</html>

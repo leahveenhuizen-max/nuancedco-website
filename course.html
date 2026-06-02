@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>4-Week Course, Understanding Who You Are | Nuanced Co.</title>
+<meta name="description" content="A premium four-week course for adults navigating a late-stage neurodivergent diagnosis. Grief, identity, support mapping, and sustainable accommodation.">
+<link rel="canonical" href="https://nuancedco.com.au/course">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root {
+  --cream: #F6F1E9; --cream-dark: #EDE6D8; --ink: #2A1F1A; --ink-mid: #4A3830;
+  --purple: #6B4570; --sage: #7A8C6E; --gold: #C4963E; --rose: #C07A8A; --lilac: #9668A4; --white: #FFFFFF;
+  --serif: 'Cormorant Garamond', Georgia, serif; --body: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1); --dur: 0.75s;
+  --sidebar-w: 272px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 18px; }
+body { background: var(--cream); color: var(--ink); font-family: var(--body); line-height: 1.7; overflow-x: hidden; }
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ── REVEAL ─────────────────────────────────────────────────── */
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; } .delay-3 { transition-delay: 0.3s; } .delay-4 { transition-delay: 0.4s; }
+
+/* ── GHOST SIDEBAR ──────────────────────────────────────────── */
+.sidebar-trigger {
+  position: fixed; top: 0; left: 0; width: 14px; height: 100vh; z-index: 700; cursor: pointer;
+}
+.sidebar-trigger::after {
+  content: ''; position: absolute; top: 50%; left: 7px; transform: translateY(-50%);
+  width: 2px; height: 48px; background: rgba(107,69,112,0.35); border-radius: 2px;
+  transition: opacity .3s;
+}
+.sidebar-trigger:hover::after,
+body.sidebar-open .sidebar-trigger::after { opacity: 0; }
+
+.ghost-sidebar {
+  position: fixed; top: 0; left: 0; width: var(--sidebar-w); height: 100vh;
+  background: var(--ink); /* #2A1F1A */
+  border-right: 1px solid rgba(196,150,62,.22);
+  z-index: 800; display: flex; flex-direction: column; padding: 0;
+  transform: translateX(calc(-1 * var(--sidebar-w)));
+  transition: transform .38s var(--ease), box-shadow .38s;
+  will-change: transform;
+}
+.sidebar-trigger:hover ~ .ghost-sidebar,
+body.sidebar-open .ghost-sidebar,
+.ghost-sidebar:hover {
+  transform: translateX(0);
+  box-shadow: 6px 0 48px rgba(0,0,0,.32);
+}
+.sidebar-veil {
+  position: fixed; inset: 0; z-index: 790; pointer-events: none;
+  background: transparent; transition: background .38s;
+}
+body.sidebar-open .sidebar-veil { background: rgba(42,31,26,.28); pointer-events: all; }
+
+.sidebar-head {
+  padding: 2rem 1.6rem 1.4rem;
+  border-bottom: 1px solid rgba(196,150,62,.16);
+}
+.sidebar-logo {
+  font-family: var(--serif); font-size: .9rem; letter-spacing: .2em;
+  text-transform: uppercase; color: var(--cream);
+}
+.sidebar-logo span {
+  display: block; font-family: var(--body); font-size: .48rem;
+  letter-spacing: .3em; text-transform: uppercase; color: var(--gold); opacity: .75; margin-top: 3px;
+}
+.sidebar-nav { flex: 1; display: flex; flex-direction: column; padding: 1rem .8rem; gap: .1rem; overflow-y: auto; }
+.sidebar-section { font-size: .5rem; letter-spacing: .28em; text-transform: uppercase; color: rgba(196,150,62,.5); padding: .9rem 1rem .3rem; }
+.sidebar-item {
+  display: flex; align-items: center; gap: .8rem;
+  padding: .78rem 1rem; border-radius: 6px;
+  font-size: .72rem; letter-spacing: .1em; text-transform: uppercase;
+  color: rgba(246,241,233,.5); transition: background .2s, color .2s;
+}
+.sidebar-item:hover, .sidebar-item.active { background: rgba(107,69,112,.18); color: var(--cream); }
+.sidebar-item.active { color: var(--gold); }
+.sidebar-foot {
+  padding: 1.2rem 1.6rem;
+  border-top: 1px solid rgba(196,150,62,.12);
+}
+.sidebar-user { display: flex; align-items: center; gap: .8rem; }
+.sidebar-avatar {
+  width: 32px; height: 32px; border-radius: 50%;
+  background: rgba(196,150,62,.18); border: 1px solid rgba(196,150,62,.3);
+  display: grid; place-items: center;
+  font-family: var(--serif); font-size: .9rem; color: var(--gold);
+}
+.sidebar-name { font-size: .74rem; color: rgba(246,241,233,.65); line-height: 1.3; }
+.sidebar-role { font-size: .55rem; letter-spacing: .12em; text-transform: uppercase; color: rgba(196,150,62,.6); }
+
+.sidebar-toggle {
+  position: fixed; top: 1.3rem; left: 1.3rem; z-index: 820;
+  width: 36px; height: 36px; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 5px;
+  cursor: pointer; background: rgba(246,241,233,.92); border: 1px solid rgba(107,69,112,.2);
+  border-radius: 6px; backdrop-filter: blur(8px); transition: background .2s, border-color .2s;
+}
+.sidebar-toggle:hover { background: var(--white); border-color: rgba(107,69,112,.4); }
+.sidebar-toggle span { width: 15px; height: 1.5px; background: var(--ink); display: block; transition: transform .3s, opacity .3s; }
+body.sidebar-open .sidebar-toggle span:nth-child(1) { transform: translateY(6.5px) rotate(45deg); }
+body.sidebar-open .sidebar-toggle span:nth-child(2) { opacity: 0; }
+body.sidebar-open .sidebar-toggle span:nth-child(3) { transform: translateY(-6.5px) rotate(-45deg); }
+
+/* ── NAV ─────────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.2rem 3rem;
+  background: rgba(246,241,233,.88); backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(107,69,112,.08);
+  transition: padding .3s var(--ease), box-shadow .3s;
+}
+nav.scrolled { padding: .8rem 3rem; box-shadow: 0 2px 24px rgba(42,31,26,.07); }
+.nav-logo { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; letter-spacing: .18em; color: var(--ink); }
+.nav-logo span { display: block; font-size: .48rem; font-family: var(--body); letter-spacing: .25em; text-transform: uppercase; color: var(--purple); margin-top: 1px; }
+.nav-links { display: flex; gap: 2rem; list-style: none; font-size: .78rem; letter-spacing: .12em; text-transform: uppercase; }
+.nav-links a { color: var(--ink-mid); transition: color .2s; }
+.nav-links a:hover, .nav-links a.active { color: var(--purple); }
+.nav-cta { background: var(--purple); color: var(--white) !important; padding: .55rem 1.4rem; border-radius: 2px; font-size: .76rem; letter-spacing: .12em; text-transform: uppercase; transition: background .2s, transform .2s; }
+.nav-cta:hover { background: var(--ink); transform: translateY(-1px); }
+.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
+.nav-hamburger span { display: block; width: 24px; height: 1.5px; background: var(--ink); transition: .3s; }
+.nav-mobile { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--cream); z-index: 99; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; transform: translateX(100%); transition: transform .4s var(--ease); }
+.nav-mobile.open { transform: translateX(0); }
+.nav-mobile a { font-family: var(--serif); font-size: 2rem; font-weight: 300; color: var(--ink); letter-spacing: .05em; }
+.nav-mobile-close { position: absolute; top: 1.5rem; right: 1.5rem; cursor: pointer; font-size: 1.5rem; color: var(--ink-mid); padding: 8px; }
+@media(max-width:860px) { .nav-links { display: none; } .nav-hamburger { display: flex; } nav { padding: 1.2rem 1.5rem; } }
+
+/* ── LAYOUT ──────────────────────────────────────────────────── */
+.container { max-width: 1060px; margin: 0 auto; }
+section { padding: 6rem 2rem; }
+.section-label { font-size: .72rem; letter-spacing: .3em; text-transform: uppercase; color: var(--purple); margin-bottom: 1.2rem; display: block; }
+.section-heading { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; line-height: 1.22; margin-bottom: 1.5rem; }
+.section-body { font-size: 1rem; line-height: 1.85; color: var(--ink-mid); }
+.rule { width: 48px; height: 1px; background: var(--purple); opacity: .4; margin: 0 0 2rem; }
+.btn-primary { background: var(--purple); color: var(--white); padding: .95rem 2.2rem; font-family: var(--body); font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; border: none; border-radius: 2px; cursor: pointer; transition: background .2s, transform .2s; display: inline-block; }
+.btn-primary:hover { background: var(--ink); transform: translateY(-2px); }
+.btn-outline { background: transparent; color: var(--purple); padding: .95rem 2.2rem; font-family: var(--body); font-size: .82rem; letter-spacing: .1em; text-transform: uppercase; border: 1px solid var(--purple); border-radius: 2px; cursor: pointer; transition: background .2s, color .2s; display: inline-block; }
+.btn-outline:hover { background: var(--purple); color: var(--white); }
+
+/* ── HERO ─────────────────────────────────────────────────────── */
+#hero {
+  padding: 10rem 2rem 5.5rem;
+  background: var(--cream);
+  position: relative; overflow: hidden;
+}
+.hero-blob { position: absolute; border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%; filter: blur(60px); pointer-events: none; }
+.hb-1 { width: 520px; height: 420px; top: -120px; right: -80px; background: var(--purple); opacity: .12; }
+.hb-2 { width: 360px; height: 300px; bottom: -60px; left: -60px; background: var(--sage); opacity: .1; }
+.hero-inner { max-width: 800px; position: relative; z-index: 2; }
+.hero-eyebrow { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.2rem; }
+.hero-eyebrow-line { width: 36px; height: 1px; background: var(--purple); opacity: .5; }
+.hero-eyebrow-text { font-size: .66rem; letter-spacing: .32em; text-transform: uppercase; color: var(--purple); }
+.hero-headline { font-family: var(--serif); font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 300; line-height: 1.1; color: var(--ink); margin-bottom: 1.8rem; }
+.hero-headline em { font-style: italic; color: var(--purple); }
+.hero-sub { font-size: 1.05rem; color: var(--ink-mid); line-height: 1.78; max-width: 580px; margin-bottom: 2.4rem; }
+.hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-bottom: 3rem; }
+.hero-meta { display: flex; flex-wrap: wrap; gap: 2rem; }
+.hero-meta-item { font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(42,31,26,.45); display: flex; align-items: center; gap: .55rem; }
+.hero-meta-item::before { content: ''; width: 16px; height: 1px; background: var(--purple); opacity: .45; }
+
+/* ── PROGRAM OVERVIEW ────────────────────────────────────────── */
+#overview { background: var(--cream-dark); }
+.overview-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 5rem; align-items: start; }
+.overview-weeks { display: flex; flex-direction: column; gap: .5rem; margin-top: 1.5rem; }
+.week-tab { display: flex; align-items: baseline; gap: 1rem; padding: .9rem 1rem; border-radius: 6px; cursor: pointer; transition: background .2s; border: 1px solid transparent; }
+.week-tab:hover { background: rgba(107,69,112,.08); }
+.week-tab-num { font-family: var(--serif); font-size: 1.2rem; color: rgba(107,69,112,.4); min-width: 2rem; }
+.week-tab-title { font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-mid); }
+.overview-statement { font-family: var(--serif); font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 300; line-height: 1.4; color: var(--ink); margin-top: 1.5rem; }
+.overview-statement em { font-style: italic; color: var(--purple); }
+@media(max-width:780px) { .overview-grid { grid-template-columns: 1fr; gap: 3rem; } }
+
+/* ── WEEK CARDS ──────────────────────────────────────────────── */
+#program { background: var(--cream); }
+.program-intro { max-width: 640px; margin-bottom: 4.5rem; }
+.weeks-stack { display: flex; flex-direction: column; gap: 3rem; }
+
+.week-card {
+  background: var(--white);
+  border-radius: 24px;
+  box-shadow: 0 8px 48px rgba(42,31,26,.06), 0 1px 3px rgba(42,31,26,.05);
+  overflow: hidden;
+  border: 1px solid rgba(42,31,26,.07);
+  transition: box-shadow .3s;
+}
+.week-card:hover { box-shadow: 0 16px 64px rgba(42,31,26,.1), 0 2px 6px rgba(42,31,26,.06); }
+
+.week-card-header {
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 2rem;
+  padding: 2.4rem 2.4rem 2rem;
+  border-bottom: 1px solid rgba(42,31,26,.07);
+  background: var(--cream);
+}
+.week-card-meta { flex: 1; }
+.week-badge {
+  display: inline-flex; align-items: center; gap: .6rem;
+  background: var(--purple); color: var(--white);
+  font-size: .55rem; letter-spacing: .28em; text-transform: uppercase;
+  padding: .38rem .9rem; border-radius: 30px; margin-bottom: 1rem;
+}
+.week-number { font-family: var(--serif); font-size: .95rem; }
+.week-title { font-family: var(--serif); font-size: clamp(1.3rem, 2.5vw, 1.9rem); font-weight: 300; line-height: 1.2; color: var(--ink); margin-bottom: .8rem; }
+.week-summary { font-size: .9rem; color: var(--ink-mid); line-height: 1.78; max-width: 600px; }
+.week-accent-bar { width: 4px; height: 100%; min-height: 90px; border-radius: 4px; flex-shrink: 0; }
+.wk1 .week-accent-bar { background: var(--purple); }
+.wk2 .week-accent-bar { background: var(--sage); }
+.wk3 .week-accent-bar { background: var(--rose); }
+.wk4 .week-accent-bar { background: var(--gold); }
+
+.week-card-body { padding: 2.2rem 2.4rem; display: grid; gap: 2rem; }
+
+/* Thought Corner */
+.thought-corner {
+  background: var(--cream-dark);
+  border: 1px solid rgba(107,69,112,.18);
+  border-radius: 18px;
+  overflow: hidden;
+}
+.thought-corner-label {
+  display: flex; align-items: center; gap: .7rem;
+  padding: .85rem 1.4rem;
+  background: transparent;
+  border-bottom: 1px solid rgba(107,69,112,.14);
+  font-size: .58rem; letter-spacing: .28em; text-transform: uppercase;
+  color: var(--purple); font-family: var(--body); font-weight: 700;
+}
+.thought-corner-label-icon { width: 16px; height: 16px; opacity: .7; }
+/* Video placeholder, light, no dark fills */
+.video-player-shell {
+  background: var(--cream);
+  position: relative;
+  aspect-ratio: 16/9;
+  display: flex; align-items: center; justify-content: center; flex-direction: column;
+  gap: .8rem; overflow: hidden;
+  border-top: 1px solid rgba(107,69,112,.1);
+  border-bottom: 1px solid rgba(107,69,112,.1);
+}
+.video-player-bg { display: none; }
+.video-placeholder-text {
+  font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
+  color: rgba(42,31,26,.35); text-align: center;
+}
+.video-play-btn {
+  width: 56px; height: 56px; border-radius: 50%;
+  background: var(--white);
+  border: 1.5px solid rgba(107,69,112,.3);
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer; transition: background .2s, border-color .2s, box-shadow .2s;
+  box-shadow: 0 4px 16px rgba(107,69,112,.12);
+}
+.video-play-btn:hover { background: var(--purple); border-color: var(--purple); box-shadow: 0 6px 24px rgba(107,69,112,.25); }
+.video-play-btn:hover svg path { fill: var(--white); }
+.video-play-btn svg { margin-left: 3px; }
+.video-controls-bar {
+  width: 100%;
+  display: flex; align-items: center; gap: 1rem;
+  padding: .75rem 1.2rem;
+  background: var(--white);
+  border-top: 1px solid rgba(42,31,26,.08);
+}
+.vc-progress { flex: 1; height: 2px; background: rgba(42,31,26,.12); border-radius: 3px; cursor: pointer; }
+.vc-progress-fill { width: 0%; height: 100%; background: var(--purple); border-radius: 3px; }
+.vc-time { font-size: .6rem; letter-spacing: .08em; color: rgba(42,31,26,.4); white-space: nowrap; font-family: var(--body); }
+.vc-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(42,31,26,.18); margin-left: auto; cursor: pointer; }
+.vc-dot:hover { background: var(--purple); }
+.thought-corner-footer {
+  padding: .8rem 1.4rem;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .5rem;
+  background: transparent;
+}
+.tc-status { font-size: .64rem; color: rgba(42,31,26,.4); letter-spacing: .06em; }
+.tc-expand { font-size: .62rem; letter-spacing: .1em; text-transform: uppercase; color: var(--purple); cursor: pointer; }
+.tc-expand:hover { opacity: .7; }
+
+/* Session notes accordion */
+.session-notes { border: 1px solid rgba(107,69,112,.1); border-radius: 16px; overflow: hidden; background: #FBF9F6; margin-bottom: .2rem; }
+.sn-tab { display: flex; align-items: center; justify-content: space-between; padding: 1rem 1.4rem; cursor: pointer; user-select: none; gap: 1rem; transition: background .18s; }
+.sn-tab:hover { background: rgba(107,69,112,.05); }
+.sn-tab-label { font-size: .6rem; letter-spacing: .22em; text-transform: uppercase; color: var(--purple); font-weight: 700; }
+.sn-tab-arrow { font-size: .7rem; color: var(--purple); transition: transform .25s; flex-shrink: 0; }
+.sn-tab[aria-expanded="true"] .sn-tab-arrow { transform: rotate(180deg); }
+.sn-body { max-height: 0; overflow: hidden; transition: max-height .32s ease, padding .22s; padding: 0 1.4rem; }
+.sn-body.open { max-height: 1200px; padding: .2rem 1.4rem 1.4rem; }
+.sn-section { margin-bottom: 1.2rem; }
+.sn-section:last-child { margin-bottom: 0; }
+.sn-section h4 { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--ink); margin-bottom: .5rem; }
+.sn-section p, .sn-section li { font-size: .82rem; color: var(--ink-mid); line-height: 1.78; }
+.sn-section ul { padding-left: 1.2rem; display: grid; gap: .3rem; }
+.sn-divider { height: 1px; background: rgba(107,69,112,.08); margin: 1rem 0; }
+.dopamine-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .65rem; margin-top: .7rem; }
+.dopamine-item { background: var(--cream); border: 1px solid rgba(107,69,112,.12); border-radius: 10px; padding: .85rem 1rem; font-size: .78rem; color: var(--ink); font-family: var(--serif); line-height: 1.3; }
+.dopamine-item small { display: block; font-family: var(--body); font-size: .58rem; color: rgba(42,31,26,.45); letter-spacing: .06em; margin-top: .25rem; }
+@media(max-width:560px) { .dopamine-grid { grid-template-columns: 1fr; } }
+
+/* Journal links */
+.journal-links {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+}
+.journal-link-card {
+  display: flex; align-items: flex-start; gap: 1rem;
+  padding: 1.3rem 1.4rem;
+  border-radius: 14px;
+  border: 1px solid rgba(42,31,26,.1);
+  background: var(--cream);
+  transition: border-color .2s, box-shadow .2s, transform .2s;
+  cursor: pointer;
+}
+.journal-link-card:hover {
+  border-color: rgba(107,69,112,.3);
+  box-shadow: 0 6px 24px rgba(107,69,112,.1);
+  transform: translateY(-2px);
+}
+.jl-icon {
+  width: 38px; height: 38px; border-radius: 10px; flex-shrink: 0;
+  display: grid; place-items: center;
+}
+.jl-icon-digital { background: rgba(107,69,112,.1); }
+.jl-icon-print { background: rgba(122,140,110,.12); }
+.jl-label { font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--purple); margin-bottom: .3rem; }
+.jl-title { font-size: .84rem; color: var(--ink); line-height: 1.35; font-family: var(--serif); }
+.jl-sub { font-size: .66rem; color: rgba(42,31,26,.45); margin-top: .3rem; letter-spacing: .04em; }
+@media(max-width:600px) {
+  .journal-links { grid-template-columns: 1fr; }
+  .week-card-header { flex-direction: column; }
+  .week-accent-bar { width: 100%; height: 4px; min-height: 0; }
+  .week-card-header, .week-card-body { padding: 1.6rem; }
+}
+
+/* ── WHO ─────────────────────────────────────────────────────── */
+#who { background: var(--cream-dark); }
+.who-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; margin-top: 3rem; }
+.who-list { display: flex; flex-direction: column; gap: 0; }
+.who-item { display: flex; gap: 1rem; padding: 1.1rem 0; border-bottom: 1px solid rgba(42,31,26,.09); font-size: .9rem; color: var(--ink-mid); line-height: 1.6; }
+.who-item:first-child { border-top: 1px solid rgba(42,31,26,.09); }
+.who-item::before { content: ', '; color: var(--purple); flex-shrink: 0; margin-top: .05rem; }
+.who-aside { background: var(--white); border: 1px solid rgba(42,31,26,.08); border-radius: 20px; padding: 2.4rem; }
+.who-aside-label { font-size: .6rem; letter-spacing: .28em; text-transform: uppercase; color: var(--purple); margin-bottom: 1rem; }
+.who-aside-quote { font-family: var(--serif); font-size: 1.5rem; font-weight: 300; font-style: italic; color: var(--ink); line-height: 1.45; }
+.who-aside-attr { font-size: .74rem; color: rgba(42,31,26,.4); margin-top: 1.4rem; }
+@media(max-width:780px) { .who-grid { grid-template-columns: 1fr; gap: 3rem; } }
+
+/* ── CTA ─────────────────────────────────────────────────────── */
+#cta { background: var(--purple); padding: 7rem 2rem; text-align: center; }
+#cta .section-label { color: rgba(246,241,233,.6); }
+#cta .section-heading { color: var(--white); }
+#cta .section-body { color: rgba(246,241,233,.72); max-width: 480px; margin: 0 auto 3rem; }
+#cta .btn-primary { background: var(--cream); color: var(--purple); }
+#cta .btn-primary:hover { background: var(--white); }
+#cta .btn-outline { color: rgba(246,241,233,.85); border-color: rgba(246,241,233,.4); }
+#cta .btn-outline:hover { background: rgba(246,241,233,.1); color: var(--white); }
+
+/* ── FOOTER ──────────────────────────────────────────────────── */
+footer { background: var(--ink); border-top: 1px solid rgba(246,241,233,.06); padding: 3.5rem 2rem 2rem; }
+.footer-inner { max-width: 1060px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem; }
+.footer-logo { font-family: var(--serif); font-size: 1.3rem; letter-spacing: .2em; color: var(--cream); }
+.footer-logo span { display: block; font-family: var(--body); font-size: .48rem; letter-spacing: .28em; text-transform: uppercase; color: rgba(196,150,62,.7); margin-top: 2px; }
+.footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
+.footer-links a { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(246,241,233,.4); transition: color .2s; }
+.footer-links a:hover { color: var(--cream); }
+.footer-copy { max-width: 1060px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(246,241,233,.05); font-size: .66rem; color: rgba(246,241,233,.25); }
+
+/* CONTACT MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(246,241,233,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1.5rem;}
+.modal-overlay.open{display:flex;}
+.modal-box{background:#FBF9F6;border:1px solid rgba(107,69,112,.13);border-radius:22px;width:100%;max-width:520px;padding:2.6rem;position:relative;box-shadow:0 20px 60px rgba(42,31,26,.1);}
+.modal-close{position:absolute;top:1.2rem;right:1.4rem;background:none;border:none;font-size:1.1rem;color:rgba(42,31,26,.4);cursor:pointer;line-height:1;padding:.3rem;transition:color .2s;}
+.modal-close:hover{color:var(--ink);}
+.modal-label{font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:var(--purple);margin-bottom:.7rem;display:block;}
+.modal-heading{font-family:var(--serif);font-size:1.75rem;font-weight:300;color:var(--ink);margin-bottom:.6rem;}
+.modal-note{font-size:.82rem;color:var(--ink-mid);line-height:1.72;margin-bottom:1.8rem;}
+.modal-form{display:flex;flex-direction:column;gap:1.1rem;}
+.modal-field{display:flex;flex-direction:column;gap:.35rem;}
+.modal-field label{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--purple);font-weight:700;}
+.modal-field input,.modal-field textarea{width:100%;padding:.75rem 1rem;font-family:var(--body);font-size:.86rem;color:var(--ink);background:#fff;border:1px solid rgba(107,69,112,.16);border-radius:8px;outline:none;transition:border-color .2s,box-shadow .2s;line-height:1.6;}
+.modal-field input:focus,.modal-field textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(107,69,112,.08);}
+.modal-field textarea{resize:vertical;min-height:110px;}
+.modal-submit{background:var(--purple);color:#fff;padding:.88rem 2rem;font-family:var(--body);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border:none;border-radius:4px;cursor:pointer;transition:background .2s,transform .15s;width:100%;margin-top:.3rem;}
+.modal-submit:hover{background:var(--ink);transform:translateY(-1px);}
+.modal-success{display:none;text-align:center;padding:1.5rem 0;}
+.modal-success.visible{display:block;}
+.modal-success-icon{font-size:1.8rem;margin-bottom:.8rem;}
+.modal-success-h{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--ink);margin-bottom:.6rem;}
+.modal-success-p{font-size:.82rem;color:var(--ink-mid);line-height:1.72;}
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR TOGGLE -->
+<div class="sidebar-toggle" id="sidebarToggle" onclick="toggleSidebar()">
+  <span></span><span></span><span></span>
+</div>
+
+<!-- LEFT-EDGE TRIGGER STRIP -->
+<div class="sidebar-trigger" onmouseenter="openSidebar()"></div>
+
+<!-- VEIL -->
+<div class="sidebar-veil" onclick="closeSidebar()"></div>
+
+<!-- GHOST SIDEBAR -->
+<aside class="ghost-sidebar" id="ghostSidebar" onmouseleave="closeSidebar()">
+  <div class="sidebar-head">
+    <div class="sidebar-logo">Nuanced Co.<span>Member Course</span></div>
+  </div>
+  <nav class="sidebar-nav">
+    <span class="sidebar-section">Course</span>
+    <a class="sidebar-item active" href="#program">Course Overview</a>
+    <a class="sidebar-item" href="#program">Week 01, Unpacking &amp; Grief</a>
+    <a class="sidebar-item" href="#program">Week 02, Brain &amp; Masking</a>
+    <a class="sidebar-item" href="#program">Week 03, Identity &amp; Support</a>
+    <a class="sidebar-item" href="#program">Week 04, Integration</a>
+    <span class="sidebar-section">Resources</span>
+    <a class="sidebar-item" href="#">Digital Journal</a>
+    <a class="sidebar-item" href="#">Linen Journal Shipment</a>
+    <a class="sidebar-item" href="portal.html">Member Portal</a>
+    <span class="sidebar-section">Site</span>
+    <a class="sidebar-item" href="about.html">About Leah</a>
+    <a class="sidebar-item" href="consult.html">1:1 Consult</a>
+    <a class="sidebar-item" href="book.html">Book a Call</a>
+    <a class="sidebar-item" href="index.html">← Back to Site</a>
+  </nav>
+  <div class="sidebar-foot">
+    <div class="sidebar-user">
+      <div class="sidebar-avatar">L</div>
+      <div>
+        <div class="sidebar-name">Nuanced Co.</div>
+        <div class="sidebar-role">Premium Member</div>
+      </div>
+    </div>
+  </div>
+</aside>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="index.html" class="nav-logo">NUANCED CO.<span>Late-Diagnosed Adult Integration Course</span></a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="consult.html">Consult</a></li>
+    <li><a href="workplace.html">Workplace</a></li>
+    <li><a href="courses.html">Training</a></li>
+    <li><a href="course.html" class="active">Courses</a></li>
+    <li><a href="media.html">Media</a></li>
+    <li><a href="#" onclick="openModal();return false;">Contact</a></li>
+    <li><a href="book.html" class="nav-cta">Book a call</a></li>
+  </ul>
+  <div class="nav-hamburger" id="hamburger" onclick="openMobileNav()"><span></span><span></span><span></span></div>
+</nav>
+
+<div class="nav-mobile" id="mobileNav">
+  <span class="nav-mobile-close" onclick="closeMobileNav()">✕</span>
+  <a href="about.html" onclick="closeMobileNav()">About</a>
+  <a href="consult.html" onclick="closeMobileNav()">Consult</a>
+  <a href="workplace.html" onclick="closeMobileNav()">Workplace</a>
+  <a href="courses.html" onclick="closeMobileNav()">Training</a>
+  <a href="course.html" onclick="closeMobileNav()">Courses</a>
+  <a href="media.html" onclick="closeMobileNav()">Media</a>
+  <a href="book.html" onclick="closeMobileNav()">Book a call</a>
+</div>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-blob hb-1"></div>
+  <div class="hero-blob hb-2"></div>
+  <div class="hero-inner container">
+    <div class="hero-eyebrow reveal">
+      <span class="hero-eyebrow-line"></span>
+      <span class="hero-eyebrow-text">Premium 4-Week Course</span>
+    </div>
+    <h1 class="hero-headline reveal delay-1">Understanding Who You Are<br><em>After Your Diagnosis</em></h1>
+    <p class="hero-sub reveal delay-2">A deeply considered four-week course for adults navigating a late-stage neurodivergent diagnosis. From grief and masking through to identity, support mapping, and sustainable accommodation, built around how your brain actually works.</p>
+    <div class="hero-cta reveal delay-3">
+      <a href="#program" class="btn-primary">View the Course</a>
+      <a href="book.html" class="btn-outline">Book a Call</a>
+    </div>
+    <div class="hero-meta reveal delay-4">
+      <span class="hero-meta-item">4 core weeks</span>
+      <span class="hero-meta-item">Video coaching + journal exercises</span>
+      <span class="hero-meta-item">Digital &amp; printed journal included</span>
+      <span class="hero-meta-item">Lifetime access</span>
+    </div>
+  </div>
+</section>
+
+<!-- OVERVIEW -->
+<section id="overview">
+  <div class="container">
+    <div class="overview-grid">
+      <div class="reveal">
+        <span class="section-label">The Arc</span>
+        <h2 class="section-heading">Four weeks.<br>One coherent journey.</h2>
+        <div class="rule"></div>
+        <div class="overview-weeks">
+          <div class="week-tab"><span class="week-tab-num">01</span><span class="week-tab-title">Unpacking &amp; The Grief</span></div>
+          <div class="week-tab"><span class="week-tab-num">02</span><span class="week-tab-title">The Brain &amp; The Cost of Masking</span></div>
+          <div class="week-tab"><span class="week-tab-num">03</span><span class="week-tab-title">Identity &amp; The Support Map</span></div>
+          <div class="week-tab"><span class="week-tab-num">04</span><span class="week-tab-title">Integration &amp; Sustainable Accommodation</span></div>
+        </div>
+      </div>
+      <div class="reveal delay-2">
+        <span class="section-label">Why this program</span>
+        <p class="overview-statement">A late diagnosis is not the beginning. It is a recontextualisation of everything that came before it, and most support systems were not built to hold that complexity.</p>
+        <p class="section-body" style="margin-top:1.6rem;">This program was designed from lived experience. It moves from the emotional aftermath through to the practical architecture of a life built for your actual brain, not the one you were told you had.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4-WEEK PROGRAM -->
+<section id="program">
+  <div class="container">
+    <div class="program-intro reveal">
+      <span class="section-label">The Course</span>
+      <h2 class="section-heading">Structured across four weeks, with each session building directly on the one before it.</h2>
+      <p class="section-body">Each week builds on the last. Video coaching sessions, reflective prompts, and dual journal access, digital and physical, are woven through every stage.</p>
+    </div>
+
+    <div class="weeks-stack">
+
+      <!-- ── WEEK 1 ──────────────────────────────────────────── -->
+      <div class="week-card wk1 reveal">
+        <div class="week-card-header">
+          <div class="week-card-meta">
+            <div class="week-badge"><span class="week-number">Week 01</span></div>
+            <h2 class="week-title">Unpacking &amp; The Grief</h2>
+            <p class="week-summary">Process the emotional aftermath of a late-stage diagnosis. Move gently through the shock and recontextualize your history, not to rewrite it, but to finally see it clearly.</p>
+          </div>
+          <div class="week-accent-bar"></div>
+        </div>
+        <div class="week-card-body">
+          <!-- Thought Corner -->
+          <div class="thought-corner">
+            <div class="thought-corner-label" style="border-left:3px solid var(--purple)">
+              <svg class="thought-corner-label-icon" viewBox="0 0 18 18" fill="none" stroke="rgba(107,69,112,0.7)" stroke-width="1.4"><circle cx="9" cy="9" r="7"/><path d="M6 9h6M9 6v6"/></svg>
+              Thought Corner, Week 01 Video Session
+            </div>
+            <div class="video-player-shell">
+              
+              <div class="video-play-btn">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="rgba(42,31,26,0.65)"><path d="M7 4.5l9 5.5-9 5.5V4.5z"/></svg>
+              </div>
+              <div class="video-controls-bar">
+                <div class="vc-progress"><div class="vc-progress-fill"></div></div>
+                <span class="vc-time">0:00 / 22:14</span>
+                <div class="vc-dot"></div>
+              </div>
+            </div>
+            <div class="thought-corner-footer">
+              <span class="tc-status">Week 01 · Video coaching session · 22 min</span>
+              <span class="tc-expand">Expand ↗</span>
+            </div>
+          </div>
+          <!-- Session Notes: Week 1 -->
+          <div class="session-notes">
+            <div class="sn-tab" onclick="toggleSN(this)" aria-expanded="false">
+              <span class="sn-tab-label">Session Notes + Deep Dive</span>
+              <span class="sn-tab-arrow">&#9660;</span>
+            </div>
+            <div class="sn-body">
+              <div class="sn-section">
+                <h4>What this session covers</h4>
+                <p>You received a diagnosis. What happens now is not linear, and it is not a problem to solve. This session gives you language for the disorientation and a starting framework for holding continuity alongside genuine change.</p>
+              </div>
+              <div class="sn-divider"></div>
+              <div class="sn-section">
+                <h4>Key ideas from this session</h4>
+                <ul>
+                  <li>A diagnosis does not erase who you were. It changes the context that person now lives inside.</li>
+                  <li>Identity disruption is not weakness. It is the nervous system doing its job when a known story no longer holds.</li>
+                  <li>Grief here is not metaphor. It is a real response to real loss, including the past you thought you had.</li>
+                </ul>
+              </div>
+              <div class="sn-divider"></div>
+              <div class="sn-section">
+                <h4>INCUP Dopamine Menu Builder</h4>
+                <p style="margin-bottom:.7rem;">Choose one item from each category this week. Nothing is required. This is a map, not a prescription.</p>
+                <div class="dopamine-grid">
+                  <div class="dopamine-item">Incomplete tasks<small>Start something small you do not have to finish.</small></div>
+                  <div class="dopamine-item">Novelty<small>One new thing, however minor, each day.</small></div>
+                  <div class="dopamine-item">Complexity<small>A problem worth your full attention.</small></div>
+                  <div class="dopamine-item">Urgency (gentle)<small>A short, self-set deadline with a real reward.</small></div>
+                  <div class="dopamine-item">Passion<small>Something you care about for no reason other than that you do.</small></div>
+                </div>
+              </div>
+              <div class="sn-divider"></div>
+              <div class="sn-section">
+                <h4>Reflection prompt</h4>
+                <p>Write one sentence about what is the same since your diagnosis. Write one sentence about what is different. Keep them factual. Notice what your body does after you write both.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Journal Links -->
+          <div class="journal-links">
+            <a class="journal-link-card" href="#" aria-label="Digital Journal, Week 1">
+              <div class="jl-icon jl-icon-digital">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#6B4570" stroke-width="1.5"><rect x="3" y="2" width="14" height="16" rx="2"/><path d="M7 7h6M7 10.5h4"/></svg>
+              </div>
+              <div>
+                <div class="jl-label">Link A</div>
+                <div class="jl-title">Access 30-Day Interactive Digital Journal (Fillable PDF)</div>
+                <div class="jl-sub">Instant download · Week 1 prompts unlocked</div>
+              </div>
+            </a>
+            <a class="journal-link-card" href="#" aria-label="Printed Journal, Week 1">
+              <div class="jl-icon jl-icon-print">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#7A8C6E" stroke-width="1.5"><rect x="4" y="5" width="12" height="10" rx="1.5"/><path d="M7 5V3h6v2"/><path d="M7 14v3h6v-3"/></svg>
+              </div>
+              <div>
+                <div class="jl-label" style="color:var(--sage)">Link B</div>
+                <div class="jl-title">Track Shipment of Your Printed Linen Journal (Lulu Fulfillment)</div>
+                <div class="jl-sub">Dispatched via Lulu Press · 5–8 business days</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── WEEK 2 ──────────────────────────────────────────── -->
+      <div class="week-card wk2 reveal delay-1">
+        <div class="week-card-header">
+          <div class="week-card-meta">
+            <div class="week-badge" style="background:var(--sage)"><span class="week-number">Week 02</span></div>
+            <h2 class="week-title">The Brain &amp; The Cost of Masking</h2>
+            <p class="week-summary">Dismantle traditional productivity standards. Understand your unique executive functions and map the heavy energetic cost of unmasking, with honesty and without judgment.</p>
+          </div>
+          <div class="week-accent-bar"></div>
+        </div>
+        <div class="week-card-body">
+          <div class="thought-corner">
+            <div class="thought-corner-label" style="border-left:3px solid var(--sage)">
+              <svg class="thought-corner-label-icon" viewBox="0 0 18 18" fill="none" stroke="rgba(107,69,112,0.7)" stroke-width="1.4"><circle cx="9" cy="9" r="7"/><path d="M6 9h6M9 6v6"/></svg>
+              Thought Corner, Week 02 Video Session
+            </div>
+            <div class="video-player-shell">
+              
+              <div class="video-play-btn">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="rgba(42,31,26,0.65)"><path d="M7 4.5l9 5.5-9 5.5V4.5z"/></svg>
+              </div>
+              <div class="video-controls-bar">
+                <div class="vc-progress"><div class="vc-progress-fill" style="background:var(--sage)"></div></div>
+                <span class="vc-time">0:00 / 27:40</span>
+                <div class="vc-dot"></div>
+              </div>
+            </div>
+            <div class="thought-corner-footer">
+              <span class="tc-status">Week 02 · Video coaching session · 27 min</span>
+              <span class="tc-expand">Expand ↗</span>
+            </div>
+          </div>
+                    <div class="session-notes">
+            <div class="sn-tab" onclick="toggleSN(this)" aria-expanded="false">
+              <span class="sn-tab-label">Session Notes + Deep Dive</span>
+              <span class="sn-tab-arrow">&#9660;</span>
+            </div>
+            <div class="sn-body">
+              <div class="sn-section">
+                <h4>Session notes for this week</h4>
+                <p>Full session notes, key concepts, and interactive exercises for this week will appear here once the module is complete. Return here after watching the video to revisit the material at your own pace.</p>
+              </div>
+            </div>
+          </div>
+<div class="journal-links">
+            <a class="journal-link-card" href="#">
+              <div class="jl-icon jl-icon-digital">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#6B4570" stroke-width="1.5"><rect x="3" y="2" width="14" height="16" rx="2"/><path d="M7 7h6M7 10.5h4"/></svg>
+              </div>
+              <div>
+                <div class="jl-label">Link A</div>
+                <div class="jl-title">Access 30-Day Interactive Digital Journal (Fillable PDF)</div>
+                <div class="jl-sub">Instant download · Week 2 prompts unlocked</div>
+              </div>
+            </a>
+            <a class="journal-link-card" href="#">
+              <div class="jl-icon jl-icon-print">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#7A8C6E" stroke-width="1.5"><rect x="4" y="5" width="12" height="10" rx="1.5"/><path d="M7 5V3h6v2"/><path d="M7 14v3h6v-3"/></svg>
+              </div>
+              <div>
+                <div class="jl-label" style="color:var(--sage)">Link B</div>
+                <div class="jl-title">Track Shipment of Your Printed Linen Journal (Lulu Fulfillment)</div>
+                <div class="jl-sub">Dispatched via Lulu Press · 5–8 business days</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── WEEK 3 ──────────────────────────────────────────── -->
+      <div class="week-card wk3 reveal delay-2">
+        <div class="week-card-header">
+          <div class="week-card-meta">
+            <div class="week-badge" style="background:var(--rose)"><span class="week-number">Week 03</span></div>
+            <h2 class="week-title">Identity &amp; The Support Map</h2>
+            <p class="week-summary">Rebuild your identity from scratch. Navigate clinical, medical, and holistic support pathways within the local context, and begin to design a support system that actually holds you.</p>
+          </div>
+          <div class="week-accent-bar"></div>
+        </div>
+        <div class="week-card-body">
+          <div class="thought-corner">
+            <div class="thought-corner-label" style="border-left:3px solid var(--rose)">
+              <svg class="thought-corner-label-icon" viewBox="0 0 18 18" fill="none" stroke="rgba(107,69,112,0.7)" stroke-width="1.4"><circle cx="9" cy="9" r="7"/><path d="M6 9h6M9 6v6"/></svg>
+              Thought Corner, Week 03 Video Session
+            </div>
+            <div class="video-player-shell">
+              
+              <div class="video-play-btn">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="rgba(42,31,26,0.65)"><path d="M7 4.5l9 5.5-9 5.5V4.5z"/></svg>
+              </div>
+              <div class="video-controls-bar">
+                <div class="vc-progress"><div class="vc-progress-fill" style="background:var(--rose)"></div></div>
+                <span class="vc-time">0:00 / 31:05</span>
+                <div class="vc-dot"></div>
+              </div>
+            </div>
+            <div class="thought-corner-footer">
+              <span class="tc-status">Week 03 · Video coaching session · 31 min</span>
+              <span class="tc-expand">Expand ↗</span>
+            </div>
+          </div>
+                    <div class="session-notes">
+            <div class="sn-tab" onclick="toggleSN(this)" aria-expanded="false">
+              <span class="sn-tab-label">Session Notes + Deep Dive</span>
+              <span class="sn-tab-arrow">&#9660;</span>
+            </div>
+            <div class="sn-body">
+              <div class="sn-section">
+                <h4>Session notes for this week</h4>
+                <p>Full session notes, key concepts, and interactive exercises for this week will appear here once the module is complete. Return here after watching the video to revisit the material at your own pace.</p>
+              </div>
+            </div>
+          </div>
+<div class="journal-links">
+            <a class="journal-link-card" href="#">
+              <div class="jl-icon jl-icon-digital">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#6B4570" stroke-width="1.5"><rect x="3" y="2" width="14" height="16" rx="2"/><path d="M7 7h6M7 10.5h4"/></svg>
+              </div>
+              <div>
+                <div class="jl-label">Link A</div>
+                <div class="jl-title">Access 30-Day Interactive Digital Journal (Fillable PDF)</div>
+                <div class="jl-sub">Instant download · Week 3 prompts unlocked</div>
+              </div>
+            </a>
+            <a class="journal-link-card" href="#">
+              <div class="jl-icon jl-icon-print">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#7A8C6E" stroke-width="1.5"><rect x="4" y="5" width="12" height="10" rx="1.5"/><path d="M7 5V3h6v2"/><path d="M7 14v3h6v-3"/></svg>
+              </div>
+              <div>
+                <div class="jl-label" style="color:var(--sage)">Link B</div>
+                <div class="jl-title">Track Shipment of Your Printed Linen Journal (Lulu Fulfillment)</div>
+                <div class="jl-sub">Dispatched via Lulu Press · 5–8 business days</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── WEEK 4 ──────────────────────────────────────────── -->
+      <div class="week-card wk4 reveal delay-3">
+        <div class="week-card-header">
+          <div class="week-card-meta">
+            <div class="week-badge" style="background:var(--gold)"><span class="week-number">Week 04</span></div>
+            <h2 class="week-title">Integration &amp; Sustainable Accommodation</h2>
+            <p class="week-summary">Build a life structured for your mind. Master tactical disclosure, set firm boundaries, and design systems that adapt to your focus, not the other way around.</p>
+          </div>
+          <div class="week-accent-bar"></div>
+        </div>
+        <div class="week-card-body">
+          <div class="thought-corner">
+            <div class="thought-corner-label" style="border-left:3px solid var(--gold)">
+              <svg class="thought-corner-label-icon" viewBox="0 0 18 18" fill="none" stroke="rgba(42,31,26,0.75)" stroke-width="1.4"><circle cx="9" cy="9" r="7"/><path d="M6 9h6M9 6v6"/></svg>
+              Thought Corner, Week 04 Video Session
+            </div>
+            <div class="video-player-shell">
+              
+              <div class="video-play-btn">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="rgba(42,31,26,0.65)"><path d="M7 4.5l9 5.5-9 5.5V4.5z"/></svg>
+              </div>
+              <div class="video-controls-bar">
+                <div class="vc-progress"><div class="vc-progress-fill" style="background:var(--gold)"></div></div>
+                <span class="vc-time">0:00 / 34:22</span>
+                <div class="vc-dot"></div>
+              </div>
+            </div>
+            <div class="thought-corner-footer">
+              <span class="tc-status">Week 04 · Video coaching session · 34 min</span>
+              <span class="tc-expand">Expand ↗</span>
+            </div>
+          </div>
+                    <div class="session-notes">
+            <div class="sn-tab" onclick="toggleSN(this)" aria-expanded="false">
+              <span class="sn-tab-label">Session Notes + Deep Dive</span>
+              <span class="sn-tab-arrow">&#9660;</span>
+            </div>
+            <div class="sn-body">
+              <div class="sn-section">
+                <h4>Session notes for this week</h4>
+                <p>Full session notes, key concepts, and interactive exercises for this week will appear here once the module is complete. Return here after watching the video to revisit the material at your own pace.</p>
+              </div>
+            </div>
+          </div>
+<div class="journal-links">
+            <a class="journal-link-card" href="#">
+              <div class="jl-icon jl-icon-digital">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#6B4570" stroke-width="1.5"><rect x="3" y="2" width="14" height="16" rx="2"/><path d="M7 7h6M7 10.5h4"/></svg>
+              </div>
+              <div>
+                <div class="jl-label">Link A</div>
+                <div class="jl-title">Access 30-Day Interactive Digital Journal (Fillable PDF)</div>
+                <div class="jl-sub">Instant download · Week 4 prompts unlocked</div>
+              </div>
+            </a>
+            <a class="journal-link-card" href="#">
+              <div class="jl-icon jl-icon-print">
+                <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="#7A8C6E" stroke-width="1.5"><rect x="4" y="5" width="12" height="10" rx="1.5"/><path d="M7 5V3h6v2"/><path d="M7 14v3h6v-3"/></svg>
+              </div>
+              <div>
+                <div class="jl-label" style="color:var(--sage)">Link B</div>
+                <div class="jl-title">Track Shipment of Your Printed Linen Journal (Lulu Fulfillment)</div>
+                <div class="jl-sub">Dispatched via Lulu Press · 5–8 business days</div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /weeks-stack -->
+  </div>
+</section>
+
+<!-- WHO -->
+<section id="who">
+  <div class="container">
+    <span class="section-label reveal">Who This Is For</span>
+    <h2 class="section-heading reveal delay-1">Built for adults.<br>Post-diagnosis.</h2>
+    <div class="who-grid">
+      <div class="who-list reveal delay-1">
+        <div class="who-item">Recently diagnosed with ADHD, autism, or AuDHD and feeling disoriented by what that means for your past</div>
+        <div class="who-item">Carrying unresolved grief or confusion about identity long after a diagnosis</div>
+        <div class="who-item">Exhausted by masking and looking for a structured, honest framework to begin recovery</div>
+        <div class="who-item">Working to navigate the Australian support system without losing yourself in it</div>
+        <div class="who-item">Ready to build a life, and a self, that is structured for your actual mind</div>
+      </div>
+      <div class="who-aside reveal delay-2">
+        <p class="who-aside-label">A note from Leah</p>
+        <p class="who-aside-quote">"The diagnosis didn't make you a different person. It made the person you already were finally visible, to yourself. This program starts there."</p>
+        <p class="who-aside-attr">,  Leah Veenhuizen, AuDHD Registered Nurse &amp; Founder, Nuanced Co.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="container" style="text-align:center;">
+    <span class="section-label reveal">Enrol</span>
+    <h2 class="section-heading reveal delay-1">Begin building a self<br>you can live inside.</h2>
+    <p class="section-body reveal delay-2" style="max-width:480px;margin:0 auto 3rem;">Four weeks. Video coaching. A journal built for your hands, and your mind. Designed around how a neurodivergent brain actually processes and integrates new understanding.</p>
+    <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;" class="reveal delay-3">
+      <a href="enrol.html" class="btn-primary">Enrol Now</a>
+      <a href="consult.html" class="btn-outline">Learn About 1:1 Support</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-logo">NUANCED CO.<span>Late-Diagnosed Adult Integration Course</span></div>
+    <nav class="footer-links">
+      <a href="about.html">About</a>
+      <a href="consult.html">Consult</a>
+      <a href="courses.html">Training</a>
+      <a href="course.html">Courses</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="book.html">Book a Call</a>
+    </nav>
+  </div>
+  <p class="footer-copy">© 2026 Nuanced Co. ABN 71 926 185 491 · All rights reserved.</p>
+</footer>
+
+<script>
+/* Sidebar */
+function openSidebar(){document.body.classList.add('sidebar-open');}
+function closeSidebar(){document.body.classList.remove('sidebar-open');}
+function toggleSidebar(){document.body.classList.toggle('sidebar-open');}
+function toggleSN(tab){
+  var open = tab.getAttribute('aria-expanded')==='true';
+  tab.setAttribute('aria-expanded', !open);
+  tab.nextElementSibling.classList.toggle('open', !open);
+}
+
+/* Nav */
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 60));
+function openMobileNav(){document.getElementById('mobileNav').classList.add('open');document.body.style.overflow='hidden';}
+function closeMobileNav(){document.getElementById('mobileNav').classList.remove('open');document.body.style.overflow='';}
+
+/* Reveal on scroll */
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+}, {threshold: 0.12});
+document.querySelectorAll('.reveal').forEach(el => ro.observe(el));
+</script>
+
+<!-- CONTACT MODAL -->
+<div class="modal-overlay" id="contactModal" onclick="if(event.target===this)closeModal()">
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="modalHeading">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">&#x2715;</button>
+    <span class="modal-label">Direct Support</span>
+    <h2 class="modal-heading" id="modalHeading">Get in touch</h2>
+    <p class="modal-note">Take your time. Write as much or as little as you need.</p>
+    <form class="modal-form" id="contactForm" onsubmit="submitModal(event)">
+      <div class="modal-field">
+        <label for="mName">Name</label>
+        <input type="text" id="mName" name="name" placeholder="Your name" required>
+      </div>
+      <div class="modal-field">
+        <label for="mEmail">Email</label>
+        <input type="email" id="mEmail" name="email" placeholder="you@example.com" required>
+      </div>
+      <div class="modal-field">
+        <label for="mMessage">Message</label>
+        <textarea id="mMessage" name="message" placeholder="What's on your mind?" required></textarea>
+      </div>
+      <button type="submit" class="modal-submit">Send Message</button>
+    </form>
+    <div class="modal-success" id="modalSuccess">
+      <div class="modal-success-icon">&#10003;</div>
+      <h3 class="modal-success-h">Message received.</h3>
+      <p class="modal-success-p">Thank you for reaching out. Leah will get back to you within two business days.</p>
+    </div>
+  </div>
+</div>
+<script>
+function openModal(){document.getElementById('contactModal').classList.add('open');document.body.style.overflow='hidden';}
+function closeModal(){document.getElementById('contactModal').classList.remove('open');document.body.style.overflow='';}
+function submitModal(e){
+  e.preventDefault();
+  document.getElementById('contactForm').style.display='none';
+  document.getElementById('modalSuccess').classList.add('visible');
+  /* TODO: replace with real form endpoint (Formspree, Netlify, API) */
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
+</script>
+</body>
+</html>
