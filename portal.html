@@ -607,6 +607,57 @@ footer { background: var(--ink); padding: 2.5rem 2rem; margin-top: 4rem; }
         </form>
         <p id="journalSaved" style="display:none;font-size:.72rem;color:var(--sage);text-align:center;margin-top:.8rem;letter-spacing:.06em;">Entries saved.</p>
       </div>
+
+      <!-- WEEK 2 JOURNAL -->
+      <div class="panel-card" style="grid-column:1/-1;">
+        <div class="panel-label">Week 02 Journal Workspace</div>
+        <p style="font-size:.78rem;color:var(--ink-mid);line-height:1.72;margin-bottom:1.4rem;">Seven daily prompts for Days 8 to 14. Write as much or as little as you need. Entries are saved locally.</p>
+        <form class="journal-workspace" id="journalFormWk2" onsubmit="saveJournalWk2(event)">
+          <div class="journal-prompt">
+            <span class="jp-day">Day 08</span>
+            <p class="jp-q">What is the very first physical tell your body gives when entering a yellow state? (e.g., tight jaw, shallow breathing, cold hands?)</p>
+            <textarea class="jp-field" name="d8" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 09</span>
+            <p class="jp-q">Where did you try to force compliance today when your body was clearly in an Autonomic Defensive State? What happened?</p>
+            <textarea class="jp-field" name="d9" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 10</span>
+            <p class="jp-q">Take a strict 10-minute Zero-Input Intermission today. Describe how your mental clarity shifts when sensory demands are entirely removed.</p>
+            <textarea class="jp-field" name="d10" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 11</span>
+            <p class="jp-q">When you hit heavy brain fog today, did you need sensory reduction (State Red triage) or a high-contrast novelty injection (State Yellow triage)?</p>
+            <textarea class="jp-field" name="d11" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 12</span>
+            <p class="jp-q">Which interaction today required the heaviest internal editing or masking? How long did it take your nervous system to settle afterward?</p>
+            <textarea class="jp-field" name="d12" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 13</span>
+            <p class="jp-q">Identify one small expectation or demand you chose not to participate in today to protect your battery baseline.</p>
+            <textarea class="jp-field" name="d13" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 14</span>
+            <p class="jp-q">Reflect on your environmental surroundings right now. Name three specific physical items or settings that make your body feel instantly settled and secure.</p>
+            <textarea class="jp-field" name="d14" placeholder="Write freely here..."></textarea>
+          </div>
+          <button type="submit" class="journal-save">Save Entries</button>
+        </form>
+        <p id="journalSavedWk2" style="display:none;font-size:.72rem;color:var(--sage);text-align:center;margin-top:.8rem;letter-spacing:.06em;">Entries saved.</p>
+      </div>
     </div>
 
   </div><!-- /portal-grid -->
@@ -641,13 +692,27 @@ function saveJournal(e){
   msg.style.display='block';
   setTimeout(function(){msg.style.display='none';},3000);
 }
+function saveJournalWk2(e){
+  e.preventDefault();
+  var data={};
+  document.querySelectorAll('#journalFormWk2 .jp-field').forEach(function(f){if(f.name)data[f.name]=f.value;});
+  try{localStorage.setItem('nc_journal_wk2',JSON.stringify(data));}catch(err){}
+  var msg=document.getElementById('journalSavedWk2');
+  msg.style.display='block';
+  setTimeout(function(){msg.style.display='none';},3000);
+}
 // Restore saved entries on load
 (function(){
   try{
-    var saved = JSON.parse(localStorage.getItem('nc_journal_wk1')||'{}');
-    Object.keys(saved).forEach(function(k){
+    var wk1 = JSON.parse(localStorage.getItem('nc_journal_wk1')||'{}');
+    Object.keys(wk1).forEach(function(k){
       var el = document.querySelector('#journalForm [name="'+k+'"]');
-      if(el) el.value = saved[k];
+      if(el) el.value = wk1[k];
+    });
+    var wk2 = JSON.parse(localStorage.getItem('nc_journal_wk2')||'{}');
+    Object.keys(wk2).forEach(function(k){
+      var el = document.querySelector('#journalFormWk2 [name="'+k+'"]');
+      if(el) el.value = wk2[k];
     });
   }catch(err){}
 })();
