@@ -658,6 +658,57 @@ footer { background: var(--ink); padding: 2.5rem 2rem; margin-top: 4rem; }
         </form>
         <p id="journalSavedWk2" style="display:none;font-size:.72rem;color:var(--sage);text-align:center;margin-top:.8rem;letter-spacing:.06em;">Entries saved.</p>
       </div>
+
+      <!-- WEEK 3 JOURNAL -->
+      <div class="panel-card" style="grid-column:1/-1;">
+        <div class="panel-label">Week 03 Journal Workspace</div>
+        <p style="font-size:.78rem;color:var(--ink-mid);line-height:1.72;margin-bottom:1.4rem;">Seven daily prompts for Days 15 to 21. Write as much or as little as you need. Entries are saved locally.</p>
+        <form class="journal-workspace" id="journalFormWk3" onsubmit="saveJournalWk3(event)">
+          <div class="journal-prompt">
+            <span class="jp-day">Day 15</span>
+            <p class="jp-q">Describe the exact task that triggered a state of paralysis today. What was your brain trying to protect you from?</p>
+            <textarea class="jp-field" name="d15" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 16</span>
+            <p class="jp-q">Did an upcoming event today cause you to lose your morning to Waiting Mode? How did your body feel during that waiting state?</p>
+            <textarea class="jp-field" name="d16" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 17</span>
+            <p class="jp-q">Choose one intimidating task tomorrow. What is a micro-step for it that is so small it feels entirely silly to write down?</p>
+            <textarea class="jp-field" name="d17" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 18</span>
+            <p class="jp-q">Which specific transition today felt the most physically jarring? (e.g., leaving the house, stopping a hyperfocus state, starting work?)</p>
+            <textarea class="jp-field" name="d18" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 19</span>
+            <p class="jp-q">Try the Zero-Commitment Rule today. Did you choose to stop after the micro-step, or did your brain naturally spark momentum?</p>
+            <textarea class="jp-field" name="d19" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 20</span>
+            <p class="jp-q">When did you misjudge time today? Did you feel rushed and panicked, or did you over-prepare and freeze early?</p>
+            <textarea class="jp-field" name="d20" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 21</span>
+            <p class="jp-q">Reflect on an action today that required absolutely zero willpower to start. What made that transition so fluid?</p>
+            <textarea class="jp-field" name="d21" placeholder="Write freely here..."></textarea>
+          </div>
+          <button type="submit" class="journal-save">Save Entries</button>
+        </form>
+        <p id="journalSavedWk3" style="display:none;font-size:.72rem;color:var(--sage);text-align:center;margin-top:.8rem;letter-spacing:.06em;">Entries saved.</p>
+      </div>
     </div>
 
   </div><!-- /portal-grid -->
@@ -692,6 +743,15 @@ function saveJournal(e){
   msg.style.display='block';
   setTimeout(function(){msg.style.display='none';},3000);
 }
+function saveJournalWk3(e){
+  e.preventDefault();
+  var data={};
+  document.querySelectorAll('#journalFormWk3 .jp-field').forEach(function(f){if(f.name)data[f.name]=f.value;});
+  try{localStorage.setItem('nc_journal_wk3',JSON.stringify(data));}catch(err){}
+  var msg=document.getElementById('journalSavedWk3');
+  msg.style.display='block';
+  setTimeout(function(){msg.style.display='none';},3000);
+}
 function saveJournalWk2(e){
   e.preventDefault();
   var data={};
@@ -713,6 +773,11 @@ function saveJournalWk2(e){
     Object.keys(wk2).forEach(function(k){
       var el = document.querySelector('#journalFormWk2 [name="'+k+'"]');
       if(el) el.value = wk2[k];
+    });
+    var wk3 = JSON.parse(localStorage.getItem('nc_journal_wk3')||'{}');
+    Object.keys(wk3).forEach(function(k){
+      var el = document.querySelector('#journalFormWk3 [name="'+k+'"]');
+      if(el) el.value = wk3[k];
     });
   }catch(err){}
 })();
