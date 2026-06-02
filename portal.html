@@ -709,6 +709,57 @@ footer { background: var(--ink); padding: 2.5rem 2rem; margin-top: 4rem; }
         </form>
         <p id="journalSavedWk3" style="display:none;font-size:.72rem;color:var(--sage);text-align:center;margin-top:.8rem;letter-spacing:.06em;">Entries saved.</p>
       </div>
+
+      <!-- WEEK 4 JOURNAL -->
+      <div class="panel-card" style="grid-column:1/-1;">
+        <div class="panel-label">Week 04 Journal Workspace</div>
+        <p style="font-size:.78rem;color:var(--ink-mid);line-height:1.72;margin-bottom:1.4rem;">Seven final prompts for Days 22 to 28. Write as much or as little as you need. Entries are saved locally.</p>
+        <form class="journal-workspace" id="journalFormWk4" onsubmit="saveJournalWk4(event)">
+          <div class="journal-prompt">
+            <span class="jp-day">Day 22</span>
+            <p class="jp-q">What is one physical tool or environmental modification that instantly lowers your daily executive load?</p>
+            <textarea class="jp-field" name="d22" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 23</span>
+            <p class="jp-q">Where did you feel a wave of guilt for making things easier for yourself today? Rewrite that choice using your new integration vocabulary.</p>
+            <textarea class="jp-field" name="d23" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 24</span>
+            <p class="jp-q">Who is the one person in your life with whom you feel entirely safe dropping your verbal and physical mask completely?</p>
+            <textarea class="jp-field" name="d24" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 25</span>
+            <p class="jp-q">When your system enters a state of deep, red-zone burnout, what are the absolute minimum survival baselines you need to secure?</p>
+            <textarea class="jp-field" name="d25" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 26</span>
+            <p class="jp-q">Reflect on a boundary you set this week. Did it protect your energetic battery, or did you compromise to avoid social friction?</p>
+            <textarea class="jp-field" name="d26" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 27</span>
+            <p class="jp-q">Look at your upcoming month. What is one high-demand transition you can prepare a low-sensory runway for in advance?</p>
+            <textarea class="jp-field" name="d27" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 28</span>
+            <p class="jp-q">Take a deep breath and scan your body. Describe the difference between the heavy mask you wore on Day 1 and the grounded skin you are standing in today.</p>
+            <textarea class="jp-field" name="d28" placeholder="Write freely here..."></textarea>
+          </div>
+          <button type="submit" class="journal-save">Save Entries</button>
+        </form>
+        <p id="journalSavedWk4" style="display:none;font-size:.72rem;color:var(--sage);text-align:center;margin-top:.8rem;letter-spacing:.06em;">Entries saved.</p>
+      </div>
     </div>
 
   </div><!-- /portal-grid -->
@@ -740,6 +791,15 @@ function saveJournal(e){
   fields.forEach(function(f){if(f.name)data[f.name]=f.value;});
   try{localStorage.setItem('nc_journal_wk1', JSON.stringify(data));}catch(err){}
   var msg = document.getElementById('journalSaved');
+  msg.style.display='block';
+  setTimeout(function(){msg.style.display='none';},3000);
+}
+function saveJournalWk4(e){
+  e.preventDefault();
+  var data={};
+  document.querySelectorAll('#journalFormWk4 .jp-field').forEach(function(f){if(f.name)data[f.name]=f.value;});
+  try{localStorage.setItem('nc_journal_wk4',JSON.stringify(data));}catch(err){}
+  var msg=document.getElementById('journalSavedWk4');
   msg.style.display='block';
   setTimeout(function(){msg.style.display='none';},3000);
 }
@@ -778,6 +838,11 @@ function saveJournalWk2(e){
     Object.keys(wk3).forEach(function(k){
       var el = document.querySelector('#journalFormWk3 [name="'+k+'"]');
       if(el) el.value = wk3[k];
+    });
+    var wk4 = JSON.parse(localStorage.getItem('nc_journal_wk4')||'{}');
+    Object.keys(wk4).forEach(function(k){
+      var el = document.querySelector('#journalFormWk4 [name="'+k+'"]');
+      if(el) el.value = wk4[k];
     });
   }catch(err){}
 })();
