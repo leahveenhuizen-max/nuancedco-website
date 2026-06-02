@@ -220,6 +220,16 @@ footer { background: var(--ink); padding: 2.5rem 2rem; margin-top: 4rem; }
 .modal-success-icon{font-size:1.8rem;margin-bottom:.8rem;}
 .modal-success-h{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:var(--ink);margin-bottom:.6rem;}
 .modal-success-p{font-size:.82rem;color:var(--ink-mid);line-height:1.72;}
+/* Journal workspace */
+.journal-workspace{display:flex;flex-direction:column;gap:1.4rem;}
+.journal-prompt{display:flex;flex-direction:column;gap:.5rem;}
+.jp-day{font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:var(--purple);font-weight:700;}
+.jp-q{font-size:.86rem;color:var(--ink);line-height:1.7;font-family:var(--serif);font-weight:400;margin-bottom:.1rem;}
+.jp-field{width:100%;min-height:72px;padding:.75rem .9rem;font-family:var(--body);font-size:.82rem;color:var(--ink);background:var(--cream);border:1px solid rgba(107,69,112,.14);border-radius:8px;resize:vertical;outline:none;line-height:1.65;transition:border-color .2s,box-shadow .2s;}
+.jp-field:focus{border-color:var(--purple);box-shadow:0 0 0 3px rgba(107,69,112,.07);}
+.jp-divider{height:1px;background:rgba(107,69,112,.08);}
+.journal-save{background:var(--purple);color:#fff;border:none;padding:.72rem 1.6rem;font-family:var(--body);font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:4px;cursor:pointer;transition:background .2s;width:100%;margin-top:.4rem;}
+.journal-save:hover{background:var(--ink);}
 </style>
 </head>
 <body>
@@ -257,6 +267,7 @@ footer { background: var(--ink); padding: 2.5rem 2rem; margin-top: 4rem; }
     <a class="sidebar-item" href="course.html">Course Landing Page</a>
     <a class="sidebar-item" href="about.html">About Leah</a>
     <a class="sidebar-item" href="book.html">Book a Call</a>
+    <a class="sidebar-item" href="https://www.facebook.com/groups/" target="_blank" rel="noopener noreferrer">Community Space</a>
     <a class="sidebar-item" href="index.html">← Main Site</a>
     <a class="sidebar-item" href="#" onclick="openModal();return false;">Contact Leah</a>
   </nav>
@@ -547,18 +558,54 @@ footer { background: var(--ink); padding: 2.5rem 2rem; margin-top: 4rem; }
         <a href="book.html" class="btn-sm btn-sm-outline">Book a Call</a>
       </div>
 
-      <div class="panel-card">
-        <div class="panel-label">Journal Access</div>
-        <div style="display:flex;flex-direction:column;gap:.7rem;margin-top:.5rem;">
-          <a class="jl-card" href="#" style="padding:.9rem;border-radius:10px;">
-            <div class="jl-ico jl-ico-d" style="width:28px;height:28px;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#6B4570" stroke-width="1.4"><rect x="2" y="1.5" width="12" height="13" rx="1.5"/><path d="M5 6h6M5 9h4"/></svg></div>
-            <div><div class="jl-kicker" style="font-size:.5rem;">Link A</div><div class="jl-title" style="font-size:.75rem;">30-Day Digital Journal (PDF)</div></div>
-          </a>
-          <a class="jl-card" href="#" style="padding:.9rem;border-radius:10px;">
-            <div class="jl-ico jl-ico-p" style="width:28px;height:28px;"><svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="#7A8C6E" stroke-width="1.4"><rect x="3" y="4" width="10" height="8" rx="1"/><path d="M5.5 4V2.5h5V4"/><path d="M5.5 12v1.5h5V12"/></svg></div>
-            <div><div class="jl-kicker jl-kicker-p" style="font-size:.5rem;">Link B</div><div class="jl-title" style="font-size:.75rem;">Track Linen Journal (Lulu)</div></div>
-          </a>
-        </div>
+      <div class="panel-card" style="grid-column:1/-1;">
+        <div class="panel-label">Week 01 Journal Workspace</div>
+        <p style="font-size:.78rem;color:var(--ink-mid);line-height:1.72;margin-bottom:1.4rem;">Seven daily prompts. Write as much or as little as you need. Your entries are saved locally in this session.</p>
+        <form class="journal-workspace" id="journalForm" onsubmit="saveJournal(event)">
+          <div class="journal-prompt">
+            <span class="jp-day">Day 1</span>
+            <p class="jp-q">What parts of your public persona require the most physical or vocal energy to maintain?</p>
+            <textarea class="jp-field" name="d1" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 2</span>
+            <p class="jp-q">Identify one sound, lighting setup, or texture today that caused subtle physical tension. What is the immediate antidote?</p>
+            <textarea class="jp-field" name="d2" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 3</span>
+            <p class="jp-q">Where did you try to use sheer willpower today to override mental friction? How can we restructure that task tomorrow using a low-bar entry?</p>
+            <textarea class="jp-field" name="d3" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 4</span>
+            <p class="jp-q">Allow yourself to look back at a past struggle with your new integration vocabulary. What changes when you view that moment through neurology instead of failure?</p>
+            <textarea class="jp-field" name="d4" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 5</span>
+            <p class="jp-q">Which task today felt effortlessly engaging? Was it driven by Interest, Novelty, Challenge, Urgency, or Passion?</p>
+            <textarea class="jp-field" name="d5" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 6</span>
+            <p class="jp-q">Notice the exact hour your energy cratered today. Did you try to force linear output, or did you lean into rhythmic adaptation?</p>
+            <textarea class="jp-field" name="d6" placeholder="Write freely here..."></textarea>
+          </div>
+          <div class="jp-divider"></div>
+          <div class="journal-prompt">
+            <span class="jp-day">Day 7</span>
+            <p class="jp-q">Describe how your body feels when you are completely alone in a sensory-optimized room. Let that feeling become your baseline.</p>
+            <textarea class="jp-field" name="d7" placeholder="Write freely here..."></textarea>
+          </div>
+          <button type="submit" class="journal-save">Save Entries</button>
+        </form>
+        <p id="journalSaved" style="display:none;font-size:.72rem;color:var(--sage);text-align:center;margin-top:.8rem;letter-spacing:.06em;">Entries saved.</p>
       </div>
     </div>
 
@@ -584,6 +631,26 @@ function openSidebar(){document.body.classList.add('sidebar-open');}
 function closeSidebar(){document.body.classList.remove('sidebar-open');}
 function toggleSidebar(){document.body.classList.toggle('sidebar-open');}
 document.getElementById('portalDate').textContent = new Date().toLocaleDateString('en-AU',{weekday:'long',year:'numeric',month:'long',day:'numeric'});
+function saveJournal(e){
+  e.preventDefault();
+  var fields = document.querySelectorAll('#journalForm .jp-field');
+  var data = {};
+  fields.forEach(function(f){if(f.name)data[f.name]=f.value;});
+  try{localStorage.setItem('nc_journal_wk1', JSON.stringify(data));}catch(err){}
+  var msg = document.getElementById('journalSaved');
+  msg.style.display='block';
+  setTimeout(function(){msg.style.display='none';},3000);
+}
+// Restore saved entries on load
+(function(){
+  try{
+    var saved = JSON.parse(localStorage.getItem('nc_journal_wk1')||'{}');
+    Object.keys(saved).forEach(function(k){
+      var el = document.querySelector('#journalForm [name="'+k+'"]');
+      if(el) el.value = saved[k];
+    });
+  }catch(err){}
+})();
 </script>
 
 <!-- CONTACT MODAL -->
