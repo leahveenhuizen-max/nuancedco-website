@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "nuancedco-preview",
+      "runtimeExecutable": "ruby",
+      "runtimeArgs": ["-run", "-e", "httpd", "/Users/leahveenhuizen/Desktop/Nuance/nuancedco-deploy", "-p", "7823"],
+      "port": 7823
+    }
+  ]
+}
