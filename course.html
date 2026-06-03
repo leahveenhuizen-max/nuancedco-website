@@ -1049,6 +1049,102 @@ footer { background: var(--ink); border-top: 1px solid rgba(246,241,233,.06); pa
 </section>
 
 <!-- CTA -->
+<!-- ── PRICING GRID ────────────────────────────────────────────── -->
+<section id="pricing" style="background:var(--cream-dark);padding:6rem 2rem;">
+  <div class="container">
+
+    <!-- Header -->
+    <div style="text-align:center;margin-bottom:3.5rem;">
+      <span class="section-label" style="display:block;text-align:center;margin-bottom:1rem;">Investment</span>
+      <h2 class="section-heading" style="margin:0 auto 1.2rem;max-width:480px;">Choose your architecture level.</h2>
+
+      <!-- Currency toggle -->
+      <div style="display:inline-flex;border:1px solid rgba(107,69,112,.18);border-radius:30px;overflow:hidden;font-family:var(--body);font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;">
+        <button id="btn-aud" onclick="setCurrency('AUD')"
+          style="padding:.45rem 1.2rem;border:none;cursor:pointer;background:#2A1F1A;color:#F6F1E9;transition:background .2s;">AUD</button>
+        <button id="btn-usd" onclick="setCurrency('USD')"
+          style="padding:.45rem 1.2rem;border:none;cursor:pointer;background:transparent;color:#2A1F1A;transition:background .2s;">USD</button>
+      </div>
+    </div>
+
+    <!-- Cards grid -->
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:880px;margin:0 auto;">
+
+      <!-- Tier 1 -->
+      <div style="background:#FFFFFF;border-radius:24px;padding:2.6rem;box-shadow:0 6px 32px rgba(42,31,26,.07);border:1px solid rgba(42,31,26,.07);display:flex;flex-direction:column;">
+        <span style="font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:#6B4570;font-weight:700;display:block;margin-bottom:.8rem;">Tier 01</span>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:400;color:#2A1F1A;line-height:1.2;margin-bottom:.6rem;">The Core Architecture</h3>
+        <p style="font-size:.82rem;color:#4A3830;line-height:1.75;margin-bottom:2rem;flex:1;">Full access to the 4-week Attunement Architecture course, 30-day interactive digital journal, all Thought Corner video sessions, and lifetime portal access.</p>
+        <div style="margin-bottom:2rem;">
+          <div class="price-display" data-aud="497" data-usd="329"
+            style="font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300;color:#2A1F1A;line-height:1;">
+            <span class="currency-symbol">A$</span><span class="price-amount">497</span>
+          </div>
+          <p style="font-size:.72rem;color:#4A3830;opacity:.6;margin-top:.35rem;">One payment. Lifetime access.</p>
+        </div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-bottom:2rem;padding:0;">
+          <li style="font-size:.82rem;color:#2A1F1A;display:flex;align-items:flex-start;gap:.65rem;"><span style="color:#6B4570;flex-shrink:0;">&#10003;</span>4-week course portal</li>
+          <li style="font-size:.82rem;color:#2A1F1A;display:flex;align-items:flex-start;gap:.65rem;"><span style="color:#6B4570;flex-shrink:0;">&#10003;</span>30-day digital journal (fillable PDF)</li>
+          <li style="font-size:.82rem;color:#2A1F1A;display:flex;align-items:flex-start;gap:.65rem;"><span style="color:#6B4570;flex-shrink:0;">&#10003;</span>All Thought Corner video sessions</li>
+          <li style="font-size:.82rem;color:#2A1F1A;display:flex;align-items:flex-start;gap:.65rem;"><span style="color:#6B4570;flex-shrink:0;">&#10003;</span>INCUP Dopamine Menu Builder</li>
+          <li style="font-size:.82rem;color:#2A1F1A;display:flex;align-items:flex-start;gap:.65rem;"><span style="color:#6B4570;flex-shrink:0;">&#10003;</span>Community Space access</li>
+        </ul>
+        <a href="enrol.html"
+          style="display:block;text-align:center;padding:.95rem;background:#2A1F1A;color:#F6F1E9;text-decoration:none;border-radius:4px;font-family:'Atkinson Hyperlegible',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:background .3s;"
+          onmouseover="this.style.background='#6B4570'"
+          onmouseout="this.style.background='#2A1F1A'">Enrol Now</a>
+      </div>
+
+      <!-- Tier 2 -->
+      <div style="background:#2A1F1A;border-radius:24px;padding:2.6rem;box-shadow:0 6px 48px rgba(42,31,26,.18);border:1px solid rgba(196,150,62,.18);display:flex;flex-direction:column;position:relative;">
+        <span style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:#C4963E;color:#2A1F1A;font-size:.52rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:.3rem 1.1rem;border-radius:0 0 8px 8px;">Most Complete</span>
+        <span style="font-size:.58rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(196,150,62,.75);font-weight:700;display:block;margin-bottom:.8rem;margin-top:.8rem;">Tier 02</span>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:400;color:#F6F1E9;line-height:1.2;margin-bottom:.6rem;">The Integrated Scaffolding</h3>
+        <p style="font-size:.82rem;color:rgba(246,241,233,.72);line-height:1.75;margin-bottom:2rem;flex:1;">Everything in Core Architecture, plus two private 1:1 sessions with Leah to translate the course frameworks directly into the structure of your specific life.</p>
+        <div style="margin-bottom:2rem;">
+          <div class="price-display" data-aud="897" data-usd="599"
+            style="font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300;color:#F6F1E9;line-height:1;">
+            <span class="currency-symbol">A$</span><span class="price-amount">897</span>
+          </div>
+          <p style="font-size:.72rem;color:rgba(246,241,233,.45);margin-top:.35rem;">One payment. Includes two 1:1 sessions.</p>
+        </div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:.7rem;margin-bottom:2rem;padding:0;">
+          <li style="font-size:.82rem;color:rgba(246,241,233,.85);display:flex;align-items:flex-start;gap:.65rem;"><span style="color:#C4963E;flex-shrink:0;">&#10003;</span>Everything in Core Architecture</li>
+          <li style="font-size:.82rem;color:rgba(246,241,233,.85);display:flex;align-items:flex-start;gap:.65rem;"><span style="color:#C4963E;flex-shrink:0;">&#10003;</span>Two private 60-min sessions with Leah</li>
+          <li style="font-size:.82rem;color:rgba(246,241,233,.85);display:flex;align-items:flex-start;gap:.65rem;"><span style="color:#C4963E;flex-shrink:0;">&#10003;</span>Personalised Attunement Architecture map</li>
+          <li style="font-size:.82rem;color:rgba(246,241,233,.85);display:flex;align-items:flex-start;gap:.65rem;"><span style="color:#C4963E;flex-shrink:0;">&#10003;</span>Priority scheduling within your course window</li>
+          <li style="font-size:.82rem;color:rgba(246,241,233,.85);display:flex;align-items:flex-start;gap:.65rem;"><span style="color:#C4963E;flex-shrink:0;">&#10003;</span>Physical cloth-linen journal edition included</li>
+        </ul>
+        <a href="enrol.html"
+          style="display:block;text-align:center;padding:.95rem;background:#C4963E;color:#2A1F1A;text-decoration:none;border-radius:4px;font-family:'Atkinson Hyperlegible',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;transition:background .3s;"
+          onmouseover="this.style.background='#F6F1E9'"
+          onmouseout="this.style.background='#C4963E'">Enrol Now</a>
+      </div>
+
+    </div><!-- /grid -->
+
+    <!-- Reassurance line -->
+    <p style="text-align:center;margin-top:2.2rem;font-size:.74rem;color:#4A3830;opacity:.55;max-width:480px;margin-left:auto;margin-right:auto;line-height:1.7;">No payment is collected here. You will be contacted to confirm your place and next steps. Prices displayed in <span id="currency-label">AUD</span>.</p>
+
+  </div>
+</section>
+
+<script>
+const PRICES = { AUD: { symbol: 'A$', t1: '497', t2: '897' }, USD: { symbol: 'US$', t1: '329', t2: '599' } };
+function setCurrency(c) {
+  var p = PRICES[c];
+  document.querySelectorAll('.price-display').forEach(function(el) {
+    el.querySelector('.currency-symbol').textContent = p.symbol;
+    el.querySelector('.price-amount').textContent = el.dataset[c.toLowerCase()];
+  });
+  document.getElementById('currency-label').textContent = c;
+  document.getElementById('btn-aud').style.background = c==='AUD' ? '#2A1F1A' : 'transparent';
+  document.getElementById('btn-aud').style.color = c==='AUD' ? '#F6F1E9' : '#2A1F1A';
+  document.getElementById('btn-usd').style.background = c==='USD' ? '#2A1F1A' : 'transparent';
+  document.getElementById('btn-usd').style.color = c==='USD' ? '#F6F1E9' : '#2A1F1A';
+}
+</script>
+
 <section id="cta">
   <div class="container" style="text-align:center;">
     <span class="section-label reveal">Enrol</span>
