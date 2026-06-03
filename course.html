@@ -522,26 +522,86 @@ footer { background: var(--ink); border-top: 1px solid rgba(246,241,233,.06); pa
       <p class="section-body">Each week builds on the last. Video coaching sessions, reflective prompts, and dual journal access, digital and physical, are woven through every stage.</p>
     </div>
 
-    <!-- Support & Referral Pathway -->
-    <section style="background-color:#F6F1E9;padding:2rem;display:flex;justify-content:center;font-family:'Atkinson Hyperlegible',sans-serif;margin-bottom:3rem;">
-      <div style="max-width:680px;width:100%;background-color:#FBF9F6;border-left:4px solid rgba(107,69,112,0.12);padding:2.5rem;border-radius:4px;box-shadow:0 4px 20px rgba(42,31,26,0.06);">
-        <span style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.15rem;color:#6B4570;font-weight:700;display:block;margin-bottom:0.75rem;">Support &amp; Referral Pathways</span>
-        <h3 style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:#2A1F1A;margin:0 0 1rem 0;font-weight:600;line-height:1.2;">Nervous System &amp; Crisis Support</h3>
-        <p style="color:#2A1F1A;font-size:1rem;line-height:1.8rem;margin:0 0 2rem 0;opacity:0.9;">Navigating a late diagnosis can bring up profound grief, the weight of long-unrecognised struggles, and real vulnerability. This course is strictly psychoeducational and does not replace medical or psychological care. If you are experiencing distress, overwhelm, or need immediate space to process, professional Australian support networks are available 24/7.</p>
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;">
-          <div style="display:flex;flex-direction:column;">
-            <span style="font-weight:700;color:#2A1F1A;font-size:1.1rem;margin-bottom:0.25rem;">Lifeline</span>
-            <a href="tel:131114" style="color:#6B4570;text-decoration:none;font-weight:700;font-size:1.25rem;transition:color 0.4s ease-in-out;margin-bottom:0.25rem;">13 11 14</a>
-            <span style="font-size:0.85rem;color:#2A1F1A;opacity:0.7;">Crisis support and suicide prevention.</span>
-          </div>
-          <div style="display:flex;flex-direction:column;">
-            <span style="font-weight:700;color:#2A1F1A;font-size:1.1rem;margin-bottom:0.25rem;">Beyond Blue</span>
-            <a href="tel:1300224636" style="color:#6B4570;text-decoration:none;font-weight:700;font-size:1.25rem;transition:color 0.4s ease-in-out;margin-bottom:0.25rem;">1300 22 4636</a>
-            <span style="font-size:0.85rem;color:#2A1F1A;opacity:0.7;">Anxiety, depression, and mental health support.</span>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Support & Referral Pathway — dynamic international component -->
+    <div id="support-pathway" style="background-color:#F6F1E9;display:flex;justify-content:center;width:100%;margin-bottom:3rem;"></div>
+
+    <script>
+    const SUPPORT_DATA = {
+      AU: {
+        label: 'Australian Support Services',
+        services: [
+          { name: 'Lifeline', number: '13 11 14', href: 'tel:131114', description: 'Crisis support and suicide prevention.' },
+          { name: 'Beyond Blue', number: '1300 22 4636', href: 'tel:1300224636', description: 'Anxiety, depression, and mental health support.' }
+        ]
+      },
+      US: {
+        label: 'US Support Services',
+        services: [
+          { name: 'Crisis Lifeline', number: '988', href: 'tel:988', description: 'Suicide and crisis support, available 24/7.' },
+          { name: 'Crisis Text Line', number: 'Text HOME to 741741', href: 'sms:741741?body=HOME', description: 'Free, confidential crisis support via text.' }
+        ]
+      },
+      GB: {
+        label: 'UK Support Services',
+        services: [
+          { name: 'Samaritans', number: '116 123', href: 'tel:116123', description: 'Free, confidential emotional support at any time.' },
+          { name: 'Mind Infoline', number: '0300 123 3393', href: 'tel:03001233393', description: 'Mental health information and support.' }
+        ]
+      },
+      CA: {
+        label: 'Canadian Support Services',
+        services: [
+          { name: 'Crisis Services Canada', number: '1-833-456-4566', href: 'tel:18334564566', description: 'National crisis and suicide prevention support.' },
+          { name: 'Crisis Text Line Canada', number: 'Text HELLO to 686868', href: 'sms:686868?body=HELLO', description: 'Free, confidential crisis support via text.' }
+        ]
+      },
+      EU: {
+        label: 'European Support Services',
+        services: [
+          { name: 'European Emergency', number: '112', href: 'tel:112', description: 'Pan-European emergency services.' },
+          { name: 'IASP Crisis Centre Directory', number: 'iasp.info/resources/Crisis_Centres', href: 'https://iasp.info', description: 'Find your local crisis support service.' }
+        ]
+      }
+    };
+
+    function detectRegion() {
+      try {
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.startsWith('Australia')) return 'AU';
+        if (/^America\/(New_York|Chicago|Denver|Los_Angeles|Phoenix|Detroit|Indiana|Kentucky|Boise|Anchorage|Adak|Nome|Sitka|Yakutat)/.test(tz)) return 'US';
+        if (/^America\/(Toronto|Vancouver|Edmonton|Winnipeg|Halifax|Regina|St_Johns|Glace_Bay|Goose_Bay|Moncton|Blanc-Sablon|Creston|Dawson|Dawson_Creek|Fort_Nelson|Whitehorse|Yellowknife|Rankin_Inlet|Resolute|Atikokan|Coral_Harbour|Nipigon|Pangnirtung|Rainy_River|Swift_Current|Thunder_Bay)/.test(tz)) return 'CA';
+        if (tz === 'Europe/London' || tz === 'Europe/Belfast' || tz === 'Europe/Jersey' || tz === 'Europe/Guernsey' || tz === 'Europe/Isle_of_Man') return 'GB';
+        if (tz.startsWith('Europe/')) return 'EU';
+      } catch(e) {}
+      return 'AU';
+    }
+
+    function renderSupportComponent(containerId) {
+      var region = detectRegion();
+      var data = SUPPORT_DATA[region];
+      var container = document.getElementById(containerId);
+      if (!container || !data) return;
+      var servicesHtml = '';
+      data.services.forEach(function(s) {
+        servicesHtml += '<div style="display:flex;flex-direction:column;">' +
+          '<span style="font-weight:700;color:#2A1F1A;font-size:1.1rem;margin-bottom:0.25rem;">' + s.name + '</span>' +
+          '<a href="' + s.href + '" style="color:#6B4570;text-decoration:none;font-weight:700;font-size:1.25rem;transition:color 0.4s ease-in-out;margin-bottom:0.25rem;">' + s.number + '</a>' +
+          '<span style="font-size:0.85rem;color:#2A1F1A;opacity:0.7;">' + s.description + '</span>' +
+          '</div>';
+      });
+      container.innerHTML =
+        '<div style="max-width:680px;width:100%;background-color:#FBF9F6;border-left:4px solid rgba(107,69,112,0.12);padding:2.5rem;border-radius:4px;box-shadow:0 4px 20px rgba(42,31,26,0.06);margin:2rem auto;font-family:\'Atkinson Hyperlegible\',sans-serif;">' +
+          '<span style="font-size:0.75rem;text-transform:uppercase;letter-spacing:0.15rem;color:#6B4570;font-weight:700;display:block;margin-bottom:0.75rem;">' + data.label + '</span>' +
+          '<h3 style="font-family:\'Cormorant Garamond\',serif;font-size:1.8rem;color:#2A1F1A;margin:0 0 1rem 0;font-weight:600;line-height:1.2;">Nervous System &amp; Crisis Support</h3>' +
+          '<p style="color:#2A1F1A;font-size:1rem;line-height:1.8rem;margin:0 0 2rem 0;opacity:0.9;">Navigating a late diagnosis can bring up profound grief, the weight of long-unrecognised struggles, and real vulnerability. This course is strictly psychoeducational and does not replace medical or psychological care. If you are experiencing distress, overwhelm, or need immediate space to process, professional support networks are available 24/7.</p>' +
+          '<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;">' + servicesHtml + '</div>' +
+        '</div>';
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      renderSupportComponent('support-pathway');
+    });
+    </script>
 
     <div class="weeks-stack">
 
