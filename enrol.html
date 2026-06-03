@@ -163,47 +163,47 @@ footer{background:var(--ink);padding:2.4rem 2rem;}
         - Custom API: action="/api/enrol" method="POST"
       Add a hidden CSRF or honeypot field as needed.
     -->
-    <form id="enrolForm" action="#" method="POST" novalidate>
+    <!-- Formspree: replace /f/YOUR_ID with your live endpoint -->
+    <form
+      id="enrolment-form"
+      action="https://formspree.io/f/YOUR_ID"
+      method="POST"
+      style="max-width:580px;margin:0 auto;background-color:#FBF9F6;padding:3rem;border-radius:24px;box-shadow:0 4px 20px rgba(42,31,26,0.06);font-family:'Atkinson Hyperlegible',sans-serif;"
+    >
+      <input type="text" name="_gotcha" style="display:none" />
 
-      <!-- Honeypot (hide with CSS) -->
-      <div style="display:none;" aria-hidden="true">
-        <input type="text" name="_gotcha" tabindex="-1" autocomplete="off">
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;color:#2A1F1A;margin-bottom:2rem;font-weight:600;">
+        Begin Your Attunement Architecture
+      </h2>
+
+      <div style="margin-bottom:1.75rem;">
+        <label for="full-name" style="display:block;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1rem;color:#2A1F1A;font-weight:700;margin-bottom:0.5rem;">Full Name</label>
+        <input type="text" id="full-name" name="name" required placeholder="Your name"
+          style="width:100%;padding:0.9rem;background-color:#F6F1E9;border:1px solid rgba(42,31,26,0.1);border-radius:4px;color:#2A1F1A;font-size:1rem;box-sizing:border-box;" />
       </div>
 
-      <div class="field">
-        <label for="fullName">Full Name</label>
-        <input type="text" id="fullName" name="fullName" placeholder="Your full name" required autocomplete="name">
+      <div style="margin-bottom:1.75rem;">
+        <label for="email-address" style="display:block;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1rem;color:#2A1F1A;font-weight:700;margin-bottom:0.5rem;">Email Address</label>
+        <input type="email" id="email-address" name="email" required placeholder="you@domain.com"
+          style="width:100%;padding:0.9rem;background-color:#F6F1E9;border:1px solid rgba(42,31,26,0.1);border-radius:4px;color:#2A1F1A;font-size:1rem;box-sizing:border-box;" />
       </div>
 
-      <div class="field">
-        <label for="email">Email Address</label>
-        <input type="email" id="email" name="email" placeholder="you@example.com" required autocomplete="email">
+      <div style="margin-bottom:2rem;">
+        <label for="accommodations" style="display:block;font-size:0.8rem;text-transform:uppercase;letter-spacing:0.1rem;color:#2A1F1A;font-weight:700;margin-bottom:0.5rem;">Accessibility &amp; Structural Accommodation Needs <span style="font-weight:400;opacity:0.6;">(Optional)</span></label>
+        <textarea id="accommodations" name="accommodations" rows="4"
+          placeholder="Any specific processing, text format, or communication preferences we can support..."
+          style="width:100%;padding:0.9rem;background-color:#F6F1E9;border:1px solid rgba(42,31,26,0.1);border-radius:4px;color:#2A1F1A;font-size:1rem;box-sizing:border-box;resize:vertical;"></textarea>
       </div>
 
-      <div class="field">
-        <label for="accessibility">Accessibility or Accommodation Needs <span style="font-weight:400;opacity:.6;">(optional)</span></label>
-        <textarea id="accessibility" name="accessibility" placeholder="Let us know anything that would help us support you better. There are no wrong answers here."></textarea>
-        <span class="field-note">This is entirely optional. It helps us make sure the course works well for you.</span>
-      </div>
+      <button type="submit" id="submit-btn"
+        style="width:100%;padding:1.1rem;background-color:#2A1F1A;color:#F6F1E9;border:none;border-radius:4px;font-weight:700;font-size:1rem;letter-spacing:0.05rem;cursor:pointer;transition:all 0.4s ease-in-out;"
+        onmouseover="this.style.backgroundColor='#6B4570'"
+        onmouseout="this.style.backgroundColor='#2A1F1A'">
+        Confirm Enrolment
+      </button>
 
-      <div class="checkbox-row">
-        <input type="checkbox" id="newsletter" name="newsletter" value="yes">
-        <label class="checkbox-label" for="newsletter">Keep me updated with resources, insights, and community notes from Nuanced Co. You can unsubscribe at any time.</label>
-      </div>
-
-      <div class="submit-area">
-        <button type="submit" class="btn-submit">Complete Enrolment</button>
-        <p class="submit-note">By submitting this form you agree to our <a href="privacy.html" style="color:var(--purple);text-decoration:underline;">Privacy Policy</a>. No payment is collected here. You will be contacted to confirm your place and next steps.</p>
-      </div>
-
+      <div id="form-feedback" style="margin-top:1.5rem;font-size:0.95rem;line-height:1.5rem;text-align:center;display:none;"></div>
     </form>
-
-    <!-- Success state (shown via JS on submit) -->
-    <div class="form-success" id="formSuccess">
-      <div class="success-icon">✓</div>
-      <h3 class="success-h">You're enrolled.</h3>
-      <p class="success-p">Your details have been received. Expect a confirmation email within one business day with your access link and a copy of your course schedule. Welcome.</p>
-    </div>
 
   </div>
 
@@ -227,22 +227,39 @@ footer{background:var(--ink);padding:2.4rem 2rem;}
 const nav = document.getElementById('mainNav');
 window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 40));
 
-document.getElementById('enrolForm').addEventListener('submit', function(e) {
-  // Client-side validation
-  const name = document.getElementById('fullName').value.trim();
-  const email = document.getElementById('email').value.trim();
-  if (!name || !email) {
-    e.preventDefault();
-    if (!name) document.getElementById('fullName').focus();
-    else document.getElementById('email').focus();
-    return;
-  }
-  // If using a real form backend (Netlify, Formspree, etc.),
-  // remove e.preventDefault() and let the form submit naturally.
-  // For client-only demo, show success state:
+document.getElementById('enrolment-form').addEventListener('submit', async function(e) {
   e.preventDefault();
-  document.getElementById('enrolForm').style.display = 'none';
-  document.getElementById('formSuccess').classList.add('visible');
+  const form = e.target;
+  const btn = document.getElementById('submit-btn');
+  const feedback = document.getElementById('form-feedback');
+  btn.disabled = true;
+  btn.innerText = 'Transmitting Enrolment...';
+  btn.style.backgroundColor = 'rgba(42,31,26,0.4)';
+  try {
+    const response = await fetch(form.action, {
+      method: form.method,
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (response.ok) {
+      form.innerHTML = `
+        <div style="text-align:center;padding:2rem 0;font-family:'Atkinson Hyperlegible',sans-serif;">
+          <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:#2A1F1A;margin-bottom:1rem;font-weight:600;">Enrolment Confirmed</h3>
+          <p style="color:#2A1F1A;font-size:1rem;line-height:1.8rem;opacity:0.9;margin-bottom:2rem;">Your details have been securely received. A clean onboarding protocol has been dispatched to your email address with your access details.</p>
+          <a href="portal.html" style="display:inline-block;padding:0.9rem 2rem;background-color:#6B4570;color:#F6F1E9;text-decoration:none;border-radius:4px;font-weight:700;transition:background-color 0.4s ease;">Enter Member Portal</a>
+        </div>`;
+    } else {
+      const data = await response.json();
+      throw new Error(data.error || 'Submission failed.');
+    }
+  } catch(error) {
+    btn.disabled = false;
+    btn.innerText = 'Confirm Enrolment';
+    btn.style.backgroundColor = '#2A1F1A';
+    feedback.style.color = '#C07A8A';
+    feedback.style.display = 'block';
+    feedback.textContent = 'Connection friction detected. Please check your internet connection or try again shortly.';
+  }
 });
 </script>
 
