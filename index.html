@@ -168,10 +168,11 @@
     }
 
     /* LOGO MARK */
-    .hero-mark{position:absolute;left:50%;top:55%;transform:translate(-50%,-50%);width:600px;height:auto;opacity:0;animation:markFade 2.5s 0.4s var(--ease) forwards;pointer-events:none;z-index:1;mix-blend-mode:multiply;}
+    .hero-mark{position:absolute;left:50%;top:45%;transform:translate(-50%,-50%);width:65vw;max-width:700px;height:auto;opacity:0;animation:markFade 2.5s 0.4s var(--ease) forwards;pointer-events:none;z-index:1;mix-blend-mode:multiply;}
     @media(max-width:680px){.hero-mark{width:100vw;opacity:0;animation:markFade 2.5s 0.4s var(--ease) forwards;}}
     @media(max-width:860px){.hero-mark{display:none;}}
     @keyframes markIn{to{opacity:.55;}}
+    @keyframes markFade{from{opacity:0;}to{opacity:.35;}}
     .hero-body{position:relative;z-index:2;}
 
     /* BUTTONS */
@@ -426,7 +427,14 @@
     <svg class="im-3" viewBox="0 0 180 100" fill="none"><ellipse cx="90" cy="50" rx="74" ry="38" stroke="#C07A8A" stroke-width="1.8"/><ellipse cx="90" cy="50" rx="60" ry="26" stroke="#C4963E" stroke-width="0.8" opacity=".5"/></svg>
   </div>
   <div class="hero-inner">
-    <div class="hero-body">
+    <svg class="hero-mark" viewBox="0 0 580 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <ellipse cx="195" cy="175" rx="168" ry="148" transform="rotate(-12 195 175)" fill="#6B4570" fill-opacity="0.32"/>
+      <ellipse cx="330" cy="138" rx="155" ry="135" transform="rotate(8 330 138)" fill="#7A8C6E" fill-opacity="0.28"/>
+      <ellipse cx="445" cy="178" rx="148" ry="160" transform="rotate(-5 445 178)" fill="#9668A4" fill-opacity="0.25"/>
+      <ellipse cx="270" cy="300" rx="175" ry="140" transform="rotate(6 270 300)" fill="#C07A8A" fill-opacity="0.26"/>
+      <ellipse cx="400" cy="320" rx="145" ry="120" transform="rotate(-10 400 320)" fill="#C4963E" fill-opacity="0.22"/>
+    </svg>
+    <div class="hero-body" style="position:relative;z-index:2;">
       <div class="hero-eyebrow rv"><div class="hero-eyebrow-line"></div><span class="hero-eyebrow-text">Attunement Architecture &bull; Nuanced Co. &bull; Geelong, Australia</span></div>
       <div class="hero-hl">
         <span class="hl-row hl-sm rv" style="margin-bottom:.5rem">You don't need more discipline.</span>
@@ -444,20 +452,6 @@
       <p class="hero-micro rv" style="transition-delay:.55s">Four weeks. Evidence-based. Designed for a brain wired exactly like yours.</p>
     </div>
   </div>
-  <!-- LOGO MARK, overlapping blobs -->
-  <svg class="hero-mark" viewBox="0 0 580 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-    <!-- purple blob top-left -->
-    <ellipse cx="195" cy="175" rx="168" ry="148" transform="rotate(-12 195 175)" fill="#6B4570" fill-opacity="0.32"/>
-    <!-- sage blob top-centre -->
-    <ellipse cx="330" cy="138" rx="155" ry="135" transform="rotate(8 330 138)" fill="#7A8C6E" fill-opacity="0.28"/>
-    <!-- lilac blob top-right -->
-    <ellipse cx="445" cy="178" rx="148" ry="160" transform="rotate(-5 445 178)" fill="#9668A4" fill-opacity="0.25"/>
-    <!-- rose blob bottom-centre -->
-    <ellipse cx="270" cy="300" rx="175" ry="140" transform="rotate(6 270 300)" fill="#C07A8A" fill-opacity="0.26"/>
-    <!-- gold blob bottom-right -->
-    <ellipse cx="400" cy="320" rx="145" ry="120" transform="rotate(-10 400 320)" fill="#C4963E" fill-opacity="0.22"/>
-  </svg>
-
   <div class="hero-fade"></div>
 </section>
 
