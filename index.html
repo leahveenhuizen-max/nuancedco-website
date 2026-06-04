@@ -36,7 +36,7 @@
 
 
     /* CONTROLS */
-    #mtoggle{position:fixed;bottom:2rem;left:2rem;z-index:9998;font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mid);background:rgba(246,241,233,.92);backdrop-filter:blur(8px);border:1px solid var(--cream-dd);padding:.45rem .9rem;border-radius:20px;transition:border-color .2s,color .2s;}
+    #mtoggle{position:fixed;bottom:1.6rem;left:1.6rem;z-index:9998;font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mid);background:rgba(246,241,233,.92);backdrop-filter:blur(8px);border:1px solid var(--cream-dd);padding:.45rem .9rem;border-radius:20px;transition:border-color .2s,color .2s;}
     #mtoggle:hover{border-color:var(--purple);color:var(--purple);}
 
     /* NAV */
@@ -79,10 +79,10 @@
     .im-2{bottom:20%;left:5%;width:260px;opacity:.10;}
     .im-3{top:45%;right:22%;width:180px;opacity:.08;}
 
-    .hero-inner{position:relative;z-index:2;display:flex;align-items:center;width:100%;padding:0 5rem;min-height:100vh;}
-    .hero-body{padding:9rem 0 9rem;max-width:580px;flex:1;}
+    .hero-inner{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;width:100%;padding:0 2rem;min-height:100vh;}
+    .hero-body{padding:9rem 0 9rem;max-width:800px;width:100%;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2;}
 
-    .hero-eyebrow{display:flex;align-items:center;gap:1.2rem;margin-bottom:3rem;}
+    .hero-eyebrow{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-bottom:3rem;}
     .hero-eyebrow-line{width:50px;height:1px;background:var(--purple);opacity:.45;}
     .hero-eyebrow-text{font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--purple);}
     .hero-hl{position:relative;line-height:1;margin-bottom:3rem;}
@@ -92,8 +92,8 @@
     .hl-lg em{font-style:italic;color:var(--purple);}
     .hl-offset{margin-left:clamp(2rem,6vw,7rem);}
     .hl-brushmark{display:block;margin-top:.5rem;margin-left:clamp(2rem,6vw,7rem);}
-    .hero-sub{font-size:1rem;color:var(--ink-mid);max-width:480px;line-height:1.75;margin-bottom:2.8rem;margin-left:.4rem;}
-    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
+    .hero-sub{font-size:1rem;color:var(--ink-mid);max-width:600px;line-height:1.75;margin-bottom:2.8rem;text-align:center;}
+    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;}
     .hero-micro{font-size:.66rem;color:rgba(42,31,26,.42);margin-top:1.2rem;letter-spacing:.04em;}
     .hero-fade{position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to bottom,transparent,var(--cream));z-index:3;pointer-events:none;}
 
@@ -168,8 +168,8 @@
     }
 
     /* LOGO MARK */
-    .hero-mark{position:absolute;right:2rem;top:50%;transform:translateY(-50%);margin:0;padding:0;width:40vw;max-width:460px;height:auto;aspect-ratio:1/1;flex-shrink:0;opacity:0;animation:markIn 2s 0.6s var(--ease) forwards;pointer-events:none;z-index:1;mix-blend-mode:multiply;}
-    @media(max-width:1200px){.hero-mark{width:34vw;right:1rem;}}@media(max-width:860px){.hero-mark{display:none;}}
+    .hero-mark{position:absolute;left:50%;top:55%;transform:translate(-50%,-50%);width:600px;height:auto;opacity:0;animation:markFade 2.5s 0.4s var(--ease) forwards;pointer-events:none;z-index:1;mix-blend-mode:multiply;}
+    @media(max-width:680px){.hero-mark{width:100vw;opacity:0;animation:markFade 2.5s 0.4s var(--ease) forwards;}}
     @media(max-width:860px){.hero-mark{display:none;}}
     @keyframes markIn{to{opacity:.55;}}
     .hero-body{position:relative;z-index:2;}
@@ -430,8 +430,8 @@
       <div class="hero-eyebrow rv"><div class="hero-eyebrow-line"></div><span class="hero-eyebrow-text">Attunement Architecture &bull; Nuanced Co. &bull; Geelong, Australia</span></div>
       <div class="hero-hl">
         <span class="hl-row hl-sm rv" style="margin-bottom:.5rem">You don't need more discipline.</span>
-        <span class="hl-row hl-lg hl-offset rv d1" style="margin-bottom:.3rem">You need</span>
-        <span class="hl-row hl-lg rv d2" style="margin-left:2.5rem"><em>better structure.</em></span>
+        <span class="hl-row hl-lg rv d1" style="margin-bottom:.3rem">You need</span>
+        <span class="hl-row hl-lg rv d2"><em>better structure.</em></span>
         <span class="hl-brushmark rv d3">
           <svg viewBox="0 0 360 20" width="360" height="20" fill="none"><path d="M4,10 C50,4 120,16 190,8 C255,1 310,14 356,10" stroke="#C4963E" stroke-width="2.5" stroke-linecap="round"/><path d="M30,13 C80,7 150,18 215,11 C270,4 320,15 355,12" stroke="#C4963E" stroke-width="1" stroke-linecap="round" opacity=".45"/></svg>
         </span>
