@@ -71,7 +71,7 @@
     .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
     /* HERO */
-    #hero{min-height:100vh;background:var(--ink-deep);position:relative;display:flex;align-items:center;overflow:hidden;}
+    #hero{min-height:100vh;background:var(--cream);position:relative;display:flex;align-items:center;overflow:hidden;}
     .ink-marks{position:absolute;inset:0;pointer-events:none;z-index:1;}
     .ink-marks svg{position:absolute;}
     .im-1{top:12%;right:8%;width:340px;opacity:.15;}
@@ -82,24 +82,24 @@
     .hero-body{padding:9rem 0 7rem;max-width:660px;flex:1;}
 
     .hero-eyebrow{display:flex;align-items:center;gap:1.2rem;margin-bottom:3rem;}
-    .hero-eyebrow-line{width:50px;height:1px;background:var(--gold);}
-    .hero-eyebrow-text{font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);}
+    .hero-eyebrow-line{width:50px;height:1px;background:var(--purple);opacity:.45;}
+    .hero-eyebrow-text{font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--purple);}
     .hero-hl{position:relative;line-height:1;margin-bottom:3rem;}
     .hl-row{display:block;overflow:visible;}
-    .hl-sm{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.8rem);font-weight:300;color:rgba(246,241,233,.55);letter-spacing:.02em;}
-    .hl-lg{font-family:var(--serif);font-size:clamp(4rem,8.5vw,8rem);font-weight:300;color:var(--cream);letter-spacing:-.01em;line-height:.9;}
-    .hl-lg em{font-style:italic;color:var(--gold);}
+    .hl-sm{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.8rem);font-weight:300;color:rgba(42,31,26,.52);letter-spacing:.02em;}
+    .hl-lg{font-family:var(--serif);font-size:clamp(4rem,8.5vw,8rem);font-weight:300;color:var(--ink);letter-spacing:-.01em;line-height:.9;}
+    .hl-lg em{font-style:italic;color:var(--purple);}
     .hl-offset{margin-left:clamp(2rem,6vw,7rem);}
     .hl-brushmark{display:block;margin-top:.5rem;margin-left:clamp(2rem,6vw,7rem);}
-    .hero-sub{font-size:1rem;color:rgba(246,241,233,.82);max-width:480px;line-height:1.75;margin-bottom:2.8rem;margin-left:.4rem;}
+    .hero-sub{font-size:1rem;color:var(--ink-mid);max-width:480px;line-height:1.75;margin-bottom:2.8rem;margin-left:.4rem;}
     .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;}
-    .hero-micro{font-size:.66rem;color:rgba(246,241,233,.42);margin-top:1.2rem;letter-spacing:.04em;}
+    .hero-micro{font-size:.66rem;color:rgba(42,31,26,.42);margin-top:1.2rem;letter-spacing:.04em;}
     .hero-fade{position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to bottom,transparent,var(--cream));z-index:3;pointer-events:none;}
 
-    .hero-video-bg{position:absolute;inset:0;z-index:0;overflow:hidden;background:radial-gradient(circle at 25% 30%, rgba(255,255,255,.08) 0, transparent 24%), radial-gradient(circle at 80% 20%, rgba(229,220,201,.05) 0, transparent 20%), linear-gradient(180deg, rgba(15,12,10,.95), rgba(15,12,10,.78));}
-    .hero-video-overlay{position:absolute;inset:0;background:linear-gradient(180deg, rgba(15,12,10,.18), rgba(15,12,10,.76));}
-    .hero-video-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:var(--body);font-size:0.95rem;color:rgba(246,241,233,.55);letter-spacing:.08em;text-align:center;padding:2rem;}
-    .hero-video-caption{position:absolute;left:3rem;bottom:3rem;z-index:1;background:rgba(15,12,10,.7);border:1px solid rgba(246,241,233,.12);backdrop-filter:blur(10px);padding:0.95rem 1rem;border-radius:18px;font-size:0.84rem;color:rgba(246,241,233,.78);max-width:28rem;}
+    .hero-video-bg{display:none;}
+    .hero-video-overlay{display:none;}
+    .hero-video-placeholder{display:none;}
+    .hero-video-caption{display:none;}
 
     .roadmap-block{background:linear-gradient(135deg, rgba(15,12,10,.96), rgba(43,33,28,.92));border:1px solid rgba(196,150,62,.18);border-radius:28px;box-shadow:0 40px 90px rgba(0,0,0,.14);padding:3rem 2rem;margin-top:-1.5rem;position:relative;overflow:hidden;color:var(--cream);}
     .roadmap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2rem;}
@@ -135,9 +135,9 @@
       .course-diagram-grid{grid-template-columns:1fr;}
       .roadmap-grid{grid-template-columns:1fr;}
     }
-    .course-intro .section-label{color:var(--gold);}
-    .course-intro .sh{color:var(--cream);}
-    .course-intro .sb{color:rgba(246,241,233,.85);max-width:760px;}
+    .course-intro .section-label{color:var(--purple);}
+    .course-intro .sh{color:var(--ink);}
+    .course-intro .sb{color:var(--ink-mid);max-width:760px;}
     .course-video-block{margin-top:2.5rem;max-width:840px;}
     .video-frame{position:relative;padding-top:56.25%;border-radius:22px;overflow:hidden;background:rgba(15,12,10,.95);border:1px solid rgba(196,150,62,.27);box-shadow:0 28px 60px rgba(0,0,0,.18);}
     .video-frame iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;}
@@ -167,17 +167,17 @@
     }
 
     /* LOGO MARK */
-    .hero-mark{position:absolute;right:6%;top:50%;transform:translateY(-50%);width:clamp(300px,40vw,520px);opacity:0;animation:markIn 2s 0.6s var(--ease) forwards;pointer-events:none;z-index:1;}
+    .hero-mark{position:absolute;right:6%;top:50%;transform:translateY(-50%);width:clamp(300px,40vw,520px);opacity:0;animation:markIn 2s 0.6s var(--ease) forwards;pointer-events:none;z-index:1;mix-blend-mode:multiply;}
     @keyframes markIn{to{opacity:.55;}}
     .hero-body{position:relative;z-index:2;}
 
     /* BUTTONS */
     .btn{font-family:var(--body);font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.9rem 2.2rem;border:none;border-radius:2px;transition:transform .2s var(--ease),background .2s,color .2s,box-shadow .2s;display:inline-block;}
     .btn:hover{transform:translateY(-2px);}
-    .btn-gold{background:var(--gold);color:var(--ink-deep);}
-    .btn-gold:hover{background:#d4a84e;box-shadow:0 8px 24px rgba(196,150,62,.35);}
-    .btn-ghost-light{background:transparent;color:var(--cream);border:1px solid rgba(246,241,233,.3);}
-    .btn-ghost-light:hover{border-color:var(--cream);background:rgba(246,241,233,.06);}
+    .btn-gold{background:var(--ink);color:var(--cream);}
+    .btn-gold:hover{background:var(--purple);color:var(--cream);box-shadow:0 8px 24px rgba(107,69,112,.22);}
+    .btn-ghost-light{background:transparent;color:var(--ink);border:1px solid rgba(42,31,26,.3);}
+    .btn-ghost-light:hover{border-color:var(--purple);color:var(--purple);background:rgba(107,69,112,.05);}
     .btn-ghost-ink{background:transparent;color:var(--ink);border:1px solid rgba(42,31,26,.4);}
 
     /* SHARED */
@@ -433,7 +433,7 @@
           <svg viewBox="0 0 360 20" width="360" height="20" fill="none"><path d="M4,10 C50,4 120,16 190,8 C255,1 310,14 356,10" stroke="#C4963E" stroke-width="2.5" stroke-linecap="round"/><path d="M30,13 C80,7 150,18 215,11 C270,4 320,15 355,12" stroke="#C4963E" stroke-width="1" stroke-linecap="round" opacity=".45"/></svg>
         </span>
       </div>
-      <p class="hero-sub rv d3">Nuanced Co. is a neurodivergent consultancy grounded in the Attunement Architecture methodology. We help late-diagnosed adults build lives calibrated to their actual neurology. No checklists. No scripts. Structural frameworks built on peer-reviewed research and lived experience.</p>
+      <p class="hero-sub rv d3">Nuanced Co. is an adult neurodivergent consultancy founded by Leah Veenhuizen, creator of the Attunement Architecture&#8482; methodology. We help late-diagnosed adults build lives calibrated to their actual neurology. No prescriptive checklists. No rigid neurotypical scripts. Just sustainable structural frameworks built on peer-reviewed science and lived Australian experience.</p>
       <div class="hero-btns rv" style="transition-delay:.45s">
         <a href="course.html" class="btn btn-gold magnetic">View the Course</a>
         <a href="book.html" class="btn btn-ghost-light magnetic">Book a Consultation</a>
