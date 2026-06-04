@@ -102,13 +102,15 @@
     .hero-video-placeholder{display:none;}
     .hero-video-caption{display:none;}
 
-    .roadmap-block{background:linear-gradient(135deg, rgba(15,12,10,.96), rgba(43,33,28,.92));border:1px solid rgba(196,150,62,.18);border-radius:28px;box-shadow:0 40px 90px rgba(0,0,0,.14);padding:3rem 2rem;margin-top:-1.5rem;position:relative;overflow:hidden;color:var(--cream);}
-    .roadmap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:2rem;}
-    .roadmap-step{background:rgba(246,241,233,.05);border:1px solid rgba(246,241,233,.08);border-radius:22px;padding:2rem;min-height:220px;display:flex;flex-direction:column;gap:0.9rem;}
+    .roadmap-block{background:#F6F1E9;border:none;border-radius:0;box-shadow:none;padding:4rem 2rem 6rem;margin-top:0;position:relative;overflow:hidden;color:var(--ink);}
+    .roadmap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5rem;margin-top:2.5rem;}
+    .roadmap-step{background:#FBF9F6;border:1px solid rgba(42,31,26,.08);border-radius:16px;padding:2.5rem 2rem;min-height:220px;display:flex;flex-direction:column;gap:0.9rem;box-shadow:0 4px 20px rgba(42,31,26,.03);}
     .roadmap-step .step-index{font-family:var(--serif);font-size:2.2rem;color:var(--gold);font-weight:400;}
-    .roadmap-step h3{font-family:var(--serif);font-size:1.2rem;color:var(--cream);margin:0;line-height:1.2;}
-    .roadmap-step p{color:rgba(246,241,233,.78);line-height:1.75;}
-    .roadmap-block .citation-note{margin-top:1.5rem;color:rgba(246,241,233,.55);font-size:0.85rem;line-height:1.75;}
+    .roadmap-step h3{font-family:var(--serif);font-size:1.2rem;color:var(--ink);margin:0;line-height:1.2;}
+    .roadmap-step p{color:var(--ink-mid);line-height:1.75;}
+    .roadmap-block .citation-note{margin-top:1.5rem;color:rgba(42,31,26,.45);font-size:0.85rem;line-height:1.75;}
+    .roadmap-block .section-label{color:var(--purple);}
+    .roadmap-block h3:not(.roadmap-step h3){color:var(--ink);}
 
     .services-map-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;}
     .service-pair{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
