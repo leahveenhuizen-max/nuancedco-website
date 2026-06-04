@@ -168,8 +168,8 @@
     }
 
     /* LOGO MARK */
-    .hero-mark{position:absolute;right:8%;top:50%;transform:translateY(-58%);width:clamp(240px,30vw,420px);max-height:68vh;opacity:0;animation:markIn 2s 0.6s var(--ease) forwards;pointer-events:none;z-index:1;mix-blend-mode:multiply;overflow:visible;}
-    @media(max-width:1200px){.hero-mark{right:5%;width:clamp(200px,26vw,360px);}}
+    .hero-mark{position:absolute;right:10%;top:50%;transform:translateY(-58%) translateX(0);width:clamp(240px,30vw,420px);height:auto;aspect-ratio:580/480;flex-shrink:0;max-height:none;opacity:0;animation:markIn 2s 0.6s var(--ease) forwards;pointer-events:none;z-index:1;mix-blend-mode:multiply;overflow:visible;}
+    @media(max-width:1200px){.hero-mark{right:6%;width:clamp(200px,26vw,360px);}}
     @media(max-width:860px){.hero-mark{display:none;}}
     @keyframes markIn{to{opacity:.55;}}
     .hero-body{position:relative;z-index:2;}
