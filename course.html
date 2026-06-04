@@ -489,6 +489,41 @@ footer { background: var(--ink); border-top: 1px solid rgba(246,241,233,.06); pa
   </div>
 </section>
 
+<!-- COURSE PREVIEW VIDEO -->
+<section id="course-preview" style="background:var(--cream-dark);padding:5rem 2rem;">
+  <div class="container">
+    <div style="display:grid;grid-template-columns:1fr 340px;gap:4rem;align-items:center;max-width:1060px;margin:0 auto;">
+
+      <!-- Left: editorial text -->
+      <div>
+        <span class="section-label">The Attunement Experience</span>
+        <h2 class="section-heading" style="margin-bottom:.9rem;">A short visual orientation to our structural flow.</h2>
+        <p class="section-body">Before you begin, this 4-minute preview walks you through what to expect inside the Attunement Architecture course. No pressure, no commitment. Just a clear picture of how the four weeks are designed to work together.</p>
+        <a href="#" style="display:inline-flex;align-items:center;gap:.6rem;margin-top:1.8rem;font-family:var(--body);font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--purple);border-bottom:1px solid rgba(107,69,112,.3);padding-bottom:2px;transition:color .2s,border-color .2s;"
+          onmouseover="this.style.color='var(--ink)';this.style.borderColor='var(--ink)'"
+          onmouseout="this.style.color='var(--purple)';this.style.borderColor='rgba(107,69,112,.3)'">
+          Watch Orientation
+          <svg width="13" height="13" viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M2 7h10M7 2l5 5-5 5"/></svg>
+        </a>
+      </div>
+
+      <!-- Right: thumbnail card -->
+      <div style="width:340px;aspect-ratio:16/9;background-color:#FBF9F6;border:1px solid rgba(107,69,112,.15);border-radius:12px;box-shadow:0 4px 20px rgba(42,31,26,.04);display:flex;align-items:center;justify-content:center;position:relative;cursor:pointer;overflow:hidden;flex-shrink:0;"
+        onmouseover="this.querySelector('.play-icon').style.opacity='.35'"
+        onmouseout="this.querySelector('.play-icon').style.opacity='.15'">
+        <!-- Placeholder label -->
+        <span style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:var(--body);font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(42,31,26,.3);white-space:nowrap;pointer-events:none;">Course Preview</span>
+        <!-- Play icon -->
+        <svg class="play-icon" width="48" height="48" viewBox="0 0 48 48" fill="none" style="position:absolute;opacity:.15;transition:opacity .3s;pointer-events:none;">
+          <circle cx="24" cy="24" r="22" stroke="#2A1F1A" stroke-width="1.5"/>
+          <path d="M20 16.5l14 7.5-14 7.5V16.5z" fill="#2A1F1A"/>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</section>
+
 <!-- OVERVIEW -->
 <section id="overview">
   <div class="container">
