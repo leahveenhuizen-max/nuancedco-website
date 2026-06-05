@@ -438,21 +438,35 @@ footer { background: var(--ink); border-top: 1px solid rgba(246,241,233,.06); pa
 </aside>
 
 <!-- NAV -->
-<nav id="mainNav" style="position:relative;display:flex;align-items:center;width:100%;box-sizing:border-box;">
-  <!-- Hamburger — absolute left, mobile only -->
-  <div class="nav-hamburger" id="hamburger" onclick="openMobileNav()" style="position:absolute;left:1.5rem;top:50%;transform:translateY(-50%);z-index:10;"><span></span><span></span><span></span></div>
-  <!-- Logo — left block -->
-  <a href="index.html" class="nav-logo" style="padding-left:4.5rem;display:flex;flex-direction:column;flex-shrink:0;">NUANCED CO.<span>Late-Diagnosed Adult Integration Course</span></a>
-  <!-- Links — centred -->
-  <div style="display:flex;gap:2rem;align-items:center;justify-content:center;margin:0 auto;">
-    <a href="about.html" style="font-family:var(--body);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.72);transition:color .2s;">About</a>
-    <a href="consult.html" style="font-family:var(--body);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.72);transition:color .2s;">Consult</a>
-    <a href="workplace.html" style="font-family:var(--body);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.72);transition:color .2s;">Workplace</a>
-    <a href="courses.html" style="font-family:var(--body);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.72);transition:color .2s;">Training</a>
-    <a href="course.html" style="font-family:var(--body);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#F6F1E9;transition:color .2s;">Courses</a>
-    <a href="#" onclick="openModal();return false;" style="font-family:var(--body);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.72);transition:color .2s;">Contact</a>
-    <a href="book.html" style="font-family:var(--body);font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--purple);color:#F6F1E9;padding:.42rem 1.1rem;border-radius:2px;transition:background .2s;">Book a call</a>
+<nav id="mainNav" style="background-color:#2A1F1A;width:100%;box-sizing:border-box;padding:1.2rem 2.5rem;display:flex;align-items:center;position:fixed;top:0;left:0;right:0;z-index:100;min-height:80px;">
+
+  <!-- Hamburger toggle — absolute left, mobile only -->
+  <button onclick="openMobileNav()" style="position:absolute;left:1.5rem;top:50%;transform:translateY(-50%);z-index:10;background:none;border:none;cursor:pointer;display:none;flex-direction:column;gap:5px;padding:4px;" id="hamburger" class="nav-hamburger">
+    <span style="display:block;width:22px;height:1.5px;background:#F6F1E9;"></span>
+    <span style="display:block;width:22px;height:1.5px;background:#F6F1E9;"></span>
+    <span style="display:block;width:22px;height:1.5px;background:#F6F1E9;"></span>
+  </button>
+
+  <!-- Brand — offset past toggle -->
+  <div style="padding-left:4.5rem;display:flex;flex-direction:column;justify-content:center;text-align:left;flex-shrink:0;">
+    <span style="font-family:'Cormorant Garamond',serif;font-weight:600;font-size:1.3rem;color:#F6F1E9;letter-spacing:.1rem;line-height:1.1;">NUANCED CO.</span>
+    <span style="font-family:'Atkinson Hyperlegible',sans-serif;font-size:.55rem;color:#F6F1E9;letter-spacing:.08rem;opacity:.7;margin-top:.2rem;text-transform:uppercase;">Late-Diagnosed Adult Integration Course</span>
   </div>
+
+  <!-- Links — absolutely centred cluster -->
+  <div style="display:flex;gap:2rem;align-items:center;justify-content:center;position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);">
+    <a href="about.html" style="color:#F6F1E9;text-decoration:none;font-family:'Atkinson Hyperlegible',sans-serif;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1rem;opacity:.8;transition:opacity .2s;">About</a>
+    <a href="consult.html" style="color:#F6F1E9;text-decoration:none;font-family:'Atkinson Hyperlegible',sans-serif;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1rem;opacity:.8;transition:opacity .2s;">Consult</a>
+    <a href="courses.html" style="color:#F6F1E9;text-decoration:none;font-family:'Atkinson Hyperlegible',sans-serif;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1rem;opacity:.8;transition:opacity .2s;">Training</a>
+    <a href="course.html" style="color:#F6F1E9;text-decoration:none;font-family:'Atkinson Hyperlegible',sans-serif;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1rem;border-bottom:1px solid #6B4570;padding-bottom:2px;">Courses</a>
+    <a href="privacy.html" style="color:#F6F1E9;text-decoration:none;font-family:'Atkinson Hyperlegible',sans-serif;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1rem;opacity:.8;transition:opacity .2s;">Privacy</a>
+  </div>
+
+  <!-- CTA — right edge -->
+  <div style="margin-left:auto;padding-right:1.5rem;z-index:5;flex-shrink:0;">
+    <a href="book.html" style="color:#F6F1E9;text-decoration:none;font-family:'Atkinson Hyperlegible',sans-serif;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1rem;transition:color .4s ease;">Book a Call</a>
+  </div>
+
 </nav>
 
 <div class="nav-mobile" id="mobileNav">
