@@ -239,6 +239,57 @@
 .intro-body{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.94rem;font-weight:300;line-height:1.82;color:rgba(246,241,233,.82);max-width:640px;margin:0 auto 2.8rem;}
 .intro-cta{display:inline-block;background:#F6F1E9;color:#6B4570;font-family:var(--body);font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:.9rem 2.4rem;text-decoration:none;border-radius:0;transition:background .2s,color .2s;}
 .intro-cta:hover{background:#1A1A1A;color:#F6F1E9;}
+/* ── OUTCOMES ACCORDION LAYOUT ──────────────────────────── */
+.outcomes-section{background:#F6F1E9;padding:7rem 4.5rem;display:grid;grid-template-columns:220px 1fr 200px;gap:5rem;max-width:1300px;margin:0 auto;box-sizing:border-box;}
+/* Left col */
+.outcomes-left{display:flex;flex-direction:column;gap:2.5rem;}
+.outcomes-tag{font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--purple);margin:0;}
+.outcomes-img-stack{position:relative;flex:1;min-height:280px;}
+.outcomes-img-a{
+  position:absolute;top:0;left:0;width:100%;height:200px;
+  background:linear-gradient(145deg,#EAE6DF,#D6CFC4);
+  border-radius:4px;box-shadow:0 12px 28px rgba(0,0,0,.08);
+  display:flex;align-items:flex-end;padding:.7rem;
+}
+.outcomes-img-b{
+  position:absolute;bottom:0;right:-20px;width:80%;height:160px;
+  background:linear-gradient(145deg,#D9D2C8,#C9C0B5);
+  border-radius:4px;box-shadow:0 16px 32px rgba(0,0,0,.1);
+  display:flex;align-items:flex-end;padding:.7rem;
+}
+.outcomes-img-a span,.outcomes-img-b span{font-family:var(--body);font-size:.48rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(42,31,26,.35);}
+/* Centre col */
+.outcomes-centre{display:flex;flex-direction:column;}
+.outcomes-heading{font-family:var(--serif);font-size:clamp(1.9rem,2.8vw,2.8rem);font-weight:300;line-height:1.18;color:var(--ink);margin:0 0 1.4rem;max-width:520px;}
+.outcomes-intro{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.88rem;font-weight:300;line-height:1.82;color:rgba(42,31,26,.65);margin:0 0 2.8rem;max-width:480px;}
+/* Accordion list */
+.outcomes-accordion{border-top:1px solid #EAE6DF;margin-bottom:2.8rem;}
+.oa-item{border-bottom:1px solid #EAE6DF;}
+.oa-trigger{
+  width:100%;display:flex;align-items:center;justify-content:space-between;
+  padding:1.2rem 0;background:none;border:none;cursor:pointer;text-align:left;
+}
+.oa-title{font-family:var(--body);font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);}
+.oa-icon{font-family:var(--body);font-size:1.1rem;font-weight:200;color:var(--purple);transition:transform .3s;flex-shrink:0;margin-left:1rem;line-height:1;}
+.oa-trigger[aria-expanded="true"] .oa-icon{transform:rotate(45deg);}
+.oa-body{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.25,1,.5,1);}
+.oa-body.open{max-height:400px;}
+.oa-body p{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.84rem;font-weight:300;line-height:1.8;color:rgba(42,31,26,.65);padding:.2rem 0 1.2rem;}
+/* Enrol link */
+.outcomes-enrol{font-family:var(--body);font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px;display:inline-block;transition:color .2s,border-color .2s;}
+.outcomes-enrol:hover{color:var(--purple);border-color:var(--purple);}
+/* Right col */
+.outcomes-right{display:flex;flex-direction:column;padding-top:3rem;}
+.outcomes-img-right{width:100%;flex:1;min-height:340px;background:linear-gradient(160deg,#EAE6DF 0%,#D6CFC4 100%);border-radius:4px;box-shadow:0 16px 36px rgba(0,0,0,.08);display:flex;align-items:flex-end;padding:.8rem;}
+.outcomes-img-right span{font-family:var(--body);font-size:.48rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(42,31,26,.32);}
+/* Responsive */
+@media(max-width:1024px){
+  .outcomes-section{grid-template-columns:1fr;gap:3.5rem;padding:5rem 2rem;}
+  .outcomes-img-stack{min-height:220px;}
+  .outcomes-img-right{min-height:240px;}
+  .outcomes-left{flex-direction:row;align-items:flex-start;flex-wrap:wrap;}
+  .outcomes-img-stack{width:100%;}
+}
 .funnel-section{background:var(--cream-d);padding:5rem 2rem;}
 .funnel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.8rem;max-width:1100px;margin:2.5rem auto 0;}
 .funnel-tile{background:#FBF9F6;border:1px solid rgba(42,31,26,.09);border-radius:18px;padding:2rem 1.8rem;display:flex;flex-direction:column;gap:1rem;box-shadow:0 4px 20px rgba(42,31,26,.05);transition:box-shadow .25s,transform .25s;}
@@ -737,6 +788,83 @@
   </div>
 </section>
 
+<!-- OUTCOMES ACCORDION LAYOUT -->
+<div style="background:#F6F1E9;">
+<section class="outcomes-section">
+
+  <!-- LEFT COLUMN -->
+  <div class="outcomes-left">
+    <p class="outcomes-tag">What to expect</p>
+    <div class="outcomes-img-stack">
+      <div class="outcomes-img-a"><span>Stacked image A</span></div>
+      <div class="outcomes-img-b"><span>Stacked image B</span></div>
+    </div>
+  </div>
+
+  <!-- CENTRE COLUMN -->
+  <div class="outcomes-centre">
+    <h2 class="outcomes-heading">Once you've finished the course you will have the following</h2>
+    <p class="outcomes-intro">A clear, practical architecture for your neurology — not a workaround, not another checklist. A life that actually fits.</p>
+
+    <div class="outcomes-accordion">
+      <div class="oa-item">
+        <button class="oa-trigger" onclick="toggleOA(this)" aria-expanded="false">
+          <span class="oa-title">A precise vocabulary for your experience</span>
+          <span class="oa-icon">+</span>
+        </button>
+        <div class="oa-body">
+          <p>Blame-free, clinically grounded language that accurately names what your nervous system is doing — replacing the self-criticism narrative with structural understanding.</p>
+        </div>
+      </div>
+      <div class="oa-item">
+        <button class="oa-trigger" onclick="toggleOA(this)" aria-expanded="false">
+          <span class="oa-title">A real-time regulatory triage system</span>
+          <span class="oa-icon">+</span>
+        </button>
+        <div class="oa-body">
+          <p>The three-state triage matrix — Red, Yellow, Green — so you can read your own physiological state accurately and respond with the right intervention before a crash arrives.</p>
+        </div>
+      </div>
+      <div class="oa-item">
+        <button class="oa-trigger" onclick="toggleOA(this)" aria-expanded="false">
+          <span class="oa-title">A personalised activation framework</span>
+          <span class="oa-icon">+</span>
+        </button>
+        <div class="oa-body">
+          <p>The INCUP Dopamine Menu Builder and 2-Minute Activation Runway — tools that lower the neurological cost of starting so momentum becomes available even on your lowest-capacity days.</p>
+        </div>
+      </div>
+      <div class="oa-item">
+        <button class="oa-trigger" onclick="toggleOA(this)" aria-expanded="false">
+          <span class="oa-title">A long-term scaffolding architecture</span>
+          <span class="oa-icon">+</span>
+        </button>
+        <div class="oa-body">
+          <p>Environmental, social, and executive scaffolding across three pillars — designed to carry load on your hardest days, not just your best ones.</p>
+        </div>
+      </div>
+      <div class="oa-item">
+        <button class="oa-trigger" onclick="toggleOA(this)" aria-expanded="false">
+          <span class="oa-title">A 28-day reflective journal practice</span>
+          <span class="oa-icon">+</span>
+        </button>
+        <div class="oa-body">
+          <p>Daily prompts across four weeks that translate the course frameworks into the specific texture of your actual life — available as a fillable digital PDF or a printed cloth-linen edition.</p>
+        </div>
+      </div>
+    </div>
+
+    <a href="enrol.html" class="outcomes-enrol">Enrol Now</a>
+  </div>
+
+  <!-- RIGHT COLUMN -->
+  <div class="outcomes-right">
+    <div class="outcomes-img-right"><span>Right balance image</span></div>
+  </div>
+
+</section>
+</div>
+
 <!-- 4-PDF FUNNEL GRID -->
 <section class="funnel-section">
   <div style="max-width:1100px;margin:0 auto;text-align:center;">
@@ -1156,6 +1284,7 @@
   const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in');});},{threshold:.06,rootMargin:'0px 0px 80px 0px'});
   re.forEach(el=>ro.observe(el));
   window.addEventListener('load',()=>{re.forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight)el.classList.add('in');});});
+  function toggleOA(btn){var open=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',!open);btn.nextElementSibling.classList.toggle('open',!open);}
 </script>
 </body>
 </html>
