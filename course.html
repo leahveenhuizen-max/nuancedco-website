@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>4-Week Course, Understanding Who You Are | Nuanced Co.</title>
-<meta name="description" content="A premium four-week course for adults navigating a late-stage neurodivergent diagnosis. Grief, identity, support mapping, and sustainable accommodation.">
+<meta name="description" content="The Unmasked Life&#8482; by Nuanced Co. An evidence-based ADHD consulting and counselling course for late-diagnosed adults. Four weeks. Peer-reviewed frameworks. Geelong, Australia.">
 <link rel="canonical" href="https://nuancedco.com.au/course">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -365,7 +365,32 @@ footer { background: var(--ink); border-top: 1px solid rgba(246,241,233,.06); pa
 .footer-links { display: flex; gap: 2rem; flex-wrap: wrap; }
 .footer-links a { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(246,241,233,.4); transition: color .2s; }
 .footer-links a:hover { color: var(--cream); }
+
+/* ── VIDEO LOADING PLACEHOLDER ──────────────────────────────── */
+.video-loading-shell {
+  width: 100%; aspect-ratio: 16/9;
+  background: #FBF9F6;
+  border: 1px solid rgba(107,69,112,.15);
+  border-radius: 12px;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  gap: 1.2rem; position: relative; overflow: hidden;
+}
+.video-spinner {
+  width: 38px; height: 38px; border-radius: 50%;
+  border: 2px solid rgba(107,69,112,.15);
+  border-top-color: var(--purple);
+  animation: spin .9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.video-loading-label {
+  font-family: var(--body); font-size: .6rem; font-weight: 700;
+  letter-spacing: .18em; text-transform: uppercase;
+  color: rgba(42,31,26,.38); text-align: center;
+}
+@media(prefers-reduced-motion:reduce){.video-spinner{animation:none;border-top-color:var(--purple);}}
 .footer-copy { max-width: 1060px; margin: 2rem auto 0; padding-top: 1.5rem; border-top: 1px solid rgba(246,241,233,.05); font-size: .66rem; color: rgba(246,241,233,.25); }
+@media(max-width:640px){.pricing-grid{grid-template-columns:1fr!important;}.pricing-grid>div:last-child{margin-top:2rem;}}
 
 /* CONTACT MODAL */
 .modal-overlay{display:none;position:fixed;inset:0;z-index:1000;background:rgba(246,241,233,.82);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);align-items:center;justify-content:center;padding:1.5rem;}
@@ -437,7 +462,7 @@ footer { background: var(--ink); border-top: 1px solid rgba(246,241,233,.06); pa
   </div>
 </aside>
 
-<!-- NAV — matches index.html exactly -->
+<!-- NAV: matches index.html exactly -->
 <style>
   #nav{position:fixed;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3.5rem;background:#2A1F1A;transition:background .4s,padding .4s;}
   #nav.scrolled{background:#2A1F1A;padding:1rem 3.5rem;box-shadow:0 2px 24px rgba(42,31,26,.18);}
@@ -596,6 +621,7 @@ footer { background: var(--ink); border-top: 1px solid rgba(246,241,233,.06); pa
     </div>
 
     <!-- Support & Referral Pathway, dynamic international component -->
+    <p style="font-size:.78rem;color:rgba(42,31,26,.55);text-align:center;max-width:680px;margin:0 auto 1.2rem;line-height:1.7;padding:0 1.5rem;">This course is strictly psychoeducational and does not replace medical or psychological care. If you need clinical support, speak with a registered professional.</p>
     <div id="support-pathway" style="background-color:#F6F1E9;display:flex;justify-content:center;width:100%;margin-bottom:3rem;"></div>
 
     <script>
@@ -632,7 +658,7 @@ footer { background: var(--ink); border-top: 1px solid rgba(246,241,233,.06); pa
         label: 'European Support Services',
         services: [
           { name: 'European Emergency', number: '112', href: 'tel:112', description: 'Pan-European emergency services.' },
-          { name: 'IASP Crisis Centre Directory', number: 'iasp.info/resources/Crisis_Centres', href: 'https://iasp.info', description: 'Find your local crisis support service.' }
+          { name: 'IASP Crisis Centre Directory', number: 'iasp.info/resources/Crisis_Centres', href: 'https://www.iasp.info/resources/Crisis_Centres/', description: 'Find your local crisis support service.' }
         ]
       }
     };
@@ -695,12 +721,10 @@ footer { background: var(--ink); border-top: 1px solid rgba(246,241,233,.06); pa
               <svg class="thought-corner-label-icon" viewBox="0 0 18 18" fill="none" stroke="rgba(107,69,112,0.7)" stroke-width="1.4"><circle cx="9" cy="9" r="7"/><path d="M6 9h6M9 6v6"/></svg>
               Thought Corner, Week 01 Video Session
             </div>
-            <div class="video-player-shell">
-              
-              <div class="video-play-btn">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="rgba(42,31,26,0.65)"><path d="M7 4.5l9 5.5-9 5.5V4.5z"/></svg>
-              </div>
-              <div class="video-controls-bar">
+            <div class="video-loading-shell" role="img" aria-label="Expert video training loading">
+              <div class="video-spinner" aria-hidden="true"></div>
+              <p class="video-loading-label">Expert Video Training Loading...</p>
+              <div class="video-controls-bar" aria-hidden="true">
                 <div class="vc-progress"><div class="vc-progress-fill"></div></div>
                 <span class="vc-time">0:00 / 22:14</span>
                 <div class="vc-dot"></div>
@@ -802,12 +826,10 @@ footer { background: var(--ink); border-top: 1px solid rgba(246,241,233,.06); pa
               <svg class="thought-corner-label-icon" viewBox="0 0 18 18" fill="none" stroke="rgba(107,69,112,0.7)" stroke-width="1.4"><circle cx="9" cy="9" r="7"/><path d="M6 9h6M9 6v6"/></svg>
               Thought Corner, Week 02 Video Session
             </div>
-            <div class="video-player-shell">
-              
-              <div class="video-play-btn">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="rgba(42,31,26,0.65)"><path d="M7 4.5l9 5.5-9 5.5V4.5z"/></svg>
-              </div>
-              <div class="video-controls-bar">
+            <div class="video-loading-shell" role="img" aria-label="Expert video training loading">
+              <div class="video-spinner" aria-hidden="true"></div>
+              <p class="video-loading-label">Expert Video Training Loading...</p>
+              <div class="video-controls-bar" aria-hidden="true">
                 <div class="vc-progress"><div class="vc-progress-fill" style="background:var(--sage)"></div></div>
                 <span class="vc-time">0:00 / 27:40</span>
                 <div class="vc-dot"></div>
@@ -907,12 +929,10 @@ footer { background: var(--ink); border-top: 1px solid rgba(246,241,233,.06); pa
               <svg class="thought-corner-label-icon" viewBox="0 0 18 18" fill="none" stroke="rgba(107,69,112,0.7)" stroke-width="1.4"><circle cx="9" cy="9" r="7"/><path d="M6 9h6M9 6v6"/></svg>
               Thought Corner, Week 03 Video Session
             </div>
-            <div class="video-player-shell">
-              
-              <div class="video-play-btn">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="rgba(42,31,26,0.65)"><path d="M7 4.5l9 5.5-9 5.5V4.5z"/></svg>
-              </div>
-              <div class="video-controls-bar">
+            <div class="video-loading-shell" role="img" aria-label="Expert video training loading">
+              <div class="video-spinner" aria-hidden="true"></div>
+              <p class="video-loading-label">Expert Video Training Loading...</p>
+              <div class="video-controls-bar" aria-hidden="true">
                 <div class="vc-progress"><div class="vc-progress-fill" style="background:var(--rose)"></div></div>
                 <span class="vc-time">0:00 / 31:05</span>
                 <div class="vc-dot"></div>
@@ -1009,12 +1029,10 @@ footer { background: var(--ink); border-top: 1px solid rgba(246,241,233,.06); pa
               <svg class="thought-corner-label-icon" viewBox="0 0 18 18" fill="none" stroke="rgba(42,31,26,0.75)" stroke-width="1.4"><circle cx="9" cy="9" r="7"/><path d="M6 9h6M9 6v6"/></svg>
               Thought Corner, Week 04 Video Session
             </div>
-            <div class="video-player-shell">
-              
-              <div class="video-play-btn">
-                <svg width="20" height="20" viewBox="0 0 20 20" fill="rgba(42,31,26,0.65)"><path d="M7 4.5l9 5.5-9 5.5V4.5z"/></svg>
-              </div>
-              <div class="video-controls-bar">
+            <div class="video-loading-shell" role="img" aria-label="Expert video training loading">
+              <div class="video-spinner" aria-hidden="true"></div>
+              <p class="video-loading-label">Expert Video Training Loading...</p>
+              <div class="video-controls-bar" aria-hidden="true">
                 <div class="vc-progress"><div class="vc-progress-fill" style="background:var(--gold)"></div></div>
                 <span class="vc-time">0:00 / 34:22</span>
                 <div class="vc-dot"></div>
@@ -1044,7 +1062,7 @@ footer { background: var(--ink); border-top: 1px solid rgba(246,241,233,.06); pa
               <div class="sn-section">
                 <h4>Overcoming the Shame of Ease</h4>
                 <p>When a late-diagnosed adult begins setting strong sensory boundaries or using executive tools, an internal critic often surfaces, whispering that they are being self-indulgent or "lazy." This is Accommodation Guilt. It stems from decades of internalized neurotypical standards that equate raw struggle with moral worth.</p>
-                <p style="margin-top:.85rem;"><strong style="color:var(--ink);">The New Vocabulary:</strong> We permanently replace "Self-Indulgence" with Proactive Accommodation. Utilizing tools, asking for modifications, or choosing to rest is not a luxury. It is a necessary medical and neurological baseline required to protect your nervous system from permanent, chronic depletion.</p>
+                <p style="margin-top:.85rem;"><strong style="color:var(--ink);">The New Vocabulary:</strong> We permanently replace "Self-Indulgence" with Proactive Accommodation. Using tools, asking for modifications, or choosing to rest is not a luxury. It is a necessary medical and neurological baseline required to protect your nervous system from permanent, chronic depletion.</p>
               </div>
               <div class="sn-divider"></div>
 
@@ -1141,7 +1159,7 @@ footer { background: var(--ink); border-top: 1px solid rgba(246,241,233,.06); pa
     </div>
 
     <!-- Cards grid -->
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:880px;margin:0 auto;">
+    <div class="pricing-grid" style="display:grid;grid-template-columns:1fr 1fr;gap:2rem;max-width:880px;margin:0 auto;">
 
       <!-- Tier 1 -->
       <div style="background:#FFFFFF;border-radius:24px;padding:2.6rem;box-shadow:0 6px 32px rgba(42,31,26,.07);border:1px solid rgba(42,31,26,.07);display:flex;flex-direction:column;">

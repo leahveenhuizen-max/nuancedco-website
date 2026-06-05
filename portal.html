@@ -16,7 +16,7 @@
   --sidebar-w: 272px;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { font-size: 17px; scroll-behavior: smooth; }
+html { font-size: 18px; scroll-behavior: smooth; }
 body { background: var(--cream); color: var(--ink); font-family: var(--body); line-height: 1.7; min-height: 100vh; overflow-x: hidden; }
 a { color: inherit; text-decoration: none; }
 
@@ -169,6 +169,29 @@ body.sidebar-open .sidebar-toggle span:nth-child(3) { transform: translateY(-6.5
 .jl-title { font-size: .8rem; color: var(--ink); line-height: 1.35; font-family: var(--serif); }
 .jl-sub { font-size: .62rem; color: rgba(42,31,26,.42); margin-top: .25rem; }
 @media(max-width:560px) { .journal-links { grid-template-columns: 1fr; } .week-card-header { flex-direction: column; } }
+/* ── VIDEO LOADING PLACEHOLDER ──────────────────────────────── */
+.video-loading-shell {
+  width: 100%; aspect-ratio: 16/9;
+  background: var(--cream); display: flex; flex-direction: column;
+  align-items: center; justify-content: center; gap: 1rem;
+  border-top: 1px solid rgba(107,69,112,.08);
+  border-bottom: 1px solid rgba(107,69,112,.08);
+  position: relative; overflow: hidden;
+}
+.video-spinner {
+  width: 34px; height: 34px; border-radius: 50%;
+  border: 2px solid rgba(107,69,112,.15);
+  border-top-color: var(--purple);
+  animation: spin .9s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.video-loading-label {
+  font-family: var(--body); font-size: .58rem; font-weight: 700;
+  letter-spacing: .16em; text-transform: uppercase;
+  color: rgba(42,31,26,.32); text-align: center;
+}
+@media(prefers-reduced-motion:reduce){.video-spinner{animation:none;}}
+
 
 /* ── SIDEBAR PANEL ───────────────────────────────────────────── */
 .portal-grid { display: grid; grid-template-columns: 1fr 300px; gap: 2rem; }
@@ -376,10 +399,10 @@ footer { background: var(--ink); padding: 2.5rem 2rem; margin-top: 4rem; }
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(107,69,112,0.7)" stroke-width="1.3"><circle cx="8" cy="8" r="6"/><path d="M5.5 8h5M8 5.5v5"/></svg>
                 Thought Corner, Week 01 Video Session
               </div>
-              <div class="video-shell">
-                
-                <div class="play-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="rgba(42,31,26,0.6)"><path d="M5.5 3.5l7 4.5-7 4.5V3.5z"/></svg></div>
-                <div class="controls">
+              <div class="video-loading-shell" role="img" aria-label="Expert video training loading">
+                <div class="video-spinner" aria-hidden="true"></div>
+                <p class="video-loading-label">Expert Video Training Loading...</p>
+                <div class="controls" aria-hidden="true">
                   <div class="ctrl-prog"><div class="ctrl-prog-fill" style="width:100%;background:var(--purple)"></div></div>
                   <span class="ctrl-time">22:14 / 22:14</span>
                 </div>
@@ -426,10 +449,10 @@ footer { background: var(--ink); padding: 2.5rem 2rem; margin-top: 4rem; }
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(107,69,112,0.7)" stroke-width="1.3"><circle cx="8" cy="8" r="6"/><path d="M5.5 8h5M8 5.5v5"/></svg>
                 Thought Corner, Week 02 Video Session
               </div>
-              <div class="video-shell">
-                
-                <div class="play-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="rgba(42,31,26,0.6)"><path d="M5.5 3.5l7 4.5-7 4.5V3.5z"/></svg></div>
-                <div class="controls">
+              <div class="video-loading-shell" role="img" aria-label="Expert video training loading">
+                <div class="video-spinner" aria-hidden="true"></div>
+                <p class="video-loading-label">Expert Video Training Loading...</p>
+                <div class="controls" aria-hidden="true">
                   <div class="ctrl-prog"><div class="ctrl-prog-fill" style="width:100%;background:var(--sage)"></div></div>
                   <span class="ctrl-time">27:40 / 27:40</span>
                 </div>
@@ -476,10 +499,10 @@ footer { background: var(--ink); padding: 2.5rem 2rem; margin-top: 4rem; }
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(107,69,112,0.7)" stroke-width="1.3"><circle cx="8" cy="8" r="6"/><path d="M5.5 8h5M8 5.5v5"/></svg>
                 Thought Corner, Week 03 Video Session
               </div>
-              <div class="video-shell">
-                
-                <div class="play-btn"><svg width="16" height="16" viewBox="0 0 16 16" fill="rgba(42,31,26,0.6)"><path d="M5.5 3.5l7 4.5-7 4.5V3.5z"/></svg></div>
-                <div class="controls">
+              <div class="video-loading-shell" role="img" aria-label="Expert video training loading">
+                <div class="video-spinner" aria-hidden="true"></div>
+                <p class="video-loading-label">Expert Video Training Loading...</p>
+                <div class="controls" aria-hidden="true">
                   <div class="ctrl-prog"><div class="ctrl-prog-fill" style="width:38%;background:var(--rose)"></div></div>
                   <span class="ctrl-time">11:52 / 31:05</span>
                 </div>
@@ -526,10 +549,10 @@ footer { background: var(--ink); padding: 2.5rem 2rem; margin-top: 4rem; }
                 <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(42,31,26,.7)" stroke-width="1.3"><circle cx="8" cy="8" r="6"/><path d="M5.5 8h5M8 5.5v5"/></svg>
                 <span>Thought Corner, Week 04 Video Session</span>
               </div>
-              <div class="video-shell" style="opacity:.55;">
-                
-                <div class="play-btn" style="opacity:.5;cursor:default;"><svg width="16" height="16" viewBox="0 0 16 16" fill="rgba(42,31,26,0.6)"><path d="M5.5 3.5l7 4.5-7 4.5V3.5z"/></svg></div>
-                <div class="controls">
+              <div class="video-loading-shell" role="img" aria-label="Expert video training loading" style="opacity:.55;">
+                <div class="video-spinner" aria-hidden="true"></div>
+                <p class="video-loading-label">Unlocks on completion of Week 3</p>
+                <div class="controls" aria-hidden="true">
                   <div class="ctrl-prog"><div class="ctrl-prog-fill" style="width:0%;background:var(--gold)"></div></div>
                   <span class="ctrl-time">0:00 / 34:22</span>
                 </div>
@@ -675,30 +698,7 @@ function saveJournalWk2(e){
   setTimeout(function(){msg.style.display='none';},3000);
 }
 // Restore saved entries on load
-(function(){
-  try{
-    var wk1 = JSON.parse(localStorage.getItem('nc_journal_wk1')||'{}');
-    Object.keys(wk1).forEach(function(k){
-      var el = document.querySelector('#journalForm [name="'+k+'"]');
-      if(el) el.value = wk1[k];
-    });
-    var wk2 = JSON.parse(localStorage.getItem('nc_journal_wk2')||'{}');
-    Object.keys(wk2).forEach(function(k){
-      var el = document.querySelector('#journalFormWk2 [name="'+k+'"]');
-      if(el) el.value = wk2[k];
-    });
-    var wk3 = JSON.parse(localStorage.getItem('nc_journal_wk3')||'{}');
-    Object.keys(wk3).forEach(function(k){
-      var el = document.querySelector('#journalFormWk3 [name="'+k+'"]');
-      if(el) el.value = wk3[k];
-    });
-    var wk4 = JSON.parse(localStorage.getItem('nc_journal_wk4')||'{}');
-    Object.keys(wk4).forEach(function(k){
-      var el = document.querySelector('#journalFormWk4 [name="'+k+'"]');
-      if(el) el.value = wk4[k];
-    });
-  }catch(err){}
-})();
+/* Legacy restore block removed: modal uses nc_j_d{n} keys via loadJournalEntries() */
 </script>
 
 <!-- CONTACT MODAL -->
@@ -835,6 +835,7 @@ function openJournalModal(){
   document.getElementById('journalModal').classList.add('open');
   document.body.style.overflow='hidden';
   loadJournalEntries();
+  setTimeout(function(){var t=document.querySelector('.jm-tab');if(t)t.focus();},100);
 }
 function closeJournalModal(){
   document.getElementById('journalModal').classList.remove('open');

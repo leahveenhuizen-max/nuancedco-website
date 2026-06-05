@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Nuanced Co. | Neurodivergent Consultancy | Geelong, Australia</title>
-  <meta name="description" content="Nuanced Co. is a neurodivergent consultancy for people who are tired of being handed a generic checklist. Specialising in ADHD, AuDHD, and autism. Based in Geelong, working across Australia and internationally.">
+  <meta name="description" content="Nuanced Co. is an ADHD consulting and counselling practice for late-diagnosed adults. Specialising in AuDHD, ADHD, and autism integration. The Unmasked Life&#8482; course. Based in Geelong, delivering across Australia and internationally.">
   <link rel="canonical" href="https://nuancedco.com.au/">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://nuancedco.com.au/">
@@ -38,6 +38,7 @@
     /* CONTROLS */
     #mtoggle{position:fixed;bottom:1.6rem;left:1.6rem;z-index:9998;font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mid);background:rgba(246,241,233,.92);backdrop-filter:blur(8px);border:1px solid var(--cream-dd);padding:.45rem .9rem;border-radius:20px;transition:border-color .2s,color .2s;}
     #mtoggle:hover{border-color:var(--purple);color:var(--purple);}
+    #mtoggle:focus-visible{outline:2px solid var(--purple);outline-offset:3px;}
 
     /* NAV */
     #nav{position:fixed;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3.5rem;background:#2A1F1A;transition:background .4s,padding .4s;}
@@ -72,14 +73,13 @@
 
     /* HERO */
     #hero{min-height:calc(100vh - 80px);background:var(--cream);position:relative;display:flex;align-items:center;overflow:hidden;}
-    #hero::after{content:'';position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;}
     .ink-marks{position:absolute;inset:0;pointer-events:none;z-index:1;}
     .ink-marks svg{position:absolute;}
     .im-1{top:12%;right:8%;width:340px;opacity:.15;}
     .im-2{bottom:20%;left:5%;width:260px;opacity:.10;}
     .im-3{top:45%;right:22%;width:180px;opacity:.08;}
 
-    .hero-inner{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;width:100%;padding:0 2rem;min-height:100vh;}
+    .hero-inner{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;width:100%;padding:0 2rem;min-height:calc(100vh - 80px);}
     .hero-body{padding:9rem 0 9rem;max-width:800px;width:100%;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2;}
 
     .hero-eyebrow{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-bottom:3rem;}
@@ -94,7 +94,7 @@
     .hl-brushmark{display:block;margin-top:.5rem;margin-left:clamp(2rem,6vw,7rem);}
     .hero-sub{font-size:1rem;color:var(--ink-mid);max-width:600px;line-height:1.75;margin-bottom:2.8rem;text-align:center;}
     .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;}
-    .hero-micro{font-size:.66rem;color:rgba(42,31,26,.42);margin-top:1.2rem;letter-spacing:.04em;}
+    .hero-micro{font-size:.66rem;color:rgba(42,31,26,.42);margin-top:1.2rem;letter-spacing:.04em;max-width:600px;margin-left:auto;margin-right:auto;}
     .hero-fade{position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to bottom,transparent,var(--cream));z-index:3;pointer-events:none;}
 
     .hero-video-bg{display:none;}
@@ -105,7 +105,7 @@
     .roadmap-block{background:#F6F1E9;border:none;border-radius:0;box-shadow:none;padding:4rem 2rem 6rem;margin-top:0;position:relative;overflow:hidden;color:var(--ink);}
     .roadmap-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2.5rem;margin-top:2.5rem;}
     .roadmap-step{background:#FBF9F6;border:1px solid rgba(42,31,26,.08);border-radius:16px;padding:2.5rem 2rem;min-height:220px;display:flex;flex-direction:column;gap:0.9rem;box-shadow:0 4px 20px rgba(42,31,26,.03);}
-    .roadmap-step .step-index{font-family:var(--serif);font-size:2.2rem;color:var(--gold);font-weight:400;}
+    .roadmap-step .step-index{font-family:var(--serif);font-size:2.2rem;color:var(--ink);font-weight:400;}
     .roadmap-step h3{font-family:var(--serif);font-size:1.2rem;color:var(--ink);margin:0;line-height:1.2;}
     .roadmap-step p{color:var(--ink-mid);line-height:1.75;}
     .roadmap-block .citation-note{margin-top:1.5rem;color:rgba(42,31,26,.45);font-size:0.85rem;line-height:1.75;}
@@ -173,7 +173,7 @@
     .hero-mark-wrap{position:absolute;left:50%;top:45%;transform:translate(-50%,-50%) scaleX(-1);width:65vw;max-width:700px;height:auto;overflow:visible;opacity:0;animation:markFade 2.5s 0.4s var(--ease) forwards;pointer-events:none;z-index:1;}
     .hero-mark{width:100%;height:auto;overflow:visible;display:block;mix-blend-mode:multiply;}
     @media(max-width:680px){.hero-mark{width:100vw;opacity:0;animation:markFade 2.5s 0.4s var(--ease) forwards;}}
-    @media(max-width:860px){.hero-mark{display:none;}}
+    @media(max-width:860px){.hero-mark{display:none;}.hero-mark-wrap{display:none;}}
     @keyframes markIn{to{opacity:.55;}}
     @keyframes markFade{from{opacity:0;}to{opacity:.35;}}
     .hero-body{position:relative;z-index:2;}
