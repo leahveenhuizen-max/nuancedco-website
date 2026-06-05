@@ -401,6 +401,19 @@
   .bonuses-img-col{min-height:50vw;}
   .bonuses-text-col{padding:4.5rem 2rem;}
 }
+/* ── MORE RAVE REVIEWS ──────────────────────────────────── */
+.rave-section{background:#FBF9F6;padding:7rem 4.5rem;text-align:center;box-sizing:border-box;}
+.rave-tagline{font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--purple);margin:0 0 3.5rem;}
+.rave-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;max-width:1100px;margin:0 auto;}
+.rave-item{background:#F6F1E9;padding:2.8rem 2.4rem;text-align:left;display:flex;flex-direction:column;gap:1.2rem;transition:background .2s;}
+.rave-item:hover{background:#EDE6D8;}
+.rave-quote{font-family:var(--serif);font-size:1.15rem;font-weight:300;line-height:1.55;color:var(--ink);margin:0;font-style:italic;}
+.rave-author{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--purple);margin:0;}
+.rave-context{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.72rem;font-weight:300;color:rgba(42,31,26,.45);margin:0;}
+@media(max-width:860px){
+  .rave-section{padding:5rem 2rem;}
+  .rave-grid{grid-template-columns:1fr;}
+}
 .funnel-section{background:var(--cream-d);padding:5rem 2rem;}
 .funnel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.8rem;max-width:1100px;margin:2.5rem auto 0;}
 .funnel-tile{background:#FBF9F6;border:1px solid rgba(42,31,26,.09);border-radius:18px;padding:2rem 1.8rem;display:flex;flex-direction:column;gap:1rem;box-shadow:0 4px 20px rgba(42,31,26,.05);transition:box-shadow .25s,transform .25s;}
@@ -1112,6 +1125,50 @@
     </div>
   </div>
 
+</section>
+
+<!-- MORE RAVE REVIEWS -->
+<section class="rave-section">
+  <p class="rave-tagline">More Rave Reviews</p>
+  <div class="rave-grid">
+
+    <div class="rave-item">
+      <p class="rave-quote">"I finally stopped apologising for needing things to be structured differently. That shift happened in Week 1."</p>
+      <p class="rave-author">Emma R.</p>
+      <p class="rave-context">ADHD diagnosis at 34, Melbourne</p>
+    </div>
+
+    <div class="rave-item">
+      <p class="rave-quote">"The triage matrix is the most practical tool I've ever been handed. I use it every single day."</p>
+      <p class="rave-author">Daniel W.</p>
+      <p class="rave-context">AuDHD diagnosis at 41, Brisbane</p>
+    </div>
+
+    <div class="rave-item">
+      <p class="rave-quote">"I didn't expect to cry in Week 1. But naming the grief accurately was exactly what I needed to move forward."</p>
+      <p class="rave-author">Sunita P.</p>
+      <p class="rave-context">Autism diagnosis at 38, Sydney</p>
+    </div>
+
+    <div class="rave-item">
+      <p class="rave-quote">"For the first time in my adult life I have a schedule that actually works on my hard days, not just my good ones."</p>
+      <p class="rave-author">Chris M.</p>
+      <p class="rave-context">ADHD diagnosis at 29, Perth</p>
+    </div>
+
+    <div class="rave-item">
+      <p class="rave-quote">"The Kitchen Freeze scenario in Week 3 described my life so precisely I had to pause the video. I felt so seen."</p>
+      <p class="rave-author">Anika T.</p>
+      <p class="rave-context">AuDHD diagnosis at 45, Geelong</p>
+    </div>
+
+    <div class="rave-item">
+      <p class="rave-quote">"Leah writes like she already knows what you're carrying. The course doesn't feel clinical. It feels like being understood."</p>
+      <p class="rave-author">Jordan H.</p>
+      <p class="rave-context">ADHD diagnosis at 32, Auckland</p>
+    </div>
+
+  </div>
 </section>
 
 <!-- 4-PDF FUNNEL GRID -->
