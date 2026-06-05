@@ -438,19 +438,21 @@ footer { background: var(--ink); border-top: 1px solid rgba(246,241,233,.06); pa
 </aside>
 
 <!-- NAV -->
-<nav id="mainNav">
-  <a href="index.html" class="nav-logo">NUANCED CO.<span>Late-Diagnosed Adult Integration Course</span></a>
-  <ul class="nav-links">
-    <li><a href="about.html">About</a></li>
-    <li><a href="consult.html">Consult</a></li>
-    <li><a href="workplace.html">Workplace</a></li>
-    <li><a href="courses.html">Training</a></li>
-    <li><a href="course.html" class="active">Courses</a></li>
-    <li><a href="media.html">Media</a></li>
-    <li><a href="#" onclick="openModal();return false;">Contact</a></li>
-    <li><a href="book.html" class="nav-cta">Book a call</a></li>
-  </ul>
-  <div class="nav-hamburger" id="hamburger" onclick="openMobileNav()"><span></span><span></span><span></span></div>
+<nav id="mainNav" style="position:relative;display:flex;align-items:center;width:100%;box-sizing:border-box;">
+  <!-- Hamburger — absolute left, mobile only -->
+  <div class="nav-hamburger" id="hamburger" onclick="openMobileNav()" style="position:absolute;left:1.5rem;top:50%;transform:translateY(-50%);z-index:10;"><span></span><span></span><span></span></div>
+  <!-- Logo — left block -->
+  <a href="index.html" class="nav-logo" style="padding-left:4.5rem;display:flex;flex-direction:column;flex-shrink:0;">NUANCED CO.<span>Late-Diagnosed Adult Integration Course</span></a>
+  <!-- Links — centred -->
+  <div style="display:flex;gap:2rem;align-items:center;justify-content:center;margin:0 auto;">
+    <a href="about.html" style="font-family:var(--body);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.72);transition:color .2s;">About</a>
+    <a href="consult.html" style="font-family:var(--body);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.72);transition:color .2s;">Consult</a>
+    <a href="workplace.html" style="font-family:var(--body);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.72);transition:color .2s;">Workplace</a>
+    <a href="courses.html" style="font-family:var(--body);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.72);transition:color .2s;">Training</a>
+    <a href="course.html" style="font-family:var(--body);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:#F6F1E9;transition:color .2s;">Courses</a>
+    <a href="#" onclick="openModal();return false;" style="font-family:var(--body);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.72);transition:color .2s;">Contact</a>
+    <a href="book.html" style="font-family:var(--body);font-size:.65rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--purple);color:#F6F1E9;padding:.42rem 1.1rem;border-radius:2px;transition:background .2s;">Book a call</a>
+  </div>
 </nav>
 
 <div class="nav-mobile" id="mobileNav">
