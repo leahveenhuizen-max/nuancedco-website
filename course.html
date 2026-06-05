@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://nuancedco.com.au/course">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@200;300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
 :root {
   --cream: #F6F1E9; --cream-dark: #EDE6D8; --ink: #2A1F1A; --ink-mid: #4A3830;
@@ -147,7 +147,7 @@ section { padding: 6rem 2rem; }
 
 /* ── HERO ─────────────────────────────────────────────────────── */
 #hero {
-  padding: 10rem 2rem 5.5rem;
+  padding: 5rem 2rem 5.5rem;
   background: var(--cream);
   position: relative; overflow: hidden;
 }
@@ -614,76 +614,72 @@ body { -webkit-font-smoothing: antialiased; }
   </div>
 </aside>
 
-<!-- NAV: matches index.html exactly -->
+<!-- BRAND HEADER -->
 <style>
-  #nav{position:fixed;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3.5rem;background:#2A1F1A;transition:background .4s,padding .4s;}
-  #nav.scrolled{background:#2A1F1A;padding:1rem 3.5rem;box-shadow:0 2px 24px rgba(42,31,26,.18);}
-  .nav-logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:1rem;font-weight:400;letter-spacing:.25em;color:#F6F1E9;text-transform:uppercase;line-height:1;display:flex;flex-direction:column;gap:3px;text-decoration:none;}
-  .nav-logo em{font-style:normal;font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-size:.48rem;letter-spacing:.3em;color:#C4963E;opacity:.8;}
-  .nav-list{list-style:none;display:flex;align-items:center;gap:2rem;}
-  .nav-list a{font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.72);transition:color .2s;text-decoration:none;}
-  .nav-list a:hover{color:#F6F1E9;}
-  .nav-list .ncta{border:1px solid rgba(196,150,62,.5);color:#C4963E;padding:.4rem 1.2rem;border-radius:2px;font-size:.62rem;transition:background .2s,color .2s,border-color .2s;}
-  .nav-list .ncta:hover{background:#C4963E;color:#0F0C0A;border-color:#C4963E;}
-  .nav-dd{position:relative;}
-  .nav-dd-menu{position:absolute;top:calc(100% + 1rem);left:50%;transform:translateX(-50%) translateY(-4px);background:rgba(15,12,10,.98);border:1px solid rgba(246,241,233,.12);min-width:210px;padding:.6rem 0;opacity:0;pointer-events:none;visibility:hidden;transition:opacity .2s,visibility .2s;}
-  .nav-dd:hover .nav-dd-menu,.nav-dd:focus-within .nav-dd-menu{opacity:1;pointer-events:all;visibility:visible;transform:translateX(-50%) translateY(0);}
-  .nav-dd-menu a{display:block;padding:.75rem 1.4rem;font-size:.72rem;opacity:.9;color:rgba(246,241,233,.95);}
-  .nav-dd-menu a:hover{opacity:1;color:#C4963E;}
-  .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
-  .hamburger span{width:22px;height:1.5px;background:#F6F1E9;display:block;}
-  #mobNav{display:none;position:fixed;inset:0;background:#2A1F1A;z-index:850;flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
-  #mobNav.open{display:flex;}
-  #mobNav a{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.2rem;color:#F6F1E9;font-weight:300;letter-spacing:.08em;text-decoration:none;}
-  .mob-close{position:absolute;top:1.8rem;right:2rem;font-size:1.4rem;color:rgba(246,241,233,.7);cursor:pointer;background:none;border:none;}
-  @media(max-width:860px){.nav-list{display:none;}.hamburger{display:flex;}#nav{padding:1.2rem 1.8rem;}}
+  /* Announcement bar */
+  .announcement-bar{background:#6B4570;color:#FBF9F6;text-align:center;padding:10px 20px;font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:11px;letter-spacing:2px;text-transform:uppercase;}
+  .announcement-bar a{color:#C4963E;text-decoration:none;font-weight:700;margin-left:8px;letter-spacing:1.5px;}
+  .announcement-bar a:hover{color:#FBF9F6;}
+  /* Three-column header */
+  .main-header{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 3.5rem;background:#FBF9F6;border-bottom:1px solid #EAE6DF;position:sticky;top:0;z-index:200;}
+  .nav-links{display:flex;align-items:center;flex:1;}
+  .nav-links a{font-family:'Inter','Atkinson Hyperlegible',sans-serif;color:#1A1A1A;text-decoration:none;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;margin-right:24px;transition:color .2s;}
+  .nav-links a:hover{color:#6B4570;}
+  .site-logo{flex:0 0 auto;text-align:center;}
+  .site-logo a{font-family:'Cormorant Garamond',Georgia,serif;font-size:1.8rem;letter-spacing:3px;color:#1A1A1A;text-decoration:none;text-transform:uppercase;line-height:1;}
+  .site-logo small{display:block;font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.42rem;letter-spacing:.28em;text-transform:uppercase;color:#6B4570;margin-top:3px;}
+  .header-actions{flex:1;display:flex;justify-content:flex-end;align-items:center;gap:1rem;}
+  .enroll-btn-top{background:#6B4570;color:#FBF9F6;font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;padding:.55rem 1.4rem;border-radius:2px;text-decoration:none;transition:background .2s;}
+  .enroll-btn-top:hover{background:#1A1A1A;}
+  .hdr-mob-btn{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px;}
+  .hdr-mob-btn span{width:22px;height:1.5px;background:#1A1A1A;display:block;}
+  /* Mobile nav overlay */
+  #hdrMobNav{display:none;position:fixed;inset:0;background:#FBF9F6;z-index:850;flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;}
+  #hdrMobNav.open{display:flex;}
+  #hdrMobNav a{font-family:'Cormorant Garamond',Georgia,serif;font-size:2.2rem;color:#1A1A1A;font-weight:300;letter-spacing:.08em;text-decoration:none;}
+  #hdrMobNav a:hover{color:#6B4570;}
+  .hdr-mob-close{position:absolute;top:1.8rem;right:2rem;font-size:1.4rem;color:#6B4570;cursor:pointer;background:none;border:none;}
+  @media(max-width:860px){
+    .nav-links{display:none;}
+    .hdr-mob-btn{display:flex;}
+    .enroll-btn-top{display:none;}
+    .main-header{padding:1rem 1.5rem;}
+  }
 </style>
 
-<nav id="nav">
-  <a href="index.html" class="nav-logo">NUANCED CO.<em>The Unmasked Life&#8482; ,  A Foundational Course for Newly Diagnosed Adults</em></a>
-  <ul class="nav-list">
-    <li class="nav-dd"><a href="consult.html">Services &#9662;</a>
-      <div class="nav-dd-menu">
-        <a href="consult.html">1:1 Consultancy</a>
-        <a href="workplace.html">Workplace</a>
-        <a href="courses.html">Training &amp; Courses</a>
-      </div>
-    </li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="courses.html">Training</a></li>
-    <li class="nav-dd"><a href="#">Courses &#9662;</a>
-      <div class="nav-dd-menu">
-        <a href="courses.html">View All Courses</a>
-        <a href="course.html">Integration Course</a>
-      </div>
-    </li>
-    <li><a href="media.html">Media</a></li>
-    <li><a href="book.html" class="ncta">Book a call</a></li>
-  </ul>
-  <button class="hamburger" onclick="openMob()"><span></span><span></span><span></span></button>
-</nav>
-
-<div id="mobNav">
-  <button class="mob-close" onclick="closeMob()">&#x2715;</button>
-  <a href="about.html" onclick="closeMob()">About</a>
-  <a href="consult.html" onclick="closeMob()">Consult</a>
-  <a href="workplace.html" onclick="closeMob()">Workplace</a>
-  <a href="courses.html" onclick="closeMob()">Training</a>
-  <a href="course.html" onclick="closeMob()">Courses</a>
-  <a href="media.html" onclick="closeMob()">Media</a>
-  <a href="book.html" onclick="closeMob()">Book a call</a>
+<!-- ANNOUNCEMENT BAR -->
+<div class="announcement-bar">
+  <p>The Unmasked Life&#8482; is now enrolling. <a href="enrol.html">ENROL NOW &#8594;</a></p>
 </div>
 
-<div class="nav-mobile" id="mobileNav">
-  <span class="nav-mobile-close" onclick="closeMobileNav()">✕</span>
-  <a href="about.html" onclick="closeMobileNav()">About</a>
-  <a href="consult.html" onclick="closeMobileNav()">Consult</a>
-  <a href="workplace.html" onclick="closeMobileNav()">Workplace</a>
-  <a href="courses.html" onclick="closeMobileNav()">Training</a>
-  <a href="course.html" onclick="closeMobileNav()">Courses</a>
-  <a href="media.html" onclick="closeMobileNav()">Media</a>
-  <a href="book.html" onclick="closeMobileNav()">Book a call</a>
+<!-- MAIN HEADER -->
+<header class="main-header">
+  <nav class="nav-links" aria-label="Primary navigation">
+    <a href="#overview">About</a>
+    <a href="#program">The Course</a>
+    <a href="#pricing">Pricing</a>
+    <a href="portal.html">Portal</a>
+    <a href="#community-hub">Community</a>
+  </nav>
+  <div class="site-logo">
+    <a href="index.html">NUANCED CO.<small>The Unmasked Life&#8482;</small></a>
+  </div>
+  <div class="header-actions">
+    <a href="enrol.html" class="enroll-btn-top">Enrol Now</a>
+    <button class="hdr-mob-btn" onclick="document.getElementById('hdrMobNav').classList.add('open')" aria-label="Open menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- MOBILE NAV -->
+<div id="hdrMobNav" role="dialog" aria-modal="true">
+  <button class="hdr-mob-close" onclick="document.getElementById('hdrMobNav').classList.remove('open')" aria-label="Close">&#x2715;</button>
+  <a href="#overview" onclick="document.getElementById('hdrMobNav').classList.remove('open')">About</a>
+  <a href="#program" onclick="document.getElementById('hdrMobNav').classList.remove('open')">The Course</a>
+  <a href="#pricing" onclick="document.getElementById('hdrMobNav').classList.remove('open')">Pricing</a>
+  <a href="portal.html">Portal</a>
+  <a href="enrol.html">Enrol Now</a>
 </div>
+
 
 <!-- HERO -->
 <section id="hero">
