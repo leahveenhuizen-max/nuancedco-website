@@ -357,6 +357,25 @@ section { padding: 6rem 2rem; }
 #cta .btn-outline { color: rgba(246,241,233,.85); border-color: rgba(246,241,233,.4); }
 #cta .btn-outline:hover { background: rgba(246,241,233,.1); color: var(--white); }
 
+/* ── NEUROINCLUSIVE UX AUDIT FIXES ──────────────────────────── */
+.clinical-why strong,.nuanced-way strong{display:block;font-size:.58rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.5rem;}
+.clinical-why strong{color:var(--purple);}
+.nuanced-way strong{color:var(--ink);}
+.sn-section h4{font-weight:500;font-size:1.05rem;border-bottom:1px solid rgba(107,69,112,.1);padding-bottom:.4rem;margin-bottom:.8rem;}
+.sn-section p+p{margin-top:.9rem;}
+.clinical-card p+p{margin-top:.75rem;}
+@media(max-width:680px){.incup-grid{grid-template-columns:1fr;}}
+.clinical-card p,.sn-section p,.sn-section li,.theory-body,.scenario-block p{line-height:1.88;}
+.step-text strong{display:block;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--purple);margin-bottom:.2rem;}
+.scenario-pullquote{font-family:var(--serif);font-size:1.1rem;font-weight:300;font-style:italic;color:var(--ink);line-height:1.6;border-left:3px solid var(--purple);padding:.8rem 1.2rem;margin:.8rem 0;background:rgba(107,69,112,.04);border-radius:0 8px 8px 0;}
+.course-pullquote{font-family:var(--serif);font-size:clamp(1.05rem,2vw,1.35rem);font-weight:300;font-style:italic;color:var(--ink);line-height:1.55;text-align:center;max-width:600px;margin:1.8rem auto;padding:1.4rem 2rem;border-top:1px solid rgba(107,69,112,.18);border-bottom:1px solid rgba(107,69,112,.18);position:relative;}
+.course-pullquote::before{content:'\201C';font-size:3rem;color:var(--purple);opacity:.2;position:absolute;top:-.4rem;left:1rem;line-height:1;}
+.micro-rules-card{background:rgba(107,69,112,.05);border:1px solid rgba(107,69,112,.14);border-radius:12px;padding:1.4rem 1.6rem;margin-bottom:1.4rem;}
+.micro-rules-label{font-size:.54rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--purple);display:block;margin-bottom:.85rem;}
+.micro-rules-list{list-style:none;padding:0;display:grid;gap:.6rem;}
+.micro-rules-list li{font-size:.82rem;color:var(--ink);display:flex;gap:.7rem;align-items:flex-start;line-height:1.65;}
+.micro-rules-list li::before{content:"✓";color:var(--purple);flex-shrink:0;font-weight:700;}
+
 /* ── FOOTER ──────────────────────────────────────────────────── */
 footer { background: var(--ink); border-top: 1px solid rgba(246,241,233,.06); padding: 3.5rem 2rem 2rem; }
 .footer-inner { max-width: 1060px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 2rem; }
