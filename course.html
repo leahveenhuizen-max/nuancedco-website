@@ -366,6 +366,23 @@ footer { background: var(--ink); border-top: 1px solid rgba(246,241,233,.06); pa
 .footer-links a { font-size: .7rem; letter-spacing: .1em; text-transform: uppercase; color: rgba(246,241,233,.4); transition: color .2s; }
 .footer-links a:hover { color: var(--cream); }
 
+
+.g-modal{display:none;position:fixed;inset:0;z-index:1200;background:rgba(246,241,233,.94);backdrop-filter:blur(10px);overflow-y:auto;}
+.g-inner{max-width:720px;margin:0 auto;padding:4rem 2rem;}
+.g-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:2.5rem;}
+.g-close{background:none;border:none;font-size:1.2rem;color:rgba(42,31,26,.4);cursor:pointer;padding:.5rem;}
+.g-item{background:#FBF9F6;border:1px solid rgba(42,31,26,.08);border-radius:12px;overflow:hidden;margin-bottom:.5rem;}
+.g-btn{width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.4rem;background:none;border:none;cursor:pointer;text-align:left;font-family:var(--body);transition:background .18s;}
+.g-btn:hover{background:rgba(107,69,112,.04);}
+.g-label{font-size:.78rem;font-weight:700;color:var(--ink);}
+.g-tag{font-size:.52rem;letter-spacing:.16em;text-transform:uppercase;color:var(--purple);margin-right:auto;margin-left:.8rem;padding:.18rem .6rem;background:rgba(107,69,112,.08);border-radius:30px;}
+.g-arrow{font-size:.7rem;color:var(--purple);transition:transform .25s;flex-shrink:0;}
+.g-btn[aria-expanded="true"] .g-arrow{transform:rotate(180deg);}
+.g-body{max-height:0;overflow:hidden;transition:max-height .3s ease;padding:0 1.4rem;}
+.g-body.open{max-height:400px;padding:.2rem 1.4rem 1.4rem;}
+.g-def{font-size:.82rem;color:var(--ink-mid);line-height:1.82;}
+.g-def strong{color:var(--purple);}
+.g-cite{display:block;margin-top:.7rem;font-size:.64rem;color:rgba(42,31,26,.38);}
 /* ── VIDEO LOADING PLACEHOLDER ──────────────────────────────── */
 .video-loading-shell {
   width: 100%; aspect-ratio: 16/9;
@@ -442,6 +459,7 @@ footer { background: var(--ink); border-top: 1px solid rgba(246,241,233,.06); pa
     <a class="sidebar-item" href="#program">Week 03, Identity &amp; Support</a>
     <a class="sidebar-item" href="#program">Week 04, Integration</a>
     <span class="sidebar-section">Resources</span>
+    <a class="sidebar-item" href="#" onclick="openGlossary();return false;">Glossary of Terms</a>
     <a class="sidebar-item" href="#">Digital Journal</a>
     <a class="sidebar-item" href="#">Linen Journal Shipment</a>
     <a class="sidebar-item" href="portal.html">Member Portal</a>
@@ -1126,90 +1144,6 @@ footer { background: var(--ink); border-top: 1px solid rgba(246,241,233,.06); pa
 <!-- CTA -->
 <!-- ── PRICING GRID ────────────────────────────────────────────── -->
 
-<!-- GLOSSARY -->
-<section class="glossary-section" id="glossary">
-  <div class="container">
-    <span class="section-label" style="display:block;text-align:center;margin-bottom:.8rem;">Reference</span>
-    <h2 class="section-heading" style="text-align:center;margin:0 auto 0.5rem;max-width:480px;">Glossary of Nuanced Terms</h2>
-    <p class="section-body" style="text-align:center;max-width:560px;margin:0 auto;">Clear, empowering definitions. No clinical jargon without explanation.</p>
-
-    <div class="glossary-grid">
-
-      <div class="glossary-item">
-        <button class="glossary-toggle" onclick="toggleGlossary(this)" aria-expanded="false">
-          <span class="glossary-toggle-label">Executive Dysfunction</span>
-          <span class="glossary-toggle-tag">ADHD Core</span>
-          <span class="glossary-arrow">&#9660;</span>
-        </button>
-        <div class="glossary-body">
-          <p class="glossary-def">Executive dysfunction is not laziness or disorganisation as a personal failing. It is a neurobiological difference in how the prefrontal cortex initiates, organises, and sustains goal-directed behaviour over time. <strong>In practical terms:</strong> your brain has difficulty starting tasks without sufficient engagement signals, maintaining effort without external structure, and managing time as a usable resource. This is a structural difference, not a motivational one.</p>
-          <span class="glossary-citation">Barkley, R.A. (2012). Executive Functions: What They Are, How They Work, and Why They Evolved. Guilford Press.</span>
-        </div>
-      </div>
-
-      <div class="glossary-item">
-        <button class="glossary-toggle" onclick="toggleGlossary(this)" aria-expanded="false">
-          <span class="glossary-toggle-label">Rejection Sensitive Dysphoria (RSD)</span>
-          <span class="glossary-toggle-tag">Emotional</span>
-          <span class="glossary-arrow">&#9660;</span>
-        </button>
-        <div class="glossary-body">
-          <p class="glossary-def">RSD is an intense, immediate, and involuntary emotional pain response triggered by perceived or actual rejection, criticism, or failure to meet expectations. The word <em>dysphoria</em> means an intense state of unease. The word <em>rejection sensitive</em> describes the hair-trigger nature of the response. <strong>It is not oversensitivity.</strong> It is a nervous system that lacks the regulatory circuitry to modulate the initial emotional signal before it reaches full intensity.</p>
-          <span class="glossary-citation">Dodson, W.W. (2016). Emotional Regulation and Rejection Sensitive Dysphoria. ADDitude Magazine.</span>
-        </div>
-      </div>
-
-      <div class="glossary-item">
-        <button class="glossary-toggle" onclick="toggleGlossary(this)" aria-expanded="false">
-          <span class="glossary-toggle-label">Neuro-Crash</span>
-          <span class="glossary-toggle-tag">Regulatory</span>
-          <span class="glossary-arrow">&#9660;</span>
-        </button>
-        <div class="glossary-body">
-          <p class="glossary-def">A neuro-crash is the physiological and cognitive shutdown that follows a period of sustained regulatory overload. It presents differently to burnout: it can arrive quickly after a high-demand event, and it is characterised by a specific combination of cognitive fog, sensory sensitivity, emotional flatness, and physical heaviness. <strong>A neuro-crash is not a breakdown.</strong> It is the nervous system enforcing a recovery period it was not given voluntarily. The appropriate response is not pushing through. It is triage.</p>
-          <span class="glossary-citation">Hull, L. et al. (2017). "Putting on My Best Normal." Journal of Autism and Developmental Disorders.</span>
-        </div>
-      </div>
-
-      <div class="glossary-item">
-        <button class="glossary-toggle" onclick="toggleGlossary(this)" aria-expanded="false">
-          <span class="glossary-toggle-label">Masking</span>
-          <span class="glossary-toggle-tag">Identity</span>
-          <span class="glossary-arrow">&#9660;</span>
-        </button>
-        <div class="glossary-body">
-          <p class="glossary-def">Masking is the deliberate or unconscious suppression and modification of natural neurological behaviour to appear more neurotypical in social environments. It includes controlling body language, scripting conversations in advance, mirroring others' social responses, and suppressing stimming or sensory needs. <strong>Masking is effortful and depleting.</strong> Research links chronic masking to increased anxiety, reduced self-concept clarity, and poorer mental health outcomes (Cage and Troxell-Whitman, 2019).</p>
-          <span class="glossary-citation">Cage, E. and Troxell-Whitman, Z. (2019). Journal of Autism and Developmental Disorders, 49(5).</span>
-        </div>
-      </div>
-
-      <div class="glossary-item">
-        <button class="glossary-toggle" onclick="toggleGlossary(this)" aria-expanded="false">
-          <span class="glossary-toggle-label">Time Blindness</span>
-          <span class="glossary-toggle-tag">Time Perception</span>
-          <span class="glossary-arrow">&#9660;</span>
-        </button>
-        <div class="glossary-body">
-          <p class="glossary-def">Time blindness is the ADHD brain's reduced capacity to sense time as a continuous, navigable dimension. Where most people experience time as a usable spectrum: past, present, and an approachable future: many ADHD brains experience only two states: now and not now. <strong>This is not irresponsibility.</strong> Tasks without immediate, concrete deadlines genuinely feel equidistant from the present, regardless of their actual urgency. Time anchoring: external, visible time markers: is the structural response.</p>
-          <span class="glossary-citation">Barkley, R.A. (1997). ADHD and the Nature of Self-Control. Guilford Press.</span>
-        </div>
-      </div>
-
-      <div class="glossary-item">
-        <button class="glossary-toggle" onclick="toggleGlossary(this)" aria-expanded="false">
-          <span class="glossary-toggle-label">Rhythmic Adaptation</span>
-          <span class="glossary-toggle-tag">Course Framework</span>
-          <span class="glossary-arrow">&#9660;</span>
-        </button>
-        <div class="glossary-body">
-          <p class="glossary-def">Rhythmic Adaptation is this course's working replacement for the word "consistency." It describes the practice of tracking your actual attentional and energy patterns across weeks rather than days, and designing your workflow around what your nervous system genuinely does rather than what linear productivity culture demands. <strong>The three components:</strong> Baseline Tracking (observing your natural cycles), Low-Dopamine Shielding (protecting low-energy windows from high-demand tasks), and Hyperfocus Capitalisation (removing friction from your high-engagement states so they can be fully productive).</p>
-          <span class="glossary-citation">Hupfeld, K.E. et al. (2019). ADHD Attention Deficit and Hyperactivity Disorders, 11(2).</span>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
 
 <section id="pricing" style="background:var(--cream-dark);padding:6rem 2rem;">
   <div class="container">
@@ -1408,5 +1342,31 @@ function submitModal(e){
 }
 document.addEventListener('keydown',function(e){if(e.key==='Escape')closeModal();});
 </script>
+<!-- GLOSSARY MODAL -->
+<div id="glossaryModal" class="g-modal" role="dialog" aria-modal="true" aria-label="Glossary of Nuanced Terms">
+  <div class="g-inner">
+    <div class="g-head">
+      <div>
+        <span class="section-label">Reference</span>
+        <h2 class="section-heading" style="margin-bottom:0;">Glossary of Nuanced Terms</h2>
+      </div>
+      <button class="g-close" onclick="closeGlossary()" aria-label="Close">&#x2715;</button>
+    </div>
+    <div class="g-item"><button class="g-btn" onclick="toggleG(this)" aria-expanded="false"><span class="g-label">Executive Dysfunction</span><span class="g-tag">ADHD Core</span><span class="g-arrow">&#9660;</span></button><div class="g-body"><p class="g-def">A neurobiological difference in how the prefrontal cortex initiates, organises, and sustains goal-directed behaviour. <strong>In practical terms:</strong> difficulty starting tasks without sufficient engagement signals, maintaining effort without external structure, and managing time. This is a structural difference, not a motivational one.<span class="g-cite">Barkley, R.A. (2012). Executive Functions. Guilford Press.</span></p></div></div>
+    <div class="g-item"><button class="g-btn" onclick="toggleG(this)" aria-expanded="false"><span class="g-label">Rejection Sensitive Dysphoria (RSD)</span><span class="g-tag">Emotional</span><span class="g-arrow">&#9660;</span></button><div class="g-body"><p class="g-def">An intense, immediate, and involuntary emotional pain response triggered by perceived or actual rejection. <strong>It is not oversensitivity.</strong> The nervous system lacks the regulatory circuitry to modulate the emotional signal before it reaches full intensity.<span class="g-cite">Dodson, W.W. (2016). Emotional Regulation and RSD. ADDitude Magazine.</span></p></div></div>
+    <div class="g-item"><button class="g-btn" onclick="toggleG(this)" aria-expanded="false"><span class="g-label">Neuro-Crash</span><span class="g-tag">Regulatory</span><span class="g-arrow">&#9660;</span></button><div class="g-body"><p class="g-def">The physiological and cognitive shutdown following sustained regulatory overload. Characterised by cognitive fog, sensory sensitivity, emotional flatness, and physical heaviness. <strong>Not a breakdown.</strong> The nervous system enforcing a recovery period it was not given voluntarily.<span class="g-cite">Hull, L. et al. (2017). Journal of Autism and Developmental Disorders.</span></p></div></div>
+    <div class="g-item"><button class="g-btn" onclick="toggleG(this)" aria-expanded="false"><span class="g-label">Masking</span><span class="g-tag">Identity</span><span class="g-arrow">&#9660;</span></button><div class="g-body"><p class="g-def">The deliberate or unconscious suppression of natural neurological behaviour to appear neurotypical. Effortful and depleting. Research links chronic masking to increased anxiety, reduced self-concept, and poorer mental health outcomes.<span class="g-cite">Cage, E. and Troxell-Whitman, Z. (2019). J. Autism Dev. Disord., 49(5).</span></p></div></div>
+    <div class="g-item"><button class="g-btn" onclick="toggleG(this)" aria-expanded="false"><span class="g-label">Time Blindness</span><span class="g-tag">Time Perception</span><span class="g-arrow">&#9660;</span></button><div class="g-body"><p class="g-def">The ADHD brain's reduced capacity to sense time as a continuous dimension. Many ADHD brains experience only two states: now and not now. <strong>Not irresponsibility.</strong> Tasks without immediate deadlines genuinely feel equidistant from the present regardless of urgency.<span class="g-cite">Barkley, R.A. (1997). ADHD and the Nature of Self-Control. Guilford Press.</span></p></div></div>
+    <div class="g-item"><button class="g-btn" onclick="toggleG(this)" aria-expanded="false"><span class="g-label">Rhythmic Adaptation</span><span class="g-tag">Course Framework</span><span class="g-arrow">&#9660;</span></button><div class="g-body"><p class="g-def">This course's replacement for "consistency." Tracking your actual attentional patterns across weeks and designing your workflow around what your nervous system genuinely does. <strong>Three components:</strong> Baseline Tracking, Low-Dopamine Shielding, and Hyperfocus Capitalisation.<span class="g-cite">Hupfeld, K.E. et al. (2019). ADHD Attention Deficit and Hyperactivity Disorders, 11(2).</span></p></div></div>
+  </div>
+</div>
+<script>
+function openGlossary(){document.getElementById('glossaryModal').style.display='block';document.body.style.overflow='hidden';}
+function closeGlossary(){document.getElementById('glossaryModal').style.display='none';document.body.style.overflow='';}
+function toggleG(btn){var open=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',!open);btn.nextElementSibling.classList.toggle('open',!open);}
+document.getElementById('glossaryModal').addEventListener('click',function(e){if(e.target===this)closeGlossary();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&document.getElementById('glossaryModal').style.display==='block')closeGlossary();});
+</script>
+
 </body>
 </html>
