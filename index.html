@@ -290,6 +290,40 @@
   .outcomes-left{flex-direction:row;align-items:flex-start;flex-wrap:wrap;}
   .outcomes-img-stack{width:100%;}
 }
+/* ── FOUNDER BIOGRAPHY ──────────────────────────────────── */
+.founder-section{display:grid;grid-template-columns:1fr 1fr;min-height:85vh;background:#F6F1E9;}
+/* Left: layered imagery */
+.founder-img-col{position:relative;overflow:visible;min-height:600px;}
+.founder-bg-img{
+  position:absolute;top:5%;left:0;width:82%;height:88%;
+  background:linear-gradient(155deg,#EAE6DF 0%,#D6CFC4 100%);
+  box-shadow:0 20px 48px rgba(0,0,0,.09);
+  display:flex;align-items:flex-end;padding:1rem 1.2rem;
+}
+.founder-bg-img span{font-family:var(--body);font-size:.48rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(42,31,26,.3);}
+.founder-portrait{
+  position:absolute;bottom:8%;right:0;width:62%;height:70%;
+  background:linear-gradient(155deg,#C5BBB0 0%,#B8AEA3 100%);
+  box-shadow:0 24px 52px rgba(0,0,0,.14),0 4px 12px rgba(0,0,0,.07);
+  display:flex;align-items:flex-end;padding:1rem 1.2rem;
+}
+.founder-portrait span{font-family:var(--body);font-size:.48rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(42,31,26,.35);}
+/* Right: storytelling */
+.founder-text-col{
+  display:flex;flex-direction:column;justify-content:center;
+  padding:7rem 5rem 7rem 4.5rem;
+}
+.founder-tagline{font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--purple);margin:0 0 1.4rem;}
+.founder-heading{font-family:var(--serif);font-size:clamp(2.6rem,4vw,3.8rem);font-weight:300;line-height:1.1;color:var(--ink);margin:0 0 1.8rem;}
+.founder-rule{width:100%;max-width:440px;height:1px;background:var(--ink);opacity:.18;margin-bottom:2.4rem;}
+.founder-body{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.9rem;font-weight:300;line-height:1.85;color:rgba(42,31,26,.72);max-width:480px;display:flex;flex-direction:column;gap:1.4rem;margin-bottom:2.8rem;}
+.founder-enrol{font-family:var(--body);font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px;display:inline-block;transition:color .2s,border-color .2s;}
+.founder-enrol:hover{color:var(--purple);border-color:var(--purple);}
+@media(max-width:900px){
+  .founder-section{grid-template-columns:1fr;}
+  .founder-img-col{min-height:70vw;}
+  .founder-text-col{padding:4rem 2rem;}
+}
 .funnel-section{background:var(--cream-d);padding:5rem 2rem;}
 .funnel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.8rem;max-width:1100px;margin:2.5rem auto 0;}
 .funnel-tile{background:#FBF9F6;border:1px solid rgba(42,31,26,.09);border-radius:18px;padding:2rem 1.8rem;display:flex;flex-direction:column;gap:1rem;box-shadow:0 4px 20px rgba(42,31,26,.05);transition:box-shadow .25s,transform .25s;}
@@ -864,6 +898,34 @@
 
 </section>
 </div>
+
+<!-- FOUNDER BIOGRAPHY -->
+<section class="founder-section">
+
+  <!-- LEFT: layered imagery frame -->
+  <div class="founder-img-col">
+    <div class="founder-bg-img">
+      <span>Background lifestyle / textured image</span>
+    </div>
+    <div class="founder-portrait">
+      <span>Founder headshot — leah-about-hero.jpg</span>
+    </div>
+  </div>
+
+  <!-- RIGHT: storytelling typography -->
+  <div class="founder-text-col">
+    <p class="founder-tagline">Meet your founder</p>
+    <h2 class="founder-heading">Hey! I'm Leah&hellip;</h2>
+    <div class="founder-rule"></div>
+    <div class="founder-body">
+      <p>I'm a Registered Nurse, AuDHD person, and the founder of Nuanced Co. — an adult neurodivergent consultancy based in Geelong, Australia. I received my own late diagnosis after years of working in clinical environments and still not being able to explain why the systems around me never quite fit.</p>
+      <p>That experience became the foundation of The Unmasked Life&#8482;. Not a workaround, not a productivity hack, and definitely not another self-help system built for a neurotypical nervous system. A structural methodology — evidence-based, warm, and designed around how your brain actually works.</p>
+      <p>I built this course because I couldn't find what I needed when I was diagnosed. So I built it for both of us.</p>
+    </div>
+    <a href="enrol.html" class="founder-enrol">Enrol Now</a>
+  </div>
+
+</section>
 
 <!-- 4-PDF FUNNEL GRID -->
 <section class="funnel-section">
