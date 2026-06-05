@@ -169,6 +169,22 @@ body.sidebar-open .sidebar-toggle span:nth-child(3) { transform: translateY(-6.5
 .jl-title { font-size: .8rem; color: var(--ink); line-height: 1.35; font-family: var(--serif); }
 .jl-sub { font-size: .62rem; color: rgba(42,31,26,.42); margin-top: .25rem; }
 @media(max-width:560px) { .journal-links { grid-template-columns: 1fr; } .week-card-header { flex-direction: column; } }
+/* ── PORTAL PRODUCT TILES ───────────────────────────────────── */
+.pt-portal{display:grid;grid-template-columns:1fr 1fr;gap:.85rem;margin-top:.5rem;}
+.pt-portal .product-tile{background:var(--cream);border:1px solid rgba(42,31,26,.09);border-radius:12px;padding:1.1rem;display:flex;flex-direction:column;gap:.5rem;transition:box-shadow .2s;}
+.pt-portal .product-tile:hover{box-shadow:0 6px 20px rgba(107,69,112,.1);}
+.pt-portal .product-tile-label{font-size:.5rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;}
+.pt-portal .pt-digital .product-tile-label{color:var(--purple);}
+.pt-portal .pt-print .product-tile-label{color:var(--sage);}
+.pt-portal .product-tile-title{font-family:var(--serif);font-size:.85rem;color:var(--ink);line-height:1.3;}
+.pt-portal .product-tile-sub{font-size:.6rem;color:rgba(42,31,26,.38);}
+.pt-portal .btn-tile{display:inline-block;padding:.48rem 1rem;font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:4px;text-decoration:none;transition:background .2s,color .2s;margin-top:.2rem;}
+.pt-portal .pt-digital .btn-tile{background:var(--purple);color:#F6F1E9;}
+.pt-portal .pt-print .btn-tile{background:transparent;color:var(--sage);border:1px solid var(--sage);}
+@media(max-width:480px){.pt-portal{grid-template-columns:1fr;}}
+/* Footer disclaimer */
+.portal-footer-disclaimer{background:rgba(42,31,26,.4);padding:1.2rem 2rem;text-align:center;font-size:.58rem;color:rgba(246,241,233,.25);line-height:1.7;margin-top:1rem;}
+
 /* ── WEEK THEORY PANELS ─────────────────────────────────────── */
 .week-theory { margin: 0 0 1.4rem; display: grid; gap: 1.2rem; }
 .theory-block { background: var(--cream); border-left: 3px solid var(--purple); border-radius: 0 10px 10px 0; padding: 1.2rem 1.4rem; }
@@ -444,54 +460,18 @@ footer { background: var(--ink); padding: 2.5rem 2rem; margin-top: 4rem; }
                 <p class="theory-body">Drawing on Dr. William Dodson's Interest-Based Nervous System (2016), your brain activates around engagement, not importance. Build a personalised daily menu: <strong>Starters</strong> (low-bar, under 5 min), <strong>Mains</strong> (deep engagement), <strong>Sides</strong> (sensory regulation). Log two anchors per category. Keep it honest and minimal.</p>
               </div>
             </div>
-            <div class="journal-links">
-              <a class="jl-card" href="#">
-                <div class="jl-ico jl-ico-d"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#6B4570" stroke-width="1.4"><rect x="2" y="1.5" width="12" height="13" rx="1.5"/><path d="M5 6h6M5 9h4"/></svg></div>
-                <div>
-                  <div class="jl-kicker">Link A</div>
-                  <div class="jl-title">Access 30-Day Interactive Digital Journal (Fillable PDF)</div>
-                  <div class="jl-sub">Week 1 prompts · Instant access</div>
-                </div>
-              </a>
-              <a class="jl-card" href="#">
-                <div class="jl-ico jl-ico-p"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#7A8C6E" stroke-width="1.4"><rect x="3" y="4" width="10" height="8" rx="1"/><path d="M5.5 4V2.5h5V4"/><path d="M5.5 12v1.5h5V12"/></svg></div>
-                <div>
-                  <div class="jl-kicker jl-kicker-p">Link B</div>
-                  <div class="jl-title">Track Shipment of Your Printed Linen Journal (Lulu Fulfillment)</div>
-                  <div class="jl-sub">Dispatched · 5–8 business days</div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- WEEK 2 -->
-        <div class="week-card wk2" id="week2">
-          <div class="week-card-header">
-            <div class="week-header-meta">
-              <div class="week-badge">Week 02</div>
-              <h2 class="week-title">Week 02 // The Brain &amp; The Cost of Masking</h2>
-              <p class="week-summary">Dismantle traditional productivity standards. Understand your unique executive functions and map the heavy energetic cost of unmasking.</p>
-            </div>
-            <span class="week-status-pill pill-done">✓ Complete</span>
-          </div>
-          <div class="week-card-body">
-            <div class="thought-corner">
-              <div class="thought-corner-head" style="border-left:3px solid var(--sage)">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(107,69,112,0.7)" stroke-width="1.3"><circle cx="8" cy="8" r="6"/><path d="M5.5 8h5M8 5.5v5"/></svg>
-                Thought Corner, Week 02 Video Session
+            <div class="pt-portal" style="">
+              <div class="product-tile pt-digital">
+                <span class="product-tile-label">Digital Journal</span>
+                <div class="product-tile-title">30-Day Fillable PDF Journal</div>
+                <div class="product-tile-sub">Week 1 prompts · Instant access</div>
+                <a href="#pdf-journal" class="btn-tile">Download PDF</a>
               </div>
-              <div class="video-loading-shell" role="img" aria-label="Expert video training loading">
-                <div class="video-spinner" aria-hidden="true"></div>
-                <p class="video-loading-label">Expert Video Training Loading...</p>
-                <div class="controls" aria-hidden="true">
-                  <div class="ctrl-prog"><div class="ctrl-prog-fill" style="width:100%;background:var(--sage)"></div></div>
-                  <span class="ctrl-time">27:40 / 27:40</span>
-                </div>
-              </div>
-              <div class="thought-corner-foot">
-                <span class="tc-label">Week 02 · 27 min · Completed</span>
-                <span class="tc-action">Replay ↗</span>
+              <div class="product-tile pt-print">
+                <span class="product-tile-label" style="color:var(--sage)">Linen Edition</span>
+                <div class="product-tile-title">Cloth-Bound Printed Journal</div>
+                <div class="product-tile-sub">Lulu Direct · 5–8 days</div>
+                <a href="#print-journal" class="btn-tile" style="border-color:var(--sage);color:var(--sage);">Track Order</a>
               </div>
             </div>
             <!-- Week 2 Theory -->
@@ -505,57 +485,21 @@ footer { background: var(--ink); padding: 2.5rem 2rem; margin-top: 4rem; }
               <div class="theory-block sage-border">
                 <span class="theory-label sage">Real-Time Triage Matrix</span>
                 <h4 class="theory-heading">Three states. Three responses.</h4>
-                <p class="theory-body"><strong>State Red</strong> (Overload): complete input reduction, 15 min.<br><strong>State Yellow</strong> (Under-stimulated drift): novel sensory injection — temperature contrast, movement, bilateral audio.<br><strong>State Green</strong> (Sustainable flow): maintenance only — hydration, supportive seating, micro-distractions removed.</p>
+                <p class="theory-body"><strong>State Red</strong> (Overload): complete input reduction, 15 min.<br><strong>State Yellow</strong> (Under-stimulated drift): novel sensory injection: temperature contrast, movement, bilateral audio.<br><strong>State Green</strong> (Sustainable flow): maintenance only: hydration, supportive seating, micro-distractions removed.</p>
               </div>
             </div>
-            <div class="journal-links">
-              <a class="jl-card" href="#">
-                <div class="jl-ico jl-ico-d"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#6B4570" stroke-width="1.4"><rect x="2" y="1.5" width="12" height="13" rx="1.5"/><path d="M5 6h6M5 9h4"/></svg></div>
-                <div>
-                  <div class="jl-kicker">Link A</div>
-                  <div class="jl-title">Access 30-Day Interactive Digital Journal (Fillable PDF)</div>
-                  <div class="jl-sub">Week 2 prompts · Instant access</div>
-                </div>
-              </a>
-              <a class="jl-card" href="#">
-                <div class="jl-ico jl-ico-p"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#7A8C6E" stroke-width="1.4"><rect x="3" y="4" width="10" height="8" rx="1"/><path d="M5.5 4V2.5h5V4"/><path d="M5.5 12v1.5h5V12"/></svg></div>
-                <div>
-                  <div class="jl-kicker jl-kicker-p">Link B</div>
-                  <div class="jl-title">Track Shipment of Your Printed Linen Journal (Lulu Fulfillment)</div>
-                  <div class="jl-sub">Dispatched · 5–8 business days</div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- WEEK 3 -->
-        <div class="week-card wk3" id="week3">
-          <div class="week-card-header">
-            <div class="week-header-meta">
-              <div class="week-badge">Week 03</div>
-              <h2 class="week-title">Week 03 // Identity &amp; The Support Map</h2>
-              <p class="week-summary">Rebuild your identity from scratch. Navigate clinical, medical, and holistic support pathways within the local context.</p>
-            </div>
-            <span class="week-status-pill pill-active">In Progress</span>
-          </div>
-          <div class="week-card-body">
-            <div class="thought-corner">
-              <div class="thought-corner-head" style="border-left:3px solid var(--rose)">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(107,69,112,0.7)" stroke-width="1.3"><circle cx="8" cy="8" r="6"/><path d="M5.5 8h5M8 5.5v5"/></svg>
-                Thought Corner, Week 03 Video Session
+            <div class="pt-portal" style="">
+              <div class="product-tile pt-digital">
+                <span class="product-tile-label">Digital Journal</span>
+                <div class="product-tile-title">30-Day Fillable PDF Journal</div>
+                <div class="product-tile-sub">Week 2 prompts · Instant access</div>
+                <a href="#pdf-journal" class="btn-tile">Download PDF</a>
               </div>
-              <div class="video-loading-shell" role="img" aria-label="Expert video training loading">
-                <div class="video-spinner" aria-hidden="true"></div>
-                <p class="video-loading-label">Expert Video Training Loading...</p>
-                <div class="controls" aria-hidden="true">
-                  <div class="ctrl-prog"><div class="ctrl-prog-fill" style="width:38%;background:var(--rose)"></div></div>
-                  <span class="ctrl-time">11:52 / 31:05</span>
-                </div>
-              </div>
-              <div class="thought-corner-foot">
-                <span class="tc-label">Week 03 · 31 min · In Progress</span>
-                <span class="tc-action">Continue ↗</span>
+              <div class="product-tile pt-print">
+                <span class="product-tile-label" style="color:var(--sage)">Linen Edition</span>
+                <div class="product-tile-title">Cloth-Bound Printed Journal</div>
+                <div class="product-tile-sub">Lulu Direct · 5–8 days</div>
+                <a href="#print-journal" class="btn-tile" style="border-color:var(--sage);color:var(--sage);">Track Order</a>
               </div>
             </div>
             <!-- Week 3 Theory -->
@@ -569,57 +513,21 @@ footer { background: var(--ink); padding: 2.5rem 2rem; margin-top: 4rem; }
               <div class="theory-block rose-border">
                 <span class="theory-label rose">Tool: 2-Minute Activation Runway</span>
                 <h4 class="theory-heading">Lower the activation cost of starting.</h4>
-                <p class="theory-body"><strong>Micro-Step:</strong> One physical action under 2 minutes requiring zero commitment to continuing.<br><strong>Zero-Commitment Contract:</strong> Explicit permission to stop after one step — removes full-task executive weight from the initiation moment.<br><strong>Sensory Bridge:</strong> Pair the micro-step with a consistent sensory cue. It becomes an environmental signal that transition is safe (Barkley, 2012).</p>
+                <p class="theory-body"><strong>Micro-Step:</strong> One physical action under 2 minutes requiring zero commitment to continuing.<br><strong>Zero-Commitment Contract:</strong> Explicit permission to stop after one step: removes full-task executive weight from the initiation moment.<br><strong>Sensory Bridge:</strong> Pair the micro-step with a consistent sensory cue. It becomes an environmental signal that transition is safe (Barkley, 2012).</p>
               </div>
             </div>
-            <div class="journal-links">
-              <a class="jl-card" href="#">
-                <div class="jl-ico jl-ico-d"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#6B4570" stroke-width="1.4"><rect x="2" y="1.5" width="12" height="13" rx="1.5"/><path d="M5 6h6M5 9h4"/></svg></div>
-                <div>
-                  <div class="jl-kicker">Link A</div>
-                  <div class="jl-title">Access 30-Day Interactive Digital Journal (Fillable PDF)</div>
-                  <div class="jl-sub">Week 3 prompts · Instant access</div>
-                </div>
-              </a>
-              <a class="jl-card" href="#">
-                <div class="jl-ico jl-ico-p"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#7A8C6E" stroke-width="1.4"><rect x="3" y="4" width="10" height="8" rx="1"/><path d="M5.5 4V2.5h5V4"/><path d="M5.5 12v1.5h5V12"/></svg></div>
-                <div>
-                  <div class="jl-kicker jl-kicker-p">Link B</div>
-                  <div class="jl-title">Track Shipment of Your Printed Linen Journal (Lulu Fulfillment)</div>
-                  <div class="jl-sub">Dispatched · 5–8 business days</div>
-                </div>
-              </a>
-            </div>
-          </div>
-        </div>
-
-        <!-- WEEK 4 -->
-        <div class="week-card wk4" id="week4">
-          <div class="week-card-header">
-            <div class="week-header-meta">
-              <div class="week-badge">Week 04</div>
-              <h2 class="week-title">Week 04 // Integration &amp; Sustainable Accommodation</h2>
-              <p class="week-summary">Build a life structured for your mind. Master tactical disclosure, set firm boundaries, and design systems that adapt to your focus.</p>
-            </div>
-            <span class="week-status-pill pill-locked">Unlocks Week 4</span>
-          </div>
-          <div class="week-card-body">
-            <div class="thought-corner">
-              <div class="thought-corner-head" style="border-left:3px solid var(--gold)">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="rgba(42,31,26,.7)" stroke-width="1.3"><circle cx="8" cy="8" r="6"/><path d="M5.5 8h5M8 5.5v5"/></svg>
-                <span>Thought Corner, Week 04 Video Session</span>
+            <div class="pt-portal" style="">
+              <div class="product-tile pt-digital">
+                <span class="product-tile-label">Digital Journal</span>
+                <div class="product-tile-title">30-Day Fillable PDF Journal</div>
+                <div class="product-tile-sub">Week 3 prompts · Instant access</div>
+                <a href="#pdf-journal" class="btn-tile">Download PDF</a>
               </div>
-              <div class="video-loading-shell" role="img" aria-label="Expert video training loading" style="opacity:.55;">
-                <div class="video-spinner" aria-hidden="true"></div>
-                <p class="video-loading-label">Unlocks on completion of Week 3</p>
-                <div class="controls" aria-hidden="true">
-                  <div class="ctrl-prog"><div class="ctrl-prog-fill" style="width:0%;background:var(--gold)"></div></div>
-                  <span class="ctrl-time">0:00 / 34:22</span>
-                </div>
-              </div>
-              <div class="thought-corner-foot">
-                <span class="tc-label">Week 04 · 34 min · Locked</span>
-                <span class="tc-action" style="opacity:.35;">Complete Week 3 to unlock</span>
+              <div class="product-tile pt-print">
+                <span class="product-tile-label" style="color:var(--sage)">Linen Edition</span>
+                <div class="product-tile-title">Cloth-Bound Printed Journal</div>
+                <div class="product-tile-sub">Lulu Direct · 5–8 days</div>
+                <a href="#print-journal" class="btn-tile" style="border-color:var(--sage);color:var(--sage);">Track Order</a>
               </div>
             </div>
             <!-- Week 4 Theory -->
@@ -627,7 +535,7 @@ footer { background: var(--ink); padding: 2.5rem 2rem; margin-top: 4rem; }
               <div class="theory-block gold-border">
                 <span class="theory-label gold">Scaffolding as System Design</span>
                 <h4 class="theory-heading">Architecture, not compliance.</h4>
-                <p class="theory-body">Neurodiversity as a concept (Singer, 1999) proposes that neurological variation is a natural dimension of human diversity. Scaffolding means deliberately designing external structures — physical environments, social agreements, executive tools — that reduce ongoing regulatory demand (Ramsay and Rostain, 2014). You are not changing how your brain works. You are changing what it has to manage.</p>
+                <p class="theory-body">Neurodiversity as a concept (Singer, 1999) proposes that neurological variation is a natural dimension of human diversity. Scaffolding means deliberately designing external structures: physical environments, social agreements, executive tools: that reduce ongoing regulatory demand (Ramsay and Rostain, 2014). You are not changing how your brain works. You are changing what it has to manage.</p>
                 <span class="theory-vocab gold">New vocabulary: Proactive Accommodation</span>
               </div>
               <div class="theory-block gold-border">
@@ -636,23 +544,19 @@ footer { background: var(--ink); padding: 2.5rem 2rem; margin-top: 4rem; }
                 <p class="theory-body"><strong>Activation Blocks:</strong> 15–30 min, low-barrier, high-engagement. Opens the day.<br><strong>Execution Blocks:</strong> 45–90 min core work, placed after an Activation Block.<br><strong>Restoration Blocks:</strong> Scheduled before needed, not as crisis response.<br><strong>Buffer Blocks:</strong> 10–15 min either side of transitions.<br><strong>No-Shame Catch-Up:</strong> Name the gap, drop what was missed, one micro-step within 24 hours.</p>
               </div>
             </div>
-            <div class="journal-links">
-              <a class="jl-card" href="#" style="opacity:.5;pointer-events:none;">
-                <div class="jl-ico jl-ico-d"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#6B4570" stroke-width="1.4"><rect x="2" y="1.5" width="12" height="13" rx="1.5"/><path d="M5 6h6M5 9h4"/></svg></div>
-                <div>
-                  <div class="jl-kicker">Link A</div>
-                  <div class="jl-title">Access 30-Day Interactive Digital Journal (Fillable PDF)</div>
-                  <div class="jl-sub">Unlocks with Week 4</div>
-                </div>
-              </a>
-              <a class="jl-card" href="#" style="opacity:.5;pointer-events:none;">
-                <div class="jl-ico jl-ico-p"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#7A8C6E" stroke-width="1.4"><rect x="3" y="4" width="10" height="8" rx="1"/><path d="M5.5 4V2.5h5V4"/><path d="M5.5 12v1.5h5V12"/></svg></div>
-                <div>
-                  <div class="jl-kicker jl-kicker-p">Link B</div>
-                  <div class="jl-title">Track Shipment of Your Printed Linen Journal (Lulu Fulfillment)</div>
-                  <div class="jl-sub">Available on enrolment</div>
-                </div>
-              </a>
+            <div class="pt-portal" style="opacity:.5;pointer-events:none;">
+              <div class="product-tile pt-digital">
+                <span class="product-tile-label">Digital Journal</span>
+                <div class="product-tile-title">30-Day Fillable PDF Journal</div>
+                <div class="product-tile-sub">Unlocks with Week 4</div>
+                <a href="#pdf-journal" class="btn-tile">Download PDF</a>
+              </div>
+              <div class="product-tile pt-print">
+                <span class="product-tile-label" style="color:var(--sage)">Linen Edition</span>
+                <div class="product-tile-title">Cloth-Bound Printed Journal</div>
+                <div class="product-tile-sub">Available on enrolment</div>
+                <a href="#print-journal" class="btn-tile" style="border-color:var(--sage);color:var(--sage);">Track Order</a>
+              </div>
             </div>
           </div>
         </div>
@@ -727,6 +631,7 @@ footer { background: var(--ink); padding: 2.5rem 2rem; margin-top: 4rem; }
       <a href="index.html">Main Site</a>
     </nav>
   </div>
+  <div class="portal-footer-disclaimer">The Unmasked Life&#8482; is a psychoeducational course by Leah Veenhuizen, Registered Nurse (AHPRA), Nuanced Co. Educational content only. Not clinical advice. &copy; 2026 Nuanced Co. ABN 71 926 185 491.</div>
 </footer>
 
 <script>
