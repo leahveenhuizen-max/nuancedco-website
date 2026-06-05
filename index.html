@@ -95,7 +95,7 @@
     .hero-inner{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;width:100%;padding:0 2rem;min-height:calc(100vh - 80px);}
     .hero-body{padding:9rem 0 9rem;max-width:800px;width:100%;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2;}
 
-    .hero-eyebrow{display:flex;align-items:center;justify-content:center;gap:1.2rem;margin-bottom:3rem;}
+    .hero-eyebrow{display:flex;align-items:center;justify-content:flex-start;gap:1.2rem;margin-bottom:2rem;}
     .hero-eyebrow-line{width:50px;height:1px;background:var(--purple);opacity:.45;}
     .hero-eyebrow-text{font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--purple);}
     .hero-hl{position:relative;line-height:1;margin-bottom:3rem;}
@@ -103,12 +103,13 @@
     .hl-sm{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.8rem);font-weight:300;color:rgba(42,31,26,.52);letter-spacing:.02em;}
     .hl-lg{font-family:var(--serif);font-size:clamp(4rem,8.5vw,8rem);font-weight:300;color:var(--ink);letter-spacing:-.01em;line-height:.9;}
     .hl-lg em{font-style:italic;color:var(--purple);}
+    .hero-hl{text-align:left;margin-bottom:2.2rem;}
     .hl-offset{margin-left:clamp(2rem,6vw,7rem);}
     .hl-brushmark{display:block;margin-top:.5rem;margin-left:clamp(2rem,6vw,7rem);}
-    .hero-sub{font-size:1rem;color:var(--ink-mid);max-width:600px;line-height:1.75;margin-bottom:2.8rem;text-align:center;}
-    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;}
-    .hero-micro{font-size:.66rem;color:rgba(42,31,26,.42);margin-top:1.2rem;letter-spacing:.04em;max-width:600px;margin-left:auto;margin-right:auto;}
-    .hero-fade{position:absolute;bottom:0;left:0;right:0;height:180px;background:linear-gradient(to bottom,transparent,var(--cream));z-index:3;pointer-events:none;}
+    .hero-sub{font-size:.96rem;color:var(--ink-mid);max-width:520px;line-height:1.78;margin-bottom:2.4rem;text-align:left;}
+    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:flex-start;}
+    .hero-micro{font-size:.66rem;color:rgba(42,31,26,.42);margin-top:1rem;letter-spacing:.04em;}
+    .hero-fade{display:none;}.ink-marks{display:none;}
 
     .hero-video-bg{display:none;}
     .hero-video-overlay{display:none;}
@@ -183,8 +184,8 @@
     }
 
     /* LOGO MARK */
-    .hero-mark-wrap{position:absolute;left:50%;top:45%;transform:translate(-50%,-50%) scaleX(-1);width:65vw;max-width:700px;height:auto;overflow:visible;opacity:0;animation:markFade 2.5s 0.4s var(--ease) forwards;pointer-events:none;z-index:1;}
-    .hero-mark{width:100%;height:auto;overflow:visible;display:block;mix-blend-mode:multiply;}
+    .hero-mark-wrap{display:none;}
+    
     @media(max-width:680px){.hero-mark{width:100vw;opacity:0;animation:markFade 2.5s 0.4s var(--ease) forwards;}}
     @media(max-width:860px){.hero-mark{display:none;}.hero-mark-wrap{display:none;}}
     @keyframes markIn{to{opacity:.55;}}
@@ -194,10 +195,10 @@
     /* BUTTONS */
     .btn{font-family:var(--body);font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.9rem 2.2rem;border:none;border-radius:2px;transition:transform .2s var(--ease),background .2s,color .2s,box-shadow .2s;display:inline-block;}
     .btn:hover{transform:translateY(-2px);}
-    .btn-gold{background:var(--ink);color:var(--cream);}
-    .btn-gold:hover{background:var(--purple);color:var(--cream);box-shadow:0 8px 24px rgba(107,69,112,.22);}
-    .btn-ghost-light{background:transparent;color:var(--ink);border:1px solid rgba(42,31,26,.3);}
-    .btn-ghost-light:hover{border-color:var(--purple);color:var(--purple);background:rgba(107,69,112,.05);}
+    .btn-gold{background:#6B4570;color:#F6F1E9;}
+    .btn-gold:hover{background:#1A1A1A;color:#F6F1E9;}
+    .btn-ghost-light{background:transparent;color:var(--ink);border:1px solid var(--ink);border-radius:0;}
+    .btn-ghost-light:hover{border-color:#6B4570;color:#6B4570;background:transparent;}
     #cta .btn-ghost-light{color:#F6F1E9;border-color:rgba(246,241,233,.4);}
     #cta .btn-ghost-light:hover{color:#fff;border-color:#F6F1E9;background:rgba(246,241,233,.08);}
     #cta .btn-gold{background:var(--gold);color:var(--ink);}
@@ -374,8 +375,9 @@
     @media(max-width:960px){
       .nav-list{display:none;}.hamburger{display:flex;}
       #nav{padding:1.2rem 1.8rem;}
-      .hero-inner{padding:0 1.8rem;gap:2rem;}
-      .hero-body{padding:7rem 0 5rem;}
+      #hero{grid-template-columns:1fr;}
+      .hero-image-side{min-height:60vw;}
+      .hero-text-side{padding:4rem 2rem;}
       .rp-grid,.who-grid,.exp-inner,.how-inner,.services-grid,.res-inner,.about-collage,.comm-inner,.ft-inner{grid-template-columns:1fr;}
       .exp-inner,.res-inner,.comm-inner,.how-inner{gap:3.5rem;}
       .about-text-col{padding:2.5rem 0 0;}
@@ -441,22 +443,16 @@
     <div class="hero-video-overlay"></div>
     <div class="hero-video-caption">Premium atmospheric motion placeholder to elevate brand authority and set a confident tone for the consultancy.</div>
   </div>
-  <div class="ink-marks" aria-hidden="true">
-    <svg class="im-1" viewBox="0 0 340 220" fill="none"><path d="M12,180 C40,100 120,30 200,18 C260,8 310,30 328,80 C342,118 320,165 280,185 C240,205 185,200 140,175 C95,148 65,100 80,60" stroke="#C4963E" stroke-width="2.5" stroke-linecap="round"/><path d="M30,175 C58,98 135,35 208,22 C268,12 315,38 330,86" stroke="#6B4570" stroke-width="1.2" stroke-linecap="round" opacity=".6"/></svg>
-    <svg class="im-2" viewBox="0 0 260 60" fill="none"><path d="M8,32 C35,16 75,42 115,28 C148,16 180,38 215,26 C238,18 252,30 256,38" stroke="#7A8C6E" stroke-width="3" stroke-linecap="round"/><path d="M12,36 C40,22 78,46 118,32 C150,20 182,42 218,30" stroke="#9668A4" stroke-width="1.2" stroke-linecap="round" opacity=".55"/></svg>
-    <svg class="im-3" viewBox="0 0 180 100" fill="none"><ellipse cx="90" cy="50" rx="74" ry="38" stroke="#C07A8A" stroke-width="1.8"/><ellipse cx="90" cy="50" rx="60" ry="26" stroke="#C4963E" stroke-width="0.8" opacity=".5"/></svg>
+  <!-- LEFT: full-bleed portrait image -->
+  <div class="hero-image-side">
+    <div class="hero-image-placeholder">Portrait image — replace src with leah-about-hero.jpg</div>
+    <!-- To use a real photo: <img src="leah-about-hero.jpg" alt="Leah Veenhuizen, founder of Nuanced Co."> -->
   </div>
+
+  <!-- RIGHT: flat cream text panel -->
+  <div class="hero-text-side">
   <div class="hero-inner">
-    <div class="hero-mark-wrap" aria-hidden="true">
-      <svg class="hero-mark" viewBox="0 0 580 480" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <ellipse cx="195" cy="175" rx="168" ry="148" transform="rotate(-12 195 175)" fill="#6B4570" fill-opacity="0.32"/>
-        <ellipse cx="330" cy="138" rx="155" ry="135" transform="rotate(8 330 138)" fill="#7A8C6E" fill-opacity="0.28"/>
-        <ellipse cx="445" cy="178" rx="148" ry="160" transform="rotate(-5 445 178)" fill="#9668A4" fill-opacity="0.25"/>
-        <ellipse cx="270" cy="300" rx="175" ry="140" transform="rotate(6 270 300)" fill="#C07A8A" fill-opacity="0.26"/>
-        <ellipse cx="400" cy="320" rx="145" ry="120" transform="rotate(-10 400 320)" fill="#C4963E" fill-opacity="0.22"/>
-      </svg>
-    </div>
-    <div class="hero-body" style="position:relative;z-index:2;">
+    <div class="hero-body">
       <div class="hero-eyebrow rv"><div class="hero-eyebrow-line"></div><span class="hero-eyebrow-text">The Unmasked Life&#8482; &bull; Nuanced Co. &bull; Geelong, Australia</span></div>
       <div class="hero-hl">
         <span class="hl-row hl-sm rv" style="margin-bottom:.5rem">You don't need more discipline.</span>
@@ -474,8 +470,31 @@
       <p class="hero-micro rv" style="transition-delay:.55s">Four weeks. Evidence-based. Designed for a brain wired exactly like yours.</p>
     </div>
   </div>
-  <div class="hero-fade"></div>
+  </div><!-- /hero-text-side -->
 </section>
+
+<!-- PAIN-POINT SPLIT SECTION -->
+<section style="display:grid;grid-template-columns:1fr 1fr;min-height:90vh;">
+  <!-- Left: vertical portrait -->
+  <div style="overflow:hidden;position:relative;">
+    <div style="width:100%;height:100%;min-height:80vh;background:linear-gradient(160deg,#D6CFC4 0%,#C5BBB0 100%);display:flex;align-items:center;justify-content:center;color:rgba(42,31,26,.3);font-family:var(--body);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;">Pain-point portrait image</div>
+    <!-- Replace with: <img src="your-portrait.jpg" style="width:100%;height:100%;object-fit:cover;display:block;"> -->
+  </div>
+  <!-- Right: pain-point copy -->
+  <div style="background:#F6F1E9;display:flex;flex-direction:column;justify-content:center;padding:7rem 5rem 7rem 4.5rem;">
+    <p style="font-family:var(--body);font-size:.62rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--purple);margin-bottom:1.6rem;">Do any of these scenarios hit home?</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.9rem,3vw,2.9rem);font-weight:300;line-height:1.15;color:var(--ink);margin-bottom:2.8rem;max-width:480px;">It's time to ditch the overwhelm, stressful anxiety &amp; frustration.</h2>
+    <ul class="pain-desire-list" style="max-width:480px;">
+      <li>You received a late diagnosis and you're still trying to make sense of what it means for your past.</li>
+      <li>Every productivity system you've tried was built for a neurotypical brain, and your energy pays the price.</li>
+      <li>You mask constantly — at work, at home, in every social environment — and the cost is invisible but enormous.</li>
+      <li>Time disappears. Tasks stall. You know exactly what needs doing and still cannot begin.</li>
+      <li>You're exhausted by the gap between how capable you are and how you feel every single day.</li>
+    </ul>
+    <a href="course.html" style="margin-top:2.8rem;display:inline-block;background:#6B4570;color:#F6F1E9;font-family:var(--body);font-size:.68rem;font-weight:700;letter-spacing:.16em;text-transform:uppercase;padding:.9rem 2rem;text-decoration:none;transition:background .2s;">I'm ready to change this</a>
+  </div>
+</section>
+
 
 <!-- 4-PDF FUNNEL GRID -->
 <section class="funnel-section">
