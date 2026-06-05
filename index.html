@@ -66,6 +66,37 @@
 
 
 /* ── FUNNEL GRID ──────────────────────────────────────── */
+/* ── YOU WISH YOU COULD ────────────────────────────────── */
+.wish-section{display:grid;grid-template-columns:1fr 1fr;min-height:80vh;background:#F6F1E9;}
+.wish-text-col{display:flex;flex-direction:column;justify-content:center;padding:7rem 5rem 7rem 4.5rem;}
+.wish-tagline{font-family:var(--body);font-size:.6rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--purple);margin:0 0 1.4rem;}
+.wish-heading{font-family:var(--serif);font-size:clamp(2.4rem,4vw,3.8rem);font-weight:300;line-height:1.1;color:var(--ink);margin:0 0 2rem;}
+.wish-divider{width:100%;max-width:420px;height:1px;background:var(--ink);opacity:.2;margin-bottom:2.8rem;}
+.wish-copy-space{min-height:6rem;display:flex;align-items:center;}
+/* Right: staggered visual frame */
+.wish-visual-col{position:relative;overflow:visible;display:flex;align-items:center;justify-content:center;padding:5rem 3rem;}
+.wish-frame{position:relative;width:100%;max-width:480px;height:520px;}
+.wish-bg-block{
+  position:absolute;top:0;left:0;width:88%;height:88%;
+  background:linear-gradient(145deg,#D6CFC4 0%,#C5BBB0 100%);
+  display:flex;align-items:flex-end;justify-content:flex-start;
+  padding:1rem 1.2rem;
+}
+.wish-bg-block span{font-family:var(--body);font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(42,31,26,.38);}
+.wish-fg-block{
+  position:absolute;bottom:0;right:0;width:72%;height:68%;
+  background:linear-gradient(145deg,#EAE6DF 0%,#D9D2C8 100%);
+  display:flex;align-items:flex-end;justify-content:flex-start;
+  padding:1rem 1.2rem;
+  box-shadow:-6px -6px 0 #F6F1E9;
+}
+.wish-fg-block span{font-family:var(--body);font-size:.54rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(42,31,26,.38);}
+@media(max-width:860px){
+  .wish-section{grid-template-columns:1fr;}
+  .wish-text-col{padding:5rem 2rem 3rem;}
+  .wish-visual-col{padding:2rem;min-height:60vw;}
+  .wish-frame{height:56vw;max-width:100%;}
+}
 .funnel-section{background:var(--cream-d);padding:5rem 2rem;}
 .funnel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.8rem;max-width:1100px;margin:2.5rem auto 0;}
 .funnel-tile{background:#FBF9F6;border:1px solid rgba(42,31,26,.09);border-radius:18px;padding:2rem 1.8rem;display:flex;flex-direction:column;gap:1rem;box-shadow:0 4px 20px rgba(42,31,26,.05);transition:box-shadow .25s,transform .25s;}
@@ -495,6 +526,34 @@
   </div>
 </section>
 
+
+<!-- YOU WISH YOU COULD SECTION -->
+<section class="wish-section">
+  <!-- LEFT: tagline + heading + divider + dream-state copy space -->
+  <div class="wish-text-col">
+    <p class="wish-tagline">If I know you like I think I do</p>
+    <h2 class="wish-heading">You wish you could&hellip;</h2>
+    <div class="wish-divider"></div>
+    <!-- Dream-state copy drops here -->
+    <div class="wish-copy-space" aria-label="Dream-state copy placeholder">
+      <p style="color:rgba(42,31,26,.28);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;">— dream-state copy to be added here —</p>
+    </div>
+  </div>
+
+  <!-- RIGHT: staggered visual frame -->
+  <div class="wish-visual-col">
+    <div class="wish-frame">
+      <!-- Background: textured sand/rock imagery block -->
+      <div class="wish-bg-block">
+        <span>Background texture / sand / rock image</span>
+      </div>
+      <!-- Foreground: offset portrait block -->
+      <div class="wish-fg-block">
+        <span>Desktop / Working interior portrait image</span>
+      </div>
+    </div>
+  </div>
+</section>
 
 <!-- 4-PDF FUNNEL GRID -->
 <section class="funnel-section">
