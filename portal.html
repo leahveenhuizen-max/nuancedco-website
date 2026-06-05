@@ -169,6 +169,24 @@ body.sidebar-open .sidebar-toggle span:nth-child(3) { transform: translateY(-6.5
 .jl-title { font-size: .8rem; color: var(--ink); line-height: 1.35; font-family: var(--serif); }
 .jl-sub { font-size: .62rem; color: rgba(42,31,26,.42); margin-top: .25rem; }
 @media(max-width:560px) { .journal-links { grid-template-columns: 1fr; } .week-card-header { flex-direction: column; } }
+/* ── WEEK THEORY PANELS ─────────────────────────────────────── */
+.week-theory { margin: 0 0 1.4rem; display: grid; gap: 1.2rem; }
+.theory-block { background: var(--cream); border-left: 3px solid var(--purple); border-radius: 0 10px 10px 0; padding: 1.2rem 1.4rem; }
+.theory-block.sage-border { border-left-color: var(--sage); }
+.theory-block.rose-border { border-left-color: var(--rose); }
+.theory-block.gold-border { border-left-color: var(--gold); }
+.theory-label { font-size: .52rem; letter-spacing: .22em; text-transform: uppercase; color: var(--purple); font-weight: 700; margin-bottom: .5rem; display: block; }
+.theory-label.sage { color: var(--sage); }
+.theory-label.rose { color: var(--rose); }
+.theory-label.gold { color: var(--gold); }
+.theory-heading { font-family: var(--serif); font-size: 1rem; font-weight: 400; color: var(--ink); margin-bottom: .5rem; line-height: 1.3; }
+.theory-body { font-size: .8rem; color: var(--ink-mid); line-height: 1.78; }
+.theory-body strong { color: var(--ink); }
+.theory-vocab { display: inline-block; margin-top: .6rem; font-size: .72rem; font-family: var(--serif); font-style: italic; color: var(--purple); padding: .2rem .7rem; background: rgba(107,69,112,.07); border-radius: 4px; }
+.theory-vocab.sage { color: var(--sage); background: rgba(122,140,110,.08); }
+.theory-vocab.rose { color: var(--rose); background: rgba(192,122,138,.08); }
+.theory-vocab.gold { color: var(--gold); background: rgba(196,150,62,.08); }
+
 /* ── VIDEO LOADING PLACEHOLDER ──────────────────────────────── */
 .video-loading-shell {
   width: 100%; aspect-ratio: 16/9;
@@ -412,6 +430,20 @@ footer { background: var(--ink); padding: 2.5rem 2rem; margin-top: 4rem; }
                 <span class="tc-action">Replay ↗</span>
               </div>
             </div>
+            <!-- Week 1 Theory -->
+            <div class="week-theory">
+              <div class="theory-block">
+                <span class="theory-label">The Shift</span>
+                <h4 class="theory-heading">From moral failure to structural design.</h4>
+                <p class="theory-body">For decades, your capacity was evaluated against a system never built for your neurology. Sustained social camouflaging links directly to measurable increases in mental fatigue and reduced wellbeing (Hull et al., 2017). The exhaustion is not a character flaw. It is the accumulated cost of a nervous system performing constant structural adaptation. Real change begins when we stop treating executive friction as a moral failing.</p>
+                <span class="theory-vocab">New vocabulary: Rhythmic Adaptation</span>
+              </div>
+              <div class="theory-block">
+                <span class="theory-label">Tool: INCUP Dopamine Menu</span>
+                <h4 class="theory-heading">Interest, Novelty, Challenge, Urgency, Passion.</h4>
+                <p class="theory-body">Drawing on Dr. William Dodson's Interest-Based Nervous System (2016), your brain activates around engagement, not importance. Build a personalised daily menu: <strong>Starters</strong> (low-bar, under 5 min), <strong>Mains</strong> (deep engagement), <strong>Sides</strong> (sensory regulation). Log two anchors per category. Keep it honest and minimal.</p>
+              </div>
+            </div>
             <div class="journal-links">
               <a class="jl-card" href="#">
                 <div class="jl-ico jl-ico-d"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#6B4570" stroke-width="1.4"><rect x="2" y="1.5" width="12" height="13" rx="1.5"/><path d="M5 6h6M5 9h4"/></svg></div>
@@ -460,6 +492,20 @@ footer { background: var(--ink); padding: 2.5rem 2rem; margin-top: 4rem; }
               <div class="thought-corner-foot">
                 <span class="tc-label">Week 02 · 27 min · Completed</span>
                 <span class="tc-action">Replay ↗</span>
+              </div>
+            </div>
+            <!-- Week 2 Theory -->
+            <div class="week-theory">
+              <div class="theory-block sage-border">
+                <span class="theory-label sage">Interoception and Depletion</span>
+                <h4 class="theory-heading">Catching the shift before the system shuts down.</h4>
+                <p class="theory-body">Masking also means overriding internal signals. Interoceptive accuracy is reduced in many ADHD and Autistic individuals (Schauder et al., 2015). Interoception is the body's system for reading its own state: heart rate, muscle tension, fatigue, emotional change (Price and Hooven, 2018). This week we rebuild that internal read using the three-state Triage Matrix.</p>
+                <span class="theory-vocab sage">New vocabulary: Autonomic Defensive State</span>
+              </div>
+              <div class="theory-block sage-border">
+                <span class="theory-label sage">Real-Time Triage Matrix</span>
+                <h4 class="theory-heading">Three states. Three responses.</h4>
+                <p class="theory-body"><strong>State Red</strong> (Overload): complete input reduction, 15 min.<br><strong>State Yellow</strong> (Under-stimulated drift): novel sensory injection — temperature contrast, movement, bilateral audio.<br><strong>State Green</strong> (Sustainable flow): maintenance only — hydration, supportive seating, micro-distractions removed.</p>
               </div>
             </div>
             <div class="journal-links">
@@ -512,6 +558,20 @@ footer { background: var(--ink); padding: 2.5rem 2rem; margin-top: 4rem; }
                 <span class="tc-action">Continue ↗</span>
               </div>
             </div>
+            <!-- Week 3 Theory -->
+            <div class="week-theory">
+              <div class="theory-block rose-border">
+                <span class="theory-label rose">Task Inertia and Time Blindness</span>
+                <h4 class="theory-heading">Starting is neurological, not motivational.</h4>
+                <p class="theory-body">Task activation is one of the executive functions most consistently impaired in ADHD (Brown, 2013). When dopamine conditions for initiation are absent, the motivational circuitry does not activate reliably (Volkow et al., 2011). Barkley (1997) identifies time blindness as a core ADHD feature: upcoming transitions consume working memory, making the interval before them feel structurally unsafe to use.</p>
+                <span class="theory-vocab rose">New vocabulary: Transition Buffering</span>
+              </div>
+              <div class="theory-block rose-border">
+                <span class="theory-label rose">Tool: 2-Minute Activation Runway</span>
+                <h4 class="theory-heading">Lower the activation cost of starting.</h4>
+                <p class="theory-body"><strong>Micro-Step:</strong> One physical action under 2 minutes requiring zero commitment to continuing.<br><strong>Zero-Commitment Contract:</strong> Explicit permission to stop after one step — removes full-task executive weight from the initiation moment.<br><strong>Sensory Bridge:</strong> Pair the micro-step with a consistent sensory cue. It becomes an environmental signal that transition is safe (Barkley, 2012).</p>
+              </div>
+            </div>
             <div class="journal-links">
               <a class="jl-card" href="#">
                 <div class="jl-ico jl-ico-d"><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="#6B4570" stroke-width="1.4"><rect x="2" y="1.5" width="12" height="13" rx="1.5"/><path d="M5 6h6M5 9h4"/></svg></div>
@@ -560,6 +620,20 @@ footer { background: var(--ink); padding: 2.5rem 2rem; margin-top: 4rem; }
               <div class="thought-corner-foot">
                 <span class="tc-label">Week 04 · 34 min · Locked</span>
                 <span class="tc-action" style="opacity:.35;">Complete Week 3 to unlock</span>
+              </div>
+            </div>
+            <!-- Week 4 Theory -->
+            <div class="week-theory">
+              <div class="theory-block gold-border">
+                <span class="theory-label gold">Scaffolding as System Design</span>
+                <h4 class="theory-heading">Architecture, not compliance.</h4>
+                <p class="theory-body">Neurodiversity as a concept (Singer, 1999) proposes that neurological variation is a natural dimension of human diversity. Scaffolding means deliberately designing external structures — physical environments, social agreements, executive tools — that reduce ongoing regulatory demand (Ramsay and Rostain, 2014). You are not changing how your brain works. You are changing what it has to manage.</p>
+                <span class="theory-vocab gold">New vocabulary: Proactive Accommodation</span>
+              </div>
+              <div class="theory-block gold-border">
+                <span class="theory-label gold">Tool: Modular Rhythm Builder</span>
+                <h4 class="theory-heading">Four block types. One flexible daily system.</h4>
+                <p class="theory-body"><strong>Activation Blocks:</strong> 15–30 min, low-barrier, high-engagement. Opens the day.<br><strong>Execution Blocks:</strong> 45–90 min core work, placed after an Activation Block.<br><strong>Restoration Blocks:</strong> Scheduled before needed, not as crisis response.<br><strong>Buffer Blocks:</strong> 10–15 min either side of transitions.<br><strong>No-Shame Catch-Up:</strong> Name the gap, drop what was missed, one micro-step within 24 hours.</p>
               </div>
             </div>
             <div class="journal-links">
