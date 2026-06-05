@@ -64,6 +64,19 @@
     .hamburger{display:none;flex-direction:column;gap:5px;}
     .hamburger span{width:22px;height:1.5px;background:var(--cream);display:block;}
 
+
+/* ── FUNNEL GRID ──────────────────────────────────────── */
+.funnel-section{background:var(--cream-d);padding:5rem 2rem;}
+.funnel-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.8rem;max-width:1100px;margin:2.5rem auto 0;}
+.funnel-tile{background:#FBF9F6;border:1px solid rgba(42,31,26,.09);border-radius:18px;padding:2rem 1.8rem;display:flex;flex-direction:column;gap:1rem;box-shadow:0 4px 20px rgba(42,31,26,.05);transition:box-shadow .25s,transform .25s;}
+.funnel-tile:hover{box-shadow:0 10px 36px rgba(42,31,26,.1);transform:translateY(-3px);}
+.funnel-tile-num{font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--gold);line-height:1;}
+.funnel-tile-title{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--ink);line-height:1.3;}
+.funnel-tile-desc{font-size:.78rem;color:var(--ink-mid);line-height:1.72;flex:1;}
+.funnel-tile-tag{font-size:.54rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--purple);}
+.btn-funnel{display:block;text-align:center;padding:.82rem 1.4rem;background:var(--ink);color:#F6F1E9;font-family:var(--body);font-size:.65rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;border-radius:4px;text-decoration:none;transition:background .2s;}
+.btn-funnel:hover{background:var(--purple);}
+@media(max-width:600px){.funnel-grid{grid-template-columns:1fr;}}
     /* REVEAL */
     .rv{opacity:0;transform:translateY(28px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
     .rvl{opacity:0;transform:translateX(-32px);transition:opacity .7s var(--ease),transform .7s var(--ease);}
@@ -463,6 +476,46 @@
   </div>
   <div class="hero-fade"></div>
 </section>
+
+<!-- 4-PDF FUNNEL GRID -->
+<section class="funnel-section">
+  <div style="max-width:1100px;margin:0 auto;text-align:center;">
+    <span style="font-size:.62rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--purple);display:block;margin-bottom:.8rem;">Featured Micro-Tools</span>
+    <h2 style="font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.8rem);font-weight:300;color:var(--ink);margin-bottom:.6rem;">The Nuanced Co. Strategy Workbooks</h2>
+    <p style="font-size:.88rem;color:var(--ink-mid);max-width:520px;margin:0 auto;line-height:1.72;">Evidence-based PDF micro-tools. Download, fill, and use immediately.</p>
+  </div>
+  <div class="funnel-grid">
+    <div class="funnel-tile">
+      <span class="funnel-tile-num">01</span>
+      <span class="funnel-tile-tag">Focus &amp; Executive Function</span>
+      <div class="funnel-tile-title">The Unmasked Focus Protocol</div>
+      <p class="funnel-tile-desc">A structured, dopamine-aware daily activation framework built on the Interest-Based Nervous System model. Includes the INCUP Dopamine Menu Builder, Rhythmic Adaptation tracker, and Low-Dopamine Shielding planner.</p>
+      <a href="#focus-protocol" class="btn-funnel">&#128229; Download Workbook ($15)</a>
+    </div>
+    <div class="funnel-tile">
+      <span class="funnel-tile-num">02</span>
+      <span class="funnel-tile-tag">Emotional Regulation</span>
+      <div class="funnel-tile-title">The RSD Shield Guide</div>
+      <p class="funnel-tile-desc">A practical field guide for identifying, naming, and navigating Rejection Sensitive Dysphoria. Includes communication scripts, nervous system triage protocols, and relationship boundary frameworks.</p>
+      <a href="#rsd-guide" class="btn-funnel">&#128229; Download Workbook ($15)</a>
+    </div>
+    <div class="funnel-tile">
+      <span class="funnel-tile-num">03</span>
+      <span class="funnel-tile-tag">Time Perception</span>
+      <div class="funnel-tile-title">The Time-Anchoring Blueprint</div>
+      <p class="funnel-tile-desc">A structural antidote to time blindness. Includes Transition Buffering worksheets, external time-anchor system design, and the Now/Not-Now reframe mapping tool for calendar and task management.</p>
+      <a href="#time-blueprint" class="btn-funnel">&#128229; Download Workbook ($15)</a>
+    </div>
+    <div class="funnel-tile">
+      <span class="funnel-tile-num">04</span>
+      <span class="funnel-tile-tag">Post-Diagnosis Integration</span>
+      <div class="funnel-tile-title">The Post-Diagnosis Unpacking Journal</div>
+      <p class="funnel-tile-desc">A guided 28-day reflective journal for newly diagnosed adults. Covers grief processing, identity recontextualisation, masking cost mapping, and the first steps of building a life calibrated to your actual neurology.</p>
+      <a href="#unpacking-journal" class="btn-funnel">&#128229; Download Workbook ($15)</a>
+    </div>
+  </div>
+</section>
+
 
 <section id="course-intro" class="course-intro">
   <div class="container">
