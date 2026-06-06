@@ -888,6 +888,64 @@
 </head>
 <body>
 
+<nav id="nav">
+  <a href="index.html" class="nav-logo magnetic">NUANCED CO.<em>Neurodivergent Consultancy</em></a>
+  <ul class="nav-list">
+    <li class="nav-dd"><a href="index.html#services" class="magnetic">Services &#9662;</a>
+      <div class="nav-dd-menu">
+        <a href="index.html#services">1:1 Consultancy</a><a href="index.html#services">Workplace</a>
+        <a href="index.html#program">Training &amp; Courses</a><a href="index.html#community">Community</a>
+      </div>
+    </li>
+    <li><a href="index.html#about" class="magnetic">About Leah</a></li>
+    <li class="nav-dd"><a href="index.html#services" class="magnetic">How I Work &#9662;</a>
+      <div class="nav-dd-menu">
+        <a href="index.html#services">All Services</a>
+        <a href="index.html#services">1:1 Consultancy</a>
+      </div>
+    </li>
+    <li class="nav-dd"><a href="index.html#program" class="magnetic">Courses &#9662;</a>
+      <div class="nav-dd-menu">
+        <a href="index.html#program">View All Courses</a>
+        <a href="index.html#program">Unmasking &amp; Identity Course</a>
+      </div>
+    </li>
+    <li class="nav-dd"><a href="index.html#resources" class="magnetic">Free Resources &#9662;</a>
+      <div class="nav-dd-menu">
+        <a href="workbooks.html" class="magnetic">PDF Downloads</a>
+      </div>
+    </li>
+    <li><a href="index.html#resources" class="magnetic">Media</a></li>
+    <li><a href="index.html#contact" class="ncta magnetic btn">Book a call</a></li>
+  </ul>
+  <div class="hamburger" onclick="openMob()"><span></span><span></span><span></span></div>
+</nav>
+<div class="mob-nav" id="mobNav">
+  <span class="mob-close" onclick="closeMob()">&#x2715;</span>
+  <a href="index.html#who" onclick="closeMob()">Who I Work With</a>
+  <a href="index.html#how" onclick="closeMob()">How I Work</a>
+  <button class="mob-link submenu-toggle" type="button" onclick="toggleMobSubmenu()">Courses &#9662;</button>
+  <div class="mob-submenu" id="mobCoursesSub">
+    <a href="index.html#program" onclick="closeMob()">View All Courses</a>
+    <a href="index.html#program" onclick="closeMob()">Unmasking &amp; Identity Course</a>
+  </div>
+  <a href="index.html#services" onclick="closeMob()">Services</a>
+  <button class="mob-link submenu-toggle" type="button" onclick="toggleMobResourcesMenu()">Free Resources &#9662;</button>
+  <div class="mob-submenu" id="mobResourcesSub">
+    <a href="workbooks.html" class="magnetic" onclick="closeMob()">PDF Downloads</a>
+  </div>
+  <a href="index.html#about" onclick="closeMob()">About</a>
+  <a href="index.html#resources" onclick="closeMob()">Media</a>
+  <a href="index.html#contact" onclick="closeMob()">Book a call</a>
+</div>
+
+<!-- MASTER LOGO SIGNATURE BLOCK -->
+<section class="logo-signature">
+  <div class="logo-signature-inner">
+    <img src="logo.svg" alt="Nuanced Co. Neurodivergent Consultancy" class="master-brand-logo">
+  </div>
+</section>
+
 <!-- 4-PDF FUNNEL GRID -->
 <section class="funnel-section">
   <div style="max-width:1100px;margin:0 auto;text-align:center;">
@@ -996,6 +1054,7 @@
   function openMob(){document.getElementById('mobNav').classList.add('open');document.body.style.overflow='hidden';}
   function closeMob(){document.getElementById('mobNav').classList.remove('open');document.body.style.overflow='';}
   function toggleMobSubmenu(){document.getElementById('mobCoursesSub').classList.toggle('open');}
+  function toggleMobResourcesMenu(){document.getElementById('mobResourcesSub').classList.toggle('open');}
 
   // DARK DETECTION
   const dkO=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)document.body.classList.add('on-dark');});},{threshold:.4});
