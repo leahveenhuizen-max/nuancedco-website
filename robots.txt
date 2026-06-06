@@ -1,0 +1,137 @@
+# NUANCED CO. — ROBOTS.TXT CONFIGURATION
+# Purpose: Control AI bot access to homepage vs. course content
+# Last Updated: 2026-06-06
+
+# ─────────────────────────────────────────────────────────────────────────
+# DEFAULT BEHAVIOR FOR ALL BOTS
+# ─────────────────────────────────────────────────────────────────────────
+
+User-agent: *
+Allow: /
+Allow: /index.html
+Allow: /about.html
+Allow: /services.html
+Disallow: /courses
+Disallow: /course.html
+Disallow: /enrol
+Disallow: /portal
+Disallow: /admin
+Disallow: /api
+Disallow: /cart
+Disallow: /checkout
+Disallow: /payment
+Disallow: /user
+Disallow: /dashboard
+Disallow: /*.json$
+Disallow: /node_modules
+Disallow: /.*\.tmp
+Disallow: /wp-admin/
+Disallow: /wp-login.php
+Disallow: /*.pdf$
+Crawl-delay: 1
+
+
+# ─────────────────────────────────────────────────────────────────────────
+# GOOGLE-EXTENDED (Gemini & Google's AI Bots)
+# ─────────────────────────────────────────────────────────────────────────
+# Purpose: Allow Gemini API to access ONLY homepage for indexing
+
+User-agent: Google-Extended
+Allow: /
+Allow: /index.html
+Allow: /about.html
+Allow: /services.html
+Disallow: /courses
+Disallow: /course.html
+Disallow: /enrol
+Disallow: /portal
+Disallow: /admin
+Disallow: /api
+Disallow: /cart
+Disallow: /checkout
+Disallow: /payment
+Disallow: /user
+Disallow: /dashboard
+Crawl-delay: 2
+
+
+# ─────────────────────────────────────────────────────────────────────────
+# GOOGLE-BOT (Standard Google Search Crawler)
+# ─────────────────────────────────────────────────────────────────────────
+
+User-agent: Googlebot
+Allow: /
+Allow: /index.html
+Allow: /about.html
+Allow: /services.html
+Disallow: /courses
+Disallow: /course.html
+Disallow: /enrol
+Disallow: /portal
+Disallow: /admin
+Crawl-delay: 1
+
+
+# ─────────────────────────────────────────────────────────────────────────
+# BLOCKED BOTS (Aggressive crawlers, scrapers, bad actors)
+# ─────────────────────────────────────────────────────────────────────────
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: MagicBrowser
+Disallow: /
+
+User-agent: Cliqz
+Disallow: /
+
+User-agent: *ClaudeBot*
+Disallow: /
+
+
+# ─────────────────────────────────────────────────────────────────────────
+# SITEMAPS (Optional - for search engines)
+# ─────────────────────────────────────────────────────────────────────────
+
+Sitemap: https://nuancedco.com/sitemap.xml
+
+
+# ─────────────────────────────────────────────────────────────────────────
+# NOTES FOR IMPLEMENTATION
+# ─────────────────────────────────────────────────────────────────────────
+#
+# 1. Google-Extended Behavior:
+#    - Respects "Allow" directives for homepage content
+#    - Blocked from /courses and all payment/enrollment pages
+#    - Crawl-delay of 2 seconds to prevent overloading
+#
+# 2. Gemini API Context:
+#    - The Python script (gemini_homepage_indexer.py) enforces strict
+#      URL validation at the application level
+#    - robots.txt provides a second layer of defense
+#    - Together they ensure Gemini only sees homepage content
+#
+# 3. Course Content Protection:
+#    - /courses, /course.html, /enrol explicitly disallowed
+#    - Payment routes (/checkout, /payment, /cart) blocked
+#    - User data (/user, /dashboard) protected
+#    - Admin routes (/admin, /api) blocked
+#
+# 4. Testing Your robots.txt:
+#    - Google Search Console: https://search.google.com/search-console
+#    - Test URL blocking: robots.txt Tester tool
+#    - Validate syntax: https://www.robotstxt.org/robotstxt.html
+#
+# 5. Deployment:
+#    - Place this file in your web root: /robots.txt
+#    - Verify it's accessible: https://nuancedco.com/robots.txt
+#    - Wait 24-48 hours for full propagation with crawlers

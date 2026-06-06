@@ -1,0 +1,20 @@
+# NUANCED CO. — GEMINI HOMEPAGE INDEXER
+# Python Dependencies for Gemini API Integration
+# Install with: pip install -r requirements.txt
+
+# HTTP Client for fetching homepage
+requests>=2.31.0
+
+# HTML parsing and text extraction
+beautifulsoup4>=4.12.0
+
+# Official Google Gemini API SDK
+google-generativeai>=0.3.0
+
+# Optional: For better WSGI compatibility (if deploying to production)
+# python-dotenv>=1.0.0  # Uncomment if using .env files
+
+# Development dependencies (optional)
+# pytest>=7.0  # Testing framework
+# black>=23.0  # Code formatting
+# flake8>=6.0  # Linting
