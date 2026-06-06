@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>The Unmasked Life™ | Course Dashboard | Nuanced Co.</title>
+  <meta name="description" content="Your 4-week Unmasked Life™ course dashboard. Evidence-based frameworks designed for how your neurodivergent brain actually works.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --cream:#F6F1E9;--cream-d:#EDE6D8;--parchment:#EAE0CE;
+      --ink:#2A1F1A;--ink-mid:#4A3830;--ink-deep:#0F0C0A;
+      --purple:#6B4570;--sage:#7A8C6E;--gold:#C4963E;--rose:#C07A8A;--lilac:#9668A4;
+      --purple-dim:rgba(107,69,112,.18);--purple-border:rgba(107,69,112,.35);
+      --lilac-dim:rgba(150,104,164,.15);
+      --cream-faint:rgba(246,241,233,.07);--cream-soft:rgba(246,241,233,.55);
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --body:'Atkinson Hyperlegible',system-ui,sans-serif;
+      --ease:cubic-bezier(0.22,1,0.36,1);
+      --radius:14px;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{font-size:17px;scroll-behavior:smooth;}
+    body{background:var(--ink-deep);color:var(--cream);font-family:var(--body);line-height:1.7;overflow-x:hidden;min-height:100vh;display:flex;flex-direction:column;}
+    a{color:inherit;text-decoration:none;}
+    img{display:block;max-width:100%;}
+    button{cursor:pointer;font-family:var(--body);}
+
+    /* SCROLLBAR */
+    ::-webkit-scrollbar{width:6px;}
+    ::-webkit-scrollbar-track{background:var(--ink-deep);}
+    ::-webkit-scrollbar-thumb{background:var(--purple);border-radius:3px;}
+    ::-webkit-scrollbar-thumb:hover{background:var(--lilac);}
+
+    /* PROGRESS BAR */
+    #sp{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--purple),var(--lilac),var(--rose));z-index:9999;pointer-events:none;transition:width .08s linear;}
+
+    /* NAV */
+    #nav{position:sticky;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:#2A1F1A;box-shadow:0 2px 24px rgba(0,0,0,.3);}
+    .nav-logo{font-family:var(--serif);font-size:1rem;font-weight:400;letter-spacing:.25em;color:#F6F1E9;text-transform:uppercase;line-height:1;display:flex;flex-direction:column;gap:3px;}
+    .nav-logo em{font-style:normal;font-family:var(--body);font-size:.46rem;letter-spacing:.3em;color:var(--gold);opacity:.8;}
+    .nav-list{list-style:none;display:flex;align-items:center;gap:2rem;}
+    .nav-list a{font-family:var(--body);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.65);transition:color .2s;}
+    .nav-list a:hover{color:var(--cream);}
+    .nav-list .ncta{border:1px solid rgba(196,150,62,.5);color:var(--gold);padding:.35rem 1.1rem;border-radius:2px;transition:background .2s,color .2s;}
+    .nav-list .ncta:hover{background:var(--gold);color:var(--ink-deep);}
+    .nav-dd{position:relative;}
+    .nav-dd-menu{position:absolute;top:calc(100% + 1rem);left:50%;transform:translateX(-50%) translateY(-4px);background:rgba(15,12,10,.98);border:1px solid rgba(246,241,233,.12);min-width:200px;padding:.6rem 0;opacity:0;pointer-events:none;visibility:hidden;transition:opacity .2s,transform .2s var(--ease),visibility .2s;z-index:1000;}
+    .nav-dd:hover .nav-dd-menu,.nav-dd:focus-within .nav-dd-menu{opacity:1;pointer-events:all;visibility:visible;transform:translateX(-50%) translateY(0);}
+    .nav-dd-menu a{display:block;padding:.7rem 1.3rem;font-size:.68rem;color:rgba(246,241,233,.9);transition:color .2s;}
+    .nav-dd-menu a:hover{color:var(--gold);}
+    .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:0;}
+    .hamburger span{width:22px;height:1.5px;background:var(--cream);display:block;}
+
+    /* DASHBOARD LAYOUT */
+    .dash-wrap{flex:1;display:flex;flex-direction:column;max-width:1280px;width:100%;margin:0 auto;padding:2.4rem 2rem 4rem;gap:2rem;}
+    .dash-header{display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+    .dash-title-block .eyebrow{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--lilac);margin-bottom:.5rem;}
+    .dash-title-block h1{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:300;letter-spacing:.04em;color:#fff;line-height:1.1;}
+    .dash-title-block h1 em{font-style:italic;color:var(--rose);}
+    .resume-btn{display:inline-flex;align-items:center;gap:.6rem;padding:.75rem 1.6rem;background:var(--purple);color:#fff;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;border:none;border-radius:40px;transition:background .2s,transform .15s;}
+    .resume-btn:hover{background:var(--lilac);transform:translateY(-1px);}
+    .resume-btn i{font-size:.75rem;}
+
+    /* MAIN + SIDEBAR GRID */
+    .dash-grid{display:grid;grid-template-columns:1fr 340px;gap:1.8rem;align-items:start;}
+
+    /* CARD BASE */
+    .card{background:rgba(246,241,233,.04);border:1px solid rgba(246,241,233,.09);border-radius:var(--radius);padding:1.4rem;}
+    .card-label{font-size:.54rem;letter-spacing:.22em;text-transform:uppercase;color:var(--lilac);display:flex;align-items:center;gap:.5rem;margin-bottom:1rem;}
+    .card-label i{opacity:.8;}
+
+    /* SPRINT TRACKER */
+    .sprint-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;}
+    .sprint-card{background:var(--ink-deep);border:1px solid rgba(246,241,233,.08);border-radius:10px;padding:1rem;position:relative;overflow:hidden;transition:border-color .2s;}
+    .sprint-card.done{border-color:var(--sage);}
+    .sprint-card.active{border-color:var(--purple);box-shadow:0 0 0 1px var(--purple-border);}
+    .sprint-card.locked{opacity:.45;}
+    .sprint-badge{position:absolute;top:0;right:0;font-size:.44rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.25rem .6rem;border-radius:0 10px 0 6px;}
+    .sprint-badge.done{background:var(--sage);color:#fff;}
+    .sprint-badge.active{background:var(--purple);color:#fff;animation:pulse 2s infinite;}
+    @keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+    .sprint-week{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--lilac);margin-bottom:.3rem;}
+    .sprint-name{font-size:.78rem;font-weight:700;color:var(--cream);line-height:1.3;margin-bottom:.7rem;}
+    .sprint-card.locked .sprint-name{color:rgba(246,241,233,.45);}
+    .progress-track{height:3px;background:rgba(246,241,233,.08);border-radius:2px;overflow:hidden;}
+    .progress-fill{height:100%;border-radius:2px;background:var(--purple);transition:width .6s var(--ease);}
+    .progress-fill.done{background:var(--sage);}
+    .lock-icon{position:absolute;top:.7rem;right:.7rem;font-size:.65rem;color:rgba(246,241,233,.2);}
+    .pct-label{font-size:.5rem;color:rgba(246,241,233,.35);margin-top:.4rem;letter-spacing:.1em;}
+
+    /* VIDEO PLAYER */
+    .video-area{display:flex;flex-direction:column;gap:.8rem;}
+    .video-frame{position:relative;width:100%;aspect-ratio:16/9;background:linear-gradient(145deg,#1A1020 0%,#0F0C0A 100%);border-radius:var(--radius);overflow:hidden;border:1px solid var(--purple-border);display:flex;align-items:center;justify-content:center;group:true;}
+    .video-frame:hover .play-btn{transform:scale(1.08);}
+    .video-overlay-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 50%);pointer-events:none;}
+    .play-btn{width:72px;height:72px;background:var(--purple);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;z-index:2;transition:transform .2s var(--ease),background .2s;box-shadow:0 8px 32px rgba(107,69,112,.5);}
+    .play-btn:hover{background:var(--lilac);}
+    .play-btn i{margin-left:3px;}
+    .video-meta{position:absolute;bottom:1rem;left:1.2rem;z-index:3;}
+    .video-meta .now-label{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--lilac);margin-bottom:.3rem;}
+    .video-meta h3{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:#fff;line-height:1.2;}
+    .video-duration{position:absolute;top:1rem;right:1rem;z-index:3;background:rgba(15,12,10,.8);border:1px solid var(--purple-border);padding:.3rem .7rem;border-radius:6px;font-size:.55rem;letter-spacing:.1em;font-family:monospace;color:var(--lilac);}
+    .mode-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;}
+    .mode-btn{background:rgba(246,241,233,.04);border:1px solid rgba(246,241,233,.1);border-radius:8px;padding:.65rem .5rem;font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,233,.7);display:flex;align-items:center;justify-content:center;gap:.4rem;transition:border-color .2s,color .2s,background .2s;}
+    .mode-btn:hover{border-color:var(--purple);color:var(--cream);background:var(--purple-dim);}
+    .mode-btn i{color:var(--lilac);}
+
+    /* RESOURCE VAULT */
+    .vault-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
+    .vault-btn{display:flex;align-items:center;gap:.8rem;padding:1rem 1.2rem;background:var(--purple-dim);border:1px solid var(--purple-border);border-radius:10px;color:var(--cream);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;transition:background .2s,border-color .2s,transform .15s;}
+    .vault-btn:hover{background:rgba(107,69,112,.3);border-color:var(--lilac);transform:translateY(-1px);}
+    .vault-btn i{font-size:1rem;color:var(--lilac);flex-shrink:0;}
+
+    /* SIDEBAR */
+    .sidebar{display:flex;flex-direction:column;gap:1.4rem;}
+
+    /* MILESTONE MATRIX */
+    .milestone-list{display:flex;flex-direction:column;gap:.7rem;max-height:380px;overflow-y:auto;padding-right:.3rem;}
+    .milestone-item{display:flex;align-items:flex-start;gap:.9rem;background:var(--ink-deep);border:1px solid rgba(246,241,233,.07);border-radius:10px;padding:.9rem 1rem;cursor:pointer;transition:border-color .2s;}
+    .milestone-item.current{border-color:var(--purple);}
+    .milestone-item.complete{opacity:.6;}
+    .milestone-item:hover{border-color:var(--purple-border);}
+    .milestone-cb{width:18px;height:18px;border:1.5px solid var(--purple);border-radius:4px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+    .milestone-cb.checked{background:var(--sage);border-color:var(--sage);}
+    .milestone-cb.checked::after{content:'✓';font-size:.6rem;color:#fff;font-weight:700;}
+    .milestone-week-tag{font-size:.46rem;letter-spacing:.18em;text-transform:uppercase;color:var(--lilac);margin-bottom:.2rem;}
+    .milestone-text{font-size:.78rem;line-height:1.45;color:var(--cream);}
+    .milestone-item.complete .milestone-text{text-decoration:line-through;color:rgba(246,241,233,.4);}
+    .milestone-item.locked{opacity:.4;pointer-events:none;}
+    .milestone-week-tag.locked{color:rgba(246,241,233,.3);}
+    .dopamine-note{font-size:.58rem;color:rgba(246,241,233,.4);line-height:1.5;margin-top:.6rem;}
+
+    /* BRAIN FRIED PANEL */
+    .brain-card{background:linear-gradient(135deg,rgba(192,122,138,.08) 0%,rgba(246,241,233,.03) 100%);border:1px solid rgba(192,122,138,.25);border-radius:var(--radius);padding:1.2rem;display:flex;align-items:center;gap:1rem;transition:border-color .2s;}
+    .brain-card:hover{border-color:var(--rose);}
+    .brain-icon{width:44px;height:44px;background:rgba(192,122,138,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--rose);flex-shrink:0;}
+    .brain-copy{flex:1;}
+    .brain-copy h4{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#fff;margin-bottom:.2rem;}
+    .brain-copy p{font-size:.62rem;color:rgba(246,241,233,.5);line-height:1.5;}
+    .brain-arrow{color:rgba(246,241,233,.3);font-size:.8rem;transition:color .2s,transform .2s;}
+    .brain-card:hover .brain-arrow{color:var(--rose);transform:translateX(3px);}
+
+    /* FOCUS MODE TOGGLE */
+    .focus-bar{display:flex;align-items:center;justify-content:space-between;background:rgba(246,241,233,.04);border:1px solid rgba(246,241,233,.08);border-radius:10px;padding:.8rem 1.1rem;}
+    .focus-label{font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(246,241,233,.6);}
+    .focus-label span{display:block;font-size:.52rem;color:rgba(246,241,233,.3);letter-spacing:.08em;margin-top:.1rem;}
+    .toggle-wrap{display:flex;align-items:center;gap:.6rem;}
+    .toggle{position:relative;width:40px;height:22px;}
+    .toggle input{opacity:0;width:0;height:0;}
+    .toggle-slider{position:absolute;inset:0;background:rgba(246,241,233,.12);border-radius:22px;cursor:pointer;transition:background .2s;}
+    .toggle-slider::before{content:'';position:absolute;width:16px;height:16px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:transform .2s;}
+    .toggle input:checked + .toggle-slider{background:var(--purple);}
+    .toggle input:checked + .toggle-slider::before{transform:translateX(18px);}
+
+    /* FOOTER */
+    footer{background:var(--ink-deep);border-top:1px solid rgba(246,241,233,.06);padding:3.5rem 3rem 2rem;}
+    .ft-inner{max-width:1280px;margin:0 auto;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:4rem;padding-bottom:2.5rem;}
+    .ft-subscribe h3{font-family:var(--serif);font-size:1.3rem;font-weight:400;color:var(--cream);letter-spacing:.06em;margin-bottom:.6rem;}
+    .ft-subscribe p{font-size:.8rem;color:rgba(246,241,233,.55);line-height:1.7;margin-bottom:1.2rem;}
+    .ft-email-form{display:flex;gap:.5rem;flex-wrap:wrap;}
+    .ft-email-input{flex:1;min-width:160px;padding:.6rem 1rem;background:rgba(246,241,233,.05);border:1px solid rgba(246,241,233,.12);color:var(--cream);font-family:var(--body);font-size:.78rem;border-radius:2px;outline:none;}
+    .ft-email-input::placeholder{color:rgba(246,241,233,.28);}
+    .ft-email-btn{padding:.6rem 1.3rem;background:var(--purple);color:#fff;font-family:var(--body);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:24px;cursor:pointer;transition:background .2s;}
+    .ft-email-btn:hover{background:var(--lilac);}
+    .ft-col h4{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,241,233,.35);margin-bottom:1rem;}
+    .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.9rem;}
+    .ft-col ul a{font-size:.82rem;color:rgba(246,241,233,.65);transition:color .2s;}
+    .ft-col ul a:hover{color:var(--cream);}
+    .ft-bot{max-width:1280px;margin:0 auto;padding-top:1.8rem;border-top:1px solid rgba(246,241,233,.08);}
+    .ft-legal{font-size:.7rem;color:rgba(246,241,233,.35);line-height:1.6;}
+
+    /* RESPONSIVE */
+    @media(max-width:1024px){
+      .dash-grid{grid-template-columns:1fr;}
+      .sidebar{display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;}
+      .sprint-grid{grid-template-columns:repeat(2,1fr);}
+    }
+    @media(max-width:680px){
+      .dash-wrap{padding:1.6rem 1rem 3rem;}
+      .nav-list{display:none;}
+      .hamburger{display:flex;}
+      .sidebar{grid-template-columns:1fr;}
+      .sprint-grid{grid-template-columns:repeat(2,1fr);}
+      .vault-grid{grid-template-columns:1fr;}
+      .mode-strip{grid-template-columns:1fr 1fr;}
+      .ft-inner{grid-template-columns:1fr;gap:2.5rem;}
+      #nav{padding:1rem 1.4rem;}
+    }
+  </style>
+</head>
+<body>
+
+<div id="sp"></div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="index.html" class="nav-logo">NUANCED CO.<em>Neurodivergent Consultancy</em></a>
+  <ul class="nav-list">
+    <li class="nav-dd"><a href="index.html#services">Services &#9662;</a>
+      <div class="nav-dd-menu">
+        <a href="index.html#services">1:1 Consultancy</a>
+        <a href="index.html#services">Workplace</a>
+        <a href="index.html#program">Training &amp; Courses</a>
+        <a href="index.html#community">Community</a>
+      </div>
+    </li>
+    <li><a href="index.html#about">About Leah</a></li>
+    <li class="nav-dd"><a href="#">How I Work &#9662;</a>
+      <div class="nav-dd-menu">
+        <a href="how-i-work.html">How I work</a>
+        <a href="who-i-work-with.html">Who I work with</a>
+      </div>
+    </li>
+    <li class="nav-dd"><a href="index.html#resources">Free Resources &#9662;</a>
+      <div class="nav-dd-menu">
+        <a href="workbooks.html">PDF Downloads</a>
+      </div>
+    </li>
+    <li><a href="index.html#resources">Media</a></li>
+    <li><a href="index.html#contact" class="ncta">Book a call</a></li>
+  </ul>
+  <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+
+<!-- DASHBOARD -->
+<div class="dash-wrap">
+
+  <!-- HEADER ROW -->
+  <div class="dash-header">
+    <div class="dash-title-block">
+      <p class="eyebrow">The Unmasked Life™ &mdash; Your Course Dashboard</p>
+      <h1>Welcome back,<br><em>keep going.</em></h1>
+    </div>
+    <button class="resume-btn">
+      <i class="fa-solid fa-play"></i> Pick up where you left off
+    </button>
+  </div>
+
+  <!-- SPRINT PROGRESS TRACKER -->
+  <div class="card">
+    <p class="card-label"><i class="fa-solid fa-chart-bar"></i> Sprint Progress Tracker <span style="margin-left:auto;background:var(--purple-dim);border:1px solid var(--purple-border);padding:.2rem .7rem;border-radius:20px;font-size:.5rem;letter-spacing:.14em;">40% COMPLETE</span></p>
+    <div class="sprint-grid">
+
+      <div class="sprint-card done">
+        <span class="sprint-badge done">Done</span>
+        <p class="sprint-week">Week 1</p>
+        <p class="sprint-name">Understanding Your Brain's Blueprint</p>
+        <div class="progress-track"><div class="progress-fill done" style="width:100%"></div></div>
+        <p class="pct-label">Complete</p>
+      </div>
+
+      <div class="sprint-card active">
+        <span class="sprint-badge active">Current</span>
+        <p class="sprint-week">Week 2</p>
+        <p class="sprint-name">Unmasking the Patterns</p>
+        <div class="progress-track"><div class="progress-fill" style="width:40%"></div></div>
+        <p class="pct-label">40% through</p>
+      </div>
+
+      <div class="sprint-card locked">
+        <i class="fa-solid fa-lock lock-icon"></i>
+        <p class="sprint-week">Week 3</p>
+        <p class="sprint-name">Rebuilding Around Your Neurology</p>
+        <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
+        <p class="pct-label">Locked</p>
+      </div>
+
+      <div class="sprint-card locked">
+        <i class="fa-solid fa-lock lock-icon"></i>
+        <p class="sprint-week">Week 4</p>
+        <p class="sprint-name">The Unmasked Life in Practice</p>
+        <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
+        <p class="pct-label">Locked</p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- MAIN + SIDEBAR -->
+  <div class="dash-grid">
+    <div style="display:flex;flex-direction:column;gap:1.4rem;">
+
+      <!-- VIDEO PLAYER -->
+      <div class="video-area">
+        <div class="video-frame">
+          <div class="video-overlay-grad"></div>
+          <button class="play-btn"><i class="fa-solid fa-play"></i></button>
+          <div class="video-meta">
+            <p class="now-label">Currently playing &mdash; Week 2</p>
+            <h3>Unmasking Patterns &amp; Executive Function Reframes</h3>
+          </div>
+          <div class="video-duration">&#9201; 14:22</div>
+        </div>
+
+        <div class="mode-strip">
+          <button class="mode-btn"><i class="fa-solid fa-bolt"></i> Speed-read transcript</button>
+          <button class="mode-btn"><i class="fa-solid fa-headphones"></i> Audio-only track</button>
+          <button class="mode-btn"><i class="fa-solid fa-stopwatch"></i> Pomodoro mode</button>
+        </div>
+      </div>
+
+      <!-- RESOURCE VAULT -->
+      <div class="card">
+        <p class="card-label"><i class="fa-solid fa-vault"></i> One-Click Resource Vault</p>
+        <div class="vault-grid">
+          <a href="#" class="vault-btn"><i class="fa-solid fa-file-lines"></i> ADHD Burnout Recovery Guide</a>
+          <a href="#" class="vault-btn"><i class="fa-solid fa-brain"></i> AuDHD Executive Function Map</a>
+          <a href="#" class="vault-btn"><i class="fa-solid fa-diagram-project"></i> Week 2 Workbook (.pdf)</a>
+          <a href="#" class="vault-btn"><i class="fa-solid fa-circle-check"></i> Diagnosis Pathway Checklist</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+
+      <!-- MILESTONE MATRIX -->
+      <div class="card">
+        <p class="card-label"><i class="fa-solid fa-square-check"></i> Milestone Matrix</p>
+        <div class="milestone-list">
+
+          <div class="milestone-item complete" onclick="toggleMilestone(this)">
+            <div class="milestone-cb checked"></div>
+            <div>
+              <p class="milestone-week-tag">Week 1 Milestone</p>
+              <p class="milestone-text">Identify your primary neurodivergent profile and masking patterns</p>
+            </div>
+          </div>
+
+          <div class="milestone-item current" onclick="toggleMilestone(this)">
+            <div class="milestone-cb"></div>
+            <div>
+              <p class="milestone-week-tag">Week 2 Milestone</p>
+              <p class="milestone-text">Map three executive function patterns specific to your brain</p>
+            </div>
+          </div>
+
+          <div class="milestone-item" onclick="toggleMilestone(this)">
+            <div class="milestone-cb"></div>
+            <div>
+              <p class="milestone-week-tag">Week 2 Milestone</p>
+              <p class="milestone-text">Complete the sensory profile worksheet in your workbook</p>
+            </div>
+          </div>
+
+          <div class="milestone-item locked">
+            <div class="milestone-cb"></div>
+            <div>
+              <p class="milestone-week-tag locked">Week 3 Milestone</p>
+              <p class="milestone-text">Design one environment adjustment using the NEST framework</p>
+            </div>
+          </div>
+
+          <div class="milestone-item locked">
+            <div class="milestone-cb"></div>
+            <div>
+              <p class="milestone-week-tag locked">Week 4 Milestone</p>
+              <p class="milestone-text">Build your personalised Unmasked Life sustainability plan</p>
+            </div>
+          </div>
+
+        </div>
+        <p class="dopamine-note">&#10024; Each milestone you check unlocks a micro-win. Your brain notices progress — let it.</p>
+      </div>
+
+      <!-- FOCUS MODE -->
+      <div class="card" style="padding:1rem 1.2rem;">
+        <p class="card-label" style="margin-bottom:.8rem;"><i class="fa-solid fa-eye"></i> Display</p>
+        <div style="display:flex;flex-direction:column;gap:.7rem;">
+          <div class="focus-bar">
+            <div class="focus-label">Focus mode <span>Hides sidebar distractions</span></div>
+            <div class="toggle-wrap">
+              <label class="toggle"><input type="checkbox" onchange="toggleFocus(this)"><span class="toggle-slider"></span></label>
+            </div>
+          </div>
+          <div class="focus-bar">
+            <div class="focus-label">Reduce motion <span>Disables animations</span></div>
+            <div class="toggle-wrap">
+              <label class="toggle"><input type="checkbox" onchange="toggleMotion(this)"><span class="toggle-slider"></span></label>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BRAIN FRIED -->
+      <a href="#" class="brain-card">
+        <div class="brain-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
+        <div class="brain-copy">
+          <h4>Hit a wall / Brain fried?</h4>
+          <p>Switch to a gentler format or take a guided rest break. No pressure.</p>
+        </div>
+        <i class="fa-solid fa-chevron-right brain-arrow"></i>
+      </a>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="ft-inner">
+    <div class="ft-subscribe">
+      <h3>Subscribe</h3>
+      <p>Sign up with your email address to receive news, updates, and free resources on neurodivergence, living unmasked, and building a life that actually fits.</p>
+      <form class="ft-email-form" onsubmit="return false;">
+        <input type="email" class="ft-email-input" placeholder="your.email@example.com" required>
+        <button type="submit" class="ft-email-btn">Sign Up</button>
+      </form>
+    </div>
+    <div class="ft-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="index.html#about">About</a></li>
+        <li><a href="index.html#services">Services</a></li>
+        <li><a href="index.html#resources">Media &amp; Press Kit</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="index.html#contact">Book a Consultation</a></li>
+        <li><a href="mailto:hello@nuancedco.com.au">hello@nuancedco.com.au</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <p class="ft-legal">&copy; 2026 Nuanced Co. All rights reserved. ABN 71 926 185 491. Nuanced Co. is a consultancy service. Content is for general information purposes only and does not constitute clinical advice, diagnosis, or treatment.</p>
+  </div>
+</footer>
+
+<script>
+  // Scroll progress
+  window.addEventListener('scroll',()=>{
+    const s=document.documentElement;
+    document.getElementById('sp').style.width=(s.scrollTop/(s.scrollHeight-s.clientHeight)*100)+'%';
+  });
+
+  // Milestone toggle
+  function toggleMilestone(el){
+    if(el.classList.contains('locked')) return;
+    const cb = el.querySelector('.milestone-cb');
+    const isChecked = cb.classList.contains('checked');
+    cb.classList.toggle('checked', !isChecked);
+    el.classList.toggle('complete', !isChecked);
+  }
+
+  // Focus mode — collapses sidebar
+  function toggleFocus(input){
+    const sidebar = document.querySelector('.sidebar');
+    if(input.checked){
+      sidebar.style.opacity = '0';
+      sidebar.style.pointerEvents = 'none';
+      sidebar.style.transition = 'opacity .3s';
+    } else {
+      sidebar.style.opacity = '1';
+      sidebar.style.pointerEvents = '';
+    }
+  }
+
+  // Reduce motion
+  function toggleMotion(input){
+    document.documentElement.style.setProperty('--ease','linear');
+    if(!input.checked) document.documentElement.style.setProperty('--ease','cubic-bezier(0.22,1,0.36,1)');
+    document.querySelectorAll('.sprint-badge.active').forEach(el=>{
+      el.style.animation = input.checked ? 'none' : '';
+    });
+  }
+</script>
+</body>
+</html>
