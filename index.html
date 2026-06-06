@@ -527,27 +527,26 @@
     .logo-signature-sub{font-family:var(--body);font-size:.65rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--purple);}
 
     /* HERO */
-    #hero{min-height:calc(100vh - 80px);background:var(--cream);position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:stretch;overflow:hidden;}
-    .hero-image-side{position:relative;overflow:hidden;background:linear-gradient(155deg,#EAE6DF 0%,#D6CFC4 100%);}
-    .hero-image-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--body);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(42,31,26,.3);}
-    .hero-text-side{display:flex;align-items:center;background:var(--cream);padding:4rem 2rem;}
+    #hero{min-height:calc(100vh - 80px);background:var(--cream);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
 
-    .hero-inner{position:relative;z-index:2;display:flex;align-items:center;justify-content:flex-start;width:100%;padding:0 0;}
-    .hero-body{padding:0;max-width:100%;width:100%;margin:0;text-align:left;display:flex;flex-direction:column;align-items:flex-start;position:relative;z-index:2;}
+    .hero-inner{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;width:100%;padding:8rem 2rem;}
+    .hero-body{padding:0;max-width:720px;width:100%;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2;}
+
+    .brand-logo-img{max-height:80px;width:auto;margin:0 auto 20px auto;display:block;}
 
     .hero-eyebrow{display:flex;align-items:center;justify-content:flex-start;gap:1.2rem;margin-bottom:2rem;}
     .hero-eyebrow-line{width:50px;height:1px;background:var(--purple);opacity:.45;}
     .hero-eyebrow-text{font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--purple);}
-    .hero-hl{position:relative;line-height:1;margin-bottom:2rem;}
+    .hero-hl{position:relative;line-height:1;margin-bottom:2.4rem;}
     .hl-row{display:block;overflow:visible;}
-    .hl-sm{font-family:var(--serif);font-size:clamp(1.4rem,2.5vw,2rem);font-weight:300;color:rgba(42,31,26,.52);letter-spacing:.02em;}
-    .hl-lg{font-family:var(--serif);font-size:clamp(2.8rem,5vw,4.5rem);font-weight:300;color:var(--ink);letter-spacing:-.01em;line-height:1.1;}
+    .hl-sm{font-family:var(--serif);font-size:clamp(1.3rem,2.2vw,1.8rem);font-weight:300;color:rgba(42,31,26,.52);letter-spacing:.02em;}
+    .hl-lg{font-family:var(--serif);font-size:clamp(3.2rem,6vw,5.2rem);font-weight:300;color:var(--ink);letter-spacing:-.01em;line-height:1.15;}
     .hl-lg em{font-style:italic;color:var(--purple);}
-    .hero-hl{text-align:left;margin-bottom:1.8rem;}
+    .hero-hl{text-align:center;margin-bottom:2rem;}
     .hl-offset{margin-left:0;}
-    .hl-brushmark{display:block;margin-top:.5rem;margin-left:0;}
-    .hero-sub{font-size:.9rem;color:var(--ink-mid);max-width:480px;line-height:1.78;margin-bottom:2.2rem;text-align:left;}
-    .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:flex-start;}
+    .hl-brushmark{display:block;margin-top:.8rem;margin-left:auto;margin-right:auto;max-width:340px;}
+    .hero-sub{font-size:.95rem;color:var(--ink-mid);max-width:560px;line-height:1.8;margin-bottom:2.8rem;text-align:center;}
+    .hero-btns{display:flex;gap:1.2rem;flex-wrap:wrap;justify-content:center;}
     .hero-micro{font-size:.66rem;color:rgba(42,31,26,.42);margin-top:1rem;letter-spacing:.04em;}
     .hero-fade{display:none;}.ink-marks{display:none;}
 
@@ -851,10 +850,8 @@
 
     /* RESPONSIVE */
     @media(max-width:1100px){
-      .hero-inner{padding:0 3.5rem;}
-      #hero{grid-template-columns:1fr;}
-      .hero-image-side{min-height:50vh;order:2;}
-      .hero-text-side{padding:3rem 2rem;order:1;}
+      .hero-inner{padding:6rem 2rem;}
+      .hero-body{max-width:100%;}
       .logo-signature{padding:3rem 1.5rem;}
       .logo-signature-image{max-width:100px;}
       .logo-signature-main{font-size:1.6rem;}
@@ -933,7 +930,7 @@
 <!-- MASTER LOGO SIGNATURE BLOCK -->
 <section class="logo-signature">
   <div class="logo-signature-inner">
-    <img src="nuanced-brand-logo.png" alt="Nuanced Co. brand logo" class="logo-signature-image">
+    <img src="nuanced-brand-logo.png" alt="Nuanced Co. Brand Logo" class="brand-logo-img">
     <div class="logo-signature-text">
       <div class="logo-signature-main">NUANCED CO.</div>
       <div class="logo-signature-sub">Neurodivergent Consultancy</div>
@@ -941,15 +938,8 @@
   </div>
 </section>
 
-<!-- HERO SPLIT SECTION -->
+<!-- HERO SECTION: CENTERED EDITORIAL LAYOUT -->
 <section id="hero">
-  <!-- LEFT: Abstract sensory landscape image -->
-  <div class="hero-image-side">
-    <div class="hero-image-placeholder"><img src="abstract-sensory-landscape.jpg" alt="Abstract sensory landscape representing neurodivergent experience" style="width:100%;height:100%;object-fit:cover;border-radius:0;"></div>
-  </div>
-
-  <!-- RIGHT: Hero text panel -->
-  <div class="hero-text-side">
   <div class="hero-inner">
     <div class="hero-body">
       <div class="hero-eyebrow rv"><div class="hero-eyebrow-line"></div><span class="hero-eyebrow-text">The Unmasked Life&#8482; &bull; Nuanced Co. &bull; Geelong, Australia</span></div>
@@ -969,7 +959,6 @@
       <p class="hero-micro rv" style="transition-delay:.55s">Four weeks. Evidence-based. Designed for a brain wired exactly like yours.</p>
     </div>
   </div>
-  </div><!-- /hero-text-side -->
 </section>
 
 <!-- PAIN-POINT SPLIT SECTION -->
