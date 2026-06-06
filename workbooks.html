@@ -899,16 +899,14 @@
       </div>
     </li>
     <li><a href="index.html#about" class="magnetic">About Leah</a></li>
-    <li class="nav-dd"><a href="index.html#services" class="magnetic">How I Work &#9662;</a>
+    <li class="nav-dd"><a href="#" class="magnetic">How I Work &#9662;</a>
       <div class="nav-dd-menu">
-        <a href="index.html#services">All Services</a>
-        <a href="index.html#services">1:1 Consultancy</a>
+        <a href="how-i-work.html" class="magnetic">How I work</a>
       </div>
     </li>
-    <li class="nav-dd"><a href="index.html#program" class="magnetic">Courses &#9662;</a>
+    <li class="nav-dd"><a href="#" class="magnetic">Who I Work With &#9662;</a>
       <div class="nav-dd-menu">
-        <a href="index.html#program">View All Courses</a>
-        <a href="index.html#program">Unmasking &amp; Identity Course</a>
+        <a href="who-i-work-with.html" class="magnetic">Who I work with</a>
       </div>
     </li>
     <li class="nav-dd"><a href="index.html#resources" class="magnetic">Free Resources &#9662;</a>
@@ -923,12 +921,13 @@
 </nav>
 <div class="mob-nav" id="mobNav">
   <span class="mob-close" onclick="closeMob()">&#x2715;</span>
-  <a href="index.html#who" onclick="closeMob()">Who I Work With</a>
-  <a href="index.html#how" onclick="closeMob()">How I Work</a>
-  <button class="mob-link submenu-toggle" type="button" onclick="toggleMobSubmenu()">Courses &#9662;</button>
-  <div class="mob-submenu" id="mobCoursesSub">
-    <a href="index.html#program" onclick="closeMob()">View All Courses</a>
-    <a href="index.html#program" onclick="closeMob()">Unmasking &amp; Identity Course</a>
+  <button class="mob-link submenu-toggle" type="button" onclick="toggleMobWhoMenu()">Who I Work With &#9662;</button>
+  <div class="mob-submenu" id="mobWhoSub">
+    <a href="who-i-work-with.html" class="magnetic" onclick="closeMob()">Who I work with</a>
+  </div>
+  <button class="mob-link submenu-toggle" type="button" onclick="toggleMobHowMenu()">How I Work &#9662;</button>
+  <div class="mob-submenu" id="mobHowSub">
+    <a href="how-i-work.html" class="magnetic" onclick="closeMob()">How I work</a>
   </div>
   <a href="index.html#services" onclick="closeMob()">Services</a>
   <button class="mob-link submenu-toggle" type="button" onclick="toggleMobResourcesMenu()">Free Resources &#9662;</button>
@@ -1039,6 +1038,8 @@
   function closeMob(){document.getElementById('mobNav').classList.remove('open');document.body.style.overflow='';}
   function toggleMobSubmenu(){document.getElementById('mobCoursesSub').classList.toggle('open');}
   function toggleMobResourcesMenu(){document.getElementById('mobResourcesSub').classList.toggle('open');}
+  function toggleMobWhoMenu(){document.getElementById('mobWhoSub').classList.toggle('open');}
+  function toggleMobHowMenu(){document.getElementById('mobHowSub').classList.toggle('open');}
 
   // DARK DETECTION
   const dkO=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)document.body.classList.add('on-dark');});},{threshold:.4});
