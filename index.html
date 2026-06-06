@@ -63,9 +63,6 @@
 
 
     /* CONTROLS */
-    #mtoggle{position:fixed;bottom:1.6rem;left:1.6rem;z-index:9998;font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mid);background:rgba(246,241,233,.92);backdrop-filter:blur(8px);border:1px solid var(--cream-dd);padding:.45rem .9rem;border-radius:20px;transition:border-color .2s,color .2s;}
-    #mtoggle:hover{border-color:var(--purple);color:var(--purple);}
-    #mtoggle:focus-visible{outline:2px solid var(--purple);outline-offset:3px;}
 
     /* NAV */
     #nav{position:sticky;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3.5rem;background:#2A1F1A;transition:background .4s,padding .4s;}
@@ -519,7 +516,7 @@
     .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
     /* MASTER LOGO SIGNATURE */
-    .logo-signature{background:var(--cream);padding:4rem 2rem;text-align:center;border-bottom:1px solid rgba(107,69,112,.08);}
+    .logo-signature{background:var(--cream);padding:2rem 2rem;text-align:center;border-bottom:1px solid rgba(107,69,112,.08);margin-top:20px;}
     .logo-signature-inner{max-width:300px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:1.2rem;}
     .logo-signature-image{width:100%;max-width:120px;height:auto;}
     .logo-signature-text{display:flex;flex-direction:column;gap:.3rem;}
@@ -529,7 +526,7 @@
     /* HERO */
     #hero{min-height:calc(100vh - 80px);background:var(--cream);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
 
-    .hero-inner{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;width:100%;padding:8rem 2rem;}
+    .hero-inner{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;width:100%;padding:4rem 2rem;}
     .hero-body{padding:0;max-width:720px;width:100%;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2;}
 
     .brand-logo-img{max-height:80px;width:auto;margin:0 auto 20px auto;display:block;}
@@ -881,7 +878,6 @@
 <canvas id="grain"></canvas>
 <div id="sp"></div>
 
-<button id="mtoggle" onclick="toggleMotion()">Pause motion</button>
 
 <nav id="nav">
   <a href="#hero" class="nav-logo magnetic">NUANCED CO.<em>Neurodivergent Consultancy</em></a>
@@ -1786,9 +1782,6 @@
   document.querySelectorAll('#rp,#who,#how,#services,#about,#community').forEach(s=>ltO.observe(s));
 
   // MOTION
-  const mt=document.getElementById('mtoggle');let noM=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  if(noM){document.body.classList.add('no-motion');mt.textContent='Resume motion';}
-  function toggleMotion(){noM=!noM;document.body.classList.toggle('no-motion',noM);mt.textContent=noM?'Resume motion':'Pause motion';}
 
   // REVEAL, fires early + on load
   const re=document.querySelectorAll('.rv,.rvl,.rvr');
