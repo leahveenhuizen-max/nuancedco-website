@@ -518,29 +518,35 @@
     .rv.in,.rvl.in,.rvr.in{opacity:1;transform:none;}
     .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
-    /* HERO */
-    #hero{min-height:calc(100vh - 80px);background:var(--cream);position:relative;display:flex;align-items:center;overflow:hidden;}
-    .ink-marks{position:absolute;inset:0;pointer-events:none;z-index:1;}
-    .ink-marks svg{position:absolute;}
-    .im-1{top:12%;right:8%;width:340px;opacity:.15;}
-    .im-2{bottom:20%;left:5%;width:260px;opacity:.10;}
-    .im-3{top:45%;right:22%;width:180px;opacity:.08;}
+    /* MASTER LOGO SIGNATURE */
+    .logo-signature{background:var(--cream);padding:4rem 2rem;text-align:center;border-bottom:1px solid rgba(107,69,112,.08);}
+    .logo-signature-inner{max-width:300px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:1.2rem;}
+    .logo-signature-image{width:100%;max-width:120px;height:auto;}
+    .logo-signature-text{display:flex;flex-direction:column;gap:.3rem;}
+    .logo-signature-main{font-family:var(--serif);font-size:2rem;font-weight:400;letter-spacing:.25em;color:var(--ink);text-transform:uppercase;line-height:1;}
+    .logo-signature-sub{font-family:var(--body);font-size:.65rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--purple);}
 
-    .hero-inner{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;width:100%;padding:0 2rem;min-height:calc(100vh - 80px);}
-    .hero-body{padding:9rem 0 9rem;max-width:800px;width:100%;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2;}
+    /* HERO */
+    #hero{min-height:calc(100vh - 80px);background:var(--cream);position:relative;display:grid;grid-template-columns:1fr 1fr;align-items:stretch;overflow:hidden;}
+    .hero-image-side{position:relative;overflow:hidden;background:linear-gradient(155deg,#EAE6DF 0%,#D6CFC4 100%);}
+    .hero-image-placeholder{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--body);font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(42,31,26,.3);}
+    .hero-text-side{display:flex;align-items:center;background:var(--cream);padding:4rem 2rem;}
+
+    .hero-inner{position:relative;z-index:2;display:flex;align-items:center;justify-content:flex-start;width:100%;padding:0 0;}
+    .hero-body{padding:0;max-width:100%;width:100%;margin:0;text-align:left;display:flex;flex-direction:column;align-items:flex-start;position:relative;z-index:2;}
 
     .hero-eyebrow{display:flex;align-items:center;justify-content:flex-start;gap:1.2rem;margin-bottom:2rem;}
     .hero-eyebrow-line{width:50px;height:1px;background:var(--purple);opacity:.45;}
     .hero-eyebrow-text{font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--purple);}
-    .hero-hl{position:relative;line-height:1;margin-bottom:3rem;}
+    .hero-hl{position:relative;line-height:1;margin-bottom:2rem;}
     .hl-row{display:block;overflow:visible;}
-    .hl-sm{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.8rem);font-weight:300;color:rgba(42,31,26,.52);letter-spacing:.02em;}
-    .hl-lg{font-family:var(--serif);font-size:clamp(4rem,8.5vw,8rem);font-weight:300;color:var(--ink);letter-spacing:-.01em;line-height:.9;}
+    .hl-sm{font-family:var(--serif);font-size:clamp(1.4rem,2.5vw,2rem);font-weight:300;color:rgba(42,31,26,.52);letter-spacing:.02em;}
+    .hl-lg{font-family:var(--serif);font-size:clamp(2.8rem,5vw,4.5rem);font-weight:300;color:var(--ink);letter-spacing:-.01em;line-height:1.1;}
     .hl-lg em{font-style:italic;color:var(--purple);}
-    .hero-hl{text-align:left;margin-bottom:2.2rem;}
-    .hl-offset{margin-left:clamp(2rem,6vw,7rem);}
-    .hl-brushmark{display:block;margin-top:.5rem;margin-left:clamp(2rem,6vw,7rem);}
-    .hero-sub{font-size:.96rem;color:var(--ink-mid);max-width:520px;line-height:1.78;margin-bottom:2.4rem;text-align:left;}
+    .hero-hl{text-align:left;margin-bottom:1.8rem;}
+    .hl-offset{margin-left:0;}
+    .hl-brushmark{display:block;margin-top:.5rem;margin-left:0;}
+    .hero-sub{font-size:.9rem;color:var(--ink-mid);max-width:480px;line-height:1.78;margin-bottom:2.2rem;text-align:left;}
     .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;justify-content:flex-start;}
     .hero-micro{font-size:.66rem;color:rgba(42,31,26,.42);margin-top:1rem;letter-spacing:.04em;}
     .hero-fade{display:none;}.ink-marks{display:none;}
@@ -844,7 +850,15 @@
     .mob-close{position:absolute;top:1.6rem;right:2rem;font-size:1.4rem;color:var(--cream);opacity:.55;}
 
     /* RESPONSIVE */
-    @media(max-width:1100px){.hero-inner{padding:0 3.5rem;}}
+    @media(max-width:1100px){
+      .hero-inner{padding:0 3.5rem;}
+      #hero{grid-template-columns:1fr;}
+      .hero-image-side{min-height:50vh;order:2;}
+      .hero-text-side{padding:3rem 2rem;order:1;}
+      .logo-signature{padding:3rem 1.5rem;}
+      .logo-signature-image{max-width:100px;}
+      .logo-signature-main{font-size:1.6rem;}
+    }
     @media(max-width:960px){
       .nav-list{display:none;}.hamburger{display:flex;}
       #nav{padding:1.2rem 1.8rem;}
@@ -916,19 +930,25 @@
   <a href="book.html" onclick="closeMob()">Book a call</a>
 </div>
 
-<section id="hero">
-  <div class="hero-video-bg" aria-hidden="true">
-    <div class="hero-video-placeholder">Dark, slow-motion brand video loop placeholder</div>
-    <div class="hero-video-overlay"></div>
-    <div class="hero-video-caption">Premium atmospheric motion placeholder to elevate brand authority and set a confident tone for the consultancy.</div>
+<!-- MASTER LOGO SIGNATURE BLOCK -->
+<section class="logo-signature">
+  <div class="logo-signature-inner">
+    <img src="nuanced-brand-logo.png" alt="Nuanced Co. brand logo" class="logo-signature-image">
+    <div class="logo-signature-text">
+      <div class="logo-signature-main">NUANCED CO.</div>
+      <div class="logo-signature-sub">Neurodivergent Consultancy</div>
+    </div>
   </div>
-  <!-- LEFT: full-bleed portrait image -->
+</section>
+
+<!-- HERO SPLIT SECTION -->
+<section id="hero">
+  <!-- LEFT: Abstract sensory landscape image -->
   <div class="hero-image-side">
-    <div class="hero-image-placeholder">Portrait image — replace src with leah-about-hero.jpg</div>
-    <!-- To use a real photo: <img src="leah-about-hero.jpg" alt="Leah Veenhuizen, founder of Nuanced Co."> -->
+    <div class="hero-image-placeholder"><img src="abstract-sensory-landscape.jpg" alt="Abstract sensory landscape representing neurodivergent experience" style="width:100%;height:100%;object-fit:cover;border-radius:0;"></div>
   </div>
 
-  <!-- RIGHT: flat cream text panel -->
+  <!-- RIGHT: Hero text panel -->
   <div class="hero-text-side">
   <div class="hero-inner">
     <div class="hero-body">
