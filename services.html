@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Services & How I Work | Nuanced Co. | Neurodivergent Consultancy</title>
+  <meta name="description" content="Discover our services: 1:1 consultancy, workplace consulting, training programs, and community support for neurodivergent adults.">
+  <link rel="canonical" href="https://nuancedco.com.au/services">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cream:#F6F1E9;--cream-d:#EDE6D8;--cream-dd:#DDD4C2;--parchment:#EAE0CE;
+      --ink:#2A1F1A;--ink-mid:#4A3830;--ink-deep:#0F0C0A;
+      --purple:#6B4570;--sage:#7A8C6E;--gold:#C4963E;--rose:#C07A8A;--lilac:#9668A4;
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --body:'Atkinson Hyperlegible',system-ui,sans-serif;
+      --ease:cubic-bezier(0.22,1,0.36,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{font-size:18px;scroll-behavior:smooth;}
+    body{background:var(--cream);color:var(--ink);font-family:var(--body);line-height:1.7;overflow-x:hidden;}
+    img{display:block;max-width:100%;}a{color:inherit;text-decoration:none;}
+    #nav{position:sticky;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3.5rem;background:#2A1F1A;transition:background .4s,padding .4s;}
+    .nav-logo{font-family:var(--serif);font-size:1rem;font-weight:400;letter-spacing:.25em;color:#F6F1E9;text-transform:uppercase;line-height:1;}
+    .nav-list{list-style:none;display:flex;align-items:center;gap:2rem;}
+    .nav-list a{font-family:var(--body);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.72);transition:color .2s;}
+    .nav-list a:hover{color:var(--cream);}
+    .nav-list .ncta{border:1px solid rgba(196,150,62,.5);color:var(--gold);padding:.4rem 1.2rem;border-radius:2px;font-size:.62rem;transition:background .2s,color .2s,border-color .2s;}
+    .nav-list .ncta:hover{background:var(--gold);color:var(--ink-deep);border-color:var(--gold);}
+    
+    .services-section{background:var(--parchment);padding:8rem 0;position:relative;overflow:hidden;}
+    .container{max-width:1100px;margin:0 auto;padding:0 3.5rem;}
+    .services-header{margin-bottom:4rem;}
+    .services-header h2{font-family:var(--serif);font-size:clamp(2.2rem,3.8vw,3.4rem);font-weight:300;color:var(--ink);line-height:1.18;margin-bottom:1.2rem;letter-spacing:.04em;}
+    .services-map-grid{display:grid;grid-template-columns:1fr;gap:1.5rem;}
+    .service-pair{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;}
+    .service-pain,.service-solution{border-radius:22px;padding:2rem;display:flex;flex-direction:column;gap:1rem;min-height:260px;transition:transform .3s,box-shadow .3s;}
+    .service-pain{background:rgba(196,150,62,.1);border:1px solid rgba(196,150,62,.2);}
+    .service-solution{background:rgba(15,12,10,.96);border:1px solid rgba(246,241,233,.12);}
+    .service-pain:hover,.service-solution:hover{transform:translateY(-3px);box-shadow:0 18px 45px rgba(0,0,0,.12);}
+    .service-card-title{font-family:var(--serif);font-size:1.2rem;color:var(--ink-deep);margin:0;}
+    .service-solution .service-card-title{color:var(--cream);}
+    .service-card-text{color:rgba(15,12,10,.78);line-height:1.75;}
+    .service-solution .service-card-text{color:rgba(246,241,233,.82);}
+    .section-label{font-family:var(--body);font-size:.6rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.6rem;}
+    
+    footer{background:#1A1A1A;padding:6rem 0 3rem;color:#F6F1E9;}
+    .ft-inner{max-width:1200px;margin:0 auto;padding:0 3.5rem;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:5rem;}
+    .ft-subscribe h3{font-family:var(--serif);font-size:1.25rem;font-weight:400;color:#F6F1E9;margin:0 0 1.2rem;letter-spacing:.04em;}
+    .ft-subscribe p{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.85rem;color:rgba(246,241,233,.75);margin:0 0 1.8rem;line-height:1.7;}
+    .ft-email-form{display:flex;flex-direction:column;gap:.8rem;}
+    .ft-email-input{background:#2A2A2A;border:1px solid rgba(246,241,233,.2);border-radius:2px;padding:.9rem 1.2rem;font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.85rem;color:#F6F1E9;width:100%;box-sizing:border-box;}
+    .ft-email-input::placeholder{color:rgba(246,241,233,.4);}
+    .ft-email-input:focus{outline:none;border-color:var(--purple);}
+    .ft-email-btn{background:var(--purple);color:#F6F1E9;border:none;padding:.85rem 1.8rem;font-family:var(--body);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s;border-radius:24px !important;padding:12px 28px !important;}
+    .ft-email-btn:hover{background:#5a3a5f;}
+    .ft-col h4{font-family:var(--serif);font-size:1rem;font-weight:400;color:#F6F1E9;margin:0 0 1.6rem;letter-spacing:.04em;}
+    .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:1rem;margin:0;padding:0;}
+    .ft-col ul a{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.85rem;color:rgba(246,241,233,.7);text-decoration:none;transition:color .2s;}
+    .ft-col ul a:hover{color:#F6F1E9;}
+    .ft-bot{max-width:1200px;margin:2rem auto 0;padding:2rem 3.5rem 0;border-top:1px solid rgba(246,241,233,.1);}
+    .ft-legal{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.75rem;color:rgba(246,241,233,.45);margin:0;line-height:1.6;}
+    @media(max-width:900px){
+      .service-pair{grid-template-columns:1fr;}
+      .ft-inner{grid-template-columns:1fr;gap:3rem;}
+      .container{padding:0 1.8rem;}
+    }
+    h1, h2, h3, h4, h5, h6 {
+      letter-spacing: 0.03em !important;
+      line-height: 1.25 !important;
+    }
+    p {
+      line-height: 1.75 !important;
+      color: #2A2A2A !important;
+    }
+    #grain{position:fixed;inset:0;pointer-events:none;z-index:9990;opacity:.025;mix-blend-mode:overlay;}
+    #mtoggle{position:fixed;bottom:1.6rem;left:1.6rem;z-index:9998;font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mid);background:rgba(246,241,233,.92);backdrop-filter:blur(8px);border:1px solid var(--cream-dd);padding:.45rem .9rem;border-radius:20px;transition:border-color .2s,color .2s;}
+  </style>
+</head>
+<body>
+<canvas id="grain"></canvas>
+<button id="mtoggle" onclick="toggleMotion()">Pause motion</button>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">NUANCED CO.</a>
+  <ul class="nav-list">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About Leah</a></li>
+    <li><a href="services.html">How I Work</a></li>
+    <li><a href="course.html">Courses</a></li>
+    <li><a href="portal.html">Free Resources</a></li>
+    <li><a href="media.html">Media</a></li>
+    <li><a href="book.html" class="ncta">Book a call</a></li>
+  </ul>
+</nav>
+
+<section class="services-section">
+  <div class="container">
+    <div class="services-header">
+      <span class="section-label">How we work together</span>
+      <h2>Support that actually understands you.</h2>
+    </div>
+    <div class="services-map-grid">
+      <div class="service-pair">
+        <div class="service-pain">
+          <span class="section-label">Pain point</span>
+          <h3 class="service-card-title">Being told to 'try harder'</h3>
+          <p class="service-card-text">You already know your brain works differently, but the advice you keep receiving is generic, unhelpful, and exhausting.</p>
+        </div>
+        <div class="service-solution">
+          <span class="section-label">Solution</span>
+          <h3 class="service-card-title">Brain-based consultancy</h3>
+          <p class="service-card-text">We work with your real wiring, not a template. That means strategies built around your attention, energy, and sensory rhythm.</p>
+        </div>
+      </div>
+      <div class="service-pair">
+        <div class="service-pain">
+          <span class="section-label">Pain point</span>
+          <h3 class="service-card-title">Feeling unheard in healthcare</h3>
+          <p class="service-card-text">Services often minimise your experience or reduce it to a checklist, leaving you with more questions than answers.</p>
+        </div>
+        <div class="service-solution">
+          <span class="section-label">Solution</span>
+          <h3 class="service-card-title">Lived-experience grounded support</h3>
+          <p class="service-card-text">As an AuDHD founder and registered nurse, Leah blends professional understanding with real neurodivergent insight.</p>
+        </div>
+      </div>
+      <div class="service-pair">
+        <div class="service-pain">
+          <span class="section-label">Pain point</span>
+          <h3 class="service-card-title">Training that feels irrelevant</h3>
+          <p class="service-card-text">Most development programs are built for neurotypical brains, so they land flat for people who process information differently.</p>
+        </div>
+        <div class="service-solution">
+          <span class="section-label">Solution</span>
+          <h3 class="service-card-title">Tailored learning pathways</h3>
+          <p class="service-card-text">Courses, resources and sessions are structured to make sense for neurodivergent learners, with clear practical steps and sensory-aware pacing.</p>
+        </div>
+      </div>
+      <div class="service-pair">
+        <div class="service-pain">
+          <span class="section-label">Pain point</span>
+          <h3 class="service-card-title">Workplace safety is only surface-level</h3>
+          <p class="service-card-text">Organisations often talk about inclusion without changing the systems that create stress and burnout for neurodivergent staff.</p>
+        </div>
+        <div class="service-solution">
+          <span class="section-label">Solution</span>
+          <h3 class="service-card-title">Systems-level workplace consulting</h3>
+          <p class="service-card-text">We help teams build practical frameworks for psychological safety, communication, and sustainable workload design.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-inner">
+    <div class="ft-subscribe">
+      <h3>Subscribe</h3>
+      <p>Sign up with your email address to receive news, updates, and free resources on neurodivergence, living unmasked, and building a life that actually fits.</p>
+      <form class="ft-email-form" onsubmit="return false;">
+        <input type="email" class="ft-email-input" placeholder="your.email@example.com" required>
+        <button type="submit" class="ft-email-btn">Sign Up</button>
+      </form>
+    </div>
+    <div class="ft-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Speaking</a></li>
+        <li><a href="media.html">Media &amp; Press Kit</a></li>
+        <li><a href="podcast.html">Podcast Inquiries</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="book.html">Book a Consultation</a></li>
+        <li><a href="contact.html">Contact Leah</a></li>
+        <li><a href="mailto:hello@nuancedco.com.au">hello@nuancedco.com.au</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <p class="ft-legal">&copy; 2026 Nuanced Co. All rights reserved. ABN 71 926 185 491. Nuanced Co. is a consultancy service. Content is for general information purposes only and does not constitute clinical advice, diagnosis, or treatment.</p>
+  </div>
+</footer>
+
+<script>
+  const gc=document.getElementById('grain'),gx=gc.getContext('2d');let gW,gH;
+  function rg(){gW=gc.width=window.innerWidth;gH=gc.height=window.innerHeight;}rg();window.addEventListener('resize',rg);
+  function dg(){const i=gx.createImageData(gW,gH),d=i.data;for(let j=0;j<d.length;j+=4){const v=(Math.random()*255)|0;d[j]=d[j+1]=d[j+2]=v;d[j+3]=255;}gx.putImageData(i,0,0);requestAnimationFrame(dg);}dg();
+  const mt=document.getElementById('mtoggle');let noM=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(noM){document.body.classList.add('no-motion');mt.textContent='Resume motion';}
+  function toggleMotion(){noM=!noM;document.body.classList.toggle('no-motion',noM);mt.textContent=noM?'Resume motion':'Pause motion';}
+</script>
+</body>
+</html>

@@ -1,348 +1,203 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>About Leah | Nuanced Co. Neurodivergent Consultancy</title>
-<meta name="description" content="Leah Veenhuizen is a Registered Nurse, AuDHD person, and founder of Nuanced Co., an ADHD and AuDHD consultancy based in Geelong, Australia.">
-<meta name="copyright" content="© 2026 Nuanced Co. ABN 71 926 185 491">
-<link rel="canonical" href="https://nuancedco.com.au/about">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<style>
-:root {
-  --cream: #F6F1E9; --cream-dark: #EDE6D8; --ink: #2A1F1A; --ink-mid: #4A3830;
-  --purple: #6B4570; --sage: #7A8C6E; --gold: #C4963E; --rose: #C07A8A; --lilac: #9668A4; --white: #FFFFFF;
-  --serif: 'Cormorant Garamond', Georgia, serif; --body: 'Atkinson Hyperlegible', system-ui, sans-serif;
-  --ease: cubic-bezier(0.22, 1, 0.36, 1); --dur: 0.75s;
-}
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-html { scroll-behavior: smooth; font-size: 18px; }
-body { background: var(--cream); color: var(--ink); font-family: var(--body); line-height: 1.7; overflow-x: hidden; }
-a { color: inherit; text-decoration: none; }
-.reveal { opacity: 0; transform: translateY(36px); transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
-.reveal.visible { opacity: 1; transform: translateY(0); }
-.reveal-left { opacity: 0; transform: translateX(-36px); transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
-.reveal-left.visible { opacity: 1; transform: translateX(0); }
-.reveal-right { opacity: 0; transform: translateX(36px); transition: opacity var(--dur) var(--ease), transform var(--dur) var(--ease); }
-.reveal-right.visible { opacity: 1; transform: translateX(0); }
-.delay-1 { transition-delay: 0.1s; } .delay-2 { transition-delay: 0.2s; } .delay-3 { transition-delay: 0.3s; }
-nav {
-  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-  display: flex; align-items: center; justify-content: space-between;
-  padding: 1.2rem 3rem;
-  background: rgba(246, 241, 233, 0.88); backdrop-filter: blur(12px);
-  border-bottom: 1px solid rgba(107, 69, 112, 0.08);
-  transition: padding 0.3s var(--ease), box-shadow 0.3s;
-}
-nav.scrolled { padding: 0.8rem 3rem; box-shadow: 0 2px 24px rgba(42, 31, 26, 0.07); }
-.nav-logo { font-family: var(--serif); font-size: 1.5rem; font-weight: 400; letter-spacing: 0.18em; color: var(--ink); }
-.nav-logo span { display: block; font-size: 0.48rem; font-family: var(--body); letter-spacing: 0.25em; text-transform: uppercase; color: var(--purple); margin-top: 1px; }
-.nav-links { display: flex; gap: 2rem; list-style: none; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; }
-.nav-links a { color: var(--ink-mid); transition: color 0.2s; }
-.nav-links a:hover, .nav-links a.active { color: var(--purple); }
-.nav-cta { background: var(--purple); color: var(--white) !important; padding: 0.55rem 1.4rem; border-radius: 2px; font-size: 0.76rem; letter-spacing: 0.12em; text-transform: uppercase; transition: background 0.2s, transform 0.2s; }
-.nav-cta:hover { background: var(--ink); transform: translateY(-1px); }
-.nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; }
-.nav-hamburger span { display: block; width: 24px; height: 1.5px; background: var(--ink); transition: 0.3s; }
-section { padding: 7rem 2rem; }
-.container { max-width: 1100px; margin: 0 auto; }
-.container-sm { max-width: 760px; margin: 0 auto; }
-.section-label { font-size: 0.72rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--purple); margin-bottom: 1.2rem; }
-.section-heading { font-family: var(--serif); font-size: clamp(2rem, 4vw, 3.2rem); font-weight: 300; line-height: 1.22; margin-bottom: 1.5rem; }
-.section-body { font-size: 1rem; line-height: 1.85; color: var(--ink-mid); }
-.rule { width: 48px; height: 1px; background: var(--purple); opacity: 0.4; margin: 0 auto 2rem; }
-.rule-left { margin: 0 0 2rem; }
-.btn-primary { background: var(--purple); color: var(--white); padding: 1rem 2.2rem; font-family: var(--body); font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; border: none; border-radius: 2px; cursor: pointer; transition: background 0.2s, transform 0.2s, box-shadow 0.2s; box-shadow: 0 4px 20px rgba(107, 69, 112, 0.25); display: inline-block; }
-.btn-primary:hover { background: var(--ink); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(42, 31, 26, 0.2); }
-.btn-outline { background: transparent; color: var(--purple); padding: 1rem 2.2rem; font-family: var(--body); font-size: 0.85rem; letter-spacing: 0.1em; text-transform: uppercase; border: 1px solid var(--purple); border-radius: 2px; cursor: pointer; transition: background 0.2s, color 0.2s, transform 0.2s; display: inline-block; }
-.btn-outline:hover { background: var(--purple); color: var(--white); transform: translateY(-2px); }
-
-/* Page hero */
-#page-hero {
-  padding: 10rem 2rem 5rem;
-  background: var(--cream);
-  position: relative;
-  overflow: hidden;
-}
-.page-hero-blob { position: absolute; border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%; filter: blur(60px); pointer-events: none; }
-.phb-1 { width: 500px; height: 400px; top: -100px; right: -100px; background: var(--purple); opacity: 0.14; }
-.phb-2 { width: 400px; height: 320px; bottom: -80px; left: -80px; background: var(--sage); opacity: 0.12; }
-.page-hero-inner { max-width: 760px; position: relative; z-index: 2; }
-.page-hero-inner .section-label { margin-bottom: 1rem; }
-.page-hero-headline { font-family: var(--serif); font-size: clamp(2.8rem, 6vw, 4.8rem); font-weight: 300; line-height: 1.15; color: var(--ink); margin-bottom: 2rem; }
-.page-hero-headline em { font-style: italic; color: var(--purple); }
-.page-hero-sub { font-size: 1.1rem; color: var(--ink-mid); line-height: 1.75; max-width: 560px; }
-
-/* Story */
-#story { background: var(--cream-dark); }
-.story-inner { display: grid; grid-template-columns: 1fr 1.4fr; gap: 6rem; align-items: center; }
-.story-photo { position: relative; }
-.photo-placeholder { width: 100%; aspect-ratio: 3/4; background: var(--cream); border-radius: 4px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.8rem; position: relative; overflow: hidden; }
-.photo-blobs { position: absolute; inset: 0; }
-.pb { position: absolute; border-radius: 60% 40% 55% 45% / 50% 60% 40% 50%; filter: blur(40px); }
-.pb-1 { width: 240px; height: 200px; top: -30px; left: -40px; background: var(--purple); opacity: 0.2; }
-.pb-2 { width: 200px; height: 180px; bottom: -20px; right: -20px; background: var(--sage); opacity: 0.18; }
-.pb-3 { width: 160px; height: 140px; top: 40%; left: 30%; background: var(--rose); opacity: 0.15; }
-.photo-label { position: relative; z-index: 2; text-align: center; }
-.photo-label p { font-size: 0.78rem; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(42, 31, 26, 0.4); }
-.photo-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(42,31,26,0.55), transparent); padding: 2rem 1.5rem 1.5rem; border-radius: 0 0 4px 4px; }
-.photo-caption p { font-family: var(--serif); font-size: 1.05rem; font-style: italic; color: var(--white); line-height: 1.4; }
-.story-photo-frame { position: relative; border-radius: 4px; overflow: hidden; }
-.story-photo-frame img { width: 100%; display: block; filter: saturate(0.92) brightness(1.03); }
-
-/* Credentials */
-#credentials { background: var(--ink); color: var(--cream); }
-#credentials .section-label { color: var(--gold); }
-#credentials .section-heading { color: var(--cream); }
-#credentials .rule { background: var(--gold); }
-.cred-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; margin-top: 4rem; }
-.cred-card { padding: 2.5rem 2rem; border: 1px solid rgba(246, 241, 233, 0.1); border-radius: 2px; position: relative; overflow: hidden; transition: background 0.3s; }
-.cred-card::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(107, 69, 112, 0.12), transparent); opacity: 0; transition: opacity 0.3s; }
-.cred-card:hover::before { opacity: 1; }
-.cred-icon { font-size: 2rem; margin-bottom: 1.2rem; display: block; }
-.cred-title { font-family: var(--serif); font-size: 1.3rem; font-weight: 300; color: var(--cream); margin-bottom: 0.8rem; line-height: 1.3; }
-.cred-desc { font-size: 0.82rem; line-height: 1.75; color: rgba(246,241,233,0.6); }
-
-/* Values */
-#values { background: var(--cream); }
-.values-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2.5rem; margin-top: 4rem; }
-.value-item { padding: 2.5rem 2rem; background: var(--cream-dark); border-radius: 2px; border-top: 3px solid var(--purple); }
-.value-num { font-family: var(--serif); font-size: 3rem; font-weight: 300; color: rgba(107, 69, 112, 0.15); line-height: 1; margin-bottom: 1rem; }
-.value-title { font-family: var(--serif); font-size: 1.4rem; font-weight: 400; color: var(--ink); margin-bottom: 0.8rem; }
-.value-body { font-size: 0.88rem; line-height: 1.8; color: var(--ink-mid); }
-
-/* CTA */
-#about-cta { background: var(--purple); text-align: center; padding: 7rem 2rem; }
-#about-cta .section-label { color: rgba(246,241,233,0.6); }
-#about-cta .section-heading { color: var(--cream); }
-#about-cta .section-body { color: rgba(246,241,233,0.75); max-width: 480px; margin: 0 auto 3rem; }
-#about-cta .btn-primary { background: var(--cream); color: var(--purple); }
-#about-cta .btn-primary:hover { background: var(--white); }
-#about-cta .btn-outline { color: rgba(246,241,233,0.85); border-color: rgba(246,241,233,0.4); }
-#about-cta .btn-outline:hover { background: rgba(246,241,233,0.1); color: var(--cream); }
-
-/* Footer */
-footer { background: var(--ink); border-top: 1px solid rgba(246,241,233,0.06); padding: 4rem 2rem 2rem; color: rgba(246,241,233,0.5); }
-.footer-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 4rem; margin-bottom: 3rem; }
-.footer-logo { font-family: var(--serif); font-size: 1.4rem; letter-spacing: 0.2em; color: var(--cream); margin-bottom: 0.5rem; }
-.footer-tagline { font-size: 0.78rem; letter-spacing: 0.12em; color: rgba(246,241,233,0.4); }
-.footer-col h4 { font-size: 0.7rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; }
-.footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
-.footer-col ul a { font-size: 0.85rem; color: rgba(246,241,233,0.5); transition: color 0.2s; }
-.footer-col ul a:hover { color: var(--cream); }
-.footer-social { display: flex; gap: 1rem; margin-bottom: 1rem; margin-top: 2rem; }
-.social-icon { width: 36px; height: 36px; border: 1px solid rgba(246,241,233,0.15); border-radius: 2px; display: flex; align-items: center; justify-content: center; transition: border-color 0.2s, background 0.2s; cursor: pointer; }
-.social-icon:hover { border-color: var(--lilac); background: rgba(150, 104, 164, 0.12); }
-.social-icon svg { width: 16px; height: 16px; fill: rgba(246,241,233,0.5); }
-.social-icon:hover svg { fill: var(--lilac); }
-.footer-email { font-size: 0.82rem; color: rgba(246,241,233,0.4); }
-.footer-bottom { max-width: 1100px; margin: 0 auto; padding-top: 2rem; border-top: 1px solid rgba(246,241,233,0.06); display: flex; justify-content: space-between; align-items: flex-start; gap: 2rem; flex-wrap: wrap; }
-.footer-legal { font-size: 0.72rem; line-height: 1.75; color: rgba(246,241,233,0.3); max-width: 640px; }
-.footer-abn { font-size: 0.72rem; color: rgba(246,241,233,0.25); text-align: right; }
-
-/* Nav mobile */
-.nav-mobile { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: var(--cream); z-index: 99; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2.5rem; transform: translateX(100%); transition: transform 0.4s var(--ease); }
-.nav-mobile.open { transform: translateX(0); }
-.nav-mobile a { font-family: var(--serif); font-size: 2rem; font-weight: 300; color: var(--ink); letter-spacing: 0.05em; }
-.nav-mobile-close { position: absolute; top: 1.5rem; right: 1.5rem; cursor: pointer; font-size: 1.5rem; color: var(--ink-mid); padding: 8px; }
-
-@media (max-width: 860px) {
-  .nav-links { display: none; } .nav-hamburger { display: flex; } nav { padding: 1.2rem 1.5rem; }
-  .story-inner { grid-template-columns: 1fr; gap: 3rem; }
-  .cred-grid { grid-template-columns: 1fr 1fr; }
-  .values-grid { grid-template-columns: 1fr; }
-  .footer-inner { grid-template-columns: 1fr 1fr; }
-}
-@media (max-width: 600px) {
-  section { padding: 5rem 1.4rem; }
-  .cred-grid { grid-template-columns: 1fr; }
-  .footer-inner { grid-template-columns: 1fr; gap: 2.5rem; }
-  .footer-bottom { flex-direction: column; } .footer-abn { text-align: left; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Leah Veenhuizen | Nuanced Co. | Neurodivergent Consultancy</title>
+  <meta name="description" content="Meet Leah Veenhuizen, AuDHD Registered Nurse and founder of Nuanced Co. Learn about her journey, qualifications, and approach to neurodivergent support.">
+  <link rel="canonical" href="https://nuancedco.com.au/about">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles-about.css">
+  <style>
+    :root {
+      --cream:#F6F1E9;--cream-d:#EDE6D8;--cream-dd:#DDD4C2;--parchment:#EAE0CE;
+      --ink:#2A1F1A;--ink-mid:#4A3830;--ink-deep:#0F0C0A;
+      --purple:#6B4570;--sage:#7A8C6E;--gold:#C4963E;--rose:#C07A8A;--lilac:#9668A4;
+      --serif:'Cormorant Garamond',Georgia,serif;
+      --body:'Atkinson Hyperlegible',system-ui,sans-serif;
+      --ease:cubic-bezier(0.22,1,0.36,1);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{font-size:18px;scroll-behavior:smooth;}
+    body{background:var(--cream);color:var(--ink);font-family:var(--body);line-height:1.7;overflow-x:hidden;}
+    img{display:block;max-width:100%;}a{color:inherit;text-decoration:none;}
+    #nav{position:sticky;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3.5rem;background:#2A1F1A;transition:background .4s,padding .4s;}
+    .nav-logo{font-family:var(--serif);font-size:1rem;font-weight:400;letter-spacing:.25em;color:#F6F1E9;text-transform:uppercase;line-height:1;}
+    .nav-list{list-style:none;display:flex;align-items:center;gap:2rem;}
+    .nav-list a{font-family:var(--body);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.72);transition:color .2s;}
+    .nav-list a:hover{color:var(--cream);}
+    .nav-list .ncta{border:1px solid rgba(196,150,62,.5);color:var(--gold);padding:.4rem 1.2rem;border-radius:2px;font-size:.62rem;transition:background .2s,color .2s,border-color .2s;}
+    .nav-list .ncta:hover{background:var(--gold);color:var(--ink-deep);border-color:var(--gold);}
+    .founder-section{display:grid;grid-template-columns:1fr 1fr;min-height:85vh;background:#F6F1E9;padding:6rem 0;}
+    .founder-img-col{position:relative;overflow:visible;min-height:600px;}
+    .founder-bg-img{position:absolute;top:5%;left:0;width:82%;height:88%;background:linear-gradient(155deg,#EAE6DF 0%,#D6CFC4 100%);box-shadow:0 20px 48px rgba(0,0,0,.09);display:flex;align-items:flex-end;padding:1rem 1.2rem;}
+    .founder-portrait{position:absolute;bottom:8%;right:0;width:62%;height:70%;background:linear-gradient(155deg,#C5BBB0 0%,#B8AEA3 100%);box-shadow:0 24px 52px rgba(0,0,0,.14),0 4px 12px rgba(0,0,0,.07);display:flex;align-items:flex-end;padding:1rem 1.2rem;}
+    .founder-text-col{display:flex;flex-direction:column;justify-content:center;padding:7rem 5rem 7rem 4.5rem;}
+    .founder-tagline{font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--purple);margin:0 0 1.4rem;}
+    .founder-heading{font-family:var(--serif);font-size:clamp(2.6rem,4vw,3.8rem);font-weight:300;line-height:1.1;color:var(--ink);margin:0 0 1.8rem;}
+    .founder-rule{width:100%;max-width:440px;height:1px;background:var(--ink);opacity:.18;margin-bottom:2.4rem;}
+    .founder-body{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.9rem;font-weight:300;line-height:1.85;color:rgba(42,31,26,.72);max-width:480px;display:flex;flex-direction:column;gap:1.4rem;margin-bottom:2.8rem;}
+    .founder-enrol{font-family:var(--body);font-size:.68rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px;display:inline-block;transition:color .2s,border-color .2s;border-radius:24px !important;padding:12px 28px !important;}
+    .founder-enrol:hover{color:var(--purple);border-color:var(--purple);}
+    @media(max-width:900px){
+      .founder-section{grid-template-columns:1fr;padding:4rem 0;}
+      .founder-img-col{min-height:70vw;}
+      .founder-text-col{padding:4rem 2rem;}
+    }
+    #about{background:var(--cream);padding:8rem 0;}
+    .about-collage{display:grid;grid-template-columns:1fr 1.15fr;gap:0;align-items:start;}
+    .about-img-frame{position:relative;}
+    .about-img-frame img{width:100%;display:block;border-radius:16px;filter:saturate(.9) brightness(1.03);}
+    .about-pq{margin-top:2.4rem;position:relative;padding:1.4rem 1.6rem;background:var(--cream-d);border-left:3px solid var(--purple);}
+    .about-pq p{font-family:var(--serif);font-size:1.08rem;font-style:italic;color:var(--ink-mid);line-height:1.6;}
+    .about-text-col{padding:1rem 0 0 4.5rem;}
+    .about-creds{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.6rem 0 2rem;}
+    .ctag{font-family:var(--body);font-size:.6rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:.35rem .9rem;background:var(--cream-d);color:var(--ink-mid);border-radius:2px;}
+    .about-link{display:inline-flex;align-items:center;gap:.5rem;font-family:var(--body);font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--purple);border-bottom:1px solid rgba(107,69,112,.3);padding-bottom:2px;transition:border-color .2s;}
+    .section-label{font-family:var(--body);font-size:.6rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);display:block;margin-bottom:.6rem;}
+    .rule{width:40px;height:1px;background:var(--cream-dd);margin:.8rem 0 1.8rem;}
+    h2.sh{font-family:var(--serif);font-size:clamp(2.2rem,3.8vw,3.4rem);font-weight:300;color:var(--ink);line-height:1.18;margin-bottom:1.2rem;}
+    p.sb{font-size:.92rem;color:var(--ink-mid);line-height:1.8;max-width:520px;}
+    .container{max-width:1100px;margin:0 auto;padding:0 3.5rem;}
+    @media(max-width:960px){
+      .about-collage{grid-template-columns:1fr;}
+      .about-text-col{padding:2.5rem 0 0;}
+      .container{padding:0 1.8rem;}
+    }
+    footer{background:#1A1A1A;padding:6rem 0 3rem;color:#F6F1E9;}
+    .ft-inner{max-width:1200px;margin:0 auto;padding:0 3.5rem;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:5rem;}
+    .ft-subscribe h3{font-family:var(--serif);font-size:1.25rem;font-weight:400;color:#F6F1E9;margin:0 0 1.2rem;letter-spacing:.04em;}
+    .ft-subscribe p{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.85rem;color:rgba(246,241,233,.75);margin:0 0 1.8rem;line-height:1.7;}
+    .ft-email-form{display:flex;flex-direction:column;gap:.8rem;}
+    .ft-email-input{background:#2A2A2A;border:1px solid rgba(246,241,233,.2);border-radius:2px;padding:.9rem 1.2rem;font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.85rem;color:#F6F1E9;width:100%;box-sizing:border-box;transition:border-color .2s;}
+    .ft-email-input::placeholder{color:rgba(246,241,233,.4);}
+    .ft-email-input:focus{outline:none;border-color:var(--purple);}
+    .ft-email-btn{background:var(--purple);color:#F6F1E9;border:none;padding:.85rem 1.8rem;font-family:var(--body);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s;border-radius:24px !important;padding:12px 28px !important;}
+    .ft-email-btn:hover{background:#5a3a5f;}
+    .ft-col h4{font-family:var(--serif);font-size:1rem;font-weight:400;color:#F6F1E9;margin:0 0 1.6rem;letter-spacing:.04em;}
+    .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:1rem;margin:0;padding:0;}
+    .ft-col ul li{margin:0;padding:0;}
+    .ft-col ul a{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.85rem;color:rgba(246,241,233,.7);text-decoration:none;transition:color .2s;}
+    .ft-col ul a:hover{color:#F6F1E9;}
+    .ft-bot{max-width:1200px;margin:2rem auto 0;padding:2rem 3.5rem 0;border-top:1px solid rgba(246,241,233,.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;}
+    .ft-legal{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.75rem;color:rgba(246,241,233,.45);margin:0;line-height:1.6;}
+    @media(max-width:900px){
+      .ft-inner{grid-template-columns:1fr;gap:3rem;}
+      .ft-bot{flex-direction:column;align-items:flex-start;}
+    }
+    h1, h2, h3, h4, h5, h6 {
+      letter-spacing: 0.03em !important;
+      line-height: 1.25 !important;
+    }
+    p {
+      line-height: 1.75 !important;
+      color: #2A2A2A !important;
+    }
+    #grain{position:fixed;inset:0;pointer-events:none;z-index:9990;opacity:.025;mix-blend-mode:overlay;}
+    #mtoggle{position:fixed;bottom:1.6rem;left:1.6rem;z-index:9998;font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;color:var(--ink-mid);background:rgba(246,241,233,.92);backdrop-filter:blur(8px);border:1px solid var(--cream-dd);padding:.45rem .9rem;border-radius:20px;transition:border-color .2s,color .2s;}
+  </style>
 </head>
 <body>
-
-<nav id="mainNav">
-  <a href="index.html" class="nav-logo">NUANCED CO.<span>Neurodivergent Consultancy</span></a>
-  <ul class="nav-links">
-    <li><a href="about.html" class="active">About</a></li>
-    <li><a href="consult.html">Consult</a></li>
-    <li><a href="workplace.html">Workplace</a></li>
-    <li><a href="courses.html">Training</a></li>
+<canvas id="grain"></canvas>
+<button id="mtoggle" onclick="toggleMotion()">Pause motion</button>
+<nav id="nav">
+  <a href="index.html" class="nav-logo">NUANCED CO.</a>
+  <ul class="nav-list">
+    <li><a href="services.html">Services</a></li>
+    <li><a href="about.html">About Leah</a></li>
+    <li><a href="services.html">How I Work</a></li>
     <li><a href="course.html">Courses</a></li>
-    <li><a href="index.html#community">Community</a></li>
+    <li><a href="portal.html">Free Resources</a></li>
     <li><a href="media.html">Media</a></li>
-    <li><a href="book.html" class="nav-cta">Book a call</a></li>
+    <li><a href="book.html" class="ncta">Book a call</a></li>
   </ul>
-  <div class="nav-hamburger" id="hamburger" onclick="openMobileNav()"><span></span><span></span><span></span></div>
 </nav>
 
-<div class="nav-mobile" id="mobileNav">
-  <span class="nav-mobile-close" onclick="closeMobileNav()">✕</span>
-  <a href="about.html" onclick="closeMobileNav()">About</a>
-  <a href="consult.html" onclick="closeMobileNav()">Consult</a>
-  <a href="workplace.html" onclick="closeMobileNav()">Workplace</a>
-  <a href="courses.html" onclick="closeMobileNav()">Training</a>
-  <a href="course.html" onclick="closeMobileNav()">Courses</a>
-  <a href="index.html#community" onclick="closeMobileNav()">Community</a>
-  <a href="media.html" onclick="closeMobileNav()">Media</a>
-  <a href="book.html" onclick="closeMobileNav()">Book a call</a>
-</div>
-
-<!-- HERO -->
-<section id="page-hero">
-  <div class="page-hero-blob phb-1"></div>
-  <div class="page-hero-blob phb-2"></div>
-  <div class="page-hero-inner container">
-    <p class="section-label">About Leah</p>
-    <h1 class="page-hero-headline">
-      I'm a Registered Nurse.<br>
-      An AuDHD person.<br>
-      And someone who <em>gets it.</em>
-    </h1>
-    <p class="page-hero-sub">I'm a Registered Nurse, an AuDHD person, and the founder of Nuanced Co. I built this because I kept seeing people like me get handed the wrong map.</p>
+<section class="founder-section">
+  <div class="founder-img-col">
+    <div class="founder-bg-img"><span>Background lifestyle / textured image</span></div>
+    <div class="founder-portrait"><span>Founder headshot — leah-about-hero.jpg</span></div>
+  </div>
+  <div class="founder-text-col">
+    <p class="founder-tagline">Meet your founder</p>
+    <h2 class="founder-heading">Hey! I'm Leah&hellip;</h2>
+    <div class="founder-rule"></div>
+    <div class="founder-body">
+      <p>I'm a Registered Nurse, AuDHD person, and the founder of Nuanced Co. — an adult neurodivergent consultancy based in Geelong, Australia. I received my own late diagnosis after years of working in clinical environments and still not being able to explain why the systems around me never quite fit.</p>
+      <p>That experience became the foundation of The Unmasked Life™. Not a workaround, not a productivity hack, and definitely not another self-help system built for a neurotypical nervous system. A structural methodology — evidence-based, warm, and designed around how your brain actually works.</p>
+      <p>I built this course because I couldn't find what I needed when I was diagnosed. So I built it for both of us.</p>
+    </div>
+    <a href="enrol.html" class="founder-enrol">Enrol Now</a>
   </div>
 </section>
 
-<!-- STORY -->
-<section id="story">
+<section id="about">
   <div class="container">
-    <div class="story-inner">
-      <div class="story-photo reveal-left">
-        <div class="story-photo-frame">
-          <img src="leah-profile-headshot.jpg" alt="Leah Veenhuizen, founder of Nuanced Co." loading="lazy">
-          <div class="photo-caption"><p>"I spent years watching people get half-answers and full blame for the way their brains work."</p></div>
+    <div class="about-collage">
+      <div class="about-img-col">
+        <div class="about-img-frame">
+          <img src="leah-about-hero.jpg" alt="Leah Veenhuizen, founder of Nuanced Co." loading="lazy">
         </div>
+        <div class="about-pq"><p>"I spent years watching people get half-answers and full blame for the way their brains work."</p></div>
       </div>
-      <div class="reveal-right">
-        <p class="section-label">My story</p>
-        <div class="rule rule-left"></div>
-        <h2 class="section-heading">I spent years watching the system fail people like me.</h2>
-        <p class="section-body">As a Registered Nurse, I sat across from patients who were clearly AuDHD: smart, perceptive, and exhausted. I watched them leave with a pamphlet and a referral and no real understanding of what was actually going on for them.</p>
-        <p class="section-body" style="margin-top:1.2rem;">Then I started connecting those experiences to my own. The hyperfocus. The sensory overwhelm. The way I could memorise an entire ward's worth of patient history but forget to eat lunch. The burnout that snuck up on me and then hit like a freight train.</p>
-        <p class="section-body" style="margin-top:1.2rem;">I am AuDHD. And once I understood that (really understood it, not just as a diagnosis but as an identity) everything shifted.</p>
-        <p class="section-body" style="margin-top:1.2rem;">Nuanced Co. exists because that shift should be available to everyone, not just the people lucky enough to stumble into the right information at the right time.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CREDENTIALS -->
-<section id="credentials">
-  <div class="container">
-    <div class="reveal" style="max-width:600px;">
-      <p class="section-label">Qualifications</p>
-      <div class="rule rule-left"></div>
-      <h2 class="section-heading">The background behind the work.</h2>
-      <p class="section-body" style="color:rgba(246,241,233,0.65);">Clinical training. Counselling knowledge. Lived experience. All three matter, and all three inform every single session.</p>
-    </div>
-    <div class="cred-grid">
-      <div class="cred-card reveal delay-1">
-        <span class="cred-icon">🏥</span>
-        <div class="cred-title">Registered Nurse (AHPRA)</div>
-        <p class="cred-desc">Clinically trained with real-world healthcare experience. I understand how the system works and where it fails neurodivergent people.</p>
-      </div>
-      <div class="cred-card reveal delay-2">
-        <span class="cred-icon">🧠</span>
-        <div class="cred-title">Mental Health First Aid Facilitator</div>
-        <p class="cred-desc">Accredited MHFA facilitator with experience delivering mental health training to organisations including Geelong Arts Centre.</p>
-      </div>
-      <div class="cred-card reveal delay-3">
-        <span class="cred-icon">🎓</span>
-        <div class="cred-title">Master of Counselling (in progress)</div>
-        <p class="cred-desc">Currently completing my Master of Counselling at the University of Canberra, deepening my knowledge of human behaviour, psychology, and therapeutic practice.</p>
-      </div>
-      <div class="cred-card reveal delay-1" style="transition-delay:0.4s">
-        <span class="cred-icon">💜</span>
-        <div class="cred-title">AuDHD lived experience</div>
-        <p class="cred-desc">I am AuDHD. Not "I work with AuDHD people." I live this. That matters more than any qualification on this list.</p>
+      <div class="about-text-col">
+        <span class="section-label">About Leah</span>
+        <div class="rule"></div>
+        <h2 class="sh">Hi, I'm Leah.</h2>
+        <p class="sb" style="margin-top:.5rem">I'm a Registered Nurse, an AuDHD person, and the founder of Nuanced Co.</p>
+        <p class="sb" style="margin-top:1.2rem">I spent years working in healthcare watching people get half-answers and full blame for the way their brains work. I'm doing something different here.</p>
+        <p class="sb" style="margin-top:1.2rem">Nuanced Co. exists because neurodivergent people deserve support that actually understands them. Not support designed for someone else and quietly adapted.</p>
+        <p class="sb" style="margin-top:1.2rem">I'm based in Geelong and work with people across Australia and internationally.</p>
+        <div class="about-creds"><span class="ctag">Registered Nurse (AHPRA)</span><span class="ctag">Mental Health First Aid Facilitator</span><span class="ctag">Master of Counselling (in progress)</span><span class="ctag">AuDHD lived experience</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- VALUES -->
-<section id="values">
-  <div class="container">
-    <div class="reveal" style="text-align:center;">
-      <p class="section-label">What I believe</p>
-      <div class="rule"></div>
-      <h2 class="section-heading">The values behind Nuanced Co.</h2>
-    </div>
-    <div class="values-grid">
-      <div class="value-item reveal delay-1">
-        <div class="value-num">01</div>
-        <div class="value-title">Identity over deficit</div>
-        <p class="value-body">Being neurodivergent is not a problem to be fixed. It is a way of being in the world with real strengths, real challenges, and real support needs that are too often misunderstood.</p>
-      </div>
-      <div class="value-item reveal delay-2">
-        <div class="value-num">02</div>
-        <div class="value-title">Practical over performative</div>
-        <p class="value-body">Awareness is not support. Understanding without action changes nothing. Every interaction with Nuanced Co. is built to give you something you can actually use.</p>
-      </div>
-      <div class="value-item reveal delay-3">
-        <div class="value-num">03</div>
-        <div class="value-title">Access without conditions</div>
-        <p class="value-body">Good information and genuine support should not require a diagnosis, a referral, or a specific level of functioning. You deserve to be met where you are.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- CTA -->
-<section id="about-cta">
-  <div class="container-sm reveal">
-    <p class="section-label">Ready to start?</p>
-    <div class="rule"></div>
-    <h2 class="section-heading">You don't have to explain yourself before we begin.</h2>
-    <p class="section-body">Book a consultation and we'll start from where you actually are, not where someone else thinks you should be.</p>
-    <div style="display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;margin-top:2rem;">
-      <a href="book.html" class="btn-primary">Book a consultation</a>
-      <a href="consult.html" class="btn-outline">See how it works</a>
-    </div>
-  </div>
-</section>
-
-<!-- FOOTER -->
 <footer>
-  <div class="footer-inner">
-    <div>
-      <div class="footer-logo">NUANCED CO.</div>
-      <div class="footer-tagline">Neurodivergent Consultancy · Geelong, Australia</div>
-      <div class="footer-social">
-        <div class="social-icon"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></div>
-        <div class="social-icon"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.77 0 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 12.68 0V8.69a8.18 8.18 0 0 0 4.78 1.52V6.74a4.85 4.85 0 0 1-1.01-.05z"/></svg></div>
-        <div class="social-icon"><svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></div>
-      </div>
-      <div class="footer-email">hello@nuancedco.com.au</div>
+  <div class="ft-inner">
+    <div class="ft-subscribe">
+      <h3>Subscribe</h3>
+      <p>Sign up with your email address to receive news, updates, and free resources on neurodivergence, living unmasked, and building a life that actually fits.</p>
+      <form class="ft-email-form" onsubmit="return false;">
+        <input type="email" class="ft-email-input" placeholder="your.email@example.com" required>
+        <button type="submit" class="ft-email-btn">Sign Up</button>
+      </form>
     </div>
-    <div class="footer-col"><h4>Navigation</h4><ul>
-      <li><a href="about.html">About</a></li><li><a href="consult.html">Consult</a></li>
-      <li><a href="workplace.html">Workplace</a></li><li><a href="courses.html">Training</a></li>
-      <li><a href="index.html#community">Community</a></li><li><a href="media.html">Media</a></li><li><a href="book.html">Contact</a></li>
-    </ul></div>
-    <div class="footer-col"><h4>Free Resources</h4><ul>
-      <li><a href="#">AuDHD Plain-English Guide</a></li><li><a href="#">AuDHD Burnout Checklist</a></li>
-      <li><a href="#">Workplace Accommodation Template</a></li><li><a href="#">Take the Quiz</a></li>
-    </ul></div>
+    <div class="ft-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Speaking</a></li>
+        <li><a href="media.html">Media &amp; Press Kit</a></li>
+        <li><a href="podcast.html">Podcast Inquiries</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="book.html">Book a Consultation</a></li>
+        <li><a href="contact.html">Contact Leah</a></li>
+        <li><a href="mailto:hello@nuancedco.com.au">hello@nuancedco.com.au</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="footer-bottom">
-    <p class="footer-legal">Nuanced Co. is a consultancy service. Content on this site is for general information purposes and does not constitute clinical advice, diagnosis, or treatment. If you need clinical support, please speak with a registered health professional or contact your GP.</p>
-    <div class="footer-abn">ABN: 71 926 185 491<br>&copy; 2026 Nuanced Co. All rights reserved.</div>
+  <div class="ft-bot">
+    <p class="ft-legal">&copy; 2026 Nuanced Co. All rights reserved. ABN 71 926 185 491. Nuanced Co. is a consultancy service. Content is for general information purposes only and does not constitute clinical advice, diagnosis, or treatment.</p>
   </div>
 </footer>
 
 <script>
-const nav = document.getElementById('mainNav');
-window.addEventListener('scroll', () => { nav.classList.toggle('scrolled', window.scrollY > 60); });
-function openMobileNav() { document.getElementById('mobileNav').classList.add('open'); document.body.style.overflow = 'hidden'; }
-function closeMobileNav() { document.getElementById('mobileNav').classList.remove('open'); document.body.style.overflow = ''; }
-const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-const observer = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-revealEls.forEach(el => observer.observe(el));
+  const gc=document.getElementById('grain'),gx=gc.getContext('2d');let gW,gH;
+  function rg(){gW=gc.width=window.innerWidth;gH=gc.height=window.innerHeight;}rg();window.addEventListener('resize',rg);
+  function dg(){const i=gx.createImageData(gW,gH),d=i.data;for(let j=0;j<d.length;j+=4){const v=(Math.random()*255)|0;d[j]=d[j+1]=d[j+2]=v;d[j+3]=255;}gx.putImageData(i,0,0);requestAnimationFrame(dg);}dg();
+  const mt=document.getElementById('mtoggle');let noM=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
+  if(noM){document.body.classList.add('no-motion');mt.textContent='Resume motion';}
+  function toggleMotion(){noM=!noM;document.body.classList.toggle('no-motion',noM);mt.textContent=noM?'Resume motion':'Pause motion';}
 </script>
 </body>
 </html>

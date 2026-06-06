@@ -25,6 +25,33 @@
       --body:'Atkinson Hyperlegible',system-ui,sans-serif;
       --ease:cubic-bezier(0.22,1,0.36,1);
     }
+
+    /* ── NUANCED CO. SOFT DESIGN SYSTEM STANDARDS ──────────── */
+    /* 1. BUTTON SMOOTHING */
+    button, .btn, .btn-gold, .btn-ghost-light, .price-btn, .price-link, .intro-cta, .prefooter-link, .ft-email-btn {
+      border-radius: 24px !important;
+      padding: 12px 28px !important;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1) !important;
+    }
+
+    /* 2. IMAGE & CONTAINER ROUNDING */
+    .hero-image-placeholder, .mock-frame, .sneak-peek-frame, .outcomes-img-a, .outcomes-img-b, .outcomes-img-right,
+    .founder-bg-img, .founder-portrait, .review-avatar, .bonuses-img-placeholder, .course-video-placeholder,
+    .graphic-placeholder, .about-img-frame img, .prefooter-inner {
+      border-radius: 16px !important;
+      overflow: hidden;
+      box-shadow: 0 10px 30px rgba(107, 69, 112, 0.04) !important;
+    }
+
+    /* 3. BREATHING TYPOGRAPHY */
+    h1, h2, h3, h4, h5, h6 {
+      letter-spacing: 0.03em !important;
+      line-height: 1.25 !important;
+    }
+    p, .sb, .description, body {
+      line-height: 1.75 !important;
+      color: #2A2A2A !important;
+    }
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
     html{font-size:18px;scroll-behavior:smooth;}
     body{background:var(--cream);color:var(--ink);font-family:var(--body);line-height:1.7;overflow-x:hidden;}
@@ -41,7 +68,7 @@
     #mtoggle:focus-visible{outline:2px solid var(--purple);outline-offset:3px;}
 
     /* NAV */
-    #nav{position:fixed;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3.5rem;background:#2A1F1A;transition:background .4s,padding .4s;}
+    #nav{position:sticky;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:1.4rem 3.5rem;background:#2A1F1A;transition:background .4s,padding .4s;}
     #nav.scrolled{background:#2A1F1A;padding:1rem 3.5rem;box-shadow:0 2px 24px rgba(42,31,26,.18);}
     .nav-logo{font-family:var(--serif);font-size:1rem;font-weight:400;letter-spacing:.25em;color:#F6F1E9;text-transform:uppercase;line-height:1;display:flex;flex-direction:column;gap:3px;}
     .nav-logo em{font-style:normal;font-family:var(--body);font-size:.48rem;letter-spacing:.3em;color:var(--gold);opacity:.8;}
@@ -754,22 +781,61 @@
     .cta-btns{display:flex;gap:1.2rem;justify-content:center;flex-wrap:wrap;}
 
     /* FOOTER */
-    footer{background:#070504;padding:4.5rem 0 2rem;}
-    .ft-inner{max-width:1100px;margin:0 auto;padding:0 3.5rem 3.5rem;display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:4rem;border-bottom:1px solid rgba(246,241,233,.07);}
-    .ft-logo{font-family:var(--serif);font-size:1.1rem;letter-spacing:.22em;color:var(--cream);text-transform:uppercase;font-weight:400;margin-bottom:.3rem;}
-    .ft-tag{font-family:var(--body);font-size:.55rem;letter-spacing:.22em;color:var(--gold);text-transform:uppercase;opacity:.75;margin-bottom:1.8rem;}
-    .ft-social{display:flex;gap:.8rem;margin-bottom:1.2rem;}
-    .si{width:36px;height:36px;border:1px solid rgba(246,241,233,.12);border-radius:2px;display:flex;align-items:center;justify-content:center;transition:border-color .25s;}
-    .si:hover{border-color:var(--gold);}
-    .si svg{width:15px;height:15px;fill:rgba(246,241,233,.55);}
-    .ft-email{font-size:.8rem;color:rgba(246,241,233,.45);}
-    .ft-col h4{font-family:var(--body);font-size:.56rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:1.2rem;}
-    .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.6rem;}
-    .ft-col ul a{font-size:.8rem;color:rgba(246,241,233,.42);transition:color .2s;}
-    .ft-col ul a:hover{color:var(--cream);}
-    .ft-bot{max-width:1100px;margin:0 auto;padding:1.8rem 3.5rem 0;display:flex;justify-content:space-between;align-items:start;flex-wrap:wrap;gap:1rem;}
-    .ft-legal{font-size:.68rem;color:rgba(246,241,233,.3);line-height:1.65;max-width:540px;}
-    .ft-abn{font-size:.68rem;color:rgba(246,241,233,.3);text-align:right;}
+/* ── FAQ ─────────────────────────────────────────────────── */
+.faq-section{background:#FBF9F6;padding:7rem 4.5rem;box-sizing:border-box;}
+.faq-header{text-align:center;margin-bottom:4rem;}
+.faq-heading{font-family:var(--serif);font-size:clamp(2rem,3.5vw,3.2rem);font-weight:300;line-height:1.15;color:var(--ink);margin:0;max-width:700px;margin-left:auto;margin-right:auto;}
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 4rem;max-width:1100px;margin:0 auto;}
+.faq-column{display:flex;flex-direction:column;gap:0;}
+.faq-accordion-item{border-top:1px solid #EAE6DF;}
+.faq-accordion-item:last-child{border-bottom:1px solid #EAE6DF;}
+.faq-accordion-trigger{width:100%;display:flex;align-items:center;justify-content:space-between;padding:1.6rem 0;background:none;border:none;cursor:pointer;text-align:left;transition:background .2s;}
+.faq-accordion-trigger:hover{background:rgba(107,69,112,.02);}
+.faq-accordion-q{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--ink);flex:1;line-height:1.3;}
+.faq-accordion-plus{font-family:var(--body);font-size:1.2rem;font-weight:200;color:var(--purple);flex-shrink:0;margin-left:1.2rem;line-height:1;transition:transform .3s;}
+.faq-accordion-trigger[aria-expanded="true"] .faq-accordion-plus{transform:rotate(45deg);}
+.faq-accordion-body{max-height:0;overflow:hidden;transition:max-height .35s cubic-bezier(.25,1,.5,1);}
+.faq-accordion-body.open{max-height:500px;}
+.faq-accordion-body p{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.84rem;font-weight:300;line-height:1.82;color:rgba(42,31,26,.62);margin:0 0 1rem 0;padding-bottom:.8rem;}
+@media(max-width:860px){
+  .faq-section{padding:5rem 2rem;}
+  .faq-grid{grid-template-columns:1fr;gap:0;}
+}
+    /* ── PRE-FOOTER CTA CARD ────────────────────────────── */
+    .prefooter-section{background:#F6F1E9;padding:8rem 2rem;text-align:center;position:relative;overflow:hidden;}
+    .prefooter-bg{position:absolute;inset:0;background:linear-gradient(155deg,#EAE6DF 0%,#D6CFC4 100%);z-index:0;opacity:.5;}
+    .prefooter-inner{position:relative;z-index:1;max-width:800px;margin:0 auto;background:#FBF9F6;padding:5rem 4.5rem;border-radius:0;}
+    .prefooter-heading{font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.4rem);font-weight:300;line-height:1.1;color:var(--ink);margin:0 0 1.8rem;letter-spacing:.02em;}
+    .prefooter-text{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.94rem;font-weight:300;line-height:1.82;color:rgba(42,31,26,.68);margin:0 0 2.4rem;}
+    .prefooter-link{font-family:var(--body);font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);text-decoration:none;border-bottom:1px solid var(--ink);padding-bottom:2px;display:inline-block;transition:color .2s,border-color .2s;}
+    .prefooter-link:hover{color:var(--purple);border-color:var(--purple);}
+    @media(max-width:900px){
+      .prefooter-section{padding:5rem 1.5rem;}
+      .prefooter-inner{padding:3.5rem 2.5rem;}
+    }
+
+    /* ── FOOTER ─────────────────────────────────────────── */
+    footer{background:#1A1A1A;padding:6rem 0 3rem;color:#F6F1E9;}
+    .ft-inner{max-width:1200px;margin:0 auto;padding:0 3.5rem;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:5rem;}
+    .ft-subscribe h3{font-family:var(--serif);font-size:1.25rem;font-weight:400;color:#F6F1E9;margin:0 0 1.2rem;letter-spacing:.04em;}
+    .ft-subscribe p{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.85rem;color:rgba(246,241,233,.75);margin:0 0 1.8rem;line-height:1.7;}
+    .ft-email-form{display:flex;flex-direction:column;gap:.8rem;}
+    .ft-email-input{background:#2A2A2A;border:1px solid rgba(246,241,233,.2);border-radius:2px;padding:.9rem 1.2rem;font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.85rem;color:#F6F1E9;width:100%;box-sizing:border-box;transition:border-color .2s;}
+    .ft-email-input::placeholder{color:rgba(246,241,233,.4);}
+    .ft-email-input:focus{outline:none;border-color:var(--purple);}
+    .ft-email-btn{background:var(--purple);color:#F6F1E9;border:none;padding:.85rem 1.8rem;font-family:var(--body);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s;}
+    .ft-email-btn:hover{background:#5a3a5f;}
+    .ft-col h4{font-family:var(--serif);font-size:1rem;font-weight:400;color:#F6F1E9;margin:0 0 1.6rem;letter-spacing:.04em;}
+    .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:1rem;margin:0;padding:0;}
+    .ft-col ul li{margin:0;padding:0;}
+    .ft-col ul a{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.85rem;color:rgba(246,241,233,.7);text-decoration:none;transition:color .2s;}
+    .ft-col ul a:hover{color:#F6F1E9;}
+    .ft-bot{max-width:1200px;margin:2rem auto 0;padding:2rem 3.5rem 0;border-top:1px solid rgba(246,241,233,.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;}
+    .ft-legal{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.75rem;color:rgba(246,241,233,.45);margin:0;line-height:1.6;}
+    @media(max-width:900px){
+      .ft-inner{grid-template-columns:1fr;gap:3rem;}
+      .ft-bot{flex-direction:column;align-items:flex-start;}
+    }
 
     /* MOBILE NAV */
     .mob-nav{display:none;position:fixed;inset:0;background:var(--ink-deep);z-index:850;flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
@@ -807,22 +873,26 @@
 <nav id="nav">
   <a href="#hero" class="nav-logo magnetic">NUANCED CO.<em>Neurodivergent Consultancy</em></a>
   <ul class="nav-list">
-    <li class="nav-dd"><a href="#services" class="magnetic">Services &#9662;</a>
+    <li class="nav-dd"><a href="services.html" class="magnetic">Services &#9662;</a>
       <div class="nav-dd-menu">
         <a href="consult.html">1:1 Consultancy</a><a href="workplace.html">Workplace</a>
         <a href="courses.html">Training &amp; Courses</a><a href="#community">Community</a>
       </div>
     </li>
-    <li><a href="#who" class="magnetic">Who I Work With</a></li>
-    <li><a href="#how" class="magnetic">How I Work</a></li>
-    <li class="nav-dd"><a href="#" class="magnetic">Courses &#9662;</a>
+    <li><a href="about.html" class="magnetic">About Leah</a></li>
+    <li class="nav-dd"><a href="services.html" class="magnetic">How I Work &#9662;</a>
+      <div class="nav-dd-menu">
+        <a href="services.html">All Services</a>
+        <a href="consult.html">1:1 Consultancy</a>
+      </div>
+    </li>
+    <li class="nav-dd"><a href="course.html" class="magnetic">Courses &#9662;</a>
       <div class="nav-dd-menu">
         <a href="courses.html">View All Courses</a>
         <a href="course.html">Unmasking &amp; Identity Course</a>
       </div>
     </li>
-    <li><a href="#resources" class="magnetic">Free Resources</a></li>
-    <li><a href="#about" class="magnetic">About</a></li>
+    <li><a href="portal.html" class="magnetic">Free Resources</a></li>
     <li><a href="media.html" class="magnetic">Media</a></li>
     <li><a href="book.html" class="ncta magnetic btn">Book a call</a></li>
   </ul>
@@ -1059,33 +1129,6 @@
 </section>
 </div>
 
-<!-- FOUNDER BIOGRAPHY -->
-<section class="founder-section">
-
-  <!-- LEFT: layered imagery frame -->
-  <div class="founder-img-col">
-    <div class="founder-bg-img">
-      <span>Background lifestyle / textured image</span>
-    </div>
-    <div class="founder-portrait">
-      <span>Founder headshot — leah-about-hero.jpg</span>
-    </div>
-  </div>
-
-  <!-- RIGHT: storytelling typography -->
-  <div class="founder-text-col">
-    <p class="founder-tagline">Meet your founder</p>
-    <h2 class="founder-heading">Hey! I'm Leah&hellip;</h2>
-    <div class="founder-rule"></div>
-    <div class="founder-body">
-      <p>I'm a Registered Nurse, AuDHD person, and the founder of Nuanced Co. — an adult neurodivergent consultancy based in Geelong, Australia. I received my own late diagnosis after years of working in clinical environments and still not being able to explain why the systems around me never quite fit.</p>
-      <p>That experience became the foundation of The Unmasked Life&#8482;. Not a workaround, not a productivity hack, and definitely not another self-help system built for a neurotypical nervous system. A structural methodology — evidence-based, warm, and designed around how your brain actually works.</p>
-      <p>I built this course because I couldn't find what I needed when I was diagnosed. So I built it for both of us.</p>
-    </div>
-    <a href="enrol.html" class="founder-enrol">Enrol Now</a>
-  </div>
-
-</section>
 
 <!-- TESTIMONIALS & REVIEWS -->
 <section class="reviews-cta">
@@ -1244,7 +1287,6 @@
 <!-- PRICING GRID -->
 <section class="pricing-section">
   <div class="pricing-header">
-    <p class="pricing-tagline">Course Pricing</p>
     <h2 class="pricing-heading">Let's talk money, honey</h2>
     <div class="pricing-rule"></div>
   </div>
@@ -1498,69 +1540,6 @@
   </div>
 </section>
 
-<div class="rough-div" style="background:var(--cream)"><svg viewBox="0 0 1440 52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,28 C90,44 170,12 260,30 C350,48 420,14 510,32 C600,50 670,16 760,34 C850,52 920,18 1010,36 C1100,54 1175,20 1270,38 C1355,52 1410,26 1440,30 L1440,0 L0,0 Z" fill="var(--parchment)"/></svg></div>
-
-<section id="services">
-  <div class="container">
-    <div class="services-header rv"><span class="section-label">How we work together</span><div class="rule"></div><h2 class="sh">Support that actually<br>understands you.</h2></div>
-    <div class="services-map-grid rv d1">
-      <div class="service-pair">
-        <div class="service-pain">
-          <span class="section-label">Pain point</span>
-          <h3 class="service-card-title">Being told to 'try harder'</h3>
-          <p class="service-card-text">You already know your brain works differently, but the advice you keep receiving is generic, unhelpful, and exhausting.</p>
-        </div>
-        <div class="service-solution">
-          <span class="section-label">Solution</span>
-          <h3 class="service-card-title">Brain-based consultancy</h3>
-          <p class="service-card-text">We work with your real wiring, not a template. That means strategies built around your attention, energy, and sensory rhythm.</p>
-          <p class="citation-note">Source: neurodivergent-informed consulting design.</p>
-        </div>
-      </div>
-      <div class="service-pair">
-        <div class="service-pain">
-          <span class="section-label">Pain point</span>
-          <h3 class="service-card-title">Feeling unheard in healthcare</h3>
-          <p class="service-card-text">Services often minimise your experience or reduce it to a checklist, leaving you with more questions than answers.</p>
-        </div>
-        <div class="service-solution">
-          <span class="section-label">Solution</span>
-          <h3 class="service-card-title">Lived-experience grounded support</h3>
-          <p class="service-card-text">As an AuDHD founder and registered nurse, Leah blends professional understanding with real neurodivergent insight.</p>
-          <p class="citation-note">Source: practitioner-led lived experience consultancy.</p>
-        </div>
-      </div>
-      <div class="service-pair">
-        <div class="service-pain">
-          <span class="section-label">Pain point</span>
-          <h3 class="service-card-title">Training that feels irrelevant</h3>
-          <p class="service-card-text">Most development programs are built for neurotypical brains, so they land flat for people who process information differently.</p>
-        </div>
-        <div class="service-solution">
-          <span class="section-label">Solution</span>
-          <h3 class="service-card-title">Tailored learning pathways</h3>
-          <p class="service-card-text">Courses, resources and sessions are structured to make sense for neurodivergent learners, with clear practical steps and sensory-aware pacing.</p>
-          <p class="citation-note">Source: accessible, high-engagement learning design.</p>
-        </div>
-      </div>
-      <div class="service-pair">
-        <div class="service-pain">
-          <span class="section-label">Pain point</span>
-          <h3 class="service-card-title">Workplace safety is only surface-level</h3>
-          <p class="service-card-text">Organisations often talk about inclusion without changing the systems that create stress and burnout for neurodivergent staff.</p>
-        </div>
-        <div class="service-solution">
-          <span class="section-label">Solution</span>
-          <h3 class="service-card-title">Systems-level workplace consulting</h3>
-          <p class="service-card-text">We help teams build practical frameworks for psychological safety, communication, and sustainable workload design.</p>
-          <p class="citation-note">Source: psychosocial safety and workplace support practice.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="rough-div" style="background:var(--parchment)"><svg viewBox="0 0 1440 52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,26 C80,12 155,44 240,28 C325,12 395,42 480,30 C565,16 620,46 710,32 C800,16 870,44 960,30 C1050,14 1120,44 1210,28 C1300,12 1375,40 1440,26 L1440,52 L0,52 Z" fill="var(--ink-deep)"/></svg></div>
 
 <section id="resources">
   <div class="container">
@@ -1583,34 +1562,6 @@
   </div>
 </section>
 
-<div class="rough-div" style="background:var(--ink-deep)"><svg viewBox="0 0 1440 52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,28 C90,44 170,12 260,30 C350,48 420,14 510,32 C600,50 670,16 760,34 C850,52 920,18 1010,36 C1100,54 1175,20 1270,38 C1355,52 1410,26 1440,30 L1440,0 L0,0 Z" fill="var(--cream)"/></svg></div>
-
-<section id="about">
-  <div class="container">
-    <div class="about-collage">
-      <div class="about-img-col rvl">
-        <div class="about-img-frame">
-          <img src="leah-about-hero.jpg" alt="Leah Veenhuizen, founder of Nuanced Co., smiling in orange glasses" loading="lazy">
-          <svg class="about-brush" viewBox="0 0 110 80" fill="none" aria-hidden="true"><path d="M8,60 C25,35 55,15 90,10 C105,7 110,20 105,35 C98,55 70,70 45,68 C22,66 5,72 8,60" stroke="#C4963E" stroke-width="2" fill="none" opacity=".7"/><path d="M18,62 C35,40 62,22 94,16" stroke="#6B4570" stroke-width="1" fill="none" opacity=".45"/></svg>
-        </div>
-        <div class="about-pq"><p>"I spent years watching people get half-answers and full blame for the way their brains work."</p></div>
-      </div>
-      <div class="about-text-col rvr">
-        <span class="section-label">About Leah</span>
-        <div class="rule"></div>
-        <h2 class="sh">Hi, I'm Leah.</h2>
-        <p class="sb" style="margin-top:.5rem">I'm a Registered Nurse, an AuDHD person, and the founder of Nuanced Co.</p>
-        <p class="sb" style="margin-top:1.2rem">I spent years working in healthcare watching people get half-answers and full blame for the way their brains work. I'm doing something different here.</p>
-        <p class="sb" style="margin-top:1.2rem">Nuanced Co. exists because neurodivergent people deserve support that actually understands them. Not support designed for someone else and quietly adapted.</p>
-        <p class="sb" style="margin-top:1.2rem">I'm based in Geelong and work with people across Australia and internationally.</p>
-        <div class="about-creds"><span class="ctag">Registered Nurse (AHPRA)</span><span class="ctag">Mental Health First Aid Facilitator</span><span class="ctag">Master of Counselling (in progress)</span><span class="ctag">AuDHD lived experience</span></div>
-        <a href="about.html" class="about-link magnetic">More about me and why I started this <svg width="13" height="13" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="rough-div" style="background:var(--cream)"><svg viewBox="0 0 1440 52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,28 C90,44 170,12 260,30 C350,48 420,14 510,32 C600,50 670,16 760,34 C850,52 920,18 1010,36 C1100,54 1175,20 1270,38 C1355,52 1410,26 1440,30 L1440,0 L0,0 Z" fill="var(--parchment)"/></svg></div>
 
 <section id="community">
   <div class="container">
@@ -1647,24 +1598,158 @@
   </div>
 </section>
 
+<!-- FAQ SECTION: TWO-COLUMN ACCORDION GRID -->
+<section class="faq-section">
+  <div class="faq-header">
+    <h2 class="faq-heading">Still have some questions? I've got you covered</h2>
+  </div>
+  <div class="faq-grid">
+
+    <!-- LEFT COLUMN: Questions 1-4 -->
+    <div class="faq-column">
+
+      <div class="faq-accordion-item">
+        <button class="faq-accordion-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="faq-accordion-q">Who is this course designed for?</span>
+          <span class="faq-accordion-plus">+</span>
+        </button>
+        <div class="faq-accordion-body">
+          <p>The Unmasked Life&#8482; is built specifically for adults who received a neurodivergent diagnosis later in life — whether that's ADHD, autism, or AuDHD. If you are still working out what your diagnosis means for your past and your future, this course was designed for you.</p>
+        </div>
+      </div>
+
+      <div class="faq-accordion-item">
+        <button class="faq-accordion-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="faq-accordion-q">Do I need a formal diagnosis to enrol?</span>
+          <span class="faq-accordion-plus">+</span>
+        </button>
+        <div class="faq-accordion-body">
+          <p>No. The course content is psychoeducational, not clinical. Many participants are in the process of assessment or have a self-identified neurodivergent experience. You are welcome here regardless of where you are in that process.</p>
+        </div>
+      </div>
+
+      <div class="faq-accordion-item">
+        <button class="faq-accordion-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="faq-accordion-q">How long do I have access to the course?</span>
+          <span class="faq-accordion-plus">+</span>
+        </button>
+        <div class="faq-accordion-body">
+          <p>Lifetime access. There are no expiry dates. You can work through the material at whatever pace suits your nervous system and return to any session at any time as your understanding deepens.</p>
+        </div>
+      </div>
+
+      <div class="faq-accordion-item">
+        <button class="faq-accordion-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="faq-accordion-q">Is this therapy or clinical treatment?</span>
+          <span class="faq-accordion-plus">+</span>
+        </button>
+        <div class="faq-accordion-body">
+          <p>No. This is a psychoeducational course, not a therapeutic or clinical service. If you are experiencing significant distress, working with a registered mental health professional alongside this course is strongly recommended.</p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN: Questions 5-8 -->
+    <div class="faq-column">
+
+      <div class="faq-accordion-item">
+        <button class="faq-accordion-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="faq-accordion-q">What is included in the full investment?</span>
+          <span class="faq-accordion-plus">+</span>
+        </button>
+        <div class="faq-accordion-body">
+          <p>All four weeks of course content, the 30-day fillable digital journal PDF, the premium cloth-linen printed journal edition (full investment only), community space access, and lifetime portal access.</p>
+        </div>
+      </div>
+
+      <div class="faq-accordion-item">
+        <button class="faq-accordion-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="faq-accordion-q">Can I pay in instalments?</span>
+          <span class="faq-accordion-plus">+</span>
+        </button>
+        <div class="faq-accordion-body">
+          <p>Yes. Both 6-month and 12-month payment plans are available at the same full access from Day 1. See the pricing section above for current rates.</p>
+        </div>
+      </div>
+
+      <div class="faq-accordion-item">
+        <button class="faq-accordion-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="faq-accordion-q">What if I need additional support beyond the course?</span>
+          <span class="faq-accordion-plus">+</span>
+        </button>
+        <div class="faq-accordion-body">
+          <p>The course stands alone as a comprehensive self-paced program. If you'd like 1:1 consultancy alongside or after the course, I offer that as a separate service. You can book a consultation to discuss your specific needs.</p>
+        </div>
+      </div>
+
+      <div class="faq-accordion-item">
+        <button class="faq-accordion-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
+          <span class="faq-accordion-q">Do you offer refunds?</span>
+          <span class="faq-accordion-plus">+</span>
+        </button>
+        <div class="faq-accordion-body">
+          <p>We offer a 14-day money-back guarantee from the date of purchase. After that period, refunds are not available as lifetime access means ongoing value. Contact hello@nuancedco.com.au with questions about your specific situation.</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- PRE-FOOTER CTA CARD -->
+<section class="prefooter-section">
+  <div class="prefooter-bg" aria-hidden="true"></div>
+  <div class="prefooter-inner">
+    <h2 class="prefooter-heading">Ready to do the dang thing?</h2>
+    <p class="prefooter-text">Stop managing a mismatch and start building a life calibrated to your actual neurology. The Unmasked Life™ Program is four weeks of evidence-based frameworks, practical tools, and peer-reviewed science — all designed for how your brain actually works.</p>
+    <a href="enrol.html" class="prefooter-link">Enrol Now</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
 <footer>
   <div class="ft-inner">
-    <div>
-      <div class="ft-logo">NUANCED CO.</div>
-      <div class="ft-tag">Neurodivergent Consultancy &middot; Geelong, Australia</div>
-      <div class="ft-social">
-        <a href="https://www.instagram.com/leah_breaks_the_cycle" class="si" aria-label="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M12 7a5 5 0 1 0 0 10A5 5 0 0 0 12 7zm0 8a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/><circle cx="17.5" cy="6.5" r="1.5"/></svg></a>
-        <a href="https://www.tiktok.com/@leah_breaks_the_cycle" class="si" aria-label="TikTok" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.18 8.18 0 0 0 4.78 1.52V6.74a4.85 4.85 0 0 1-1.01-.05z"/></svg></a>
-        <a href="https://www.facebook.com/LeahBreaksTheCycle" class="si" aria-label="Facebook" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
-      </div>
-      <div class="ft-email">hello@nuancedco.com.au</div>
+
+    <!-- LEFT: SUBSCRIBE MODULE -->
+    <div class="ft-subscribe">
+      <h3>Subscribe</h3>
+      <p>Sign up with your email address to receive news, updates, and free resources on neurodivergence, living unmasked, and building a life that actually fits.</p>
+      <form class="ft-email-form" onsubmit="return false;">
+        <input type="email" class="ft-email-input" placeholder="your.email@example.com" required>
+        <button type="submit" class="ft-email-btn">Sign Up</button>
+      </form>
     </div>
-    <div class="ft-col"><h4>Services</h4><ul><li><a href="consult.html">1:1 Consultancy</a></li><li><a href="workplace.html">Workplace Consulting</a></li><li><a href="courses.html">Courses</a></li><li><a href="#community">Community</a></li><li><a href="media.html">Media &amp; Speaking</a></li></ul></div>
-    <div class="ft-col"><h4>Free Resources</h4><ul><li><a href="ADHD-Burnout-Guide-NuancedCo.pdf" target="_blank">ADHD Burnout Guide</a></li><li><a href="AuDHD-Executive-Dysfunction-Guide-NuancedCo.pdf" target="_blank">Executive Dysfunction Guide</a></li><li><a href="ADHD-Diagnosis-Australia-Guide-NuancedCo.pdf" target="_blank">Diagnosis Guide: Australia</a></li><li><a href="quiz.html">Take the Quiz</a></li><li><a href="privacy.html">Privacy Policy</a></li></ul></div>
+
+    <!-- MIDDLE: NAVIGATE LINKS -->
+    <div class="ft-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="#hero">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#services">Speaking</a></li>
+        <li><a href="media.html">Media &amp; Press Kit</a></li>
+        <li><a href="podcast.html">Podcast Inquiries</a></li>
+      </ul>
+    </div>
+
+    <!-- RIGHT: CONTACT LINKS -->
+    <div class="ft-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="book.html">Book a Consultation</a></li>
+        <li><a href="contact.html">Contact Leah</a></li>
+        <li><a href="mailto:hello@nuancedco.com.au">hello@nuancedco.com.au</a></li>
+        <li><a href="privacy.html">Privacy Policy</a></li>
+      </ul>
+    </div>
+
   </div>
+
+  <!-- FOOTER BOTTOM -->
   <div class="ft-bot">
-    <p class="ft-legal">Nuanced Co. is a consultancy service. Content on this site is for general information purposes only and does not constitute clinical advice, diagnosis, or treatment. If you need clinical support, please speak with a registered health professional or contact your GP. &copy; 2026 Nuanced Co. ABN 71 926 185 491. All rights reserved. Content on this website is protected by copyright. Reproduction without written permission is prohibited.</p>
-    <div class="ft-abn">ABN: 71 926 185 491 &middot; &copy; 2026 Nuanced Co. All rights reserved.</div>
+    <p class="ft-legal">&copy; 2026 Nuanced Co. All rights reserved. ABN 71 926 185 491. Nuanced Co. is a consultancy service. Content is for general information purposes only and does not constitute clinical advice, diagnosis, or treatment.</p>
   </div>
 </footer>
 
@@ -1699,7 +1784,12 @@
   const ro=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('in');});},{threshold:.06,rootMargin:'0px 0px 80px 0px'});
   re.forEach(el=>ro.observe(el));
   window.addEventListener('load',()=>{re.forEach(el=>{if(el.getBoundingClientRect().top<window.innerHeight)el.classList.add('in');});});
+
+  // OUTCOMES ACCORDION
   function toggleOA(btn){var open=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',!open);btn.nextElementSibling.classList.toggle('open',!open);}
+
+  // FAQ ACCORDION
+  function toggleFAQ(btn){var open=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',!open);btn.nextElementSibling.classList.toggle('open',!open);}
 </script>
 </body>
 </html>
