@@ -878,9 +878,20 @@
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;}.rv,.rvl,.rvr{opacity:1;transform:none;}}
     body.no-motion *,body.no-motion *::before,body.no-motion *::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}
     body.no-motion .rv,body.no-motion .rvl,body.no-motion .rvr{opacity:1;transform:none;}
+
+    /* CINEMATIC CURTAIN FADE */
+    body{overflow-x:hidden;}
+    .nc-curtain-wrapper{position:fixed;top:0;left:0;width:100vw;height:100vh;background-color:var(--cream);display:flex;justify-content:center;align-items:center;z-index:99999;backface-visibility:hidden;will-change:opacity,visibility;animation:fadeOutCurtain 1.2s cubic-bezier(0.25,1,0.5,1) 2.5s forwards;}
+    .nc-curtain-logo{width:100%;max-width:580px;height:auto;padding:20px;box-sizing:border-box;}
+    @keyframes fadeOutCurtain{0%{opacity:1;visibility:visible;pointer-events:auto;}99%{opacity:0;visibility:visible;}100%{opacity:0;visibility:hidden;pointer-events:none;}}
   </style>
 </head>
 <body>
+
+<!-- CINEMATIC CURTAIN OVERLAY -->
+<div class="nc-curtain-wrapper">
+  <img src="logo.svg" alt="Nuanced Co. Logo" class="nc-curtain-logo">
+</div>
 
 <div style="text-align:center;padding:1rem;background:#6B4570;color:#FBF9F6;font-family:var(--body);font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;">CONNECTION TEST SUCCESSFUL</div>
 
