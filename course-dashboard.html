@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="nc-course.css">
   <style>
     :root {
       --cream:#F6F1E9;--cream-d:#EDE6D8;--parchment:#EAE0CE;
@@ -200,27 +201,22 @@
 <nav id="nav">
   <a href="index.html" class="nav-logo">NUANCED CO.<em>Neurodivergent Consultancy</em></a>
   <ul class="nav-list">
-    <li class="nav-dd"><a href="index.html#services">Services &#9662;</a>
+    <li><a href="course-dashboard.html" style="color:var(--lilac);">Dashboard</a></li>
+    <li class="nav-dd"><a href="week-1.html">Weeks &#9662;</a>
       <div class="nav-dd-menu">
-        <a href="index.html#services">1:1 Consultancy</a>
-        <a href="index.html#services">Workplace</a>
-        <a href="index.html#program">Training &amp; Courses</a>
-        <a href="index.html#community">Community</a>
+        <a href="week-1.html">Week 1 &mdash; Understanding Your Brain's Blueprint</a>
+        <a href="week-2.html">Week 2 &mdash; Unmasking the Patterns</a>
+        <a href="week-3.html">Week 3 &mdash; Rebuilding Around Your Neurology</a>
+        <a href="week-4.html">Week 4 &mdash; The Unmasked Life in Practice</a>
       </div>
     </li>
-    <li><a href="index.html#about">About Leah</a></li>
-    <li class="nav-dd"><a href="#">How I Work &#9662;</a>
+    <li class="nav-dd"><a href="downloads.html">Resources &#9662;</a>
       <div class="nav-dd-menu">
-        <a href="how-i-work.html">How I work</a>
-        <a href="who-i-work-with.html">Who I work with</a>
+        <a href="downloads.html">Downloads &amp; Vault</a>
+        <a href="glossary.html">Glossary</a>
       </div>
     </li>
-    <li class="nav-dd"><a href="index.html#resources">Free Resources &#9662;</a>
-      <div class="nav-dd-menu">
-        <a href="workbooks.html">PDF Downloads</a>
-      </div>
-    </li>
-    <li><a href="index.html#resources">Media</a></li>
+    <li><a href="support.html" class="nav-support">Need support now</a></li>
     <li><a href="index.html#contact" class="ncta">Book a call</a></li>
   </ul>
   <button class="hamburger" aria-label="Open menu"><span></span><span></span><span></span></button>
@@ -245,37 +241,35 @@
     <p class="card-label"><i class="fa-solid fa-chart-bar"></i> Sprint Progress Tracker <span style="margin-left:auto;background:var(--purple-dim);border:1px solid var(--purple-border);padding:.2rem .7rem;border-radius:20px;font-size:.5rem;letter-spacing:.14em;">40% COMPLETE</span></p>
     <div class="sprint-grid">
 
-      <div class="sprint-card done">
+      <a href="week-1.html" class="sprint-card done">
         <span class="sprint-badge done">Done</span>
         <p class="sprint-week">Week 1</p>
         <p class="sprint-name">Understanding Your Brain's Blueprint</p>
         <div class="progress-track"><div class="progress-fill done" style="width:100%"></div></div>
         <p class="pct-label">Complete</p>
-      </div>
+      </a>
 
-      <div class="sprint-card active">
+      <a href="week-2.html" class="sprint-card active">
         <span class="sprint-badge active">Current</span>
         <p class="sprint-week">Week 2</p>
         <p class="sprint-name">Unmasking the Patterns</p>
-        <div class="progress-track"><div class="progress-fill" style="width:40%"></div></div>
-        <p class="pct-label">40% through</p>
-      </div>
+        <div class="progress-track"><div class="progress-fill" id="w2fill" style="width:40%"></div></div>
+        <p class="pct-label" id="w2pct">40% through</p>
+      </a>
 
-      <div class="sprint-card locked">
-        <i class="fa-solid fa-lock lock-icon"></i>
+      <a href="week-3.html" class="sprint-card">
         <p class="sprint-week">Week 3</p>
         <p class="sprint-name">Rebuilding Around Your Neurology</p>
-        <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
-        <p class="pct-label">Locked</p>
-      </div>
+        <div class="progress-track"><div class="progress-fill" id="w3fill" style="width:0%"></div></div>
+        <p class="pct-label" id="w3pct">Not started</p>
+      </a>
 
-      <div class="sprint-card locked">
-        <i class="fa-solid fa-lock lock-icon"></i>
+      <a href="week-4.html" class="sprint-card">
         <p class="sprint-week">Week 4</p>
         <p class="sprint-name">The Unmasked Life in Practice</p>
-        <div class="progress-track"><div class="progress-fill" style="width:0%"></div></div>
-        <p class="pct-label">Locked</p>
-      </div>
+        <div class="progress-track"><div class="progress-fill" id="w4fill" style="width:0%"></div></div>
+        <p class="pct-label" id="w4pct">Not started</p>
+      </a>
 
     </div>
   </div>
@@ -388,7 +382,7 @@
       </div>
 
       <!-- BRAIN FRIED -->
-      <a href="#" class="brain-card">
+      <a href="support.html" class="brain-card">
         <div class="brain-icon"><i class="fa-solid fa-triangle-exclamation"></i></div>
         <div class="brain-copy">
           <h4>Hit a wall / Brain fried?</h4>
@@ -443,36 +437,99 @@
     document.getElementById('sp').style.width=(s.scrollTop/(s.scrollHeight-s.clientHeight)*100)+'%';
   });
 
-  // Milestone toggle
+  // --- localStorage helpers ---
+  const LS = {
+    get:(k,fb)=>{ try{ const v=localStorage.getItem(k); return v!==null?JSON.parse(v):fb; }catch(e){return fb;} },
+    set:(k,v)=>{ try{ localStorage.setItem(k,JSON.stringify(v)); }catch(e){} }
+  };
+
+  // Load and persist milestone states
+  function initMilestones(){
+    const saved = LS.get('nc_dashboard_milestones', {});
+    document.querySelectorAll('.milestone-item[data-mid]').forEach(el=>{
+      const id = el.dataset.mid;
+      if(saved[id]){
+        el.classList.add('complete');
+        el.querySelector('.milestone-cb').classList.add('checked');
+      }
+    });
+  }
+
   function toggleMilestone(el){
-    if(el.classList.contains('locked')) return;
     const cb = el.querySelector('.milestone-cb');
     const isChecked = cb.classList.contains('checked');
     cb.classList.toggle('checked', !isChecked);
     el.classList.toggle('complete', !isChecked);
+    // Save state
+    const saved = LS.get('nc_dashboard_milestones', {});
+    const id = el.dataset.mid;
+    if(id){ saved[id] = !isChecked; LS.set('nc_dashboard_milestones', saved); }
   }
 
-  // Focus mode — collapses sidebar
-  function toggleFocus(input){
-    const sidebar = document.querySelector('.sidebar');
-    if(input.checked){
-      sidebar.style.opacity = '0';
-      sidebar.style.pointerEvents = 'none';
-      sidebar.style.transition = 'opacity .3s';
-    } else {
-      sidebar.style.opacity = '1';
-      sidebar.style.pointerEvents = '';
+  // Display preferences
+  function initDisplayPrefs(){
+    if(LS.get('nc_focus_mode', false)){
+      document.querySelector('[onchange*="toggleFocus"]').checked = true;
+      applyFocus(true);
+    }
+    if(LS.get('nc_reduce_motion', false)){
+      document.querySelector('[onchange*="toggleMotion"]').checked = true;
+      applyMotion(true);
     }
   }
 
-  // Reduce motion
-  function toggleMotion(input){
-    document.documentElement.style.setProperty('--ease','linear');
-    if(!input.checked) document.documentElement.style.setProperty('--ease','cubic-bezier(0.22,1,0.36,1)');
+  function applyFocus(on){
+    const sidebar = document.querySelector('.sidebar');
+    if(!sidebar) return;
+    sidebar.style.opacity = on ? '0' : '1';
+    sidebar.style.pointerEvents = on ? 'none' : '';
+    sidebar.style.transition = 'opacity .3s';
+  }
+  function applyMotion(on){
+    document.body.classList.toggle('reduce-motion', on);
     document.querySelectorAll('.sprint-badge.active').forEach(el=>{
-      el.style.animation = input.checked ? 'none' : '';
+      el.style.animation = on ? 'none' : '';
     });
   }
+
+  function toggleFocus(input){
+    applyFocus(input.checked);
+    LS.set('nc_focus_mode', input.checked);
+  }
+  function toggleMotion(input){
+    applyMotion(input.checked);
+    LS.set('nc_reduce_motion', input.checked);
+  }
+
+  // Resume button — go to last visited week
+  document.querySelector('.resume-btn').addEventListener('click',()=>{
+    const last = LS.get('nc_last_week', 1);
+    window.location.href = 'week-' + last + '.html';
+  });
+
+  // Overall progress badge
+  function updateOverallProgress(){
+    const weeks = [1,2,3,4];
+    let total = 0, done = 0;
+    weeks.forEach(w=>{
+      const ms = LS.get('nc_w'+w+'_milestones', {});
+      const keys = Object.keys(ms);
+      total += keys.length || 1;
+      done += keys.filter(k=>ms[k]).length;
+    });
+    const pct = total ? Math.round(done/total*100) : 0;
+    const badge = document.querySelector('.sprint-grid + * .card-label span, [class*="COMPLETE"]');
+    // Update the overall % in the tracker label
+    document.querySelectorAll('.card-label span').forEach(el=>{
+      if(el.textContent.includes('COMPLETE')) el.textContent = pct + '% COMPLETE';
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded',()=>{
+    initMilestones();
+    initDisplayPrefs();
+    updateOverallProgress();
+  });
 </script>
 </body>
 </html>
