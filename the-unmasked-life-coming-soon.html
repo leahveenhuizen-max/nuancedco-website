@@ -203,17 +203,8 @@
   <form
     class="waitlist-form"
     id="waitlist-form"
-    name="unmasked-life-waitlist"
-    method="POST"
-    data-netlify="true"
-    netlify-honeypot="bot-field"
-    action="/waitlist-success"
+    novalidate
   >
-    <!-- Netlify Forms required hidden input -->
-    <input type="hidden" name="form-name" value="unmasked-life-waitlist">
-    <!-- Honeypot spam protection (hidden from users) -->
-    <p style="display:none;"><label>Do not fill this in: <input name="bot-field"></label></p>
-
     <input
       type="email"
       id="waitlist-email"
@@ -226,6 +217,9 @@
     >
     <button type="submit" class="waitlist-btn">Join the waitlist</button>
     <p class="waitlist-privacy">Your email will only be used for Nuanced Co. course and resource updates. You can unsubscribe at any time.</p>
+    <div class="waitlist-success" id="waitlist-success" role="status" aria-live="polite" style="display:none;">
+      Thank you. Your waitlist request has been prepared. If your email app did not open, please email <a href="mailto:hello@nuancedco.com.au" style="color:var(--sage);">hello@nuancedco.com.au</a> with the subject <em>The Unmasked Life waitlist</em>.
+    </div>
   </form>
 </section>
 
@@ -306,7 +300,17 @@
   tick();
   setInterval(tick, 1000);
 
-  // Netlify Forms handles submission — no JS handler needed.
+  // ── WAITLIST FORM ────────────────────────────────────────────────
+  document.getElementById('waitlist-form').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const email = document.getElementById('waitlist-email').value.trim();
+    if (!email) return;
+    const subject = encodeURIComponent('The Unmasked Life waitlist');
+    const body = encodeURIComponent('Hi Leah,\n\nPlease add me to the waitlist for The Unmasked Life.\n\nMy email is:\n\n' + email + '\n\nThank you.');
+    window.location.href = 'mailto:hello@nuancedco.com.au?subject=' + subject + '&body=' + body;
+    document.getElementById('waitlist-success').style.display = 'block';
+    document.getElementById('waitlist-email').value = '';
+  });
 </script>
 </body>
 </html>
