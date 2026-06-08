@@ -1,0 +1,11 @@
+# Netlify redirects and rewrites
+# Extensionless URL rewrites — serve .html files at clean URLs
+/the-unmasked-life-coming-soon    /the-unmasked-life-coming-soon.html    200
+/waitlist-success                  /waitlist-success.html                  200
+/the-unmasked-life                 /the-unmasked-life.html                 200
+/refund-policy                     /refund-policy.html                     200
+/terms-of-service                  /terms-of-service.html                  200
+/privacy                           /privacy.html                           200
+/contact                           /contact.html                           200
+/courses                           /courses.html                           200
+/about                             /about.html                             200

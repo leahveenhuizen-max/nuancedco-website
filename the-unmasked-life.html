@@ -81,6 +81,46 @@
     .scope-note h4{font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);margin-bottom:.5rem;}
     .scope-note p{font-size:.82rem;color:var(--ink-mid);line-height:1.7;}
 
+    /* PRICING TIERS */
+    .pricing-section{padding:3rem 0 1rem;}
+    .pricing-eyebrow{font-size:.52rem;letter-spacing:.24em;text-transform:uppercase;color:var(--purple);margin-bottom:.6rem;text-align:center;}
+    .pricing-heading{font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:300;color:var(--ink);text-align:center;margin-bottom:.6rem;}
+    .pricing-sub{font-size:.78rem;color:var(--ink-mid);text-align:center;margin-bottom:2.5rem;}
+    .tiers-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+    .tier-card{background:#fff;border:1px solid rgba(42,31,26,.08);display:flex;flex-direction:column;position:relative;overflow:hidden;}
+    .tier-card.featured{border-color:var(--purple);border-width:2px;}
+    .tier-accent{height:3px;width:100%;}
+    .t1 .tier-accent{background:var(--sage);}
+    .t2 .tier-accent{background:var(--purple);}
+    .t3 .tier-accent{background:var(--gold);}
+    .tier-inner{padding:1.8rem 1.6rem;flex:1;display:flex;flex-direction:column;}
+    .tier-label{font-size:.42rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.7rem;}
+    .t1 .tier-label{color:var(--sage);}
+    .t2 .tier-label{color:var(--purple);}
+    .t3 .tier-label{color:var(--gold);}
+    .tier-icon{width:36px;height:36px;margin-bottom:.9rem;display:block;opacity:.75;}
+    .t1 .tier-icon{stroke:var(--sage);}
+    .t2 .tier-icon{stroke:var(--purple);}
+    .t3 .tier-icon{stroke:var(--gold);}
+    .tier-name{font-family:var(--serif);font-size:1.05rem;font-weight:400;color:var(--ink);line-height:1.25;margin-bottom:.5rem;}
+    .tier-price{font-family:var(--serif);font-size:1.8rem;font-weight:300;color:var(--ink);margin:.7rem 0 .3rem;}
+    .tier-price small{font-family:var(--body);font-size:.55rem;letter-spacing:.08em;color:var(--ink-mid);}
+    .tier-desc{font-size:.72rem;color:var(--ink-mid);line-height:1.65;margin-bottom:1rem;flex:1;}
+    .tier-list{list-style:none;padding:0;margin:0 0 1rem;}
+    .tier-list li{font-size:.68rem;color:var(--ink-mid);line-height:1.6;padding:.28rem 0;border-bottom:1px solid rgba(42,31,26,.05);display:flex;align-items:flex-start;gap:.5rem;}
+    .tier-list li::before{content:'✓';color:var(--sage);font-weight:700;flex-shrink:0;}
+    .t2 .tier-list li::before,.t3 .tier-list li::before{color:var(--purple);}
+    .tier-scope-note{font-size:.58rem;color:rgba(42,31,26,.38);line-height:1.5;margin-bottom:1.2rem;font-style:italic;}
+    .tier-btn{display:block;width:100%;padding:.85rem 1rem;text-align:center;font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s;border-radius:2px;}
+    .t1 .tier-btn{background:var(--sage);color:#fff;}
+    .t1 .tier-btn:hover{background:#6a7a60;transform:translateY(-1px);}
+    .t2 .tier-btn{background:var(--purple);color:#fff;}
+    .t2 .tier-btn:hover{background:var(--lilac);transform:translateY(-1px);}
+    .t3 .tier-btn{background:var(--gold);color:#fff;}
+    .t3 .tier-btn:hover{background:#b0852e;transform:translateY(-1px);}
+    .featured-tag{position:absolute;top:.9rem;right:.9rem;background:var(--purple);color:#fff;font-size:.4rem;letter-spacing:.14em;text-transform:uppercase;padding:.25rem .6rem;border-radius:2px;}
+    @media(max-width:680px){.tiers-grid{grid-template-columns:1fr;}.tier-card.featured{order:-1;}}
+
     /* STICKY ENROL BAR */
     .enrol-bar{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--cream-d);padding:1rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;box-shadow:0 -4px 24px rgba(42,31,26,.08);z-index:500;}
     .enrol-bar-copy h3{font-family:var(--serif);font-size:1.2rem;font-weight:300;color:var(--ink);}
@@ -122,11 +162,10 @@
   <p class="hero-subtitle">A course for late-diagnosed ADHD adults</p>
   <p class="hero-desc">Four weeks of evidence-informed education and structured reflection. Understand your brain. Grieve what went unsupported. Unlearn the shame. Build a life that actually fits.</p>
   <div class="hero-cta-wrap">
-    <!-- Replace href="#" with your Stripe payment link when ready -->
-    <a href="#" class="btn-enrol" id="enrol-btn">Enrol now &#8594;</a>
+    <a href="#pricing" class="btn-enrol" id="enrol-btn">See enrolment options &#8594;</a>
     <a href="#course-overview" class="btn-ghost">Read more first</a>
   </div>
-  <p class="price-display"><!-- Price here --> &mdash; one-time payment &mdash; lifetime access &mdash; no deadline</p>
+  <p class="price-display">From $197 AUD &nbsp;&middot;&nbsp; one-time payment &nbsp;&middot;&nbsp; lifetime access &nbsp;&middot;&nbsp; no deadline</p>
 </div>
 
 <!-- MAIN CONTENT -->
@@ -235,14 +274,77 @@
     <p>This course provides general education and reflection for late-diagnosed ADHD adults. It does not diagnose ADHD, provide therapy, prescribe treatment, or replace care from a qualified health professional. Use what is useful, leave what is not, and seek professional support if the material brings up distress or personal concerns. If you need support now, visit the <a href="support.html" style="color:var(--rose);text-decoration:underline;">support page</a>.</p>
   </div>
 
-  <!-- FINAL CTA -->
-  <div style="text-align:center;padding:3rem 0 1rem;">
-    <p class="section-eyebrow" style="justify-content:center;">Ready to start</p>
-    <h2 class="section-title" style="margin-bottom:1rem;">The Unmasked Life™</h2>
-    <p class="body-text" style="text-align:center;max-width:480px;margin:0 auto 2rem;">One-time payment. Lifetime access. No deadline. Start whenever you are ready.</p>
-    <!-- Replace href="#" with your Stripe payment link when ready -->
-    <a href="#" class="btn-enrol" id="enrol-btn-2">Enrol now &#8594;</a>
-    <p style="margin-top:1rem;font-size:.72rem;color:var(--ink-mid);">Payment is processed securely via Stripe. You will receive access details by email immediately after purchase.</p>
+  <!-- PRICING TIERS -->
+  <div class="pricing-section" id="pricing">
+    <p class="pricing-eyebrow">Choose your tier</p>
+    <h2 class="pricing-heading">Start where you are</h2>
+    <p class="pricing-sub">All tiers include lifetime access. Payment processed securely via Stripe.</p>
+
+    <div class="tiers-grid">
+
+      <!-- TIER 1 -->
+      <div class="tier-card t1">
+        <div class="tier-accent"></div>
+        <div class="tier-inner">
+          <p class="tier-label">Digital Course</p>
+          <svg class="tier-icon" viewBox="0 0 36 36" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="7" width="28" height="19" rx="2"/><line x1="13" y1="30" x2="23" y2="30"/><line x1="18" y1="26" x2="18" y2="30"/><polygon points="14,13 14,21 23,17" fill="currentColor" stroke="none" opacity=".5"/></svg>
+          <h3 class="tier-name">The Unmasked Life<br>Digital Course</h3>
+          <div class="tier-price">$197 <small>AUD</small></div>
+          <p class="tier-desc">Four-week self-paced educational course for late-diagnosed ADHD adults.</p>
+          <ul class="tier-list">
+            <li>Four weeks of video lessons</li>
+            <li>Transcripts and speed-read summaries</li>
+            <li>Workbook prompts per lesson</li>
+            <li>Quick-reference cards and resource vault</li>
+            <li>Brain-fried learning options</li>
+            <li>No deadline, lifetime access</li>
+          </ul>
+          <p class="tier-scope-note">Educational and reflective only. Not diagnosis, therapy, counselling or treatment.</p>
+          <a href="https://buy.stripe.com/00wbJ3bwL1fyfh62ky1RC01" class="tier-btn" data-stripe-tier="1" target="_blank" rel="noopener">Start the digital course</a>
+        </div>
+      </div>
+
+      <!-- TIER 2 -->
+      <div class="tier-card t2 featured">
+        <div class="tier-accent"></div>
+        <div class="tier-inner">
+          <span class="featured-tag">Most popular</span>
+          <p class="tier-label">Course + Journal</p>
+          <svg class="tier-icon" viewBox="0 0 36 36" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="8" y="4" width="20" height="28" rx="2"/><line x1="12" y1="12" x2="24" y2="12"/><line x1="12" y1="17" x2="24" y2="17"/><line x1="12" y1="22" x2="19" y2="22"/><line x1="5" y1="4" x2="5" y2="32" stroke-width="3"/></svg>
+          <h3 class="tier-name">The Unmasked Life<br>Course + Reflection Journal</h3>
+          <div class="tier-price">$297 <small>AUD</small></div>
+          <p class="tier-desc">Full digital course plus digital reflection journal and printed reflection journal.</p>
+          <ul class="tier-list">
+            <li>Everything in the Digital Course</li>
+            <li>Digital reflection journal (PDF)</li>
+            <li>Printed reflection journal, produced and shipped separately</li>
+          </ul>
+          <p class="tier-scope-note" style="margin-bottom:.6rem;">Printed journals are produced and shipped separately. Shipping timeframes will be confirmed at checkout.</p>
+          <p class="tier-scope-note">Educational and reflective only. Not diagnosis, therapy, counselling or treatment.</p>
+          <a href="https://buy.stripe.com/fZu4gB6cr8I07OE1gu1RC02" class="tier-btn" data-stripe-tier="2" target="_blank" rel="noopener">Choose course + journal</a>
+        </div>
+      </div>
+
+      <!-- TIER 3 -->
+      <div class="tier-card t3">
+        <div class="tier-accent"></div>
+        <div class="tier-inner">
+          <p class="tier-label">Premium Support</p>
+          <svg class="tier-icon" viewBox="0 0 36 36" fill="none" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 10 Q6 5 18 5 Q30 5 30 12 Q30 19 18 19 L12 19 L7 24 L7 19 Q6 15 6 10Z"/></svg>
+          <h3 class="tier-name">The Unmasked Life<br>Course + Journal + Integration Session</h3>
+          <div class="tier-price">$447 <small>AUD</small></div>
+          <p class="tier-desc">Full digital course, journal bundle and one 30-minute Nuanced Integration Session with Leah.</p>
+          <ul class="tier-list">
+            <li>Everything in Course + Journal</li>
+            <li>One 30-minute Nuanced Integration Session</li>
+          </ul>
+          <p class="tier-scope-note">The integration session is educational only. Not therapy, counselling, diagnosis, treatment, medication advice or crisis support.</p>
+          <a href="https://buy.stripe.com/8x24gBbwL2jCgla6AO1RC03" class="tier-btn" data-stripe-tier="3" target="_blank" rel="noopener">Choose premium support</a>
+        </div>
+      </div>
+
+    </div>
+    <p style="text-align:center;margin-top:1.2rem;font-size:.65rem;color:rgba(42,31,26,.38);">All prices in AUD. Your rights under Australian Consumer Law are not affected. See <a href="refund-policy.html" style="color:var(--purple);">Refund Policy</a>.</p>
   </div>
 
 </div>
@@ -254,9 +356,8 @@
     <p>4-week self-paced course &mdash; lifetime access</p>
   </div>
   <div class="enrol-bar-right">
-    <div class="enrol-bar-price"><!-- Price here --></div>
-    <!-- Replace href="#" with your Stripe payment link when ready -->
-    <a href="#" class="btn-enrol">Enrol now &#8594;</a>
+    <div class="enrol-bar-price">From $197</div>
+    <a href="#pricing" class="btn-enrol">See options &#8594;</a>
   </div>
 </div>
 
@@ -267,6 +368,8 @@
       <a href="courses.html">Courses</a>
       <a href="contact.html">Contact</a>
       <a href="privacy.html">Privacy</a>
+      <a href="refund-policy.html">Refund Policy</a>
+      <a href="terms-of-service.html">Terms</a>
     </div>
   </div>
 </footer>
