@@ -190,18 +190,27 @@
   </div>
 </section>
 
-<!-- WAITLIST FORM -->
-<!-- TODO: Replace fallback with MailerLite embedded form for group: Waitlist: The Unmasked Life -->
+<!-- WAITLIST FORM — connected to MailerLite: Waitlist: The Unmasked Life -->
 <section class="waitlist-section" aria-label="Join the waitlist">
   <p class="waitlist-eyebrow">Waitlist</p>
   <h2 class="waitlist-heading">Join the waitlist</h2>
-  <p class="waitlist-sub">Be the first to know when enrolment opens. No spam, ever.</p>
+  <p class="waitlist-sub">Be the first to hear when The Unmasked Life opens for enrolment, plus receive occasional Nuanced Co. course and resource updates.</p>
 
   <form
     class="waitlist-form"
     id="waitlist-form"
     novalidate
   >
+    <input
+      type="text"
+      id="waitlist-name"
+      name="name"
+      class="waitlist-input"
+      placeholder="First name"
+      autocomplete="given-name"
+      required
+      aria-label="Your first name"
+    >
     <input
       type="email"
       id="waitlist-email"
@@ -212,10 +221,13 @@
       required
       aria-label="Your email address"
     >
-    <button type="submit" class="waitlist-btn">Join the waitlist</button>
-    <p class="waitlist-privacy">Your email will only be used for Nuanced Co. course and resource updates. You can unsubscribe at any time.</p>
+    <button type="submit" class="waitlist-btn" id="waitlist-btn">Join the waitlist</button>
+    <p class="waitlist-privacy">Your details will only be used for Nuanced Co. course and resource updates. You can unsubscribe at any time.</p>
     <div class="waitlist-success" id="waitlist-success" role="status" aria-live="polite" style="display:none;">
-      Thank you. Your waitlist request has been prepared. If your email app did not open, please email <a href="mailto:hello@nuancedco.com.au" style="color:var(--sage);">hello@nuancedco.com.au</a> with the subject <em>The Unmasked Life waitlist</em>.
+      You're on the waitlist. I'll send course updates and early access details when enrolment opens.
+    </div>
+    <div class="waitlist-error" id="waitlist-error" role="alert" aria-live="polite" style="display:none;margin-top:.6rem;font-size:.78rem;color:var(--rose);">
+      Something went wrong. Please try again or email <a href="mailto:hello@nuancedco.com.au" style="color:var(--sage);">hello@nuancedco.com.au</a>.
     </div>
   </form>
 </section>
@@ -269,16 +281,65 @@
   tick();
   setInterval(tick, 1000);
 
-  // ── WAITLIST FORM ────────────────────────────────────────────────
+  // ── WAITLIST FORM — MailerLite JSONP submission ──────────────────
+  // Account: 2421621 | Form: 189854641214719678 | Group: Waitlist: The Unmasked Life
   document.getElementById('waitlist-form').addEventListener('submit', function(e) {
     e.preventDefault();
+
+    const name  = document.getElementById('waitlist-name').value.trim();
     const email = document.getElementById('waitlist-email').value.trim();
+    const btn   = document.getElementById('waitlist-btn');
+    const success = document.getElementById('waitlist-success');
+    const error   = document.getElementById('waitlist-error');
+
     if (!email) return;
-    const subject = encodeURIComponent('The Unmasked Life waitlist');
-    const body = encodeURIComponent('Hi Leah,\n\nPlease add me to the waitlist for The Unmasked Life.\n\nMy email is:\n\n' + email + '\n\nThank you.');
-    window.location.href = 'mailto:hello@nuancedco.com.au?subject=' + subject + '&body=' + body;
-    document.getElementById('waitlist-success').style.display = 'block';
-    document.getElementById('waitlist-email').value = '';
+
+    btn.textContent = 'Joining...';
+    btn.disabled = true;
+    error.style.display = 'none';
+
+    // Build JSONP callback name
+    const cbName = 'ml_cb_' + Date.now();
+
+    // Build query string
+    const params = new URLSearchParams({
+      'fields[email]': email,
+      'fields[name]':  name,
+      'ml-submit':     '1',
+      'anticsrf':      'true',
+      'callback':      cbName
+    });
+
+    // Create script tag for JSONP
+    const script = document.createElement('script');
+    script.src = 'https://assets.mailerlite.com/jsonp/2421621/forms/189854641214719678/subscribe?' + params.toString();
+
+    // Success handler
+    window[cbName] = function(response) {
+      delete window[cbName];
+      document.head.removeChild(script);
+      if (response && response.success) {
+        success.style.display = 'block';
+        document.getElementById('waitlist-name').value  = '';
+        document.getElementById('waitlist-email').value = '';
+        btn.style.display = 'none';
+      } else {
+        error.style.display = 'block';
+        btn.textContent = 'Join the waitlist';
+        btn.disabled = false;
+      }
+    };
+
+    // Error handler (network failure)
+    script.onerror = function() {
+      delete window[cbName];
+      document.head.removeChild(script);
+      error.style.display = 'block';
+      btn.textContent = 'Join the waitlist';
+      btn.disabled = false;
+    };
+
+    document.head.appendChild(script);
   });
 </script>
 </body>
