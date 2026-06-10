@@ -128,12 +128,7 @@
     .enrol-bar-right{display:flex;align-items:center;gap:1.2rem;}
     .enrol-bar-price{font-family:var(--serif);font-size:1.6rem;font-weight:300;color:var(--ink);}
 
-    footer{background:#1A1A1A;padding:3rem;color:#F6F1E9;}
-    .ft-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
-    .ft-legal{font-size:.7rem;color:rgba(246,241,233,.35);line-height:1.6;}
-    .ft-links{display:flex;gap:1.4rem;}
-    .ft-links a{font-size:.65rem;color:rgba(246,241,233,.5);transition:color .2s;}
-    .ft-links a:hover{color:#F6F1E9;}
+    /* old footer styles removed — see canonical footer CSS below */
 
     @media(max-width:700px){
       .hero{padding:4rem 1.5rem 3.5rem;}
@@ -145,7 +140,12 @@
     }
   
     /* ── DROPDOWN NAV ───────────────────────────────────── */
-    .nav-dd{position:relative;}
+    .nav-list{list-style:none;display:flex;align-items:center;gap:2rem;}
+    .nav-list a{font-family:var(--body);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.72);transition:color .2s;}
+    .nav-list a:hover{color:var(--cream);}
+    .nav-list .ncta{border:1px solid rgba(196,150,62,.5);color:var(--gold);padding:.4rem 1.2rem;border-radius:2px;font-size:.62rem;transition:background .2s,color .2s,border-color .2s;}
+    .nav-list .ncta:hover{background:var(--gold);color:var(--ink-deep);border-color:var(--gold);}
+        .nav-dd{position:relative;}
     .nav-dd-menu{position:absolute;top:calc(100% + 1rem);left:50%;transform:translateX(-50%) translateY(-4px);background:rgba(15,12,10,.98);border:1px solid rgba(246,241,233,.12);min-width:210px;padding:.6rem 0;opacity:0;pointer-events:none;visibility:hidden;transition:opacity .2s,transform .2s cubic-bezier(0.22,1,0.36,1),visibility .2s;z-index:10000;}
     .nav-dd-menu::before{content:'';position:absolute;bottom:100%;left:-50%;right:-50%;height:1rem;pointer-events:auto;z-index:10001;}
     .nav-dd:hover .nav-dd-menu,.nav-dd:focus-within .nav-dd-menu,.nav-dd-menu:hover{opacity:1;pointer-events:all;visibility:visible;transform:translateX(-50%) translateY(0);}
@@ -388,18 +388,16 @@
     <div class="ft-col">
       <h4>Explore</h4>
       <ul>
-        <li><a href="index.html">Home</a></li>
         <li><a href="services.html">Services</a></li>
         <li><a href="the-unmasked-life.html">Courses</a></li>
-        <li><a href="links.html">Free Resources</a></li>
+        <li><a href="links.html">Resources</a></li>
         <li><a href="media.html">Articles &amp; Media</a></li>
       </ul>
     </div>
     <div class="ft-col">
       <h4>About</h4>
       <ul>
-        <li><a href="about.html">About Nuanced Co.</a></li>
-        <li><a href="about.html">Meet Leah</a></li>
+        <li><a href="about.html">About</a></li>
         <li><a href="faq.html">FAQ</a></li>
         <li><a href="how-i-work.html">How We Work</a></li>
         <li><a href="who-i-work-with.html">Who We Work With</a></li>
@@ -408,7 +406,7 @@
     <div class="ft-col">
       <h4>Contact</h4>
       <ul>
-        <li><a href="book.html">Book a call</a></li>
+        <li><a href="book.html">Book a Call</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="mailto:hello@nuancedco.com.au">hello@nuancedco.com.au</a></li>
       </ul>
