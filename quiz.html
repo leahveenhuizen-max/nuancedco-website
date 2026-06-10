@@ -405,26 +405,11 @@ function submitEmail() {
   btn.textContent = 'Sending...';
   btn.disabled = true;
   const resultType = getResultType();
-  const quizTagId = 19834575; // "Quiz Lead" tag in Kit
-  // Subscribe to Quiz Lead tag with result stored as custom field
-  fetch(`https://api.convertkit.com/v3/tags/${quizTagId}/subscribe`, {
-    method:'POST',
-    headers:{'Content-Type':'application/json; charset=utf-8'},
-    body: JSON.stringify({
-      api_key: '_vFocnhMfgpWU5gAweEHcQ',
-      email: email,
-      fields: { quiz_result: resultType }
-    })
-  })
-  .then(() => {
-    btn.textContent = 'Results on their way!';
-    setTimeout(showResult, 700);
-  })
-  .catch(() => {
-    // Still show results even if network fails
-    btn.textContent = 'Done!';
-    setTimeout(showResult, 500);
-  });
+  // TODO: Replace with MailerLite embedded form or API call.
+  // Suggested group: "Interest: Late Diagnosis Resources" or a "Quiz Lead" tag in MailerLite.
+  // ConvertKit integration has been removed. Currently shows results without email capture.
+  btn.textContent = 'Results on their way!';
+  setTimeout(showResult, 700);
 }
 
 // SCORING
