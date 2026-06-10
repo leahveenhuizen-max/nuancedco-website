@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex">
+  <title>Course Mark, Thumbnail &amp; Tier Cards | Nuanced Co.</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --cream:#F6F1E9;--cream-d:#EDE6D8;--ink:#2A1F1A;--ink-mid:#4A3830;--ink-deep:#0F0C0A;
+      --gold:#C4963E;--purple:#6B4570;--lilac:#9668A4;--rose:#C07A8A;--sage:#7A8C6E;
+      --serif:'Cormorant Garamond',Georgia,serif;--body:'Atkinson Hyperlegible',system-ui,sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    html{font-size:18px;}
+    body{background:#DEDAD4;font-family:var(--body);color:var(--ink);padding:5rem 2rem;}
+    .page-label{font-size:.52rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(42,31,26,.38);margin-bottom:4rem;text-align:center;}
+    section{margin-bottom:6rem;}
+    h2.section-label{font-size:.52rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-bottom:2.5rem;text-align:center;}
+    .center{display:flex;justify-content:center;flex-wrap:wrap;gap:3rem;}
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       COURSE MARK — SVG LOCKUP
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .mark-box{display:inline-flex;flex-direction:column;align-items:center;}
+    .mark-box .label{font-size:.44rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(42,31,26,.38);margin-top:1rem;}
+
+    /* SVG mark dimensions — designed at 360×200 */
+    .course-mark-svg{width:360px;height:200px;}
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       STRIPE THUMBNAIL — 800×500
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .thumbnail-outer{display:flex;justify-content:center;}
+    .stripe-thumb{
+      width:800px;height:500px;
+      background:var(--ink);
+      position:relative;overflow:hidden;
+      display:flex;flex-direction:column;
+      align-items:center;justify-content:center;
+      flex-shrink:0;
+    }
+    /* decorative rings */
+    .thumb-ring{
+      position:absolute;border-radius:50%;
+      border:1px solid rgba(196,150,62,.12);
+      pointer-events:none;
+    }
+    .thumb-ring.r1{width:520px;height:520px;top:-120px;right:-120px;}
+    .thumb-ring.r2{width:300px;height:300px;top:-60px;right:-60px;}
+    .thumb-ring.r3{width:380px;height:380px;bottom:-140px;left:-100px;border-color:rgba(107,69,112,.14);}
+    .thumb-ring.r4{width:180px;height:180px;bottom:-60px;left:-30px;border-color:rgba(107,69,112,.1);}
+    /* horizontal rule bar at top */
+    .thumb-bar{position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--purple),var(--gold));}
+    /* content */
+    .thumb-inner{position:relative;z-index:1;text-align:center;padding:0 3rem;}
+    .thumb-eyebrow{
+      font-family:var(--body);font-size:.5rem;letter-spacing:.38em;
+      text-transform:uppercase;color:var(--gold);opacity:.85;
+      margin-bottom:1.4rem;display:block;
+    }
+    .thumb-title-wrap{margin-bottom:1.4rem;}
+    .thumb-title{
+      font-family:var(--serif);font-size:3.2rem;font-weight:300;
+      color:#F6F1E9;letter-spacing:.04em;line-height:1;display:block;
+    }
+    .thumb-title-em{
+      font-family:var(--serif);font-size:3.2rem;font-weight:300;
+      color:var(--gold);letter-spacing:.04em;line-height:1;display:block;
+      font-style:italic;margin-top:.12em;
+    }
+    .thumb-rule{width:40px;height:1px;background:var(--gold);opacity:.55;margin:.1rem auto 1.2rem;}
+    .thumb-desc{
+      font-family:var(--body);font-size:.58rem;letter-spacing:.14em;
+      text-transform:uppercase;color:rgba(246,241,233,.42);
+    }
+    .thumb-brand{
+      position:absolute;bottom:2rem;left:0;right:0;
+      display:flex;align-items:center;justify-content:center;gap:.8rem;
+      z-index:1;
+    }
+    .thumb-brand-rule{width:20px;height:1px;background:rgba(246,241,233,.2);}
+    .thumb-brand-name{
+      font-family:var(--serif);font-size:.55rem;letter-spacing:.26em;
+      text-transform:uppercase;color:rgba(246,241,233,.35);
+    }
+
+    /* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+       TIER CARDS
+    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+    .tiers-grid{
+      display:grid;grid-template-columns:repeat(3,1fr);
+      gap:1.5rem;max-width:980px;margin:0 auto;
+    }
+    .tier-card{background:#fff;border:1px solid rgba(42,31,26,.08);display:flex;flex-direction:column;position:relative;overflow:hidden;}
+    .tier-card.featured{border-color:var(--purple);border-width:2px;}
+    .tier-card-accent{height:3px;width:100%;}
+    .tier-card.t1 .tier-card-accent{background:var(--sage);}
+    .tier-card.t2 .tier-card-accent{background:var(--purple);}
+    .tier-card.t3 .tier-card-accent{background:var(--gold);}
+    .tier-card-inner{padding:2rem 1.8rem;flex:1;display:flex;flex-direction:column;}
+    .tier-eyebrow{font-size:.44rem;letter-spacing:.2em;text-transform:uppercase;margin-bottom:.8rem;}
+    .t1 .tier-eyebrow{color:var(--sage);}
+    .t2 .tier-eyebrow{color:var(--purple);}
+    .t3 .tier-eyebrow{color:var(--gold);}
+    .tier-icon{font-size:1.4rem;margin-bottom:.8rem;display:block;}
+    .tier-name{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:var(--ink);line-height:1.2;margin-bottom:.5rem;}
+    .tier-price{font-family:var(--serif);font-size:2rem;font-weight:300;color:var(--ink);margin:.8rem 0 .4rem;}
+    .tier-price span{font-family:var(--body);font-size:.6rem;letter-spacing:.08em;color:var(--ink-mid);}
+    .tier-desc{font-size:.75rem;color:var(--ink-mid);line-height:1.7;margin-bottom:1.2rem;flex:1;}
+    .tier-includes{list-style:none;margin:0 0 .6rem;padding:0;}
+    .tier-includes li{font-size:.7rem;color:var(--ink-mid);line-height:1.6;padding:.3rem 0;border-bottom:1px solid rgba(42,31,26,.05);display:flex;align-items:flex-start;gap:.5rem;}
+    .tier-includes li::before{content:'✓';color:var(--sage);font-weight:700;flex-shrink:0;margin-top:.05em;}
+    .t2 .tier-includes li::before,.t3 .tier-includes li::before{color:var(--purple);}
+    .tier-shipping-note{font-size:.6rem;color:rgba(42,31,26,.38);font-style:italic;line-height:1.5;margin-bottom:.8rem;}
+    .tier-scope{font-size:.6rem;color:rgba(42,31,26,.38);line-height:1.5;margin-bottom:1.4rem;font-style:italic;}
+    .tier-btn{display:block;width:100%;padding:.9rem 1rem;text-align:center;font-family:var(--body);font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s;border-radius:2px;}
+    .t1 .tier-btn{background:var(--sage);color:#fff;}
+    .t1 .tier-btn:hover{background:#6a7a60;}
+    .t2 .tier-btn{background:var(--purple);color:#fff;}
+    .t2 .tier-btn:hover{background:var(--lilac);}
+    .t3 .tier-btn{background:var(--gold);color:#fff;}
+    .t3 .tier-btn:hover{background:#b0852e;}
+    .featured-tag{position:absolute;top:1rem;right:1rem;background:var(--purple);color:#fff;font-size:.44rem;letter-spacing:.16em;text-transform:uppercase;padding:.3rem .7rem;border-radius:2px;}
+
+    @media(max-width:760px){
+      .tiers-grid{grid-template-columns:1fr;}
+      .stripe-thumb{width:100%;height:auto;aspect-ratio:8/5;}
+      .course-mark-svg{width:100%;max-width:360px;height:auto;}
+    }
+  </style>
+</head>
+<body>
+
+<p class="page-label">Nuanced Co. — Course Mark, Stripe Thumbnail &amp; Tier Cards (internal reference)</p>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     SECTION 1: COURSE MARK (SVG LOCKUP)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section>
+  <h2 class="section-label">Course mark — dark background</h2>
+  <div class="center">
+
+    <div class="mark-box">
+      <!-- SVG lockup: dark variant — copy this SVG for use anywhere -->
+      <svg class="course-mark-svg" viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" aria-label="The Unmasked Life — Nuanced Co.">
+        <rect width="360" height="200" fill="#2A1F1A"/>
+        <!-- decorative circles -->
+        <circle cx="320" cy="30" r="90" fill="none" stroke="#C4963E" stroke-width="0.6" opacity="0.18"/>
+        <circle cx="320" cy="30" r="55" fill="none" stroke="#C4963E" stroke-width="0.6" opacity="0.12"/>
+        <circle cx="40" cy="178" r="60" fill="none" stroke="#6B4570" stroke-width="0.6" opacity="0.2"/>
+        <!-- eyebrow -->
+        <text x="180" y="62" text-anchor="middle" font-family="'Atkinson Hyperlegible', system-ui, sans-serif" font-size="7.5" letter-spacing="4" fill="#C4963E" opacity="0.85" text-transform="uppercase">NUANCED CO.</text>
+        <!-- main title -->
+        <text x="180" y="108" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="38" font-weight="300" fill="#F6F1E9" letter-spacing="1.5">The Unmasked</text>
+        <text x="180" y="148" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="38" font-weight="300" fill="#F6F1E9" letter-spacing="1.5">Life</text>
+        <!-- gold rule -->
+        <line x1="160" y1="162" x2="200" y2="162" stroke="#C4963E" stroke-width="0.8" opacity="0.55"/>
+        <!-- descriptor -->
+        <text x="180" y="179" text-anchor="middle" font-family="'Atkinson Hyperlegible', system-ui, sans-serif" font-size="6.5" letter-spacing="3.5" fill="#F6F1E9" opacity="0.38">FOUR-WEEK EDUCATIONAL COURSE</text>
+      </svg>
+      <span class="label">Dark variant — use on ink or dark backgrounds</span>
+    </div>
+
+    <div class="mark-box">
+      <!-- SVG lockup: light/cream variant -->
+      <svg class="course-mark-svg" viewBox="0 0 360 200" xmlns="http://www.w3.org/2000/svg" aria-label="The Unmasked Life — Nuanced Co.">
+        <rect width="360" height="200" fill="#F6F1E9"/>
+        <rect width="360" height="200" fill="none" stroke="#EDE6D8" stroke-width="1"/>
+        <!-- decorative circles -->
+        <circle cx="320" cy="30" r="90" fill="none" stroke="#C4963E" stroke-width="0.6" opacity="0.14"/>
+        <circle cx="320" cy="30" r="55" fill="none" stroke="#C4963E" stroke-width="0.6" opacity="0.1"/>
+        <circle cx="40" cy="178" r="60" fill="none" stroke="#6B4570" stroke-width="0.6" opacity="0.14"/>
+        <!-- eyebrow -->
+        <text x="180" y="62" text-anchor="middle" font-family="'Atkinson Hyperlegible', system-ui, sans-serif" font-size="7.5" letter-spacing="4" fill="#C4963E" opacity="0.9">NUANCED CO.</text>
+        <!-- main title -->
+        <text x="180" y="108" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="38" font-weight="300" fill="#2A1F1A" letter-spacing="1.5">The Unmasked</text>
+        <text x="180" y="148" text-anchor="middle" font-family="'Cormorant Garamond', Georgia, serif" font-size="38" font-weight="300" fill="#2A1F1A" letter-spacing="1.5">Life</text>
+        <!-- gold rule -->
+        <line x1="160" y1="162" x2="200" y2="162" stroke="#C4963E" stroke-width="0.8" opacity="0.5"/>
+        <!-- descriptor -->
+        <text x="180" y="179" text-anchor="middle" font-family="'Atkinson Hyperlegible', system-ui, sans-serif" font-size="6.5" letter-spacing="3.5" fill="#2A1F1A" opacity="0.36">FOUR-WEEK EDUCATIONAL COURSE</text>
+      </svg>
+      <span class="label">Light variant — use on cream or white backgrounds</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     SECTION 2: STRIPE PRODUCT THUMBNAIL (800×500)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section>
+  <h2 class="section-label">Stripe product thumbnail — 800 × 500px — screenshot to export</h2>
+  <div class="thumbnail-outer">
+    <div class="stripe-thumb" id="stripe-thumb">
+      <div class="thumb-bar"></div>
+      <div class="thumb-ring r1"></div>
+      <div class="thumb-ring r2"></div>
+      <div class="thumb-ring r3"></div>
+      <div class="thumb-ring r4"></div>
+
+      <div class="thumb-inner">
+        <span class="thumb-eyebrow">Nuanced Co. &nbsp;&middot;&nbsp; Neurodivergent Consultancy</span>
+        <div class="thumb-title-wrap">
+          <span class="thumb-title">The Unmasked</span>
+          <span class="thumb-title-em">Life</span>
+        </div>
+        <div class="thumb-rule"></div>
+        <span class="thumb-desc">Four-week educational course for late-diagnosed ADHD adults</span>
+      </div>
+
+      <div class="thumb-brand">
+        <div class="thumb-brand-rule"></div>
+        <span class="thumb-brand-name">nuancedco.com.au</span>
+        <div class="thumb-brand-rule"></div>
+      </div>
+    </div>
+  </div>
+  <p style="text-align:center;margin-top:1.2rem;font-size:.55rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(42,31,26,.35);">
+    To export: open this page in browser &rarr; screenshot the card above at 800&times;500px &rarr; upload to Stripe product image
+  </p>
+</section>
+
+<!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+     SECTION 3: TIER CARDS (REFERENCE)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
+<section>
+  <h2 class="section-label">Tier cards (reference)</h2>
+  <div class="tiers-grid">
+
+    <!-- TIER 1 -->
+    <div class="tier-card t1">
+      <div class="tier-card-accent"></div>
+      <div class="tier-card-inner">
+        <p class="tier-eyebrow">Tier 1</p>
+        <span class="tier-icon">&#9654;</span>
+        <h3 class="tier-name">The Unmasked Life<br>Digital Course</h3>
+        <div class="tier-price">$197 <span>AUD</span></div>
+        <p class="tier-desc">Four-week self-paced educational course for late-diagnosed ADHD adults.</p>
+        <ul class="tier-includes">
+          <li>Four weeks of video lessons</li>
+          <li>Transcripts and speed-read summaries</li>
+          <li>Workbook prompts per lesson</li>
+          <li>Quick-reference cards and resource vault</li>
+          <li>Brain-fried learning options</li>
+          <li>No deadline, lifetime access</li>
+        </ul>
+        <p class="tier-scope">Educational and reflective only. Not diagnosis, therapy, counselling or treatment.</p>
+        <!-- TODO: Replace href="#" with final Stripe payment link for Tier 1 -->
+        <a href="#" class="tier-btn" data-stripe-tier="1">Start the digital course</a>
+      </div>
+    </div>
+
+    <!-- TIER 2 -->
+    <div class="tier-card t2 featured">
+      <div class="tier-card-accent"></div>
+      <div class="tier-card-inner">
+        <span class="featured-tag">Most popular</span>
+        <p class="tier-eyebrow">Tier 2</p>
+        <span class="tier-icon">&#9998;</span>
+        <h3 class="tier-name">The Unmasked Life<br>Course + Reflection Journal</h3>
+        <div class="tier-price">$297 <span>AUD</span></div>
+        <p class="tier-desc">Full digital course plus digital reflection journal and printed reflection journal.</p>
+        <ul class="tier-includes">
+          <li>Everything in the Digital Course</li>
+          <li>Digital reflection journal (PDF)</li>
+          <li>Printed reflection journal, produced and shipped separately</li>
+        </ul>
+        <p class="tier-shipping-note">Printed journals are produced and shipped separately. Shipping timeframes will be confirmed at checkout.</p>
+        <p class="tier-scope">Educational and reflective only. Not diagnosis, therapy, counselling or treatment.</p>
+        <!-- TODO: Replace href="#" with final Stripe payment link for Tier 2 -->
+        <a href="#" class="tier-btn" data-stripe-tier="2">Choose course + journal</a>
+      </div>
+    </div>
+
+    <!-- TIER 3 -->
+    <div class="tier-card t3">
+      <div class="tier-card-accent"></div>
+      <div class="tier-card-inner">
+        <p class="tier-eyebrow">Tier 3</p>
+        <span class="tier-icon">&#9749;</span>
+        <h3 class="tier-name">The Unmasked Life<br>Course + Journal + Integration Session</h3>
+        <div class="tier-price">$447 <span>AUD</span></div>
+        <p class="tier-desc">Full digital course, journal bundle and one 30-minute Nuanced Integration Session with Leah.</p>
+        <ul class="tier-includes">
+          <li>Everything in Course + Journal</li>
+          <li>One 30-minute Nuanced Integration Session</li>
+        </ul>
+        <p class="tier-scope">The integration session is educational only. Not therapy, counselling, diagnosis, treatment, medication advice or crisis support.</p>
+        <!-- TODO: Replace href="#" with final Stripe payment link for Tier 3 -->
+        <a href="#" class="tier-btn" data-stripe-tier="3">Choose premium support</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</body>
+</html>

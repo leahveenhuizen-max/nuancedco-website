@@ -59,7 +59,7 @@
     a{color:inherit;text-decoration:none;}
 
     #grain{position:fixed;inset:0;pointer-events:none;z-index:9990;opacity:.025;mix-blend-mode:overlay;}
-    #sp{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--purple),var(--gold),var(--rose));z-index:9995;pointer-events:none;transition:width .08s linear;}
+
 
 
     /* CONTROLS */
@@ -435,13 +435,13 @@
   .module-card:last-child{border-bottom:1px solid rgba(246,241,233,.3);}
 }
 /* ── BONUSES ─────────────────────────────────────────────── */
-.bonuses-section{background:#F6F1E9;display:grid;grid-template-columns:1fr 1.3fr;min-height:70vh;}
-.bonuses-img-col{overflow:hidden;position:relative;min-height:500px;}
+.bonuses-section{background:#F6F1E9;display:grid;grid-template-columns:1fr 1.3fr;min-height:auto;}
+.bonuses-img-col{overflow:hidden;position:relative;min-height:400px;}
 .bonuses-img-placeholder{width:100%;height:100%;background:linear-gradient(155deg,#EAE6DF 0%,#C9C0B5 100%);display:flex;align-items:flex-end;padding:1.2rem 1.4rem;}
 .bonuses-img-placeholder span{font-family:var(--body);font-size:.48rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(42,31,26,.32);}
-.bonuses-text-col{display:flex;flex-direction:column;justify-content:center;padding:7rem 5rem 7rem 4.5rem;}
+.bonuses-text-col{display:flex;flex-direction:column;justify-content:center;padding:4rem 4rem 4rem 3.5rem;}
 .bonuses-tagline{font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.28em;text-transform:uppercase;color:var(--purple);margin:0 0 1.4rem;}
-.bonuses-heading{font-family:var(--serif);font-size:clamp(2rem,3.2vw,3rem);font-weight:300;line-height:1.15;color:var(--ink);margin:0 0 3rem;max-width:460px;}
+.bonuses-heading{font-family:var(--serif);font-size:clamp(1.8rem,2.8vw,2.6rem);font-weight:300;line-height:1.15;color:var(--ink);margin:0 0 2rem;max-width:460px;}
 .bonuses-list{display:flex;flex-direction:column;gap:0;}
 .bonus-item{padding:1.6rem 0;border-top:1px solid #EAE6DF;display:flex;flex-direction:column;gap:.5rem;}
 .bonus-item:last-child{border-bottom:1px solid #EAE6DF;}
@@ -516,28 +516,16 @@
     .rv.in,.rvl.in,.rvr.in{opacity:1;transform:none;}
     .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
 
-    /* MASTER LOGO SIGNATURE */
-    .logo-signature{background:var(--cream);padding:3rem 2rem;text-align:center;border-bottom:1px solid rgba(107,69,112,.08);margin-top:20px;}
-    .logo-signature-inner{max-width:600px;margin:0 auto;display:flex;flex-direction:column;align-items:center;gap:0;}
-    .master-brand-logo{width:100%;max-width:580px;height:auto;display:block;margin:0 auto 30px auto;animation:sensoryFloat 8s ease-in-out infinite;}
-
-    @keyframes sensoryFloat{from{transform:scale(1) rotate(0deg);}to{transform:scale(1.03) rotate(1deg);}}
-
     @keyframes fadeContentIn{from{opacity:0;transform:translateY(15px);}to{opacity:1;transform:translateY(0);}}
 
-    /* NAVIGATION FADE-IN */
-    #nav{opacity:0;animation:navFadeIn 0.8s ease-out forwards;animation-delay:2.5s;}
-
-    @keyframes navFadeIn{from{opacity:0;}to{opacity:1;}}
-
     /* HERO */
-    #hero{min-height:calc(100vh - 80px);background:var(--cream);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
+    #hero{min-height:68vh;background:var(--cream);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;}
 
     .hero-inner{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;width:100%;padding:4rem 2rem;}
     .hero-body{padding:0;max-width:720px;width:100%;margin:0 auto;text-align:center;display:flex;flex-direction:column;align-items:center;position:relative;z-index:2;}
 
     /* HERO CONTENT FADE-IN */
-    .hero-hl,.hero-sub,.hero-btns,.hero-micro{opacity:0;transform:translateY(15px);animation:fadeContentIn 1.2s ease-out forwards;animation-delay:2.5s;}
+    .hero-hl,.hero-sub{opacity:0;transform:translateY(15px);animation:fadeContentIn 1.2s ease-out forwards;animation-delay:0.4s;}
 
     .centered-brand-blob{max-height:80px;width:auto;margin:0 auto 20px auto;display:block;}
 
@@ -830,20 +818,16 @@
     footer{background:#1A1A1A;padding:6rem 0 3rem;color:#F6F1E9;}
     .ft-inner{max-width:1200px;margin:0 auto;padding:0 3.5rem;display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:5rem;}
     .ft-subscribe h3{font-family:var(--serif);font-size:1.25rem;font-weight:400;color:#F6F1E9;margin:0 0 1.2rem;letter-spacing:.04em;}
-    .ft-subscribe p{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.85rem;color:rgba(246,241,233,.75);margin:0 0 1.8rem;line-height:1.7;}
-    .ft-email-form{display:flex;flex-direction:column;gap:.8rem;}
-    .ft-email-input{background:#2A2A2A;border:1px solid rgba(246,241,233,.2);border-radius:2px;padding:.9rem 1.2rem;font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.85rem;color:#F6F1E9;width:100%;box-sizing:border-box;transition:border-color .2s;}
-    .ft-email-input::placeholder{color:rgba(246,241,233,.4);}
-    .ft-email-input:focus{outline:none;border-color:var(--purple);}
-    .ft-email-btn{background:var(--purple);color:#F6F1E9;border:none;padding:.85rem 1.8rem;font-family:var(--body);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:2px;transition:background .2s;}
+    .ft-subscribe p{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.85rem;color:rgba(246,241,233,.85);margin:0 0 1.8rem;line-height:1.7;}
+    .ft-email-btn{background:var(--purple);color:#F6F1E9;border:none;padding:.85rem 1.8rem;font-family:var(--body);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:4px;transition:background .2s;}
     .ft-email-btn:hover{background:#5a3a5f;}
     .ft-col h4{font-family:var(--serif);font-size:1rem;font-weight:400;color:#F6F1E9;margin:0 0 1.6rem;letter-spacing:.04em;}
     .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:1rem;margin:0;padding:0;}
     .ft-col ul li{margin:0;padding:0;}
-    .ft-col ul a{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.85rem;color:rgba(246,241,233,.7);text-decoration:none;transition:color .2s;}
+    .ft-col ul a{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.85rem;color:rgba(246,241,233,.82);text-decoration:none;transition:color .2s;}
     .ft-col ul a:hover{color:#F6F1E9;}
-    .ft-bot{max-width:1200px;margin:2rem auto 0;padding:2rem 3.5rem 0;border-top:1px solid rgba(246,241,233,.1);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;}
-    .ft-legal{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.75rem;color:rgba(246,241,233,.45);margin:0;line-height:1.6;}
+    .ft-bot{max-width:1200px;margin:2rem auto 0;padding:2rem 3.5rem 0;border-top:1px solid rgba(246,241,233,.15);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;}
+    .ft-legal{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.75rem;color:rgba(246,241,233,.62);margin:0;line-height:1.6;}
     @media(max-width:900px){
       .ft-inner{grid-template-columns:1fr;gap:3rem;}
       .ft-bot{flex-direction:column;align-items:flex-start;}
@@ -880,23 +864,52 @@
     body.no-motion *,body.no-motion *::before,body.no-motion *::after{animation-duration:.01ms!important;transition-duration:.01ms!important;}
     body.no-motion .rv,body.no-motion .rvl,body.no-motion .rvr{opacity:1;transform:none;}
 
-    /* CINEMATIC CURTAIN FADE */
     body{overflow-x:hidden;}
-    .nc-curtain-wrapper{position:fixed;top:0;left:0;width:100vw;height:100vh;background-color:var(--cream);display:flex;justify-content:center;align-items:center;z-index:99999;backface-visibility:hidden;will-change:opacity,visibility;animation:fadeOutCurtain 1.2s cubic-bezier(0.25,1,0.5,1) 2.5s forwards;}
-    .nc-curtain-logo{width:100%;max-width:580px;height:auto;padding:20px;box-sizing:border-box;}
-    @keyframes fadeOutCurtain{0%{opacity:1;visibility:visible;pointer-events:auto;}99%{opacity:0;visibility:visible;}100%{opacity:0;visibility:hidden;pointer-events:none;}}
+
+    /* ── BRAND INTRO SECTION ───────────────────────────────── */
+    #brand-intro{min-height:100svh;background:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:4rem 2rem;position:relative;}
+    .bi-logo{width:100%;max-width:460px;height:auto;display:block;margin:0 auto;opacity:0;animation:biLogoIn 1.6s cubic-bezier(0.22,1,0.36,1) 0.3s forwards;}
+    .bi-scroll{position:absolute;bottom:2.4rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.5rem;opacity:0;animation:biLogoIn 1s ease-out 2s forwards;}
+    .bi-scroll span{font-family:var(--body);font-size:.5rem;letter-spacing:.22em;text-transform:uppercase;color:rgba(42,31,26,.3);}
+    .bi-scroll svg{animation:scrollBob 1.8s ease-in-out infinite;}
+    @keyframes biLogoIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+    @keyframes scrollBob{0%,100%{transform:translateY(0);}50%{transform:translateY(5px);}}
+
+    /* ── STATEMENT BREAKER ────────────────────────────────── */
+    .stmt-break{background:var(--ink-deep);padding:7rem 2rem;text-align:center;}
+    .stmt-kicker{font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)!important;display:block;margin-bottom:2rem;}
+    .stmt-text{font-family:var(--serif);font-size:clamp(1.9rem,4vw,3.6rem);font-weight:300;line-height:1.18;color:#F6F1E9!important;max-width:760px;margin:0 auto;letter-spacing:.02em;}
+    .stmt-tags{display:flex;justify-content:center;flex-wrap:wrap;gap:.6rem;margin-top:2.8rem;}
+
+    /* ── TUL PREMIUM CARDS ────────────────────────────────── */
+    .tul-card{background:rgba(255,255,255,.055);border:1px solid rgba(246,241,233,.12);border-radius:12px;margin-bottom:1rem;transition:border-color .25s,background .25s;overflow:hidden;}
+    .tul-card.is-open{background:rgba(255,255,255,.09);border-color:rgba(196,150,62,.38);}
+    .tul-card-btn{width:100%;display:flex;align-items:flex-start;justify-content:space-between;background:none;border:none;cursor:pointer;padding:2rem 2rem 2rem 2rem;gap:1.4rem;text-align:left;outline:none;}
+    .tul-card-btn:focus-visible{outline:2px solid var(--gold);outline-offset:2px;border-radius:10px;}
+    .tul-card-inner{display:flex;align-items:flex-start;gap:1.6rem;flex:1;min-width:0;}
+    .tul-card-week{font-family:var(--body);font-size:.52rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:rgba(246,241,233,.38);flex-shrink:0;padding-top:.25rem;min-width:4.2rem;}
+    .tul-card.is-open .tul-card-week{color:var(--gold);opacity:.85;}
+    .tul-card-title{font-family:var(--serif);font-size:clamp(1.2rem,2.2vw,1.65rem);font-weight:300;color:#F6F1E9;line-height:1.15;margin-bottom:.3rem;}
+    .tul-card-sub{font-family:var(--body);font-size:.73rem;color:rgba(246,241,233,.58);letter-spacing:.03em;line-height:1.5;}
+    .tul-card.is-open .tul-card-sub{color:rgba(246,241,233,.75);}
+    .tul-card-icon{font-size:1.2rem;font-weight:200;color:rgba(246,241,233,.5);flex-shrink:0;line-height:1;transition:transform .3s,color .25s;margin-top:.35rem;user-select:none;}
+    .tul-card.is-open .tul-card-icon{transform:rotate(45deg);color:var(--gold);}
+    .tul-card-body{max-height:0;overflow:hidden;transition:max-height .4s cubic-bezier(.25,1,.5,1);}
+    .tul-card-body p{font-family:var(--body);font-size:.9rem;font-weight:400;line-height:1.88;color:#F0EBE3!important;padding:.4rem 2rem 2rem 7.8rem;max-width:680px;}
+    .curriculum-section p{color:#F0EBE3!important;}
+    .curriculum-section .tul-card-sub{color:rgba(246,241,233,.72)!important;}
+    @media(max-width:600px){
+      .tul-card-body p{padding:.4rem 1.2rem 1.8rem 1.2rem;}
+      .tul-card-btn{padding:1.6rem 1.2rem;}
+      .tul-card-inner{gap:1rem;}
+      .tul-card-week{min-width:auto;}
+    }
   </style>
 </head>
 <body>
 
-<!-- CINEMATIC CURTAIN OVERLAY -->
-<div class="nc-curtain-wrapper">
-  <img src="logo.svg" alt="Nuanced Co. Logo" class="nc-curtain-logo">
-</div>
-
-
 <canvas id="grain"></canvas>
-<div id="sp"></div>
+
 
 
 <nav id="nav">
@@ -909,7 +922,7 @@
       </div>
     </li>
     <li><a href="#about" class="magnetic">About Leah</a></li>
-    <li class="nav-dd"><a href="#" class="magnetic">How I Work &#9662;</a>
+    <li class="nav-dd"><a href="how-i-work.html" class="magnetic">How I Work &#9662;</a>
       <div class="nav-dd-menu">
         <a href="how-i-work.html" class="magnetic">How I work</a>
         <a href="who-i-work-with.html" class="magnetic">Who I work with</a>
@@ -953,10 +966,12 @@
   <a href="book.html" onclick="closeMob()">Book a call</a>
 </div>
 
-<!-- MASTER LOGO SIGNATURE BLOCK -->
-<section class="logo-signature">
-  <div class="logo-signature-inner">
-    <img src="logo.svg" alt="Nuanced Co. Neurodivergent Consultancy" class="master-brand-logo">
+<!-- BRAND INTRO SECTION -->
+<section id="brand-intro">
+  <img src="logo.svg" alt="Nuanced Co. — Neurodivergent Consultancy" class="bi-logo">
+  <div class="bi-scroll" aria-hidden="true">
+    <span>Scroll</span>
+    <svg width="16" height="22" viewBox="0 0 16 22" fill="none"><rect x="5.5" y="1" width="5" height="9" rx="2.5" stroke="rgba(42,31,26,.3)" stroke-width="1.2"/><line x1="8" y1="13" x2="8" y2="21" stroke="rgba(42,31,26,.3)" stroke-width="1.2" stroke-linecap="round"/><polyline points="5,18 8,21 11,18" stroke="rgba(42,31,26,.3)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
   </div>
 </section>
 
@@ -972,92 +987,162 @@
           <svg viewBox="0 0 360 20" width="360" height="20" fill="none"><path d="M4,10 C50,4 120,16 190,8 C255,1 310,14 356,10" stroke="#C4963E" stroke-width="2.5" stroke-linecap="round"/><path d="M30,13 C80,7 150,18 215,11 C270,4 320,15 355,12" stroke="#C4963E" stroke-width="1" stroke-linecap="round" opacity=".45"/></svg>
         </span>
       </div>
-      <p class="hero-sub rv d3">Nuanced Co. is an adult neurodivergent consultancy founded by Leah Veenhuizen, creator of the The Unmasked Life&#8482; methodology. We help late-diagnosed adults build lives calibrated to their actual neurology. No prescriptive checklists. No rigid neurotypical scripts. Just sustainable structural frameworks built on peer-reviewed science and lived Australian experience.</p>
-      <div class="hero-btns rv" style="transition-delay:.45s">
-        <a href="course-dashboard.html" class="btn btn-gold magnetic">View the Course</a>
-        <a href="book.html" class="btn btn-ghost-light magnetic">Book a Consultation</a>
+      <p class="hero-sub rv d3">Nuanced Co. helps neurodivergent adults make sense of ADHD, late diagnosis and support needs without shame or generic "just try harder" advice.</p>
+      <p class="hero-sub rv d3" style="margin-top:-.8rem">Education, tools and practical structure for brains that need a different kind of support.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- NUANCED CO. PATHWAYS SECTION -->
+<section id="pathways" style="background:var(--cream);padding:7rem 2rem 7.5rem;">
+  <div style="max-width:960px;margin:0 auto;">
+    <p style="font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--purple);margin:0 0 1rem;text-align:center;">Where would you like to start?</p>
+    <h2 style="font-family:var(--serif);font-size:clamp(2rem,3.8vw,3.2rem);font-weight:300;color:var(--ink);line-height:1.15;letter-spacing:.02em;text-align:center;margin:0 0 1.2rem;">Choose the support that fits<br>where you are now</h2>
+    <p style="font-family:var(--body);font-size:.9rem;color:var(--ink-mid);line-height:1.8;max-width:620px;margin:0 auto 4rem;text-align:center;">Nuanced Co. offers educational resources, reflective tools and practical support pathways for neurodivergent adults, especially those navigating ADHD, late diagnosis, masking, grief and support needs.</p>
+    <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;">
+
+      <div style="background:#fff;border:1px solid rgba(42,31,26,.08);border-radius:4px;padding:2.4rem 2rem;display:flex;flex-direction:column;">
+        <p style="font-family:var(--body);font-size:.52rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--sage);margin:0 0 1rem;">Guides</p>
+        <h3 style="font-family:var(--serif);font-size:1.35rem;font-weight:300;color:var(--ink);line-height:1.2;margin:0 0 1rem;">Start with a guide</h3>
+        <div style="width:32px;height:1px;background:var(--sage);opacity:.5;margin:0 0 1.2rem;"></div>
+        <p style="font-family:var(--body);font-size:.85rem;color:var(--ink-mid);line-height:1.75;flex:1;margin:0 0 2rem;">Low-cost digital guides for the "I need language for this" stage. Start with The Late Diagnosis Life Review if you are replaying old labels, grief or the "was that ADHD too?" life review.</p>
+        <a href="https://stan.store/NuancedCo/p/the-late-diagnosis-life-review" target="_blank" rel="noopener" style="display:inline-block;font-family:var(--body);font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.8rem 1.6rem;background:var(--sage);color:#fff;border-radius:40px;text-align:center;transition:background .2s;">View guides</a>
       </div>
-      <p class="hero-micro rv" style="transition-delay:.55s">Four weeks. Evidence-based. Designed for a brain wired exactly like yours.</p>
+
+      <div style="background:#fff;border:2px solid var(--purple);border-radius:4px;padding:2.4rem 2rem;display:flex;flex-direction:column;position:relative;">
+        <span style="position:absolute;top:-1px;left:50%;transform:translateX(-50%);background:var(--purple);color:#fff;font-family:var(--body);font-size:.46rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:.3rem .9rem;border-radius:0 0 4px 4px;white-space:nowrap;">Most popular</span>
+        <p style="font-family:var(--body);font-size:.52rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--purple);margin:.8rem 0 1rem;">Course</p>
+        <h3 style="font-family:var(--serif);font-size:1.35rem;font-weight:300;color:var(--ink);line-height:1.2;margin:0 0 1rem;">Go deeper with the course</h3>
+        <div style="width:32px;height:1px;background:var(--purple);opacity:.4;margin:0 0 1.2rem;"></div>
+        <p style="font-family:var(--body);font-size:.85rem;color:var(--ink-mid);line-height:1.75;flex:1;margin:0 0 2rem;">The Unmasked Life is a four-week educational course for late-diagnosed ADHD adults who want structured reflection, practical support and a calmer way to understand their brain.</p>
+        <a href="the-unmasked-life.html" style="display:inline-block;font-family:var(--body);font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.8rem 1.6rem;background:var(--purple);color:#fff;border-radius:40px;text-align:center;transition:background .2s;">View the course</a>
+      </div>
+
+      <div style="background:#fff;border:1px solid rgba(42,31,26,.08);border-radius:4px;padding:2.4rem 2rem;display:flex;flex-direction:column;">
+        <p style="font-family:var(--body);font-size:.52rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);margin:0 0 1rem;">1:1</p>
+        <h3 style="font-family:var(--serif);font-size:1.35rem;font-weight:300;color:var(--ink);line-height:1.2;margin:0 0 1rem;">Work with Leah</h3>
+        <div style="width:32px;height:1px;background:var(--gold);opacity:.5;margin:0 0 1.2rem;"></div>
+        <p style="font-family:var(--body);font-size:.85rem;color:var(--ink-mid);line-height:1.75;flex:1;margin:0 0 2rem;">For people who want more personalised educational support, consultation or guidance within scope. This is not therapy or clinical care.</p>
+        <a href="book.html" style="display:inline-block;font-family:var(--body);font-size:.6rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.8rem 1.6rem;background:var(--gold);color:#fff;border-radius:40px;text-align:center;transition:background .2s;">Book a call</a>
+      </div>
+
     </div>
   </div>
 </section>
+<style>
+@media(max-width:768px){
+  #pathways > div > div[style*="grid-template-columns:repeat(3"]{grid-template-columns:1fr!important;}
+}
+</style>
 
+<!-- NARROW BRAND TRANSITION -->
+<div style="background:var(--ink);padding:2.2rem 2rem;text-align:center;">
+  <span style="font-family:var(--body);font-size:.52rem;font-weight:700;letter-spacing:.34em;text-transform:uppercase;color:rgba(196,150,62,.72);">Nuanced Co. Course Offering</span>
+</div>
 
-<!-- ASYMMETRICAL SPLIT: OVERWHELM VALIDATION -->
-<section style="background:var(--cream);padding:7rem 2rem;">
-  <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start;">
-
-    <!-- LEFT: IMAGE PLACEHOLDER -->
-    <div style="min-height:520px;background:#F6F1E9;border-radius:16px;border:1px solid rgba(107,69,112,.12);display:flex;align-items:center;justify-content:center;color:rgba(42,31,26,.28);font-family:var(--body);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;text-align:center;padding:2rem;">
-      Overwhelm validation image placeholder
-    </div>
-
-    <!-- RIGHT: EDITORIAL TEXT -->
-    <div>
-      <h2 style="font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.2rem);font-weight:300;line-height:1.15;color:var(--ink);margin:0 0 2rem;letter-spacing:.01em;">It's time to ditch the overwhelm &amp; design a life that fits.</h2>
-
-      <p style="font-family:var(--body);font-size:.6rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--purple);margin:0 0 2rem;">Do any of these scenarios hit home?</p>
-
-      <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:1.8rem;">
-        <li style="font-size:.95rem;color:var(--ink-mid);line-height:1.75;font-family:var(--body);">
-          <span style="color:var(--purple);font-weight:600;margin-right:1rem;">•</span>Masking to the point of absolute physical and mental exhaustion just to keep up.
-        </li>
-        <li style="font-size:.95rem;color:var(--ink-mid);line-height:1.75;font-family:var(--body);">
-          <span style="color:var(--purple);font-weight:600;margin-right:1rem;">•</span>The constant friction between your deep capability and your daily executive capacity.
-        </li>
-        <li style="font-size:.95rem;color:var(--ink-mid);line-height:1.75;font-family:var(--body);">
-          <span style="color:var(--purple);font-weight:600;margin-right:1rem;">•</span>An environment and daily structure that triggers sensory or cognitive overwhelm.
-        </li>
-        <li style="font-size:.95rem;color:var(--ink-mid);line-height:1.75;font-family:var(--body);">
-          <span style="color:var(--purple);font-weight:600;margin-right:1rem;">•</span>Knowing you need systems, but hitting a wall trying to use tools built for neurotypical brains.
-        </li>
-      </ul>
-    </div>
+<!-- COURSE INTRO: THE UNMASKED LIFE -->
+<section id="tul-intro" style="background:var(--parchment);padding:7rem 2rem 6rem;">
+  <div style="max-width:900px;margin:0 auto;text-align:center;">
+    <h2 style="font-family:var(--serif);font-size:clamp(2.8rem,5vw,4.4rem);font-weight:300;line-height:1.1;color:var(--ink);letter-spacing:.02em;margin:0 0 .6rem;">The Unmasked Life</h2>
+    <p style="font-family:var(--serif);font-size:clamp(1.05rem,1.8vw,1.35rem);font-weight:300;font-style:italic;color:var(--ink-mid);margin:0 0 2.4rem;line-height:1.4;">A four-week educational course for late-diagnosed ADHD adults making sense of their brain, grief, masking and support needs.</p>
+    <div style="width:48px;height:1px;background:var(--purple);opacity:.3;margin:0 auto 2.4rem;"></div>
+    <p style="font-family:var(--body);font-size:.95rem;font-weight:400;line-height:1.85;color:var(--ink-mid);max-width:640px;margin:0 auto 2.8rem;">Go deeper than the quick reframe. The Unmasked Life gives you a structured path through recognition, grief, shame, masking and practical support, at a pace that actually respects ADHD brains.</p>
+    <p style="font-family:var(--body);font-size:.68rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink-mid);opacity:.65;margin:0 0 2.4rem;">Digital course from $197 AUD. One payment. Lifetime access. No deadline.</p>
+    <a href="the-unmasked-life.html" class="btn btn-gold" style="display:inline-block;">See course and enrolment options</a>
+    <p style="font-family:var(--body);font-size:.62rem;letter-spacing:.1em;color:rgba(42,31,26,.42);margin:1.6rem 0 0;">Educational and reflective only. Not diagnosis, therapy, counselling, treatment, medication advice, clinical advice or crisis support.</p>
   </div>
 </section>
 
-<!-- CURRICULUM MODULE GRID -->
-<section class="curriculum-section">
-  <div class="curriculum-header">
-    <h2 class="curriculum-heading">Here's what we'll cover in The Unmasked Life&#8482; Program:</h2>
+<!-- CURRICULUM: INSIDE THE UNMASKED LIFE -->
+<section class="curriculum-section" id="tul-curriculum" style="padding:6rem 2rem 7rem;">
+  <div style="max-width:820px;margin:0 auto;text-align:center;margin-bottom:4rem;">
+    <span style="font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:rgba(246,241,233,.45);display:block;margin-bottom:1.4rem;">The Unmasked Life&#8482;</span>
+    <h2 style="font-family:var(--serif);font-size:clamp(2.2rem,4vw,3.4rem);font-weight:300;line-height:1.1;color:#F6F1E9;letter-spacing:.03em;margin:0 0 1.6rem;">Inside The Unmasked Life</h2>
+    <p style="font-family:var(--body);font-size:.92rem;font-weight:300;line-height:1.85;color:rgba(246,241,233,.72);max-width:620px;margin:0 auto;">Four weeks of structured education and reflection for late-diagnosed ADHD adults who are ready to stop blaming themselves and start building support around their actual brain.</p>
   </div>
-  <div class="curriculum-grid">
 
-    <div class="module-card">
-      <p class="module-label">Week 01</p>
-      <h3 class="module-title">Unpacking &amp; The Grief</h3>
-      <span class="module-plus">+</span>
+  <div style="max-width:820px;margin:0 auto;display:flex;flex-direction:column;gap:0.9rem;">
+
+    <div class="tul-card is-open">
+      <button class="tul-card-btn" aria-expanded="true" onclick="toggleTULCard(this)">
+        <div class="tul-card-inner">
+          <span class="tul-card-week">Week 01</span>
+          <div>
+            <div class="tul-card-title">It Finally Makes Sense</div>
+            <div class="tul-card-sub">Recognising the patterns you used to misread.</div>
+          </div>
+        </div>
+        <span class="tul-card-icon">+</span>
+      </button>
+      <div class="tul-card-body" style="max-height:200px;">
+        <p>This week helps you understand the first wave of recognition after late ADHD diagnosis. You will look at old labels, repeated patterns and the "wait, was that ADHD too?" life review without turning your whole story into a clinical case study.</p>
+      </div>
     </div>
 
-    <div class="module-card">
-      <p class="module-label">Week 02</p>
-      <h3 class="module-title">The Brain &amp; The Cost of Masking</h3>
-      <span class="module-plus">+</span>
+    <div class="tul-card">
+      <button class="tul-card-btn" aria-expanded="false" onclick="toggleTULCard(this)">
+        <div class="tul-card-inner">
+          <span class="tul-card-week">Week 02</span>
+          <div>
+            <div class="tul-card-title">Grief for What Could Have Been</div>
+            <div class="tul-card-sub">Making space for what went unsupported.</div>
+          </div>
+        </div>
+        <span class="tul-card-icon">+</span>
+      </button>
+      <div class="tul-card-body">
+        <p>This week gives language to the grief, anger, relief and what-ifs that can follow late diagnosis. The focus is not self-blame. It is telling the truth about what mattered, what was missed and what support might have changed.</p>
+      </div>
     </div>
 
-    <div class="module-card">
-      <p class="module-label">Week 03</p>
-      <h3 class="module-title">Identity &amp; The Support Map</h3>
-      <span class="module-plus">+</span>
+    <div class="tul-card">
+      <button class="tul-card-btn" aria-expanded="false" onclick="toggleTULCard(this)">
+        <div class="tul-card-inner">
+          <span class="tul-card-week">Week 03</span>
+          <div>
+            <div class="tul-card-title">The Mask, the Shame and the Big Feelings</div>
+            <div class="tul-card-sub">Understanding what you carried and performed.</div>
+          </div>
+        </div>
+        <span class="tul-card-icon">+</span>
+      </button>
+      <div class="tul-card-body">
+        <p>This week explores masking, shame, emotional intensity and the pressure to appear fine. You will start noticing the difference between who you are, what you learned to perform and what no longer needs to be carried alone.</p>
+      </div>
     </div>
 
-    <div class="module-card">
-      <p class="module-label">Week 04</p>
-      <h3 class="module-title">Integration &amp; Sustainable Accommodation</h3>
-      <span class="module-plus">+</span>
+    <div class="tul-card">
+      <button class="tul-card-btn" aria-expanded="false" onclick="toggleTULCard(this)">
+        <div class="tul-card-inner">
+          <span class="tul-card-week">Week 04</span>
+          <div>
+            <div class="tul-card-title">Building a Life That Fits</div>
+            <div class="tul-card-sub">Creating support around your actual brain.</div>
+          </div>
+        </div>
+        <span class="tul-card-icon">+</span>
+      </button>
+      <div class="tul-card-body">
+        <p>This week moves from insight into practical structure. You will identify one real area of life that needs support and begin designing ADHD-friendly systems, routines or environmental changes that reduce friction instead of demanding more willpower.</p>
+      </div>
     </div>
 
   </div>
 </section>
+
+<!-- STATEMENT BREAKER 1 -->
+<div class="stmt-break">
+  <span class="stmt-kicker">A different kind of support</span>
+  <div class="stmt-text">More discipline is not always the answer.</div>
+</div>
 
 <!-- BONUSES SECTION -->
 <section class="bonuses-section">
 
-  <!-- LEFT: horizontal lifestyle image -->
+  <!-- LEFT: course cover visual -->
   <div class="bonuses-img-col">
-    <div class="bonuses-img-placeholder">
-      <span>Horizontal lifestyle image</span>
-    </div>
+    <img src="the-unmasked-life-thumbnail.png" alt="The Unmasked Life — four-week educational course" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
   </div>
 
   <!-- RIGHT: value typography -->
@@ -1068,45 +1153,25 @@
     <div class="bonuses-list">
       <div class="bonus-item">
         <p class="bonus-label">Bonus 01</p>
-        <h3 class="bonus-title">The 30-Day Printed Linen Journal</h3>
-        <p class="bonus-desc">A beautifully bound, cloth-linen printed edition of the 28-day journal — produced on demand via Lulu Direct and shipped directly to your door.</p>
+        <h3 class="bonus-title">Printed reflection journal</h3>
+        <p class="bonus-desc">A cloth-linen printed journal produced separately and shipped to your door.</p>
       </div>
       <div class="bonus-item">
         <p class="bonus-label">Bonus 02</p>
-        <h3 class="bonus-title">The Fillable Digital PDF Journal</h3>
-        <p class="bonus-desc">Instant-access, device-optimised fillable PDF version of all 28 daily prompts. Available in your portal from Day 1.</p>
+        <h3 class="bonus-title">Fillable digital journal</h3>
+        <p class="bonus-desc">A device-friendly PDF version of the reflection prompts for typing, saving and revisiting.</p>
       </div>
       <div class="bonus-item">
         <p class="bonus-label">Bonus 03</p>
-        <h3 class="bonus-title">Community Space Access</h3>
-        <p class="bonus-desc">A quiet, low-demand peer circle for course members. No performance expected — just honest conversation at your own rhythm.</p>
-      </div>
-      <div class="bonus-item">
-        <p class="bonus-label">Bonus 04</p>
-        <h3 class="bonus-title">Lifetime Portal Access</h3>
-        <p class="bonus-desc">Return to any week, any session, any prompt at any time. No expiry date. The material stays available as your understanding deepens.</p>
+        <h3 class="bonus-title">Lifetime portal access</h3>
+        <p class="bonus-desc">Return to the course materials at your own pace, with no deadline or expiry.</p>
       </div>
     </div>
   </div>
 
 </section>
 
-<!-- COURSE CTA -->
-<section class="pricing-section" style="text-align:center;">
-  <div class="pricing-header">
-    <h2 class="pricing-heading">The Unmasked Life</h2>
-    <div class="pricing-rule"></div>
-  </div>
-  <p style="font-size:.95rem;color:var(--ink-mid);line-height:1.8;max-width:580px;margin:0 auto 2.5rem;">A four-week educational course for late-diagnosed ADHD adults. From $197 AUD. One payment, lifetime access, no deadline.</p>
-  <a href="the-unmasked-life.html" class="price-btn" style="display:inline-block;">See course and enrolment options</a>
-</section>
 
-
-
-<section id="course-intro" class="course-intro">
-  <div class="container">
-  </div>
-</section>
 
 
 <section id="exp">
@@ -1124,6 +1189,12 @@
   </div>
 </section>
 
+
+<section style="background:var(--cream);padding:5rem 2rem;text-align:center;">
+  <p style="font-family:var(--serif);font-size:clamp(1.5rem,3vw,2.4rem);font-weight:300;color:var(--ink);line-height:1.25;margin:0 auto 1.2rem;max-width:640px;letter-spacing:.02em;">Support should feel usable, not performative.</p>
+  <p style="font-family:var(--body);font-size:.88rem;color:var(--ink-mid);max-width:520px;margin:0 auto;line-height:1.75;">Nuanced Co. resources are designed to help you build structure around the brain you actually have.</p>
+</section>
+
 <div class="rough-div" style="background:var(--ink-deep)"><svg viewBox="0 0 1440 52" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none"><path d="M0,28 C90,44 170,12 260,30 C350,48 420,14 510,32 C600,50 670,16 760,34 C850,52 920,18 1010,36 C1100,54 1175,20 1270,38 C1355,52 1410,26 1440,30 L1440,0 L0,0 Z" fill="var(--cream)"/></svg></div>
 
 
@@ -1137,7 +1208,7 @@
         <span class="section-label">Community</span><div class="rule"></div>
         <h2 class="sh">A space that was<br>built for you.</h2>
         <p class="sb" style="margin-top:1rem">Nuanced Co. is building a community where the first thing you feel is understood. Group programs, peer connection, and a space where your brain does not need an explanation.</p>
-        <button class="btn btn-gold magnetic" style="margin-top:2rem" onclick="document.querySelector('#cta').scrollIntoView({behavior:'smooth'})">Join the waitlist</button>
+        <a href="the-unmasked-life-coming-soon.html" class="btn btn-gold magnetic" style="margin-top:2rem;display:inline-block;">Join the waitlist</a>
       </div>
       <div class="comm-grid rvr">
         <div class="comm-card"><div class="cc-title">Group programs</div><p class="cc-body">Structured support in a small group setting. Learn strategies that actually work for neurodivergent brains, alongside people who get it.</p></div>
@@ -1148,6 +1219,14 @@
   </div>
 </section>
 
+<!-- STATEMENT BREAKER 3 -->
+<div class="stmt-break">
+  <span class="stmt-kicker">Late diagnosis</span>
+  <div class="stmt-text">Late diagnosis is not a personality flaw. It is the absence of language you always deserved.</div>
+  <div style="margin-top:2.8rem;display:flex;justify-content:center;gap:.6rem;flex-wrap:wrap;">
+    <span class="etag et-p">ADHD</span><span class="etag et-s">Autism</span><span class="etag et-g">AuDHD</span><span class="etag et-p">Late diagnosis</span>
+  </div>
+</div>
 
 <!-- FAQ SECTION: TWO-COLUMN ACCORDION GRID -->
 <section class="faq-section">
@@ -1165,7 +1244,7 @@
           <span class="faq-accordion-plus">+</span>
         </button>
         <div class="faq-accordion-body">
-          <p>The Unmasked Life&#8482; is built specifically for adults who received a neurodivergent diagnosis later in life — whether that's ADHD, autism, or AuDHD. If you are still working out what your diagnosis means for your past and your future, this course was designed for you.</p>
+          <p>The Unmasked Life&#8482; is built specifically for adults who received a neurodivergent diagnosis later in life: ADHD, autism, or AuDHD. If you are still working out what your diagnosis means for your past and your future, this course was designed for you.</p>
         </div>
       </div>
 
@@ -1249,43 +1328,33 @@
   </div>
 </section>
 
-<!-- PRE-FOOTER CTA CARD -->
-<section class="prefooter-section">
-  <div class="prefooter-bg" aria-hidden="true"></div>
-  <div class="prefooter-inner">
-    <h2 class="prefooter-heading">Ready to do the dang thing?</h2>
-    <p class="prefooter-text">Stop managing a mismatch and start building a life calibrated to your actual neurology. The Unmasked Life™ Program is four weeks of evidence-based frameworks, practical tools, and peer-reviewed science — all designed for how your brain actually works.</p>
-    <a href="the-unmasked-life.html" class="prefooter-link">See the course</a>
-  </div>
-</section>
+
 
 <!-- FOOTER -->
 <footer>
   <div class="ft-inner">
 
-    <!-- LEFT: SUBSCRIBE MODULE -->
+    <!-- LEFT: WAITLIST CTA -->
     <div class="ft-subscribe">
-      <h3>Subscribe</h3>
-      <p>Sign up with your email address to receive news, updates, and free resources on neurodivergence, living unmasked, and building a life that actually fits.</p>
-      <form class="ft-email-form" onsubmit="return false;">
-        <input type="email" class="ft-email-input" placeholder="your.email@example.com" required>
-        <button type="submit" class="ft-email-btn">Sign Up</button>
-      </form>
+      <h3>Stay in the loop</h3>
+      <p>Want the next guide or course update? Join the waitlist for The Unmasked Life and future Nuanced Co. resources.</p>
+      <a href="https://nuancedco.com.au/the-unmasked-life-coming-soon" class="ft-email-btn" style="display:inline-block;text-align:center;text-decoration:none;border-radius:4px;">Join the waitlist</a>
     </div>
 
     <!-- MIDDLE: NAVIGATE LINKS -->
     <div class="ft-col">
       <h4>Navigate</h4>
       <ul>
-        <li><a href="#hero">Home</a></li>
-        <li><a href="#about">About</a></li>
-        <li><a href="#services">Speaking</a></li>
-        <li><a href="#resources">Media &amp; Press Kit</a></li>
-        <li><a href="podcast.html">Podcast Inquiries</a></li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Leah</a></li>
+        <li><a href="how-i-work.html">How I Work</a></li>
+        <li><a href="the-unmasked-life.html">The Unmasked Life</a></li>
+        <li><a href="media.html">Media</a></li>
+        <li><a href="contact.html">Contact</a></li>
       </ul>
     </div>
 
-    <!-- RIGHT: CONTACT LINKS -->
+    <!-- RIGHT: CONTACT + LEGAL LINKS -->
     <div class="ft-col">
       <h4>Contact</h4>
       <ul>
@@ -1312,8 +1381,6 @@
   function rg(){gW=gc.width=window.innerWidth;gH=gc.height=window.innerHeight;}rg();window.addEventListener('resize',rg);
   function dg(){const i=gx.createImageData(gW,gH),d=i.data;for(let j=0;j<d.length;j+=4){const v=(Math.random()*255)|0;d[j]=d[j+1]=d[j+2]=v;d[j+3]=255;}gx.putImageData(i,0,0);requestAnimationFrame(dg);}dg();
 
-  // SCROLL PROGRESS
-  const sp=document.getElementById('sp');window.addEventListener('scroll',()=>{sp.style.width=Math.min(100,window.scrollY/(document.documentElement.scrollHeight-window.innerHeight)*100)+'%';},{passive:true});
 
   // NAV
   const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>70);},{passive:true});
@@ -1343,6 +1410,16 @@
 
   // FAQ ACCORDION
   function toggleFAQ(btn){var open=btn.getAttribute('aria-expanded')==='true';btn.setAttribute('aria-expanded',!open);btn.nextElementSibling.classList.toggle('open',!open);}
+
+  // TUL PREMIUM CARD ACCORDION
+  function toggleTULCard(btn){
+    var card=btn.closest('.tul-card');
+    var open=btn.getAttribute('aria-expanded')==='true';
+    btn.setAttribute('aria-expanded',String(!open));
+    var body=btn.nextElementSibling;
+    body.style.maxHeight=open?'0':body.scrollHeight+'px';
+    card.classList.toggle('is-open',!open);
+  }
 </script>
 </body>
 </html>
