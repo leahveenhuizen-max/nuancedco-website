@@ -817,17 +817,22 @@
     /* ── FOOTER ─────────────────────────────────────────── */
     footer{background:#1A1A1A;padding:6rem 0 3rem;color:#F6F1E9;}
     .ft-inner{max-width:1200px;margin:0 auto;padding:0 3.5rem;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:3.5rem;}
-    .ft-subscribe h3{font-family:var(--serif);font-size:1.25rem;font-weight:400;color:#F6F1E9;margin:0 0 1rem;letter-spacing:.04em;}
-    .ft-subscribe p{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.85rem;color:rgba(246,241,233,.88);margin:0 0 1.6rem;line-height:1.7;}
+    .ft-subscribe{background:rgba(246,241,233,.06);border:1px solid rgba(246,241,233,.1);border-radius:4px;padding:1.8rem 1.6rem;}
+    .ft-subscribe h3{font-family:var(--serif);font-size:1.25rem;font-weight:400;color:#F6F1E9;margin:0 0 .8rem;letter-spacing:.04em;}
+    .ft-subscribe p{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.82rem;color:rgba(246,241,233,.78);margin:0 0 1.4rem;line-height:1.75;}
     .ft-email-btn{background:var(--purple);color:#F6F1E9;border:none;padding:.85rem 1.8rem;font-family:var(--body);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;border-radius:4px;transition:background .2s;display:inline-block;text-decoration:none;}
     .ft-email-btn:hover{background:#5a3a5f;}
     .ft-col h4{font-family:var(--serif);font-size:1rem;font-weight:400;color:#F6F1E9;margin:0 0 1.4rem;letter-spacing:.04em;}
     .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.9rem;margin:0;padding:0;}
     .ft-col ul li{margin:0;padding:0;}
-    .ft-col ul a{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.82rem;color:rgba(246,241,233,.82);text-decoration:none;transition:color .2s;}
+    .ft-col ul a{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.82rem;color:rgba(246,241,233,.8);text-decoration:none;transition:color .2s;}
     .ft-col ul a:hover{color:#F6F1E9;}
-    .ft-bot{max-width:1200px;margin:2rem auto 0;padding:2rem 3.5rem 0;border-top:1px solid rgba(246,241,233,.15);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem;}
-    .ft-legal{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.75rem;color:rgba(246,241,233,.62);margin:0;line-height:1.6;}
+    .ft-bot{max-width:1200px;margin:2rem auto 0;padding:2rem 3.5rem 0;border-top:1px solid rgba(246,241,233,.15);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    .ft-legal{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.72rem;color:rgba(246,241,233,.55);margin:0;line-height:1.6;}
+    .ft-legal-links{display:flex;flex-wrap:wrap;gap:1.2rem;align-items:center;}
+    .ft-legal-links a{font-family:'Inter','Atkinson Hyperlegible',sans-serif;font-size:.72rem;color:rgba(246,241,233,.5);text-decoration:none;transition:color .2s;}
+    .ft-legal-links a:hover{color:rgba(246,241,233,.85);}
+    @media(max-width:600px){.ft-legal-links{gap:.8rem;}.ft-bot{flex-direction:column;align-items:flex-start;}}
     @media(max-width:1024px){.ft-inner{grid-template-columns:1fr 1fr;gap:3rem;}}
     @media(max-width:600px){
       .ft-inner{grid-template-columns:1fr;gap:2.5rem;padding:0 1.8rem;}
@@ -928,6 +933,7 @@
       <div class="nav-dd-menu">
         <a href="about.html">About Nuanced Co.</a>
         <a href="about.html">Meet Leah</a>
+        <a href="faq.html">FAQ</a>
       </div>
     </li>
     <li class="nav-dd"><a href="how-i-work.html" class="magnetic">How We Work &#9662;</a>
@@ -1075,39 +1081,6 @@
   <div class="stmt-text">More discipline is not always the answer.</div>
 </div>
 
-<!-- BONUSES SECTION -->
-<section class="bonuses-section">
-
-  <!-- LEFT: course cover visual -->
-  <div class="bonuses-img-col">
-    <img src="the-unmasked-life-thumbnail.png" alt="The Unmasked Life — four-week educational course" style="width:100%;height:100%;object-fit:cover;object-position:center;display:block;">
-  </div>
-
-  <!-- RIGHT: value typography -->
-  <div class="bonuses-text-col">
-    <p class="bonuses-tagline">Bonuses</p>
-    <h2 class="bonuses-heading">Plus, you'll get all these bonuses on top</h2>
-
-    <div class="bonuses-list">
-      <div class="bonus-item" style="border-top-color:rgba(107,69,112,.2);">
-        <p class="bonus-label" style="color:var(--purple);">Bonus 01</p>
-        <h3 class="bonus-title">Printed reflection journal</h3>
-        <p class="bonus-desc">A cloth-linen printed journal produced separately and shipped to your door.</p>
-      </div>
-      <div class="bonus-item" style="border-top-color:rgba(122,140,110,.2);">
-        <p class="bonus-label" style="color:var(--sage);">Bonus 02</p>
-        <h3 class="bonus-title">Fillable digital journal</h3>
-        <p class="bonus-desc">A device-friendly PDF version of the reflection prompts for typing, saving and revisiting.</p>
-      </div>
-      <div class="bonus-item" style="border-top-color:rgba(196,150,62,.2);border-bottom-color:rgba(196,150,62,.2);">
-        <p class="bonus-label" style="color:var(--gold);">Bonus 03</p>
-        <h3 class="bonus-title">Lifetime portal access</h3>
-        <p class="bonus-desc">Return to the course materials at your own pace, with no deadline or expiry.</p>
-      </div>
-    </div>
-  </div>
-
-</section>
 
 
 
@@ -1166,85 +1139,7 @@
   </div>
 </div>
 
-<!-- FAQ SECTION: TWO-COLUMN ACCORDION GRID -->
-<section class="faq-section">
-  <div class="faq-header">
-    <h2 class="faq-heading">Common questions about Nuanced Co.</h2>
-  </div>
-  <div class="faq-grid">
-
-    <!-- LEFT COLUMN -->
-    <div class="faq-column">
-
-      <div class="faq-accordion-item">
-        <button class="faq-accordion-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
-          <span class="faq-accordion-q">What is Nuanced Co.?</span>
-          <span class="faq-accordion-plus">+</span>
-        </button>
-        <div class="faq-accordion-body">
-          <p>Nuanced Co. is an Australian neurodivergent consultancy founded by Leah Veenhuizen. We create evidence-informed educational resources, self-paced courses and individual consultancy for adults navigating late ADHD diagnosis, masking, grief and support needs. Our work is educational and reflective. It is not therapy or clinical care.</p>
-        </div>
-      </div>
-
-      <div class="faq-accordion-item">
-        <button class="faq-accordion-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
-          <span class="faq-accordion-q">Is this therapy or clinical support?</span>
-          <span class="faq-accordion-plus">+</span>
-        </button>
-        <div class="faq-accordion-body">
-          <p>No. Nuanced Co. provides educational and reflective support only. Our courses, guides and consultancy sessions are not therapy, counselling, diagnosis, clinical treatment or crisis support. If you are experiencing significant distress, please seek support from a qualified health professional or contact a crisis service.</p>
-        </div>
-      </div>
-
-      <div class="faq-accordion-item">
-        <button class="faq-accordion-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
-          <span class="faq-accordion-q">Who do you work with?</span>
-          <span class="faq-accordion-plus">+</span>
-        </button>
-        <div class="faq-accordion-body">
-          <p>Nuanced Co. works with neurodivergent adults, particularly those who have received an ADHD, autism or AuDHD diagnosis later in life and are still making sense of what that means. You do not need a formal diagnosis to access our resources. Self-identified neurodivergent experiences are welcome.</p>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- RIGHT COLUMN -->
-    <div class="faq-column">
-
-      <div class="faq-accordion-item">
-        <button class="faq-accordion-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
-          <span class="faq-accordion-q">What is The Unmasked Life?</span>
-          <span class="faq-accordion-plus">+</span>
-        </button>
-        <div class="faq-accordion-body">
-          <p>The Unmasked Life is a four-week self-paced educational course for late-diagnosed ADHD adults. It covers recognition, grief, masking, shame and building practical support around your actual brain. The course is currently in preparation. Join the waitlist to be notified when enrolment opens.</p>
-        </div>
-      </div>
-
-      <div class="faq-accordion-item">
-        <button class="faq-accordion-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
-          <span class="faq-accordion-q">Can I work with Leah directly?</span>
-          <span class="faq-accordion-plus">+</span>
-        </button>
-        <div class="faq-accordion-body">
-          <p>Yes. Leah offers individual consultancy sessions for neurodivergent adults within an educational and reflective scope. Sessions are not therapy or clinical care. You can book a call to find out if it is a good fit before committing.</p>
-        </div>
-      </div>
-
-      <div class="faq-accordion-item">
-        <button class="faq-accordion-trigger" onclick="toggleFAQ(this)" aria-expanded="false">
-          <span class="faq-accordion-q">How do I stay updated about new resources and groups?</span>
-          <span class="faq-accordion-plus">+</span>
-        </button>
-        <div class="faq-accordion-body">
-          <p>Join the Nuanced Co. community updates list to hear about future group programs, peer spaces and new resources. For The Unmasked Life course specifically, join the course waitlist. Both are available from the footer below.</p>
-        </div>
-      </div>
-
-    </div>
-
-  </div>
-</section>
+<!-- FAQ moved to faq.html — linked from nav and footer -->
 
 
 
@@ -1277,21 +1172,19 @@
       <ul>
         <li><a href="about.html">About Nuanced Co.</a></li>
         <li><a href="about.html">Meet Leah</a></li>
-        <li><a href="how-i-work.html">How we work</a></li>
-        <li><a href="who-i-work-with.html">Who we work with</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="how-i-work.html">How We Work</a></li>
+        <li><a href="who-i-work-with.html">Who We Work With</a></li>
       </ul>
     </div>
 
-    <!-- COL 4: CONTACT + LEGAL -->
+    <!-- COL 4: CONTACT -->
     <div class="ft-col">
       <h4>Contact</h4>
       <ul>
         <li><a href="book.html">Book a call</a></li>
         <li><a href="contact.html">Contact</a></li>
         <li><a href="mailto:hello@nuancedco.com.au">hello@nuancedco.com.au</a></li>
-        <li><a href="privacy.html">Privacy Policy</a></li>
-        <li><a href="refund-policy.html">Refund Policy</a></li>
-        <li><a href="terms-of-service.html">Terms of Service</a></li>
       </ul>
     </div>
 
@@ -1299,7 +1192,12 @@
 
   <!-- FOOTER BOTTOM -->
   <div class="ft-bot">
-    <p class="ft-legal">&copy; 2026 Nuanced Co. All rights reserved. ABN 71 926 185 491. Nuanced Co. is a consultancy service. Content is for general information purposes only and does not constitute clinical advice, diagnosis, or treatment.</p>
+    <p class="ft-legal">&copy; 2026 Nuanced Co. All rights reserved. ABN 71 926 185 491. Educational and reflective content only. Not clinical advice.</p>
+    <div class="ft-legal-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="refund-policy.html">Refund Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
+    </div>
   </div>
 </footer>
 
