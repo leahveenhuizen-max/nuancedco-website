@@ -85,6 +85,47 @@
       .ph-inner,.page-body{padding-left:1.4rem;padding-right:1.4rem;}
       .ft-inner{padding:0 1.4rem;}
     }
+  
+    /* ── DROPDOWN NAV ───────────────────────────────────── */
+    .nav-dd{position:relative;}
+    .nav-dd-menu{position:absolute;top:calc(100% + 1rem);left:50%;transform:translateX(-50%) translateY(-4px);background:rgba(15,12,10,.98);border:1px solid rgba(246,241,233,.12);min-width:210px;padding:.6rem 0;opacity:0;pointer-events:none;visibility:hidden;transition:opacity .2s,transform .2s cubic-bezier(0.22,1,0.36,1),visibility .2s;z-index:10000;}
+    .nav-dd-menu::before{content:'';position:absolute;bottom:100%;left:-50%;right:-50%;height:1rem;pointer-events:auto;z-index:10001;}
+    .nav-dd:hover .nav-dd-menu,.nav-dd:focus-within .nav-dd-menu,.nav-dd-menu:hover{opacity:1;pointer-events:all;visibility:visible;transform:translateX(-50%) translateY(0);}
+    .nav-dd-menu a{display:block;padding:.75rem 1.4rem;font-size:.72rem;opacity:.9;color:rgba(246,241,233,.95);transition:opacity .2s,color .2s;}
+    .nav-dd-menu a:hover{opacity:1;color:var(--gold);}
+    .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:0;}
+    .hamburger span{width:22px;height:1.5px;background:var(--cream);display:block;}
+    .mob-nav{display:none;position:fixed;inset:0;background:var(--ink-deep);z-index:850;flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
+    .mob-nav.open{display:flex;}
+    .mob-nav a{font-family:var(--serif);font-size:2.2rem;color:var(--cream);font-weight:300;letter-spacing:.08em;}
+    .mob-close{position:absolute;top:1.6rem;right:2rem;font-size:1.4rem;color:var(--cream);opacity:.55;background:none;border:none;cursor:pointer;}
+    @media(max-width:960px){.nav-list{display:none;}.hamburger{display:flex;}#nav{padding:1.2rem 1.8rem;}}
+
+  
+    /* ── FOOTER ─────────────────────────────────────────── */
+    footer{background:#1A1A1A;padding:6rem 0 3rem;color:#F6F1E9;}
+    .ft-inner{max-width:1200px;margin:0 auto;padding:0 3.5rem;display:grid;grid-template-columns:1.3fr 1fr 1fr 1fr;gap:3.5rem;}
+    .ft-subscribe{background:rgba(246,241,233,.06);border:1px solid rgba(246,241,233,.1);border-radius:4px;padding:1.8rem 1.6rem;}
+    .ft-subscribe h3{font-family:var(--serif);font-size:1.25rem;font-weight:400;color:#F6F1E9;margin:0 0 .8rem;letter-spacing:.04em;}
+    .ft-subscribe p{font-size:.82rem;color:rgba(246,241,233,.78);margin:0 0 1.4rem;line-height:1.75;}
+    .ft-email-btn{background:var(--purple);color:#F6F1E9;padding:.85rem 1.8rem;font-family:var(--body);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:4px;transition:background .2s;display:inline-block;text-decoration:none;}
+    .ft-email-btn:hover{background:#5a3a5f;}
+    .ft-col h4{font-family:var(--serif);font-size:1rem;font-weight:400;color:#F6F1E9;margin:0 0 1.4rem;letter-spacing:.04em;}
+    .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.9rem;margin:0;padding:0;}
+    .ft-col ul a{font-size:.82rem;color:rgba(246,241,233,.8);text-decoration:none;transition:color .2s;}
+    .ft-col ul a:hover{color:#F6F1E9;}
+    .ft-bot{max-width:1200px;margin:2rem auto 0;padding:2rem 3.5rem 0;border-top:1px solid rgba(246,241,233,.15);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
+    .ft-legal{font-size:.72rem;color:rgba(246,241,233,.55);margin:0;line-height:1.6;}
+    .ft-legal-links{display:flex;flex-wrap:wrap;gap:1.2rem;}
+    .ft-legal-links a{font-size:.72rem;color:rgba(246,241,233,.5);text-decoration:none;transition:color .2s;}
+    .ft-legal-links a:hover{color:rgba(246,241,233,.85);}
+    @media(max-width:1024px){.ft-inner{grid-template-columns:1fr 1fr;gap:3rem;}}
+    @media(max-width:600px){
+      .ft-inner{grid-template-columns:1fr;gap:2.5rem;padding:0 1.8rem;}
+      .ft-bot{flex-direction:column;align-items:flex-start;padding:1.5rem 1.8rem 0;}
+      .ft-legal-links{gap:.8rem;}
+    }
+
   </style>
 </head>
 <body>
@@ -93,11 +134,56 @@
 
 <nav id="nav">
   <a href="index.html" class="nav-logo">NUANCED CO.<em>Neurodivergent Consultancy</em></a>
-  <a href="index.html" class="nav-back">
-    <svg viewBox="0 0 16 16"><path d="M10 12L6 8l4-4"/></svg>
-    Back to home
-  </a>
+  <ul class="nav-list">
+    <li class="nav-dd"><a href="services.html">Services &#9662;</a>
+      <div class="nav-dd-menu">
+        <a href="services.html">1:1 Consultancy</a>
+        <a href="workplace.html">Workplace Consulting</a>
+        <a href="the-unmasked-life.html">Courses</a>
+        <a href="community-waitlist.html">Community</a>
+      </div>
+    </li>
+    <li class="nav-dd"><a href="about.html">About &#9662;</a>
+      <div class="nav-dd-menu">
+        <a href="about.html">About Nuanced Co.</a>
+        <a href="about.html">Meet Leah</a>
+        <a href="faq.html">FAQ</a>
+      </div>
+    </li>
+    <li class="nav-dd"><a href="how-i-work.html">How We Work &#9662;</a>
+      <div class="nav-dd-menu">
+        <a href="how-i-work.html">How We Work</a>
+        <a href="who-i-work-with.html">Who We Work With</a>
+      </div>
+    </li>
+    <li class="nav-dd"><a href="the-unmasked-life.html">Courses &#9662;</a>
+      <div class="nav-dd-menu">
+        <a href="the-unmasked-life.html">The Unmasked Life</a>
+        <a href="the-unmasked-life-coming-soon.html">Join the Waitlist</a>
+      </div>
+    </li>
+    <li class="nav-dd"><a href="links.html">Resources &#9662;</a>
+      <div class="nav-dd-menu">
+        <a href="links.html">Free Resources</a>
+        <a href="https://stan.store/NuancedCo/p/the-late-diagnosis-life-review" target="_blank" rel="noopener">Late Diagnosis Life Review</a>
+        <a href="community-waitlist.html">Community Updates</a>
+      </div>
+    </li>
+    <li><a href="media.html">Articles &amp; Media</a></li>
+    <li><a href="book.html" class="ncta btn">Book a Call</a></li>
+  </ul>
+  <div class="hamburger" onclick="openMob()"><span></span><span></span><span></span></div>
 </nav>
+<div class="mob-nav" id="mobNav">
+  <span class="mob-close" onclick="closeMob()">&#x2715;</span>
+  <a href="index.html" onclick="closeMob()">Home</a>
+  <a href="about.html" onclick="closeMob()">About</a>
+  <a href="faq.html" onclick="closeMob()">FAQ</a>
+  <a href="how-i-work.html" onclick="closeMob()">How We Work</a>
+  <a href="the-unmasked-life.html" onclick="closeMob()">Courses</a>
+  <a href="community-waitlist.html" onclick="closeMob()">Community</a>
+  <a href="book.html" onclick="closeMob()">Book a Call</a>
+</div>
 
 <section class="page-hero">
   <div class="ph-inner">
@@ -211,8 +297,47 @@
 
 <footer>
   <div class="ft-inner">
-    <div class="ft-logo">Nuanced Co.</div>
-    <div class="ft-abn">ABN: 71 926 185 491 &middot; &copy; 2026 Nuanced Co. All rights reserved.</div>
+    <div class="ft-subscribe">
+      <h3>Stay in the loop</h3>
+      <p>Get updates about new guides, courses, community spaces and Nuanced Co. resources.</p>
+      <a href="community-waitlist.html" class="ft-email-btn">Join updates</a>
+    </div>
+    <div class="ft-col">
+      <h4>Explore</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="the-unmasked-life.html">Courses</a></li>
+        <li><a href="links.html">Free Resources</a></li>
+        <li><a href="media.html">Articles &amp; Media</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>About</h4>
+      <ul>
+        <li><a href="about.html">About Nuanced Co.</a></li>
+        <li><a href="about.html">Meet Leah</a></li>
+        <li><a href="faq.html">FAQ</a></li>
+        <li><a href="how-i-work.html">How We Work</a></li>
+        <li><a href="who-i-work-with.html">Who We Work With</a></li>
+      </ul>
+    </div>
+    <div class="ft-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="book.html">Book a call</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="mailto:hello@nuancedco.com.au">hello@nuancedco.com.au</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="ft-bot">
+    <p class="ft-legal">&copy; 2026 Nuanced Co. All rights reserved. ABN 71 926 185 491. Educational and reflective content only. Not clinical advice.</p>
+    <div class="ft-legal-links">
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="refund-policy.html">Refund Policy</a>
+      <a href="terms-of-service.html">Terms of Service</a>
+    </div>
   </div>
 </footer>
 
@@ -224,6 +349,11 @@ function drawGrain(){const d=gx.createImageData(gW,gH);for(let i=0;i<d.data.leng
 setInterval(drawGrain,80);drawGrain();
 const nav=document.getElementById('nav');
 window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>70);},{passive:true});
+
+  // NAV
+  const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>70);},{passive:true});
+  function openMob(){document.getElementById('mobNav').classList.add('open');document.body.style.overflow='hidden';}
+  function closeMob(){document.getElementById('mobNav').classList.remove('open');document.body.style.overflow='';}
 </script>
 </body>
 </html>
