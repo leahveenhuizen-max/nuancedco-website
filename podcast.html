@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
   <title>Podcast | Nuanced Co. | Neurodivergent Consultancy</title>
   <meta name="description" content="A podcast from Nuanced Co. — coming soon. Honest conversations about ADHD, late diagnosis, and building a life that fits your actual brain.">
   <link rel="canonical" href="https://nuancedco.com.au/podcast">
@@ -33,12 +34,13 @@
     .coming-form input{flex:1;min-width:220px;padding:.75rem 1rem;background:rgba(246,241,233,.06);border:1px solid rgba(246,241,233,.15);color:var(--cream);font-family:var(--body);font-size:.85rem;border-radius:2px;outline:none;}
     .coming-form input::placeholder{color:rgba(246,241,233,.35);}
     .coming-form input:focus{border-color:var(--lilac);}
-    .coming-form button{padding:.75rem 1.6rem;background:var(--purple);color:#fff;font-family:var(--body);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;border:none;border-radius:40px;cursor:pointer;transition:background .2s;}
-    .coming-form button:hover{background:var(--lilac);}
+    .coming-form button{padding:.75rem 1.6rem;background:var(--purple);color:#fff;font-family:var(--body);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;border:none;border-radius:40px;cursor:pointer;transition:background .1s cubic-bezier(0.22,1,0.36,1);}
+    .coming-form button:hover{background:var(--lilac);color:#fff}
     .coming-note{font-size:.68rem;color:rgba(246,241,233,.35);line-height:1.6;}
-    .back-link{display:inline-flex;align-items:center;gap:.4rem;margin-top:3rem;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.4);transition:color .2s;}
+    .back-link{display:inline-flex;align-items:center;gap:.4rem;margin-top:3rem;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.4);transition:color .1s cubic-bezier(0.22,1,0.36,1);}
     .back-link:hover{color:rgba(246,241,233,.75);}
-  </style>
+  @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rv,.rvl,.rvr,.ncrv{opacity:1!important;transform:none!important}}
+</style>
 </head>
 <body>
 
@@ -70,6 +72,27 @@ function handleSubmit(form){
     .then(()=>{ document.getElementById('podcast-msg').textContent = "You're on the list. We'll let you know when the first episode is ready."; form.reset(); })
     .catch(()=>{ document.getElementById('podcast-msg').textContent = "Something went wrong. Please email hello@nuancedco.com.au to be added to the list."; });
 }
+</script>
+<script>
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
+  var s=document.createElement('style');
+  s.textContent='.ncrv{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(0.22,1,0.36,1),transform .8s cubic-bezier(0.22,1,0.36,1)}.ncrv.in{opacity:1;transform:none}';
+  document.head.appendChild(s);
+  var els=[];
+  function addGroup(grid){if(grid.dataset.ncrv)return;grid.dataset.ncrv='1';Array.prototype.forEach.call(grid.children,function(c,i){c.classList.add('ncrv');c.style.transitionDelay=((i%8)*0.15)+'s';els.push(c);});}
+  document.querySelectorAll('section,.card').forEach(function(sec){
+    if(sec.closest('nav'))return;
+    var grid=sec.querySelector('[class*="grid"],[class*="cards"]');
+    if(grid&&grid.children.length>1&&grid.children.length<13){addGroup(grid);}
+    sec.classList.add('ncrv');els.push(sec);
+  });
+  document.querySelectorAll('.sprint-grid').forEach(addGroup);
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){io.observe(el);});
+})();
 </script>
 </body>
 </html>

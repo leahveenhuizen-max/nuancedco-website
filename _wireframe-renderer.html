@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+<title>Week 1 Wireframes — The Unmasked Life</title>
+<style>
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:system-ui,sans-serif;background:#fff;color:#111;}
+  .screen{width:1280px;min-height:900px;background:#fff;border-bottom:4px solid #222;position:relative;overflow:hidden;}
+  .screen.mobile{width:390px;min-height:844px;}
+  .screen-label{position:absolute;top:8px;left:8px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#888;background:#fff;padding:2px 6px;border:1px solid #ddd;z-index:10;}
+  /* ── Wireframe tokens ── */
+  .wf-nav{height:48px;background:#e8e8e8;border-bottom:1.5px solid #999;display:flex;align-items:center;justify-content:space-between;padding:0 24px;}
+  .wf-nav-logo{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#333;}
+  .wf-nav-label{font-size:11px;color:#555;}
+  .wf-nav-support{font-size:10px;color:#333;border:1px solid #999;padding:3px 8px;border-radius:3px;}
+  .wf-progress{height:36px;background:#f0f0f0;border-bottom:1px solid #ccc;display:flex;align-items:center;padding:0 24px;gap:16px;}
+  .wf-dot{width:10px;height:10px;border-radius:50%;border:1.5px solid #999;background:#fff;flex-shrink:0;}
+  .wf-dot.active{background:#333;border-color:#333;}
+  .wf-dot.done{background:#777;border-color:#777;}
+  .wf-dot-label{font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:#444;}
+  .wf-body{padding:40px 48px;max-width:800px;}
+  .wf-body.centred{margin:0 auto;}
+  .wf-eyebrow{font-size:10px;text-transform:uppercase;letter-spacing:.2em;color:#777;margin-bottom:8px;}
+  .wf-h1{font-size:40px;font-weight:300;line-height:1.15;color:#111;margin-bottom:16px;font-style:italic;}
+  .wf-h2{font-size:28px;font-weight:300;line-height:1.2;color:#111;margin-bottom:14px;font-style:italic;}
+  .wf-lead{font-size:14px;line-height:1.7;color:#444;margin-bottom:16px;max-width:560px;}
+  .wf-body-text{font-size:13px;line-height:1.75;color:#333;margin-bottom:12px;max-width:600px;}
+  .wf-time{font-size:11px;color:#777;display:flex;align-items:center;gap:6px;margin-bottom:24px;}
+  /* Boxes */
+  .wf-box{background:#f5f5f5;border:1.5px dashed #aaa;border-radius:4px;padding:16px;margin-bottom:16px;}
+  .wf-box-sm{background:#f5f5f5;border:1.5px dashed #aaa;border-radius:4px;padding:10px;margin-bottom:10px;}
+  .wf-box-label{font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:#888;margin-bottom:6px;}
+  .wf-box-title{font-size:13px;font-weight:700;color:#222;margin-bottom:4px;}
+  .wf-box-sub{font-size:11px;color:#666;line-height:1.55;}
+  .wf-video{background:#e0e0e0;border:1.5px solid #aaa;border-radius:4px;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;margin-bottom:16px;}
+  .wf-video-icon{width:48px;height:48px;background:#aaa;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:18px;color:#fff;}
+  .wf-video-label{font-size:11px;color:#666;text-align:center;}
+  .wf-video-chapters{display:flex;gap:8px;margin-top:8px;}
+  .wf-video-ch{font-size:9px;color:#555;border:1px solid #aaa;padding:2px 8px;border-radius:3px;background:#fff;}
+  /* Route cards */
+  .wf-routes{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+  .wf-route{border:1.5px solid #bbb;border-radius:4px;padding:14px 16px;display:flex;align-items:center;justify-content:space-between;}
+  .wf-route.selected{border-color:#444;background:#efefef;}
+  .wf-route-name{font-size:13px;font-weight:700;color:#222;}
+  .wf-route-sub{font-size:11px;color:#777;}
+  .wf-route-arrow{font-size:16px;color:#888;}
+  /* Resume */
+  .wf-resume{border:1.5px solid #bbb;border-radius:4px;padding:12px 16px;background:#f9f9f9;display:flex;align-items:center;justify-content:space-between;margin-bottom:16px;}
+  .wf-resume-text{font-size:12px;color:#444;}
+  .wf-resume-btns{display:flex;gap:8px;}
+  .wf-btn{font-size:10px;border:1px solid #aaa;border-radius:3px;padding:4px 10px;background:#fff;color:#333;cursor:pointer;}
+  .wf-btn.primary{background:#333;color:#fff;border-color:#333;}
+  /* Grid */
+  .wf-grid-2{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+  .wf-grid-3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:10px;margin-bottom:16px;}
+  .wf-grid-4{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-bottom:16px;}
+  .wf-card{border:1.5px solid #ccc;border-radius:4px;padding:12px;background:#fafafa;}
+  .wf-card.selected{border-color:#444;background:#efefef;}
+  .wf-card-em{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:#888;margin-bottom:4px;}
+  .wf-card-text{font-size:12px;color:#333;line-height:1.5;}
+  .wf-card-check{margin-top:8px;display:flex;align-items:center;gap:6px;font-size:11px;color:#555;}
+  .wf-card-check-box{width:14px;height:14px;border:1.5px solid #888;border-radius:2px;flex-shrink:0;}
+  .wf-card-check-box.checked{background:#555;border-color:#555;}
+  /* Chips */
+  .wf-chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;}
+  .wf-chip{border:1.5px solid #bbb;border-radius:20px;padding:5px 14px;font-size:11px;color:#444;background:#fff;}
+  .wf-chip.selected{border-color:#333;background:#e8e8e8;color:#111;}
+  /* Textarea */
+  .wf-textarea-wrap{margin-bottom:14px;}
+  .wf-textarea-label{font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:#777;margin-bottom:6px;}
+  .wf-textarea{width:100%;height:72px;border:1.5px solid #ccc;border-radius:4px;background:#fafafa;display:flex;align-items:flex-start;padding:8px;font-size:11px;color:#aaa;font-family:system-ui;}
+  .wf-save-note{font-size:9px;color:#999;margin-top:4px;}
+  /* Reveal panel */
+  .wf-reveal{border:1.5px solid #bbb;border-radius:4px;padding:14px;background:#f4f4f4;margin-bottom:16px;}
+  .wf-reveal-section{margin-bottom:10px;}
+  .wf-reveal-label{font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:#888;margin-bottom:4px;}
+  .wf-reveal-text{font-size:11px;color:#444;line-height:1.55;}
+  /* Timeline */
+  .wf-timeline{border:1.5px dashed #bbb;border-radius:4px;padding:20px 16px;background:#f7f7f7;margin-bottom:16px;position:relative;}
+  .wf-timeline-track{display:flex;align-items:center;gap:0;position:relative;}
+  .wf-timeline-track::before{content:'';position:absolute;top:50%;left:0;right:0;height:1.5px;background:#999;transform:translateY(-50%);}
+  .wf-tl-node{width:10px;height:10px;border-radius:50%;background:#999;border:1.5px solid #666;z-index:1;flex-shrink:0;}
+  .wf-tl-node.highlight{background:#333;border-color:#333;width:14px;height:14px;}
+  .wf-tl-space{flex:1;}
+  .wf-timeline-labels{display:flex;justify-content:space-between;margin-top:8px;}
+  .wf-tl-label{font-size:9px;color:#666;text-align:center;}
+  .wf-timeline-note{font-size:10px;color:#777;margin-top:8px;text-align:center;font-style:italic;}
+  /* Pull quote */
+  .wf-pullquote{border-left:3px solid #aaa;padding:12px 16px;margin:16px 0;background:#f8f8f8;}
+  .wf-pullquote p{font-size:14px;color:#444;font-style:italic;line-height:1.55;}
+  /* Separator */
+  .wf-separator{display:flex;align-items:center;gap:12px;margin:24px 0 16px;}
+  .wf-separator-line{flex:1;height:1px;background:#ddd;}
+  .wf-separator-label{font-size:9px;text-transform:uppercase;letter-spacing:.16em;color:#888;white-space:nowrap;}
+  /* Snapshot */
+  .wf-snapshot{border:2px solid #888;border-radius:4px;padding:20px;background:#fafafa;margin-bottom:20px;}
+  .wf-snapshot-title{font-size:11px;text-transform:uppercase;letter-spacing:.16em;color:#888;margin-bottom:16px;padding-bottom:8px;border-bottom:1px solid #ddd;}
+  .wf-snapshot-field{margin-bottom:14px;}
+  .wf-snapshot-label{font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:#999;margin-bottom:4px;}
+  .wf-snapshot-value{font-size:12px;color:#333;line-height:1.55;background:#f0f0f0;border-radius:2px;padding:6px 8px;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;}
+  .wf-snapshot-edit{font-size:9px;color:#888;border:1px solid #ccc;padding:2px 6px;border-radius:2px;flex-shrink:0;}
+  .wf-snapshot-actions{display:flex;gap:8px;margin-top:12px;}
+  /* Milestone */
+  .wf-milestone{border:1.5px solid #bbb;border-radius:4px;padding:16px;background:#fafafa;margin-bottom:16px;display:flex;gap:12px;align-items:flex-start;}
+  .wf-milestone-cb{width:22px;height:22px;border-radius:50%;border:1.5px solid #999;flex-shrink:0;margin-top:2px;}
+  .wf-milestone-text{font-size:12px;color:#333;line-height:1.55;}
+  .wf-milestone-note{font-size:10px;color:#999;margin-top:4px;}
+  /* Beta panel */
+  .wf-beta{border:1.5px solid #bbb;border-radius:4px;padding:16px;background:#f5f5f5;margin-bottom:16px;}
+  .wf-beta-title{font-size:12px;font-weight:700;color:#222;margin-bottom:10px;}
+  .wf-beta-placeholder{font-size:10px;color:#aaa;border:1px dashed #ccc;border-radius:2px;padding:6px 8px;margin-bottom:8px;}
+  .wf-beta-prompts{list-style:none;display:flex;flex-direction:column;gap:6px;margin-bottom:10px;}
+  .wf-beta-prompts li{font-size:11px;color:#555;display:flex;gap:6px;align-items:flex-start;}
+  .wf-beta-prompts li::before{content:'Q.';font-size:9px;color:#999;flex-shrink:0;margin-top:1px;}
+  .wf-beta-note{font-size:10px;color:#777;font-style:italic;}
+  /* EF diagram */
+  .wf-ef-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px;}
+  .wf-ef-card{border:1.5px solid #ccc;border-radius:4px;padding:12px;background:#fafafa;}
+  .wf-ef-name{font-size:12px;font-weight:700;color:#222;margin-bottom:4px;}
+  .wf-ef-desc{font-size:10px;color:#666;line-height:1.5;margin-bottom:4px;}
+  .wf-ef-example{font-size:10px;color:#888;font-style:italic;margin-bottom:8px;}
+  /* LRM */
+  .wf-lrm-step{border:1.5px solid #ccc;border-radius:4px;padding:14px;background:#fafafa;margin-bottom:12px;}
+  .wf-lrm-header{display:flex;gap:10px;align-items:baseline;margin-bottom:8px;}
+  .wf-lrm-num{font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:#aaa;}
+  .wf-lrm-title{font-size:12px;font-weight:700;color:#222;}
+  .wf-lrm-guide{font-size:11px;color:#666;margin-bottom:8px;line-height:1.55;}
+  /* Annotation */
+  .wf-annotation{font-size:9px;color:#aaa;font-style:italic;border-left:2px solid #ddd;padding-left:8px;margin:8px 0;}
+  /* Sticky CTA bar */
+  .wf-cta-bar{position:absolute;bottom:0;left:0;right:0;height:56px;background:#e0e0e0;border-top:1.5px solid #aaa;display:flex;align-items:center;justify-content:center;gap:12px;padding:0 24px;}
+  .wf-cta-bar .wf-btn.primary{padding:8px 24px;font-size:12px;}
+  .wf-cta-bar .wf-btn{padding:8px 16px;font-size:11px;}
+  /* Sidebar for desktop screens that show it as "old" pattern */
+  .wf-layout-main{flex:1;}
+  /* Scene separator */
+  .wf-scene-sep{background:#e8e8e8;border-bottom:1px solid #ccc;border-top:1px solid #ccc;padding:6px 48px;display:flex;align-items:center;gap:12px;margin-bottom:0;}
+  .wf-scene-sep-num{font-size:9px;text-transform:uppercase;letter-spacing:.16em;color:#888;}
+  .wf-scene-sep-name{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#444;}
+  .wf-scene-sep-line{flex:1;height:1px;background:#ccc;}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+  DESKTOP WIREFRAMES (1280×900)
+═══════════════════════════════════════════════════════════════════════════ -->
+
+<!-- DESKTOP 1: Week Opening and Route Choice -->
+<div class="screen" id="d1">
+  <span class="screen-label">Desktop 1 / 8 — Week Opening and Route Choice</span>
+  <div class="wf-nav">
+    <span class="wf-nav-logo">Nuanced Co. · The Unmasked Life™</span>
+    <span class="wf-nav-label">Week 1 of 4</span>
+    <span class="wf-nav-support">⚑ Need support</span>
+  </div>
+  <div class="wf-progress">
+    <div class="wf-dot active"></div>
+    <div class="wf-dot"></div>
+    <div class="wf-dot"></div>
+    <div class="wf-dot"></div>
+    <div class="wf-dot"></div>
+    <div class="wf-dot"></div>
+    <span class="wf-dot-label">Arrive</span>
+    <div style="margin-left:auto;font-size:9px;color:#aaa;">Low-capacity mode  [toggle]</div>
+  </div>
+  <div style="display:grid;grid-template-columns:1fr 440px;gap:0;height:calc(900px - 84px);">
+    <div style="padding:40px 48px;overflow:hidden;">
+      <div class="wf-eyebrow">Week 1 of 4 — The Unmasked Life™</div>
+      <div class="wf-h1">The Late Diagnosis Disruption</div>
+      <div class="wf-lead">A late ADHD diagnosis does not just add a label. It arrives inside a life already built, and it changes what you can see. This week is about what happens next.</div>
+      <div class="wf-time">⏱  About 30–45 minutes in full  ·  10 minutes on low-capacity route</div>
+      <div class="wf-video" style="height:180px;margin-bottom:20px;">
+        <div class="wf-video-icon">▶</div>
+        <div class="wf-video-label">Week 1 Lesson Video — Direct to camera · 10–15 min · Chaptered</div>
+        <div class="wf-video-chapters">
+          <span class="wf-video-ch">1. What diagnosis does</span>
+          <span class="wf-video-ch">2. The review</span>
+          <span class="wf-video-ch">3. What's next</span>
+        </div>
+      </div>
+      <div class="wf-annotation">[Transcript toggle — collapsed accordion below video]</div>
+    </div>
+    <div style="padding:32px 40px 80px;border-left:1px solid #ddd;background:#fafafa;overflow:hidden;">
+      <div class="wf-separator"><div class="wf-separator-line"></div><span class="wf-separator-label">Choose your route</span><div class="wf-separator-line"></div></div>
+      <div class="wf-routes">
+        <div class="wf-route selected">
+          <div><div class="wf-route-name">Full journey</div><div class="wf-route-sub">All six scenes · ~45 min</div></div>
+          <div class="wf-route-arrow">→</div>
+        </div>
+        <div class="wf-route">
+          <div><div class="wf-route-name">Low-capacity route</div><div class="wf-route-sub">One scene at a time · under 10 min each</div></div>
+          <div class="wf-route-arrow">→</div>
+        </div>
+        <div class="wf-route">
+          <div><div class="wf-route-name">Speed-read</div><div class="wf-route-sub">Core concepts only · 5 min</div></div>
+          <div class="wf-route-arrow">→</div>
+        </div>
+      </div>
+      <div class="wf-resume">
+        <div class="wf-resume-text">↩ You were working on Scene 3: The Old Story</div>
+        <div class="wf-resume-btns"><span class="wf-btn primary">Resume</span><span class="wf-btn">Start over</span></div>
+      </div>
+      <div class="wf-annotation" style="margin-top:12px;">[Resume block hidden on first visit. Shown conditionally if localStorage has prior scene.]</div>
+      <div style="font-size:11px;color:#777;margin-top:16px;">You do not need to finish this today. There is no deadline.</div>
+      <div style="font-size:10px;color:#aaa;margin-top:8px;">If this week brings up something that needs immediate support: <u>support link</u></div>
+    </div>
+  </div>
+  <div class="wf-cta-bar">
+    <span class="wf-btn primary">Continue to Something Changed →</span>
+    <span style="font-size:10px;color:#999;">(appears after route is selected)</span>
+  </div>
+</div>
+
+<!-- DESKTOP 2: Something Changed Teaching -->
+<div class="screen" id="d2">
+  <span class="screen-label">Desktop 2 / 8 — Something Changed: Teaching</span>
+  <div class="wf-nav"><span class="wf-nav-logo">Nuanced Co.</span><span class="wf-nav-label">Week 1 of 4</span><span class="wf-nav-support">⚑ Need support</span></div>
+  <div class="wf-progress">
+    <div class="wf-dot done"></div>
+    <div class="wf-dot active"></div>
+    <div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div>
+    <span class="wf-dot-label">Something Changed</span>
+  </div>
+  <div class="wf-scene-sep">
+    <span class="wf-scene-sep-num">Scene 2</span>
+    <div class="wf-scene-sep-line"></div>
+    <span class="wf-scene-sep-name">Something Changed</span>
+  </div>
+  <div style="padding:32px 48px 80px;max-width:760px;">
+    <div class="wf-h2">What late diagnosis actually does</div>
+    <div class="wf-body-text">A late ADHD diagnosis is not simply receiving new information. It is information arriving inside a life that was already built around explanations that were wrong, incomplete, or missing entirely.</div>
+    <div class="wf-body-text">When that information arrives, it does not stay in the present. It travels backwards. Across your life. Through your past. Into every place where something did not make sense.</div>
+    <div class="wf-timeline">
+      <div style="font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:#888;margin-bottom:12px;">Visual: Diagnosis to life-review timeline</div>
+      <div class="wf-timeline-track">
+        <div class="wf-tl-node"></div><div class="wf-tl-space"></div>
+        <div class="wf-tl-node"></div><div class="wf-tl-space"></div>
+        <div class="wf-tl-node"></div><div class="wf-tl-space"></div>
+        <div class="wf-tl-node highlight"></div><div class="wf-tl-space"></div>
+        <div class="wf-tl-node"></div>
+      </div>
+      <div class="wf-timeline-labels">
+        <span class="wf-tl-label">School</span>
+        <span class="wf-tl-label">Work</span>
+        <span class="wf-tl-label">Relationships</span>
+        <span class="wf-tl-label">Diagnosis ↓</span>
+        <span class="wf-tl-label">Now</span>
+      </div>
+      <div class="wf-timeline-note">When the diagnosis arrives, it changes how you see what came before it. New understanding flows backward.</div>
+    </div>
+    <div class="wf-body-text">This retroactive review — the "was that ADHD too?" process — is recognised in the research on late diagnosis in adults. You are not the first person to find this disorienting, and you are not doing it wrong.</div>
+    <div class="wf-separator"><div class="wf-separator-line"></div><span class="wf-separator-label">Your turn</span><div class="wf-separator-line"></div></div>
+    <div class="wf-textarea-wrap">
+      <div class="wf-textarea-label">What feels different now that you know?</div>
+      <div class="wf-textarea">Something I am seeing differently is... [Textarea — auto-expands, saves on blur]</div>
+      <div class="wf-save-note">↑  Auto-saved · responses stay in this browser only</div>
+    </div>
+    <div style="display:flex;gap:8px;margin-bottom:16px;align-items:center;">
+      <span class="wf-btn primary">Save to My Snapshot</span>
+      <span style="font-size:10px;color:#999;">[→ confirmation: "✓ Saved to your Week 1 Snapshot"]</span>
+    </div>
+    <div class="wf-pullquote"><p>"The disruption that follows — to identity, to self-understanding, to the story you tell about yourself — is a recognised part of what late diagnosis involves."</p></div>
+  </div>
+  <div class="wf-cta-bar"><span class="wf-btn primary">Continue to The Old Story →</span></div>
+</div>
+
+<!-- DESKTOP 3: Old Story Interaction -->
+<div class="screen" id="d3">
+  <span class="screen-label">Desktop 3 / 8 — The Old Story Interaction</span>
+  <div class="wf-nav"><span class="wf-nav-logo">Nuanced Co.</span><span class="wf-nav-label">Week 1 of 4</span><span class="wf-nav-support">⚑ Need support</span></div>
+  <div class="wf-progress">
+    <div class="wf-dot done"></div><div class="wf-dot done"></div>
+    <div class="wf-dot active"></div>
+    <div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div>
+    <span class="wf-dot-label">The Old Story</span>
+  </div>
+  <div class="wf-scene-sep"><span class="wf-scene-sep-num">Scene 3</span><div class="wf-scene-sep-line"></div><span class="wf-scene-sep-name">The Old Story</span></div>
+  <div style="padding:28px 48px 80px;">
+    <div class="wf-h2">The labels that didn't fit</div>
+    <div class="wf-body-text" style="max-width:640px;">Many adults received labels before their diagnosis arrived. Not ADHD labels. Other ones. This section is about looking at some of those labels and asking: what may have actually been happening?</div>
+    <div class="wf-separator"><div class="wf-separator-line"></div><span class="wf-separator-label">Step 1: Which of these sound familiar?</span><div class="wf-separator-line"></div></div>
+    <div class="wf-grid-4" style="margin-bottom:8px;">
+      <div class="wf-card selected"><div class="wf-card-text" style="font-weight:700;text-align:center;">lazy</div></div>
+      <div class="wf-card selected"><div class="wf-card-text" style="font-weight:700;text-align:center;">inconsistent</div></div>
+      <div class="wf-card"><div class="wf-card-text" style="font-weight:700;text-align:center;">careless</div></div>
+      <div class="wf-card selected"><div class="wf-card-text" style="font-weight:700;text-align:center;">too sensitive</div></div>
+      <div class="wf-card"><div class="wf-card-text" style="font-weight:700;text-align:center;">not trying</div></div>
+      <div class="wf-card selected"><div class="wf-card-text" style="font-weight:700;text-align:center;">difficult</div></div>
+      <div class="wf-card"><div class="wf-card-text" style="font-weight:700;text-align:center;">disorganised</div></div>
+      <div class="wf-card"><div class="wf-card-text" style="font-weight:700;text-align:center;">wasted potential</div></div>
+    </div>
+    <div style="font-size:10px;color:#777;margin-bottom:16px;">4 of 8 selected · Select any that feel familiar — more than one is expected</div>
+    <div class="wf-separator"><div class="wf-separator-line"></div><span class="wf-separator-label">Step 2: Choose one to look at closely</span><div class="wf-separator-line"></div></div>
+    <div class="wf-chips" style="margin-bottom:12px;">
+      <div class="wf-chip selected">lazy ✓</div>
+      <div class="wf-chip">inconsistent</div>
+      <div class="wf-chip">too sensitive</div>
+      <div class="wf-chip">difficult</div>
+    </div>
+    <div class="wf-reveal">
+      <div style="font-size:11px;font-weight:700;color:#222;margin-bottom:12px;">You chose: <em>lazy</em></div>
+      <div class="wf-reveal-section">
+        <div class="wf-reveal-label">What people may have seen</div>
+        <div class="wf-reveal-text">Tasks left unfinished. Starting things but not completing them. Difficulty getting going even on things that mattered.</div>
+      </div>
+      <div class="wf-reveal-section">
+        <div class="wf-reveal-label">What may have been happening underneath</div>
+        <div class="wf-reveal-text">Task initiation — getting started — is a specific executive function that works differently in ADHD brains. What looked like not wanting to do something may have been a neurological difficulty starting it.</div>
+      </div>
+      <div class="wf-reveal-section">
+        <div class="wf-reveal-label">Support that may have helped</div>
+        <div class="wf-reveal-text">External structure, a starting prompt, or understanding that the difficulty was real — not a choice.</div>
+      </div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;">
+      <div class="wf-textarea-wrap">
+        <div class="wf-textarea-label">How do you understand this label now?</div>
+        <div class="wf-textarea">What may have been happening was... [saves to Snapshot Field 2]</div>
+      </div>
+      <div class="wf-textarea-wrap">
+        <div class="wf-textarea-label">What support might have helped?</div>
+        <div class="wf-textarea">Support that may have helped... [saves to Snapshot Field 3]</div>
+      </div>
+    </div>
+    <span class="wf-btn primary">Save to My Snapshot</span>
+  </div>
+  <div class="wf-cta-bar"><span class="wf-btn primary">Continue to How the Brain Manages Life →</span></div>
+</div>
+
+<!-- DESKTOP 4: Executive Function Visual -->
+<div class="screen" id="d4">
+  <span class="screen-label">Desktop 4 / 8 — Executive Function Visual</span>
+  <div class="wf-nav"><span class="wf-nav-logo">Nuanced Co.</span><span class="wf-nav-label">Week 1 of 4</span><span class="wf-nav-support">⚑ Need support</span></div>
+  <div class="wf-progress">
+    <div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div>
+    <div class="wf-dot active"></div>
+    <div class="wf-dot"></div><div class="wf-dot"></div>
+    <span class="wf-dot-label">Brain</span>
+  </div>
+  <div class="wf-scene-sep"><span class="wf-scene-sep-num">Scene 4</span><div class="wf-scene-sep-line"></div><span class="wf-scene-sep-name">How the Brain Manages Life</span></div>
+  <div style="padding:28px 48px 80px;">
+    <div class="wf-h2">Your brain's management system</div>
+    <div class="wf-body-text" style="max-width:640px;">ADHD affects what researchers call executive function — the processes that help the brain manage getting started, keeping track, staying aware of time, handling emotions, and following through. These are not character traits. They are neurological processes.</div>
+    <div class="wf-separator"><div class="wf-separator-line"></div><span class="wf-separator-label">Which of these shows up for you?</span><div class="wf-separator-line"></div></div>
+    <div class="wf-ef-grid">
+      <div class="wf-ef-card">
+        <div class="wf-ef-name">Task initiation</div>
+        <div class="wf-ef-desc">Getting started on things you intend to do, even when you know how.</div>
+        <div class="wf-ef-example">e.g. The email you've had open for two days.</div>
+        <div class="wf-card-check"><div class="wf-card-check-box checked"></div> Does this show up for you?</div>
+      </div>
+      <div class="wf-ef-card">
+        <div class="wf-ef-name">Working memory</div>
+        <div class="wf-ef-desc">Holding information in mind while you're using it.</div>
+        <div class="wf-ef-example">e.g. Losing your train of thought mid-sentence.</div>
+        <div class="wf-card-check"><div class="wf-card-check-box"></div> Does this show up for you?</div>
+      </div>
+      <div class="wf-ef-card">
+        <div class="wf-ef-name">Time awareness</div>
+        <div class="wf-ef-desc">Tracking and estimating time accurately.</div>
+        <div class="wf-ef-example">e.g. Two hours disappearing without notice.</div>
+        <div class="wf-card-check"><div class="wf-card-check-box checked"></div> Does this show up for you?</div>
+      </div>
+      <div class="wf-ef-card">
+        <div class="wf-ef-name">Shifting attention</div>
+        <div class="wf-ef-desc">Moving between tasks without losing what you were doing.</div>
+        <div class="wf-ef-example">e.g. Being interrupted and not being able to return.</div>
+        <div class="wf-card-check"><div class="wf-card-check-box"></div> Does this show up for you?</div>
+      </div>
+      <div class="wf-ef-card">
+        <div class="wf-ef-name">Planning and sequencing</div>
+        <div class="wf-ef-desc">Breaking tasks into steps and following through.</div>
+        <div class="wf-ef-example">e.g. Knowing what to do but not how to start.</div>
+        <div class="wf-card-check"><div class="wf-card-check-box checked"></div> Does this show up for you?</div>
+      </div>
+      <div class="wf-ef-card">
+        <div class="wf-ef-name">Emotional regulation</div>
+        <div class="wf-ef-desc">Managing the speed and intensity of emotional responses.</div>
+        <div class="wf-ef-example">e.g. Frustration that feels disproportionate.</div>
+        <div class="wf-card-check"><div class="wf-card-check-box"></div> Does this show up for you?</div>
+      </div>
+    </div>
+    <div style="font-size:11px;color:#555;margin-bottom:12px;">3 areas recognised · These will appear in your Week 1 Snapshot as possible present support needs.</div>
+    <div class="wf-annotation">[Optional: Research basis accordion collapsed here]</div>
+  </div>
+  <div class="wf-cta-bar"><span class="wf-btn primary">Continue to Relief, Grief and Anger →</span></div>
+</div>
+
+<!-- DESKTOP 5: Emotional Check-In -->
+<div class="screen" id="d5">
+  <span class="screen-label">Desktop 5 / 8 — Emotional Check-In</span>
+  <div class="wf-nav"><span class="wf-nav-logo">Nuanced Co.</span><span class="wf-nav-label">Week 1 of 4</span><span class="wf-nav-support">⚑ Need support</span></div>
+  <div class="wf-progress">
+    <div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div>
+    <div class="wf-dot active"></div>
+    <div class="wf-dot"></div>
+    <span class="wf-dot-label">Feelings</span>
+  </div>
+  <div class="wf-scene-sep"><span class="wf-scene-sep-num">Scene 5</span><div class="wf-scene-sep-line"></div><span class="wf-scene-sep-name">Relief, Grief and Anger</span></div>
+  <div style="padding:28px 48px 80px;max-width:760px;">
+    <div class="wf-h2">There is no correct response</div>
+    <div class="wf-body-text">There is no correct emotional response to a late ADHD diagnosis. Some people feel relief — a framework that finally fits. Some feel grief. Some feel anger. Some feel nothing yet. Many feel more than one thing at once.</div>
+    <div class="wf-body-text">These responses can co-exist, alternate, and return. Relief and grief are not opposites.</div>
+    <div class="wf-separator"><div class="wf-separator-line"></div><span class="wf-separator-label">What's present for you right now?</span><div class="wf-separator-line"></div></div>
+    <div class="wf-chips" style="margin-bottom:20px;">
+      <div class="wf-chip selected">Relief</div>
+      <div class="wf-chip selected">Grief</div>
+      <div class="wf-chip">Anger</div>
+      <div class="wf-chip">Numbness</div>
+      <div class="wf-chip">Confusion</div>
+      <div class="wf-chip">Gratitude</div>
+      <div class="wf-chip">Exhaustion</div>
+      <div class="wf-chip">Sadness</div>
+      <div class="wf-chip">Hope</div>
+      <div class="wf-chip">Nothing yet</div>
+      <div class="wf-chip">Something I don't have a word for</div>
+    </div>
+    <div class="wf-box" style="margin-bottom:16px;">
+      <div class="wf-box-label">Dynamic response (appears after selection, updates live)</div>
+      <div class="wf-box-sub">"Relief and grief are not opposites. Both can be true at the same time. There is no requirement to resolve one before you are allowed to feel the other."</div>
+    </div>
+    <div class="wf-box" style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+      <div>
+        <div class="wf-box-title" style="font-size:12px;">If this is landing heavily</div>
+        <div class="wf-box-sub">You do not need to continue right now. Save your progress and come back.</div>
+      </div>
+      <div style="display:flex;gap:8px;"><span class="wf-btn">Save and pause</span><span class="wf-btn primary">Continue</span></div>
+    </div>
+    <div class="wf-box">
+      <div class="wf-box-label">Optional Week 1 Companion Guide</div>
+      <div class="wf-box-title">Grieving the Life You Thought You Had</div>
+      <div class="wf-box-sub" style="margin-top:4px;">A deeper research-informed guide to grief, anger, relief and the "what if I had known sooner?" stage. Included in your course. Also available as a standalone resource.</div>
+      <div style="margin-top:8px;"><span class="wf-btn" style="font-size:9px;">[Access in resource vault →] — placeholder until PDF supplied</span></div>
+    </div>
+  </div>
+  <div class="wf-cta-bar"><span class="wf-btn">Save and pause</span><span class="wf-btn primary">Continue to Build Your Snapshot →</span></div>
+</div>
+
+<!-- DESKTOP 6: Life Review Map -->
+<div class="screen" id="d6">
+  <span class="screen-label">Desktop 6 / 8 — Life Review Map</span>
+  <div class="wf-nav"><span class="wf-nav-logo">Nuanced Co.</span><span class="wf-nav-label">Week 1 of 4</span><span class="wf-nav-support">⚑ Need support</span></div>
+  <div class="wf-progress">
+    <div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div>
+    <div class="wf-dot active"></div>
+    <span class="wf-dot-label">Snapshot</span>
+  </div>
+  <div class="wf-scene-sep"><span class="wf-scene-sep-num">Scene 6</span><div class="wf-scene-sep-line"></div><span class="wf-scene-sep-name">Build Your Snapshot — Life Review Map</span></div>
+  <div style="padding:28px 48px 80px;">
+    <div class="wf-h2">The Life Review Map</div>
+    <div class="wf-body-text" style="max-width:640px;">Choose one area of your life to look at. One area is enough to begin. The learner's responses here feed directly into My Week 1 Snapshot.</div>
+    <div class="wf-separator"><div class="wf-separator-line"></div><span class="wf-separator-label">Choose a life area</span><div class="wf-separator-line"></div></div>
+    <div class="wf-chips" style="margin-bottom:20px;">
+      <div class="wf-chip selected">School ✓</div>
+      <div class="wf-chip">Work</div>
+      <div class="wf-chip">Relationships</div>
+      <div class="wf-chip">Home</div>
+      <div class="wf-chip">Health</div>
+      <div class="wf-chip">Money</div>
+      <div class="wf-chip">Identity</div>
+    </div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+      <div>
+        <div class="wf-lrm-step">
+          <div class="wf-lrm-header"><span class="wf-lrm-num">Step 1 of 5</span><span class="wf-lrm-title">What happened?</span></div>
+          <div class="wf-lrm-guide">What was hard in this area? What did others say about it at the time?</div>
+          <div class="wf-textarea" style="height:56px;">What stands out from this area... [saved]</div>
+        </div>
+        <div class="wf-lrm-step">
+          <div class="wf-lrm-header"><span class="wf-lrm-num">Step 2 of 5</span><span class="wf-lrm-title">What was the explanation?</span></div>
+          <div class="wf-lrm-guide">What label was attached to it? What did people say at the time?</div>
+          <div class="wf-textarea" style="height:56px;">The explanation I was given...</div>
+        </div>
+        <div class="wf-lrm-step" style="border-color:#aaa;">
+          <div class="wf-lrm-header"><span class="wf-lrm-num">Step 3 of 5</span><span class="wf-lrm-title">What may have been happening?</span></div>
+          <div class="wf-lrm-guide">With your ADHD understanding, a more accurate way of seeing this?</div>
+          <div class="wf-textarea" style="height:56px;">What may have been happening...</div>
+          <div class="wf-annotation">→ saves to Snapshot Field 2</div>
+        </div>
+      </div>
+      <div>
+        <div class="wf-lrm-step">
+          <div class="wf-lrm-header"><span class="wf-lrm-num">Step 4 of 5</span><span class="wf-lrm-title">What support may have helped?</span></div>
+          <div class="wf-lrm-guide">If someone had understood, what might have made a difference?</div>
+          <div class="wf-textarea" style="height:56px;">Support that may have helped...</div>
+          <div class="wf-annotation">→ saves to Snapshot Field 3</div>
+        </div>
+        <div class="wf-lrm-step">
+          <div class="wf-lrm-header"><span class="wf-lrm-num">Step 5 of 5</span><span class="wf-lrm-title">What might help now?</span></div>
+          <div class="wf-lrm-guide">What support could work for your brain now?</div>
+          <div class="wf-textarea" style="height:56px;">Support that may help now...</div>
+          <div class="wf-annotation">→ saves to Snapshot Field 4</div>
+        </div>
+        <div style="margin-top:12px;">
+          <span class="wf-btn primary">Complete Life Review Map</span>
+          <div class="wf-annotation" style="margin-top:8px;">[Add another area] button appears after first area is complete</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="wf-cta-bar"><span class="wf-btn primary">Review My Week 1 Snapshot →</span></div>
+</div>
+
+<!-- DESKTOP 7: Week 1 Snapshot -->
+<div class="screen" id="d7">
+  <span class="screen-label">Desktop 7 / 8 — Week 1 Snapshot (assembled output)</span>
+  <div class="wf-nav"><span class="wf-nav-logo">Nuanced Co.</span><span class="wf-nav-label">Week 1 of 4</span><span class="wf-nav-support">⚑ Need support</span></div>
+  <div class="wf-progress">
+    <div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div>
+    <div class="wf-dot active"></div>
+    <span class="wf-dot-label">Snapshot</span>
+  </div>
+  <div style="padding:28px 48px 80px;display:grid;grid-template-columns:1fr 380px;gap:32px;">
+    <div>
+      <div class="wf-h2">My Week 1 Snapshot</div>
+      <div class="wf-body-text" style="max-width:520px;">Your responses from this week, assembled in one place. Each field is editable. Field 5 is yours to write.</div>
+      <div class="wf-snapshot">
+        <div class="wf-snapshot-title">The Unmasked Life™ — Week 1 · My Snapshot</div>
+        <div class="wf-snapshot-field">
+          <div class="wf-snapshot-label">1. One old label I am reconsidering</div>
+          <div class="wf-snapshot-value"><span>lazy</span><span class="wf-snapshot-edit">Edit</span></div>
+        </div>
+        <div class="wf-snapshot-field">
+          <div class="wf-snapshot-label">2. What may have been happening underneath</div>
+          <div class="wf-snapshot-value"><span>What may have been happening was difficulty with task initiation — a specific executive function...</span><span class="wf-snapshot-edit">Edit</span></div>
+        </div>
+        <div class="wf-snapshot-field">
+          <div class="wf-snapshot-label">3. Support that may have helped then</div>
+          <div class="wf-snapshot-value"><span>External structure, a starting prompt, understanding the difficulty was real.</span><span class="wf-snapshot-edit">Edit</span></div>
+        </div>
+        <div class="wf-snapshot-field">
+          <div class="wf-snapshot-label">4. Support I may need now</div>
+          <div class="wf-snapshot-value"><span>Task initiation, time awareness, planning support. [Generated from EF checkboxes + LRM Step 5]</span><span class="wf-snapshot-edit">Edit</span></div>
+        </div>
+        <div class="wf-snapshot-field">
+          <div class="wf-snapshot-label">5. One sentence I want to keep</div>
+          <div class="wf-textarea" style="height:56px;margin-top:4px;">Write one sentence you want to carry forward from this week... [this field is written fresh here]</div>
+        </div>
+        <div class="wf-snapshot-actions">
+          <span class="wf-btn primary">Save Snapshot</span>
+          <span class="wf-btn">Copy to clipboard</span>
+          <span class="wf-btn">Print / save as PDF</span>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="wf-annotation" style="margin-bottom:16px;">Data flow: Fields 1–4 pre-populated from Scenes 3 and 4. Field 5 is always blank — must be written here.</div>
+      <div class="wf-milestone">
+        <div class="wf-milestone-cb"></div>
+        <div>
+          <div class="wf-milestone-text">I have identified at least one pattern from my past that I am now seeing differently with my ADHD understanding.</div>
+          <div class="wf-milestone-note">Tick when it feels true. There is no deadline.</div>
+        </div>
+      </div>
+      <div class="wf-box" style="margin-bottom:0;">
+        <div class="wf-box-label">Completion state (after milestone tick)</div>
+        <div class="wf-box-sub">✓ Week 1 complete. Your snapshot has been saved to this browser.</div>
+      </div>
+    </div>
+  </div>
+  <div class="wf-cta-bar"><span class="wf-btn primary">Continue to closing →</span></div>
+</div>
+
+<!-- DESKTOP 8: Milestone and Beta Session Panel -->
+<div class="screen" id="d8">
+  <span class="screen-label">Desktop 8 / 8 — Milestone and Beta Session Panel</span>
+  <div class="wf-nav"><span class="wf-nav-logo">Nuanced Co.</span><span class="wf-nav-label">Week 1 of 4</span><span class="wf-nav-support">⚑ Need support</span></div>
+  <div class="wf-progress">
+    <div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div>
+    <div class="wf-dot active"></div>
+    <span class="wf-dot-label">Snapshot</span>
+  </div>
+  <div style="padding:28px 48px 40px;display:grid;grid-template-columns:1fr 1fr;gap:32px;">
+    <div>
+      <div class="wf-beta">
+        <div class="wf-beta-title">Bring this to the weekly catch-up</div>
+        <div class="wf-beta-placeholder">[Session date — to be confirmed]</div>
+        <div class="wf-beta-placeholder">[Join link — to be added]</div>
+        <ul class="wf-beta-prompts">
+          <li>Which label felt most familiar, and why?</li>
+          <li>What did the life review surface that surprised you?</li>
+          <li>What are you still uncertain about after this week?</li>
+        </ul>
+        <div class="wf-beta-note">Sharing is optional. You are welcome to attend and listen only.</div>
+        <div class="wf-beta-note" style="margin-top:6px;">This session is not therapy. It is a supported educational discussion.</div>
+      </div>
+      <div class="wf-box" style="margin-top:16px;">
+        <div class="wf-box-label">Coming in Week 2</div>
+        <div class="wf-box-title">Masking, Overcompensation and Self-Blame</div>
+        <div class="wf-box-sub" style="margin-top:4px;">We go into the patterns many late-diagnosed adults have used to get through: appearing fine, over-functioning, perfectionism, people-pleasing.</div>
+        <div style="margin-top:8px;"><span class="wf-btn">Week 2 →</span></div>
+      </div>
+    </div>
+    <div>
+      <div class="wf-milestone" style="margin-bottom:16px;">
+        <div class="wf-milestone-cb" style="background:#555;border-color:#555;display:flex;align-items:center;justify-content:center;color:#fff;font-size:11px;">✓</div>
+        <div>
+          <div class="wf-milestone-text" style="color:#111;font-weight:700;">I have identified at least one pattern from my past that I am now seeing differently.</div>
+          <div class="wf-milestone-note">Week 1 complete.</div>
+        </div>
+      </div>
+      <div class="wf-box" style="margin-bottom:16px;">
+        <div class="wf-box-title">✓ Week 1 complete.</div>
+        <div class="wf-box-sub" style="margin-top:4px;">Your snapshot has been saved to this browser. Copy or print it to keep it beyond this session.</div>
+      </div>
+      <div class="wf-box">
+        <div class="wf-box-label">Scope note</div>
+        <div class="wf-box-sub">This course is educational content. It is not therapy, clinical advice, or a substitute for professional mental health support. <u>Support resources</u></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════════════════════════
+  MOBILE WIREFRAMES (390×844)
+═══════════════════════════════════════════════════════════════════════════ -->
+
+<!-- MOBILE 9: Opening -->
+<div class="screen mobile" id="m9">
+  <span class="screen-label">Mobile 9 / 16 — Opening (above fold)</span>
+  <div class="wf-nav" style="padding:0 16px;"><span class="wf-nav-logo" style="font-size:10px;">Nuanced Co.</span><span class="wf-nav-label" style="font-size:10px;">Week 1 of 4</span><span class="wf-nav-support">⚑</span></div>
+  <div class="wf-progress" style="padding:0 16px;">
+    <div class="wf-dot active"></div>
+    <div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div>
+    <span class="wf-dot-label" style="font-size:8px;">Arrive</span>
+  </div>
+  <div style="padding:24px 20px 80px;">
+    <div style="font-size:9px;text-transform:uppercase;letter-spacing:.2em;color:#777;margin-bottom:8px;">Week 1 of 4 — The Unmasked Life™</div>
+    <div style="font-size:30px;font-weight:300;line-height:1.15;color:#111;margin-bottom:12px;font-style:italic;">The Late Diagnosis<br>Disruption</div>
+    <div style="font-size:13px;line-height:1.65;color:#444;margin-bottom:12px;">A late ADHD diagnosis does not just add a label. It arrives inside a life already built, and it changes what you can see.</div>
+    <div style="font-size:10px;color:#777;margin-bottom:20px;">⏱ 30–45 min in full · 10 min low-capacity</div>
+    <div class="wf-video" style="height:160px;margin-bottom:16px;">
+      <div class="wf-video-icon" style="width:36px;height:36px;font-size:14px;">▶</div>
+      <div class="wf-video-label" style="font-size:10px;">Week 1 Lesson Video<br>Direct to camera · 10–15 min</div>
+    </div>
+    <div style="font-size:10px;color:#888;text-align:center;">↓ Choose your route below</div>
+  </div>
+  <div class="wf-cta-bar" style="height:44px;"><span style="font-size:10px;color:#888;">Scroll to choose a route</span></div>
+</div>
+
+<!-- MOBILE 10: Route Choice -->
+<div class="screen mobile" id="m10">
+  <span class="screen-label">Mobile 10 / 16 — Route Choice</span>
+  <div class="wf-nav" style="padding:0 16px;"><span class="wf-nav-logo" style="font-size:10px;">Nuanced Co.</span><span class="wf-nav-label" style="font-size:10px;">Week 1 of 4</span><span class="wf-nav-support">⚑</span></div>
+  <div class="wf-progress" style="padding:0 16px;">
+    <div class="wf-dot active"></div>
+    <div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div>
+    <span class="wf-dot-label" style="font-size:8px;">Arrive</span>
+  </div>
+  <div style="padding:20px 20px 80px;">
+    <div style="font-size:11px;font-weight:700;color:#333;margin-bottom:14px;text-transform:uppercase;letter-spacing:.1em;">How would you like to work through this week?</div>
+    <div style="display:flex;flex-direction:column;gap:10px;margin-bottom:20px;">
+      <div class="wf-route selected" style="min-height:64px;flex-direction:column;align-items:flex-start;gap:2px;">
+        <div class="wf-route-name">Full journey</div>
+        <div class="wf-route-sub">All six scenes · ~45 min</div>
+      </div>
+      <div class="wf-route" style="min-height:64px;flex-direction:column;align-items:flex-start;gap:2px;">
+        <div class="wf-route-name">Low-capacity route</div>
+        <div class="wf-route-sub">One scene at a time · under 10 min each</div>
+      </div>
+      <div class="wf-route" style="min-height:64px;flex-direction:column;align-items:flex-start;gap:2px;">
+        <div class="wf-route-name">Speed-read</div>
+        <div class="wf-route-sub">Core concepts only · 5 min</div>
+      </div>
+    </div>
+    <div class="wf-resume" style="flex-direction:column;gap:8px;align-items:flex-start;">
+      <div class="wf-resume-text">↩ You were working on Scene 3: The Old Story</div>
+      <div class="wf-resume-btns"><span class="wf-btn primary">Resume</span><span class="wf-btn">Start over</span></div>
+    </div>
+    <div style="font-size:11px;color:#777;margin-top:16px;">You do not need to finish this today. There is no deadline.</div>
+  </div>
+  <div class="wf-cta-bar" style="height:52px;">
+    <span class="wf-btn primary" style="width:100%;text-align:center;padding:12px;">Continue to Something Changed →</span>
+  </div>
+</div>
+
+<!-- MOBILE 11: Old Story Interaction -->
+<div class="screen mobile" id="m11">
+  <span class="screen-label">Mobile 11 / 16 — The Old Story Interaction</span>
+  <div class="wf-nav" style="padding:0 16px;"><span class="wf-nav-logo" style="font-size:10px;">Nuanced Co.</span><span class="wf-nav-label" style="font-size:10px;">Week 1 of 4</span><span class="wf-nav-support">⚑</span></div>
+  <div class="wf-progress" style="padding:0 16px;">
+    <div class="wf-dot done"></div><div class="wf-dot done"></div>
+    <div class="wf-dot active"></div>
+    <div class="wf-dot"></div><div class="wf-dot"></div><div class="wf-dot"></div>
+    <span class="wf-dot-label" style="font-size:8px;">Old Story</span>
+  </div>
+  <div style="padding:16px 20px 80px;">
+    <div style="font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:#888;margin-bottom:8px;">Scene 3 — The Old Story</div>
+    <div style="font-size:22px;font-weight:300;font-style:italic;color:#111;margin-bottom:12px;">The labels that didn't fit</div>
+    <div style="font-size:12px;color:#444;line-height:1.65;margin-bottom:16px;">Many adults received labels before their diagnosis. This section asks: what may have actually been happening?</div>
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#555;margin-bottom:10px;">Step 1: Which of these sound familiar?</div>
+    <div class="wf-grid-2" style="gap:8px;margin-bottom:8px;">
+      <div class="wf-card selected" style="text-align:center;padding:14px 8px;"><div style="font-size:13px;font-weight:700;">lazy</div></div>
+      <div class="wf-card selected" style="text-align:center;padding:14px 8px;"><div style="font-size:13px;font-weight:700;">inconsistent</div></div>
+      <div class="wf-card" style="text-align:center;padding:14px 8px;"><div style="font-size:13px;font-weight:700;">careless</div></div>
+      <div class="wf-card selected" style="text-align:center;padding:14px 8px;"><div style="font-size:13px;font-weight:700;">too sensitive</div></div>
+      <div class="wf-card" style="text-align:center;padding:14px 8px;"><div style="font-size:13px;font-weight:700;">not trying</div></div>
+      <div class="wf-card" style="text-align:center;padding:14px 8px;"><div style="font-size:13px;font-weight:700;">difficult</div></div>
+      <div class="wf-card" style="text-align:center;padding:14px 8px;"><div style="font-size:13px;font-weight:700;">disorganised</div></div>
+      <div class="wf-card" style="text-align:center;padding:14px 8px;"><div style="font-size:13px;font-weight:700;">wasted potential</div></div>
+    </div>
+    <div style="font-size:10px;color:#777;margin-bottom:12px;">3 of 8 selected</div>
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#555;margin-bottom:8px;">Step 2: Choose one to look at</div>
+    <div class="wf-chips" style="margin-bottom:0;">
+      <div class="wf-chip selected">lazy ✓</div>
+      <div class="wf-chip">inconsistent</div>
+      <div class="wf-chip">too sensitive</div>
+    </div>
+    <div class="wf-annotation">[Reveal panel appears below after chip tap]</div>
+  </div>
+  <div class="wf-cta-bar" style="height:52px;"><span class="wf-btn primary" style="width:100%;text-align:center;padding:12px;">Continue to Brain →</span></div>
+</div>
+
+<!-- MOBILE 12: EF Interaction -->
+<div class="screen mobile" id="m12">
+  <span class="screen-label">Mobile 12 / 16 — Executive Function (mobile single-column)</span>
+  <div class="wf-nav" style="padding:0 16px;"><span class="wf-nav-logo" style="font-size:10px;">Nuanced Co.</span><span class="wf-nav-label" style="font-size:10px;">Week 1 of 4</span><span class="wf-nav-support">⚑</span></div>
+  <div class="wf-progress" style="padding:0 16px;">
+    <div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div>
+    <div class="wf-dot active"></div>
+    <div class="wf-dot"></div><div class="wf-dot"></div>
+    <span class="wf-dot-label" style="font-size:8px;">Brain</span>
+  </div>
+  <div style="padding:16px 20px 80px;">
+    <div style="font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:#888;margin-bottom:8px;">Scene 4 — How the Brain Manages Life</div>
+    <div style="font-size:22px;font-weight:300;font-style:italic;color:#111;margin-bottom:12px;">Your brain's management system</div>
+    <div style="font-size:12px;color:#444;line-height:1.65;margin-bottom:16px;">ADHD affects executive function — the processes that help the brain manage getting started, staying on track, handling emotions. These are not character traits.</div>
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#555;margin-bottom:10px;">Which of these shows up for you?</div>
+    <div style="display:flex;flex-direction:column;gap:8px;margin-bottom:12px;">
+      <div class="wf-ef-card" style="padding:10px 12px;">
+        <div class="wf-ef-name">Task initiation</div>
+        <div class="wf-ef-example">e.g. The email open for two days.</div>
+        <div class="wf-card-check"><div class="wf-card-check-box checked"></div> <span style="font-size:11px;">Does this show up for you?</span></div>
+      </div>
+      <div class="wf-ef-card" style="padding:10px 12px;">
+        <div class="wf-ef-name">Time awareness</div>
+        <div class="wf-ef-example">e.g. Two hours disappearing without notice.</div>
+        <div class="wf-card-check"><div class="wf-card-check-box checked"></div> <span style="font-size:11px;">Does this show up for you?</span></div>
+      </div>
+      <div class="wf-ef-card" style="padding:10px 12px;">
+        <div class="wf-ef-name">Emotional regulation</div>
+        <div class="wf-ef-example">e.g. Frustration that feels disproportionate.</div>
+        <div class="wf-card-check"><div class="wf-card-check-box"></div> <span style="font-size:11px;">Does this show up for you?</span></div>
+      </div>
+    </div>
+    <div class="wf-annotation">[3 more cards below: Working memory, Shifting attention, Planning]</div>
+    <div style="font-size:11px;color:#555;margin-top:8px;">2 areas recognised so far</div>
+  </div>
+  <div class="wf-cta-bar" style="height:52px;"><span class="wf-btn primary" style="width:100%;text-align:center;padding:12px;">Continue to Feelings →</span></div>
+</div>
+
+<!-- MOBILE 13: Emotional Check-In -->
+<div class="screen mobile" id="m13">
+  <span class="screen-label">Mobile 13 / 16 — Emotional Check-In</span>
+  <div class="wf-nav" style="padding:0 16px;"><span class="wf-nav-logo" style="font-size:10px;">Nuanced Co.</span><span class="wf-nav-label" style="font-size:10px;">Week 1 of 4</span><span class="wf-nav-support">⚑</span></div>
+  <div class="wf-progress" style="padding:0 16px;">
+    <div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div>
+    <div class="wf-dot active"></div>
+    <div class="wf-dot"></div>
+    <span class="wf-dot-label" style="font-size:8px;">Feelings</span>
+  </div>
+  <div style="padding:16px 20px 80px;">
+    <div style="font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:#888;margin-bottom:8px;">Scene 5 — Relief, Grief and Anger</div>
+    <div style="font-size:22px;font-weight:300;font-style:italic;color:#111;margin-bottom:12px;">There is no correct response</div>
+    <div style="font-size:12px;color:#444;line-height:1.65;margin-bottom:16px;">Relief and grief are not opposites. You do not have to choose between them or resolve one before you are allowed to feel the other.</div>
+    <div style="font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:#555;margin-bottom:10px;">What's present for you right now?</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
+      <div class="wf-chip selected" style="text-align:center;">Relief</div>
+      <div class="wf-chip selected" style="text-align:center;">Grief</div>
+      <div class="wf-chip" style="text-align:center;">Anger</div>
+      <div class="wf-chip" style="text-align:center;">Numbness</div>
+      <div class="wf-chip" style="text-align:center;">Confusion</div>
+      <div class="wf-chip" style="text-align:center;">Gratitude</div>
+      <div class="wf-chip" style="text-align:center;">Exhaustion</div>
+      <div class="wf-chip" style="text-align:center;">Hope</div>
+      <div class="wf-chip" style="text-align:center;">Nothing yet</div>
+      <div class="wf-chip" style="text-align:center;">Sadness</div>
+    </div>
+    <div class="wf-chip" style="width:100%;text-align:center;margin-bottom:12px;">Something I don't have a word for</div>
+    <div class="wf-box" style="margin-bottom:12px;">
+      <div class="wf-box-sub">"Relief and grief are not opposites. Both can be true at the same time."</div>
+    </div>
+    <div class="wf-box" style="margin-bottom:12px;">
+      <div style="font-size:11px;color:#444;margin-bottom:8px;">If this is landing heavily:</div>
+      <div style="display:flex;gap:8px;">
+        <span class="wf-btn" style="flex:1;text-align:center;padding:10px 0;">Save and pause</span>
+        <span class="wf-btn primary" style="flex:1;text-align:center;padding:10px 0;">Continue</span>
+      </div>
+    </div>
+  </div>
+  <div class="wf-cta-bar" style="height:52px;">
+    <span class="wf-btn" style="flex:1;text-align:center;padding:10px 0;">Pause</span>
+    <span class="wf-btn primary" style="flex:2;text-align:center;padding:10px 0;">Build My Snapshot →</span>
+  </div>
+</div>
+
+<!-- MOBILE 14: Life Review Map -->
+<div class="screen mobile" id="m14">
+  <span class="screen-label">Mobile 14 / 16 — Life Review Map (Step 1 visible)</span>
+  <div class="wf-nav" style="padding:0 16px;"><span class="wf-nav-logo" style="font-size:10px;">Nuanced Co.</span><span class="wf-nav-label" style="font-size:10px;">Week 1 of 4</span><span class="wf-nav-support">⚑</span></div>
+  <div class="wf-progress" style="padding:0 16px;">
+    <div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div>
+    <div class="wf-dot active"></div>
+    <span class="wf-dot-label" style="font-size:8px;">Snapshot</span>
+  </div>
+  <div style="padding:16px 20px 80px;">
+    <div style="font-size:9px;text-transform:uppercase;letter-spacing:.14em;color:#888;margin-bottom:8px;">Scene 6 — The Life Review Map</div>
+    <div style="font-size:22px;font-weight:300;font-style:italic;color:#111;margin-bottom:12px;">Choose one area to look at</div>
+    <div style="font-size:12px;color:#444;line-height:1.65;margin-bottom:14px;">One area is enough to begin. You can add more later.</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px;margin-bottom:16px;">
+      <div class="wf-chip selected" style="text-align:center;font-size:11px;">School ✓</div>
+      <div class="wf-chip" style="text-align:center;font-size:11px;">Work</div>
+      <div class="wf-chip" style="text-align:center;font-size:11px;">Relationships</div>
+      <div class="wf-chip" style="text-align:center;font-size:11px;">Home</div>
+      <div class="wf-chip" style="text-align:center;font-size:11px;">Health</div>
+      <div class="wf-chip" style="text-align:center;font-size:11px;">Money</div>
+      <div class="wf-chip" style="text-align:center;font-size:11px;">Identity</div>
+    </div>
+    <div class="wf-lrm-step">
+      <div class="wf-lrm-header"><span class="wf-lrm-num">Step 1 of 5</span><span class="wf-lrm-title">What happened?</span></div>
+      <div class="wf-lrm-guide">What was hard in this area? What did others say?</div>
+      <div class="wf-textarea" style="height:80px;font-size:11px;">What stands out from school for me...</div>
+      <div class="wf-save-note">Auto-saved · stays in this browser only</div>
+    </div>
+    <div class="wf-annotation">Steps 2–5 reveal progressively after each save</div>
+    <div class="wf-box" style="margin-top:12px;padding:10px;">
+      <div class="wf-box-sub" style="font-size:10px;">Low-capacity option: Step 1 only is enough. You can return for Steps 2–5 later.</div>
+    </div>
+  </div>
+  <div class="wf-cta-bar" style="height:52px;"><span class="wf-btn primary" style="width:100%;text-align:center;padding:12px;">Save and continue to Step 2 →</span></div>
+</div>
+
+<!-- MOBILE 15: Week 1 Snapshot -->
+<div class="screen mobile" id="m15">
+  <span class="screen-label">Mobile 15 / 16 — Week 1 Snapshot</span>
+  <div class="wf-nav" style="padding:0 16px;"><span class="wf-nav-logo" style="font-size:10px;">Nuanced Co.</span><span class="wf-nav-label" style="font-size:10px;">Week 1 of 4</span><span class="wf-nav-support">⚑</span></div>
+  <div class="wf-progress" style="padding:0 16px;">
+    <div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div>
+    <div class="wf-dot active"></div>
+    <span class="wf-dot-label" style="font-size:8px;">Snapshot</span>
+  </div>
+  <div style="padding:16px 20px 80px;">
+    <div style="font-size:22px;font-weight:300;font-style:italic;color:#111;margin-bottom:8px;">My Week 1 Snapshot</div>
+    <div style="font-size:11px;color:#777;margin-bottom:16px;">Your responses assembled. Each field is editable.</div>
+    <div class="wf-snapshot" style="padding:14px;">
+      <div class="wf-snapshot-title" style="font-size:9px;">The Unmasked Life™ — Week 1</div>
+      <div class="wf-snapshot-field">
+        <div class="wf-snapshot-label">1. Old label I am reconsidering</div>
+        <div class="wf-snapshot-value" style="font-size:11px;"><span>lazy</span><span class="wf-snapshot-edit">Edit</span></div>
+      </div>
+      <div class="wf-snapshot-field">
+        <div class="wf-snapshot-label">2. What may have been happening</div>
+        <div class="wf-snapshot-value" style="font-size:11px;"><span>Difficulty with task initiation...</span><span class="wf-snapshot-edit">Edit</span></div>
+      </div>
+      <div class="wf-snapshot-field">
+        <div class="wf-snapshot-label">3. Support that may have helped then</div>
+        <div class="wf-snapshot-value" style="font-size:11px;"><span>External structure, a starting prompt.</span><span class="wf-snapshot-edit">Edit</span></div>
+      </div>
+      <div class="wf-snapshot-field">
+        <div class="wf-snapshot-label">4. Support I may need now</div>
+        <div class="wf-snapshot-value" style="font-size:11px;"><span>Task initiation, time awareness.</span><span class="wf-snapshot-edit">Edit</span></div>
+      </div>
+      <div class="wf-snapshot-field">
+        <div class="wf-snapshot-label">5. One sentence I want to keep</div>
+        <div class="wf-textarea" style="height:56px;font-size:11px;margin-top:4px;">Write one sentence here...</div>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-top:10px;">
+        <span class="wf-btn primary" style="text-align:center;padding:10px;">Save Snapshot</span>
+        <span class="wf-btn" style="text-align:center;padding:8px;">Copy to clipboard</span>
+        <span class="wf-btn" style="text-align:center;padding:8px;">Print / save as PDF</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MOBILE 16: Milestone and Beta Panel -->
+<div class="screen mobile" id="m16">
+  <span class="screen-label">Mobile 16 / 16 — Milestone and Beta Session Panel</span>
+  <div class="wf-nav" style="padding:0 16px;"><span class="wf-nav-logo" style="font-size:10px;">Nuanced Co.</span><span class="wf-nav-label" style="font-size:10px;">Week 1 of 4</span><span class="wf-nav-support">⚑</span></div>
+  <div class="wf-progress" style="padding:0 16px;">
+    <div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div><div class="wf-dot done"></div>
+    <div class="wf-dot done"></div>
+    <span class="wf-dot-label" style="font-size:8px;color:#555;">Complete</span>
+  </div>
+  <div style="padding:16px 20px 40px;">
+    <div class="wf-milestone" style="margin-bottom:16px;">
+      <div class="wf-milestone-cb" style="background:#555;border-color:#555;display:flex;align-items:center;justify-content:center;color:#fff;font-size:10px;">✓</div>
+      <div>
+        <div class="wf-milestone-text" style="font-size:12px;">I have identified at least one pattern from my past that I am now seeing differently.</div>
+        <div class="wf-milestone-note">Week 1 complete.</div>
+      </div>
+    </div>
+    <div class="wf-box" style="margin-bottom:16px;padding:12px;">
+      <div class="wf-box-title" style="font-size:12px;">✓ Week 1 complete.</div>
+      <div class="wf-box-sub" style="margin-top:4px;">Your snapshot has been saved to this browser. Copy or print it to keep it.</div>
+    </div>
+    <div class="wf-beta" style="margin-bottom:16px;">
+      <div class="wf-beta-title" style="font-size:12px;">Bring this to the weekly catch-up</div>
+      <div class="wf-beta-placeholder">[Session date — to be confirmed]</div>
+      <div class="wf-beta-placeholder">[Join link — to be added]</div>
+      <ul class="wf-beta-prompts">
+        <li>Which label felt most familiar, and why?</li>
+        <li>What surprised you in the life review?</li>
+        <li>What are you still uncertain about?</li>
+      </ul>
+      <div class="wf-beta-note">Sharing is optional. You are welcome to attend and listen only.</div>
+    </div>
+    <div class="wf-box" style="margin-bottom:16px;padding:12px;">
+      <div class="wf-box-label">Coming in Week 2</div>
+      <div class="wf-box-title" style="font-size:12px;">Masking, Overcompensation and Self-Blame</div>
+      <div style="margin-top:8px;"><span class="wf-btn">Week 2 →</span></div>
+    </div>
+    <div style="font-size:10px;color:#999;line-height:1.6;">This course is educational content. It is not therapy or clinical advice. <u>Support resources</u></div>
+  </div>
+</div>
+
+</body>
+</html>

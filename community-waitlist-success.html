@@ -19,10 +19,11 @@
     h1{font-family:var(--serif);font-size:clamp(2rem,5vw,3.2rem);font-weight:300;line-height:1.1;margin-bottom:.6rem;}
     .rule{width:32px;height:1px;background:var(--sage);opacity:.4;margin:1.4rem auto;}
     p{font-size:.88rem;color:rgba(246,241,233,.6);line-height:1.8;max-width:460px;margin:0 auto .6rem;}
-    .back{display:inline-flex;align-items:center;gap:.5rem;margin-top:2rem;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(246,241,233,.4);border:1px solid rgba(246,241,233,.12);padding:.6rem 1.4rem;border-radius:2px;transition:color .2s,border-color .2s;}
+    .back{display:inline-flex;align-items:center;gap:.5rem;margin-top:2rem;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(246,241,233,.4);border:1px solid rgba(246,241,233,.12);padding:.6rem 1.4rem;border-radius:2px;transition:color .1s cubic-bezier(0.22,1,0.36,1),border-color .1s cubic-bezier(0.22,1,0.36,1);}
     .back:hover{color:var(--cream);border-color:rgba(246,241,233,.3);}
     .back svg{width:13px;height:13px;stroke:currentColor;fill:none;stroke-width:1.5;}
-  </style>
+  @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rv,.rvl,.rvr,.ncrv{opacity:1!important;transform:none!important}}
+</style>
 </head>
 <body>
   <a href="index.html" class="logo">NUANCED CO.<em>Neurodivergent Consultancy</em></a>
@@ -41,5 +42,26 @@
     <a href="terms-of-service.html" style="font-size:.68rem;color:rgba(246,241,233,.45);text-decoration:none;">Terms of Service</a>
   </div>
 </footer>
+<script>
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
+  var s=document.createElement('style');
+  s.textContent='.ncrv{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(0.22,1,0.36,1),transform .8s cubic-bezier(0.22,1,0.36,1)}.ncrv.in{opacity:1;transform:none}';
+  document.head.appendChild(s);
+  var els=[];
+  function addGroup(grid){if(grid.dataset.ncrv)return;grid.dataset.ncrv='1';Array.prototype.forEach.call(grid.children,function(c,i){c.classList.add('ncrv');c.style.transitionDelay=((i%8)*0.15)+'s';els.push(c);});}
+  document.querySelectorAll('section,.card').forEach(function(sec){
+    if(sec.closest('nav'))return;
+    var grid=sec.querySelector('[class*="grid"],[class*="cards"]');
+    if(grid&&grid.children.length>1&&grid.children.length<13){addGroup(grid);}
+    sec.classList.add('ncrv');els.push(sec);
+  });
+  document.querySelectorAll('.sprint-grid').forEach(addGroup);
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){io.observe(el);});
+})();
+</script>
 </body>
 </html>

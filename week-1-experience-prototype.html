@@ -1,0 +1,1309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Week 1: Experience Prototype (Editorial Journey, Concept A): The Unmasked Life</title>
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+/* === PROTOTYPE NOTICE === */
+/* This file is a design prototype only. It does not replace week-1.html.
+   Concept A: Editorial Journey — June 2026
+   New CSS classes are prefixed with no namespace to keep them readable.
+   If this concept is approved, these classes will be migrated to nc-course.css. */
+
+/* === DESIGN TOKENS (mirror nc-course.css, not imported to keep prototype self-contained) === */
+:root {
+  --cream: #F6F1E9;
+  --ink-deep: #0F0C0A;
+  --ink-mid: #1A1714;
+  --ink-card: #1E1B18;
+  --purple: #6B4570;
+  --sage: #7A8C6E;
+  --gold: #C4963E;
+  --rose: #C07A8A;
+  --lilac: #9668A4;
+  --serif: 'Cormorant Garamond', Georgia, serif;
+  --body: 'Atkinson Hyperlegible', system-ui, sans-serif;
+  --purple-dim: rgba(107,69,112,.12);
+  --purple-border: rgba(107,69,112,.28);
+  --radius: 10px;
+  --col-width: 660px;
+  --col-pad: clamp(1.2rem, 5vw, 3rem);
+}
+
+/* === RESET === */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+body {
+  background: var(--ink-deep);
+  color: var(--cream);
+  font-family: var(--body);
+  font-size: 1rem;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* === PROTOTYPE BANNER (not in production) === */
+.proto-notice {
+  background: rgba(196,150,62,.12);
+  border-bottom: 1px solid rgba(196,150,62,.25);
+  padding: .55rem var(--col-pad);
+  text-align: center;
+  font-size: .72rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--gold);
+  position: sticky;
+  top: 0;
+  z-index: 200;
+}
+
+/* === LOW-CAPACITY BANNER === */
+.lc-banner {
+  background: var(--ink-mid);
+  border-bottom: 1px solid rgba(246,241,233,.08);
+  padding: .7rem var(--col-pad);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.lc-banner p {
+  font-size: .75rem;
+  color: rgba(246,241,233,.55);
+}
+.lc-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .65rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--sage);
+  background: none;
+  border: 1px solid rgba(122,140,110,.3);
+  border-radius: 6px;
+  padding: .3rem .75rem;
+  cursor: pointer;
+  font-family: var(--body);
+  transition: border-color .2s, color .2s;
+  white-space: nowrap;
+}
+.lc-toggle:hover { border-color: var(--sage); color: #a3bf8f; }
+.lc-toggle:focus-visible { outline: 2px solid var(--sage); outline-offset: 2px; }
+
+/* Low-capacity mode */
+body.low-cap .hide-low-cap { display: none !important; }
+body.low-cap .lc-toggle { background: rgba(122,140,110,.15); border-color: var(--sage); color: #a3bf8f; }
+
+/* === READING COLUMN === */
+.lesson-col {
+  max-width: var(--col-width);
+  margin: 0 auto;
+  padding: 0 var(--col-pad);
+}
+
+/* === LESSON HEADER === */
+.lesson-header {
+  padding: 3.5rem 0 2rem;
+  border-bottom: 1px solid rgba(246,241,233,.08);
+  margin-bottom: 0;
+}
+.lesson-week-tag {
+  font-size: .6rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--lilac);
+  margin-bottom: .7rem;
+}
+.lesson-title {
+  font-family: var(--serif);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 300;
+  line-height: 1.18;
+  color: var(--cream);
+  margin-bottom: 1rem;
+}
+.lesson-intro {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: rgba(246,241,233,.72);
+  max-width: 560px;
+}
+
+/* === LESSON MAP (stage indicator) === */
+.lesson-map {
+  margin: 2rem 0;
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-bottom: .25rem;
+}
+.lesson-map::-webkit-scrollbar { display: none; }
+.lm-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .35rem;
+  padding: 0 .9rem;
+  border-left: 1px solid rgba(246,241,233,.1);
+  flex-shrink: 0;
+  cursor: default;
+}
+.lm-stage:first-child { border-left: none; padding-left: 0; }
+.lm-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(246,241,233,.18);
+  transition: background .2s;
+}
+.lm-stage.active .lm-dot { background: var(--lilac); }
+.lm-stage.done .lm-dot { background: var(--sage); }
+.lm-label {
+  font-size: .52rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: rgba(246,241,233,.35);
+  white-space: nowrap;
+}
+.lm-stage.active .lm-label { color: var(--lilac); }
+.lm-stage.done .lm-label { color: rgba(122,140,110,.7); }
+
+/* === SECTION SEPARATOR === */
+.section-sep {
+  margin: 3.5rem 0 2.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(246,241,233,.08);
+}
+.section-sep-inner {
+  display: flex;
+  align-items: center;
+  gap: .8rem;
+}
+.section-num {
+  font-size: .52rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(246,241,233,.3);
+  white-space: nowrap;
+}
+.section-label {
+  font-size: .52rem;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: rgba(246,241,233,.55);
+}
+.section-sep-line {
+  flex: 1;
+  height: 1px;
+  background: rgba(246,241,233,.06);
+}
+
+/* === TEACHING SECTION HEADING === */
+.teach-heading {
+  font-family: var(--serif);
+  font-size: clamp(1.5rem, 3.5vw, 2.1rem);
+  font-weight: 400;
+  line-height: 1.25;
+  color: var(--cream);
+  margin-bottom: 1.2rem;
+  margin-top: .5rem;
+}
+.teach-body {
+  font-size: .97rem;
+  line-height: 1.8;
+  color: rgba(246,241,233,.8);
+}
+.teach-body p { margin-bottom: 1rem; }
+.teach-body p:last-child { margin-bottom: 0; }
+
+/* === PULL QUOTE === */
+.pull-quote {
+  margin: 2.5rem 0;
+  padding: 1.8rem 0;
+  border-top: 1px solid rgba(246,241,233,.1);
+  border-bottom: 1px solid rgba(246,241,233,.1);
+}
+.pull-quote blockquote {
+  font-family: var(--serif);
+  font-size: clamp(1.35rem, 3vw, 1.85rem);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.45;
+  color: rgba(246,241,233,.75);
+}
+.pull-quote cite {
+  display: block;
+  margin-top: .8rem;
+  font-size: .65rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(246,241,233,.3);
+  font-style: normal;
+}
+
+/* === WORKBOOK PROMPT (inline, editorial) === */
+.wp-inline {
+  margin: 1.5rem 0;
+  padding: 1.1rem 1.3rem;
+  background: rgba(246,241,233,.03);
+  border-left: 2px solid var(--lilac);
+  border-radius: 0 6px 6px 0;
+}
+.wp-inline-label {
+  font-size: .55rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--lilac);
+  margin-bottom: .45rem;
+}
+.wp-inline-q {
+  font-size: .9rem;
+  color: rgba(246,241,233,.72);
+  line-height: 1.65;
+}
+
+/* === EXECUTIVE FUNCTION DIAGRAM === */
+.exec-diagram {
+  margin: 2rem 0;
+  padding: 1.8rem;
+  background: rgba(246,241,233,.025);
+  border: 1px solid rgba(246,241,233,.07);
+  border-radius: var(--radius);
+}
+.exec-diagram-label {
+  font-size: .55rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(246,241,233,.35);
+  margin-bottom: 1.2rem;
+  text-align: center;
+}
+.exec-hub {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+  justify-content: center;
+  align-items: center;
+}
+.exec-center {
+  background: var(--purple-dim);
+  border: 1px solid var(--purple-border);
+  border-radius: var(--radius);
+  padding: .7rem 1.1rem;
+  text-align: center;
+  flex: 0 0 auto;
+  order: 0;
+}
+.exec-center-label {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--lilac);
+  line-height: 1.3;
+}
+.exec-center-sub {
+  font-size: .65rem;
+  color: rgba(150,104,164,.6);
+  margin-top: .2rem;
+}
+.exec-spoke {
+  background: rgba(246,241,233,.04);
+  border: 1px solid rgba(246,241,233,.09);
+  border-radius: 8px;
+  padding: .5rem .8rem;
+  text-align: center;
+  flex: 0 1 auto;
+  min-width: 130px;
+}
+.exec-spoke-name {
+  font-size: .75rem;
+  color: var(--cream);
+  font-weight: 700;
+  margin-bottom: .15rem;
+}
+.exec-spoke-desc {
+  font-size: .67rem;
+  color: rgba(246,241,233,.45);
+  line-height: 1.4;
+}
+.exec-diagram-note {
+  margin-top: 1rem;
+  font-size: .72rem;
+  color: rgba(246,241,233,.35);
+  text-align: center;
+  font-style: italic;
+}
+
+/* === RECOGNITION CARDS === */
+.recognition-section { margin: 2rem 0; }
+.recognition-intro {
+  font-size: .9rem;
+  color: rgba(246,241,233,.65);
+  margin-bottom: 1.2rem;
+}
+.recognition-count {
+  font-size: .75rem;
+  letter-spacing: .1em;
+  color: rgba(246,241,233,.35);
+  margin-bottom: .8rem;
+  min-height: 1.4em;
+  transition: color .3s;
+}
+.recognition-count.has-selection { color: var(--lilac); }
+.recognition-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .6rem;
+}
+@media (max-width: 520px) { .recognition-grid { grid-template-columns: 1fr; } }
+.recognition-card {
+  background: rgba(246,241,233,.04);
+  border: 1px solid rgba(246,241,233,.09);
+  border-radius: 8px;
+  padding: .85rem 1rem;
+  cursor: pointer;
+  transition: background .2s, border-color .2s, transform .12s;
+  user-select: none;
+  -webkit-user-select: none;
+  text-align: left;
+  font-family: var(--body);
+  color: rgba(246,241,233,.72);
+  font-size: .83rem;
+  line-height: 1.55;
+  position: relative;
+}
+.recognition-card:hover {
+  background: rgba(246,241,233,.07);
+  border-color: rgba(246,241,233,.16);
+}
+.recognition-card:focus-visible {
+  outline: 2px solid var(--lilac);
+  outline-offset: 2px;
+}
+.recognition-card.selected {
+  background: var(--purple-dim);
+  border-color: var(--purple-border);
+  color: var(--cream);
+}
+.recognition-card.selected::after {
+  content: '';
+  position: absolute;
+  top: .55rem;
+  right: .6rem;
+  width: 7px;
+  height: 7px;
+  background: var(--lilac);
+  border-radius: 50%;
+}
+.recognition-card-em {
+  display: block;
+  font-size: .6rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(246,241,233,.3);
+  margin-bottom: .3rem;
+}
+.recognition-card.selected .recognition-card-em { color: rgba(150,104,164,.7); }
+
+/* === BEFORE / AFTER REFRAME === */
+.before-after-pair {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: .7rem;
+  margin: 1.5rem 0;
+}
+@media (max-width: 560px) { .before-after-pair { grid-template-columns: 1fr; } }
+.before-box {
+  background: rgba(246,241,233,.03);
+  border: 1px solid rgba(246,241,233,.07);
+  border-radius: 8px;
+  padding: 1rem 1.1rem;
+}
+.after-box {
+  background: rgba(122,140,110,.07);
+  border: 1px solid rgba(122,140,110,.18);
+  border-radius: 8px;
+  padding: 1rem 1.1rem;
+}
+.ba-label {
+  font-size: .52rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  margin-bottom: .5rem;
+}
+.before-box .ba-label { color: rgba(246,241,233,.3); }
+.after-box .ba-label { color: var(--sage); }
+.ba-text {
+  font-size: .88rem;
+  line-height: 1.6;
+}
+.before-box .ba-text { color: rgba(246,241,233,.55); font-style: italic; }
+.after-box .ba-text { color: rgba(246,241,233,.85); }
+
+/* === COMPANION GUIDE CALLOUT === */
+.callout-companion {
+  margin: 2rem 0;
+  background: var(--purple-dim);
+  border: 1px solid var(--purple-border);
+  border-radius: var(--radius);
+  padding: 1.2rem 1.4rem;
+}
+.callout-companion-label {
+  font-size: .55rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: var(--lilac);
+  margin-bottom: .4rem;
+}
+.callout-companion-title {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: .4rem;
+}
+.callout-companion-body {
+  font-size: .85rem;
+  color: rgba(246,241,233,.68);
+  line-height: 1.65;
+  margin-bottom: .7rem;
+}
+.callout-companion-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
+  font-size: .6rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--lilac);
+  border: 1px solid var(--purple-border);
+  border-radius: 6px;
+  padding: .32rem .8rem;
+  text-decoration: none;
+  transition: background .2s;
+}
+.callout-companion-link:hover { background: rgba(107,69,112,.18); }
+.callout-companion-link:focus-visible { outline: 2px solid var(--lilac); outline-offset: 2px; }
+
+/* === LIFE REVIEW MAP (stepped form) === */
+.lrm-intro {
+  font-size: .9rem;
+  color: rgba(246,241,233,.65);
+  line-height: 1.75;
+  margin-bottom: 1.5rem;
+}
+.lrm-step {
+  margin-bottom: 1.5rem;
+  padding: 1.2rem 1.4rem;
+  background: rgba(246,241,233,.03);
+  border: 1px solid rgba(246,241,233,.08);
+  border-radius: var(--radius);
+  transition: border-color .2s;
+}
+.lrm-step:focus-within { border-color: rgba(246,241,233,.18); }
+.lrm-step-header {
+  display: flex;
+  align-items: baseline;
+  gap: .8rem;
+  margin-bottom: .6rem;
+}
+.lrm-step-num {
+  font-size: .55rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(246,241,233,.3);
+  white-space: nowrap;
+}
+.lrm-step-title {
+  font-size: .88rem;
+  font-weight: 700;
+  color: var(--cream);
+}
+.lrm-step-guide {
+  font-size: .82rem;
+  color: rgba(246,241,233,.55);
+  line-height: 1.6;
+  margin-bottom: .8rem;
+}
+.lrm-textarea {
+  width: 100%;
+  min-height: 80px;
+  background: rgba(246,241,233,.04);
+  border: 1px solid rgba(246,241,233,.1);
+  border-radius: 6px;
+  padding: .75rem .9rem;
+  color: var(--cream);
+  font-family: var(--body);
+  font-size: .88rem;
+  line-height: 1.6;
+  resize: vertical;
+  transition: border-color .2s;
+}
+.lrm-textarea:focus {
+  outline: none;
+  border-color: rgba(246,241,233,.28);
+}
+.lrm-textarea::placeholder { color: rgba(246,241,233,.25); }
+.lrm-save-note {
+  font-size: .68rem;
+  color: rgba(246,241,233,.3);
+  margin-top: .5rem;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+.lrm-save-note.saved { color: var(--sage); }
+.lrm-scope {
+  margin-top: 1.2rem;
+  font-size: .72rem;
+  color: rgba(246,241,233,.3);
+  line-height: 1.6;
+  font-style: italic;
+}
+
+/* === INTEGRATION OPTIONS === */
+.integrate-intro {
+  font-size: .9rem;
+  color: rgba(246,241,233,.65);
+  margin-bottom: 1rem;
+}
+.option-cards {
+  display: flex;
+  flex-direction: column;
+  gap: .6rem;
+}
+.option-card {
+  background: rgba(246,241,233,.04);
+  border: 1px solid rgba(246,241,233,.09);
+  border-radius: 8px;
+  padding: .9rem 1.1rem;
+  cursor: pointer;
+  transition: background .2s, border-color .2s;
+  text-align: left;
+  font-family: var(--body);
+  width: 100%;
+  display: flex;
+  align-items: flex-start;
+  gap: .9rem;
+}
+.option-card:hover {
+  background: rgba(246,241,233,.07);
+  border-color: rgba(246,241,233,.16);
+}
+.option-card:focus-visible {
+  outline: 2px solid var(--lilac);
+  outline-offset: 2px;
+}
+.option-card.selected {
+  background: var(--purple-dim);
+  border-color: var(--purple-border);
+}
+.option-letter {
+  font-size: .55rem;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: rgba(246,241,233,.3);
+  white-space: nowrap;
+  padding-top: .15rem;
+  min-width: 2rem;
+}
+.option-card.selected .option-letter { color: var(--lilac); }
+.option-text {
+  font-size: .88rem;
+  color: rgba(246,241,233,.75);
+  line-height: 1.6;
+}
+.option-card.selected .option-text { color: var(--cream); }
+.option-confirm {
+  margin-top: 1rem;
+  font-size: .8rem;
+  color: var(--sage);
+  min-height: 1.4em;
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+}
+
+/* === MILESTONE (closing) === */
+.milestone-close {
+  margin: 3rem 0 1rem;
+  padding: 2rem 1.8rem;
+  background: rgba(246,241,233,.025);
+  border: 1px solid rgba(246,241,233,.08);
+  border-radius: var(--radius);
+}
+.milestone-label {
+  font-size: .55rem;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: rgba(246,241,233,.35);
+  margin-bottom: 1rem;
+}
+.milestone-row {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  cursor: pointer;
+  margin-bottom: 1.2rem;
+}
+.milestone-cb {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(246,241,233,.22);
+  flex-shrink: 0;
+  margin-top: .1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color .2s, background .2s;
+}
+.milestone-row.ticked .milestone-cb {
+  background: var(--sage);
+  border-color: var(--sage);
+}
+.milestone-cb-check {
+  display: none;
+  color: var(--ink-deep);
+  font-size: .7rem;
+}
+.milestone-row.ticked .milestone-cb-check { display: block; }
+.milestone-text-main {
+  font-family: var(--serif);
+  font-size: clamp(1.1rem, 2.5vw, 1.4rem);
+  font-weight: 300;
+  color: rgba(246,241,233,.78);
+  line-height: 1.45;
+}
+.milestone-row.ticked .milestone-text-main { color: var(--cream); }
+.milestone-note {
+  font-size: .72rem;
+  color: rgba(246,241,233,.3);
+  margin-top: .5rem;
+}
+.milestone-takeaway-label {
+  font-size: .7rem;
+  color: rgba(246,241,233,.4);
+  margin-bottom: .5rem;
+}
+.milestone-takeaway-input {
+  width: 100%;
+  background: rgba(246,241,233,.04);
+  border: 1px solid rgba(246,241,233,.1);
+  border-radius: 6px;
+  padding: .7rem .9rem;
+  color: var(--cream);
+  font-family: var(--body);
+  font-size: .88rem;
+  line-height: 1.6;
+  resize: none;
+  transition: border-color .2s;
+}
+.milestone-takeaway-input:focus {
+  outline: none;
+  border-color: rgba(246,241,233,.25);
+}
+.milestone-takeaway-input::placeholder { color: rgba(246,241,233,.22); }
+
+/* === WEEK NAV (closing) === */
+.week-nav-close {
+  margin: 2.5rem 0 4rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.week-nav-label {
+  font-size: .65rem;
+  letter-spacing: .15em;
+  text-transform: uppercase;
+  color: rgba(246,241,233,.3);
+}
+.week-nav-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .5rem;
+  font-size: .7rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--lilac);
+  border: 1px solid var(--purple-border);
+  border-radius: 6px;
+  padding: .38rem .9rem;
+  text-decoration: none;
+  transition: background .2s;
+}
+.week-nav-link:hover { background: var(--purple-dim); }
+.week-nav-link:focus-visible { outline: 2px solid var(--lilac); outline-offset: 2px; }
+
+/* === VIDEO PLACEHOLDER === */
+.video-placeholder {
+  background: rgba(246,241,233,.03);
+  border: 1px solid rgba(246,241,233,.08);
+  border-radius: var(--radius);
+  aspect-ratio: 16/9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: .7rem;
+  margin-bottom: 1rem;
+}
+.video-placeholder-icon {
+  font-size: 2rem;
+  color: rgba(246,241,233,.18);
+}
+.video-placeholder-note {
+  font-size: .75rem;
+  color: rgba(246,241,233,.3);
+  text-align: center;
+}
+
+/* === FORMAT STRIP === */
+.format-strip {
+  display: flex;
+  gap: .5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+.format-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: .4rem;
+  font-size: .65rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  background: rgba(246,241,233,.04);
+  border: 1px solid rgba(246,241,233,.09);
+  border-radius: 6px;
+  padding: .32rem .8rem;
+  color: rgba(246,241,233,.5);
+  cursor: pointer;
+  font-family: var(--body);
+  transition: background .2s, border-color .2s, color .2s;
+}
+.format-btn.active {
+  background: rgba(246,241,233,.09);
+  border-color: rgba(246,241,233,.22);
+  color: var(--cream);
+}
+.format-btn:focus-visible { outline: 2px solid var(--lilac); outline-offset: 2px; }
+
+/* === SCOPE BLOCK (prototype footer) === */
+.scope-block-proto {
+  margin: 3rem 0 1.5rem;
+  padding: 1rem 1.2rem;
+  background: rgba(246,241,233,.02);
+  border: 1px solid rgba(246,241,233,.06);
+  border-radius: 8px;
+  font-size: .73rem;
+  color: rgba(246,241,233,.35);
+  line-height: 1.65;
+}
+
+/* === REDUCE MOTION === */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+  }
+}
+body.reduce-motion *, body.reduce-motion *::before, body.reduce-motion *::after {
+  animation-duration: .01ms !important;
+  transition-duration: .01ms !important;
+}
+</style>
+</head>
+
+<body>
+
+<!-- PROTOTYPE NOTICE -->
+<div class="proto-notice" role="note">
+  Design prototype only &mdash; Concept A: Editorial Journey &mdash; Do not deploy &mdash; week-1.html is unchanged
+</div>
+
+<!-- LOW-CAPACITY BANNER -->
+<div class="lc-banner">
+  <p>Need a simpler view? Low-capacity mode shows core content only and hides optional prompts.</p>
+  <button class="lc-toggle" onclick="toggleLowCap()" aria-pressed="false" id="lc-btn">
+    <i class="fa-solid fa-minimize" aria-hidden="true"></i>
+    <span id="lc-btn-label">Low-capacity mode</span>
+  </button>
+</div>
+
+<!-- MAIN CONTENT -->
+<main>
+<div class="lesson-col">
+
+  <!-- LESSON HEADER -->
+  <header class="lesson-header">
+    <p class="lesson-week-tag">Week 1 of 4 &mdash; The Unmasked Life</p>
+    <h1 class="lesson-title">The Late Diagnosis Disruption</h1>
+    <p class="lesson-intro">A late ADHD diagnosis does not just add a label. It arrives inside a life already built, and it changes what you can see. This week is about what happens next, and how to make sense of it.</p>
+
+    <!-- LESSON MAP -->
+    <nav class="lesson-map" aria-label="Lesson stages">
+      <div class="lm-stage active"><div class="lm-dot"></div><span class="lm-label">Watch</span></div>
+      <div class="lm-stage"><div class="lm-dot"></div><span class="lm-label">Understand</span></div>
+      <div class="lm-stage"><div class="lm-dot"></div><span class="lm-label">Recognise</span></div>
+      <div class="lm-stage"><div class="lm-dot"></div><span class="lm-label">Reframe</span></div>
+      <div class="lm-stage"><div class="lm-dot"></div><span class="lm-label">Apply</span></div>
+      <div class="lm-stage"><div class="lm-dot"></div><span class="lm-label">Integrate</span></div>
+      <div class="lm-stage"><div class="lm-dot"></div><span class="lm-label">Complete</span></div>
+    </nav>
+  </header>
+
+  <!-- SECTION: WATCH -->
+  <div class="section-sep">
+    <div class="section-sep-inner">
+      <span class="section-num">Watch</span>
+      <span class="section-sep-line"></span>
+      <span class="section-label">Video lesson</span>
+    </div>
+  </div>
+
+  <div class="video-placeholder" role="img" aria-label="Video placeholder. Week 1 lesson video will appear here once recorded.">
+    <i class="fa-solid fa-video video-placeholder-icon" aria-hidden="true"></i>
+    <p class="video-placeholder-note">Week 1 lesson video &mdash; to be uploaded once recorded</p>
+  </div>
+
+  <div class="format-strip" role="group" aria-label="Content format options">
+    <button class="format-btn active" aria-pressed="true"><i class="fa-solid fa-video" aria-hidden="true"></i> Video</button>
+    <button class="format-btn" aria-pressed="false"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Speed-read</button>
+    <button class="format-btn" aria-pressed="false"><i class="fa-solid fa-headphones" aria-hidden="true"></i> Audio-only</button>
+  </div>
+
+  <!-- SECTION: UNDERSTAND -->
+  <div class="section-sep">
+    <div class="section-sep-inner">
+      <span class="section-num">Understand</span>
+      <span class="section-sep-line"></span>
+      <span class="section-label">Six core concepts &mdash; read in full or dip into what is live for you</span>
+    </div>
+  </div>
+
+  <!-- CONCEPT 1 -->
+  <h2 class="teach-heading">What late diagnosis actually does</h2>
+  <div class="teach-body">
+    <p>A late ADHD diagnosis is not simply receiving new information. It is information arriving inside a life that was already built around explanations that were wrong, incomplete, or missing entirely.</p>
+    <p>When that information arrives, it does not stay in the present. It travels backwards, across your life, through your past, into every place where something did not make sense, or where the explanation you were given was "you are not trying hard enough," or "you are too sensitive," or "you are disorganised," or "you just need to focus."</p>
+    <p>Those explanations were not accurate. A more accurate understanding involves how your brain works differently, not worse, but differently. And that understanding arriving late is the disruption this week is about.</p>
+  </div>
+
+  <div class="pull-quote">
+    <blockquote>
+      "The experience of late diagnosis has been studied. The disruption that follows, to identity, to self-understanding, to the story you tell about yourself, is a recognised part of what late diagnosis involves."
+    </blockquote>
+    <cite>Week 1 core concept</cite>
+  </div>
+
+  <!-- CONCEPT 2 -->
+  <h2 class="teach-heading">Was that ADHD too? The retroactive review</h2>
+  <div class="teach-body">
+    <p>After a late diagnosis, many adults begin a process of reviewing the past. Not in a deliberate or organised way. It often just starts happening. Memories surface. Patterns become visible. Old events look different.</p>
+    <p>You might notice things that previously looked like laziness or inconsistency and now look like difficulty initiating tasks. You might see what was labelled over-sensitivity and now understand it as emotional regulation that works differently. You might recognise the times you could not stop talking, or the times you completely disappeared into something for hours, and see them with more accuracy now.</p>
+    <p>This does not mean ADHD explains everything. Some things will look different with this understanding. Some will not. The work of this week is noticing without requiring certainty. Not everything needs to be resolved right now.</p>
+  </div>
+
+  <div class="wp-inline hide-low-cap">
+    <p class="wp-inline-label"><i class="fa-solid fa-pen-to-square" aria-hidden="true"></i> Workbook prompt</p>
+    <p class="wp-inline-q">What is one area of your life where you are now seeing things differently? What did it look like then, and what does it look like now?</p>
+  </div>
+
+  <!-- CONCEPT 3 condensed heading for space — prototype shows pattern, not all 6 -->
+  <h2 class="teach-heading" style="margin-top:2rem;">Executive function: your brain's management system</h2>
+  <div class="teach-body">
+    <p>ADHD affects what researchers call executive function. Think of executive function as your brain's management system: the set of processes that help you initiate tasks, hold information in working memory, manage time, regulate emotions, sustain attention, plan, shift between tasks, and follow through.</p>
+    <p>In ADHD, these processes work differently. Not because you are not trying, but because the neurological architecture involved is different in ADHD brains, and it has been different your whole life.</p>
+    <p>Week 3 covers executive function in depth. This week, the goal is simply to begin naming the concept.</p>
+  </div>
+
+  <!-- EXECUTIVE FUNCTION DIAGRAM -->
+  <div class="exec-diagram hide-low-cap" role="img" aria-label="Executive function visual: the brain's management system with six areas">
+    <p class="exec-diagram-label">Executive function at a glance</p>
+    <div class="exec-hub">
+      <div class="exec-spoke"><p class="exec-spoke-name">Task initiation</p><p class="exec-spoke-desc">Getting started on tasks you intend to do</p></div>
+      <div class="exec-spoke"><p class="exec-spoke-name">Working memory</p><p class="exec-spoke-desc">Holding information in mind while using it</p></div>
+      <div class="exec-center"><p class="exec-center-label">The management<br>system</p><p class="exec-center-sub">ADHD affects this</p></div>
+      <div class="exec-spoke"><p class="exec-spoke-name">Time awareness</p><p class="exec-spoke-desc">Tracking and estimating time accurately</p></div>
+      <div class="exec-spoke"><p class="exec-spoke-name">Emotional regulation</p><p class="exec-spoke-desc">Managing the intensity and speed of emotions</p></div>
+      <div class="exec-spoke"><p class="exec-spoke-name">Sustained attention</p><p class="exec-spoke-desc">Maintaining focus across a task</p></div>
+      <div class="exec-spoke"><p class="exec-spoke-name">Planning and follow-through</p><p class="exec-spoke-desc">Sequencing and completing multi-step tasks</p></div>
+    </div>
+    <p class="exec-diagram-note">These are not character traits. They are neurological processes that work differently in ADHD brains.</p>
+  </div>
+
+  <p style="font-size:.72rem;color:rgba(246,241,233,.3);margin-top:1rem;font-style:italic;" class="hide-low-cap">[Prototype note: Concepts 4, 5, and 6 (Identity disruption, Emotional landscape, Explanation vs excuse) follow the same editorial prose pattern above. Not repeated here to keep prototype readable.]</p>
+
+  <!-- SECTION: RECOGNISE -->
+  <div class="section-sep">
+    <div class="section-sep-inner">
+      <span class="section-num">Recognise</span>
+      <span class="section-sep-line"></span>
+      <span class="section-label">Does this sound like you?</span>
+    </div>
+  </div>
+
+  <div class="recognition-section">
+    <p class="recognition-intro">Select any patterns that feel familiar. You do not need to do anything with them right now. Recognition is the first step.</p>
+    <p class="recognition-count" id="rec-count" aria-live="polite"></p>
+    <div class="recognition-grid" role="group" aria-label="Pattern recognition cards">
+
+      <button class="recognition-card" onclick="toggleRecognition(this)" aria-pressed="false">
+        <span class="recognition-card-em">Task initiation</span>
+        Knowing exactly what you need to do, and not being able to start it, for reasons you cannot explain.
+      </button>
+
+      <button class="recognition-card" onclick="toggleRecognition(this)" aria-pressed="false">
+        <span class="recognition-card-em">The life review</span>
+        Since diagnosis, looking back at old memories and seeing them differently.
+      </button>
+
+      <button class="recognition-card" onclick="toggleRecognition(this)" aria-pressed="false">
+        <span class="recognition-card-em">The labels</span>
+        Being called lazy, sensitive, inconsistent, or "could do better if they tried," and believing it.
+      </button>
+
+      <button class="recognition-card" onclick="toggleRecognition(this)" aria-pressed="false">
+        <span class="recognition-card-em">Time blindness</span>
+        Hours disappearing without notice, or always underestimating how long things take.
+      </button>
+
+      <button class="recognition-card" onclick="toggleRecognition(this)" aria-pressed="false">
+        <span class="recognition-card-em">The grief</span>
+        A feeling of loss after diagnosis, for the years that went differently, for what might have been.
+      </button>
+
+      <button class="recognition-card" onclick="toggleRecognition(this)" aria-pressed="false">
+        <span class="recognition-card-em">Identity shift</span>
+        The story you told about yourself starting to feel uncertain after the diagnosis arrived.
+      </button>
+
+      <button class="recognition-card" onclick="toggleRecognition(this)" aria-pressed="false">
+        <span class="recognition-card-em">Emotional intensity</span>
+        Emotions that arrive faster or feel stronger than seems warranted by the situation.
+      </button>
+
+      <button class="recognition-card" onclick="toggleRecognition(this)" aria-pressed="false">
+        <span class="recognition-card-em">The relief</span>
+        A sense of finally having an explanation that fits, even while other feelings co-exist with it.
+      </button>
+
+    </div>
+  </div>
+
+  <!-- SECTION: REFRAME -->
+  <div class="section-sep">
+    <div class="section-sep-inner">
+      <span class="section-num">Reframe</span>
+      <span class="section-sep-line"></span>
+      <span class="section-label">A more accurate understanding</span>
+    </div>
+  </div>
+
+  <h2 class="teach-heading">Grief and relief can co-exist</h2>
+  <div class="teach-body">
+    <p>Relief and grief are not opposites. You do not have to choose between them or resolve one before you are allowed to feel the other.</p>
+    <p>Grief after late diagnosis is a reasonable response to real loss: the loss of the earlier diagnosis that did not come, the loss of the supports that might have changed something important, the loss of the version of yourself that did not spend years working against your own brain with the wrong frame.</p>
+  </div>
+
+  <div class="before-after-pair">
+    <div class="before-box">
+      <p class="ba-label">What you may have been told</p>
+      <p class="ba-text">You are being dramatic. You should be grateful for the diagnosis, not sad about it. You need to move on.</p>
+    </div>
+    <div class="after-box">
+      <p class="ba-label">A more accurate understanding</p>
+      <p class="ba-text">Grief after late diagnosis is a reasonable response to information that arrived too late to prevent real losses. It does not need a clinical category to be valid.</p>
+    </div>
+  </div>
+
+  <h2 class="teach-heading" style="margin-top:1.8rem;">Grief is not the same as self-pity</h2>
+  <div class="teach-body">
+    <p>Grief asks: what mattered here? What was real? What was lost? Self-pity says: this was all my fault, or there is no way forward. These are different things.</p>
+    <p>If you notice the review slipping into an unhelpful loop, replaying the same painful memories without arriving anywhere new, that is worth noticing. The aim of reviewing the past is to understand it more clearly, not to punish yourself with it.</p>
+  </div>
+
+  <div class="before-after-pair hide-low-cap">
+    <div class="before-box">
+      <p class="ba-label">Self-pity</p>
+      <p class="ba-text">This was all my fault. I am a disaster and always will be. There is no way forward from here.</p>
+    </div>
+    <div class="after-box">
+      <p class="ba-label">Grief</p>
+      <p class="ba-text">What mattered here? What was real? What was lost? I understand now why some of this was so hard.</p>
+    </div>
+  </div>
+
+  <!-- COMPANION GUIDE CALLOUT (in context) -->
+  <div class="callout-companion">
+    <p class="callout-companion-label"><i class="fa-solid fa-book" aria-hidden="true"></i> Week 1 Companion Guide</p>
+    <p class="callout-companion-title">Grieving the Life You Thought You Had</p>
+    <p class="callout-companion-body">If the grief side of this week is landing heavily, the Companion Guide goes deeper. It covers naming what was lost, working with grief at your own pace, and distinguishing grief from self-blame. Included in your course.</p>
+    <a href="downloads.html" class="callout-companion-link">Access in your resource vault <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+  </div>
+
+  <!-- SECTION: APPLY -->
+  <div class="section-sep">
+    <div class="section-sep-inner">
+      <span class="section-num">Apply</span>
+      <span class="section-sep-line"></span>
+      <span class="section-label">The Life Review Map</span>
+    </div>
+  </div>
+
+  <p class="lrm-intro">The Life Review Map is this week's course exercise. It is not a diagnostic tool and it is not therapy. It is a structured way to begin reviewing your past with your ADHD understanding. Work through as much or as little as feels useful. One step is enough to begin.</p>
+
+  <!-- STEP 1 (functional in prototype) -->
+  <div class="lrm-step" id="lrm-step-1">
+    <div class="lrm-step-header">
+      <span class="lrm-step-num">Step 1 of 5</span>
+      <span class="lrm-step-title">Choose a period or area of your life</span>
+    </div>
+    <p class="lrm-step-guide">Pick one time period or area rather than trying to review everything at once. A school phase, a job, a relationship, a home environment. Where does the "was that ADHD too?" recognition come up most strongly for you right now?</p>
+    <textarea class="lrm-textarea" id="lrm-1-input" placeholder="The period or area I am starting with..." rows="3"
+      oninput="saveLRM(1, this.value)" aria-label="Step 1: Choose a period or area of your life"></textarea>
+    <p class="lrm-save-note" id="lrm-1-note"><i class="fa-solid fa-circle-dot" aria-hidden="true"></i> Responses are saved to this browser session only.</p>
+  </div>
+
+  <p style="font-size:.72rem;color:rgba(246,241,233,.3);font-style:italic;margin-bottom:1.2rem;" class="hide-low-cap">[Prototype note: Steps 2 through 5 follow the same pattern. All five steps functional in production build.]</p>
+
+  <div style="background:rgba(122,140,110,.08);border:1px solid rgba(122,140,110,.18);border-radius:var(--radius);padding:1rem 1.2rem;margin-bottom:1rem;" class="hide-low-cap">
+    <p style="font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--sage);margin-bottom:.4rem;">Related standalone resource</p>
+    <p style="font-size:.85rem;color:rgba(246,241,233,.78);margin-bottom:.6rem;"><strong>The Late Diagnosis Life Review</strong> is a more detailed standalone PDF designed specifically for this kind of review. It goes further than the Life Review Map above and is available separately.</p>
+    <a href="https://stan.store/NuancedCo/p/the-late-diagnosis-life-review" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:.5rem;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sage);border:1px solid rgba(122,140,110,.3);padding:.32rem .8rem;border-radius:6px;text-decoration:none;">Get the Late Diagnosis Life Review <i class="fa-solid fa-arrow-up-right-from-square" aria-hidden="true"></i></a>
+  </div>
+
+  <!-- SECTION: INTEGRATE -->
+  <div class="section-sep">
+    <div class="section-sep-inner">
+      <span class="section-num">Integrate</span>
+      <span class="section-sep-line"></span>
+      <span class="section-label">One thing to do this week</span>
+    </div>
+  </div>
+
+  <p class="integrate-intro">This takes under ten minutes. Choose one option.</p>
+
+  <div class="option-cards" role="group" aria-label="Integration options">
+    <button class="option-card" onclick="selectOption('A', this)" aria-pressed="false" id="opt-a">
+      <span class="option-letter">A</span>
+      <span class="option-text">Write down one pattern from your past that you are now seeing differently. One sentence is enough. You do not need to have it resolved.</span>
+    </button>
+    <button class="option-card" onclick="selectOption('B', this)" aria-pressed="false" id="opt-b">
+      <span class="option-letter">B</span>
+      <span class="option-text">Name one old label, one thing you were told you were or told yourself you were, that you are willing to question this week. You do not have to discard it. Just notice it.</span>
+    </button>
+    <button class="option-card" onclick="selectOption('C', this)" aria-pressed="false" id="opt-c">
+      <span class="option-letter">C</span>
+      <span class="option-text">Begin Step 1 of the Life Review Map above. Choose one period or area. Name it. That is enough for today.</span>
+    </button>
+  </div>
+  <p class="option-confirm" id="option-confirm" aria-live="polite"></p>
+
+  <!-- SECTION: COMPLETE -->
+  <div class="section-sep">
+    <div class="section-sep-inner">
+      <span class="section-num">Complete</span>
+      <span class="section-sep-line"></span>
+      <span class="section-label">Week 1 milestone</span>
+    </div>
+  </div>
+
+  <div class="milestone-close">
+    <p class="milestone-label"><i class="fa-solid fa-flag" aria-hidden="true"></i> Week 1 milestone</p>
+    <div class="milestone-row" id="milestone-row" onclick="toggleMilestone()" role="checkbox" aria-checked="false" tabindex="0"
+      onkeydown="if(event.key==='Enter'||event.key===' ')toggleMilestone()">
+      <div class="milestone-cb"><i class="fa-solid fa-check milestone-cb-check" aria-hidden="true"></i></div>
+      <p class="milestone-text-main">I have identified at least three things from my past that I am now seeing differently with my ADHD understanding.</p>
+    </div>
+    <p class="milestone-note">Tick when it feels true. There is no deadline.</p>
+  </div>
+
+  <div style="margin-top:1.5rem;">
+    <p class="milestone-takeaway-label">What am I taking with me from this week? (optional)</p>
+    <textarea class="milestone-takeaway-input" rows="3" placeholder="One thing I noticed, one thing I am questioning, or one thing I want to sit with..."
+      oninput="saveTakeaway(this.value)" aria-label="Personal takeaway from Week 1"></textarea>
+  </div>
+
+  <!-- WHAT IS NEXT -->
+  <div style="margin:2.5rem 0 1.5rem;padding:1.5rem 1.6rem;background:rgba(246,241,233,.025);border:1px solid rgba(246,241,233,.07);border-radius:var(--radius);">
+    <p style="font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,241,233,.3);margin-bottom:.6rem;">Coming in Week 2</p>
+    <p style="font-family:var(--serif);font-size:1.2rem;font-weight:400;color:rgba(246,241,233,.8);margin-bottom:.5rem;">Masking, Overcompensation and Self-Blame</p>
+    <p style="font-size:.85rem;color:rgba(246,241,233,.55);line-height:1.65;">We go into the patterns many late-diagnosed adults have used to get through: appearing fine, over-functioning, perfectionism, people-pleasing, and what those have cost.</p>
+  </div>
+
+  <!-- WEEK NAV -->
+  <div class="week-nav-close">
+    <span class="week-nav-label"></span>
+    <a href="week-2.html" class="week-nav-link">Week 2: Masking and Self-Blame <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+  </div>
+
+  <!-- SCOPE BLOCK -->
+  <div class="scope-block-proto">
+    This content is educational only. It does not constitute clinical advice, diagnosis, counselling, or therapy. The Unmasked Life is an educational course for late-diagnosed ADHD adults. If you are in crisis or need clinical support, please contact a qualified health professional or a crisis service in your country.
+  </div>
+
+</div><!-- end .lesson-col -->
+</main>
+
+<script>
+/* === LOW-CAPACITY MODE === */
+function toggleLowCap() {
+  const body = document.body;
+  const btn = document.getElementById('lc-btn');
+  const label = document.getElementById('lc-btn-label');
+  const isOn = body.classList.toggle('low-cap');
+  btn.setAttribute('aria-pressed', isOn ? 'true' : 'false');
+  label.textContent = isOn ? 'Exit low-capacity mode' : 'Low-capacity mode';
+  try { localStorage.setItem('tul-low-cap', isOn ? '1' : '0'); } catch(e) {}
+}
+
+/* === RECOGNITION CARDS === */
+let recCount = 0;
+function toggleRecognition(card) {
+  const isSelected = card.classList.toggle('selected');
+  card.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+  recCount += isSelected ? 1 : -1;
+  const countEl = document.getElementById('rec-count');
+  if (recCount === 0) {
+    countEl.textContent = '';
+    countEl.classList.remove('has-selection');
+  } else {
+    countEl.textContent = recCount + ' of 8 selected';
+    countEl.classList.add('has-selection');
+  }
+  try {
+    const selections = [];
+    document.querySelectorAll('.recognition-card.selected').forEach(function(c) {
+      selections.push(c.textContent.trim().substring(0, 40));
+    });
+    localStorage.setItem('tul-w1-recognition', JSON.stringify(selections));
+  } catch(e) {}
+}
+
+/* === LIFE REVIEW MAP === */
+function saveLRM(step, value) {
+  const noteEl = document.getElementById('lrm-' + step + '-note');
+  try {
+    localStorage.setItem('tul-w1-lrm-' + step, value);
+    if (noteEl) {
+      noteEl.classList.add('saved');
+      noteEl.innerHTML = '<i class="fa-solid fa-circle-check" aria-hidden="true"></i> Saved to this session.';
+    }
+  } catch(e) {
+    if (noteEl) noteEl.textContent = 'Could not save (storage unavailable).';
+  }
+}
+
+/* Restore saved LRM value on load */
+(function() {
+  try {
+    var saved = localStorage.getItem('tul-w1-lrm-1');
+    if (saved) {
+      var el = document.getElementById('lrm-1-input');
+      if (el) {
+        el.value = saved;
+        var note = document.getElementById('lrm-1-note');
+        if (note) {
+          note.classList.add('saved');
+          note.innerHTML = '<i class="fa-solid fa-circle-check" aria-hidden="true"></i> Restored from your last session.';
+        }
+      }
+    }
+  } catch(e) {}
+})();
+
+/* === INTEGRATION OPTIONS === */
+function selectOption(letter, el) {
+  document.querySelectorAll('.option-card').forEach(function(c) {
+    c.classList.remove('selected');
+    c.setAttribute('aria-pressed', 'false');
+  });
+  el.classList.add('selected');
+  el.setAttribute('aria-pressed', 'true');
+  var confirm = document.getElementById('option-confirm');
+  confirm.innerHTML = '<i class="fa-solid fa-circle-check" aria-hidden="true"></i> Option ' + letter + ' chosen.';
+  try { localStorage.setItem('tul-w1-integrate', letter); } catch(e) {}
+}
+
+/* Restore integration choice on load */
+(function() {
+  try {
+    var saved = localStorage.getItem('tul-w1-integrate');
+    if (saved) {
+      var el = document.getElementById('opt-' + saved.toLowerCase());
+      if (el) {
+        el.classList.add('selected');
+        el.setAttribute('aria-pressed', 'true');
+        var confirm = document.getElementById('option-confirm');
+        if (confirm) confirm.innerHTML = '<i class="fa-solid fa-circle-check" aria-hidden="true"></i> Option ' + saved + ' chosen.';
+      }
+    }
+  } catch(e) {}
+})();
+
+/* === MILESTONE === */
+function toggleMilestone() {
+  var row = document.getElementById('milestone-row');
+  var isTicked = row.classList.toggle('ticked');
+  row.setAttribute('aria-checked', isTicked ? 'true' : 'false');
+  try { localStorage.setItem('tul-w1-milestone', isTicked ? '1' : '0'); } catch(e) {}
+}
+
+/* Restore milestone on load */
+(function() {
+  try {
+    if (localStorage.getItem('tul-w1-milestone') === '1') {
+      var row = document.getElementById('milestone-row');
+      if (row) {
+        row.classList.add('ticked');
+        row.setAttribute('aria-checked', 'true');
+      }
+    }
+  } catch(e) {}
+})();
+
+/* === TAKEAWAY === */
+function saveTakeaway(value) {
+  try { localStorage.setItem('tul-w1-takeaway', value); } catch(e) {}
+}
+
+(function() {
+  try {
+    var saved = localStorage.getItem('tul-w1-takeaway');
+    if (saved) {
+      var inputs = document.querySelectorAll('.milestone-takeaway-input');
+      inputs.forEach(function(el) { el.value = saved; });
+    }
+  } catch(e) {}
+})();
+
+/* === RESTORE LOW-CAP === */
+(function() {
+  try {
+    if (localStorage.getItem('tul-low-cap') === '1') {
+      document.body.classList.add('low-cap');
+      var btn = document.getElementById('lc-btn');
+      var label = document.getElementById('lc-btn-label');
+      if (btn) btn.setAttribute('aria-pressed', 'true');
+      if (label) label.textContent = 'Exit low-capacity mode';
+    }
+  } catch(e) {}
+})();
+</script>
+
+</body>
+</html>

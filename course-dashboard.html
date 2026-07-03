@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
   <title>The Unmasked Life™ | Course Dashboard | Nuanced Co.</title>
   <meta name="description" content="Your 4-week Unmasked Life™ course dashboard. Evidence-based frameworks designed for how your neurodivergent brain actually works.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -10,6 +11,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="nc-course.css">
+  <link rel="stylesheet" href="nc-header.css">
   <style>
     :root {
       --cream:#F6F1E9;--cream-d:#EDE6D8;--parchment:#EAE0CE;
@@ -34,24 +36,22 @@
     ::-webkit-scrollbar{width:6px;}
     ::-webkit-scrollbar-track{background:var(--ink-deep);}
     ::-webkit-scrollbar-thumb{background:var(--purple);border-radius:3px;}
-    ::-webkit-scrollbar-thumb:hover{background:var(--lilac);}
+    ::-webkit-scrollbar-thumb:hover{background:var(--lilac);color:#fff}
 
     /* PROGRESS BAR */
-    #sp{position:fixed;top:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,var(--purple),var(--lilac),var(--rose));z-index:9999;pointer-events:none;transition:width .08s linear;}
+    #sp{position:fixed;top:0;left:0;height:2px;width:0%;background:var(--purple);z-index:9999;pointer-events:none;transition:width .08s linear;}
 
     /* NAV */
-    #nav{position:sticky;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:#2A1F1A;box-shadow:0 2px 24px rgba(0,0,0,.3);}
-    .nav-logo{font-family:var(--serif);font-size:1rem;font-weight:400;letter-spacing:.25em;color:#F6F1E9;text-transform:uppercase;line-height:1;display:flex;flex-direction:column;gap:3px;}
-    .nav-logo em{font-style:normal;font-family:var(--body);font-size:.46rem;letter-spacing:.3em;color:var(--gold);opacity:.8;}
+    #nav{position:sticky;top:0;left:0;right:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:#2A1F1A;}
     .nav-list{list-style:none;display:flex;align-items:center;gap:2rem;}
-    .nav-list a{font-family:var(--body);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.65);transition:color .2s;}
+    .nav-list a{font-family:var(--body);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.65);transition:color .1s cubic-bezier(0.22,1,0.36,1);}
     .nav-list a:hover{color:var(--cream);}
-    .nav-list .ncta{border:1px solid rgba(196,150,62,.5);color:var(--gold);padding:.35rem 1.1rem;border-radius:2px;transition:background .2s,color .2s;}
+    .nav-list .ncta{border:1px solid rgba(196,150,62,.5);color:var(--gold);padding:.35rem 1.1rem;border-radius:2px;transition:background .1s cubic-bezier(0.22,1,0.36,1),color .1s cubic-bezier(0.22,1,0.36,1);}
     .nav-list .ncta:hover{background:var(--gold);color:var(--ink-deep);}
     .nav-dd{position:relative;}
-    .nav-dd-menu{position:absolute;top:calc(100% + 1rem);left:50%;transform:translateX(-50%) translateY(-4px);background:rgba(15,12,10,.98);border:1px solid rgba(246,241,233,.12);min-width:200px;padding:.6rem 0;opacity:0;pointer-events:none;visibility:hidden;transition:opacity .2s,transform .2s var(--ease),visibility .2s;z-index:1000;}
+    .nav-dd-menu{position:absolute;top:calc(100% + 1rem);left:50%;transform:translateX(-50%) translateY(-4px);background:rgba(15,12,10,.98);border:1px solid rgba(246,241,233,.12);min-width:200px;padding:.6rem 0;opacity:0;pointer-events:none;visibility:hidden;transition:opacity .1s cubic-bezier(0.22,1,0.36,1),transform .1s var(--ease),visibility .1s cubic-bezier(0.22,1,0.36,1);z-index:1000;}
     .nav-dd:hover .nav-dd-menu,.nav-dd:focus-within .nav-dd-menu{opacity:1;pointer-events:all;visibility:visible;transform:translateX(-50%) translateY(0);}
-    .nav-dd-menu a{display:block;padding:.7rem 1.3rem;font-size:.68rem;color:rgba(246,241,233,.9);transition:color .2s;}
+    .nav-dd-menu a{display:block;padding:.7rem 1.3rem;font-size:.68rem;color:rgba(246,241,233,.9);transition:color .1s cubic-bezier(0.22,1,0.36,1);}
     .nav-dd-menu a:hover{color:var(--gold);}
     .hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;padding:0;}
     .hamburger span{width:22px;height:1.5px;background:var(--cream);display:block;}
@@ -62,8 +62,8 @@
     .dash-title-block .eyebrow{font-size:.58rem;letter-spacing:.26em;text-transform:uppercase;color:var(--lilac);margin-bottom:.5rem;}
     .dash-title-block h1{font-family:var(--serif);font-size:clamp(1.8rem,3vw,2.6rem);font-weight:300;letter-spacing:.04em;color:#fff;line-height:1.1;}
     .dash-title-block h1 em{font-style:italic;color:var(--rose);}
-    .resume-btn{display:inline-flex;align-items:center;gap:.6rem;padding:.75rem 1.6rem;background:var(--purple);color:#fff;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;border:none;border-radius:40px;transition:background .2s,transform .15s;}
-    .resume-btn:hover{background:var(--lilac);transform:translateY(-1px);}
+    .resume-btn{display:inline-flex;align-items:center;gap:.6rem;padding:.75rem 1.6rem;background:var(--purple);color:#fff;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;border:none;border-radius:40px;transition:background .1s cubic-bezier(0.22,1,0.36,1),transform .1s cubic-bezier(0.22,1,0.36,1);}
+    .resume-btn:hover{background:var(--lilac);transform:translateY(-1px);color:#fff}
     .resume-btn i{font-size:.75rem;}
 
     /* MAIN + SIDEBAR GRID */
@@ -76,9 +76,9 @@
 
     /* SPRINT TRACKER */
     .sprint-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;}
-    .sprint-card{background:var(--ink-deep);border:1px solid rgba(246,241,233,.08);border-radius:10px;padding:1rem;position:relative;overflow:hidden;transition:border-color .2s;}
+    .sprint-card{background:var(--ink-deep);border:1px solid rgba(246,241,233,.08);border-radius:10px;padding:1rem;position:relative;overflow:hidden;transition:border-color .1s cubic-bezier(0.22,1,0.36,1);}
     .sprint-card.done{border-color:var(--sage);}
-    .sprint-card.active{border-color:var(--purple);box-shadow:0 0 0 1px var(--purple-border);}
+    .sprint-card.active{border-color:var(--purple);}
     .sprint-card.locked{opacity:.45;}
     .sprint-badge{position:absolute;top:0;right:0;font-size:.44rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.25rem .6rem;border-radius:0 10px 0 6px;}
     .sprint-badge.done{background:var(--sage);color:#fff;}
@@ -95,24 +95,24 @@
 
     /* VIDEO PLAYER */
     .video-area{display:flex;flex-direction:column;gap:.8rem;}
-    .video-frame{position:relative;width:100%;aspect-ratio:16/9;background:linear-gradient(145deg,#1A1020 0%,#0F0C0A 100%);border-radius:var(--radius);overflow:hidden;border:1px solid var(--purple-border);display:flex;align-items:center;justify-content:center;group:true;}
+    .video-frame{position:relative;width:100%;aspect-ratio:16/9;background:#1A1020;border-radius:var(--radius);overflow:hidden;border:1px solid var(--purple-border);display:flex;align-items:center;justify-content:center;group:true;}
     .video-frame:hover .play-btn{transform:scale(1.08);}
-    .video-overlay-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.75) 0%,transparent 50%);pointer-events:none;}
-    .play-btn{width:72px;height:72px;background:var(--purple);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;z-index:2;transition:transform .2s var(--ease),background .2s;box-shadow:0 8px 32px rgba(107,69,112,.5);}
-    .play-btn:hover{background:var(--lilac);}
+    .video-overlay-grad{position:absolute;inset:0;background:rgba(0,0,0,.75);pointer-events:none;}
+    .play-btn{width:72px;height:72px;background:var(--purple);border:none;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.4rem;z-index:2;transition:transform .1s var(--ease),background .1s cubic-bezier(0.22,1,0.36,1);}
+    .play-btn:hover{background:var(--lilac);color:#fff}
     .play-btn i{margin-left:3px;}
     .video-meta{position:absolute;bottom:1rem;left:1.2rem;z-index:3;}
     .video-meta .now-label{font-size:.5rem;letter-spacing:.2em;text-transform:uppercase;color:var(--lilac);margin-bottom:.3rem;}
     .video-meta h3{font-family:var(--serif);font-size:1.2rem;font-weight:400;color:#fff;line-height:1.2;}
     .video-duration{position:absolute;top:1rem;right:1rem;z-index:3;background:rgba(15,12,10,.8);border:1px solid var(--purple-border);padding:.3rem .7rem;border-radius:6px;font-size:.55rem;letter-spacing:.1em;font-family:monospace;color:var(--lilac);}
     .mode-strip{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;}
-    .mode-btn{background:rgba(246,241,233,.04);border:1px solid rgba(246,241,233,.1);border-radius:8px;padding:.65rem .5rem;font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,233,.7);display:flex;align-items:center;justify-content:center;gap:.4rem;transition:border-color .2s,color .2s,background .2s;}
+    .mode-btn{background:rgba(246,241,233,.04);border:1px solid rgba(246,241,233,.1);border-radius:8px;padding:.65rem .5rem;font-size:.54rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,233,.7);display:flex;align-items:center;justify-content:center;gap:.4rem;transition:border-color .1s cubic-bezier(0.22,1,0.36,1),color .1s cubic-bezier(0.22,1,0.36,1),background .1s cubic-bezier(0.22,1,0.36,1);}
     .mode-btn:hover{border-color:var(--purple);color:var(--cream);background:var(--purple-dim);}
     .mode-btn i{color:var(--lilac);}
 
     /* RESOURCE VAULT */
     .vault-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem;}
-    .vault-btn{display:flex;align-items:center;gap:.8rem;padding:1rem 1.2rem;background:var(--purple-dim);border:1px solid var(--purple-border);border-radius:10px;color:var(--cream);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;transition:background .2s,border-color .2s,transform .15s;}
+    .vault-btn{display:flex;align-items:center;gap:.8rem;padding:1rem 1.2rem;background:var(--purple-dim);border:1px solid var(--purple-border);border-radius:10px;color:var(--cream);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;transition:background .1s cubic-bezier(0.22,1,0.36,1),border-color .1s cubic-bezier(0.22,1,0.36,1),transform .1s cubic-bezier(0.22,1,0.36,1);}
     .vault-btn:hover{background:rgba(107,69,112,.3);border-color:var(--lilac);transform:translateY(-1px);}
     .vault-btn i{font-size:1rem;color:var(--lilac);flex-shrink:0;}
 
@@ -121,11 +121,11 @@
 
     /* MILESTONE MATRIX */
     .milestone-list{display:flex;flex-direction:column;gap:.7rem;max-height:380px;overflow-y:auto;padding-right:.3rem;}
-    .milestone-item{display:flex;align-items:flex-start;gap:.9rem;background:var(--ink-deep);border:1px solid rgba(246,241,233,.07);border-radius:10px;padding:.9rem 1rem;cursor:pointer;transition:border-color .2s;}
+    .milestone-item{display:flex;align-items:flex-start;gap:.9rem;background:var(--ink-deep);border:1px solid rgba(246,241,233,.07);border-radius:10px;padding:.9rem 1rem;cursor:pointer;transition:border-color .1s cubic-bezier(0.22,1,0.36,1);}
     .milestone-item.current{border-color:var(--purple);}
     .milestone-item.complete{opacity:.6;}
     .milestone-item:hover{border-color:var(--purple-border);}
-    .milestone-cb{width:18px;height:18px;border:1.5px solid var(--purple);border-radius:4px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:background .2s;}
+    .milestone-cb{width:18px;height:18px;border:1.5px solid var(--purple);border-radius:4px;flex-shrink:0;margin-top:2px;display:flex;align-items:center;justify-content:center;transition:background .1s cubic-bezier(0.22,1,0.36,1);}
     .milestone-cb.checked{background:var(--sage);border-color:var(--sage);}
     .milestone-cb.checked::after{content:'✓';font-size:.6rem;color:#fff;font-weight:700;}
     .milestone-week-tag{font-size:.46rem;letter-spacing:.18em;text-transform:uppercase;color:var(--lilac);margin-bottom:.2rem;}
@@ -136,13 +136,13 @@
     .dopamine-note{font-size:.58rem;color:rgba(246,241,233,.4);line-height:1.5;margin-top:.6rem;}
 
     /* BRAIN FRIED PANEL */
-    .brain-card{background:linear-gradient(135deg,rgba(192,122,138,.08) 0%,rgba(246,241,233,.03) 100%);border:1px solid rgba(192,122,138,.25);border-radius:var(--radius);padding:1.2rem;display:flex;align-items:center;gap:1rem;transition:border-color .2s;}
+    .brain-card{background:rgba(107,69,112,.08);border:1px solid rgba(192,122,138,.25);border-radius:var(--radius);padding:1.2rem;display:flex;align-items:center;gap:1rem;transition:border-color .1s cubic-bezier(0.22,1,0.36,1);}
     .brain-card:hover{border-color:var(--rose);}
     .brain-icon{width:44px;height:44px;background:rgba(192,122,138,.15);border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;color:var(--rose);flex-shrink:0;}
     .brain-copy{flex:1;}
     .brain-copy h4{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:#fff;margin-bottom:.2rem;}
     .brain-copy p{font-size:.62rem;color:rgba(246,241,233,.5);line-height:1.5;}
-    .brain-arrow{color:rgba(246,241,233,.3);font-size:.8rem;transition:color .2s,transform .2s;}
+    .brain-arrow{color:rgba(246,241,233,.3);font-size:.8rem;transition:color .1s cubic-bezier(0.22,1,0.36,1),transform .1s cubic-bezier(0.22,1,0.36,1);}
     .brain-card:hover .brain-arrow{color:var(--rose);transform:translateX(3px);}
 
     /* FOCUS MODE TOGGLE */
@@ -152,8 +152,8 @@
     .toggle-wrap{display:flex;align-items:center;gap:.6rem;}
     .toggle{position:relative;width:40px;height:22px;}
     .toggle input{opacity:0;width:0;height:0;}
-    .toggle-slider{position:absolute;inset:0;background:rgba(246,241,233,.12);border-radius:22px;cursor:pointer;transition:background .2s;}
-    .toggle-slider::before{content:'';position:absolute;width:16px;height:16px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:transform .2s;}
+    .toggle-slider{position:absolute;inset:0;background:rgba(246,241,233,.12);border-radius:22px;cursor:pointer;transition:background .1s cubic-bezier(0.22,1,0.36,1);}
+    .toggle-slider::before{content:'';position:absolute;width:16px;height:16px;left:3px;bottom:3px;background:#fff;border-radius:50%;transition:transform .1s cubic-bezier(0.22,1,0.36,1);}
     .toggle input:checked + .toggle-slider{background:var(--purple);}
     .toggle input:checked + .toggle-slider::before{transform:translateX(18px);}
 
@@ -165,11 +165,11 @@
     .ft-email-form{display:flex;gap:.5rem;flex-wrap:wrap;}
     .ft-email-input{flex:1;min-width:160px;padding:.6rem 1rem;background:rgba(246,241,233,.05);border:1px solid rgba(246,241,233,.12);color:var(--cream);font-family:var(--body);font-size:.78rem;border-radius:2px;outline:none;}
     .ft-email-input::placeholder{color:rgba(246,241,233,.28);}
-    .ft-email-btn{padding:.6rem 1.3rem;background:var(--purple);color:#fff;font-family:var(--body);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:24px;cursor:pointer;transition:background .2s;}
-    .ft-email-btn:hover{background:var(--lilac);}
+    .ft-email-btn{padding:.6rem 1.3rem;background:var(--purple);color:#fff;font-family:var(--body);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:24px;cursor:pointer;transition:background .1s cubic-bezier(0.22,1,0.36,1);}
+    .ft-email-btn:hover{background:var(--lilac);color:#fff}
     .ft-col h4{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,241,233,.35);margin-bottom:1rem;}
     .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.9rem;}
-    .ft-col ul a{font-size:.82rem;color:rgba(246,241,233,.65);transition:color .2s;}
+    .ft-col ul a{font-size:.82rem;color:rgba(246,241,233,.65);transition:color .1s cubic-bezier(0.22,1,0.36,1);}
     .ft-col ul a:hover{color:var(--cream);}
     .ft-bot{max-width:1280px;margin:0 auto;padding-top:1.8rem;border-top:1px solid rgba(246,241,233,.08);}
     .ft-legal{font-size:.7rem;color:rgba(246,241,233,.35);line-height:1.6;}
@@ -191,7 +191,8 @@
       .ft-inner{grid-template-columns:1fr;gap:2.5rem;}
       #nav{padding:1rem 1.4rem;}
     }
-  </style>
+  @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rv,.rvl,.rvr,.ncrv{opacity:1!important;transform:none!important}}
+</style>
 </head>
 <body>
 
@@ -204,10 +205,10 @@
     <li><a href="course-dashboard.html" style="color:var(--lilac);">Dashboard</a></li>
     <li class="nav-dd"><a href="week-1.html">Weeks &#9662;</a>
       <div class="nav-dd-menu">
-        <a href="week-1.html">Week 1 &mdash; Understanding Your Brain's Blueprint</a>
-        <a href="week-2.html">Week 2 &mdash; Unmasking the Patterns</a>
-        <a href="week-3.html">Week 3 &mdash; Rebuilding Around Your Neurology</a>
-        <a href="week-4.html">Week 4 &mdash; The Unmasked Life in Practice</a>
+        <a href="week-1.html">Week 1 &mdash; The Late Diagnosis Disruption</a>
+        <a href="week-2.html">Week 2 &mdash; Masking, Overcompensation and Self-Blame</a>
+        <a href="week-3.html">Week 3 &mdash; Support Needs, Executive Function and Environment</a>
+        <a href="week-4.html">Week 4 &mdash; Rebuilding Self-Trust After Diagnosis</a>
       </div>
     </li>
     <li class="nav-dd"><a href="downloads.html">Resources &#9662;</a>
@@ -243,35 +244,34 @@
 
   <!-- SPRINT PROGRESS TRACKER -->
   <div class="card">
-    <p class="card-label"><i class="fa-solid fa-chart-bar"></i> Sprint Progress Tracker <span style="margin-left:auto;background:var(--purple-dim);border:1px solid var(--purple-border);padding:.2rem .7rem;border-radius:20px;font-size:.5rem;letter-spacing:.14em;">40% COMPLETE</span></p>
+    <p class="card-label"><i class="fa-solid fa-chart-bar"></i> Sprint Progress Tracker <span style="margin-left:auto;background:var(--purple-dim);border:1px solid var(--purple-border);padding:.2rem .7rem;border-radius:20px;font-size:.5rem;letter-spacing:.14em;">0% COMPLETE</span></p>
     <div class="sprint-grid">
 
-      <a href="week-1.html" class="sprint-card done">
-        <span class="sprint-badge done">Done</span>
+      <a href="week-1.html" class="sprint-card active">
+        <span class="sprint-badge active">Start here</span>
         <p class="sprint-week">Week 1</p>
-        <p class="sprint-name">It Finally Makes Sense</p>
-        <div class="progress-track"><div class="progress-fill done" style="width:100%"></div></div>
-        <p class="pct-label">Complete</p>
+        <p class="sprint-name">The Late Diagnosis Disruption</p>
+        <div class="progress-track"><div class="progress-fill" id="w1fill" style="width:0%"></div></div>
+        <p class="pct-label" id="w1pct">Not started</p>
       </a>
 
-      <a href="week-2.html" class="sprint-card active">
-        <span class="sprint-badge active">Current</span>
+      <a href="week-2.html" class="sprint-card">
         <p class="sprint-week">Week 2</p>
-        <p class="sprint-name">Grief for What Could Have Been</p>
-        <div class="progress-track"><div class="progress-fill" id="w2fill" style="width:40%"></div></div>
-        <p class="pct-label" id="w2pct">40% through</p>
+        <p class="sprint-name">Masking, Overcompensation and Self-Blame</p>
+        <div class="progress-track"><div class="progress-fill" id="w2fill" style="width:0%"></div></div>
+        <p class="pct-label" id="w2pct">Not started</p>
       </a>
 
       <a href="week-3.html" class="sprint-card">
         <p class="sprint-week">Week 3</p>
-        <p class="sprint-name">The Mask, the Shame and the Big Feelings</p>
+        <p class="sprint-name">Support Needs, Executive Function and Environment</p>
         <div class="progress-track"><div class="progress-fill" id="w3fill" style="width:0%"></div></div>
         <p class="pct-label" id="w3pct">Not started</p>
       </a>
 
       <a href="week-4.html" class="sprint-card">
         <p class="sprint-week">Week 4</p>
-        <p class="sprint-name">Building a Life That Fits</p>
+        <p class="sprint-name">Rebuilding Self-Trust After Diagnosis</p>
         <div class="progress-track"><div class="progress-fill" id="w4fill" style="width:0%"></div></div>
         <p class="pct-label" id="w4pct">Not started</p>
       </a>
@@ -323,8 +323,8 @@
         <p class="card-label"><i class="fa-solid fa-square-check"></i> Milestone Matrix</p>
         <div class="milestone-list">
 
-          <div class="milestone-item complete" onclick="toggleMilestone(this)">
-            <div class="milestone-cb checked"></div>
+          <div class="milestone-item" onclick="toggleMilestone(this)">
+            <div class="milestone-cb"></div>
             <div>
               <p class="milestone-week-tag">Week 1 Milestone</p>
               <p class="milestone-text">Map three ADHD patterns in your life that you previously misunderstood.</p>
@@ -335,14 +335,6 @@
             <div class="milestone-cb"></div>
             <div>
               <p class="milestone-week-tag">Week 2 Milestone</p>
-              <p class="milestone-text">Name one area of grief and one form of support you wish you had received.</p>
-            </div>
-          </div>
-
-          <div class="milestone-item" onclick="toggleMilestone(this)">
-            <div class="milestone-cb"></div>
-            <div>
-              <p class="milestone-week-tag">Week 3 Milestone</p>
               <p class="milestone-text">Identify one mask, one shame story and one emotional pattern you are ready to notice differently.</p>
             </div>
           </div>
@@ -350,8 +342,16 @@
           <div class="milestone-item" onclick="toggleMilestone(this)">
             <div class="milestone-cb"></div>
             <div>
-              <p class="milestone-week-tag">Week 4 Milestone</p>
+              <p class="milestone-week-tag">Week 3 Milestone</p>
               <p class="milestone-text">Build one ADHD-friendly support system for a real part of your life.</p>
+            </div>
+          </div>
+
+          <div class="milestone-item" onclick="toggleMilestone(this)">
+            <div class="milestone-cb"></div>
+            <div>
+              <p class="milestone-week-tag">Week 4 Milestone</p>
+              <p class="milestone-text">Name one decision you are ready to make with your new understanding, and one way you will back yourself through it.</p>
             </div>
           </div>
 
@@ -527,6 +527,27 @@
     initDisplayPrefs();
     updateOverallProgress();
   });
+</script>
+<script>
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
+  var s=document.createElement('style');
+  s.textContent='.ncrv{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(0.22,1,0.36,1),transform .8s cubic-bezier(0.22,1,0.36,1)}.ncrv.in{opacity:1;transform:none}';
+  document.head.appendChild(s);
+  var els=[];
+  function addGroup(grid){if(grid.dataset.ncrv)return;grid.dataset.ncrv='1';Array.prototype.forEach.call(grid.children,function(c,i){c.classList.add('ncrv');c.style.transitionDelay=((i%8)*0.15)+'s';els.push(c);});}
+  document.querySelectorAll('section,.card').forEach(function(sec){
+    if(sec.closest('nav'))return;
+    var grid=sec.querySelector('[class*="grid"],[class*="cards"]');
+    if(grid&&grid.children.length>1&&grid.children.length<13){addGroup(grid);}
+    sec.classList.add('ncrv');els.push(sec);
+  });
+  document.querySelectorAll('.sprint-grid').forEach(addGroup);
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){io.observe(el);});
+})();
 </script>
 </body>
 </html>

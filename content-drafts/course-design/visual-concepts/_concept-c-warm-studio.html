@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Concept C — Warm Interactive Studio — The Unmasked Life Week 1</title>
+<meta name="hz:slide-selector" content=".slide">
+<meta name="hz:canvas-width" content="1280">
+<meta name="hz:canvas-height" content="900">
+<link rel="stylesheet" href="https://use.typekit.net/vnl8ejd.css">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0F0B09; }
+
+/* ── TOKENS ── */
+:root {
+  --bg:      #1A1512;
+  --bg-warm: #201A16;
+  --cream:   #FBF7F0;
+  --cd:      rgba(251,247,240,0.68);
+  --cf:      rgba(251,247,240,0.38);
+  --cff:     rgba(251,247,240,0.20);
+  --gold:    #C4963E;
+  --gold-d:  rgba(196,150,62,0.18);
+  --gold-b:  rgba(196,150,62,0.35);
+  --purple:  #6B4570;
+  --purp-bg: rgba(107,69,112,0.14);
+  --purp-b:  rgba(107,69,112,0.45);
+  --lilac:   #9668A4;
+  --rose:    #C07A8A;
+  --rose-bg: rgba(192,122,138,0.10);
+  --rose-b:  rgba(192,122,138,0.35);
+  --sage:    #7A8C6E;
+  --rule:    rgba(251,247,240,0.10);
+  --rule2:   rgba(251,247,240,0.22);
+  --surf:    rgba(251,247,240,0.05);
+  --surf-b:  rgba(251,247,240,0.12);
+}
+
+/* ── SLIDE ── */
+.slide {
+  position: relative;
+  width: 1280px;
+  height: 900px;
+  background: var(--bg);
+  overflow: hidden;
+  display: block;
+  margin-bottom: 4px;
+  font-family: 'atkinson-hyperlegible-next', sans-serif;
+}
+.slide.mobile {
+  width: 390px;
+  height: 844px;
+}
+
+/* ── NAV ── */
+.nav {
+  position: absolute; top:0; left:0; right:0;
+  height: 48px;
+  background: rgba(30,22,18,0.9);
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 0 36px;
+}
+.nav-logo { font-family:'cormorant-garamond',serif; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--cf); }
+.nav-week  { font-size:10px; letter-spacing:.14em; text-transform:uppercase; color:var(--cff); }
+.nav-sup   { font-size:10px; color:var(--cff); border:1px solid rgba(251,247,240,0.16); padding:4px 10px; border-radius:20px; }
+
+/* ── PROGRESS STRIP ── */
+.prog {
+  position: absolute; top:48px; left:0; right:0;
+  height: 28px;
+  border-bottom: 1px solid var(--rule);
+  background: rgba(30,22,18,0.5);
+  display: flex; align-items: center;
+  padding: 0 36px; gap:6px;
+}
+.dot { width:6px; height:6px; border-radius:50%; background:rgba(251,247,240,0.12); flex-shrink:0; }
+.dot.on { background:var(--lilac); }
+.dot.dn { background:rgba(122,140,110,0.55); }
+.prog-label { font-size:8px; letter-spacing:.14em; text-transform:uppercase; color:var(--cff); margin-left:4px; }
+.prog-label.on { color:var(--lilac); font-weight:700; }
+
+/* ── TYPE ── */
+.eyebrow { font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:8px; font-weight:700; }
+.h1 { font-family:'cormorant-garamond',serif; font-weight:300; font-style:italic; font-size:62px; line-height:1.06; color:var(--cream); margin-bottom:14px; }
+.h2 { font-family:'cormorant-garamond',serif; font-weight:300; font-style:italic; font-size:36px; line-height:1.12; color:var(--cream); margin-bottom:10px; }
+.h3 { font-size:15px; font-weight:700; color:var(--cream); margin-bottom:8px; }
+.body { font-size:13px; line-height:1.7; color:var(--cd); }
+.body-sm { font-size:12px; line-height:1.65; color:var(--cd); }
+.label-text { font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--cf); font-weight:700; }
+
+/* ── SURFACE CARDS (warm, layered) ── */
+.surface {
+  background: var(--surf);
+  border: 1px solid var(--surf-b);
+  border-radius: 4px;
+  padding: 16px;
+}
+.surface.purp {
+  background: var(--purp-bg);
+  border-color: var(--purp-b);
+}
+.surface.gold {
+  background: var(--gold-d);
+  border-color: var(--gold-b);
+}
+.surface.rose {
+  background: var(--rose-bg);
+  border-color: var(--rose-b);
+}
+.surface.sel {
+  background: var(--purp-bg);
+  border-color: var(--purp-b);
+}
+
+/* ── LABEL TILES (workspace feel — place them) ── */
+.label-tile {
+  padding: 14px 16px;
+  background: var(--surf);
+  border: 1.5px solid var(--surf-b);
+  border-radius: 4px;
+  font-family: 'cormorant-garamond', serif;
+  font-style: italic;
+  font-size: 17px;
+  color: var(--cd);
+  text-align: center;
+  cursor: default;
+  min-height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.label-tile.sel {
+  background: var(--purp-bg);
+  border-color: var(--purp-b);
+  border-width: 2px;
+  color: var(--cream);
+}
+.label-tile.focus {
+  background: var(--purp-bg);
+  border-color: var(--lilac);
+  border-width: 2px;
+  color: var(--cream);
+}
+
+/* ── CHIP ── */
+.chip {
+  display: inline-flex; align-items:center;
+  border: 1.5px solid var(--surf-b);
+  border-radius: 24px;
+  padding: 7px 16px;
+  font-size: 13px; color:var(--cd);
+  min-height: 40px;
+}
+.chip.sel { background:var(--rose-bg); border-color:var(--rose-b); color:var(--cream); }
+.chip.purp { background:var(--purp-bg); border-color:var(--purp-b); color:var(--cream); }
+
+/* ── EF CHECK ── */
+.ef-tile {
+  background: var(--surf);
+  border: 1.5px solid var(--surf-b);
+  border-radius: 4px;
+  padding: 14px;
+}
+.ef-tile.sel { background:var(--purp-bg); border-color:var(--purp-b); }
+.ef-tile-name { font-size:13px; font-weight:700; color:var(--cream); margin-bottom:3px; }
+.ef-tile-ex   { font-size:11px; color:var(--cf); line-height:1.5; margin-bottom:8px; font-style:italic; }
+.ef-cb { width:16px; height:16px; border:1.5px solid var(--surf-b); border-radius:3px; flex-shrink:0; display:flex; align-items:center; justify-content:center; }
+.ef-cb.on { background:var(--lilac); border-color:var(--lilac); }
+.ef-check { display:flex; align-items:center; gap:7px; }
+.ef-check-label { font-size:11px; color:var(--cd); }
+
+/* ── TEXTAREA / INPUT ── */
+.ta-wrap { margin-top:12px; }
+.ta-label { font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--cf); margin-bottom:6px; font-weight:700; }
+.ta-field { background:rgba(251,247,240,0.03); border:1px solid rgba(251,247,240,0.15); border-radius:3px; padding:10px 12px; font-size:13px; color:rgba(251,247,240,.2); font-style:italic; font-family:'cormorant-garamond',serif; width:100%; }
+.ta-field.multi { min-height:56px; }
+.save-note { font-size:10px; color:var(--cff); margin-top:5px; }
+
+/* ── SNAPSHOT DOCUMENT (gold framed, premium artefact) ── */
+.snap-doc {
+  background: rgba(196,150,62,0.06);
+  border: 1.5px solid var(--gold-b);
+  border-radius: 4px;
+  padding: 20px;
+}
+.snap-doc-title {
+  font-family: 'cormorant-garamond', serif;
+  font-size: 10px; letter-spacing:.2em; text-transform:uppercase; color:var(--gold); margin-bottom:16px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid rgba(196,150,62,0.2);
+}
+.snap-field { padding:10px 0; border-bottom:1px solid rgba(196,150,62,0.12); }
+.snap-field:last-child { border-bottom:none; }
+.snap-f-label { font-size:8px; letter-spacing:.18em; text-transform:uppercase; color:rgba(196,150,62,0.5); margin-bottom:4px; }
+.snap-f-val { font-family:'cormorant-garamond',serif; font-style:italic; font-size:16px; color:var(--cream); line-height:1.5; }
+.snap-f-empty { font-size:12px; color:rgba(251,247,240,0.2); font-style:italic; }
+.snap-actions { display:flex; gap:8px; margin-top:14px; padding-top:12px; border-top:1px solid rgba(196,150,62,0.15); }
+.snap-btn { font-size:10px; letter-spacing:.1em; text-transform:uppercase; padding:7px 14px; border-radius:3px; border:1px solid var(--gold-b); color:var(--gold); background:transparent; }
+.snap-btn.primary { background:var(--gold); color:#1A1512; border-color:var(--gold); font-weight:700; }
+
+/* ── ROUTE CARDS (C has warm tactile cards) ── */
+.route-card {
+  background: var(--surf);
+  border: 1.5px solid var(--surf-b);
+  border-radius: 4px;
+  padding: 16px 18px;
+  margin-bottom: 10px;
+  cursor: default;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.route-card.sel {
+  background: var(--purp-bg);
+  border-color: var(--purp-b);
+  border-width: 2px;
+}
+.route-name-c { font-size:15px; font-weight:700; color:var(--cream); margin-bottom:3px; }
+.route-sub-c  { font-size:12px; color:var(--cf); }
+.route-arr-c  { font-size:18px; color:var(--cff); }
+.route-card.sel .route-arr-c { color:var(--lilac); }
+
+/* ── VIDEO ── */
+.vbox { background:var(--surf); border:1.5px solid var(--surf-b); border-radius:4px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; }
+.vplay { width:38px; height:38px; background:rgba(251,247,240,0.08); border:1.5px solid var(--surf-b); border-radius:50%; display:flex; align-items:center; justify-content:center; }
+.vlabel { font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--cf); }
+
+/* ── CTA BAR ── */
+.cta { position:absolute; bottom:0; left:0; right:0; height:52px; background:rgba(26,21,18,0.9); border-top:1px solid var(--rule); display:flex; align-items:center; justify-content:flex-end; padding:0 36px; gap:10px; }
+.btn { font-size:11px; letter-spacing:.08em; text-transform:uppercase; padding:10px 22px; border-radius:3px; cursor:default; font-family:'atkinson-hyperlegible-next',sans-serif; font-weight:700; }
+.btn.primary { background:var(--lilac); color:#fff; }
+.btn.ghost { background:transparent; color:var(--cd); border:1px solid var(--rule2); }
+
+/* ── SCENE HEADER ── */
+.scene-head { display:flex; align-items:center; gap:12px; margin-bottom:18px; }
+.scene-num { font-size:8px; letter-spacing:.2em; text-transform:uppercase; color:var(--cff); font-weight:700; white-space:nowrap; }
+.scene-name { font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--cf); }
+.scene-rule { flex:1; height:1px; background:var(--rule); }
+
+/* ── MOBILE NAV ── */
+.m-nav { position:absolute; top:0; left:0; right:0; height:44px; background:rgba(26,21,18,0.95); border-bottom:1px solid var(--rule); display:flex; align-items:center; justify-content:space-between; padding:0 16px; }
+.m-prog { position:absolute; top:44px; left:0; right:0; height:24px; border-bottom:1px solid var(--rule); background:rgba(26,21,18,0.5); display:flex; align-items:center; padding:0 16px; gap:5px; }
+.m-cta { position:absolute; bottom:0; left:0; right:0; height:52px; background:rgba(26,21,18,0.95); border-top:1px solid var(--rule); display:flex; align-items:center; padding:0 16px; }
+</style>
+</head>
+<body>
+
+<!-- ═══ SLIDE C1 — OPENING AND ROUTE CHOICE ═══ -->
+<div class="slide" data-canvas-width="1280" data-canvas-height="900">
+  <div class="nav">
+    <span class="nav-logo">Nuanced Co.</span>
+    <span class="nav-week">Week 1 of 4</span>
+    <span class="nav-sup">Need support</span>
+  </div>
+  <div class="prog">
+    <div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <span class="prog-label on">Arrive</span>
+  </div>
+
+  <!-- Left: video + intro -->
+  <div style="position:absolute; top:76px; left:0; width:600px; bottom:0; background:linear-gradient(to right, rgba(196,150,62,0.03), transparent); border-right:1px solid var(--rule); padding:32px 36px 52px;">
+    <div class="eyebrow">The Unmasked Life — Week 1</div>
+    <div class="h1" style="font-size:56px;">The Late Diagnosis<br>Disruption</div>
+    <div class="body" style="max-width:500px; margin-bottom:18px;">A late ADHD diagnosis does not just add a label. It arrives inside a life already built, and it changes what you can see.</div>
+
+    <div class="vbox" style="width:100%; height:176px; margin-bottom:14px;">
+      <div class="vplay">
+        <svg width="12" height="14" viewBox="0 0 12 14"><path d="M2 1L11 7L2 13Z" stroke="rgba(251,247,240,0.55)" stroke-width="1.5" fill="none"/></svg>
+      </div>
+      <div class="vlabel">Week 1 Lesson Video · Direct to camera · 10–15 min · Chaptered</div>
+    </div>
+
+    <div style="display:flex; gap:6px;">
+      <span style="font-size:9px; color:var(--cff); border:1px solid var(--rule); padding:3px 8px; border-radius:2px;">1 — What diagnosis does</span>
+      <span style="font-size:9px; color:var(--cff); border:1px solid var(--rule); padding:3px 8px; border-radius:2px;">2 — The review</span>
+      <span style="font-size:9px; color:var(--cff); border:1px solid var(--rule); padding:3px 8px; border-radius:2px;">3 — What's next</span>
+    </div>
+
+    <!-- Low-capacity toggle -->
+    <div style="margin-top:20px; display:flex; align-items:center; gap:10px; padding:10px 14px; background:var(--surf); border:1px solid var(--surf-b); border-radius:20px; width:fit-content;">
+      <div style="width:28px; height:16px; background:rgba(251,247,240,0.12); border-radius:8px; position:relative;">
+        <div style="width:12px; height:12px; border-radius:50%; background:var(--cf); position:absolute; top:2px; left:2px;"></div>
+      </div>
+      <span style="font-size:11px; color:var(--cf);">Low-capacity mode</span>
+    </div>
+  </div>
+
+  <!-- Right: route choice workspace -->
+  <div style="position:absolute; top:76px; left:600px; right:0; bottom:0; padding:32px 36px 52px; overflow:hidden;">
+    <div class="label-text" style="margin-bottom:16px; color:var(--gold);">How would you like to work through this week?</div>
+
+    <div class="route-card sel">
+      <div>
+        <div class="route-name-c">Full journey</div>
+        <div class="route-sub-c">All six scenes · about 45 minutes</div>
+      </div>
+      <div class="route-arr-c">→</div>
+    </div>
+    <div class="route-card">
+      <div>
+        <div class="route-name-c">Low-capacity route</div>
+        <div class="route-sub-c">One scene at a time · under 10 minutes each</div>
+      </div>
+      <div class="route-arr-c">→</div>
+    </div>
+    <div class="route-card">
+      <div>
+        <div class="route-name-c">Speed-read</div>
+        <div class="route-sub-c">Core concepts only · 5 minutes</div>
+      </div>
+      <div class="route-arr-c">→</div>
+    </div>
+
+    <!-- What you'll build -->
+    <div style="margin-top:20px;">
+      <div class="label-text" style="color:var(--gold); margin-bottom:12px;">This week you will build:</div>
+      <div class="snap-doc" style="padding:14px 16px;">
+        <div class="snap-doc-title" style="margin-bottom:10px; padding-bottom:8px;">My Week 1 Snapshot</div>
+        <div style="display:flex; flex-direction:column; gap:6px;">
+          <div style="display:flex; gap:8px; align-items:baseline;"><span style="font-size:9px; color:rgba(196,150,62,0.45); min-width:12px;">1</span><span class="body-sm" style="font-size:12px; color:var(--cf);">One old label I am reconsidering</span></div>
+          <div style="display:flex; gap:8px; align-items:baseline;"><span style="font-size:9px; color:rgba(196,150,62,0.45); min-width:12px;">2</span><span class="body-sm" style="font-size:12px; color:var(--cf);">What may have been happening underneath</span></div>
+          <div style="display:flex; gap:8px; align-items:baseline;"><span style="font-size:9px; color:rgba(196,150,62,0.45); min-width:12px;">3</span><span class="body-sm" style="font-size:12px; color:var(--cf);">Support that may have helped then</span></div>
+          <div style="display:flex; gap:8px; align-items:baseline;"><span style="font-size:9px; color:rgba(196,150,62,0.45); min-width:12px;">4</span><span class="body-sm" style="font-size:12px; color:var(--cf);">Support I may need now</span></div>
+          <div style="display:flex; gap:8px; align-items:baseline;"><span style="font-size:9px; color:rgba(196,150,62,0.45); min-width:12px;">5</span><span class="body-sm" style="font-size:12px; color:var(--cf);">One sentence I want to keep</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Resume -->
+    <div style="margin-top:14px; padding:12px 14px; background:var(--purp-bg); border:1px solid var(--purp-b); border-radius:4px; display:flex; align-items:center; justify-content:space-between;">
+      <div>
+        <div class="label-text" style="color:rgba(150,104,164,0.7); margin-bottom:3px;">↩ Continue where you left off</div>
+        <div class="body-sm" style="font-size:11px; color:var(--cff);">Scene 3 — The Old Story</div>
+      </div>
+      <div style="display:flex; gap:6px;">
+        <span class="btn primary" style="padding:7px 14px; font-size:10px;">Resume</span>
+        <span class="btn ghost" style="padding:7px 12px; font-size:10px;">Start over</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <span class="btn ghost">Save and come back later</span>
+    <span class="btn primary">Start my journey →</span>
+  </div>
+</div>
+
+
+<!-- ═══ SLIDE C2 — OLD STORY SELECTION ═══ -->
+<div class="slide" data-canvas-width="1280" data-canvas-height="900">
+  <div class="nav"><span class="nav-logo">Nuanced Co.</span><span class="nav-week">Week 1 of 4</span><span class="nav-sup">Need support</span></div>
+  <div class="prog">
+    <div class="dot dn"></div><div class="dot dn"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <span class="prog-label">  </span><span class="prog-label on" style="margin-left:auto;">The Old Story</span>
+  </div>
+
+  <div style="position:absolute; top:76px; left:0; right:0; bottom:52px; display:grid; grid-template-columns:1fr 420px; overflow:hidden;">
+
+    <!-- Left: selection workspace -->
+    <div style="padding:28px 36px; overflow:hidden; border-right:1px solid var(--rule);">
+      <div class="scene-head">
+        <div class="scene-num">Scene 3</div>
+        <div class="scene-rule"></div>
+        <div class="scene-name">The Old Story</div>
+      </div>
+
+      <div class="h2" style="font-size:30px; margin-bottom:8px;">The labels that didn't fit</div>
+      <div class="body" style="margin-bottom:18px; max-width:520px;">Many adults received labels before their diagnosis arrived. Select any that feel familiar — and then choose one to look at more closely.</div>
+
+      <!-- Label tile workspace — 4-col -->
+      <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:8px; margin-bottom:12px;">
+        <div class="label-tile sel">lazy</div>
+        <div class="label-tile sel">inconsistent</div>
+        <div class="label-tile">careless</div>
+        <div class="label-tile sel">too sensitive</div>
+        <div class="label-tile">not trying</div>
+        <div class="label-tile sel">difficult</div>
+        <div class="label-tile">disorganised</div>
+        <div class="label-tile">wasted potential</div>
+      </div>
+
+      <div class="body-sm" style="color:var(--cff); margin-bottom:18px;">4 selected · tap any tile to select or deselect</div>
+
+      <div class="label-text" style="color:var(--gold); margin-bottom:10px;">Choose one to look at closely</div>
+      <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;">
+        <div class="chip purp" style="min-height:44px; padding:10px 18px; font-family:'cormorant-garamond',serif; font-style:italic; font-size:15px;">lazy</div>
+        <div class="chip" style="min-height:44px; padding:10px 18px; font-family:'cormorant-garamond',serif; font-style:italic; font-size:15px;">inconsistent</div>
+        <div class="chip" style="min-height:44px; padding:10px 18px; font-family:'cormorant-garamond',serif; font-style:italic; font-size:15px;">too sensitive</div>
+        <div class="chip" style="min-height:44px; padding:10px 18px; font-family:'cormorant-garamond',serif; font-style:italic; font-size:15px;">difficult</div>
+      </div>
+
+      <!-- Reveal panel (warm surface) -->
+      <div class="surface purp" style="padding:16px 18px;">
+        <div class="label-text" style="color:var(--lilac); margin-bottom:12px;">You chose to look at: <em style="font-family:'cormorant-garamond',serif; font-style:italic; font-size:15px; text-transform:none; letter-spacing:0; color:var(--cream);">lazy</em></div>
+
+        <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;">
+          <div>
+            <div class="label-text" style="color:var(--cff); margin-bottom:6px;">What people may have seen</div>
+            <div class="body-sm">Tasks left unfinished. Difficulty getting going even on things that mattered.</div>
+          </div>
+          <div>
+            <div class="label-text" style="color:var(--cff); margin-bottom:6px;">What may have been happening</div>
+            <div class="body-sm">Task initiation is a specific executive function that works differently in ADHD brains.</div>
+          </div>
+          <div>
+            <div class="label-text" style="color:var(--cff); margin-bottom:6px;">Support that may have helped</div>
+            <div class="body-sm">External structure, a starting prompt, understanding the difficulty was real.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Snapshot builder panel (always visible, building) -->
+    <div style="padding:28px 24px; background:rgba(196,150,62,0.025); border-left:1px solid rgba(196,150,62,0.12); overflow:hidden;">
+      <div class="label-text" style="color:var(--gold); margin-bottom:14px;">My Week 1 Snapshot</div>
+      <div class="snap-doc">
+        <div class="snap-doc-title">The Unmasked Life™ — Week 1</div>
+
+        <div class="snap-field" style="background:rgba(196,150,62,0.06); border-radius:2px; padding:10px 8px; margin-bottom:2px; border:none;">
+          <div class="snap-f-label">1. Old label I am reconsidering</div>
+          <div class="snap-f-val">lazy</div>
+        </div>
+
+        <div class="snap-field" style="margin-top:6px;">
+          <div class="snap-f-label">2. What may have been happening</div>
+          <div class="ta-field" style="font-size:12px; padding:8px 10px; min-height:48px;">What may have been happening was...</div>
+          <div class="save-note">→ Type here after reading the reveal</div>
+        </div>
+
+        <div class="snap-field" style="opacity:.4;">
+          <div class="snap-f-label">3. Support that may have helped then</div>
+          <div class="snap-f-empty">Fills in Scene 3</div>
+        </div>
+        <div class="snap-field" style="opacity:.3;">
+          <div class="snap-f-label">4. Support I may need now</div>
+          <div class="snap-f-empty">Fills in Scenes 4 + 6</div>
+        </div>
+        <div class="snap-field" style="opacity:.2; border-bottom:none;">
+          <div class="snap-f-label">5. One sentence I want to keep</div>
+          <div class="snap-f-empty">Written in Scene 6</div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px; font-size:11px; color:var(--cff); font-style:italic; font-family:'cormorant-garamond',serif; line-height:1.6;">Your Snapshot fills as you move through each scene. Every field is editable before you save it.</div>
+    </div>
+  </div>
+
+  <div class="cta"><span class="btn primary">Save to Snapshot and continue →</span></div>
+</div>
+
+
+<!-- ═══ SLIDE C3 — EXECUTIVE FUNCTION RECOGNITION ═══ -->
+<div class="slide" data-canvas-width="1280" data-canvas-height="900">
+  <div class="nav"><span class="nav-logo">Nuanced Co.</span><span class="nav-week">Week 1 of 4</span><span class="nav-sup">Need support</span></div>
+  <div class="prog">
+    <div class="dot dn"></div><div class="dot dn"></div><div class="dot dn"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div>
+    <span class="prog-label on" style="margin-left:auto;">How the Brain Manages Life</span>
+  </div>
+
+  <div style="position:absolute; top:76px; left:0; right:0; bottom:52px; display:grid; grid-template-columns:1fr 380px; overflow:hidden;">
+
+    <!-- Left: EF recognition workspace -->
+    <div style="padding:26px 36px; overflow:hidden; border-right:1px solid var(--rule);">
+      <div class="scene-head">
+        <div class="scene-num">Scene 4</div>
+        <div class="scene-rule"></div>
+        <div class="scene-name">How the Brain Manages Life</div>
+      </div>
+
+      <div class="h2" style="font-size:28px; margin-bottom:8px;">Your brain's management system</div>
+      <div class="body" style="margin-bottom:16px; max-width:560px;">ADHD affects what researchers call executive function. These are neurological processes — not character traits. Tick any that show up for you.</div>
+
+      <!-- 3-col EF tiles -->
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; margin-bottom:12px;">
+        <div class="ef-tile sel">
+          <div class="ef-tile-name">Task initiation</div>
+          <div class="ef-tile-ex">Getting started, even on things you intend to do.</div>
+          <div class="ef-check">
+            <div class="ef-cb on"><svg width="8" height="6" viewBox="0 0 8 6"><path d="M1 3L3 5L7 1" stroke="#fff" stroke-width="1.5" fill="none"/></svg></div>
+            <span class="ef-check-label">Shows up for me</span>
+          </div>
+        </div>
+        <div class="ef-tile sel">
+          <div class="ef-tile-name">Time awareness</div>
+          <div class="ef-tile-ex">Tracking and estimating how long things take.</div>
+          <div class="ef-check">
+            <div class="ef-cb on"><svg width="8" height="6" viewBox="0 0 8 6"><path d="M1 3L3 5L7 1" stroke="#fff" stroke-width="1.5" fill="none"/></svg></div>
+            <span class="ef-check-label">Shows up for me</span>
+          </div>
+        </div>
+        <div class="ef-tile">
+          <div class="ef-tile-name">Emotional regulation</div>
+          <div class="ef-tile-ex">Managing the speed and intensity of emotional responses.</div>
+          <div class="ef-check">
+            <div class="ef-cb"></div>
+            <span class="ef-check-label" style="color:var(--cff);">Shows up for me</span>
+          </div>
+        </div>
+        <div class="ef-tile sel">
+          <div class="ef-tile-name">Shifting attention</div>
+          <div class="ef-tile-ex">Moving between tasks without losing what you were doing.</div>
+          <div class="ef-check">
+            <div class="ef-cb on"><svg width="8" height="6" viewBox="0 0 8 6"><path d="M1 3L3 5L7 1" stroke="#fff" stroke-width="1.5" fill="none"/></svg></div>
+            <span class="ef-check-label">Shows up for me</span>
+          </div>
+        </div>
+        <div class="ef-tile">
+          <div class="ef-tile-name">Planning and sequencing</div>
+          <div class="ef-tile-ex">Breaking tasks into steps and following them through.</div>
+          <div class="ef-check">
+            <div class="ef-cb"></div>
+            <span class="ef-check-label" style="color:var(--cff);">Shows up for me</span>
+          </div>
+        </div>
+        <div class="ef-tile sel">
+          <div class="ef-tile-name">Working memory</div>
+          <div class="ef-tile-ex">Holding information in mind while using it.</div>
+          <div class="ef-check">
+            <div class="ef-cb on"><svg width="8" height="6" viewBox="0 0 8 6"><path d="M1 3L3 5L7 1" stroke="#fff" stroke-width="1.5" fill="none"/></svg></div>
+            <span class="ef-check-label">Shows up for me</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="body-sm" style="color:var(--cf);">4 areas recognised · Your selections flow directly into Snapshot Field 4 as possible support needs.</div>
+    </div>
+
+    <!-- Right: Snapshot updating with new field -->
+    <div style="padding:26px 24px; background:rgba(196,150,62,0.025); border-left:1px solid rgba(196,150,62,0.12); overflow:hidden;">
+      <div class="label-text" style="color:var(--gold); margin-bottom:14px;">Snapshot — updating</div>
+      <div class="snap-doc">
+        <div class="snap-doc-title">The Unmasked Life™ — Week 1</div>
+
+        <div class="snap-field" style="background:rgba(196,150,62,0.05); border-radius:2px; padding:8px 6px; margin-bottom:2px; border:none;">
+          <div class="snap-f-label">1. Old label I am reconsidering</div>
+          <div class="snap-f-val">lazy</div>
+        </div>
+        <div class="snap-field" style="background:rgba(196,150,62,0.05); border-radius:2px; padding:8px 6px; margin-bottom:2px; border:none;">
+          <div class="snap-f-label">2. What may have been happening</div>
+          <div class="snap-f-val" style="font-size:14px;">Difficulty with task initiation — a specific executive function that works differently in ADHD brains.</div>
+        </div>
+        <div class="snap-field" style="background:rgba(196,150,62,0.05); border-radius:2px; padding:8px 6px; margin-bottom:2px; border:none;">
+          <div class="snap-f-label">3. Support that may have helped then</div>
+          <div class="snap-f-val" style="font-size:14px;">External structure, a starting prompt.</div>
+        </div>
+
+        <!-- Field 4 actively building from selections -->
+        <div class="snap-field" style="background:rgba(107,69,112,0.1); border:1px solid rgba(107,69,112,0.3); border-radius:3px; padding:8px 10px; margin-bottom:2px;">
+          <div class="snap-f-label" style="color:rgba(150,104,164,0.7);">4. Support I may need now — building from your selections</div>
+          <div class="body-sm" style="font-size:11px; color:var(--lilac); line-height:1.55; margin-top:4px;">Task initiation support · Time awareness · Shifting attention · Working memory</div>
+        </div>
+
+        <div class="snap-field" style="opacity:.35; border-bottom:none;">
+          <div class="snap-f-label">5. One sentence I want to keep</div>
+          <div class="snap-f-empty">Written in Scene 6</div>
+        </div>
+      </div>
+
+      <div style="margin-top:12px; font-size:11px; color:var(--cff); font-style:italic; font-family:'cormorant-garamond',serif; line-height:1.6;">Field 4 is assembled from your EF checkboxes and Life Review Map Step 5. You can edit it before saving.</div>
+    </div>
+  </div>
+
+  <div class="cta"><span class="btn primary">Continue to Relief, Grief and Anger →</span></div>
+</div>
+
+
+<!-- ═══ SLIDE C4 — EMOTIONAL CHECK-IN (Rose warmth) ═══ -->
+<div class="slide" data-canvas-width="1280" data-canvas-height="900">
+  <div class="nav"><span class="nav-logo">Nuanced Co.</span><span class="nav-week">Week 1 of 4</span><span class="nav-sup">Need support</span></div>
+  <div class="prog">
+    <div class="dot dn"></div><div class="dot dn"></div><div class="dot dn"></div><div class="dot dn"></div><div class="dot on"></div><div class="dot"></div>
+    <span class="prog-label on" style="margin-left:auto;">Relief, Grief and Anger</span>
+  </div>
+
+  <div style="position:absolute; top:76px; left:0; right:0; bottom:52px; display:grid; grid-template-columns:1fr 1fr; overflow:hidden;">
+
+    <!-- Left: teaching + emotional context -->
+    <div style="padding:28px 36px; overflow:hidden; border-right:1px solid var(--rule);">
+      <div class="scene-head">
+        <div class="scene-num">Scene 5</div>
+        <div class="scene-rule"></div>
+        <div class="scene-name">Relief, Grief and Anger</div>
+      </div>
+
+      <div class="h2" style="font-size:28px; margin-bottom:10px;">There is no correct response</div>
+
+      <div class="body" style="margin-bottom:12px;">There is no correct emotional response to a late ADHD diagnosis. Some people feel relief — a framework that finally fits. Some feel grief. Some feel anger. Some feel nothing yet.</div>
+      <div class="body" style="margin-bottom:18px;">Relief and grief are not opposites. They can co-exist, alternate, and return.</div>
+
+      <!-- Emotional state visual (spectrum) -->
+      <div class="label-text" style="color:rgba(192,122,138,0.7); margin-bottom:12px;">What's present for you right now?</div>
+
+      <!-- 2-col chip grid -->
+      <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:8px; margin-bottom:16px;">
+        <div class="chip sel" style="border-radius:4px; border-color:rgba(192,122,138,0.45); background:rgba(192,122,138,0.1); justify-content:center; padding:12px 8px; min-height:44px; font-size:14px; font-family:'cormorant-garamond',serif; font-style:italic; color:var(--cream);">Relief</div>
+        <div class="chip sel" style="border-radius:4px; border-color:rgba(192,122,138,0.45); background:rgba(192,122,138,0.1); justify-content:center; padding:12px 8px; min-height:44px; font-size:14px; font-family:'cormorant-garamond',serif; font-style:italic; color:var(--cream);">Grief</div>
+        <div class="chip" style="border-radius:4px; justify-content:center; padding:12px 8px; min-height:44px; font-size:14px; font-family:'cormorant-garamond',serif; font-style:italic;">Anger</div>
+        <div class="chip" style="border-radius:4px; justify-content:center; padding:12px 8px; min-height:44px; font-size:14px; font-family:'cormorant-garamond',serif; font-style:italic;">Numbness</div>
+        <div class="chip" style="border-radius:4px; justify-content:center; padding:12px 8px; min-height:44px; font-size:14px; font-family:'cormorant-garamond',serif; font-style:italic;">Confusion</div>
+        <div class="chip sel" style="border-radius:4px; border-color:rgba(192,122,138,0.45); background:rgba(192,122,138,0.1); justify-content:center; padding:12px 8px; min-height:44px; font-size:14px; font-family:'cormorant-garamond',serif; font-style:italic; color:var(--cream);">Exhaustion</div>
+        <div class="chip" style="border-radius:4px; justify-content:center; padding:12px 8px; min-height:44px; font-size:14px; font-family:'cormorant-garamond',serif; font-style:italic;">Hope</div>
+        <div class="chip" style="border-radius:4px; justify-content:center; padding:12px 8px; min-height:44px; font-size:14px; font-family:'cormorant-garamond',serif; font-style:italic;">Sadness</div>
+        <div class="chip" style="border-radius:4px; justify-content:center; padding:12px 8px; min-height:44px; font-size:14px; font-family:'cormorant-garamond',serif; font-style:italic;">Nothing yet</div>
+      </div>
+
+      <!-- Pause option -->
+      <div class="surface" style="display:flex; align-items:center; justify-content:space-between; padding:12px 16px;">
+        <div class="body-sm">If this is landing heavily, you do not need to continue right now.</div>
+        <span class="btn ghost" style="font-size:10px; padding:7px 12px; white-space:nowrap;">Save and pause</span>
+      </div>
+    </div>
+
+    <!-- Right: dynamic response + companion guide -->
+    <div style="padding:28px 36px; overflow:hidden; background:rgba(192,122,138,0.03);">
+      <!-- Dynamic response card -->
+      <div class="surface rose" style="padding:18px; margin-bottom:16px;">
+        <div class="label-text" style="color:rgba(192,122,138,0.7); margin-bottom:10px;">Relief and grief at the same time</div>
+        <div style="font-family:'cormorant-garamond',serif; font-style:italic; font-size:19px; line-height:1.5; color:var(--cream); margin-bottom:10px;">"Relief and grief are not opposites. Both can be true at the same time. There is no requirement to resolve one before you are allowed to feel the other."</div>
+        <div class="body-sm">This combination is one of the most commonly reported responses to late ADHD diagnosis in adults. You are not the first person to hold both of these at once.</div>
+      </div>
+
+      <!-- Companion Guide callout -->
+      <div class="surface" style="padding:16px; margin-bottom:16px;">
+        <div class="label-text" style="color:var(--gold); margin-bottom:8px;">Week 1 Companion Guide</div>
+        <div class="h3" style="font-family:'cormorant-garamond',serif; font-style:italic; font-size:18px; margin-bottom:6px;">Grieving the Life You Thought You Had</div>
+        <div class="body-sm" style="margin-bottom:10px;">A research-informed guide to grief, anger, relief and the "what if I had known sooner?" stage.</div>
+        <div style="font-size:10px; color:var(--cff); border:1px dashed var(--rule2); padding:6px 10px; border-radius:2px;">Guide available in your resource vault · PDF supplied with beta materials</div>
+      </div>
+
+      <!-- Support link -->
+      <div class="surface" style="padding:12px 16px; background:rgba(192,122,138,0.04); border-color:rgba(192,122,138,0.2);">
+        <div class="label-text" style="color:rgba(192,122,138,0.6); margin-bottom:4px;">If you need support right now</div>
+        <div class="body-sm" style="font-size:12px;">This course is educational content. If you are in distress, please access support. <span style="color:var(--rose); text-decoration:underline;">Support resources →</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <span class="btn ghost">Save and pause</span>
+    <span class="btn primary">Build My Week 1 Snapshot →</span>
+  </div>
+</div>
+
+
+<!-- ═══ SLIDE C5 — SNAPSHOT BUILDER ═══ -->
+<div class="slide" data-canvas-width="1280" data-canvas-height="900">
+  <div class="nav"><span class="nav-logo">Nuanced Co.</span><span class="nav-week">Week 1 of 4</span><span class="nav-sup">Need support</span></div>
+  <div class="prog">
+    <div class="dot dn"></div><div class="dot dn"></div><div class="dot dn"></div><div class="dot dn"></div><div class="dot dn"></div><div class="dot on"></div>
+    <span class="prog-label on" style="margin-left:auto;">My Week 1 Snapshot</span>
+  </div>
+
+  <div style="position:absolute; top:76px; left:0; right:0; bottom:52px; display:grid; grid-template-columns:1fr 1fr; overflow:hidden;">
+
+    <!-- Left: snapshot doc (editable) -->
+    <div style="padding:28px 36px; overflow:hidden; border-right:1px solid rgba(196,150,62,0.15);">
+      <div class="label-text" style="color:var(--gold); margin-bottom:16px;">My Week 1 Snapshot — assembled from your responses</div>
+
+      <div class="snap-doc">
+        <div class="snap-doc-title">The Unmasked Life™ — Week 1 · My Snapshot</div>
+
+        <div class="snap-field">
+          <div class="snap-f-label">1. One old label I am reconsidering</div>
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:8px;">
+            <div class="snap-f-val">lazy</div>
+            <span style="font-size:9px; color:rgba(196,150,62,0.5); border:1px solid rgba(196,150,62,0.25); padding:3px 7px; border-radius:2px; white-space:nowrap;">Edit</span>
+          </div>
+        </div>
+        <div class="snap-field">
+          <div class="snap-f-label">2. What may have been happening underneath</div>
+          <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:8px;">
+            <div class="snap-f-val" style="font-size:14px; flex:1;">Difficulty with task initiation — a specific executive function that works differently in ADHD brains.</div>
+            <span style="font-size:9px; color:rgba(196,150,62,0.5); border:1px solid rgba(196,150,62,0.25); padding:3px 7px; border-radius:2px; white-space:nowrap; flex-shrink:0; margin-top:2px;">Edit</span>
+          </div>
+        </div>
+        <div class="snap-field">
+          <div class="snap-f-label">3. Support that may have helped then</div>
+          <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:8px;">
+            <div class="snap-f-val" style="font-size:14px; flex:1;">External structure, a starting prompt, understanding the difficulty was real.</div>
+            <span style="font-size:9px; color:rgba(196,150,62,0.5); border:1px solid rgba(196,150,62,0.25); padding:3px 7px; border-radius:2px; white-space:nowrap; flex-shrink:0; margin-top:2px;">Edit</span>
+          </div>
+        </div>
+        <div class="snap-field">
+          <div class="snap-f-label">4. Support I may need now</div>
+          <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:8px;">
+            <div class="snap-f-val" style="font-size:14px; flex:1;">Task initiation support, time awareness, external structure.</div>
+            <span style="font-size:9px; color:rgba(196,150,62,0.5); border:1px solid rgba(196,150,62,0.25); padding:3px 7px; border-radius:2px; white-space:nowrap; flex-shrink:0; margin-top:2px;">Edit</span>
+          </div>
+        </div>
+        <div class="snap-field" style="border-bottom:none; padding-bottom:0;">
+          <div class="snap-f-label">5. One sentence I want to keep</div>
+          <div class="ta-field multi" style="margin-top:6px; font-size:14px;">Write one sentence you want to carry forward from this week...</div>
+          <div class="save-note">This field is always written fresh here.</div>
+        </div>
+
+        <div class="snap-actions">
+          <span class="snap-btn primary">Save Snapshot</span>
+          <span class="snap-btn">Copy</span>
+          <span class="snap-btn">Print</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: milestone + beta + what's next -->
+    <div style="padding:28px 36px; overflow:hidden; background:rgba(196,150,62,0.02);">
+      <!-- Milestone -->
+      <div class="label-text" style="color:var(--gold); margin-bottom:12px;">Milestone</div>
+      <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 16px; background:var(--surf); border:1.5px solid var(--surf-b); border-radius:4px; margin-bottom:16px;">
+        <div style="width:20px; height:20px; border:1.5px solid var(--surf-b); border-radius:50%; flex-shrink:0; margin-top:2px;"></div>
+        <div class="body">I have identified at least one pattern from my past that I am now seeing differently with my ADHD understanding.</div>
+      </div>
+
+      <!-- Beta session -->
+      <div class="label-text" style="color:var(--gold); margin-bottom:12px;">Bring this to the weekly catch-up</div>
+      <div class="surface" style="padding:16px; margin-bottom:14px;">
+        <div style="background:rgba(251,247,240,.04); border:1px dashed var(--rule2); border-radius:2px; padding:8px 10px; font-size:11px; color:var(--cff); margin-bottom:6px;">Session date — to be confirmed</div>
+        <div style="background:rgba(251,247,240,.04); border:1px dashed var(--rule2); border-radius:2px; padding:8px 10px; font-size:11px; color:var(--cff); margin-bottom:12px;">Join link — to be added</div>
+        <div class="label-text" style="color:var(--cff); margin-bottom:8px;">Prompts for the session:</div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:5px; margin-bottom:8px;">
+          <li class="body-sm" style="font-size:12px; display:flex; gap:6px;"><span style="color:var(--cff); font-size:10px;">→</span>Which label felt most familiar, and why?</li>
+          <li class="body-sm" style="font-size:12px; display:flex; gap:6px;"><span style="color:var(--cff); font-size:10px;">→</span>What surprised you in the life review?</li>
+          <li class="body-sm" style="font-size:12px; display:flex; gap:6px;"><span style="color:var(--cff); font-size:10px;">→</span>What are you still uncertain about?</li>
+        </ul>
+        <div class="body-sm" style="font-size:11px; color:var(--cff); font-style:italic; font-family:'cormorant-garamond',serif;">Sharing is optional. Listening is enough.</div>
+      </div>
+
+      <!-- Scope note -->
+      <div class="surface rose" style="padding:10px 14px; font-size:11px; color:var(--cf); line-height:1.6;">This course is educational content, not therapy or clinical care. <span style="color:var(--rose);">Support resources →</span></div>
+    </div>
+  </div>
+
+  <div class="cta">
+    <span class="btn ghost">Download Snapshot</span>
+    <span class="btn primary">Save and complete Week 1</span>
+  </div>
+</div>
+
+
+<!-- ═══ SLIDE C6 — MOBILE WORKSPACE ═══ -->
+<div class="slide mobile" data-canvas-width="390" data-canvas-height="844">
+  <div class="m-nav">
+    <span class="nav-logo">Nuanced Co.</span>
+    <span class="nav-week">Week 1 of 4</span>
+    <span class="nav-sup">Support</span>
+  </div>
+  <div class="m-prog">
+    <div class="dot dn"></div><div class="dot dn"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+    <span class="prog-label on" style="margin-left:auto; font-size:8px;">The Old Story</span>
+  </div>
+
+  <div style="position:absolute; top:68px; left:0; right:0; bottom:52px; overflow:hidden;">
+
+    <!-- Progress indicator strip -->
+    <div style="padding:10px 16px 0; border-bottom:1px solid var(--rule);">
+      <div class="scene-head" style="margin-bottom:10px;">
+        <div class="scene-num">Scene 3</div>
+        <div class="scene-rule"></div>
+        <div class="scene-name">The Old Story</div>
+      </div>
+    </div>
+
+    <div style="padding:16px 16px 0; overflow:hidden;">
+      <div class="h2" style="font-size:26px; margin-bottom:8px;">The labels that didn't fit</div>
+      <div class="body-sm" style="margin-bottom:14px;">Which of these sound familiar? Select all that apply.</div>
+
+      <!-- Mobile tile grid -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:10px;">
+        <div class="label-tile sel" style="min-height:48px;">lazy</div>
+        <div class="label-tile sel" style="min-height:48px;">inconsistent</div>
+        <div class="label-tile" style="min-height:48px;">careless</div>
+        <div class="label-tile sel" style="min-height:48px;">too sensitive</div>
+        <div class="label-tile" style="min-height:48px;">not trying</div>
+        <div class="label-tile sel" style="min-height:48px;">difficult</div>
+        <div class="label-tile" style="min-height:48px;">disorganised</div>
+        <div class="label-tile" style="min-height:48px;">wasted potential</div>
+      </div>
+
+      <div class="body-sm" style="color:var(--cff); font-size:11px; margin-bottom:14px;">4 selected</div>
+
+      <div class="label-text" style="color:var(--gold); margin-bottom:8px;">Choose one to look at closely</div>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:14px;">
+        <div class="chip purp" style="border-radius:4px; justify-content:center; min-height:44px; padding:12px; font-family:'cormorant-garamond',serif; font-style:italic; font-size:15px; color:var(--cream);">lazy</div>
+        <div class="chip" style="border-radius:4px; justify-content:center; min-height:44px; padding:12px; font-family:'cormorant-garamond',serif; font-style:italic; font-size:15px;">inconsistent</div>
+        <div class="chip" style="border-radius:4px; justify-content:center; min-height:44px; padding:12px; font-family:'cormorant-garamond',serif; font-style:italic; font-size:15px;">too sensitive</div>
+        <div class="chip" style="border-radius:4px; justify-content:center; min-height:44px; padding:12px; font-family:'cormorant-garamond',serif; font-style:italic; font-size:15px;">difficult</div>
+      </div>
+
+      <!-- Mini reveal surface -->
+      <div class="surface purp" style="padding:12px 14px; margin-bottom:12px;">
+        <div class="label-text" style="color:rgba(150,104,164,0.75); margin-bottom:6px; font-size:8px;">lazy — what may have been happening</div>
+        <div class="body-sm" style="font-size:12px; margin-bottom:10px;">Task initiation is a specific executive function that works differently in ADHD brains.</div>
+        <div class="ta-label">How do you understand this label now?</div>
+        <div class="ta-field" style="font-size:12px; padding:8px 10px;">What may have been happening was...</div>
+      </div>
+
+      <!-- Snapshot peek -->
+      <div style="padding:10px 12px; background:rgba(196,150,62,0.06); border:1px solid rgba(196,150,62,0.2); border-radius:3px; display:flex; align-items:center; justify-content:space-between;">
+        <div>
+          <div style="font-size:8px; letter-spacing:.14em; text-transform:uppercase; color:rgba(196,150,62,0.6); margin-bottom:3px;">My Snapshot</div>
+          <div style="font-size:11px; color:var(--cf);">Field 1 saved · 4 fields remaining</div>
+        </div>
+        <span style="font-size:10px; color:var(--gold); border:1px solid rgba(196,150,62,0.35); padding:5px 10px; border-radius:2px; white-space:nowrap;">View →</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="m-cta">
+    <span class="btn primary" style="width:100%; text-align:center; justify-content:center;">Save to Snapshot and continue →</span>
+  </div>
+</div>
+
+</body>
+</html>

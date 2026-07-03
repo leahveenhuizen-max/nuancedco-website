@@ -9,6 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="nc-header.css">
   <style>
     :root{--cream:#F6F1E9;--cream-d:#EDE6D8;--ink:#2A1F1A;--ink-mid:#4A3830;--ink-deep:#0F0C0A;--purple:#6B4570;--gold:#C4963E;--rose:#C07A8A;--lilac:#9668A4;--sage:#7A8C6E;--serif:'Cormorant Garamond',Georgia,serif;--body:'Atkinson Hyperlegible',system-ui,sans-serif;--ease:cubic-bezier(0.22,1,0.36,1);}
     *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -18,25 +19,23 @@
     :focus-visible{outline:2px solid var(--purple);outline-offset:3px;border-radius:3px;}
 
     /* NAV */
-    #nav{position:sticky;top:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:#2A1F1A;box-shadow:0 2px 24px rgba(0,0,0,.15);}
-    .nav-logo{font-family:var(--serif);font-size:1rem;font-weight:400;letter-spacing:.25em;color:#F6F1E9;text-transform:uppercase;line-height:1;display:flex;flex-direction:column;gap:3px;}
-    .nav-logo em{font-style:normal;font-family:var(--body);font-size:.46rem;letter-spacing:.3em;color:var(--gold);opacity:.8;}
+    #nav{position:sticky;top:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:#2A1F1A;}
     .nav-right{display:flex;align-items:center;gap:1.6rem;}
-    .nav-link{font-family:var(--body);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.65);transition:color .2s;}
+    .nav-link{font-family:var(--body);font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.65);transition:color .1s cubic-bezier(0.22,1,0.36,1);}
     .nav-link:hover{color:#F6F1E9;}
-    .nav-back{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.5);transition:color .2s;display:flex;align-items:center;gap:.4rem;}
+    .nav-back{font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.5);transition:color .1s cubic-bezier(0.22,1,0.36,1);display:flex;align-items:center;gap:.4rem;}
     .nav-back:hover{color:#F6F1E9;}
 
     /* HERO */
     .hero{background:#2A1F1A;padding:6rem 3rem 5rem;text-align:center;}
-    .hero-eyebrow{font-size:.54rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:1.2rem;}
+    .hero-eyebrow{font-size:.54rem;letter-spacing:.28em;text-transform:uppercase;color:var(--lilac);margin-bottom:1.2rem;}
     .hero-title{font-family:var(--serif);font-size:clamp(3rem,6vw,5rem);font-weight:300;color:#F6F1E9;line-height:1;letter-spacing:.03em;margin-bottom:1.2rem;}
     .hero-subtitle{font-family:var(--serif);font-size:clamp(1.1rem,2vw,1.5rem);font-weight:300;color:rgba(246,241,233,.65);letter-spacing:.06em;margin-bottom:2rem;}
     .hero-desc{font-size:.92rem;color:rgba(246,241,233,.65);line-height:1.85;max-width:580px;margin:0 auto 2.5rem;}
     .hero-cta-wrap{display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;}
-    .btn-enrol{display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2.4rem;background:var(--purple);color:#fff;font-family:var(--body);font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border-radius:40px;transition:background .2s,transform .15s;}
-    .btn-enrol:hover{background:var(--lilac);transform:translateY(-2px);}
-    .btn-ghost{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 2rem;border:1px solid rgba(246,241,233,.25);color:rgba(246,241,233,.7);font-family:var(--body);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;border-radius:40px;transition:border-color .2s,color .2s;}
+    .btn-enrol{display:inline-flex;align-items:center;gap:.5rem;padding:1rem 2.4rem;background:var(--purple);color:#fff;font-family:var(--body);font-size:.65rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border-radius:40px;transition:background .1s cubic-bezier(0.22,1,0.36,1),transform .1s cubic-bezier(0.22,1,0.36,1);}
+    .btn-enrol:hover{background:var(--lilac);transform:translateY(-2px);color:#fff}
+    .btn-ghost{display:inline-flex;align-items:center;gap:.5rem;padding:.95rem 2rem;border:1px solid rgba(246,241,233,.25);color:rgba(246,241,233,.7);font-family:var(--body);font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;border-radius:40px;transition:border-color .1s cubic-bezier(0.22,1,0.36,1),color .1s cubic-bezier(0.22,1,0.36,1);}
     .btn-ghost:hover{border-color:rgba(246,241,233,.6);color:#F6F1E9;}
     .price-display{margin-top:1.4rem;font-size:.75rem;color:rgba(246,241,233,.4);letter-spacing:.1em;}
 
@@ -73,7 +72,7 @@
     .about-img{width:80px;height:80px;border-radius:50%;background:rgba(246,241,233,.1);flex-shrink:0;overflow:hidden;}
     .about-img img{width:100%;height:100%;object-fit:cover;}
     .about-text h3{font-family:var(--serif);font-size:1.4rem;font-weight:300;color:#F6F1E9;margin-bottom:.4rem;}
-    .about-text .role{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);opacity:.8;margin-bottom:.8rem;}
+    .about-text .role{font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;color:var(--lilac);margin-bottom:.8rem;}
     .about-text p{font-size:.85rem;color:rgba(246,241,233,.65);line-height:1.8;}
 
     /* SCOPE */
@@ -111,18 +110,18 @@
     .tier-list li::before{content:'✓';color:var(--sage);font-weight:700;flex-shrink:0;}
     .t2 .tier-list li::before,.t3 .tier-list li::before{color:var(--purple);}
     .tier-scope-note{font-size:.58rem;color:rgba(42,31,26,.38);line-height:1.5;margin-bottom:1.2rem;font-style:italic;}
-    .tier-btn{display:block;width:100%;padding:.85rem 1rem;text-align:center;font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:background .2s,transform .15s;border-radius:2px;}
+    .tier-btn{display:block;width:100%;padding:.85rem 1rem;text-align:center;font-family:var(--body);font-size:.58rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-decoration:none;transition:background .1s cubic-bezier(0.22,1,0.36,1),transform .1s cubic-bezier(0.22,1,0.36,1);border-radius:2px;}
     .t1 .tier-btn{background:var(--sage);color:#fff;}
     .t1 .tier-btn:hover{background:#6a7a60;transform:translateY(-1px);}
     .t2 .tier-btn{background:var(--purple);color:#fff;}
-    .t2 .tier-btn:hover{background:var(--lilac);transform:translateY(-1px);}
+    .t2 .tier-btn:hover{background:var(--lilac);transform:translateY(-1px);color:#fff}
     .t3 .tier-btn{background:var(--gold);color:#fff;}
     .t3 .tier-btn:hover{background:#b0852e;transform:translateY(-1px);}
     .featured-tag{position:absolute;top:.9rem;right:.9rem;background:var(--purple);color:#fff;font-size:.4rem;letter-spacing:.14em;text-transform:uppercase;padding:.25rem .6rem;border-radius:2px;}
     @media(max-width:680px){.tiers-grid{grid-template-columns:1fr;}.tier-card.featured{order:-1;}}
 
     /* STICKY ENROL BAR */
-    .enrol-bar{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--cream-d);padding:1rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;box-shadow:0 -4px 24px rgba(42,31,26,.08);z-index:500;}
+    .enrol-bar{position:sticky;bottom:0;background:#fff;border-top:1px solid var(--cream-d);padding:1rem 3rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;z-index:500;}
     .enrol-bar-copy h3{font-family:var(--serif);font-size:1.2rem;font-weight:300;color:var(--ink);}
     .enrol-bar-copy p{font-size:.72rem;color:var(--ink-mid);}
     .enrol-bar-right{display:flex;align-items:center;gap:1.2rem;}
@@ -141,15 +140,15 @@
   
     /* ── DROPDOWN NAV ───────────────────────────────────── */
     .nav-list{list-style:none;display:flex;align-items:center;gap:2rem;}
-    .nav-list a{font-family:var(--body);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.72);transition:color .2s;}
+    .nav-list a{font-family:var(--body);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.72);transition:color .1s cubic-bezier(0.22,1,0.36,1);}
     .nav-list a:hover{color:var(--cream);}
-    .nav-list .ncta{border:1px solid rgba(196,150,62,.5);color:var(--gold);padding:.4rem 1.2rem;border-radius:2px;font-size:.62rem;transition:background .2s,color .2s,border-color .2s;}
+    .nav-list .ncta{border:1px solid rgba(196,150,62,.5);color:var(--gold);padding:.4rem 1.2rem;border-radius:2px;font-size:.62rem;transition:background .1s cubic-bezier(0.22,1,0.36,1),color .1s cubic-bezier(0.22,1,0.36,1),border-color .1s cubic-bezier(0.22,1,0.36,1);}
     .nav-list .ncta:hover{background:var(--gold);color:var(--ink-deep);border-color:var(--gold);}
         .nav-dd{position:relative;}
-    .nav-dd-menu{position:absolute;top:calc(100% + 1rem);left:50%;transform:translateX(-50%) translateY(-4px);background:rgba(15,12,10,.98);border:1px solid rgba(246,241,233,.12);min-width:210px;padding:.6rem 0;opacity:0;pointer-events:none;visibility:hidden;transition:opacity .2s,transform .2s cubic-bezier(0.22,1,0.36,1),visibility .2s;z-index:10000;}
+    .nav-dd-menu{position:absolute;top:calc(100% + 1rem);left:50%;transform:translateX(-50%) translateY(-4px);background:rgba(15,12,10,.98);border:1px solid rgba(246,241,233,.12);min-width:210px;padding:.6rem 0;opacity:0;pointer-events:none;visibility:hidden;transition:opacity .1s cubic-bezier(0.22,1,0.36,1),transform .1s cubic-bezier(0.22,1,0.36,1),visibility .1s cubic-bezier(0.22,1,0.36,1);z-index:10000;}
     .nav-dd-menu::before{content:'';position:absolute;bottom:100%;left:-50%;right:-50%;height:1rem;pointer-events:auto;z-index:10001;}
     .nav-dd:hover .nav-dd-menu,.nav-dd:focus-within .nav-dd-menu,.nav-dd-menu:hover{opacity:1;pointer-events:all;visibility:visible;transform:translateX(-50%) translateY(0);}
-    .nav-dd-menu a{display:block;padding:.75rem 1.4rem;font-size:.72rem;opacity:.9;color:rgba(246,241,233,.95);transition:opacity .2s,color .2s;}
+    .nav-dd-menu a{display:block;padding:.75rem 1.4rem;font-size:.72rem;opacity:.9;color:rgba(246,241,233,.95);transition:opacity .1s cubic-bezier(0.22,1,0.36,1),color .1s cubic-bezier(0.22,1,0.36,1);}
     .nav-dd-menu a:hover{opacity:1;color:var(--gold);}
     .hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:0;}
     .hamburger span{width:22px;height:1.5px;background:var(--cream);display:block;}
@@ -166,16 +165,16 @@
     .ft-subscribe{background:rgba(246,241,233,.06);border:1px solid rgba(246,241,233,.1);border-radius:4px;padding:1.8rem 1.6rem;}
     .ft-subscribe h3{font-family:var(--serif);font-size:1.25rem;font-weight:400;color:#F6F1E9;margin:0 0 .8rem;letter-spacing:.04em;}
     .ft-subscribe p{font-size:.82rem;color:rgba(246,241,233,.78);margin:0 0 1.4rem;line-height:1.75;}
-    .ft-email-btn{background:var(--purple);color:#F6F1E9;padding:.85rem 1.8rem;font-family:var(--body);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:4px;transition:background .2s;display:inline-block;text-decoration:none;}
-    .ft-email-btn:hover{background:#5a3a5f;}
+    .ft-email-btn{background:var(--purple);color:#fff;padding:.85rem 1.8rem;font-family:var(--body);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;border-radius:4px;transition:background .1s cubic-bezier(0.22,1,0.36,1);display:inline-block;text-decoration:none;}
+    .ft-email-btn:hover{background:#5a3a5f;color:#F6F1E9;}
     .ft-col h4{font-family:var(--serif);font-size:1rem;font-weight:400;color:#F6F1E9;margin:0 0 1.4rem;letter-spacing:.04em;}
     .ft-col ul{list-style:none;display:flex;flex-direction:column;gap:.9rem;margin:0;padding:0;}
-    .ft-col ul a{font-size:.82rem;color:rgba(246,241,233,.8);text-decoration:none;transition:color .2s;}
+    .ft-col ul a{font-size:.82rem;color:rgba(246,241,233,.8);text-decoration:none;transition:color .1s cubic-bezier(0.22,1,0.36,1);}
     .ft-col ul a:hover{color:#F6F1E9;}
     .ft-bot{max-width:1200px;margin:2rem auto 0;padding:2rem 3.5rem 0;border-top:1px solid rgba(246,241,233,.15);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
     .ft-legal{font-size:.72rem;color:rgba(246,241,233,.55);margin:0;line-height:1.6;}
     .ft-legal-links{display:flex;flex-wrap:wrap;gap:1.2rem;}
-    .ft-legal-links a{font-size:.72rem;color:rgba(246,241,233,.5);text-decoration:none;transition:color .2s;}
+    .ft-legal-links a{font-size:.72rem;color:rgba(246,241,233,.5);text-decoration:none;transition:color .1s cubic-bezier(0.22,1,0.36,1);}
     .ft-legal-links a:hover{color:rgba(246,241,233,.85);}
     @media(max-width:1024px){.ft-inner{grid-template-columns:1fr 1fr;gap:3rem;}}
     @media(max-width:600px){
@@ -184,48 +183,31 @@
       .ft-legal-links{gap:.8rem;}
     }
 
-  </style>
+  @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rv,.rvl,.rvr,.ncrv{opacity:1!important;transform:none!important}}
+</style>
 </head>
 <body>
 
 <nav id="nav">
   <a href="index.html" class="nav-logo">NUANCED CO.<em>Neurodivergent Consultancy</em></a>
   <ul class="nav-list">
-    <li class="nav-dd"><a href="services.html">Services &#9662;</a>
+    <li><a href="about.html">About</a></li>
+    <li class="nav-dd"><a href="the-unmasked-life.html">The Unmasked Life &#9662;</a>
       <div class="nav-dd-menu">
-        <a href="services.html">1:1 Consultancy</a>
-        <a href="workplace.html">Workplace Consulting</a>
-        <a href="the-unmasked-life.html">Courses</a>
-        <a href="community-waitlist.html">Community</a>
-      </div>
-    </li>
-    <li class="nav-dd"><a href="about.html">About &#9662;</a>
-      <div class="nav-dd-menu">
-        <a href="about.html">About Nuanced Co.</a>
-        <a href="about.html">Meet Leah</a>
-        <a href="faq.html">FAQ</a>
-      </div>
-    </li>
-    <li class="nav-dd"><a href="how-i-work.html">How We Work &#9662;</a>
-      <div class="nav-dd-menu">
-        <a href="how-i-work.html">How We Work</a>
-        <a href="who-i-work-with.html">Who We Work With</a>
-      </div>
-    </li>
-    <li class="nav-dd"><a href="the-unmasked-life.html">Courses &#9662;</a>
-      <div class="nav-dd-menu">
-        <a href="the-unmasked-life.html">The Unmasked Life</a>
-        <a href="the-unmasked-life-coming-soon.html">Join the Waitlist</a>
+        <a href="the-unmasked-life.html">About the course</a>
+        <a href="the-unmasked-life-coming-soon.html">Join the course waitlist</a>
       </div>
     </li>
     <li class="nav-dd"><a href="links.html">Resources &#9662;</a>
       <div class="nav-dd-menu">
-        <a href="links.html">Free Resources</a>
-        <a href="https://stan.store/NuancedCo/p/the-late-diagnosis-life-review" target="_blank" rel="noopener">Late Diagnosis Life Review</a>
-        <a href="community-waitlist.html">Community Updates</a>
+        <a href="https://stan.store/NuancedCo/p/the-late-diagnosis-life-review" target="_blank" rel="noopener">The Late Diagnosis Life Review</a>
+        <a href="links.html">All resources</a>
+        <a href="evidence.html">Our evidence approach</a>
+        <a href="workplace.html">Workplace consulting</a>
       </div>
     </li>
-    <li><a href="media.html">Articles &amp; Media</a></li>
+    <li><a href="support.html">Support</a></li>
+    <li><a href="contact.html">Contact</a></li>
     <li><a href="book.html" class="ncta btn">Book a Call</a></li>
   </ul>
   <div class="hamburger" onclick="openMob()"><span></span><span></span><span></span></div>
@@ -251,7 +233,7 @@
     <a href="the-unmasked-life-coming-soon.html" class="btn-enrol" id="enrol-btn">Join the waitlist &#8594;</a>
     <a href="#course-overview" class="btn-ghost">Read more first</a>
   </div>
-  <p class="price-display">Currently in preparation. Join the waitlist for launch updates and early access.</p>
+  <p class="price-display">Founding beta in preparation. From $197 AUD when enrolment opens. One payment, lifetime access, no deadlines. Join the waitlist for launch updates and first access.</p>
 </div>
 
 <!-- MAIN CONTENT -->
@@ -260,13 +242,13 @@
   <!-- WHO IT IS FOR -->
   <p class="section-eyebrow">Who this course is for</p>
   <h2 class="section-title">You have a diagnosis.<br>Now what?</h2>
-  <p class="body-text">You received your ADHD diagnosis as an adult. Maybe recently. Maybe a while ago. Either way, you are still trying to make sense of what it means for your actual life,the past, the present, and how things might work differently from here.</p>
+  <p class="body-text">You received your ADHD diagnosis as an adult. Maybe recently. Maybe a while ago. Either way, you are still trying to make sense of what it means for your actual life: the past, the present, and how things might work differently from here.</p>
   <p class="body-text">This course is for you if:</p>
   <ul class="for-list">
     <li>You have received an ADHD diagnosis as an adult and are still processing what it means</li>
     <li>You are looking back at your life through a new lens and feeling a mix of relief, grief, anger or confusion</li>
     <li>You have noticed patterns of masking, overcompensating or performing fine for a long time</li>
-    <li>You want practical, grounded education,not a symptom checklist or a productivity hack</li>
+    <li>You want practical, grounded education, not a symptom checklist or a productivity hack</li>
     <li>You are waiting for assessment and want useful education in the meantime</li>
   </ul>
 
@@ -280,27 +262,27 @@
   <div class="weeks-grid">
     <div class="week-card">
       <p class="week-num">Week 1</p>
-      <h3 class="week-title">It Finally Makes Sense</h3>
+      <h3 class="week-title">The Late Diagnosis Disruption</h3>
       <p class="week-q">"What if I was never broken, just unsupported?"</p>
       <p class="week-milestone"><strong>Milestone:</strong> Map three ADHD patterns in your life that you previously misunderstood.</p>
     </div>
     <div class="week-card">
       <p class="week-num">Week 2</p>
-      <h3 class="week-title">Grief for What Could Have Been</h3>
-      <p class="week-q">"What am I allowed to grieve?"</p>
-      <p class="week-milestone"><strong>Milestone:</strong> Name one area of grief and one form of support you wish you had received.</p>
-    </div>
-    <div class="week-card">
-      <p class="week-num">Week 3</p>
-      <h3 class="week-title">The Mask, the Shame and the Big Feelings</h3>
+      <h3 class="week-title">Masking, Overcompensation and Self-Blame</h3>
       <p class="week-q">"What have I been carrying, hiding or performing?"</p>
       <p class="week-milestone"><strong>Milestone:</strong> Identify one mask, one shame story and one emotional pattern you are ready to notice differently.</p>
     </div>
     <div class="week-card">
-      <p class="week-num">Week 4</p>
-      <h3 class="week-title">Building a Life That Fits</h3>
+      <p class="week-num">Week 3</p>
+      <h3 class="week-title">Support Needs, Executive Function and Environment</h3>
       <p class="week-q">"What support does my actual brain need now?"</p>
       <p class="week-milestone"><strong>Milestone:</strong> Build one ADHD-friendly support system for a real part of your life.</p>
+    </div>
+    <div class="week-card">
+      <p class="week-num">Week 4</p>
+      <h3 class="week-title">Rebuilding Self-Trust After Diagnosis</h3>
+      <p class="week-q">"Can I trust myself with what I know now?"</p>
+      <p class="week-milestone"><strong>Milestone:</strong> Name one decision you are ready to make with your new understanding, and one way you will back yourself through it.</p>
     </div>
   </div>
 
@@ -339,6 +321,23 @@
 
   <div class="divider"></div>
 
+  <!-- HOW IT WORKS: EXPERIENCE PREVIEW -->
+  <p class="section-eyebrow">How the course works</p>
+  <h2 class="section-title">A guided experience,<br>not a wall of content.</h2>
+  <p class="body-text">Each week is built as a short guided journey of six scenes. You move through one idea at a time, at whatever pace suits your capacity that day. There is a full journey of about 45 minutes, a low-capacity route that takes one scene at a time, and a five-minute speed-read. You choose each week, and you can change your mind at any point.</p>
+  <p class="body-text">Every week ends with something you keep: a short snapshot of your own reflections, in your own words, assembled as you go. In Week 1 that is your Week 1 Snapshot, built from the Life Review exercise. You can copy it, save it or print it. Everything autosaves in your browser as you work, so stopping mid-scene loses nothing.</p>
+  <p class="body-text">The whole course works on a phone. It is designed for a tired adult reading in bed, not a desk workstation. No timers you did not ask for, no streaks, no guilt mechanics if you step away for a fortnight.</p>
+  <p class="body-text" style="font-size:.8rem;color:rgba(42,31,26,.5);">Course preview screenshots will be added here when the founding beta build is finalised, so what you see is exactly what you get.</p>
+
+  <div class="divider"></div>
+
+  <!-- WHY NOT JUST A PDF -->
+  <p class="section-eyebrow">Course or PDF?</p>
+  <h2 class="section-title">Different from reading about it.</h2>
+  <p class="body-text">The Late Diagnosis Life Review and the Companion Guides are self-contained PDFs: you read, reflect and write at your own pace. The full course is a different kind of experience. It sequences the four themes so the heavier material arrives after the groundwork, responds to what you select and write as you move through each scene, and adds lesson videos, the Resource Vault and founding beta live group catch-ups. If you prefer to read independently, the Reader Edition (coming soon) will carry the core teaching in book form.</p>
+
+  <div class="divider"></div>
+
   <!-- ABOUT LEAH -->
   <p class="section-eyebrow">Your consultant</p>
   <div class="about-block">
@@ -347,8 +346,9 @@
     </div>
     <div class="about-text">
       <h3>Leah Veenhuizen</h3>
-      <p class="role">Registered Nurse,Neurodivergent Consultant,Nuanced Co.</p>
+      <p class="role">Registered Nurse, Neurodivergent Consultant, Nuanced Co.</p>
       <p>Leah is a registered nurse, mental health educator and neurodivergent consultant, currently completing postgraduate counselling studies. She is the founder of Nuanced Co., a neurodivergent consultancy creating Australian-first, evidence-informed education and reflective resources for late-diagnosed ADHD adults. She is also AuDHD herself.</p>
+      <p style="margin-top:.8rem;"><a href="evidence.html" style="color:var(--lilac);text-decoration:underline;">Read about the evidence approach behind this course</a></p>
     </div>
   </div>
 
@@ -362,7 +362,7 @@
     <p style="font-size:.52rem;letter-spacing:.26em;text-transform:uppercase;color:var(--purple);margin-bottom:.8rem;">Coming soon</p>
     <h2 style="font-family:var(--serif);font-size:clamp(1.6rem,3vw,2.2rem);font-weight:300;color:var(--ink);margin-bottom:1rem;">The Unmasked Life is currently being prepared for enrolment.</h2>
     <p style="font-size:.88rem;color:var(--ink-mid);line-height:1.8;max-width:520px;margin:0 auto 2rem;">Join the waitlist to receive launch updates and first access when places open.</p>
-    <a href="the-unmasked-life-coming-soon.html" style="display:inline-block;font-family:var(--body);font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.9rem 2.2rem;background:var(--purple);color:#fff;border-radius:40px;text-decoration:none;transition:background .2s;">Join the waitlist</a>
+    <a href="the-unmasked-life-coming-soon.html" style="display:inline-block;font-family:var(--body);font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.9rem 2.2rem;background:var(--purple);color:#fff;border-radius:40px;text-decoration:none;transition:background .1s cubic-bezier(0.22,1,0.36,1);">Join the waitlist</a>
   </div>
 
 </div>
@@ -434,6 +434,27 @@
   const nav=document.getElementById('nav');window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scrollY>70);},{passive:true});
   function openMob(){document.getElementById('mobNav').classList.add('open');document.body.style.overflow='hidden';}
   function closeMob(){document.getElementById('mobNav').classList.remove('open');document.body.style.overflow='';}
+</script>
+<script>
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
+  var s=document.createElement('style');
+  s.textContent='.ncrv{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(0.22,1,0.36,1),transform .8s cubic-bezier(0.22,1,0.36,1)}.ncrv.in{opacity:1;transform:none}';
+  document.head.appendChild(s);
+  var els=[];
+  function addGroup(grid){if(grid.dataset.ncrv)return;grid.dataset.ncrv='1';Array.prototype.forEach.call(grid.children,function(c,i){c.classList.add('ncrv');c.style.transitionDelay=((i%8)*0.15)+'s';els.push(c);});}
+  document.querySelectorAll('section,.card').forEach(function(sec){
+    if(sec.closest('nav'))return;
+    var grid=sec.querySelector('[class*="grid"],[class*="cards"]');
+    if(grid&&grid.children.length>1&&grid.children.length<13){addGroup(grid);}
+    sec.classList.add('ncrv');els.push(sec);
+  });
+  document.querySelectorAll('.sprint-grid').forEach(addGroup);
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){io.observe(el);});
+})();
 </script>
 </body>
 </html>

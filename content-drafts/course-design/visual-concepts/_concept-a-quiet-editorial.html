@@ -1,0 +1,461 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Concept A — Quiet Editorial — The Unmasked Life Week 1</title>
+<meta name="hz:slide-selector" content=".slide">
+<meta name="hz:canvas-width" content="1280">
+<meta name="hz:canvas-height" content="900">
+<link rel="stylesheet" href="https://use.typekit.net/vnl8ejd.css">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #111; }
+
+/* ── TOKENS ── */
+:root {
+  --bg: #0D0A08;
+  --cream: #F6F1E9;
+  --cd: rgba(246,241,233,0.60);
+  --cf: rgba(246,241,233,0.28);
+  --cff: rgba(246,241,233,0.14);
+  --lilac: #9668A4;
+  --rule: rgba(246,241,233,0.11);
+  --rule2: rgba(246,241,233,0.30);
+}
+
+/* ── SLIDE ── */
+.slide {
+  position: relative;
+  width: 1280px;
+  height: 900px;
+  background: var(--bg);
+  overflow: hidden;
+  display: block;
+  margin-bottom: 4px;
+  font-family: 'cormorant-garamond', serif;
+}
+.slide.mobile {
+  width: 390px;
+  height: 844px;
+}
+
+/* ── NAV ── */
+.nav {
+  position: absolute; top:0; left:0; right:0;
+  height: 48px;
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 0 48px;
+}
+.nav-logo { font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--cf); font-weight:400; }
+.nav-week  { font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--cff); }
+.nav-sup   { font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--cff); border-bottom:1px solid var(--cff); padding-bottom:1px; }
+
+/* ── PROGRESS ── */
+.prog {
+  position: absolute; top:48px; left:0; right:0;
+  height:26px;
+  border-bottom: 1px solid var(--rule);
+  display:flex; align-items:center;
+  padding: 0 48px; gap:8px;
+}
+.dot { width:5px;height:5px; border-radius:50%; border:1px solid rgba(246,241,233,.22); background:transparent; }
+.dot.on { background:var(--cd); border-color:var(--cd); }
+.dot.dn { background:rgba(246,241,233,.22); border-color:rgba(246,241,233,.22); }
+
+/* ── TYPE ── */
+.eyebrow { font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--cf); font-weight:400; margin-bottom:10px; }
+.h1 { font-weight:300; font-style:italic; font-size:70px; line-height:1.06; color:var(--cream); margin-bottom:18px; }
+.h2 { font-weight:300; font-style:italic; font-size:44px; line-height:1.1; color:var(--cream); margin-bottom:14px; }
+.lead { font-size:18px; line-height:1.78; color:var(--cd); margin-bottom:14px; }
+.body { font-size:16px; line-height:1.8; color:var(--cd); }
+.rule { width:100%; height:1px; background:var(--rule); margin:18px 0; }
+.pullq {
+  font-style:italic; font-weight:300; font-size:26px; line-height:1.45;
+  color:var(--cream); padding:18px 0;
+  border-top:1px solid var(--rule2); border-bottom:1px solid var(--rule2);
+  margin: 22px 0;
+}
+
+/* ── VIDEO ── */
+.vbox {
+  border: 1px solid var(--rule2);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+}
+.vplay { width:32px;height:32px; border:1px solid var(--cd); border-radius:50%; display:flex; align-items:center; justify-content:center; }
+.vlabel { font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--cf); }
+
+/* ── ROUTE OPTIONS ── */
+.route { display:flex; align-items:baseline; justify-content:space-between; padding:14px 0; border-bottom:1px solid var(--rule); }
+.route-name { font-size:18px; font-weight:400; color:var(--cd); }
+.route-sub { font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--cff); margin-top:2px; }
+.route-arr { font-size:13px; color:var(--cff); }
+.route.sel .route-name { color:var(--cream); }
+.route.sel .route-arr  { color:var(--lilac); }
+
+/* ── LABEL GRID ── */
+.lgrid { display:grid; grid-template-columns:repeat(4,1fr); margin-bottom:14px; }
+.litem {
+  padding:16px 12px; border:1px solid var(--rule);
+  font-size:16px; font-style:italic; color:var(--cd);
+  text-align:center; font-weight:400;
+}
+.litem.sel { border-color:rgba(150,104,164,.45); color:var(--cream); background:rgba(150,104,164,.03); }
+
+/* ── REVEAL ── */
+.rsec { padding:12px 0; border-bottom:1px solid var(--rule); }
+.rlabel { font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--cf); margin-bottom:6px; }
+.rtext  { font-size:15px; line-height:1.72; color:var(--cd); }
+
+/* ── TEXTAREA ── */
+.ta-label { font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--cf); margin-bottom:8px; }
+.ta-line  { width:100%; padding:8px 0; border-bottom:1px solid var(--rule2); font-family:'cormorant-garamond',serif; font-size:16px; font-style:italic; color:rgba(246,241,233,.18); }
+.ta-note  { font-size:10px; letter-spacing:.08em; color:rgba(246,241,233,.14); margin-top:5px; }
+
+/* ── SNAPSHOT ── */
+.snap { border-top:1px solid var(--rule2); border-bottom:1px solid var(--rule2); padding:22px 0; }
+.snap-title { font-size:9px; letter-spacing:.22em; text-transform:uppercase; color:var(--cf); margin-bottom:18px; }
+.sfield { padding:10px 0; border-bottom:1px solid var(--rule); }
+.sfield-label { font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:rgba(246,241,233,.28); margin-bottom:5px; }
+.sfield-val   { font-size:17px; font-style:italic; color:var(--cream); line-height:1.5; }
+.sactions { display:flex; gap:22px; margin-top:18px; }
+.sact { font-size:11px; letter-spacing:.14em; text-transform:uppercase; color:var(--cd); border-bottom:1px solid var(--cf); padding-bottom:2px; }
+
+/* ── SCENE LABEL ── */
+.sclabel { display:flex; align-items:center; gap:14px; margin-bottom:26px; }
+.scl-rule { flex:1; height:1px; background:var(--rule); }
+.scl-text { font-size:9px; letter-spacing:.2em; text-transform:uppercase; color:var(--cf); white-space:nowrap; }
+
+/* ── CTA BAR ── */
+.cta { position:absolute; bottom:0; left:0; right:0; height:54px; border-top:1px solid var(--rule); display:flex; align-items:center; justify-content:flex-end; padding:0 48px; }
+.cta-text { font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--cd); border-bottom:1px solid var(--cf); padding-bottom:2px; }
+
+/* ── MOBILE NAV ── */
+.m-nav { position:absolute; top:0; left:0; right:0; height:44px; border-bottom:1px solid var(--rule); display:flex; align-items:center; justify-content:space-between; padding:0 20px; }
+.m-prog { position:absolute; top:44px; left:0; right:0; height:22px; border-bottom:1px solid var(--rule); display:flex; align-items:center; padding:0 20px; gap:7px; }
+</style>
+</head>
+<body>
+
+<!-- ═══ SLIDE A1 — OPENING ═══ -->
+<div class="slide" data-canvas-width="1280" data-canvas-height="900">
+  <div class="nav">
+    <span class="nav-logo">Nuanced Co.</span>
+    <span class="nav-week">Week 1 of 4</span>
+    <span class="nav-sup">Need support</span>
+  </div>
+  <div class="prog">
+    <div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+  </div>
+
+  <!-- Left: video + intro -->
+  <div style="position:absolute; top:94px; left:48px; width:668px; bottom:54px; padding-top:38px; overflow:hidden;">
+    <div class="eyebrow">The Unmasked Life — Week 1 of 4</div>
+    <div class="h1">The Late Diagnosis<br>Disruption</div>
+    <div class="lead" style="max-width:540px;">A late ADHD diagnosis does not just add a label. It arrives inside a life already built, and it changes what you can see.</div>
+    <div class="rule" style="margin:14px 0;"></div>
+    <div class="vbox" style="width:580px; height:194px;">
+      <div class="vplay">
+        <svg width="10" height="12" viewBox="0 0 10 12"><path d="M1 1L9 6L1 11Z" stroke="rgba(246,241,233,0.55)" stroke-width="1" fill="none"/></svg>
+      </div>
+      <div class="vlabel">Week 1 Lesson Video · Direct to camera · 10–15 minutes · Chaptered</div>
+    </div>
+    <div style="margin-top:12px; display:flex; gap:18px;">
+      <span style="font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:rgba(246,241,233,.2);">Chapter 1 — What diagnosis does</span>
+      <span style="font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:rgba(246,241,233,.15);">Chapter 2 — The review</span>
+      <span style="font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:rgba(246,241,233,.15);">Chapter 3 — What's next</span>
+    </div>
+  </div>
+
+  <!-- Right: route choice -->
+  <div style="position:absolute; top:94px; left:716px; right:0; bottom:54px; border-left:1px solid var(--rule); padding:38px 48px 24px;">
+    <div class="eyebrow" style="margin-bottom:22px;">How would you like to work through this?</div>
+    <div class="route sel">
+      <div><div class="route-name">Full journey</div><div class="route-sub">All six scenes · about 45 minutes</div></div>
+      <div class="route-arr">→</div>
+    </div>
+    <div class="route">
+      <div><div class="route-name">Low-capacity route</div><div class="route-sub">One scene at a time · under 10 minutes</div></div>
+      <div class="route-arr">→</div>
+    </div>
+    <div class="route" style="border-bottom:none;">
+      <div><div class="route-name">Speed-read</div><div class="route-sub">Core concepts only · 5 minutes</div></div>
+      <div class="route-arr">→</div>
+    </div>
+
+    <!-- Resume -->
+    <div style="margin-top:26px; padding-top:18px; border-top:1px solid var(--rule);">
+      <div style="font-size:10px; letter-spacing:.18em; text-transform:uppercase; color:rgba(150,104,164,.55); margin-bottom:6px;">↩ Return to where you were</div>
+      <div class="body" style="font-size:13px; color:rgba(246,241,233,.24);">You were in Scene 3 — The Old Story</div>
+    </div>
+
+    <div style="position:absolute; bottom:56px; left:48px; right:48px;">
+      <div class="body" style="font-size:14px; font-style:italic; color:rgba(246,241,233,.28);">You do not need to finish this today.</div>
+      <div class="body" style="font-size:12px; color:rgba(246,241,233,.18); margin-top:4px;">There is no deadline.</div>
+    </div>
+  </div>
+
+  <div class="cta"><span class="cta-text">Continue to Something Changed</span></div>
+</div>
+
+
+<!-- ═══ SLIDE A2 — TEACHING: SOMETHING CHANGED ═══ -->
+<div class="slide" data-canvas-width="1280" data-canvas-height="900">
+  <div class="nav"><span class="nav-logo">Nuanced Co.</span><span class="nav-week">Week 1 of 4</span><span class="nav-sup">Need support</span></div>
+  <div class="prog"><div class="dot dn"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+
+  <!-- Centred editorial column -->
+  <div style="position:absolute; top:94px; left:50%; transform:translateX(-50%); width:680px; bottom:54px; padding-top:38px; overflow:hidden;">
+
+    <div class="sclabel"><div class="scl-rule"></div><div class="scl-text">Scene 2 — Something Changed</div><div class="scl-rule"></div></div>
+
+    <div class="h2">What a late diagnosis actually does</div>
+
+    <div class="body" style="margin-bottom:14px;">A late ADHD diagnosis is not simply receiving new information. It is information arriving inside a life that was already built around explanations that were wrong, incomplete, or missing entirely.</div>
+    <div class="body" style="margin-bottom:16px;">When that information arrives, it does not stay in the present. It travels backwards. Across your life. Through your past. Into every place where something did not make sense.</div>
+
+    <!-- Minimal SVG timeline -->
+    <svg width="680" height="58" viewBox="0 0 680 58" style="display:block; margin-bottom:8px;">
+      <line x1="0" y1="28" x2="680" y2="28" stroke="rgba(246,241,233,0.12)" stroke-width="1"/>
+      <circle cx="60"  cy="28" r="3" fill="none" stroke="rgba(246,241,233,0.25)" stroke-width="1"/>
+      <circle cx="190" cy="28" r="3" fill="none" stroke="rgba(246,241,233,0.25)" stroke-width="1"/>
+      <circle cx="320" cy="28" r="3" fill="none" stroke="rgba(246,241,233,0.25)" stroke-width="1"/>
+      <circle cx="460" cy="28" r="4" fill="rgba(150,104,164,0.65)" stroke="rgba(150,104,164,0.85)" stroke-width="1"/>
+      <circle cx="580" cy="28" r="3" fill="none" stroke="rgba(246,241,233,0.25)" stroke-width="1"/>
+      <path d="M450 16 L64 16" stroke="rgba(150,104,164,0.18)" stroke-width="0.5" stroke-dasharray="3,3"/>
+      <path d="M68 12 L60 16 L68 20" fill="none" stroke="rgba(150,104,164,0.25)" stroke-width="0.5"/>
+      <text x="60"  y="52" text-anchor="middle" font-family="cormorant-garamond,serif" font-size="9" fill="rgba(246,241,233,0.28)" letter-spacing="0.1em">School</text>
+      <text x="190" y="52" text-anchor="middle" font-family="cormorant-garamond,serif" font-size="9" fill="rgba(246,241,233,0.28)" letter-spacing="0.1em">Work</text>
+      <text x="320" y="52" text-anchor="middle" font-family="cormorant-garamond,serif" font-size="9" fill="rgba(246,241,233,0.28)" letter-spacing="0.1em">Relationships</text>
+      <text x="460" y="52" text-anchor="middle" font-family="cormorant-garamond,serif" font-size="9" fill="rgba(150,104,164,0.75)" letter-spacing="0.1em">Diagnosis</text>
+      <text x="580" y="52" text-anchor="middle" font-family="cormorant-garamond,serif" font-size="9" fill="rgba(246,241,233,0.28)" letter-spacing="0.1em">Now</text>
+    </svg>
+
+    <div class="pullq">"The disruption that follows — to identity, to self-understanding, to the story you tell about yourself — is a recognised part of what late diagnosis involves."</div>
+
+    <div class="ta-label">What feels different now that you know?</div>
+    <div class="ta-line">Something I am seeing differently is...</div>
+    <div class="ta-note">Auto-saved · responses stay in this browser only · → Saves to your Snapshot</div>
+  </div>
+
+  <div class="cta"><span class="cta-text">Continue to The Old Story</span></div>
+</div>
+
+
+<!-- ═══ SLIDE A3 — OLD STORY INTERACTION ═══ -->
+<div class="slide" data-canvas-width="1280" data-canvas-height="900">
+  <div class="nav"><span class="nav-logo">Nuanced Co.</span><span class="nav-week">Week 1 of 4</span><span class="nav-sup">Need support</span></div>
+  <div class="prog"><div class="dot dn"></div><div class="dot dn"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div></div>
+
+  <div style="position:absolute; top:94px; left:48px; right:48px; bottom:54px; padding-top:30px; display:flex; gap:0; overflow:hidden;">
+
+    <!-- Left: label selection -->
+    <div style="flex:1; padding-right:52px; overflow:hidden;">
+      <div class="sclabel" style="margin-bottom:18px;"><div class="scl-rule"></div><div class="scl-text">Scene 3 — The Old Story</div><div class="scl-rule"></div></div>
+      <div class="h2" style="font-size:36px; margin-bottom:10px;">The labels that didn't fit</div>
+      <div class="body" style="font-size:15px; margin-bottom:18px; max-width:440px;">Many adults received labels before their diagnosis arrived. Which of these sound familiar?</div>
+
+      <div class="lgrid">
+        <div class="litem sel">lazy</div><div class="litem sel">inconsistent</div>
+        <div class="litem">careless</div><div class="litem sel">too sensitive</div>
+        <div class="litem">not trying</div><div class="litem sel">difficult</div>
+        <div class="litem">disorganised</div><div class="litem">wasted potential</div>
+      </div>
+
+      <div style="font-size:11px; letter-spacing:.08em; color:var(--cff); margin-bottom:18px;">4 selected · select any that feel familiar</div>
+
+      <div class="eyebrow" style="margin-bottom:10px;">Choose one to look at closely</div>
+      <div style="display:flex; flex-wrap:wrap; gap:5px;">
+        <span style="border:1px solid rgba(150,104,164,.55); color:var(--lilac); font-size:14px; font-style:italic; padding:7px 14px; min-height:38px; display:flex; align-items:center;">lazy</span>
+        <span style="border:1px solid var(--rule2); color:var(--cd); font-size:14px; font-style:italic; padding:7px 14px; min-height:38px; display:flex; align-items:center;">inconsistent</span>
+        <span style="border:1px solid var(--rule2); color:var(--cd); font-size:14px; font-style:italic; padding:7px 14px; min-height:38px; display:flex; align-items:center;">too sensitive</span>
+        <span style="border:1px solid var(--rule2); color:var(--cd); font-size:14px; font-style:italic; padding:7px 14px; min-height:38px; display:flex; align-items:center;">difficult</span>
+      </div>
+    </div>
+
+    <!-- Right: reveal panel -->
+    <div style="width:410px; border-left:1px solid var(--rule); padding-left:48px; overflow:hidden;">
+      <div style="font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:rgba(150,104,164,.65); margin-bottom:18px;">You chose: <em style="font-style:italic; text-transform:none; letter-spacing:0;">lazy</em></div>
+
+      <div class="rsec">
+        <div class="rlabel">What people may have seen</div>
+        <div class="rtext">Tasks left unfinished. Starting things but not completing them. Difficulty getting going even on things that mattered.</div>
+      </div>
+      <div class="rsec">
+        <div class="rlabel">What may have been happening underneath</div>
+        <div class="rtext">Task initiation — getting started — is a specific executive function that works differently in ADHD brains. What looked like not wanting to do something may have been a neurological difficulty starting it.</div>
+      </div>
+      <div class="rsec" style="border-bottom:none;">
+        <div class="rlabel">Support that may have helped</div>
+        <div class="rtext">External structure, a starting prompt, or understanding that the difficulty was real — not a choice.</div>
+      </div>
+
+      <div style="margin-top:18px;">
+        <div class="ta-label">How do you understand this label now?</div>
+        <div class="ta-line">What may have been happening was...</div>
+        <div class="ta-note">→ Saves to Snapshot Field 2</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta"><span class="cta-text">Continue to How the Brain Manages Life</span></div>
+</div>
+
+
+<!-- ═══ SLIDE A4 — MY WEEK 1 SNAPSHOT ═══ -->
+<div class="slide" data-canvas-width="1280" data-canvas-height="900">
+  <div class="nav"><span class="nav-logo">Nuanced Co.</span><span class="nav-week">Week 1 of 4</span><span class="nav-sup">Need support</span></div>
+  <div class="prog"><div class="dot dn"></div><div class="dot dn"></div><div class="dot dn"></div><div class="dot dn"></div><div class="dot dn"></div><div class="dot on"></div></div>
+
+  <div style="position:absolute; top:94px; left:50%; transform:translateX(-50%); width:680px; bottom:54px; padding-top:36px; overflow:hidden;">
+
+    <div class="sclabel" style="margin-bottom:28px;"><div class="scl-rule"></div><div class="scl-text">My Week 1 Snapshot</div><div class="scl-rule"></div></div>
+
+    <div class="snap">
+      <div class="snap-title">The Unmasked Life™ — Week 1 · Your responses, assembled</div>
+
+      <div class="sfield">
+        <div class="sfield-label">1. One old label I am reconsidering</div>
+        <div class="sfield-val">lazy</div>
+      </div>
+      <div class="sfield">
+        <div class="sfield-label">2. What may have been happening underneath</div>
+        <div class="sfield-val">Difficulty with task initiation — a specific executive function that works differently in ADHD brains.</div>
+      </div>
+      <div class="sfield">
+        <div class="sfield-label">3. Support that may have helped then</div>
+        <div class="sfield-val">External structure, a starting prompt, understanding the difficulty was real.</div>
+      </div>
+      <div class="sfield">
+        <div class="sfield-label">4. Support I may need now</div>
+        <div class="sfield-val">Task initiation support, time awareness, external structure.</div>
+      </div>
+      <div class="sfield" style="border-bottom:none; padding-bottom:0;">
+        <div class="sfield-label">5. One sentence I want to keep</div>
+        <div class="ta-line" style="margin-top:4px;">Write one sentence you want to carry forward from this week...</div>
+      </div>
+    </div>
+
+    <div class="sactions">
+      <span class="sact">Save</span>
+      <span class="sact">Copy to clipboard</span>
+      <span class="sact">Print</span>
+    </div>
+
+    <!-- Milestone -->
+    <div style="margin-top:24px; display:flex; align-items:flex-start; gap:14px; padding-top:18px; border-top:1px solid var(--rule);">
+      <div style="width:15px; height:15px; border:1px solid rgba(246,241,233,.28); border-radius:50%; flex-shrink:0; margin-top:3px;"></div>
+      <div class="body" style="font-size:15px; font-style:italic; color:var(--cd); line-height:1.6;">I have identified at least one pattern from my past that I am now seeing differently with my ADHD understanding.</div>
+    </div>
+  </div>
+
+  <div class="cta"><span class="cta-text" style="color:rgba(246,241,233,.32);">Week 1 complete</span></div>
+</div>
+
+
+<!-- ═══ SLIDE A5 — MOBILE OPENING ═══ -->
+<div class="slide mobile" data-canvas-width="390" data-canvas-height="844">
+  <div class="m-nav">
+    <span class="nav-logo">Nuanced Co.</span>
+    <span class="nav-week">Week 1 of 4</span>
+    <span class="nav-sup">Support</span>
+  </div>
+  <div class="m-prog">
+    <div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+  </div>
+
+  <div style="position:absolute; top:82px; left:0; right:0; bottom:52px; padding:28px 24px 0; overflow:hidden;">
+    <div class="eyebrow" style="margin-bottom:8px;">The Unmasked Life — Week 1</div>
+    <div class="h1" style="font-size:50px; line-height:1.04; margin-bottom:14px;">The Late<br>Diagnosis<br>Disruption</div>
+    <div class="body" style="font-size:16px; margin-bottom:16px; color:rgba(246,241,233,.55);">A late ADHD diagnosis does not just add a label. It arrives inside a life already built.</div>
+    <div class="rule" style="margin:12px 0;"></div>
+
+    <div class="vbox" style="height:140px; margin-bottom:18px;">
+      <div class="vplay">
+        <svg width="10" height="12" viewBox="0 0 10 12"><path d="M1 1L9 6L1 11Z" stroke="rgba(246,241,233,0.55)" stroke-width="1" fill="none"/></svg>
+      </div>
+      <div class="vlabel">Week 1 Lesson Video · 10–15 min</div>
+    </div>
+
+    <div class="eyebrow" style="margin-bottom:14px;">How would you like to work through this?</div>
+
+    <div class="route sel" style="padding:12px 0;">
+      <div><div class="route-name" style="font-size:17px;">Full journey</div><div class="route-sub" style="font-size:10px;">All six scenes · 45 min</div></div>
+      <div class="route-arr">→</div>
+    </div>
+    <div class="route" style="padding:12px 0;">
+      <div><div class="route-name" style="font-size:17px;">Low-capacity route</div><div class="route-sub" style="font-size:10px;">One scene at a time</div></div>
+      <div class="route-arr">→</div>
+    </div>
+    <div class="route" style="padding:12px 0; border-bottom:none;">
+      <div><div class="route-name" style="font-size:17px;">Speed-read</div><div class="route-sub" style="font-size:10px;">Core concepts only · 5 min</div></div>
+      <div class="route-arr">→</div>
+    </div>
+
+    <div style="margin-top:16px; font-size:13px; font-style:italic; color:rgba(246,241,233,.26);">You do not need to finish this today.</div>
+  </div>
+
+  <div class="cta" style="justify-content:center; padding:0 24px;">
+    <span class="cta-text">Continue to Something Changed</span>
+  </div>
+</div>
+
+
+<!-- ═══ SLIDE A6 — MOBILE OLD STORY ═══ -->
+<div class="slide mobile" data-canvas-width="390" data-canvas-height="844">
+  <div class="m-nav">
+    <span class="nav-logo">Nuanced Co.</span>
+    <span class="nav-week">Week 1 of 4</span>
+    <span class="nav-sup">Support</span>
+  </div>
+  <div class="m-prog">
+    <div class="dot dn"></div><div class="dot dn"></div><div class="dot on"></div><div class="dot"></div><div class="dot"></div><div class="dot"></div>
+  </div>
+
+  <div style="position:absolute; top:82px; left:0; right:0; bottom:52px; padding:22px 24px 0; overflow:hidden;">
+    <div class="sclabel" style="margin-bottom:14px;"><div class="scl-rule"></div><div class="scl-text">Scene 3 — The Old Story</div><div class="scl-rule"></div></div>
+
+    <div class="h2" style="font-size:30px; margin-bottom:10px;">The labels that didn't fit</div>
+    <div class="body" style="font-size:14px; margin-bottom:14px; color:rgba(246,241,233,.5);">Which of these sound familiar?</div>
+
+    <!-- 2-col mobile grid -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; margin-bottom:10px;">
+      <div class="litem sel" style="font-size:15px; padding:16px 10px; min-height:52px;">lazy</div>
+      <div class="litem sel" style="font-size:15px; padding:16px 10px; min-height:52px;">inconsistent</div>
+      <div class="litem" style="font-size:15px; padding:16px 10px; min-height:52px;">careless</div>
+      <div class="litem sel" style="font-size:15px; padding:16px 10px; min-height:52px;">too sensitive</div>
+      <div class="litem" style="font-size:15px; padding:16px 10px; min-height:52px;">not trying</div>
+      <div class="litem sel" style="font-size:15px; padding:16px 10px; min-height:52px;">difficult</div>
+      <div class="litem" style="font-size:15px; padding:16px 10px; min-height:52px;">disorganised</div>
+      <div class="litem" style="font-size:15px; padding:16px 10px; min-height:52px;">wasted potential</div>
+    </div>
+
+    <div style="font-size:11px; color:var(--cff); margin-bottom:14px; letter-spacing:.08em;">4 selected</div>
+
+    <div class="eyebrow" style="margin-bottom:8px;">Choose one to look at closely</div>
+    <div style="display:flex; flex-wrap:wrap; gap:5px; margin-bottom:16px;">
+      <span style="border:1px solid rgba(150,104,164,.55); color:var(--lilac); font-size:14px; font-style:italic; padding:10px 14px; min-height:44px; display:flex; align-items:center;">lazy</span>
+      <span style="border:1px solid var(--rule2); color:var(--cd); font-size:14px; font-style:italic; padding:10px 14px; min-height:44px; display:flex; align-items:center;">inconsistent</span>
+      <span style="border:1px solid var(--rule2); color:var(--cd); font-size:14px; font-style:italic; padding:10px 14px; min-height:44px; display:flex; align-items:center;">too sensitive</span>
+      <span style="border:1px solid var(--rule2); color:var(--cd); font-size:14px; font-style:italic; padding:10px 14px; min-height:44px; display:flex; align-items:center;">difficult</span>
+    </div>
+
+    <div class="rsec">
+      <div class="rlabel">What may have been happening underneath</div>
+      <div class="rtext" style="font-size:14px;">Task initiation — getting started — is a specific executive function that works differently in ADHD brains.</div>
+    </div>
+    <div style="margin-top:14px;">
+      <div class="ta-label">How do you understand this label now?</div>
+      <div class="ta-line">What may have been happening was...</div>
+      <div class="ta-note">→ Saves to your Snapshot</div>
+    </div>
+  </div>
+
+  <div class="cta" style="justify-content:center; padding:0 24px;">
+    <span class="cta-text">Save and continue</span>
+  </div>
+</div>
+
+</body>
+</html>

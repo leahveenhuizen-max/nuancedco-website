@@ -47,10 +47,10 @@
     .profile { text-align: center; margin-bottom: 2.4rem; position: relative; z-index: 10; }
     .avatar {
       width: 88px; height: 88px; border-radius: 50%;
-      background: linear-gradient(135deg, var(--purple) 0%, var(--gold) 100%);
+      background: var(--purple);
       margin: 0 auto 1rem;
       display: flex; align-items: center; justify-content: center;
-      font-family: var(--serif); font-size: 2.2rem; color: var(--cream); font-weight: 300;
+      font-family: var(--serif); font-size: 2.2rem; color:#fff; font-weight: 300;
       border: 2px solid rgba(196,150,62,.3);
     }
     .profile-name {
@@ -102,7 +102,7 @@
       border: 1px solid rgba(246,241,233,.1);
       border-radius: 4px;
       padding: 1rem 1.2rem;
-      transition: background .2s var(--ease), border-color .2s, transform .15s var(--ease);
+      transition:background .1s var(--ease), border-color .1s cubic-bezier(0.22,1,0.36,1), transform .1s var(--ease);
       cursor: pointer;
       text-decoration: none;
     }
@@ -166,7 +166,7 @@
       width: 44px; height: 44px; border-radius: 50%;
       border: 1px solid rgba(246,241,233,.15);
       display: flex; align-items: center; justify-content: center;
-      transition: border-color .2s, background .2s;
+      transition:border-color .1s cubic-bezier(0.22,1,0.36,1), background .1s cubic-bezier(0.22,1,0.36,1);
       font-size: 1rem;
     }
     .social-btn:hover { border-color: var(--gold); background: rgba(196,150,62,.1); }
@@ -181,7 +181,8 @@
       position: relative; z-index: 10;
     }
     .ft a { color: var(--gold); opacity: .6; }
-  </style>
+  @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rv,.rvl,.rvr,.ncrv{opacity:1!important;transform:none!important}}
+</style>
 </head>
 <body>
 <canvas id="grain" aria-hidden="true"></canvas>
@@ -189,84 +190,61 @@
 <div class="profile">
   <div class="avatar">L</div>
   <div class="profile-name">Leah Veenhuizen</div>
-  <div class="profile-title">RN &middot; AuDHD &middot; Nuanced Co.</div>
-  <p class="profile-bio">Neurodivergent consultancy for ADHD and AuDHD adults. Real support. No generic advice.</p>
+  <div class="profile-title">Registered Nurse &middot; AuDHD &middot; Nuanced Co.</div>
+  <p class="profile-bio">Research-informed ADHD education for late-diagnosed adults. Education and reflection only, not therapy or clinical care.</p>
 </div>
 
 <!-- START HERE -->
 <div class="section-label">Start here</div>
 <div class="links">
 
-  <a href="https://nuancedco.com.au/quiz" class="link-card">
-    <div class="lc-icon gold">🧠</div>
+  <a href="https://stan.store/NuancedCo/p/the-late-diagnosis-life-review" target="_blank" rel="noopener" class="link-card">
+    <div class="lc-icon" style="background:rgba(196,150,62,.12);color:#C4963E;font-size:.62rem;font-weight:700;">PDF</div>
     <div class="lc-content">
-      <div class="lc-title">Take the free quiz</div>
-      <div class="lc-sub">Find out exactly how I can support you</div>
+      <div class="lc-title">The Late Diagnosis Life Review</div>
+      <div class="lc-sub">Guided PDF for the "was that ADHD too?" stage. Instant download.</div>
     </div>
-    <span class="lc-badge free">Free</span>
+    <span class="lc-badge">$19 AUD</span>
   </a>
 
-  <a href="mailto:hello@nuancedco.com.au?subject=Discovery Call Request" class="link-card">
-    <div class="lc-icon purple">💬</div>
+  <a href="https://nuancedco.com.au/the-unmasked-life" class="link-card">
+    <div class="lc-icon lilac" style="font-size:.62rem;font-weight:700;">TUL</div>
     <div class="lc-content">
-      <div class="lc-title">Book a free discovery call</div>
-      <div class="lc-sub">20 minutes, no commitment</div>
+      <div class="lc-title">The Unmasked Life course</div>
+      <div class="lc-sub">Four-week ADHD education for late-diagnosed adults. Founding beta in preparation.</div>
+    </div>
+    <span class="lc-badge soon">Waitlist</span>
+  </a>
+
+  <a href="https://nuancedco.com.au/support" class="link-card">
+    <div class="lc-icon sage" style="font-size:.62rem;font-weight:700;">AU</div>
+    <div class="lc-content">
+      <div class="lc-title">Support and crisis directory</div>
+      <div class="lc-sub">Australian support lines and neurodivergent-affirming services</div>
     </div>
     <span class="lc-badge free">Free</span>
   </a>
 
 </div>
 
-<!-- WORK WITH ME -->
-<div class="section-label">Work with me</div>
+<!-- WORK WITH LEAH -->
+<div class="section-label">Work with Leah</div>
 <div class="links">
 
-  <a href="https://nuancedco.com.au/consult" class="link-card">
-    <div class="lc-icon purple">🌿</div>
+  <a href="https://nuancedco.com.au/book" class="link-card">
+    <div class="lc-icon purple" style="font-size:.62rem;font-weight:700;">1:1</div>
     <div class="lc-content">
-      <div class="lc-title">1:1 Consultancy</div>
-      <div class="lc-sub">Individual sessions for ADHD and AuDHD adults</div>
+      <div class="lc-title">Book an educational consultation</div>
+      <div class="lc-sub">Individual sessions for ADHD and AuDHD adults. Not therapy.</div>
     </div>
   </a>
 
   <a href="https://nuancedco.com.au/workplace" class="link-card">
-    <div class="lc-icon sage">🏢</div>
+    <div class="lc-icon dark" style="font-size:.62rem;font-weight:700;">ORG</div>
     <div class="lc-content">
-      <div class="lc-title">Workplace Consulting</div>
-      <div class="lc-sub">Neurodivergent inclusion for organisations</div>
+      <div class="lc-title">Workplace consulting</div>
+      <div class="lc-sub">Neurodivergent inclusion for Australian organisations</div>
     </div>
-  </a>
-
-  <a href="https://nuancedco.com.au/pricing" class="link-card">
-    <div class="lc-icon dark">💰</div>
-    <div class="lc-content">
-      <div class="lc-title">Pricing</div>
-      <div class="lc-sub">Sessions, resources, and packages</div>
-    </div>
-  </a>
-
-</div>
-
-<!-- RESOURCES -->
-<div class="section-label">Resources</div>
-<div class="links">
-
-  <a href="https://nuancedco.com.au/courses" class="link-card">
-    <div class="lc-icon lilac">📚</div>
-    <div class="lc-content">
-      <div class="lc-title">Understanding Who You Are After Your Diagnosis</div>
-      <div class="lc-sub">Self-paced course, join the waitlist</div>
-    </div>
-    <span class="lc-badge soon">Soon</span>
-  </a>
-
-  <a href="https://stan.store/NuancedCo/p/the-late-diagnosis-life-review" target="_blank" rel="noopener" class="link-card">
-    <div class="lc-icon" style="background:rgba(196,150,62,.12);color:#C4963E;">📄</div>
-    <div class="lc-content">
-      <div class="lc-title">The Late Diagnosis Life Review</div>
-      <div class="lc-sub">PDF guide — instant download</div>
-    </div>
-    <span class="lc-badge">$19 AUD</span>
   </a>
 
 </div>
@@ -276,17 +254,25 @@
 <div class="links">
 
   <a href="https://nuancedco.com.au/about" class="link-card">
-    <div class="lc-icon gold">👤</div>
+    <div class="lc-icon gold" style="font-size:.62rem;font-weight:700;">LV</div>
     <div class="lc-content">
       <div class="lc-title">About Leah</div>
-      <div class="lc-sub">RN, AuDHD, and the story behind Nuanced Co.</div>
+      <div class="lc-sub">Neurodivergent consultant, registered nurse, mental health educator</div>
+    </div>
+  </a>
+
+  <a href="https://nuancedco.com.au/evidence" class="link-card">
+    <div class="lc-icon sage" style="font-size:.62rem;font-weight:700;">EV</div>
+    <div class="lc-content">
+      <div class="lc-title">Our evidence approach</div>
+      <div class="lc-sub">What research-informed means at Nuanced Co.</div>
     </div>
   </a>
 
   <a href="https://nuancedco.com.au/media" class="link-card">
-    <div class="lc-icon sage">🎤</div>
+    <div class="lc-icon purple" style="font-size:.62rem;font-weight:700;">MIC</div>
     <div class="lc-content">
-      <div class="lc-title">Speaking and Media</div>
+      <div class="lc-title">Speaking and media</div>
       <div class="lc-sub">Keynote topics and press enquiries</div>
     </div>
   </a>
@@ -315,7 +301,28 @@
 </div>
 
 <script>
-const gc=document.getElementById('grain'),gx=gc.getContext('2d');let gW,gH;function rg(){gW=gc.width=window.innerWidth;gH=gc.height=window.innerHeight;}rg();window.addEventListener('resize',rg);function drawGrain(){const d=gx.createImageData(gW,gH);for(let i=0;i<d.data.length;i+=4){const v=Math.random()*255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=15;}gx.putImageData(d,0,0);}setInterval(drawGrain,80);drawGrain();
+const gc=document.getElementById('grain'),gx=gc.getContext('2d');let gW,gH;function rg(){gW=gc.width=window.innerWidth;gH=gc.height=window.innerHeight;if(typeof drawGrain==='function')drawGrain();}rg();window.addEventListener('resize',rg);function drawGrain(){const d=gx.createImageData(gW,gH);for(let i=0;i<d.data.length;i+=4){const v=Math.random()*255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=15;}gx.putImageData(d,0,0);}drawGrain();
+</script>
+<script>
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
+  var s=document.createElement('style');
+  s.textContent='.ncrv{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(0.22,1,0.36,1),transform .8s cubic-bezier(0.22,1,0.36,1)}.ncrv.in{opacity:1;transform:none}';
+  document.head.appendChild(s);
+  var els=[];
+  function addGroup(grid){if(grid.dataset.ncrv)return;grid.dataset.ncrv='1';Array.prototype.forEach.call(grid.children,function(c,i){c.classList.add('ncrv');c.style.transitionDelay=((i%8)*0.15)+'s';els.push(c);});}
+  document.querySelectorAll('section,.card').forEach(function(sec){
+    if(sec.closest('nav'))return;
+    var grid=sec.querySelector('[class*="grid"],[class*="cards"]');
+    if(grid&&grid.children.length>1&&grid.children.length<13){addGroup(grid);}
+    sec.classList.add('ncrv');els.push(sec);
+  });
+  document.querySelectorAll('.sprint-grid').forEach(addGroup);
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){io.observe(el);});
+})();
 </script>
 </body>
 </html>

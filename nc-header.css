@@ -1,0 +1,7 @@
+/* ============================================================
+   nc-header.css — Nuanced Co. shared header wordmark
+   Single source of truth for the stacked nav wordmark.
+   Do not restyle .nav-logo per page; edit here instead.
+   ============================================================ */
+.nav-logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:1rem;font-weight:400;letter-spacing:.25em;color:#F6F1E9;text-transform:uppercase;line-height:1;display:flex;flex-direction:column;gap:3px;text-decoration:none;}
+.nav-logo em,.nav-logo span{font-style:normal;font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-size:.48rem;letter-spacing:.3em;color:#C4963E;opacity:.8;}

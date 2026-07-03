@@ -1,0 +1,1170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="robots" content="noindex, nofollow">
+<title>Week 1 — The Late Diagnosis Disruption | The Unmasked Life™ | Nuanced Co. (Production Candidate)</title>
+<meta name="description" content="Week 1 of The Unmasked Life™ course — production candidate. Research-informed education for late-diagnosed ADHD adults.">
+<link rel="preconnect" href="https://use.typekit.net">
+<link rel="stylesheet" href="https://use.typekit.net/vnl8ejd.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+  --cream:#F6F1E9; --cream-d:#EDE6D8; --ink:#2A1F1A; --ink-mid:#4A3830; --ink-deep:#1F1712;
+  --gold:#C4963E; --purple:#6B4570; --sage:#7A8C6E; --rose:#C07A8A; --lilac:#9668A4;
+  --purple-dim:rgba(107,69,112,.18); --purple-border:rgba(107,69,112,.4);
+  --rose-dim:rgba(192,122,138,.12); --rose-border:rgba(192,122,138,.32);
+  --sage-dim:rgba(122,140,110,.12); --sage-border:rgba(122,140,110,.32);
+  --gold-dim:rgba(196,150,62,.12); --gold-border:rgba(196,150,62,.38);
+  --cd:rgba(246,241,233,.72); --cm:rgba(246,241,233,.5); --cf:rgba(246,241,233,.3);
+  --rule:rgba(246,241,233,.1); --rule2:rgba(246,241,233,.18);
+  --serif:'cormorant-garamond', Georgia, serif;
+  --body:'atkinson-hyperlegible-next', system-ui, sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--ink-deep);color:var(--cream);font-family:var(--body);line-height:1.7;overflow-x:hidden;min-height:100vh;}
+a{color:inherit;text-decoration:none;} img,svg{display:block;max-width:100%;} button{cursor:pointer;font-family:var(--body);border:none;background:none;color:inherit;}
+textarea,input{font-family:var(--body);}
+:focus-visible{outline:2px solid var(--lilac);outline-offset:3px;border-radius:3px;}
+body.reduce-motion *{transition:none!important;animation:none!important;}
+
+/* NAV */
+#nav{position:sticky;top:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.6rem;background:var(--ink);box-shadow:0 2px 24px rgba(0,0,0,.3);}
+.nav-logo{font-family:var(--serif);font-size:.85rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);}
+.nav-mid{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--cf);}
+.nav-support{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:var(--rose);border:1px solid var(--rose-border);padding:.3rem .8rem;border-radius:20px;}
+
+/* JOURNEY TRACK */
+.journey-track{display:flex;align-items:center;gap:0;padding:.7rem 1.6rem;background:var(--ink);border-bottom:1px solid var(--rule);overflow-x:auto;}
+.jt-node-wrap{display:flex;align-items:center;flex:0 0 auto;}
+@media(min-width:980px){.jt-node-wrap{flex:1;min-width:0;}}
+.jt-node{width:9px;height:9px;border-radius:50%;border:1px solid var(--rule2);background:transparent;flex-shrink:0;transition:background .2s,border-color .2s,width .2s,height .2s;}
+.jt-node.done{background:var(--sage);border-color:var(--sage);}
+.jt-node.active{background:var(--lilac);border-color:var(--lilac);width:12px;height:12px;}
+.jt-line{flex:0 0 24px;height:1px;background:var(--rule2);}
+@media(min-width:980px){.jt-line{flex:1;min-width:12px;}}
+.jt-label{font-size:.5rem;letter-spacing:.08em;text-transform:uppercase;color:var(--cf);white-space:nowrap;margin:0 .5rem;cursor:pointer;background:none;border:none;padding:0;}
+.jt-label.active{color:var(--lilac);font-weight:700;}
+.jt-label.done{color:var(--sage);}
+@media(max-width:600px){
+  .journey-track{padding:.6rem 1rem;}
+  .jt-label{display:none;}
+  .jt-label.active{display:inline;}
+  .jt-line{flex:0 0 10px;}
+}
+
+/* SNAPSHOT INDICATOR (borrowed from Concept C — lightweight only) */
+#snap-indicator{position:fixed;top:96px;right:1.4rem;z-index:850;display:flex;align-items:center;gap:.5rem;background:var(--gold-dim);border:1px solid var(--gold-border);border-radius:24px;padding:.4rem .9rem .4rem .6rem;font-size:.62rem;letter-spacing:.06em;color:var(--cream);cursor:pointer;transition:transform .15s;}
+#snap-indicator:hover{transform:translateY(-1px);}
+#snap-indicator .si-dot{width:8px;height:8px;border-radius:50%;background:var(--gold);}
+#snap-indicator .si-count{font-weight:700;color:var(--gold);}
+@media(max-width:760px){
+  #snap-indicator{top:auto;bottom:14px;right:14px;left:14px;justify-content:center;border-radius:14px;padding:.65rem 1rem;box-shadow:0 -8px 24px -8px rgba(0,0,0,.5);}
+  .scene{padding:2.2rem 0 6.5rem;}
+  .scene-inner{padding:0 1.2rem;}
+  .scene-title{margin-bottom:1rem;}
+  .scene-lede{margin-bottom:2rem;}
+  .section-divider{margin:2rem 0 1.5rem;}
+  .reflect-card,.reveal-panel,.companion-card,.catchup-panel{padding:1rem;}
+  .snapshot-doc-head,.snapshot-doc-body{padding-left:1.2rem;padding-right:1.2rem;}
+}
+
+/* SNAPSHOT SHEET (slide-up panel, not a permanent side panel) */
+#snap-sheet-backdrop{position:fixed;inset:0;background:rgba(15,12,10,.7);z-index:1100;display:none;}
+#snap-sheet-backdrop.open{display:block;}
+#snap-sheet{position:fixed;right:0;top:0;bottom:0;width:min(420px,92vw);background:var(--ink);border-left:1px solid var(--gold-border);z-index:1101;transform:translateX(100%);transition:transform .3s var(--ease);overflow-y:auto;padding:1.6rem;}
+#snap-sheet.open{transform:translateX(0);}
+@media(max-width:760px){
+  #snap-sheet{right:0;left:0;top:auto;width:auto;bottom:0;height:85vh;border-left:none;border-top:1px solid var(--gold-border);border-radius:18px 18px 0 0;transform:translateY(100%);}
+  #snap-sheet.open{transform:translateY(0);}
+}
+.snap-close{display:flex;justify-content:flex-end;}
+.snap-close button{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cf);padding:.4rem;}
+.snap-field{border:1px solid var(--rule2);border-radius:10px;padding:.9rem 1rem;margin-bottom:.8rem;}
+.snap-field-label{font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.4rem;}
+.snap-field-value{font-family:var(--serif);font-size:1rem;color:var(--cream);line-height:1.5;font-style:italic;}
+.snap-field-value.empty{color:var(--cf);font-style:italic;font-family:var(--body);font-size:.82rem;}
+.snap-field-edit{display:none;width:100%;background:var(--ink-deep);border:1px solid var(--rule2);border-radius:8px;color:var(--cream);padding:.6rem;font-size:.85rem;margin-top:.5rem;min-height:60px;}
+.snap-field-edit.open{display:block;}
+.snap-edit-btn{font-size:.55rem;letter-spacing:.08em;text-transform:uppercase;color:var(--lilac);margin-top:.4rem;}
+.snap-actions{display:flex;gap:.6rem;margin-top:1rem;flex-wrap:wrap;}
+.snap-actions button{flex:1;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;padding:.6rem;border:1px solid var(--rule2);border-radius:8px;color:var(--cd);}
+.snap-actions button.primary{background:var(--gold);color:var(--ink);border-color:var(--gold);}
+
+/* SCENES */
+.scene{display:none;min-height:calc(100vh - 110px);padding:3.2rem 0 4.6rem;position:relative;background:var(--ink-deep);transition:background .4s var(--ease);}
+.scene.active{display:block;}
+.scene-inner{max-width:1100px;margin:0 auto;padding:0 1.6rem;position:relative;z-index:1;}
+.scene-eyebrow{font-size:.55rem;letter-spacing:.26em;text-transform:uppercase;color:var(--lilac);margin-bottom:.7rem;display:inline-flex;align-items:center;gap:.6rem;}
+.scene-eyebrow::before{content:'';display:inline-block;width:18px;height:1px;background:var(--lilac);opacity:.6;}
+.scene-title{font-family:var(--serif);font-weight:300;font-size:clamp(1.8rem,4vw,2.6rem);color:#fff;line-height:1.15;margin-bottom:.9rem;}
+.scene-lede{font-size:1rem;color:var(--cd);max-width:640px;margin-bottom:1.8rem;}
+.scene-note{font-family:var(--serif);font-style:italic;font-size:.95rem;color:var(--cf);margin-bottom:1.4rem;}
+
+/* SCENE ATMOSPHERES — distinct background wash per scene, palette vars only */
+#scene-arrive{background:radial-gradient(ellipse 1200px 700px at 18% -8%,rgba(196,150,62,.07),transparent 60%),radial-gradient(ellipse 900px 600px at 100% 100%,rgba(107,69,112,.1),transparent 65%),var(--ink-deep);}
+#scene-changed{background:linear-gradient(165deg,rgba(150,104,164,.06),transparent 45%),var(--ink-deep);}
+#scene-oldstory{background:radial-gradient(ellipse 900px 500px at 85% 0%,rgba(107,69,112,.09),transparent 60%),var(--ink-deep);}
+#scene-brain{background:linear-gradient(180deg,rgba(150,104,164,.05) 0%,transparent 30%),var(--ink-deep);}
+#scene-feelings{background:radial-gradient(ellipse 1100px 650px at 50% 0%,rgba(192,122,138,.07),transparent 65%),var(--ink-deep);}
+#scene-snapshot{background:radial-gradient(ellipse 1000px 600px at 50% 100%,rgba(196,150,62,.06),transparent 60%),var(--ink-deep);}
+
+/* MAP-LINE TEXTURE — faint inline-SVG-style path motif via CSS, used per scene */
+.map-texture{position:absolute;inset:0;overflow:hidden;pointer-events:none;z-index:0;opacity:.5;}
+.map-texture svg{position:absolute;width:100%;height:100%;}
+
+/* SECTION DIVIDER — replaces some box-based separation with a simple rule + label */
+.section-divider{display:flex;align-items:center;gap:.9rem;margin:2.4rem 0 1.8rem;}
+.section-divider::before,.section-divider::after{content:'';flex:1;height:1px;background:var(--rule2);}
+.section-divider span{font-size:.55rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cf);white-space:nowrap;}
+
+/* INSET NOTE — borderless editorial alternative to boxed cards */
+.inset-note{border-left:2px solid var(--purple-border);padding:.2rem 0 .2rem 1.3rem;margin:1.6rem 0;max-width:680px;}
+.inset-note p{font-size:.88rem;color:var(--cd);}
+
+.two-col{display:grid;grid-template-columns:1.3fr 1fr;gap:2.4rem;align-items:start;}
+@media(max-width:900px){.two-col{grid-template-columns:1fr;}}
+
+/* VIDEO */
+.video-frame{position:relative;width:100%;aspect-ratio:16/9;background:linear-gradient(150deg,#241620,#16100D);border-radius:12px;border:1px solid var(--purple-border);display:flex;align-items:center;justify-content:center;overflow:hidden;box-shadow:0 18px 40px -12px rgba(0,0,0,.55);}
+.video-frame::before{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 20% 30%,rgba(150,104,164,.16),transparent 45%),radial-gradient(circle at 85% 75%,rgba(196,150,62,.12),transparent 40%);}
+.video-frame .vf-grad{position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.7),transparent 55%);}
+.play-btn{width:64px;height:64px;border-radius:50%;background:var(--purple);display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.2rem;z-index:2;box-shadow:0 0 0 1px var(--purple-border),0 0 0 8px rgba(107,69,112,.12);}
+.video-meta{position:absolute;bottom:1rem;left:1.1rem;right:1.1rem;z-index:3;}
+.video-meta .now{font-size:.46rem;letter-spacing:.18em;text-transform:uppercase;color:var(--lilac);margin-bottom:.25rem;}
+.video-meta h3{font-family:var(--serif);font-size:1.05rem;color:#fff;}
+.video-pill{position:absolute;top:.9rem;right:.9rem;z-index:3;background:rgba(15,12,10,.8);border:1px solid var(--purple-border);font-size:.5rem;padding:.25rem .6rem;border-radius:6px;color:var(--lilac);white-space:nowrap;}
+.video-chapters{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.7rem;font-size:.6rem;color:var(--cf);}
+.video-chapters span{border:1px solid var(--rule2);padding:.25rem .6rem;border-radius:6px;}
+.video-soon{position:absolute;top:2.4rem;right:.9rem;z-index:3;font-size:.5rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);background:var(--gold-dim);border:1px solid var(--gold-border);padding:.25rem .6rem;border-radius:6px;white-space:nowrap;}
+.transcript-toggle{font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;color:var(--cm);border:1px solid var(--rule2);padding:.4rem .8rem;border-radius:6px;margin-top:.7rem;display:inline-flex;align-items:center;gap:.4rem;}
+.transcript-panel{display:none;background:rgba(246,241,233,.03);border:1px solid var(--rule);border-radius:10px;padding:1rem;margin-top:.6rem;font-size:.82rem;color:var(--cm);}
+.transcript-panel.open{display:block;}
+
+/* ROUTE CARDS */
+.route-group{display:flex;flex-direction:column;gap:.7rem;}
+.route-card{border:1px solid var(--rule2);border-radius:10px;padding:.95rem 1.1rem;cursor:pointer;transition:background .2s,border-color .2s,transform .2s;position:relative;}
+.route-card:hover{border-color:var(--purple-border);transform:translateX(2px);}
+.route-card.selected{background:rgba(150,104,164,.12);border-color:var(--lilac);box-shadow:0 0 0 1px var(--lilac) inset;}
+.route-card[data-route="full"]{border-color:var(--purple-border);background:rgba(107,69,112,.06);}
+.route-card[data-route="full"]::after{content:'Recommended';position:absolute;top:-.55rem;right:1rem;font-size:.48rem;letter-spacing:.12em;text-transform:uppercase;background:var(--ink);color:var(--gold);padding:.15rem .5rem;border:1px solid var(--gold-border);border-radius:10px;}
+.route-card[data-route="full"].selected{background:rgba(150,104,164,.12);}
+.route-name{font-weight:700;font-size:.92rem;color:var(--cream);}
+.route-dur{font-size:.7rem;color:var(--cm);margin-top:.15rem;}
+.route-cta{display:none;margin-top:.9rem;}
+.route-cta.show{display:block;}
+.btn{display:inline-flex;align-items:center;gap:.5rem;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:.7rem 1.4rem;border-radius:8px;}
+.btn-primary{background:var(--lilac);color:#fff;}
+.btn-ghost{border:1px solid var(--rule2);color:var(--cd);}
+.resume-block{background:var(--purple-dim);border:1px solid var(--purple-border);border-radius:10px;padding:.9rem 1.1rem;margin-top:1rem;display:none;}
+.resume-block.show{display:block;}
+.resume-block p{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--lilac);margin-bottom:.4rem;}
+.resume-actions{display:flex;gap:.6rem;margin-top:.6rem;}
+.resume-actions button{font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;padding:.45rem 1rem;border-radius:6px;}
+.no-deadline{font-family:var(--serif);font-style:italic;color:var(--cf);margin-top:1.2rem;font-size:.92rem;}
+.map-note{position:relative;padding-left:1.1rem;border-left:1px solid var(--gold-border);}
+.lowcap-row{display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--rule);padding-top:1rem;margin-top:1.4rem;}
+.lowcap-label{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--cm);}
+.toggle{position:relative;width:38px;height:20px;flex-shrink:0;}
+.toggle input{opacity:0;width:0;height:0;position:absolute;}
+.toggle-slider{position:absolute;inset:0;background:var(--rule2);border-radius:20px;cursor:pointer;transition:background .2s;}
+.toggle-slider::before{content:'';position:absolute;width:14px;height:14px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform .2s;}
+.toggle input:checked + .toggle-slider{background:var(--lilac);}
+.toggle input:checked + .toggle-slider::before{transform:translateX(18px);}
+
+/* TIMELINE (Scene 2) */
+.timeline-wrap{margin:1.4rem 0;}
+.timeline-svg text{font-family:var(--body);}
+.teach-blocks{display:flex;flex-direction:column;gap:1rem;margin-bottom:1.2rem;}
+.teach-block{border-left:2px solid var(--purple-border);padding-left:1rem;}
+.teach-block h4{font-size:.82rem;font-weight:700;color:var(--cream);margin-bottom:.3rem;}
+.teach-block p{font-size:.85rem;color:var(--cd);}
+.quote-block{font-family:var(--serif);font-style:italic;font-size:1.1rem;color:var(--cream);border-left:2px solid var(--lilac);padding-left:1.1rem;margin:1.2rem 0;line-height:1.5;}
+.recognition-line{font-family:var(--serif);font-style:italic;font-size:1.02rem;color:var(--rose);border-left:1px solid var(--rose-border);padding-left:1.1rem;margin:1.3rem 0;line-height:1.55;}
+.map-note{font-size:.84rem;color:var(--cf);font-style:italic;margin-top:.5rem;max-width:640px;}
+.leah-moment{display:flex;gap:.8rem;align-items:flex-start;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:1rem 0;margin:1.4rem 0;}
+.leah-icon{width:34px;height:34px;border-radius:50%;border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;color:var(--gold);flex-shrink:0;font-size:.85rem;}
+.leah-copy .leah-label{font-size:.5rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.3rem;}
+.leah-copy p{font-size:.84rem;color:var(--cd);}
+.leah-copy .leah-state{font-size:.56rem;letter-spacing:.08em;text-transform:uppercase;color:var(--cf);margin-top:.35rem;display:inline-block;}
+.snap-field-edit-area{width:100%;background:transparent;border:none;border-bottom:1px solid var(--rule2);color:var(--cream);font-family:var(--serif);font-style:italic;font-size:1rem;line-height:1.5;padding:.2rem 0 .5rem;resize:vertical;min-height:32px;}
+.snap-field-edit-area:focus{border-color:var(--lilac);}
+.snap-field-edit-area::placeholder{color:var(--cf);font-family:var(--body);font-style:normal;font-size:.82rem;}
+.snap-intro{font-family:var(--serif);font-style:italic;color:var(--cf);font-size:.95rem;margin-bottom:1.2rem;}
+.reflect-card{border:1px solid var(--rule);border-left:2px solid var(--purple-border);border-radius:0 10px 10px 0;background:rgba(246,241,233,.02);padding:1.1rem 1.2rem;margin-top:1.3rem;}
+.reflect-label{font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lilac);margin-bottom:.6rem;}
+.reflect-q{font-size:.92rem;color:var(--cream);font-weight:700;margin-bottom:.7rem;}
+textarea.field{width:100%;background:var(--ink);border:1px solid var(--rule2);border-radius:8px;color:var(--cream);padding:.7rem;font-size:.88rem;min-height:80px;resize:vertical;}
+textarea.field:focus{border-color:var(--lilac);}
+.save-row{display:flex;align-items:center;gap:.8rem;margin-top:.6rem;flex-wrap:wrap;}
+.save-row button{font-size:.58rem;letter-spacing:.08em;text-transform:uppercase;}
+.save-confirm{font-size:.6rem;color:var(--sage);display:none;}
+.save-confirm.show{display:inline;}
+
+/* LABEL GRID (Scene 3) */
+.label-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:.6rem;margin-bottom:1.2rem;}
+@media(max-width:760px){.label-grid{grid-template-columns:1fr 1fr;}}
+.label-card{border:1px solid var(--rule2);border-radius:10px;padding:.9rem .6rem;text-align:center;font-family:var(--serif);font-style:italic;font-size:1rem;color:var(--cd);cursor:pointer;transition:background .2s,border-color .2s;min-height:56px;display:flex;align-items:center;justify-content:center;position:relative;}
+.label-card.selected{border-color:var(--lilac);background:rgba(150,104,164,.14);color:var(--cream);}
+.label-card.selected::after{content:'';position:absolute;bottom:6px;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;background:var(--gold);}
+.label-count{font-size:.62rem;color:var(--cf);margin-bottom:1rem;}
+.focus-chips{display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem;}
+.focus-chip{border:1px solid var(--rule2);border-radius:18px;padding:.45rem 1rem;font-size:.78rem;color:var(--cd);cursor:pointer;}
+.focus-chip.active{background:var(--lilac);border-color:var(--lilac);color:#fff;}
+.reveal-panel{display:none;position:relative;border:1px solid var(--purple-border);background:linear-gradient(160deg,rgba(107,69,112,.1),rgba(107,69,112,.03));border-radius:4px 10px 10px 4px;border-left:3px solid var(--lilac);padding:1.2rem 1.3rem;margin-bottom:1.4rem;}
+.reveal-panel.open{display:block;animation:revealIn .35s var(--ease);}
+@keyframes revealIn{from{opacity:0;transform:translateY(4px);}to{opacity:1;transform:translateY(0);}}
+.reveal-row{margin-bottom:.9rem;padding-bottom:.9rem;border-bottom:1px solid var(--rule);}
+.reveal-row:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none;}
+.reveal-row .rr-label{font-size:.5rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lilac);margin-bottom:.3rem;}
+.reveal-row p{font-size:.85rem;color:var(--cd);}
+.reveal-row:first-child .rr-label{color:var(--cf);}
+.reveal-row:first-child p{color:var(--cf);}
+
+/* EF SCENE (Scene 4) — diagrammatic list with connecting spine */
+.ef-list{display:flex;flex-direction:column;gap:0;position:relative;padding-left:1.6rem;border-left:1px solid var(--rule2);}
+.ef-row{display:grid;grid-template-columns:64px 1fr auto;gap:1rem;align-items:center;padding:1.1rem 1.1rem 1.1rem 1.3rem;position:relative;border-bottom:1px solid var(--rule);}
+.ef-list .ef-row:last-child{border-bottom:none;}
+.ef-row::before{content:'';position:absolute;left:-1.6rem;top:50%;transform:translateY(-50%);width:1.6rem;height:1px;background:var(--rule2);}
+.ef-row::after{content:'';position:absolute;left:calc(-1.6rem - 3px);top:50%;transform:translateY(-50%);width:6px;height:6px;border-radius:50%;background:var(--lilac);opacity:.7;}
+@media(max-width:600px){.ef-row{grid-template-columns:44px 1fr;}.ef-row .ef-cb-wrap{grid-column:1/-1;justify-self:flex-end;margin-top:-2.2rem;}}
+.ef-icon{width:48px;height:48px;border-radius:10px;background:rgba(150,104,164,.12);display:flex;align-items:center;justify-content:center;}
+.ef-icon svg{width:26px;height:26px;}
+.ef-copy h4{font-size:.85rem;font-weight:700;color:var(--cream);margin-bottom:.25rem;}
+.ef-copy p{font-size:.78rem;color:var(--cm);}
+.ef-copy .ef-example{font-size:.76rem;color:var(--cf);font-style:italic;margin-top:.3rem;font-family:var(--serif);}
+.ef-cb{width:22px;height:22px;border:1.5px solid var(--lilac);border-radius:6px;display:flex;align-items:center;justify-content:center;cursor:pointer;flex-shrink:0;}
+.ef-cb.on{background:var(--lilac);}
+.ef-cb.on::after{content:'✓';color:#fff;font-size:.7rem;font-weight:700;}
+.ef-support-note{display:none;grid-column:1/-1;border-top:1px solid var(--rule);margin-top:.7rem;padding-top:.6rem;font-size:.78rem;color:var(--sage);}
+.ef-support-note.show{display:block;}
+
+/* EMOTION SCENE (Scene 5) — softer, slower, more held */
+#scene-feelings .scene-lede{margin-bottom:2.2rem;line-height:1.85;}
+#scene-feelings .leah-moment{margin:1.8rem 0 2.2rem;}
+#scene-feelings .recognition-line{margin:1.8rem 0 2.4rem;font-size:1.08rem;}
+.emo-grid{display:flex;flex-wrap:wrap;gap:.65rem;margin-bottom:1.6rem;}
+.emo-chip{border:1px solid var(--rule2);border-radius:18px;padding:.55rem 1.2rem;font-size:.8rem;color:var(--cd);cursor:pointer;transition:background .25s,border-color .25s,transform .15s;}
+.emo-chip:hover{transform:translateY(-1px);}
+.emo-chip.selected{background:var(--rose);border-color:var(--rose);color:#fff;}
+.emo-response{border:none;border-left:2px solid var(--rose-border);background:transparent;padding:.3rem 0 .3rem 1.3rem;font-size:.98rem;color:var(--cream);font-family:var(--serif);font-style:italic;min-height:60px;margin-bottom:1.8rem;line-height:1.7;}
+.pause-row{display:flex;gap:.8rem;flex-wrap:wrap;margin:1.8rem 0;}
+.companion-card{border:1px solid var(--gold-border);background:var(--gold-dim);border-radius:10px;padding:1.3rem 1.4rem;margin-top:1.8rem;}
+.companion-card h4{font-family:var(--serif);font-size:1.05rem;color:var(--cream);margin-bottom:.3rem;}
+.companion-card p{font-size:.82rem;color:var(--cm);margin-bottom:.5rem;}
+.companion-state{font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border:1px solid var(--gold-border);padding:.3rem .7rem;border-radius:6px;display:inline-block;}
+.support-reminder{font-size:.78rem;color:var(--cm);margin-top:1rem;}
+.support-reminder a{color:var(--rose);text-decoration:underline;}
+
+/* SCENE 6 — LRM + SNAPSHOT */
+.area-pills{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.2rem;}
+.area-pill{border:1px solid var(--rule2);border-radius:18px;padding:.5rem 1.1rem;font-size:.8rem;color:var(--cd);cursor:pointer;}
+.area-pill.selected{background:var(--lilac);border-color:var(--lilac);color:#fff;}
+.lrm-steps{display:flex;flex-direction:column;gap:0;position:relative;margin-left:12px;border-left:1px solid var(--rule2);padding-left:1.5rem;}
+.lrm-step{border:none;border-bottom:1px solid var(--rule);border-radius:0;padding:1.1rem 0;opacity:.35;pointer-events:none;position:relative;transition:opacity .3s;}
+.lrm-steps .lrm-step:last-child{border-bottom:none;}
+.lrm-step.unlocked{opacity:1;pointer-events:auto;}
+.lrm-step-head{display:flex;align-items:center;gap:.6rem;margin-bottom:.5rem;}
+.lrm-num{width:24px;height:24px;border-radius:50%;border:1px solid var(--rule2);background:var(--ink-deep);display:flex;align-items:center;justify-content:center;font-size:.65rem;color:var(--cf);flex-shrink:0;margin-left:-1.84rem;}
+.lrm-num.active{background:var(--lilac);border-color:var(--lilac);color:#fff;}
+.lrm-num.done{background:var(--sage);border-color:var(--sage);color:#fff;}
+.lrm-q{font-size:.85rem;font-weight:700;color:var(--cream);}
+.lowcap-note{font-size:.7rem;color:var(--gold);margin-top:.5rem;font-style:italic;}
+
+.snapshot-doc{position:relative;border:1px solid var(--gold-border);background:linear-gradient(145deg,rgba(196,150,62,.09),rgba(196,150,62,.02) 55%);border-radius:4px;padding:0;margin-top:2rem;box-shadow:0 24px 60px -20px rgba(0,0,0,.6),0 0 0 1px rgba(196,150,62,.08);}
+.snapshot-doc::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--gold),var(--lilac),var(--rose));border-radius:4px 4px 0 0;}
+.snapshot-doc-head{padding:1.8rem 1.8rem 1.2rem;border-bottom:1px solid var(--gold-border);}
+.snapshot-doc-head .sd-eyebrow{font-size:.5rem;letter-spacing:.24em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;}
+.snapshot-doc h3{font-family:var(--serif);font-size:1.7rem;color:var(--cream);margin-bottom:.4rem;font-weight:400;}
+.snapshot-doc-body{padding:1.6rem 1.8rem 1.8rem;}
+.snapshot-doc .snap-field{border:none;border-bottom:1px solid var(--rule);border-radius:0;padding:0 0 1.3rem;margin-bottom:1.3rem;display:flex;gap:1rem;align-items:flex-start;}
+.snapshot-doc .snap-field:last-of-type{border-bottom:none;margin-bottom:0;padding-bottom:0;}
+.snapshot-doc .snap-field-label{flex:0 0 200px;font-size:.5rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:0;padding-top:.3rem;}
+.snapshot-doc .snap-field-edit-area{flex:1;}
+@media(max-width:680px){.snapshot-doc .snap-field{flex-direction:column;gap:.4rem;}.snapshot-doc .snap-field-label{flex:none;}}
+.snapshot-doc .snap-actions{border-top:1px solid var(--rule);margin-top:1.6rem;padding-top:1.4rem;}
+.milestone-row{display:flex;align-items:center;gap:.8rem;border:1px solid var(--sage-border);background:var(--sage-dim);border-radius:10px;padding:1rem 1.1rem;margin-top:1.4rem;cursor:pointer;}
+.milestone-cb{width:24px;height:24px;border:1.5px solid var(--sage);border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;}
+.milestone-cb.checked{background:var(--sage);}
+.milestone-cb.checked::after{content:'✓';color:#fff;font-size:.7rem;}
+.complete-msg{display:none;font-family:var(--serif);font-style:italic;color:var(--sage);margin-top:.8rem;font-size:.95rem;}
+.complete-msg.show{display:block;}
+.week2-preview{border:none;border-top:1px solid var(--rule);padding:1.4rem 0 0;margin-top:1.8rem;}
+.catchup-panel{border:1px solid var(--purple-border);background:var(--purple-dim);border-radius:10px;padding:1.1rem;margin-top:1.4rem;}
+.catchup-panel h4{font-family:var(--serif);font-size:1.1rem;color:var(--cream);margin-bottom:.5rem;}
+.catchup-prompts{display:flex;flex-direction:column;gap:.4rem;margin:.6rem 0;}
+.catchup-prompts li{list-style:none;font-size:.82rem;color:var(--cd);padding-left:1rem;border-left:2px solid var(--purple-border);}
+.scope-note{font-size:.74rem;color:var(--cm);margin-top:.8rem;border-top:1px solid var(--rule);padding-top:.7rem;}
+
+/* SCENE NAV */
+.scene-nav{display:flex;justify-content:space-between;align-items:center;margin-top:2.4rem;padding-top:1.2rem;border-top:1px solid var(--rule);}
+.scene-nav button{font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;padding:.65rem 1.3rem;border-radius:8px;}
+
+footer{background:var(--ink);padding:2rem 1.6rem;text-align:center;}
+footer p{font-size:.7rem;color:var(--cm);max-width:760px;margin:0 auto;}
+
+/* PRINT */
+@media print{
+  #nav,.journey-track,#snap-indicator,#snap-sheet-backdrop,.scene-nav,footer{display:none!important;}
+  body *{visibility:hidden;}
+  #print-area,#print-area *{visibility:visible;}
+  #snap-sheet{position:absolute!important;transform:none!important;top:0;left:0;right:auto;bottom:auto;width:100%;height:auto;overflow:visible;border:none;}
+  #print-area{position:relative;top:0;left:0;width:100%;color:#000;background:#fff;}
+  #print-area textarea{color:#000;border:none;}
+  .snapshot-doc{border:1px solid #000;box-shadow:none;}
+  .snapshot-doc::before{display:none;}
+  .snapshot-doc .snap-field-label{color:#000;}
+  .snapshot-doc .snap-field-edit-area{color:#000;border-bottom:1px solid #999;}
+}
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <span class="nav-logo">Nuanced Co.</span>
+  <span class="nav-mid">Week 1 of 4 — Production Candidate</span>
+  <a href="support.html" class="nav-support">Need support</a>
+</nav>
+
+<div class="journey-track" id="journey-track" role="tablist" aria-label="Week 1 scenes">
+  <!-- populated by JS -->
+</div>
+
+<button id="snap-indicator" aria-haspopup="dialog" aria-controls="snap-sheet">
+  <span class="si-dot"></span>
+  My Snapshot — <span class="si-count" id="si-count">0 of 5</span>
+</button>
+
+<div id="snap-sheet-backdrop"></div>
+<aside id="snap-sheet" role="dialog" aria-label="My Week 1 Snapshot" aria-modal="true">
+  <div class="snap-close"><button id="snap-close-btn"><i class="fa-solid fa-xmark" aria-hidden="true"></i> Close</button></div>
+  <h3 style="font-family:var(--serif);font-size:1.3rem;margin-bottom:.3rem;">My Week 1 Snapshot</h3>
+  <p style="font-size:.78rem;color:var(--cm);margin-bottom:1.2rem;">Your updated map legend — builds as you move through the week. Saved only in this browser. Edit the full version in Scene 6.</p>
+  <div id="print-area">
+  <div class="snap-field" data-field="label"><div class="snap-field-label">1 — The story I carried</div><div class="snap-field-value empty" id="sf-label">[Complete Scene 3 to fill this]</div></div>
+  <div class="snap-field" data-field="underneath"><div class="snap-field-label">2 — What I understand differently now</div><div class="snap-field-value empty" id="sf-underneath">[Complete Scene 3 to fill this]</div></div>
+  <div class="snap-field" data-field="support-then"><div class="snap-field-label">3 — What may have helped then</div><div class="snap-field-value empty" id="sf-support-then">[Complete Scene 3 to fill this]</div></div>
+  <div class="snap-field" data-field="support-now"><div class="snap-field-label">4 — What I may need now</div><div class="snap-field-value empty" id="sf-support-now">[Complete Scene 4 to fill this]</div></div>
+  <div class="snap-field" data-field="sentence"><div class="snap-field-label">5 — What I am no longer willing to call a character flaw</div><div class="snap-field-value empty" id="sf-sentence">[Write this in Scene 6]</div></div>
+  </div>
+  <div class="snap-actions">
+    <button id="snap-copy-btn"><i class="fa-solid fa-copy" aria-hidden="true"></i> Copy</button>
+    <button id="snap-print-btn"><i class="fa-solid fa-print" aria-hidden="true"></i> Print</button>
+  </div>
+  <p style="font-size:.6rem;color:var(--cf);margin-top:.8rem;" id="snap-saved-note" aria-live="polite"></p>
+</aside>
+
+<!-- ===================== SCENE 1 — WEEK OPENING ===================== -->
+<section class="scene active" id="scene-arrive" data-scene="arrive">
+  <div class="map-texture" aria-hidden="true">
+    <svg viewBox="0 0 1440 700" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M-40,560 C220,500 360,610 560,520 C760,430 900,560 1140,470 C1320,405 1400,460 1500,420" stroke="rgba(196,150,62,.22)" stroke-width="1" fill="none" stroke-dasharray="2 7"/>
+      <path d="M-40,160 C260,110 420,230 660,150 C880,78 1040,190 1500,110" stroke="rgba(150,104,164,.16)" stroke-width="1" fill="none"/>
+      <circle cx="560" cy="520" r="3" fill="rgba(196,150,62,.4)"/>
+      <circle cx="1140" cy="470" r="3" fill="rgba(196,150,62,.4)"/>
+      <circle cx="660" cy="150" r="3" fill="rgba(150,104,164,.35)"/>
+    </svg>
+  </div>
+  <div class="scene-inner two-col">
+    <div>
+      <p class="scene-eyebrow">The Unmasked Life™ — Week 1 of 4</p>
+      <h1 class="scene-title">The Late Diagnosis Disruption</h1>
+      <p class="scene-lede">A late ADHD diagnosis does not just add a label. It arrives inside a life already built, and it changes what you can see.</p>
+      <p class="map-note">You are not rewriting your life this week. You're adding better information to a map that was already there — one that was drawn with some of the markers in the wrong place.</p>
+
+      <div class="leah-moment">
+        <div class="leah-icon"><i class="fa-solid fa-volume-low" aria-hidden="true"></i></div>
+        <div class="leah-copy">
+          <p class="leah-label">A note from Leah</p>
+          <p>A short word of reassurance before you start — what this week is, and what it isn't.</p>
+          <span class="leah-state">Audio placeholder — not yet recorded</span>
+        </div>
+      </div>
+
+      <div class="video-frame" aria-label="Week 1 lesson video placeholder">
+        <div class="vf-grad"></div>
+        <button class="play-btn" aria-label="Play video (not yet available)"><i class="fa-solid fa-play" aria-hidden="true"></i></button>
+        <div class="video-meta"><p class="now">Week 1 lesson video</p><h3>The Late Diagnosis Disruption</h3></div>
+        <div class="video-pill">10–15 min · chaptered</div>
+        <div class="video-soon">Video coming soon</div>
+      </div>
+      <div class="video-chapters"><span>1 — What diagnosis does</span><span>2 — The review</span><span>3 — What's next</span></div>
+      <button class="transcript-toggle" id="transcript-btn" aria-expanded="false" aria-controls="transcript-panel">Read transcript <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button>
+      <div class="transcript-panel" id="transcript-panel" role="region" aria-label="Video transcript">
+        <p style="color:var(--cm);">Transcript will be added once the Week 1 lesson video is recorded and uploaded.</p>
+      </div>
+    </div>
+
+    <div>
+      <p class="label" style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--lilac);margin-bottom:.8rem;">How would you like to work through this?</p>
+
+      <div class="resume-block" id="resume-block">
+        <p>Continue where you left off</p>
+        <p style="font-size:.85rem;color:var(--cream);" id="resume-scene-name"></p>
+        <div class="resume-actions">
+          <button class="btn-primary" style="background:var(--lilac);color:#fff;border-radius:6px;" id="resume-btn">Resume</button>
+          <button class="btn-ghost" style="border:1px solid var(--rule2);border-radius:6px;color:var(--cd);" id="start-over-btn">Start over</button>
+        </div>
+      </div>
+
+      <div class="route-group" role="radiogroup" aria-label="How would you like to work through this week?">
+        <div class="route-card" data-route="full" role="radio" aria-checked="false" tabindex="0">
+          <div class="route-name">Full journey</div>
+          <div class="route-dur">All six scenes · about 45 minutes</div>
+        </div>
+        <div class="route-card" data-route="lowcap" role="radio" aria-checked="false" tabindex="0">
+          <div class="route-name">Low-capacity route</div>
+          <div class="route-dur">One scene at a time · under 10 minutes each</div>
+        </div>
+        <div class="route-card" data-route="speedread" role="radio" aria-checked="false" tabindex="0">
+          <div class="route-name">Speed-read</div>
+          <div class="route-dur">Core concepts only · 5 minutes</div>
+        </div>
+      </div>
+      <div class="route-cta" id="route-cta"><button class="btn btn-primary" id="begin-journey-btn">Begin Week 1 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></button></div>
+
+      <div class="lowcap-row">
+        <span class="lowcap-label">Low-capacity mode <span style="color:var(--cf);">— simplifies every scene</span></span>
+        <label class="toggle"><input type="checkbox" id="lowcap-toggle"><span class="toggle-slider"></span></label>
+      </div>
+
+      <p class="no-deadline">You do not need to finish this today. There is no deadline.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== SCENE 2 — SOMETHING CHANGED ===================== -->
+<section class="scene" id="scene-changed" data-scene="changed">
+  <div class="scene-inner">
+    <p class="scene-eyebrow">Scene 2 — Something Changed</p>
+    <h2 class="scene-title">What a late diagnosis actually does</h2>
+
+    <div class="teach-blocks">
+      <div class="teach-block">
+        <h4>It is not just new information</h4>
+        <p>A late ADHD diagnosis is information arriving inside a life that was already built around explanations that were wrong, incomplete, or missing entirely.</p>
+      </div>
+      <div class="teach-block">
+        <h4>It travels backwards</h4>
+        <p>When that information arrives, it does not stay in the present. It moves across your life, into every place where something did not make sense, or where the explanation you were given was "not trying hard enough" or "too sensitive."</p>
+      </div>
+      <div class="teach-block">
+        <h4>This disruption is recognised, not rare</h4>
+        <p>The disruption that follows — to identity, to self-understanding, to the story you tell about yourself — is a documented part of what late diagnosis involves. You are not doing this wrong.</p>
+      </div>
+    </div>
+
+    <div class="section-divider"><span>The shift, mapped</span></div>
+    <div class="timeline-wrap">
+      <svg class="timeline-svg" viewBox="0 0 760 130" width="100%" height="130" role="img" aria-label="Timeline showing a pattern from childhood through to the present, reinterpreted after diagnosis">
+        <line x1="40" y1="65" x2="720" y2="65" stroke="rgba(246,241,233,.18)" stroke-width="1"/>
+        <circle cx="100" cy="65" r="5" fill="rgba(246,241,233,.35)"/>
+        <text x="100" y="90" text-anchor="middle" font-size="10" fill="rgba(246,241,233,.4)">Childhood</text>
+        <circle cx="330" cy="65" r="5" fill="rgba(246,241,233,.35)"/>
+        <text x="330" y="90" text-anchor="middle" font-size="10" fill="rgba(246,241,233,.4)">20s–30s</text>
+        <circle cx="540" cy="65" r="7" fill="#9668A4"/>
+        <text x="540" y="48" text-anchor="middle" font-size="9" fill="#9668A4" font-weight="700">Diagnosis</text>
+        <circle cx="680" cy="65" r="5" fill="#9668A4"/>
+        <text x="680" y="90" text-anchor="middle" font-size="10" fill="#9668A4">Now — seeing it differently</text>
+        <path d="M100,65 Q330,20 540,65" stroke="rgba(150,104,164,.5)" stroke-width="1.4" fill="none" stroke-dasharray="3 4"/>
+        <text x="330" y="14" text-anchor="middle" font-size="9" fill="rgba(150,104,164,.85)" font-style="italic">"Was that ADHD too?"</text>
+      </svg>
+    </div>
+
+    <div class="quote-block">"The disruption that follows — to identity, to self-understanding, to the story you tell about yourself — is a recognised part of what late diagnosis involves."</div>
+
+    <p class="recognition-line">"You could manage a crisis at work but could not start a simple form at home."</p>
+
+    <div class="reflect-card">
+      <p class="reflect-label">Your response — saves to this browser only</p>
+      <p class="reflect-q">What feels different now that you know?</p>
+      <textarea class="field" id="changed-textarea" placeholder="Something I am seeing differently is..." aria-label="What feels different now that you know?"></textarea>
+      <div class="save-row">
+        <button class="btn btn-ghost" id="changed-save-btn">Save</button>
+        <span class="save-confirm" id="changed-save-confirm"><i class="fa-solid fa-check" aria-hidden="true"></i> Saved</span>
+      </div>
+    </div>
+
+    <nav class="scene-nav"><button class="btn btn-ghost" data-prev>← Week opening</button><button class="btn btn-primary" data-next>Continue to The Old Story →</button></nav>
+  </div>
+</section>
+
+<!-- ===================== SCENE 3 — THE OLD STORY ===================== -->
+<section class="scene" id="scene-oldstory" data-scene="oldstory">
+  <div class="scene-inner">
+    <p class="scene-eyebrow">Scene 3 — The Old Story</p>
+    <h2 class="scene-title">The labels that didn't fit</h2>
+    <p class="scene-lede">These were markers placed on an old map — drawn with the information people had at the time. Which of these sound familiar? Select any that apply.</p>
+
+    <p class="recognition-line">"You were called disorganised, even though you spent hours building invisible systems to stop things falling apart."</p>
+
+    <div class="label-grid" id="label-grid" role="group" aria-label="Which of these labels sound familiar?">
+      <div class="label-card" data-label="lazy" role="checkbox" aria-checked="false" tabindex="0">lazy</div>
+      <div class="label-card" data-label="inconsistent" role="checkbox" aria-checked="false" tabindex="0">inconsistent</div>
+      <div class="label-card" data-label="careless" role="checkbox" aria-checked="false" tabindex="0">careless</div>
+      <div class="label-card" data-label="too-sensitive" role="checkbox" aria-checked="false" tabindex="0">too sensitive</div>
+      <div class="label-card" data-label="not-trying" role="checkbox" aria-checked="false" tabindex="0">not trying</div>
+      <div class="label-card" data-label="difficult" role="checkbox" aria-checked="false" tabindex="0">difficult</div>
+      <div class="label-card" data-label="disorganised" role="checkbox" aria-checked="false" tabindex="0">disorganised</div>
+      <div class="label-card" data-label="wasted-potential" role="checkbox" aria-checked="false" tabindex="0">wasted potential</div>
+    </div>
+    <p class="label-count" id="label-count" aria-live="polite">0 of 8 selected</p>
+
+    <div id="focus-wrap" style="display:none;">
+      <p class="reflect-label">Choose one to look at closely</p>
+      <div class="focus-chips" id="focus-chips" role="radiogroup" aria-label="Choose one label to look at closely"></div>
+
+      <div class="reveal-panel" id="reveal-panel">
+        <div class="reveal-row"><div class="rr-label">What people may have seen</div><p id="reveal-seen"></p></div>
+        <div class="reveal-row"><div class="rr-label">What may have been happening underneath</div><p id="reveal-underneath"></p></div>
+        <div class="reveal-row"><div class="rr-label">Support that may have helped</div><p id="reveal-support"></p></div>
+      </div>
+
+      <div class="reflect-card">
+        <p class="reflect-label">Your interpretation — feeds your Snapshot</p>
+        <p class="reflect-q">What may have actually been happening?</p>
+        <textarea class="field" id="interpretation-textarea" placeholder="What may have been happening was..."></textarea>
+        <div class="save-row"><button class="btn btn-ghost" id="interpretation-save-btn">Save</button><span class="save-confirm" id="interpretation-save-confirm"><i class="fa-solid fa-check" aria-hidden="true"></i> Saved to Snapshot</span></div>
+      </div>
+
+      <div class="reflect-card">
+        <p class="reflect-label">Your interpretation — feeds your Snapshot</p>
+        <p class="reflect-q">Support that may have helped then</p>
+        <textarea class="field" id="support-then-textarea" placeholder="Support that may have helped..."></textarea>
+        <div class="save-row"><button class="btn btn-ghost" id="support-then-save-btn">Save</button><span class="save-confirm" id="support-then-save-confirm"><i class="fa-solid fa-check" aria-hidden="true"></i> Saved to Snapshot</span></div>
+      </div>
+    </div>
+
+    <nav class="scene-nav"><button class="btn btn-ghost" data-prev>← Something Changed</button><button class="btn btn-primary" data-next>Continue to How the Brain Manages Life →</button></nav>
+  </div>
+</section>
+
+<!-- ===================== SCENE 4 — HOW THE BRAIN MANAGES LIFE ===================== -->
+<section class="scene" id="scene-brain" data-scene="brain">
+  <div class="scene-inner">
+    <p class="scene-eyebrow">Scene 4 — How the Brain Manages Life</p>
+    <h2 class="scene-title">Your brain's management system</h2>
+    <p class="scene-lede">Executive function is the set of processes that help you start tasks, hold information, manage time, regulate emotion, and follow through. In ADHD, these work differently — not worse, differently.</p>
+
+    <p class="recognition-line">"You looked capable because nobody could see the amount of effort required to stay that way."</p>
+
+    <div class="section-divider"><span>Six areas, one system</span></div>
+    <div class="ef-list" id="ef-list" role="group" aria-label="Executive function areas">
+      <!-- populated by JS -->
+    </div>
+
+    <p class="map-note">Where you recognise something below, that's not a flaw on the map — it's a gap where support was missing. Naming the gap is the first step to filling it.</p>
+    <div class="ef-support-note" id="ef-support-summary" aria-live="polite"></div>
+
+    <nav class="scene-nav"><button class="btn btn-ghost" data-prev>← The Old Story</button><button class="btn btn-primary" data-next>Continue to Relief, Grief and Anger →</button></nav>
+  </div>
+</section>
+
+<!-- ===================== SCENE 5 — RELIEF, GRIEF AND ANGER ===================== -->
+<section class="scene" id="scene-feelings" data-scene="feelings">
+  <div class="scene-inner">
+    <p class="scene-eyebrow">Scene 5 — Relief, Grief and Anger</p>
+    <h2 class="scene-title">There is no correct response to a late diagnosis</h2>
+    <p class="scene-lede">Relief, grief, anger and numbness can all co-exist. Select what's present for you right now — there's no minimum or maximum.</p>
+
+    <div class="leah-moment">
+      <div class="leah-icon"><i class="fa-solid fa-volume-low" aria-hidden="true"></i></div>
+      <div class="leah-copy">
+        <p class="leah-label">A note from Leah</p>
+        <p>Before you go further into this scene — a few words on the grief and anger that can come with a late diagnosis, and why neither needs to be resolved quickly.</p>
+        <span class="leah-state">Audio placeholder — not yet recorded</span>
+      </div>
+    </div>
+
+    <p class="recognition-line">"You were angry at people who never knew there was anything to look for — and relieved, in the same breath, that someone finally did."</p>
+
+    <div class="emo-grid" id="emo-grid" role="group" aria-label="What's present for you right now?">
+      <!-- populated by JS -->
+    </div>
+
+    <div class="emo-response" id="emo-response" aria-live="polite">Select any feeling above — there's no wrong answer, and you can select more than one.</div>
+
+    <div class="pause-row">
+      <button class="btn btn-ghost" id="pause-btn"><i class="fa-solid fa-pause" aria-hidden="true"></i> Save and pause for now</button>
+    </div>
+    <p class="save-confirm" id="pause-confirm" style="display:none;" aria-live="assertive">Progress saved. Come back when you're ready.</p>
+
+    <div class="companion-card">
+      <p style="font-size:.55rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:.5rem;">Optional Week 1 Companion Guide</p>
+      <h4>Grieving the Life You Thought You Had</h4>
+      <p>If the grief side of this week is landing heavily, the Companion Guide goes deeper — at your own pace. Included in the full course. Not free as a standalone.</p>
+      <span class="companion-state">Available in Resources</span>
+    </div>
+
+    <p class="support-reminder">This is education, not therapy. If this week brings up something heavy, <a href="support.html">support resources are here</a> — including neurodivergent-affirming practitioners and Australian crisis lines.</p>
+
+    <nav class="scene-nav"><button class="btn btn-ghost" data-prev>← How the Brain Manages Life</button><button class="btn btn-primary" data-next>Continue to Build Your Snapshot →</button></nav>
+  </div>
+</section>
+
+<!-- ===================== SCENE 6 — BUILD YOUR SNAPSHOT ===================== -->
+<section class="scene" id="scene-snapshot" data-scene="snapshot">
+  <div class="scene-inner">
+    <p class="scene-eyebrow">Scene 6 — Build Your Snapshot</p>
+    <h2 class="scene-title">The Life Review Map</h2>
+    <p class="scene-lede">This is the central tool for this week — the place where the old map and the new information meet. Choose one life area to explore. You decide how many areas to complete — one is enough for the founding beta.</p>
+
+    <div class="area-pills" id="area-pills" role="group" aria-label="Choose a life area">
+      <div class="area-pill" data-area="school">School</div>
+      <div class="area-pill" data-area="work">Work</div>
+      <div class="area-pill" data-area="relationships">Relationships</div>
+      <div class="area-pill" data-area="home">Home</div>
+      <div class="area-pill" data-area="health">Health</div>
+      <div class="area-pill" data-area="money">Money</div>
+      <div class="area-pill" data-area="identity">Identity</div>
+    </div>
+    <p class="lowcap-note" id="lowcap-area-note" style="display:none;">Low-capacity route: one area, Step 1 only is enough.</p>
+
+    <div class="lrm-steps" id="lrm-steps" style="display:none;">
+      <div class="lrm-step unlocked" data-step="1">
+        <div class="lrm-step-head"><div class="lrm-num active">1</div><div class="lrm-q">What happened in this area that stands out?</div></div>
+        <textarea class="field" id="lrm-1" placeholder="What was hard? What did others say at the time?"></textarea>
+        <div class="save-row"><button class="btn btn-ghost" data-lrm-save="1">Save and continue</button></div>
+      </div>
+      <div class="lrm-step" data-step="2">
+        <div class="lrm-step-head"><div class="lrm-num">2</div><div class="lrm-q">What was the explanation at the time?</div></div>
+        <textarea class="field" id="lrm-2" placeholder="What label was attached to it?"></textarea>
+        <div class="save-row"><button class="btn btn-ghost" data-lrm-save="2">Save and continue</button></div>
+      </div>
+      <div class="lrm-step" data-step="3">
+        <div class="lrm-step-head"><div class="lrm-num">3</div><div class="lrm-q">What may have actually been happening?</div></div>
+        <textarea class="field" id="lrm-3" placeholder="With my ADHD understanding..."></textarea>
+        <div class="save-row"><button class="btn btn-ghost" data-lrm-save="3">Save and continue</button></div>
+      </div>
+      <div class="lrm-step" data-step="4">
+        <div class="lrm-step-head"><div class="lrm-num">4</div><div class="lrm-q">What support might have helped?</div></div>
+        <textarea class="field" id="lrm-4" placeholder="If someone had understood..."></textarea>
+        <div class="save-row"><button class="btn btn-ghost" data-lrm-save="4">Save and continue</button></div>
+      </div>
+      <div class="lrm-step" data-step="5">
+        <div class="lrm-step-head"><div class="lrm-num">5</div><div class="lrm-q">What might help now?</div></div>
+        <textarea class="field" id="lrm-5" placeholder="Support that could work for my brain..."></textarea>
+        <div class="save-row"><button class="btn btn-ghost" data-lrm-save="5">Save to Snapshot</button></div>
+      </div>
+    </div>
+
+    <div class="snapshot-doc">
+      <div class="snapshot-doc-head">
+        <p class="sd-eyebrow">Map legend — Week 1 of 4</p>
+        <h3>My Week 1 Snapshot</h3>
+        <p class="snap-intro" style="margin-bottom:0;">What the old markers meant, and what you're choosing to carry forward instead. Edit any line below; this is yours.</p>
+      </div>
+      <div class="snapshot-doc-body">
+      <div class="snap-field" data-field="label">
+        <div class="snap-field-label">1 — The story I carried</div>
+        <textarea class="snap-field-edit-area" id="main-sf-label" placeholder="[Complete Scene 3 to fill this]" data-override-key="snapshot-label-override"></textarea>
+      </div>
+      <div class="snap-field" data-field="underneath">
+        <div class="snap-field-label">2 — What I understand differently now</div>
+        <textarea class="snap-field-edit-area" id="main-sf-underneath" placeholder="[Complete Scene 3 to fill this]" data-override-key="snapshot-underneath-override"></textarea>
+      </div>
+      <div class="snap-field" data-field="support-then">
+        <div class="snap-field-label">3 — What may have helped then</div>
+        <textarea class="snap-field-edit-area" id="main-sf-support-then" placeholder="[Complete Scene 3 to fill this]" data-override-key="snapshot-support-then-override"></textarea>
+      </div>
+      <div class="snap-field" data-field="support-now">
+        <div class="snap-field-label">4 — What I may need now</div>
+        <textarea class="snap-field-edit-area" id="main-sf-support-now" placeholder="[Complete Scene 4 to fill this]" data-override-key="snapshot-support-now-override"></textarea>
+      </div>
+      <div class="snap-field" data-field="sentence">
+        <div class="snap-field-label">5 — What I am no longer willing to call a character flaw</div>
+        <textarea class="snap-field-edit-area" id="snapshot-sentence-input" placeholder="The thing I am no longer willing to call a character flaw is..."></textarea>
+      </div>
+      <p style="font-size:.58rem;color:var(--cf);margin-top:.4rem;">All fields save automatically as you edit.</p>
+      <div class="snap-actions">
+        <button id="main-copy-btn"><i class="fa-solid fa-copy" aria-hidden="true"></i> Copy</button>
+        <button id="main-print-btn"><i class="fa-solid fa-print" aria-hidden="true"></i> Print / Save as PDF</button>
+      </div>
+      </div>
+    </div>
+
+    <div class="leah-moment">
+      <div class="leah-icon"><i class="fa-solid fa-volume-low" aria-hidden="true"></i></div>
+      <div class="leah-copy">
+        <p class="leah-label">A note from Leah</p>
+        <p>A closing reflection on what it means to finish this week with an updated map, not a finished one.</p>
+        <span class="leah-state">Video placeholder — not yet recorded</span>
+      </div>
+    </div>
+
+    <div class="milestone-row" id="milestone-row" role="checkbox" aria-checked="false" tabindex="0">
+      <div class="milestone-cb" id="milestone-cb"></div>
+      <div>
+        <p style="font-size:.7rem;font-weight:700;color:var(--cream);">I have identified at least one pattern from my past that I am now seeing differently with my ADHD understanding.</p>
+      </div>
+    </div>
+    <p class="complete-msg" id="complete-msg">Week 1 complete. Your Snapshot has been saved to this browser.</p>
+
+    <div class="section-divider"><span>Carrying it forward</span></div>
+    <div class="catchup-panel">
+      <h4>Bring this to the weekly catch-up</h4>
+      <ul class="catchup-prompts">
+        <li>One pattern you're seeing differently this week</li>
+        <li>One label you're willing to question</li>
+        <li>One piece of support you'd like to ask about</li>
+      </ul>
+      <p style="font-size:.78rem;color:var(--cd);">Sharing is optional. Listening-only participation is welcome.</p>
+      <p style="font-size:.72rem;color:var(--cm);margin-top:.4rem;">Date: [to be confirmed] · Join link: [to be added]</p>
+      <p class="scope-note">This is educational content delivered by a neurodivergent consultant and registered nurse. It is not therapy or clinical advice. <a href="support.html" style="color:var(--rose);text-decoration:underline;">Support resources here.</a></p>
+    </div>
+
+    <div class="week2-preview">
+      <p style="font-size:.55rem;letter-spacing:.14em;text-transform:uppercase;color:var(--lilac);margin-bottom:.5rem;">Coming in Week 2</p>
+      <p style="font-size:.88rem;color:var(--cd);">Masking, Overcompensation and Self-Blame — the patterns many late-diagnosed adults use to get through, and what they've cost.</p>
+      <a href="week-2.html" class="btn btn-ghost" style="margin-top:.7rem;display:inline-flex;">Week 2 <i class="fa-solid fa-arrow-right" aria-hidden="true"></i></a>
+    </div>
+
+    <nav class="scene-nav"><button class="btn btn-ghost" data-prev>← Relief, Grief and Anger</button><a href="course-dashboard.html" class="btn btn-primary">Back to dashboard <i class="fa-solid fa-grid-2" aria-hidden="true"></i></a></nav>
+  </div>
+</section>
+
+<footer>
+  <p>This is a production candidate for internal review. © 2026 Nuanced Co. Content is for general information purposes only and does not constitute clinical advice, diagnosis, or treatment.</p>
+</footer>
+
+<script>
+const LS = {
+  get:(k,fb)=>{ try{const v=localStorage.getItem(k);return v!==null?JSON.parse(v):fb;}catch(e){return fb;} },
+  set:(k,v)=>{ try{localStorage.setItem(k,JSON.stringify(v));}catch(e){} }
+};
+const K = (name)=>'tul-w1-'+name;
+
+const SCENES = ['arrive','changed','oldstory','brain','feelings','snapshot'];
+const SCENE_NAMES = {arrive:'Week Opening',changed:'Something Changed',oldstory:'The Old Story',brain:'How the Brain Manages Life',feelings:'Relief, Grief and Anger',snapshot:'Build Your Snapshot'};
+let currentScene = LS.get(K('current-scene'), 'arrive');
+if(!SCENES.includes(currentScene)) currentScene = 'arrive';
+const savedSceneOnLoad = currentScene;
+
+function renderTrack(){
+  const track = document.getElementById('journey-track');
+  track.innerHTML = '';
+  SCENES.forEach((s,i)=>{
+    const visited = LS.get(K('visited-'+s), s==='arrive');
+    const node = document.createElement('div'); node.className='jt-node-wrap';
+    const dot = document.createElement('span'); dot.className='jt-node'+(s===currentScene?' active':(visited?' done':''));
+    const label = document.createElement('button'); label.className='jt-label'+(s===currentScene?' active':(visited?' done':'')); label.textContent=(i+1)+' '+SCENE_NAMES[s];
+    label.setAttribute('role','tab'); label.setAttribute('aria-selected', s===currentScene?'true':'false');
+    label.addEventListener('click',()=>goToScene(s));
+    node.appendChild(dot); node.appendChild(label);
+    if(i < SCENES.length-1){ const line=document.createElement('div'); line.className='jt-line'; node.appendChild(line); }
+    track.appendChild(node);
+  });
+}
+
+function goToScene(s){
+  document.querySelectorAll('.scene').forEach(el=>el.classList.remove('active'));
+  document.getElementById('scene-'+s).classList.add('active');
+  currentScene = s;
+  LS.set(K('current-scene'), s);
+  LS.set(K('visited-'+s), true);
+  renderTrack();
+  window.scrollTo({top:0, behavior: document.body.classList.contains('reduce-motion')?'auto':'smooth'});
+}
+
+document.querySelectorAll('[data-next]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const idx = SCENES.indexOf(currentScene);
+    if(idx < SCENES.length-1) goToScene(SCENES[idx+1]);
+  });
+});
+document.querySelectorAll('[data-prev]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const idx = SCENES.indexOf(currentScene);
+    if(idx > 0) goToScene(SCENES[idx-1]);
+  });
+});
+
+/* Resume block */
+function initResume(){
+  if(savedSceneOnLoad && savedSceneOnLoad !== 'arrive'){
+    document.getElementById('resume-block').classList.add('show');
+    document.getElementById('resume-scene-name').textContent = 'You were in: '+SCENE_NAMES[savedSceneOnLoad];
+  }
+}
+document.getElementById('resume-btn').addEventListener('click',()=>goToScene(savedSceneOnLoad));
+document.getElementById('start-over-btn').addEventListener('click',()=>{
+  if(confirm('This will clear your saved progress. Are you sure?')){
+    Object.keys(localStorage).filter(k=>k.startsWith('tul-w1-')).forEach(k=>localStorage.removeItem(k));
+    location.reload();
+  }
+});
+
+/* Route selection */
+document.querySelectorAll('.route-card').forEach(card=>{
+  card.addEventListener('click',()=>selectRoute(card));
+  card.addEventListener('keydown',e=>{ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); selectRoute(card); } });
+});
+function selectRoute(card){
+  document.querySelectorAll('.route-card').forEach(c=>{c.classList.remove('selected');c.setAttribute('aria-checked','false');});
+  card.classList.add('selected'); card.setAttribute('aria-checked','true');
+  LS.set(K('route'), card.dataset.route);
+  document.getElementById('route-cta').classList.add('show');
+}
+document.getElementById('begin-journey-btn').addEventListener('click',()=>goToScene('changed'));
+
+/* Low-capacity mode */
+const lowcapToggle = document.getElementById('lowcap-toggle');
+function applyLowcap(on){
+  document.body.classList.toggle('lowcap', on);
+  LS.set(K('lowcap'), on);
+  document.getElementById('lowcap-area-note').style.display = on ? 'block' : 'none';
+}
+lowcapToggle.addEventListener('change', e=>applyLowcap(e.target.checked));
+
+/* Transcript */
+document.getElementById('transcript-btn').addEventListener('click',function(){
+  const panel = document.getElementById('transcript-panel');
+  const open = panel.classList.toggle('open');
+  this.setAttribute('aria-expanded', String(open));
+});
+
+/* Scene 2 — Something Changed */
+const changedTa = document.getElementById('changed-textarea');
+changedTa.value = LS.get(K('scene2-response'), '');
+function saveChanged(){
+  LS.set(K('scene2-response'), changedTa.value);
+  const c = document.getElementById('changed-save-confirm'); c.classList.add('show');
+  setTimeout(()=>c.classList.remove('show'), 2000);
+}
+document.getElementById('changed-save-btn').addEventListener('click', saveChanged);
+changedTa.addEventListener('blur', saveChanged);
+
+/* Scene 3 — Old Story */
+const LABEL_CONTENT = {
+  'lazy':{seen:'Someone who didn\'t care enough to get started.',underneath:'Task initiation is a specific executive function. Starting can be genuinely difficult even when something matters to you.',support:'Smaller first steps, external structure, or starting alongside someone rather than alone.'},
+  'inconsistent':{seen:'Someone unreliable — great one day, unable to repeat it the next.',underneath:'ADHD attention and energy can vary significantly day to day for neurological reasons, not a lack of commitment.',support:'Systems that don\'t depend on consistent motivation — reminders, routines, accountability.'},
+  'careless':{seen:'Someone who didn\'t pay attention to detail.',underneath:'Working memory differences can mean details slip even with real effort and care.',support:'Checklists, double-checking built into the process, reducing the number of things to track at once.'},
+  'too-sensitive':{seen:'Someone overreacting to ordinary things.',underneath:'Emotional regulation can work differently in ADHD — feelings can arrive faster and more intensely.',support:'Permission to feel things fully, regulation tools that work with the brain rather than against it.'},
+  'not-trying':{seen:'Someone who could do it if they just applied themselves.',underneath:'Effort and outcome aren\'t always connected the way people expect in ADHD brains — trying hard doesn\'t guarantee follow-through.',support:'Recognition that effort was often already maximal — looking for different tools, not more willpower.'},
+  'difficult':{seen:'Someone who made everything harder than it needed to be.',underneath:'What looked like difficulty could have been a brain working differently within systems not built for it.',support:'Environments and expectations that flex to fit different processing styles.'},
+  'disorganised':{seen:'Someone messy or scattered.',underneath:'Planning and sequencing are executive functions that can be affected directly by ADHD.',support:'External organisational systems rather than relying on internal ones.'},
+  'wasted-potential':{seen:'Someone capable who just wasn\'t using it.',underneath:'Capability and executive function are not the same thing — intelligence doesn\'t override executive function differences.',support:'Support aimed at the actual gap (executive function), not more pressure on ability that was never the issue.'}
+};
+let selectedLabels = LS.get(K('labels-selected'), []);
+let focusLabel = LS.get(K('label-focus'), null);
+
+function renderLabelGrid(){
+  document.querySelectorAll('.label-card').forEach(card=>{
+    const sel = selectedLabels.includes(card.dataset.label);
+    card.classList.toggle('selected', sel);
+    card.setAttribute('aria-checked', String(sel));
+  });
+  document.getElementById('label-count').textContent = selectedLabels.length+' of 8 selected';
+  document.getElementById('focus-wrap').style.display = selectedLabels.length>0 ? 'block' : 'none';
+  renderFocusChips();
+}
+function renderFocusChips(){
+  const wrap = document.getElementById('focus-chips');
+  wrap.innerHTML = '';
+  selectedLabels.forEach(l=>{
+    const chip = document.createElement('button');
+    chip.className = 'focus-chip'+(l===focusLabel?' active':'');
+    chip.textContent = l.replace(/-/g,' ');
+    chip.setAttribute('role','radio'); chip.setAttribute('aria-checked', String(l===focusLabel));
+    chip.addEventListener('click',()=>{ focusLabel=l; LS.set(K('label-focus'),l); renderFocusChips(); renderReveal(); });
+    wrap.appendChild(chip);
+  });
+}
+function renderReveal(){
+  const panel = document.getElementById('reveal-panel');
+  if(!focusLabel){ panel.classList.remove('open'); return; }
+  const c = LABEL_CONTENT[focusLabel];
+  document.getElementById('reveal-seen').textContent = c.seen;
+  document.getElementById('reveal-underneath').textContent = c.underneath;
+  document.getElementById('reveal-support').textContent = c.support;
+  panel.classList.add('open');
+  updateSnapshot();
+}
+document.querySelectorAll('.label-card').forEach(card=>{
+  function toggle(){
+    const l = card.dataset.label;
+    const i = selectedLabels.indexOf(l);
+    if(i>-1){ selectedLabels.splice(i,1); if(focusLabel===l) focusLabel=null; }
+    else selectedLabels.push(l);
+    LS.set(K('labels-selected'), selectedLabels);
+    LS.set(K('label-focus'), focusLabel);
+    renderLabelGrid(); renderReveal();
+  }
+  card.addEventListener('click', toggle);
+  card.addEventListener('keydown', e=>{ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); toggle(); } });
+});
+
+const interpretationTa = document.getElementById('interpretation-textarea');
+interpretationTa.value = LS.get(K('label-interpretation'), '');
+function saveInterpretation(){
+  LS.set(K('label-interpretation'), interpretationTa.value);
+  const c=document.getElementById('interpretation-save-confirm'); c.classList.add('show'); setTimeout(()=>c.classList.remove('show'),2000);
+  updateSnapshot();
+}
+document.getElementById('interpretation-save-btn').addEventListener('click', saveInterpretation);
+interpretationTa.addEventListener('blur', saveInterpretation);
+
+const supportThenTa = document.getElementById('support-then-textarea');
+supportThenTa.value = LS.get(K('support-then'), '');
+function saveSupportThen(){
+  LS.set(K('support-then'), supportThenTa.value);
+  const c=document.getElementById('support-then-save-confirm'); c.classList.add('show'); setTimeout(()=>c.classList.remove('show'),2000);
+  updateSnapshot();
+}
+document.getElementById('support-then-save-btn').addEventListener('click', saveSupportThen);
+supportThenTa.addEventListener('blur', saveSupportThen);
+
+/* Scene 4 — Executive Function */
+const EF_AREAS = [
+  {slug:'task-initiation',name:'Task initiation',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="#9668A4" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M10 8l6 4-6 4z" fill="#9668A4"/></svg>',explain:'Starting something you know you need to do, and simply not being able to get started.',example:'Sitting down to start a task and finding yourself doing almost anything else first.',support:'Smaller first steps, body doubling, starting at a set time rather than "when you feel ready."'},
+  {slug:'working-memory',name:'Working memory',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="#9668A4" stroke-width="1.6"><rect x="4" y="6" width="16" height="12" rx="2"/><path d="M4 10h16"/></svg>',explain:'Holding information in mind long enough to use it — and losing track mid-task.',example:'Walking to another room for something and forgetting what you went there for.',support:'Writing things down immediately, visual reminders in the place you\'ll need them.'},
+  {slug:'time-awareness',name:'Time awareness',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="#9668A4" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l4 2"/></svg>',explain:'Underestimating how long things take, or losing track of time entirely.',example:'"Just five more minutes" turning into an hour without noticing.',support:'External timers and alarms rather than an internal sense of time.'},
+  {slug:'shifting-attention',name:'Shifting attention',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="#9668A4" stroke-width="1.6"><path d="M4 12a8 8 0 1116 0"/><path d="M4 12l3-3M20 12l-3-3"/></svg>',explain:'Moving between tasks, and losing your place when you switch.',example:'Getting pulled into something else mid-task and struggling to return to the original one.',support:'Closing loops before switching, transition routines between tasks.'},
+  {slug:'planning',name:'Planning and sequencing',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="#9668A4" stroke-width="1.6"><circle cx="6" cy="6" r="2"/><circle cx="12" cy="12" r="2"/><circle cx="18" cy="18" r="2"/><path d="M7.5 7.5l3 3M13.5 13.5l3 3"/></svg>',explain:'Breaking a goal into ordered steps and following them through.',example:'Knowing what you want to achieve but not how to get from here to there.',support:'Pre-built templates and checklists rather than planning from scratch each time.'},
+  {slug:'emotional-regulation',name:'Emotional regulation',icon:'<svg viewBox="0 0 24 24" fill="none" stroke="#9668A4" stroke-width="1.6"><path d="M4 14c2-4 6-6 8-6s6 2 8 6"/><circle cx="8" cy="9" r="1"/><circle cx="16" cy="9" r="1"/></svg>',explain:'Feelings arriving quickly and intensely, and taking longer to settle.',example:'A small setback feeling disproportionately large in the moment.',support:'Naming the feeling early, regulation strategies that work with the intensity rather than against it.'}
+];
+let efSelected = LS.get(K('ef-areas'), []);
+function renderEF(){
+  const list = document.getElementById('ef-list');
+  list.innerHTML='';
+  EF_AREAS.forEach(a=>{
+    const on = efSelected.includes(a.slug);
+    const row = document.createElement('div'); row.className='ef-row';
+    row.innerHTML = `<div class="ef-icon">${a.icon}</div>
+      <div class="ef-copy"><h4>${a.name}</h4><p>${a.explain}</p><p class="ef-example">${a.example}</p></div>
+      <div class="ef-cb-wrap"><div class="ef-cb${on?' on':''}" role="checkbox" aria-checked="${on}" aria-label="This shows up for me — ${a.name}" tabindex="0"></div></div>`;
+    const cb = row.querySelector('.ef-cb');
+    function toggle(){
+      const i = efSelected.indexOf(a.slug);
+      if(i>-1) efSelected.splice(i,1); else efSelected.push(a.slug);
+      LS.set(K('ef-areas'), efSelected);
+      renderEF(); updateSnapshot();
+    }
+    cb.addEventListener('click', toggle);
+    cb.addEventListener('keydown', e=>{ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); toggle(); } });
+    list.appendChild(row);
+  });
+  const summary = document.getElementById('ef-support-summary');
+  if(efSelected.length){
+    summary.classList.add('show');
+    summary.textContent = 'Areas where support may help: '+efSelected.map(s=>EF_AREAS.find(a=>a.slug===s).name).join(', ')+'.';
+  } else summary.classList.remove('show');
+}
+
+/* Scene 5 — Emotions */
+const EMOTIONS = ['Relief','Grief','Anger','Numbness','Confusion','Validation','Exhaustion','Hope','Sadness','Frustration','Nothing yet'];
+let emoSelected = LS.get(K('emotions'), []);
+function renderEmo(){
+  const grid = document.getElementById('emo-grid');
+  grid.innerHTML='';
+  EMOTIONS.forEach(e=>{
+    const slug = e.toLowerCase().replace(/\s+/g,'-');
+    const chip = document.createElement('button');
+    chip.className = 'emo-chip'+(emoSelected.includes(slug)?' selected':'');
+    chip.textContent = e;
+    chip.setAttribute('role','checkbox'); chip.setAttribute('aria-checked', String(emoSelected.includes(slug)));
+    chip.addEventListener('click',()=>{
+      const i = emoSelected.indexOf(slug);
+      if(i>-1) emoSelected.splice(i,1); else emoSelected.push(slug);
+      LS.set(K('emotions'), emoSelected);
+      renderEmo();
+    });
+    grid.appendChild(chip);
+  });
+  renderEmoResponse();
+}
+function renderEmoResponse(){
+  const el = document.getElementById('emo-response');
+  if(!emoSelected.length){ el.textContent = "Select any feeling above — there's no wrong answer, and you can select more than one."; return; }
+  if(emoSelected.includes('relief') && emoSelected.includes('grief')){
+    el.textContent = "Relief and grief are not opposites. You do not need to choose between them or resolve one before you're allowed to feel the other.";
+  } else if(emoSelected.includes('grief')){
+    el.textContent = "Grief after late diagnosis is a reasonable response to real loss — the support that might have helped and didn't arrive in time. It does not require a name or a clinical category.";
+  } else if(emoSelected.includes('anger')){
+    el.textContent = "Anger at what was missed — by clinicians, schools, or systems — is a reasonable response. It does not need to be resolved quickly to be valid.";
+  } else if(emoSelected.includes('nothing-yet')){
+    el.textContent = "Not feeling anything yet is also a valid response. Some people need time before a diagnosis feels real. There is no required timeline.";
+  } else if(emoSelected.includes('exhaustion') || emoSelected.includes('numbness')){
+    el.textContent = "If this feels like exhaustion more than anything sharp, that's worth honouring too. You don't need to feel things intensely for them to be real.";
+  } else {
+    el.textContent = "All of these are valid. There is no correct emotional response to a late diagnosis.";
+  }
+}
+document.getElementById('pause-btn').addEventListener('click',()=>{
+  LS.set(K('paused'), true);
+  LS.set(K('current-scene'), 'feelings');
+  document.getElementById('pause-confirm').style.display='inline';
+  window.scrollTo({top:0,behavior:'smooth'});
+});
+
+/* Scene 6 — Life Review Map */
+let lifeArea = LS.get(K('life-area'), null);
+document.querySelectorAll('.area-pill').forEach(pill=>{
+  pill.addEventListener('click',()=>{
+    document.querySelectorAll('.area-pill').forEach(p=>p.classList.remove('selected'));
+    pill.classList.add('selected');
+    lifeArea = pill.dataset.area;
+    LS.set(K('life-area'), lifeArea);
+    document.getElementById('lrm-steps').style.display='flex';
+  });
+});
+if(lifeArea){
+  const pill = document.querySelector('.area-pill[data-area="'+lifeArea+'"]');
+  if(pill){ pill.classList.add('selected'); document.getElementById('lrm-steps').style.display='flex'; }
+}
+for(let i=1;i<=5;i++){
+  document.getElementById('lrm-'+i).value = LS.get(K('lrm-'+i), '');
+}
+function unlockLRM(){
+  for(let i=1;i<=5;i++){
+    const step = document.querySelector('.lrm-step[data-step="'+i+'"]');
+    const num = step.querySelector('.lrm-num');
+    const val = LS.get(K('lrm-'+i), '');
+    if(val){ step.classList.add('unlocked'); num.classList.add('done'); num.classList.remove('active'); }
+  }
+  for(let i=1;i<=5;i++){
+    const step = document.querySelector('.lrm-step[data-step="'+i+'"]');
+    if(step.classList.contains('unlocked') || i===1){ step.classList.add('unlocked'); }
+    if(i>1){
+      const prevVal = LS.get(K('lrm-'+(i-1)), '');
+      if(prevVal) step.classList.add('unlocked');
+    }
+  }
+  const activeStep = [...document.querySelectorAll('.lrm-step')].find(s=>s.classList.contains('unlocked') && !s.querySelector('.lrm-num').classList.contains('done'));
+  if(activeStep) activeStep.querySelector('.lrm-num').classList.add('active');
+}
+document.querySelectorAll('[data-lrm-save]').forEach(btn=>{
+  btn.addEventListener('click',()=>{
+    const i = btn.dataset.lrmSave;
+    LS.set(K('lrm-'+i), document.getElementById('lrm-'+i).value);
+    unlockLRM(); updateSnapshot();
+  });
+});
+unlockLRM();
+
+const sentenceInput = document.getElementById('snapshot-sentence-input');
+sentenceInput.value = LS.get(K('snapshot-sentence'), '');
+sentenceInput.addEventListener('blur',()=>{
+  LS.set(K('snapshot-sentence'), sentenceInput.value);
+  updateSnapshot();
+});
+
+/* Editable Snapshot fields — learner edits override the auto-computed value */
+const OVERRIDE_KEYS = {
+  label:'snapshot-label-override',
+  underneath:'snapshot-underneath-override',
+  'support-then':'snapshot-support-then-override',
+  'support-now':'snapshot-support-now-override'
+};
+Object.entries(OVERRIDE_KEYS).forEach(([fieldName, overrideKey])=>{
+  const ta = document.getElementById('main-sf-'+fieldName);
+  if(!ta) return;
+  ta.addEventListener('blur',()=>{
+    LS.set(K(overrideKey), ta.value);
+    updateSnapshot();
+  });
+});
+
+/* Snapshot assembly */
+function updateSnapshot(){
+  const computedLabel = focusLabel ? focusLabel.replace(/-/g,' ') : '';
+  const computedUnderneath = LS.get(K('label-interpretation'),'') || LS.get(K('lrm-3'),'');
+  const computedSupportThen = LS.get(K('support-then'),'') || LS.get(K('lrm-4'),'');
+  const computedSupportNow = (efSelected.length ? ('Areas where support may help: '+efSelected.map(s=>EF_AREAS.find(a=>a.slug===s).name).join(', ')+'.') : '') || LS.get(K('lrm-5'),'');
+
+  const label = LS.get(K(OVERRIDE_KEYS.label),'') || computedLabel;
+  const underneath = LS.get(K(OVERRIDE_KEYS.underneath),'') || computedUnderneath;
+  const supportThen = LS.get(K(OVERRIDE_KEYS['support-then']),'') || computedSupportThen;
+  const supportNow = LS.get(K(OVERRIDE_KEYS['support-now']),'') || computedSupportNow;
+  const sentence = LS.get(K('snapshot-sentence'),'');
+
+  setField('label', label);
+  setField('underneath', underneath);
+  setField('support-then', supportThen);
+  setField('support-now', supportNow);
+  setField('sentence', sentence);
+
+  let count = [label,underneath,supportThen,supportNow,sentence].filter(v=>v && v.trim()).length;
+  document.getElementById('si-count').textContent = count+' of 5';
+  LS.set(K('last-saved'), Date.now());
+}
+function setField(name, value){
+  const sheetEl = document.getElementById('sf-'+name);
+  if(sheetEl){
+    if(value && value.trim()){ sheetEl.textContent = value; sheetEl.classList.remove('empty'); }
+    else { sheetEl.classList.add('empty'); }
+  }
+  const mainEl = document.getElementById('main-sf-'+name) || document.getElementById('snapshot-sentence-input');
+  if(mainEl && mainEl.tagName === 'TEXTAREA' && document.activeElement !== mainEl){
+    if(value) mainEl.value = value;
+  }
+}
+
+/* Snapshot sheet */
+const sheet = document.getElementById('snap-sheet');
+const backdrop = document.getElementById('snap-sheet-backdrop');
+document.getElementById('snap-indicator').addEventListener('click',()=>{ sheet.classList.add('open'); backdrop.classList.add('open'); });
+document.getElementById('snap-close-btn').addEventListener('click', closeSheet);
+backdrop.addEventListener('click', closeSheet);
+function closeSheet(){ sheet.classList.remove('open'); backdrop.classList.remove('open'); }
+
+function snapshotText(){
+  return "MY WEEK 1 SNAPSHOT\n\n"+
+    "1. One old label I am reconsidering: "+(document.getElementById('sf-label').textContent)+"\n\n"+
+    "2. What may have been happening underneath: "+(document.getElementById('sf-underneath').textContent)+"\n\n"+
+    "3. Support that may have helped then: "+(document.getElementById('sf-support-then').textContent)+"\n\n"+
+    "4. Support I may need now: "+(document.getElementById('sf-support-now').textContent)+"\n\n"+
+    "5. One sentence I want to keep: "+(document.getElementById('sf-sentence').textContent);
+}
+function doCopy(){
+  navigator.clipboard.writeText(snapshotText()).then(()=>{
+    const note = document.getElementById('snap-saved-note');
+    note.textContent = 'Copied to clipboard.';
+    setTimeout(()=>note.textContent='', 2500);
+  }).catch(()=>{
+    const note = document.getElementById('snap-saved-note');
+    note.textContent = 'Could not copy automatically — select the text above manually.';
+  });
+}
+document.getElementById('snap-copy-btn').addEventListener('click', doCopy);
+document.getElementById('main-copy-btn').addEventListener('click', doCopy);
+document.getElementById('snap-print-btn').addEventListener('click', ()=>window.print());
+document.getElementById('main-print-btn').addEventListener('click', ()=>window.print());
+
+/* Milestone */
+const milestoneRow = document.getElementById('milestone-row');
+function setMilestone(checked){
+  document.getElementById('milestone-cb').classList.toggle('checked', checked);
+  milestoneRow.setAttribute('aria-checked', String(checked));
+  document.getElementById('complete-msg').classList.toggle('show', checked);
+  LS.set(K('milestone'), checked);
+}
+milestoneRow.addEventListener('click',()=>setMilestone(!LS.get(K('milestone'),false)));
+milestoneRow.addEventListener('keydown', e=>{ if(e.key===' '||e.key==='Enter'){ e.preventDefault(); setMilestone(!LS.get(K('milestone'),false)); } });
+
+/* Init */
+document.addEventListener('DOMContentLoaded',()=>{
+  renderTrack();
+  initResume();
+  renderLabelGrid();
+  renderReveal();
+  renderEF();
+  renderEmo();
+  updateSnapshot();
+  if(LS.get(K('lowcap'), false)){ lowcapToggle.checked = true; applyLowcap(true); }
+  if(LS.get(K('milestone'), false)) setMilestone(true);
+  const r = LS.get(K('route'), null);
+  if(r){ const c = document.querySelector('.route-card[data-route="'+r+'"]'); if(c) selectRoute(c); }
+  currentScene = 'arrive';
+  goToScene('arrive');
+});
+
+if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  document.body.classList.add('reduce-motion');
+}
+</script>
+</body>
+</html>

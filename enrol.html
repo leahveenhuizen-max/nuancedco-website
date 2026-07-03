@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
 <title>Enrol, The Unmasked Life&#8482; | Nuanced Co.</title>
 <meta name="description" content="Enrol in The Unmasked Life&#8482; by Nuanced Co. A foundational course for newly diagnosed adults. A four-week course for adults navigating a neurodivergent diagnosis.">
 <link rel="canonical" href="https://nuancedco.com.au/enrol">
@@ -26,10 +27,10 @@ a{color:inherit;text-decoration:none;}
 
 /* NAV */
 nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 2.8rem;background:rgba(246,241,233,.95);backdrop-filter:blur(12px);border-bottom:1px solid rgba(107,69,112,.09);}
-nav.scrolled{box-shadow:0 2px 20px rgba(42,31,26,.06);}
+nav.scrolled{}
 .nav-logo{font-family:var(--serif);font-size:1.3rem;letter-spacing:.18em;color:var(--ink);}
 .nav-logo span{display:block;font-family:var(--body);font-size:.44rem;letter-spacing:.26em;text-transform:uppercase;color:var(--purple);margin-top:2px;}
-.nav-back{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mid);display:flex;align-items:center;gap:.5rem;transition:color .2s;}
+.nav-back{font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-mid);display:flex;align-items:center;gap:.5rem;transition:color .1s cubic-bezier(0.22,1,0.36,1);}
 .nav-back:hover{color:var(--purple);}
 .nav-back::before{content:'←';}
 
@@ -71,13 +72,13 @@ textarea{
   color:var(--ink);background:var(--white);
   border:1px solid rgba(107,69,112,.18);
   border-radius:8px;
-  transition:border-color .2s,box-shadow .2s;
+  transition:border-color .1s cubic-bezier(0.22,1,0.36,1),box-shadow .1s cubic-bezier(0.22,1,0.36,1);
   outline:none;
   line-height:1.6;
 }
 input:focus,textarea:focus{
   border-color:var(--purple);
-  box-shadow:0 0 0 3px rgba(107,69,112,.08);
+  
 }
 textarea{resize:vertical;min-height:90px;}
 .field-note{font-size:.62rem;color:rgba(42,31,26,.4);margin-top:.15rem;}
@@ -93,11 +94,11 @@ textarea{resize:vertical;min-height:90px;}
 /* SUBMIT */
 .submit-area{display:flex;flex-direction:column;gap:.75rem;}
 .btn-submit{
-  background:var(--purple);color:var(--white);
+  background:var(--purple);color:#fff;
   padding:1rem 2rem;
   font-family:var(--body);font-size:.76rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
   border:none;border-radius:4px;cursor:pointer;
-  transition:background .2s,transform .15s;
+  transition:background .1s cubic-bezier(0.22,1,0.36,1),transform .1s cubic-bezier(0.22,1,0.36,1);
   width:100%;
 }
 .btn-submit:hover{background:var(--ink);transform:translateY(-1px);}
@@ -114,11 +115,12 @@ textarea{resize:vertical;min-height:90px;}
 footer{background:var(--ink);padding:2.4rem 2rem;}
 .foot-inner{max-width:960px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.4rem;}
 .flogo{font-family:var(--serif);font-size:1rem;letter-spacing:.2em;color:#F6F1E9;}
-.flogo small{display:block;font-family:var(--body);font-size:.4rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(196,150,62,.65);margin-top:2px;}
+.flogo small{display:block;font-family:var(--body);font-size:.4rem;letter-spacing:.26em;text-transform:uppercase;color:rgba(107,69,112,.65);margin-top:2px;}
 .flinks{display:flex;gap:1.4rem;flex-wrap:wrap;}
-.flinks a{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,233,.3);transition:color .2s;}
+.flinks a{font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,233,.3);transition:color .1s cubic-bezier(0.22,1,0.36,1);}
 .flinks a:hover{color:#F6F1E9;}
 .fcopy{max-width:960px;margin:1.4rem auto 0;padding-top:1rem;border-top:1px solid rgba(246,241,233,.05);font-size:.54rem;color:rgba(246,241,233,.18);}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rv,.rvl,.rvr,.ncrv{opacity:1!important;transform:none!important}}
 </style>
 </head>
 <body>
@@ -168,7 +170,7 @@ footer{background:var(--ink);padding:2.4rem 2rem;}
       id="enrolment-form"
       action="https://formspree.io/f/YOUR_ID"
       method="POST"
-      style="max-width:580px;margin:0 auto;background-color:#FBF9F6;padding:3rem;border-radius:24px;box-shadow:0 4px 20px rgba(42,31,26,0.06);font-family:'Atkinson Hyperlegible',sans-serif;"
+      style="max-width:580px;margin:0 auto;background-color:#FBF9F6;padding:3rem;border-radius:24px;font-family:'Atkinson Hyperlegible',sans-serif;"
     >
       <input type="text" name="_gotcha" style="display:none" />
 
@@ -196,7 +198,7 @@ footer{background:var(--ink);padding:2.4rem 2rem;}
       </div>
 
       <button type="submit" id="submit-btn"
-        style="width:100%;padding:1.1rem;background-color:#2A1F1A;color:#F6F1E9;border:none;border-radius:4px;font-weight:700;font-size:1rem;letter-spacing:0.05rem;cursor:pointer;transition:all 0.4s ease-in-out;"
+        style="width:100%;padding:1.1rem;background-color:#2A1F1A;color:#F6F1E9;border:none;border-radius:4px;font-weight:700;font-size:1rem;letter-spacing:0.05rem;cursor:pointer;transition:all .1s cubic-bezier(0.22,1,0.36,1);"
         onmouseover="this.style.backgroundColor='#6B4570'"
         onmouseout="this.style.backgroundColor='#2A1F1A'">
         Confirm Enrolment
@@ -216,10 +218,10 @@ footer{background:var(--ink);padding:2.4rem 2rem;}
   <p class="fcopy">&copy; 2026 Nuanced Co. All rights reserved. ABN 71 926 185 491. Content is for educational purposes only and does not constitute clinical advice, diagnosis, or psychological treatment. If you need clinical support, please speak with a registered professional.</p>
   <div style="max-width:960px;margin:2rem auto 0;background:var(--cream);border:1px solid rgba(196,150,62,.2);border-radius:16px;padding:2rem 2.4rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1.6rem;">
     <div>
-      <p style="font-family:var(--serif);font-size:.55rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(196,150,62,.7);margin-bottom:.6rem;">THE PHYSICAL COMPANION</p>
+      <p style="font-family:var(--serif);font-size:.55rem;letter-spacing:.28em;text-transform:uppercase;color:var(--purple);margin-bottom:.6rem;">THE PHYSICAL COMPANION</p>
       <p style="font-size:.82rem;color:var(--ink-mid);line-height:1.78;max-width:520px;">Prefer working off-screen? Access to the digital fillable journal is included with your course. Use this space to order a beautifully bound, premium cloth linen physical copy printed and shipped directly to your door.</p>
     </div>
-    <a href="#" style="flex-shrink:0;background:var(--ink);color:#F6F1E9;padding:.82rem 1.65rem;font-family:var(--body);font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border-radius:2px;white-space:nowrap;transition:opacity .2s;">Order Printed Edition</a>
+    <a href="#" style="flex-shrink:0;background:var(--ink);color:#F6F1E9;padding:.82rem 1.65rem;font-family:var(--body);font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;border-radius:2px;white-space:nowrap;transition:opacity .1s cubic-bezier(0.22,1,0.36,1);">Order Printed Edition</a>
   </div>
 </footer>
 
@@ -246,7 +248,7 @@ document.getElementById('enrolment-form').addEventListener('submit', async funct
         <div style="text-align:center;padding:2rem 0;font-family:'Atkinson Hyperlegible',sans-serif;">
           <h3 style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:#2A1F1A;margin-bottom:1rem;font-weight:600;">Enrolment Confirmed</h3>
           <p style="color:#2A1F1A;font-size:1rem;line-height:1.8rem;opacity:0.9;margin-bottom:2rem;">Your details have been securely received. A clean onboarding protocol has been dispatched to your email address with your access details.</p>
-          <a href="portal.html" style="display:inline-block;padding:0.9rem 2rem;background-color:#6B4570;color:#F6F1E9;text-decoration:none;border-radius:4px;font-weight:700;transition:background-color 0.4s ease;">Enter Member Portal</a>
+          <a href="portal.html" style="display:inline-block;padding:0.9rem 2rem;background-color:#6B4570;color:#F6F1E9;text-decoration:none;border-radius:4px;font-weight:700;transition:background-color .1s cubic-bezier(0.22,1,0.36,1);">Enter Member Portal</a>
         </div>`;
     } else {
       const data = await response.json();
@@ -306,5 +308,26 @@ BODY:
 =============================================================
 -->
 
+<script>
+(function(){
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
+  var s=document.createElement('style');
+  s.textContent='.ncrv{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(0.22,1,0.36,1),transform .8s cubic-bezier(0.22,1,0.36,1)}.ncrv.in{opacity:1;transform:none}';
+  document.head.appendChild(s);
+  var els=[];
+  function addGroup(grid){if(grid.dataset.ncrv)return;grid.dataset.ncrv='1';Array.prototype.forEach.call(grid.children,function(c,i){c.classList.add('ncrv');c.style.transitionDelay=((i%8)*0.15)+'s';els.push(c);});}
+  document.querySelectorAll('section,.card').forEach(function(sec){
+    if(sec.closest('nav'))return;
+    var grid=sec.querySelector('[class*="grid"],[class*="cards"]');
+    if(grid&&grid.children.length>1&&grid.children.length<13){addGroup(grid);}
+    sec.classList.add('ncrv');els.push(sec);
+  });
+  document.querySelectorAll('.sprint-grid').forEach(addGroup);
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
+  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
+  els.forEach(function(el){io.observe(el);});
+})();
+</script>
 </body>
 </html>

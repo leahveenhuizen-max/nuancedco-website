@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
   <title>What Kind of Support Do You Need? | Nuanced Co.</title>
   <meta name="description" content="A free 2-minute quiz to help you understand what kind of neurodivergent support would be most useful for where you are right now.">
   <link rel="canonical" href="https://nuancedco.com.au/quiz">
@@ -10,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="nc-header.css">
   <style>
     :root {
       --cream:#F6F1E9;--cream-d:#EDE6D8;--cream-dd:#DDD4C2;
@@ -29,26 +31,29 @@
 
     /* NAV */
     #nav{position:fixed;top:0;left:0;right:0;z-index:800;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3.5rem;background:rgba(15,12,10,.6);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);}
-    .nav-logo{font-family:var(--serif);font-size:1rem;font-weight:400;letter-spacing:.25em;color:var(--cream);text-transform:uppercase;line-height:1;display:flex;flex-direction:column;gap:3px;}
-    .nav-logo em{font-style:normal;font-family:var(--body);font-size:.48rem;letter-spacing:.3em;color:var(--gold);opacity:.8;}
-    .nav-back{font-family:var(--body);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.5);display:flex;align-items:center;gap:.5rem;transition:color .2s;}
+    .nav-back{font-family:var(--body);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.5);display:flex;align-items:center;gap:.5rem;transition:color .1s cubic-bezier(0.22,1,0.36,1);}
     .nav-back:hover{color:var(--cream);}
     .nav-back svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5;}
 
     /* MAIN */
-    main{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:7rem 2rem 4rem;}
+    main{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;padding:8.5rem 2rem 4rem;}
 
     /* PROGRESS */
     .progress-wrap{width:100%;max-width:560px;margin-bottom:3rem;}
     .progress-label{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(246,241,233,.4);margin-bottom:.7rem;display:flex;justify-content:space-between;}
     .progress-track{height:2px;background:rgba(246,241,233,.1);border-radius:2px;overflow:hidden;}
-    .progress-fill{height:100%;background:linear-gradient(90deg,var(--purple),var(--gold));border-radius:2px;transition:width .5s var(--ease);}
+    .progress-fill{height:100%;background:var(--purple);border-radius:2px;transition:width .5s var(--ease);}
 
     /* QUIZ CARD */
-    .quiz-card{width:100%;max-width:560px;animation:fadeUp .5s var(--ease) both;}
-    @keyframes fadeUp{from{opacity:0;transform:translateY(24px);}to{opacity:1;transform:translateY(0);}}
+    .quiz-card{width:100%;max-width:560px;animation:fadeUp .7s var(--ease) both;}
+    @keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
     .quiz-step{display:none;}
-    .quiz-step.active{display:block;animation:fadeUp .45s var(--ease) both;}
+    .quiz-step.active{display:block;animation:fadeUp .6s var(--ease) both;}
+    .quiz-step.active .q-opt{animation:fadeUp .6s var(--ease) both;}
+    .quiz-step.active .q-opt:nth-child(1){animation-delay:.15s;}
+    .quiz-step.active .q-opt:nth-child(2){animation-delay:.3s;}
+    .quiz-step.active .q-opt:nth-child(3){animation-delay:.45s;}
+    .quiz-step.active .q-opt:nth-child(4){animation-delay:.6s;}
 
     /* QUESTION */
     .q-label{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;opacity:.8;}
@@ -57,19 +62,20 @@
 
     /* OPTIONS */
     .q-options{display:flex;flex-direction:column;gap:.75rem;}
-    .q-opt{position:relative;border:1px solid rgba(246,241,233,.12);border-radius:3px;padding:1.1rem 1.4rem;cursor:pointer;transition:border-color .2s,background .2s;display:flex;align-items:flex-start;gap:1rem;}
+    .q-opt{position:relative;border:1px solid rgba(246,241,233,.12);border-radius:3px;padding:1.1rem 1.4rem;cursor:pointer;transition:border-color .1s cubic-bezier(0.22,1,0.36,1),background .1s cubic-bezier(0.22,1,0.36,1);display:flex;align-items:flex-start;gap:1rem;}
     .q-opt:hover{border-color:rgba(196,150,62,.4);background:rgba(196,150,62,.04);}
     .q-opt.selected{border-color:var(--gold);background:rgba(196,150,62,.08);}
     .q-opt input{position:absolute;opacity:0;pointer-events:none;}
-    .q-opt-dot{width:16px;height:16px;min-width:16px;border-radius:50%;border:1px solid rgba(246,241,233,.25);margin-top:3px;transition:border-color .2s,background .2s;display:flex;align-items:center;justify-content:center;}
+    .q-opt-dot{width:16px;height:16px;min-width:16px;border-radius:50%;border:1px solid rgba(246,241,233,.25);margin-top:3px;transition:border-color .1s cubic-bezier(0.22,1,0.36,1),background .1s cubic-bezier(0.22,1,0.36,1);display:flex;align-items:center;justify-content:center;}
     .q-opt.selected .q-opt-dot{border-color:var(--gold);background:var(--gold);}
-    .q-opt.selected .q-opt-dot::after{content:'';width:6px;height:6px;border-radius:50%;background:var(--ink-deep);}
+    .q-opt-dot::after{content:'';width:6px;height:6px;border-radius:50%;background:var(--ink-deep);transform:scale(0);transition:transform .1s var(--ease);}
+    .q-opt.selected .q-opt-dot::after{transform:scale(1);}
     .q-opt-text{font-size:.95rem;color:rgba(246,241,233,.82);line-height:1.55;}
     .q-opt.selected .q-opt-text{color:var(--cream);}
 
     /* BUTTONS */
     .quiz-nav{margin-top:2rem;display:flex;justify-content:flex-end;gap:1rem;}
-    .btn{font-family:var(--body);font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.85rem 2rem;border:none;border-radius:2px;cursor:pointer;transition:transform .2s var(--ease),background .2s,color .2s,opacity .2s;display:inline-block;}
+    .btn{font-family:var(--body);font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:.85rem 2rem;border:none;border-radius:2px;cursor:pointer;transition:transform .1s var(--ease),background .1s cubic-bezier(0.22,1,0.36,1),color .1s cubic-bezier(0.22,1,0.36,1),opacity .1s cubic-bezier(0.22,1,0.36,1);display:inline-block;}
     .btn:hover{transform:translateY(-2px);}
     .btn-gold{background:var(--gold);color:var(--ink-deep);}
     .btn-ghost{background:transparent;border:1px solid rgba(246,241,233,.25);color:rgba(246,241,233,.7);}
@@ -79,17 +85,20 @@
     /* EMAIL STEP */
     .email-intro{font-family:var(--serif);font-size:clamp(1.5rem,3vw,2rem);font-weight:300;color:var(--cream);line-height:1.3;margin-bottom:.8rem;}
     .email-sub{font-size:.9rem;color:rgba(246,241,233,.65);margin-bottom:2rem;line-height:1.65;}
-    .email-field{width:100%;background:rgba(246,241,233,.06);border:1px solid rgba(246,241,233,.15);border-radius:3px;padding:1rem 1.2rem;font-family:var(--body);font-size:.95rem;color:var(--cream);outline:none;transition:border-color .2s;}
+    .email-field{width:100%;background:rgba(246,241,233,.06);border:1px solid rgba(246,241,233,.15);border-radius:3px;padding:1rem 1.2rem;font-family:var(--body);font-size:.95rem;color:var(--cream);outline:none;transition:border-color .1s cubic-bezier(0.22,1,0.36,1);}
     .email-field::placeholder{color:rgba(246,241,233,.3);}
     .email-field:focus{border-color:rgba(196,150,62,.5);}
     .email-note{font-size:.72rem;color:rgba(246,241,233,.35);margin-top:.8rem;letter-spacing:.02em;}
     .email-actions{margin-top:1.5rem;display:flex;flex-direction:column;gap:.8rem;}
-    .skip-link{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,233,.35);text-align:center;cursor:pointer;transition:color .2s;}
+    .skip-link{font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(246,241,233,.35);text-align:center;cursor:pointer;transition:color .1s cubic-bezier(0.22,1,0.36,1);}
     .skip-link:hover{color:rgba(246,241,233,.6);}
 
     /* RESULT */
-    .result-step{display:none;animation:fadeUp .5s var(--ease) both;}
+    .result-step{display:none;animation:fadeUp .7s var(--ease) both;}
     .result-step.active{display:block;}
+    .result-step.active .rc{animation:fadeUp .7s var(--ease) both;}
+    .result-step.active .rc:nth-child(1){animation-delay:.15s;}
+    .result-step.active .rc:nth-child(2){animation-delay:.3s;}
     .result-eyebrow{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem;opacity:.8;}
     .result-title{font-family:var(--serif);font-size:clamp(2rem,4vw,3rem);font-weight:300;color:var(--cream);line-height:1.2;margin-bottom:1.2rem;}
     .result-body{font-size:.95rem;color:rgba(246,241,233,.78);line-height:1.75;max-width:500px;margin-bottom:2.2rem;}
@@ -112,7 +121,8 @@
       .q-text{font-size:1.4rem;}
       .result-title{font-size:1.8rem;}
     }
-  </style>
+  @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rv,.rvl,.rvr,.ncrv{opacity:1!important;transform:none!important}}
+</style>
 </head>
 <body>
 
@@ -322,8 +332,8 @@
     <div class="result-rule"></div>
     <div class="result-cards" id="resultCards"></div>
     <div class="result-actions">
-      <a href="#cta" class="btn btn-gold" onclick="window.location.href='index_v6.html#cta'">Book a free call with Leah</a>
-      <a href="index_v6.html#resources" class="btn btn-ghost">Browse free resources</a>
+      <a href="book.html" class="btn btn-gold">Book a free call with Leah</a>
+      <a href="downloads.html" class="btn btn-ghost">Browse free resources</a>
     </div>
     <p class="disclaimer">This quiz is for information purposes only. It is not a diagnostic tool and does not constitute clinical advice. Nuanced Co. is a consultancy service. If you need clinical or psychological support, please speak with your GP or a registered mental health professional. If you are in crisis, please contact Lifeline on 13 11 14.</p>
   </div>
@@ -335,10 +345,10 @@
 <script>
 // GRAIN
 const gc=document.getElementById('grain'),gx=gc.getContext('2d');
-let gW,gH;function rg(){gW=gc.width=window.innerWidth;gH=gc.height=window.innerHeight;}rg();
+let gW,gH;function rg(){gW=gc.width=window.innerWidth;gH=gc.height=window.innerHeight;drawGrain();}
 window.addEventListener('resize',rg);
 function drawGrain(){const d=gx.createImageData(gW,gH);for(let i=0;i<d.data.length;i+=4){const v=Math.random()*255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=18;}gx.putImageData(d,0,0);}
-setInterval(drawGrain,80);drawGrain();
+rg();
 
 // QUIZ STATE
 let answers = {};

@@ -1,0 +1,898 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Concept B — Guided Visual Journey — The Unmasked Life Week 1</title>
+<meta name="hz:slide-selector" content=".slide">
+<meta name="hz:canvas-width" content="1280">
+<meta name="hz:canvas-height" content="900">
+<link rel="stylesheet" href="https://use.typekit.net/vnl8ejd.css">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #111; }
+
+/* ── TOKENS ── */
+:root {
+  --bg: #2A1F1A;
+  --bg2: rgba(246,241,233,0.04);
+  --cream: #F6F1E9;
+  --cd: rgba(246,241,233,0.68);
+  --cf: rgba(246,241,233,0.36);
+  --cff: rgba(246,241,233,0.18);
+  --purple: #6B4570;
+  --lilac: #9668A4;
+  --sage: #7A8C6E;
+  --rose: #C07A8A;
+  --gold: #C4963E;
+  --rule: rgba(246,241,233,0.10);
+  --rule2: rgba(246,241,233,0.22);
+  --card-bg: rgba(246,241,233,0.045);
+  --card-border: rgba(246,241,233,0.13);
+  --active-bg: rgba(150,104,164,0.12);
+  --active-border: rgba(150,104,164,0.5);
+}
+
+/* ── SLIDE ── */
+.slide {
+  position: relative;
+  width: 1280px;
+  height: 900px;
+  background: var(--bg);
+  overflow: hidden;
+  display: block;
+  margin-bottom: 4px;
+  font-family: 'atkinson-hyperlegible-next', sans-serif;
+}
+.slide.mobile {
+  width: 390px;
+  height: 844px;
+}
+
+/* ── NAV ── */
+.nav {
+  position: absolute; top:0; left:0; right:0;
+  height: 48px;
+  border-bottom: 1px solid var(--rule);
+  display: flex; align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+}
+.nav-logo { font-family:'cormorant-garamond',serif; font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--cf); font-weight:400; }
+.nav-week  { font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--cff); font-weight:400; }
+.nav-sup   { font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--cff); border:1px solid rgba(246,241,233,.14); padding:3px 10px; border-radius:2px; }
+
+/* ── JOURNEY TRACK (concept B's signature element) ── */
+.journey-track {
+  position: absolute; top:48px; left:0; right:0;
+  height: 56px;
+  border-bottom: 1px solid var(--rule);
+  background: rgba(246,241,233,0.02);
+  display: flex; align-items: center;
+  padding: 0 40px;
+  gap: 0;
+}
+.jt-scene {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  position: relative;
+}
+.jt-node {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  border: 1.5px solid var(--card-border);
+  background: transparent;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 2;
+}
+.jt-node.done { background: var(--sage); border-color: var(--sage); }
+.jt-node.active { background: var(--lilac); border-color: var(--lilac); width:12px; height:12px; }
+.jt-line { flex: 1; height:1px; background: var(--rule2); }
+.jt-line.done { background: var(--sage); opacity:.5; }
+.jt-label-wrap { position:absolute; top:16px; left:50%; transform:translateX(-50%); white-space:nowrap; }
+.jt-label { font-size:8px; letter-spacing:.12em; text-transform:uppercase; color:var(--cff); }
+.jt-label.done { color:rgba(122,140,110,.7); }
+.jt-label.active { color:var(--lilac); font-weight:700; }
+
+/* ── TYPE ── */
+.eyebrow {
+  font-family: 'cormorant-garamond', serif;
+  font-size:10px; letter-spacing:.2em; text-transform:uppercase; color:var(--lilac); font-weight:400; margin-bottom:8px;
+}
+.h1 {
+  font-family: 'cormorant-garamond', serif;
+  font-weight:400; font-style:italic; font-size:56px; line-height:1.08; color:var(--cream); margin-bottom:14px;
+}
+.h2 {
+  font-family: 'cormorant-garamond', serif;
+  font-weight:400; font-style:italic; font-size:38px; line-height:1.12; color:var(--cream); margin-bottom:12px;
+}
+.body { font-size:14px; line-height:1.72; color:var(--cd); font-weight:400; }
+.body-sm { font-size:13px; line-height:1.7; color:var(--cd); }
+.label { font-size:9px; letter-spacing:.16em; text-transform:uppercase; color:var(--cf); font-weight:400; }
+
+/* ── CARDS (concept B uses surface cards for interactions) ── */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 3px;
+  padding: 14px 16px;
+}
+.card.sel {
+  background: var(--active-bg);
+  border-color: var(--active-border);
+}
+.card.sage { background: rgba(122,140,110,0.08); border-color: rgba(122,140,110,0.3); }
+.card.rose { background: rgba(192,122,138,0.08); border-color: rgba(192,122,138,0.28); }
+
+/* ── SCENE SEPARATOR ── */
+.scene-sep {
+  display: flex; align-items: center; gap: 16px; margin-bottom: 22px;
+}
+.scene-sep-line { flex:1; height:1px; background:var(--rule2); }
+.scene-sep-num  { font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:var(--lilac); white-space:nowrap; font-weight:700; }
+.scene-sep-name { font-size:9px; letter-spacing:.14em; text-transform:uppercase; color:var(--cf); white-space:nowrap; }
+.scene-note { font-size:12px; color:var(--cff); margin-bottom:20px; font-style:italic; font-family:'cormorant-garamond',serif; }
+
+/* ── CHIPS (rounded) ── */
+.chip {
+  display: inline-flex; align-items:center;
+  border: 1px solid var(--card-border);
+  border-radius: 20px;
+  padding: 5px 14px;
+  font-size: 13px; color:var(--cd);
+  background: transparent;
+}
+.chip.sel { background:var(--active-bg); border-color:var(--active-border); color:var(--cream); }
+.chip.rose-sel { background:rgba(192,122,138,0.1); border-color:rgba(192,122,138,0.4); color:var(--cream); }
+
+/* ── EF GRID ── */
+.ef-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px; }
+.ef-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius:3px; padding:16px;
+}
+.ef-card.sel { background:var(--active-bg); border-color:var(--active-border); }
+.ef-name { font-size:13px; font-weight:700; color:var(--cream); margin-bottom:4px; }
+.ef-desc { font-size:12px; color:var(--cd); line-height:1.55; margin-bottom:6px; }
+.ef-ex   { font-size:11px; color:var(--cf); font-style:italic; margin-bottom:10px; }
+.ef-icon { width:32px; height:32px; margin-bottom:8px; }
+.ef-check { display:flex; align-items:center; gap:6px; }
+.ef-cb { width:14px; height:14px; border:1.5px solid var(--card-border); border-radius:2px; flex-shrink:0; }
+.ef-cb.on { background:var(--lilac); border-color:var(--lilac); display:flex; align-items:center; justify-content:center; }
+.ef-cblabel { font-size:11px; color:var(--cd); }
+
+/* ── LRM STEPS ── */
+.lrm-step {
+  display: flex; gap:14px; margin-bottom:14px; align-items:flex-start;
+}
+.lrm-num {
+  width:24px; height:24px; border-radius:50%;
+  border:1.5px solid var(--card-border);
+  display:flex; align-items:center; justify-content:center;
+  font-size:10px; color:var(--cf); flex-shrink:0; font-weight:700;
+}
+.lrm-num.done { background:var(--sage); border-color:var(--sage); color:#fff; }
+.lrm-num.active { background:var(--lilac); border-color:var(--lilac); color:#fff; }
+.lrm-content { flex:1; }
+.lrm-title { font-size:13px; font-weight:700; color:var(--cream); margin-bottom:4px; }
+.lrm-guide { font-size:12px; color:var(--cd); line-height:1.55; margin-bottom:6px; }
+.lrm-input { border:0; border-bottom:1px solid var(--rule2); padding:6px 0; background:transparent; font-family:'atkinson-hyperlegible-next',sans-serif; font-size:12px; color:rgba(246,241,233,.2); width:100%; }
+
+/* ── MILESTONE / COMPLETE ── */
+.milestone { display:flex; gap:12px; align-items:flex-start; padding:14px; background:var(--card-bg); border:1px solid var(--card-border); border-radius:3px; margin-bottom:12px; }
+.m-circle { width:20px; height:20px; border:1.5px solid var(--card-border); border-radius:50%; flex-shrink:0; margin-top:2px; }
+.m-circle.done { background:var(--sage); border-color:var(--sage); display:flex; align-items:center; justify-content:center; }
+.m-text { font-size:13px; color:var(--cd); line-height:1.55; }
+
+/* ── VIDEO ── */
+.vbox {
+  background: rgba(246,241,233,0.025);
+  border: 1px solid var(--card-border);
+  display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px;
+  border-radius:3px;
+}
+.vplay { width:36px; height:36px; border:1.5px solid var(--cf); border-radius:50%; display:flex; align-items:center; justify-content:center; }
+.vlabel { font-size:10px; letter-spacing:.1em; text-transform:uppercase; color:var(--cf); }
+.vch { font-size:9px; color:var(--cff); border:1px solid var(--rule); padding:3px 8px; border-radius:2px; }
+
+/* ── CTA BAR ── */
+.cta { position:absolute; bottom:0; left:0; right:0; height:52px; border-top:1px solid var(--rule); display:flex; align-items:center; justify-content:flex-end; padding:0 40px; gap:12px; }
+.btn { font-size:11px; letter-spacing:.1em; text-transform:uppercase; padding:8px 20px; border-radius:2px; cursor:default; font-family:'atkinson-hyperlegible-next',sans-serif; }
+.btn.primary { background:var(--lilac); color:#fff; }
+.btn.ghost { background:transparent; color:var(--cd); border:1px solid var(--rule2); }
+
+/* ── SAVE NOTE ── */
+.save-note { font-size:10px; color:var(--cff); margin-top:5px; }
+
+/* ── MOBILE NAV ── */
+.m-nav { position:absolute; top:0; left:0; right:0; height:44px; border-bottom:1px solid var(--rule); display:flex; align-items:center; justify-content:space-between; padding:0 18px; }
+/* Mobile journey track (condensed) */
+.m-track { position:absolute; top:44px; left:0; right:0; height:32px; border-bottom:1px solid var(--rule); background:rgba(246,241,233,0.02); display:flex; align-items:center; padding:0 18px; gap:6px; }
+.m-track-node { width:6px; height:6px; border-radius:50%; border:1px solid var(--card-border); flex-shrink:0; }
+.m-track-node.done { background:var(--sage); border-color:var(--sage); }
+.m-track-node.active { background:var(--lilac); border-color:var(--lilac); width:8px; height:8px; }
+.m-track-line { flex:1; height:1px; background:var(--rule); }
+.m-track-line.done { background:rgba(122,140,110,.35); }
+.m-track-label { font-size:8px; letter-spacing:.1em; text-transform:uppercase; color:var(--lilac); font-weight:700; margin-left:4px; }
+</style>
+</head>
+<body>
+
+<!-- ═══ SLIDE B1 — OPENING WITH JOURNEY MAP ═══ -->
+<div class="slide" data-canvas-width="1280" data-canvas-height="900">
+  <div class="nav">
+    <span class="nav-logo">Nuanced Co.</span>
+    <span class="nav-week">Week 1 of 4</span>
+    <span class="nav-sup">Need support</span>
+  </div>
+
+  <!-- Journey track -->
+  <div class="journey-track">
+    <div class="jt-scene">
+      <div class="jt-node active"></div>
+      <div class="jt-line"></div>
+      <div class="jt-label-wrap" style="left:5px; transform:none;"><span class="jt-label active">1 Arrive</span></div>
+    </div>
+    <div class="jt-scene">
+      <div class="jt-node"></div>
+      <div class="jt-line"></div>
+      <div class="jt-label-wrap"><span class="jt-label">2 Changed</span></div>
+    </div>
+    <div class="jt-scene">
+      <div class="jt-node"></div>
+      <div class="jt-line"></div>
+      <div class="jt-label-wrap"><span class="jt-label">3 Old Story</span></div>
+    </div>
+    <div class="jt-scene">
+      <div class="jt-node"></div>
+      <div class="jt-line"></div>
+      <div class="jt-label-wrap"><span class="jt-label">4 Brain</span></div>
+    </div>
+    <div class="jt-scene">
+      <div class="jt-node"></div>
+      <div class="jt-line"></div>
+      <div class="jt-label-wrap"><span class="jt-label">5 Feelings</span></div>
+    </div>
+    <div class="jt-scene">
+      <div class="jt-node"></div>
+      <div class="jt-label-wrap" style="right:5px; left:auto; transform:none;"><span class="jt-label">6 Snapshot</span></div>
+    </div>
+  </div>
+
+  <!-- Left column: intro + video -->
+  <div style="position:absolute; top:104px; left:40px; width:640px; bottom:52px; padding-top:32px; overflow:hidden;">
+    <div class="eyebrow">Week 1 of 4 — The Unmasked Life</div>
+    <div class="h1">The Late Diagnosis<br>Disruption</div>
+    <div class="body" style="max-width:560px; margin-bottom:18px;">A late ADHD diagnosis does not just add a label. It arrives inside a life already built, and it changes what you can see. This week is about what happens next.</div>
+    <div style="font-size:11px; color:var(--cff); margin-bottom:18px; display:flex; gap:16px; align-items:center;">
+      <span>⏱ 30–45 min in full</span>
+      <span style="color:var(--rule2);">·</span>
+      <span>10 min low-capacity</span>
+    </div>
+
+    <div class="vbox" style="width:580px; height:190px;">
+      <div class="vplay">
+        <svg width="12" height="14" viewBox="0 0 12 14"><path d="M1 1L11 7L1 13Z" stroke="rgba(246,241,233,0.65)" stroke-width="1.5" fill="none"/></svg>
+      </div>
+      <div class="vlabel">Week 1 Lesson Video · Direct to camera · 10–15 minutes</div>
+      <div style="display:flex; gap:6px; margin-top:4px;">
+        <span class="vch">1 — What diagnosis does</span>
+        <span class="vch">2 — The review</span>
+        <span class="vch">3 — What's next</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Right column: route + resume -->
+  <div style="position:absolute; top:104px; left:680px; right:0; bottom:52px; border-left:1px solid var(--rule); padding:32px 40px; overflow:hidden;">
+    <div class="label" style="margin-bottom:18px; color:var(--lilac);">Choose your route through Week 1</div>
+
+    <div class="card sel" style="margin-bottom:10px; cursor:default;">
+      <div style="font-size:15px; font-weight:700; color:var(--cream); margin-bottom:4px;">Full journey</div>
+      <div class="body-sm">All six scenes · about 45 minutes</div>
+    </div>
+    <div class="card" style="margin-bottom:10px; cursor:default;">
+      <div style="font-size:15px; font-weight:700; color:var(--cream); margin-bottom:4px;">Low-capacity route</div>
+      <div class="body-sm">One scene at a time · under 10 minutes each</div>
+    </div>
+    <div class="card" style="margin-bottom:18px; cursor:default;">
+      <div style="font-size:15px; font-weight:700; color:var(--cream); margin-bottom:4px;">Speed-read</div>
+      <div class="body-sm">Core concepts only · 5 minutes</div>
+    </div>
+
+    <!-- Resume block -->
+    <div style="border:1px solid rgba(150,104,164,.25); background:rgba(150,104,164,.06); border-radius:3px; padding:12px 14px; margin-bottom:16px;">
+      <div class="label" style="color:rgba(150,104,164,.7); margin-bottom:6px;">↩ Continue where you left off</div>
+      <div class="body-sm">You were in Scene 3 — The Old Story</div>
+      <div style="display:flex; gap:8px; margin-top:10px;">
+        <span class="btn primary" style="font-size:10px; padding:6px 14px;">Resume</span>
+        <span class="btn ghost" style="font-size:10px; padding:6px 14px;">Start over</span>
+      </div>
+    </div>
+
+    <div class="body-sm" style="color:var(--cff); font-style:italic; font-family:'cormorant-garamond',serif; font-size:14px;">You do not need to finish this today.</div>
+  </div>
+
+  <div class="cta">
+    <span class="btn ghost">Low-capacity start</span>
+    <span class="btn primary">Begin full journey →</span>
+  </div>
+</div>
+
+
+<!-- ═══ SLIDE B2 — SOMETHING CHANGED: TIMELINE ═══ -->
+<div class="slide" data-canvas-width="1280" data-canvas-height="900">
+  <div class="nav"><span class="nav-logo">Nuanced Co.</span><span class="nav-week">Week 1 of 4</span><span class="nav-sup">Need support</span></div>
+
+  <div class="journey-track">
+    <div class="jt-scene"><div class="jt-node done"></div><div class="jt-line done"></div><div class="jt-label-wrap" style="left:5px; transform:none;"><span class="jt-label done">1 Arrive</span></div></div>
+    <div class="jt-scene"><div class="jt-node active"></div><div class="jt-line"></div><div class="jt-label-wrap"><span class="jt-label active">2 Changed</span></div></div>
+    <div class="jt-scene"><div class="jt-node"></div><div class="jt-line"></div><div class="jt-label-wrap"><span class="jt-label">3 Old Story</span></div></div>
+    <div class="jt-scene"><div class="jt-node"></div><div class="jt-line"></div><div class="jt-label-wrap"><span class="jt-label">4 Brain</span></div></div>
+    <div class="jt-scene"><div class="jt-node"></div><div class="jt-line"></div><div class="jt-label-wrap"><span class="jt-label">5 Feelings</span></div></div>
+    <div class="jt-scene"><div class="jt-node"></div><div class="jt-label-wrap" style="right:5px; left:auto; transform:none;"><span class="jt-label">6 Snapshot</span></div></div>
+  </div>
+
+  <div style="position:absolute; top:104px; left:40px; right:40px; bottom:52px; padding-top:28px; overflow:hidden;">
+
+    <div class="scene-sep">
+      <div class="scene-sep-num">Scene 2</div>
+      <div class="scene-sep-line"></div>
+      <div class="scene-sep-name">Something Changed</div>
+      <div class="scene-sep-line"></div>
+    </div>
+    <div class="scene-note">"Here you will understand what late diagnosis does, and why this week begins with looking backwards."</div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:40px;">
+      <!-- Left: prose -->
+      <div>
+        <div class="h2" style="font-size:32px; margin-bottom:12px;">What a late diagnosis actually does</div>
+        <div class="body" style="margin-bottom:12px;">A late ADHD diagnosis is not simply receiving new information. It is information arriving inside a life already built around explanations that were wrong, incomplete, or missing entirely.</div>
+        <div class="body" style="margin-bottom:16px;">When that information arrives, it does not stay in the present. It travels backwards. Into every place where something did not make sense.</div>
+
+        <!-- Pull quote card -->
+        <div class="card rose" style="padding:16px 18px;">
+          <div style="font-family:'cormorant-garamond',serif; font-style:italic; font-size:18px; line-height:1.5; color:var(--cream);">"The disruption that follows — to identity, to self-understanding — is a recognised part of what late diagnosis involves."</div>
+        </div>
+      </div>
+
+      <!-- Right: timeline diagram -->
+      <div>
+        <div class="label" style="margin-bottom:16px; color:var(--cf);">The retroactive review — how diagnosis travels backwards</div>
+
+        <!-- Full SVG timeline, more expressive than A -->
+        <svg width="540" height="280" viewBox="0 0 540 280" style="display:block; margin-bottom:16px;">
+          <!-- Life areas on vertical axis, time on horizontal -->
+          <!-- Horizontal time axis -->
+          <line x1="60" y1="240" x2="520" y2="240" stroke="rgba(246,241,233,0.18)" stroke-width="1"/>
+
+          <!-- Life area tracks -->
+          <text x="50" y="60"  text-anchor="end" font-family="atkinson-hyperlegible-next,sans-serif" font-size="9" fill="rgba(246,241,233,0.35)">School</text>
+          <text x="50" y="110" text-anchor="end" font-family="atkinson-hyperlegible-next,sans-serif" font-size="9" fill="rgba(246,241,233,0.35)">Work</text>
+          <text x="50" y="160" text-anchor="end" font-family="atkinson-hyperlegible-next,sans-serif" font-size="9" fill="rgba(246,241,233,0.35)">Relationships</text>
+          <text x="50" y="210" text-anchor="end" font-family="atkinson-hyperlegible-next,sans-serif" font-size="9" fill="rgba(246,241,233,0.35)">Identity</text>
+
+          <!-- Horizontal guide lines -->
+          <line x1="60" y1="55"  x2="520" y2="55"  stroke="rgba(246,241,233,0.06)" stroke-width="1"/>
+          <line x1="60" y1="105" x2="520" y2="105" stroke="rgba(246,241,233,0.06)" stroke-width="1"/>
+          <line x1="60" y1="155" x2="520" y2="155" stroke="rgba(246,241,233,0.06)" stroke-width="1"/>
+          <line x1="60" y1="205" x2="520" y2="205" stroke="rgba(246,241,233,0.06)" stroke-width="1"/>
+
+          <!-- Diagnosis line (vertical) -->
+          <line x1="370" y1="20" x2="370" y2="240" stroke="rgba(150,104,164,0.5)" stroke-width="1" stroke-dasharray="4,3"/>
+          <rect x="356" y="6" width="60" height="16" rx="2" fill="rgba(150,104,164,0.15)" stroke="rgba(150,104,164,0.4)" stroke-width="1"/>
+          <text x="386" y="18" text-anchor="middle" font-family="atkinson-hyperlegible-next,sans-serif" font-size="8" fill="rgba(150,104,164,0.9)" font-weight="700">Diagnosis</text>
+
+          <!-- Time labels -->
+          <text x="120" y="258" text-anchor="middle" font-family="atkinson-hyperlegible-next,sans-serif" font-size="9" fill="rgba(246,241,233,0.25)">Childhood</text>
+          <text x="230" y="258" text-anchor="middle" font-family="atkinson-hyperlegible-next,sans-serif" font-size="9" fill="rgba(246,241,233,0.25)">20s–30s</text>
+          <text x="370" y="258" text-anchor="middle" font-family="atkinson-hyperlegible-next,sans-serif" font-size="9" fill="rgba(150,104,164,0.7)">Now</text>
+          <text x="460" y="258" text-anchor="middle" font-family="atkinson-hyperlegible-next,sans-serif" font-size="9" fill="rgba(246,241,233,0.25)">Forward</text>
+
+          <!-- Backward review arrows -->
+          <path d="M365 55 L80 55" stroke="rgba(150,104,164,0.25)" stroke-width="0.8" stroke-dasharray="3,3"/>
+          <path d="M86 51 L78 55 L86 59" fill="none" stroke="rgba(150,104,164,0.35)" stroke-width="0.8"/>
+          <path d="M365 105 L80 105" stroke="rgba(150,104,164,0.25)" stroke-width="0.8" stroke-dasharray="3,3"/>
+          <path d="M86 101 L78 105 L86 109" fill="none" stroke="rgba(150,104,164,0.35)" stroke-width="0.8"/>
+          <path d="M365 155 L80 155" stroke="rgba(150,104,164,0.25)" stroke-width="0.8" stroke-dasharray="3,3"/>
+          <path d="M86 151 L78 155 L86 159" fill="none" stroke="rgba(150,104,164,0.35)" stroke-width="0.8"/>
+          <path d="M365 205 L80 205" stroke="rgba(150,104,164,0.25)" stroke-width="0.8" stroke-dasharray="3,3"/>
+          <path d="M86 201 L78 205 L86 209" fill="none" stroke="rgba(150,104,164,0.35)" stroke-width="0.8"/>
+
+          <!-- "Was that ADHD?" labels -->
+          <text x="200" y="48"  font-family="atkinson-hyperlegible-next,sans-serif" font-size="8" fill="rgba(150,104,164,0.5)" font-style="italic">Was that ADHD too?</text>
+          <text x="200" y="98"  font-family="atkinson-hyperlegible-next,sans-serif" font-size="8" fill="rgba(150,104,164,0.5)" font-style="italic">Was that ADHD too?</text>
+          <text x="200" y="148" font-family="atkinson-hyperlegible-next,sans-serif" font-size="8" fill="rgba(150,104,164,0.5)" font-style="italic">Was that ADHD too?</text>
+          <text x="200" y="198" font-family="atkinson-hyperlegible-next,sans-serif" font-size="8" fill="rgba(150,104,164,0.5)" font-style="italic">Was that ADHD too?</text>
+        </svg>
+
+        <!-- Reflection textarea -->
+        <div class="card" style="padding:12px 14px;">
+          <div class="label" style="margin-bottom:8px;">What feels different now that you know?</div>
+          <div style="border-bottom:1px solid var(--rule2); padding:6px 0; font-size:13px; color:rgba(246,241,233,.18); font-style:italic; font-family:'cormorant-garamond',serif;">Something I am seeing differently is...</div>
+          <div class="save-note" style="margin-top:5px;">Auto-saved · → Snapshot Field 1</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta"><span class="btn primary">Continue to The Old Story →</span></div>
+</div>
+
+
+<!-- ═══ SLIDE B3 — EXECUTIVE FUNCTION VISUAL ═══ -->
+<div class="slide" data-canvas-width="1280" data-canvas-height="900">
+  <div class="nav"><span class="nav-logo">Nuanced Co.</span><span class="nav-week">Week 1 of 4</span><span class="nav-sup">Need support</span></div>
+
+  <div class="journey-track">
+    <div class="jt-scene"><div class="jt-node done"></div><div class="jt-line done"></div><div class="jt-label-wrap" style="left:5px; transform:none;"><span class="jt-label done">1 Arrive</span></div></div>
+    <div class="jt-scene"><div class="jt-node done"></div><div class="jt-line done"></div><div class="jt-label-wrap"><span class="jt-label done">2 Changed</span></div></div>
+    <div class="jt-scene"><div class="jt-node done"></div><div class="jt-line done"></div><div class="jt-label-wrap"><span class="jt-label done">3 Old Story</span></div></div>
+    <div class="jt-scene"><div class="jt-node active"></div><div class="jt-line"></div><div class="jt-label-wrap"><span class="jt-label active">4 Brain</span></div></div>
+    <div class="jt-scene"><div class="jt-node"></div><div class="jt-line"></div><div class="jt-label-wrap"><span class="jt-label">5 Feelings</span></div></div>
+    <div class="jt-scene"><div class="jt-node"></div><div class="jt-label-wrap" style="right:5px; left:auto; transform:none;"><span class="jt-label">6 Snapshot</span></div></div>
+  </div>
+
+  <div style="position:absolute; top:104px; left:40px; right:40px; bottom:52px; padding-top:26px; overflow:hidden;">
+
+    <div class="scene-sep">
+      <div class="scene-sep-num">Scene 4</div>
+      <div class="scene-sep-line"></div>
+      <div class="scene-sep-name">How the Brain Manages Life</div>
+      <div class="scene-sep-line"></div>
+    </div>
+
+    <div style="display:grid; grid-template-columns:340px 1fr; gap:36px;">
+      <!-- Left: text explanation -->
+      <div>
+        <div class="h2" style="font-size:28px; margin-bottom:10px;">Your brain's management system</div>
+        <div class="body" style="margin-bottom:12px;">ADHD affects what researchers call executive function — the processes that help the brain manage getting started, keeping track, staying aware of time, handling emotions, and following through.</div>
+        <div class="body" style="margin-bottom:14px;">These are not character traits. They are neurological processes.</div>
+        <div class="card sage" style="padding:12px 14px;">
+          <div class="body-sm" style="font-style:italic; font-family:'cormorant-garamond',serif; font-size:14px; color:var(--cream);">"The pattern you called laziness, or inconsistency, or carelessness — was likely the pattern of these systems working differently."</div>
+        </div>
+        <div style="margin-top:14px; font-size:11px; color:var(--cff);">Recognising these as brain-level differences — not character flaws — is what the research says matters most for late-diagnosed adults.</div>
+      </div>
+
+      <!-- Right: EF cards (3-col grid) -->
+      <div>
+        <div class="label" style="margin-bottom:12px;">Which of these shows up for you?</div>
+        <div class="ef-grid">
+          <!-- EF Card 1: Task initiation (selected) -->
+          <div class="ef-card sel">
+            <!-- Simple SVG icon: stack/pile for task initiation -->
+            <svg class="ef-icon" viewBox="0 0 32 32">
+              <rect x="4" y="20" width="24" height="4" rx="1" fill="none" stroke="rgba(150,104,164,0.7)" stroke-width="1.5"/>
+              <rect x="6" y="14" width="20" height="4" rx="1" fill="none" stroke="rgba(150,104,164,0.5)" stroke-width="1.2"/>
+              <rect x="8" y="8" width="16" height="4" rx="1" fill="none" stroke="rgba(150,104,164,0.35)" stroke-width="1"/>
+              <path d="M28 22 L32 22 L30 18Z" fill="rgba(150,104,164,0.5)"/>
+            </svg>
+            <div class="ef-name">Task initiation</div>
+            <div class="ef-ex">e.g. The email that's been open for two days.</div>
+            <div class="ef-check">
+              <div class="ef-cb on">
+                <svg width="8" height="6" viewBox="0 0 8 6"><path d="M1 3L3 5L7 1" stroke="#fff" stroke-width="1.5" fill="none"/></svg>
+              </div>
+              <span class="ef-cblabel">Shows up for me</span>
+            </div>
+          </div>
+
+          <!-- EF Card 2: Working memory -->
+          <div class="ef-card sel">
+            <svg class="ef-icon" viewBox="0 0 32 32">
+              <circle cx="16" cy="16" r="10" fill="none" stroke="rgba(150,104,164,0.6)" stroke-width="1.5"/>
+              <path d="M16 10 L16 16 L20 20" stroke="rgba(150,104,164,0.8)" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+              <circle cx="16" cy="16" r="2" fill="rgba(150,104,164,0.7)"/>
+            </svg>
+            <div class="ef-name">Time awareness</div>
+            <div class="ef-ex">e.g. Two hours disappearing without notice.</div>
+            <div class="ef-check">
+              <div class="ef-cb on">
+                <svg width="8" height="6" viewBox="0 0 8 6"><path d="M1 3L3 5L7 1" stroke="#fff" stroke-width="1.5" fill="none"/></svg>
+              </div>
+              <span class="ef-cblabel">Shows up for me</span>
+            </div>
+          </div>
+
+          <!-- EF Card 3: Emotional reg (unselected) -->
+          <div class="ef-card">
+            <svg class="ef-icon" viewBox="0 0 32 32">
+              <path d="M16 6 L16 6" stroke="none"/>
+              <path d="M8 22 Q16 4 24 22" fill="none" stroke="rgba(246,241,233,0.25)" stroke-width="1.5"/>
+              <circle cx="16" cy="20" r="4" fill="none" stroke="rgba(246,241,233,0.25)" stroke-width="1.5"/>
+            </svg>
+            <div class="ef-name">Emotional regulation</div>
+            <div class="ef-ex">e.g. Frustration that feels disproportionate.</div>
+            <div class="ef-check">
+              <div class="ef-cb"></div>
+              <span class="ef-cblabel" style="color:var(--cff);">Shows up for me</span>
+            </div>
+          </div>
+
+          <!-- EF Card 4: Shifting attention -->
+          <div class="ef-card sel">
+            <svg class="ef-icon" viewBox="0 0 32 32">
+              <rect x="4" y="8" width="10" height="8" rx="1" fill="none" stroke="rgba(150,104,164,0.6)" stroke-width="1.5"/>
+              <rect x="18" y="16" width="10" height="8" rx="1" fill="none" stroke="rgba(150,104,164,0.45)" stroke-width="1.2"/>
+              <path d="M14 12 L18 20" stroke="rgba(150,104,164,0.4)" stroke-width="1" stroke-dasharray="2,2"/>
+            </svg>
+            <div class="ef-name">Shifting attention</div>
+            <div class="ef-ex">e.g. Being interrupted and not returning.</div>
+            <div class="ef-check">
+              <div class="ef-cb on">
+                <svg width="8" height="6" viewBox="0 0 8 6"><path d="M1 3L3 5L7 1" stroke="#fff" stroke-width="1.5" fill="none"/></svg>
+              </div>
+              <span class="ef-cblabel">Shows up for me</span>
+            </div>
+          </div>
+
+          <!-- EF Card 5: Planning -->
+          <div class="ef-card">
+            <svg class="ef-icon" viewBox="0 0 32 32">
+              <circle cx="8" cy="8" r="3" fill="none" stroke="rgba(246,241,233,0.25)" stroke-width="1.5"/>
+              <circle cx="24" cy="14" r="3" fill="none" stroke="rgba(246,241,233,0.2)" stroke-width="1.2"/>
+              <circle cx="16" cy="26" r="3" fill="none" stroke="rgba(246,241,233,0.2)" stroke-width="1.2"/>
+              <path d="M11 8 L21 14" stroke="rgba(246,241,233,0.12)" stroke-width="1"/>
+              <path d="M24 17 L19 24" stroke="rgba(246,241,233,0.12)" stroke-width="1"/>
+            </svg>
+            <div class="ef-name">Planning and sequencing</div>
+            <div class="ef-ex">e.g. Knowing what to do but not how to start.</div>
+            <div class="ef-check">
+              <div class="ef-cb"></div>
+              <span class="ef-cblabel" style="color:var(--cff);">Shows up for me</span>
+            </div>
+          </div>
+
+          <!-- EF Card 6: Working memory -->
+          <div class="ef-card sel">
+            <svg class="ef-icon" viewBox="0 0 32 32">
+              <rect x="4" y="4" width="24" height="24" rx="3" fill="none" stroke="rgba(150,104,164,0.5)" stroke-width="1.5"/>
+              <path d="M8 12 L24 12 M8 18 L20 18 M8 22 L16 22" stroke="rgba(150,104,164,0.45)" stroke-width="1.2" stroke-linecap="round"/>
+              <path d="M20 6 L26 6 L26 10" stroke="rgba(150,104,164,0.6)" stroke-width="1" fill="none"/>
+            </svg>
+            <div class="ef-name">Working memory</div>
+            <div class="ef-ex">e.g. Losing your thought mid-sentence.</div>
+            <div class="ef-check">
+              <div class="ef-cb on">
+                <svg width="8" height="6" viewBox="0 0 8 6"><path d="M1 3L3 5L7 1" stroke="#fff" stroke-width="1.5" fill="none"/></svg>
+              </div>
+              <span class="ef-cblabel">Shows up for me</span>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:10px; font-size:12px; color:var(--cf);">4 areas recognised · These will appear as support needs in your Week 1 Snapshot.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="cta"><span class="btn primary">Continue to Relief, Grief and Anger →</span></div>
+</div>
+
+
+<!-- ═══ SLIDE B4 — LIFE REVIEW MAP ═══ -->
+<div class="slide" data-canvas-width="1280" data-canvas-height="900">
+  <div class="nav"><span class="nav-logo">Nuanced Co.</span><span class="nav-week">Week 1 of 4</span><span class="nav-sup">Need support</span></div>
+
+  <div class="journey-track">
+    <div class="jt-scene"><div class="jt-node done"></div><div class="jt-line done"></div><div class="jt-label-wrap" style="left:5px; transform:none;"><span class="jt-label done">1 Arrive</span></div></div>
+    <div class="jt-scene"><div class="jt-node done"></div><div class="jt-line done"></div><div class="jt-label-wrap"><span class="jt-label done">2 Changed</span></div></div>
+    <div class="jt-scene"><div class="jt-node done"></div><div class="jt-line done"></div><div class="jt-label-wrap"><span class="jt-label done">3 Old Story</span></div></div>
+    <div class="jt-scene"><div class="jt-node done"></div><div class="jt-line done"></div><div class="jt-label-wrap"><span class="jt-label done">4 Brain</span></div></div>
+    <div class="jt-scene"><div class="jt-node done"></div><div class="jt-line done"></div><div class="jt-label-wrap"><span class="jt-label done">5 Feelings</span></div></div>
+    <div class="jt-scene"><div class="jt-node active"></div><div class="jt-label-wrap" style="right:5px; left:auto; transform:none;"><span class="jt-label active">6 Snapshot</span></div></div>
+  </div>
+
+  <div style="position:absolute; top:104px; left:40px; right:40px; bottom:52px; padding-top:24px; overflow:hidden; display:grid; grid-template-columns:460px 1fr; gap:40px;">
+
+    <!-- Left: LRM steps -->
+    <div>
+      <div class="scene-sep" style="margin-bottom:14px;">
+        <div class="scene-sep-num">Scene 6</div>
+        <div class="scene-sep-line"></div>
+        <div class="scene-sep-name">The Life Review Map — School</div>
+        <div class="scene-sep-line"></div>
+      </div>
+
+      <div class="body-sm" style="margin-bottom:16px; color:var(--cf);">Choose one area and work through five questions. One area is enough to begin.</div>
+
+      <!-- Step flow -->
+      <div class="lrm-step">
+        <div class="lrm-num done">1</div>
+        <div class="lrm-content">
+          <div class="lrm-title">What happened?</div>
+          <div class="lrm-guide">What was hard in this area? What did others say?</div>
+          <div style="font-size:12px; color:rgba(246,241,233,.55); font-style:italic; font-family:'cormorant-garamond',serif; background:rgba(122,140,110,.06); border:1px solid rgba(122,140,110,.2); border-radius:2px; padding:8px 10px;">Struggling to keep up with reading. Being called distracted constantly.</div>
+        </div>
+      </div>
+
+      <!-- connector line -->
+      <div style="width:1px; height:10px; background:var(--rule2); margin-left:12px; margin-bottom:10px;"></div>
+
+      <div class="lrm-step">
+        <div class="lrm-num done">2</div>
+        <div class="lrm-content">
+          <div class="lrm-title">What was the explanation given?</div>
+          <div class="lrm-guide">What label was attached at the time?</div>
+          <div style="font-size:12px; color:rgba(246,241,233,.55); font-style:italic; font-family:'cormorant-garamond',serif; background:rgba(122,140,110,.06); border:1px solid rgba(122,140,110,.2); border-radius:2px; padding:8px 10px;">Not applying myself. Lazy. Needed to try harder.</div>
+        </div>
+      </div>
+
+      <div style="width:1px; height:10px; background:var(--rule2); margin-left:12px; margin-bottom:10px;"></div>
+
+      <div class="lrm-step">
+        <div class="lrm-num active">3</div>
+        <div class="lrm-content">
+          <div class="lrm-title">What may have been happening?</div>
+          <div class="lrm-guide">With your ADHD understanding, what is a more accurate way of seeing this?</div>
+          <input class="lrm-input" value="" placeholder="What may have been happening was..."/>
+          <div class="save-note">→ Snapshot Field 2</div>
+        </div>
+      </div>
+
+      <div style="width:1px; height:10px; background:var(--rule); margin-left:12px; margin-bottom:10px;"></div>
+
+      <div class="lrm-step" style="opacity:.55;">
+        <div class="lrm-num">4</div>
+        <div class="lrm-content">
+          <div class="lrm-title">Support that may have helped then?</div>
+          <div style="font-size:11px; color:var(--cff);">Unlocks after Step 3 is saved</div>
+        </div>
+      </div>
+
+      <div style="width:1px; height:10px; background:var(--rule); margin-left:12px; margin-bottom:10px;"></div>
+
+      <div class="lrm-step" style="opacity:.55;">
+        <div class="lrm-num">5</div>
+        <div class="lrm-content">
+          <div class="lrm-title">What might help now?</div>
+          <div style="font-size:11px; color:var(--cff);">Unlocks after Step 4 is saved · → Snapshot Field 4</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Right: Snapshot preview assembling -->
+    <div>
+      <div class="label" style="margin-bottom:14px; color:var(--lilac);">Your Snapshot is assembling as you go</div>
+
+      <div style="border:1px solid rgba(150,104,164,.25); border-radius:3px; background:rgba(150,104,164,.04); padding:18px;">
+        <div style="font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:rgba(150,104,164,.6); margin-bottom:14px; font-family:'atkinson-hyperlegible-next',sans-serif;">My Week 1 Snapshot — in progress</div>
+
+        <div style="padding:10px 0; border-bottom:1px solid var(--rule);">
+          <div class="label" style="color:var(--cff); margin-bottom:4px;">1. Old label I am reconsidering</div>
+          <div style="font-family:'cormorant-garamond',serif; font-style:italic; font-size:16px; color:var(--cream);">lazy</div>
+        </div>
+        <div style="padding:10px 0; border-bottom:1px solid var(--rule);">
+          <div class="label" style="color:var(--cff); margin-bottom:4px;">2. What may have been happening</div>
+          <div style="font-size:13px; color:rgba(246,241,233,.35); font-style:italic; font-family:'cormorant-garamond',serif;">Waiting for Step 3 of the Life Review Map...</div>
+        </div>
+        <div style="padding:10px 0; border-bottom:1px solid var(--rule); opacity:.4;">
+          <div class="label" style="color:var(--cff); margin-bottom:4px;">3. Support that may have helped then</div>
+          <div style="font-size:13px; color:rgba(246,241,233,.25);">—</div>
+        </div>
+        <div style="padding:10px 0; border-bottom:1px solid var(--rule); opacity:.4;">
+          <div class="label" style="color:var(--cff); margin-bottom:4px;">4. Support I may need now</div>
+          <div style="font-size:13px; color:rgba(246,241,233,.25);">—</div>
+        </div>
+        <div style="padding:10px 0; opacity:.4;">
+          <div class="label" style="color:var(--cff); margin-bottom:4px;">5. One sentence I want to keep</div>
+          <div style="font-size:13px; color:rgba(246,241,233,.25);">—</div>
+        </div>
+      </div>
+
+      <div style="margin-top:14px; font-size:12px; color:var(--cff); font-style:italic; font-family:'cormorant-garamond',serif;">Fields fill as you complete each step of the Life Review Map. You can edit any field before saving your Snapshot.</div>
+
+      <!-- Life area selector -->
+      <div style="margin-top:20px;">
+        <div class="label" style="margin-bottom:10px;">Life area:</div>
+        <div style="display:flex; flex-wrap:wrap; gap:6px;">
+          <div class="chip sel">School</div>
+          <div class="chip">Work</div>
+          <div class="chip">Relationships</div>
+          <div class="chip">Home</div>
+          <div class="chip">Health</div>
+          <div class="chip">Money</div>
+          <div class="chip">Identity</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="cta"><span class="btn ghost">Save and pause</span><span class="btn primary">Save and continue →</span></div>
+</div>
+
+
+<!-- ═══ SLIDE B5 — MILESTONE CLOSE ═══ -->
+<div class="slide" data-canvas-width="1280" data-canvas-height="900">
+  <div class="nav"><span class="nav-logo">Nuanced Co.</span><span class="nav-week">Week 1 of 4</span><span class="nav-sup">Need support</span></div>
+
+  <!-- Journey track — all complete -->
+  <div class="journey-track">
+    <div class="jt-scene"><div class="jt-node done"></div><div class="jt-line done"></div><div class="jt-label-wrap" style="left:5px; transform:none;"><span class="jt-label done">1 Arrive</span></div></div>
+    <div class="jt-scene"><div class="jt-node done"></div><div class="jt-line done"></div><div class="jt-label-wrap"><span class="jt-label done">2 Changed</span></div></div>
+    <div class="jt-scene"><div class="jt-node done"></div><div class="jt-line done"></div><div class="jt-label-wrap"><span class="jt-label done">3 Old Story</span></div></div>
+    <div class="jt-scene"><div class="jt-node done"></div><div class="jt-line done"></div><div class="jt-label-wrap"><span class="jt-label done">4 Brain</span></div></div>
+    <div class="jt-scene"><div class="jt-node done"></div><div class="jt-line done"></div><div class="jt-label-wrap"><span class="jt-label done">5 Feelings</span></div></div>
+    <div class="jt-scene"><div class="jt-node done"></div><div class="jt-label-wrap" style="right:5px; left:auto; transform:none;"><span class="jt-label done">6 Snapshot</span></div></div>
+  </div>
+
+  <div style="position:absolute; top:104px; left:40px; right:40px; bottom:0; padding-top:30px; display:grid; grid-template-columns:540px 1fr; gap:40px; overflow:hidden;">
+
+    <!-- Left: completion + beta panel -->
+    <div>
+      <!-- Week complete -->
+      <div class="card sage" style="margin-bottom:16px; padding:18px;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div class="m-circle done">
+            <svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4L4 7L9 1" stroke="#fff" stroke-width="1.8" fill="none"/></svg>
+          </div>
+          <div>
+            <div style="font-size:14px; font-weight:700; color:var(--cream); margin-bottom:2px;">Week 1 complete.</div>
+            <div class="body-sm">Your Snapshot has been saved to this browser.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Milestone -->
+      <div class="milestone" style="margin-bottom:16px;">
+        <div class="m-circle done">
+          <svg width="10" height="8" viewBox="0 0 10 8"><path d="M1 4L4 7L9 1" stroke="#fff" stroke-width="1.8" fill="none"/></svg>
+        </div>
+        <div class="m-text">I have identified at least one pattern from my past that I am now seeing differently with my ADHD understanding.</div>
+      </div>
+
+      <!-- Beta panel -->
+      <div class="card" style="padding:16px; margin-bottom:16px;">
+        <div style="font-size:13px; font-weight:700; color:var(--cream); margin-bottom:10px;">Bring this to the weekly catch-up</div>
+        <div style="background:rgba(246,241,233,.04); border:1px dashed var(--rule2); border-radius:2px; padding:8px 10px; font-size:11px; color:var(--cff); margin-bottom:6px;">Session date — to be confirmed</div>
+        <div style="background:rgba(246,241,233,.04); border:1px dashed var(--rule2); border-radius:2px; padding:8px 10px; font-size:11px; color:var(--cff); margin-bottom:12px;">Join link — to be added</div>
+        <div style="font-size:11px; color:var(--cf); margin-bottom:4px; font-weight:700;">Discussion prompts for this week:</div>
+        <ul style="list-style:none; display:flex; flex-direction:column; gap:5px; margin-bottom:10px;">
+          <li class="body-sm" style="font-size:11px; color:var(--cd); display:flex; gap:8px;"><span style="color:var(--cff);">→</span>Which label felt most familiar, and why?</li>
+          <li class="body-sm" style="font-size:11px; color:var(--cd); display:flex; gap:8px;"><span style="color:var(--cff);">→</span>What did the life review surface that surprised you?</li>
+          <li class="body-sm" style="font-size:11px; color:var(--cd); display:flex; gap:8px;"><span style="color:var(--cff);">→</span>What are you still uncertain about after this week?</li>
+        </ul>
+        <div style="font-size:11px; color:var(--cff); font-style:italic; font-family:'cormorant-garamond',serif;">Sharing is optional. You are welcome to attend and listen only.</div>
+      </div>
+
+      <!-- Coming next -->
+      <div class="card" style="padding:14px; display:flex; align-items:center; justify-content:space-between; gap:12px;">
+        <div>
+          <div class="label" style="margin-bottom:4px;">Coming in Week 2</div>
+          <div style="font-family:'cormorant-garamond',serif; font-style:italic; font-size:16px; color:var(--cream); margin-bottom:4px;">Masking, Overcompensation and Self-Blame</div>
+          <div class="body-sm" style="font-size:12px;">The patterns many late-diagnosed adults have used to get through.</div>
+        </div>
+        <span class="btn ghost" style="white-space:nowrap;">Week 2 →</span>
+      </div>
+    </div>
+
+    <!-- Right: completed Snapshot display -->
+    <div>
+      <div class="label" style="margin-bottom:14px; color:var(--lilac);">Your Week 1 Snapshot</div>
+      <div style="border:1px solid rgba(150,104,164,.3); border-radius:3px; background:rgba(150,104,164,.05); padding:20px;">
+        <div style="font-size:9px; letter-spacing:.18em; text-transform:uppercase; color:rgba(150,104,164,.6); margin-bottom:16px; font-family:'atkinson-hyperlegible-next',sans-serif;">The Unmasked Life™ — Week 1</div>
+
+        <div style="padding:10px 0; border-bottom:1px solid var(--rule);">
+          <div class="label" style="color:var(--cff); margin-bottom:4px;">1. Old label I am reconsidering</div>
+          <div style="font-family:'cormorant-garamond',serif; font-style:italic; font-size:18px; color:var(--cream);">lazy</div>
+        </div>
+        <div style="padding:10px 0; border-bottom:1px solid var(--rule);">
+          <div class="label" style="color:var(--cff); margin-bottom:4px;">2. What may have been happening</div>
+          <div style="font-family:'cormorant-garamond',serif; font-style:italic; font-size:15px; color:var(--cream); line-height:1.5;">Difficulty with task initiation — a specific executive function that works differently in ADHD brains.</div>
+        </div>
+        <div style="padding:10px 0; border-bottom:1px solid var(--rule);">
+          <div class="label" style="color:var(--cff); margin-bottom:4px;">3. Support that may have helped then</div>
+          <div style="font-family:'cormorant-garamond',serif; font-style:italic; font-size:15px; color:var(--cream); line-height:1.5;">External structure, a starting prompt, understanding the difficulty was real.</div>
+        </div>
+        <div style="padding:10px 0; border-bottom:1px solid var(--rule);">
+          <div class="label" style="color:var(--cff); margin-bottom:4px;">4. Support I may need now</div>
+          <div style="font-family:'cormorant-garamond',serif; font-style:italic; font-size:15px; color:var(--cream); line-height:1.5;">Task initiation support, time awareness, external structure.</div>
+        </div>
+        <div style="padding:10px 0;">
+          <div class="label" style="color:var(--cff); margin-bottom:4px;">5. One sentence I want to keep</div>
+          <div style="font-family:'cormorant-garamond',serif; font-style:italic; font-size:15px; color:var(--cream); line-height:1.5;">What looked like not trying was a brain doing its best with the tools it had.</div>
+        </div>
+
+        <div style="display:flex; gap:8px; margin-top:14px; padding-top:14px; border-top:1px solid var(--rule);">
+          <span class="btn ghost" style="font-size:10px; padding:6px 12px;">Copy</span>
+          <span class="btn ghost" style="font-size:10px; padding:6px 12px;">Print</span>
+          <span class="btn primary" style="font-size:10px; padding:6px 12px;">Save Snapshot</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ SLIDE B6 — MOBILE JOURNEY VIEW ═══ -->
+<div class="slide mobile" data-canvas-width="390" data-canvas-height="844">
+  <div class="m-nav">
+    <span class="nav-logo">Nuanced Co.</span>
+    <span class="nav-week">Week 1 of 4</span>
+    <span class="nav-sup">Support</span>
+  </div>
+
+  <!-- Mobile journey track -->
+  <div class="m-track">
+    <div class="m-track-node done"></div>
+    <div class="m-track-line done"></div>
+    <div class="m-track-node done"></div>
+    <div class="m-track-line done"></div>
+    <div class="m-track-node active"></div>
+    <div class="m-track-line"></div>
+    <div class="m-track-node"></div>
+    <div class="m-track-line"></div>
+    <div class="m-track-node"></div>
+    <div class="m-track-line"></div>
+    <div class="m-track-node"></div>
+    <div class="m-track-label">Scene 3 — The Old Story</div>
+  </div>
+
+  <div style="position:absolute; top:76px; left:0; right:0; bottom:52px; padding:20px 18px 0; overflow:hidden;">
+
+    <div class="scene-sep" style="margin-bottom:12px;">
+      <div class="scene-sep-num">Scene 3</div>
+      <div class="scene-sep-line"></div>
+      <div class="scene-sep-name">The Old Story</div>
+      <div class="scene-sep-line"></div>
+    </div>
+
+    <div class="h2" style="font-size:28px; margin-bottom:8px;">The labels that didn't fit</div>
+    <div class="body-sm" style="margin-bottom:14px;">Which of these sound familiar? Select any that apply.</div>
+
+    <!-- 2-col card grid -->
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:6px; margin-bottom:10px;">
+      <div class="card sel" style="padding:14px 10px; text-align:center; min-height:50px; display:flex; align-items:center; justify-content:center;">
+        <div style="font-family:'cormorant-garamond',serif; font-style:italic; font-size:16px; color:var(--cream);">lazy</div>
+      </div>
+      <div class="card sel" style="padding:14px 10px; text-align:center; min-height:50px; display:flex; align-items:center; justify-content:center;">
+        <div style="font-family:'cormorant-garamond',serif; font-style:italic; font-size:16px; color:var(--cream);">inconsistent</div>
+      </div>
+      <div class="card" style="padding:14px 10px; text-align:center; min-height:50px; display:flex; align-items:center; justify-content:center;">
+        <div style="font-family:'cormorant-garamond',serif; font-style:italic; font-size:16px; color:var(--cd);">careless</div>
+      </div>
+      <div class="card sel" style="padding:14px 10px; text-align:center; min-height:50px; display:flex; align-items:center; justify-content:center;">
+        <div style="font-family:'cormorant-garamond',serif; font-style:italic; font-size:16px; color:var(--cream);">too sensitive</div>
+      </div>
+      <div class="card" style="padding:14px 10px; text-align:center; min-height:50px; display:flex; align-items:center; justify-content:center;">
+        <div style="font-family:'cormorant-garamond',serif; font-style:italic; font-size:16px; color:var(--cd);">not trying</div>
+      </div>
+      <div class="card sel" style="padding:14px 10px; text-align:center; min-height:50px; display:flex; align-items:center; justify-content:center;">
+        <div style="font-family:'cormorant-garamond',serif; font-style:italic; font-size:16px; color:var(--cream);">difficult</div>
+      </div>
+      <div class="card" style="padding:14px 10px; text-align:center; min-height:50px; display:flex; align-items:center; justify-content:center;">
+        <div style="font-family:'cormorant-garamond',serif; font-style:italic; font-size:16px; color:var(--cd);">disorganised</div>
+      </div>
+      <div class="card" style="padding:14px 10px; text-align:center; min-height:50px; display:flex; align-items:center; justify-content:center;">
+        <div style="font-family:'cormorant-garamond',serif; font-style:italic; font-size:16px; color:var(--cd);">wasted potential</div>
+      </div>
+    </div>
+
+    <div style="font-size:11px; color:var(--cff); margin-bottom:14px;">4 selected · select all that feel familiar</div>
+
+    <div class="label" style="margin-bottom:8px;">Choose one to look at closely:</div>
+    <div style="display:flex; flex-wrap:wrap; gap:6px; margin-bottom:14px;">
+      <div class="chip sel" style="min-height:44px; padding:10px 14px;">lazy</div>
+      <div class="chip" style="min-height:44px; padding:10px 14px;">inconsistent</div>
+      <div class="chip" style="min-height:44px; padding:10px 14px;">too sensitive</div>
+      <div class="chip" style="min-height:44px; padding:10px 14px;">difficult</div>
+    </div>
+
+    <!-- Mini reveal card -->
+    <div class="card sel" style="padding:12px 14px;">
+      <div class="label" style="color:rgba(150,104,164,.75); margin-bottom:6px;">Lazy — what may have been happening:</div>
+      <div class="body-sm" style="font-size:12px;">Task initiation — getting started — is a specific executive function that works differently in ADHD brains.</div>
+    </div>
+  </div>
+
+  <div class="cta" style="justify-content:center; padding:0 18px;">
+    <span class="btn primary" style="width:100%; text-align:center; justify-content:center;">Continue to Brain →</span>
+  </div>
+</div>
+
+</body>
+</html>
