@@ -82,3 +82,12 @@ p + p{margin-top:1rem;}
 @media(max-width:900px){.g3,.g4{grid-template-columns:1fr 1fr;}.split{grid-template-columns:1fr;}.steps{grid-template-columns:1fr;}}
 @media(max-width:620px){.g2,.g3,.g4{grid-template-columns:1fr;}.sec{padding:3.5rem 0;}.wrap,.narrow{padding:0 1.2rem;}.ph{padding:3.5rem 1.4rem 3rem;}}
 @media(prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important;}}
+/* soft brand shapes in page headers (echo the logo) */
+.ph{position:relative;overflow:hidden;}
+.ph::before,.ph::after{content:'';position:absolute;border-radius:50%;filter:blur(48px);pointer-events:none;}
+.ph::before{width:380px;height:380px;background:#6B4570;opacity:.45;top:-160px;right:6%;}
+.ph::after{width:280px;height:280px;background:#C07A8A;opacity:.25;bottom:-170px;left:10%;}
+.ph > *{position:relative;}
+.card{border-radius:16px;transition:transform .15s,box-shadow .15s;}
+.card:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(42,31,26,.08);}
+@media(prefers-reduced-motion:reduce){.card:hover{transform:none;}}
