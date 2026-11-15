@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="robots" content="noindex, nofollow">
   <title>Podcast | Nuanced Co. | Neurodivergent Consultancy</title>
   <meta name="description" content="A podcast from Nuanced Co. — coming soon. Honest conversations about ADHD, late diagnosis, and building a life that fits your actual brain.">
   <link rel="canonical" href="https://nuancedco.com.au/podcast">
@@ -24,25 +23,33 @@
     :focus-visible{outline:2px solid var(--lilac);outline-offset:3px;border-radius:3px;}
 
     .coming-wrap{text-align:center;padding:4rem 2rem;max-width:580px;}
-    .logo-link{font-family:var(--serif);font-size:.9rem;font-weight:400;letter-spacing:.28em;color:rgba(246,241,233,.5);text-transform:uppercase;display:block;margin-bottom:4rem;}
+    .logo-link{font-family:var(--serif);font-size:.9rem;font-weight:400;letter-spacing:.28em;color:rgba(246,241,233,0.66);text-transform:uppercase;display:block;margin-bottom:4rem;}
     .coming-icon{font-size:2.8rem;margin-bottom:2rem;opacity:.6;}
     .coming-eyebrow{font-size:.52rem;letter-spacing:.28em;text-transform:uppercase;color:var(--lilac);margin-bottom:1rem;}
     .coming-title{font-family:var(--serif);font-size:clamp(2.4rem,5vw,3.8rem);font-weight:300;line-height:1.05;color:#fff;letter-spacing:.03em;margin-bottom:1.4rem;}
     .coming-title em{font-style:italic;color:var(--rose);}
-    .coming-desc{font-size:.92rem;color:rgba(246,241,233,.65);line-height:1.8;margin-bottom:2.5rem;}
+    .coming-desc{font-size:.92rem;color:rgba(246,241,233,0.66);line-height:1.8;margin-bottom:2.5rem;}
     .coming-form{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center;margin-bottom:1.4rem;}
     .coming-form input{flex:1;min-width:220px;padding:.75rem 1rem;background:rgba(246,241,233,.06);border:1px solid rgba(246,241,233,.15);color:var(--cream);font-family:var(--body);font-size:.85rem;border-radius:2px;outline:none;}
-    .coming-form input::placeholder{color:rgba(246,241,233,.35);}
+    .coming-form input::placeholder{color:rgba(246,241,233,0.66);}
     .coming-form input:focus{border-color:var(--lilac);}
     .coming-form button{padding:.75rem 1.6rem;background:var(--purple);color:#fff;font-family:var(--body);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;border:none;border-radius:40px;cursor:pointer;transition:background .1s cubic-bezier(0.22,1,0.36,1);}
-    .coming-form button:hover{background:var(--lilac);color:#fff}
-    .coming-note{font-size:.68rem;color:rgba(246,241,233,.35);line-height:1.6;}
-    .back-link{display:inline-flex;align-items:center;gap:.4rem;margin-top:3rem;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.4);transition:color .1s cubic-bezier(0.22,1,0.36,1);}
+    .coming-form button:hover{background:var(--ink);color:#fff}
+    .coming-note{font-size:.68rem;color:rgba(246,241,233,0.66);line-height:1.6;}
+    .back-link{display:inline-flex;align-items:center;gap:.4rem;margin-top:3rem;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,0.66);transition:color .1s cubic-bezier(0.22,1,0.36,1);}
     .back-link:hover{color:rgba(246,241,233,.75);}
   @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rv,.rvl,.rvr,.ncrv{opacity:1!important;transform:none!important}}
 </style>
+<link rel="stylesheet" href="shell.css">
 </head>
 <body>
+<a class="nc-skip" href="#main">Skip to main content</a>
+<header class="sh">
+  <a href="index.html" class="nav-logo">NUANCED CO.<em>Neurodivergent Consultancy</em></a>
+  <button type="button" class="sh-toggle" aria-expanded="false" aria-controls="sh-menu" onclick="var m=document.getElementById('sh-menu');var o=m.classList.toggle('open');this.setAttribute('aria-expanded',o)">Menu</button>
+  <nav class="sh-menu" id="sh-menu" aria-label="Main"><a href="about.html">About</a><a href="work-with-me.html">Work with me</a><a href="grief-course/index.html">Grief course</a><a href="resources.html">Free resources</a><a href="media.html">Media &amp; speaking</a><a href="book.html" class="sh-cta">Book a call</a></nav>
+</header>
+<div id="main" tabindex="-1"></div>
 
 <div class="coming-wrap">
   <a href="index.html" class="logo-link">Nuanced Co.</a>
@@ -94,5 +101,11 @@ function handleSubmit(form){
   els.forEach(function(el){io.observe(el);});
 })();
 </script>
+<div class="sf" role="contentinfo"><div class="sf-inner">
+  <p class="sf-scope"><strong>Please note:</strong> Nuanced Co. offers education, consultation and peer support from lived experience. It is not therapy, diagnosis, medical advice or crisis support. In an emergency call 000, or call Lifeline on 13 11 14.</p>
+  <nav class="sf-links" aria-label="Footer"><a href="contact.html">Contact</a><a href="evidence.html">Our evidence approach</a><a href="quiz.html">Support quiz</a><a href="podcast.html">Podcast</a><a href="links.html">Links</a></nav>
+  <div class="sf-bottom"><p>&copy; 2026 Nuanced Co. ABN 71 926 185 491. Geelong, Victoria.</p>
+  <div class="sf-legal"><a href="privacy.html">Privacy</a><a href="terms-of-service.html">Terms</a><a href="refund-policy.html">Refunds</a></div></div>
+</div></div>
 </body>
 </html>

@@ -1,0 +1,36 @@
+/* Nuanced Co. shared header and footer. Scoped so it works on every page. */
+.nc-skip{position:absolute;left:-999px;top:0;background:#C4963E;color:#0F0C0A;padding:.6rem 1rem;z-index:10050;font:700 14px 'Atkinson Hyperlegible',system-ui,sans-serif;}
+.nc-skip:focus{left:1rem;top:1rem;}
+.sh{position:sticky;top:0;z-index:10000;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:1.1rem 3rem;background:#2A1F1A;box-shadow:0 2px 24px rgba(0,0,0,.15);font-family:'Atkinson Hyperlegible',system-ui,sans-serif;box-sizing:border-box;width:100%;margin:0;}
+.sh *{box-sizing:border-box;}
+.sh .nav-logo{font-family:'Cormorant Garamond',Georgia,serif;font-size:18px;font-weight:400;letter-spacing:.25em;color:#F6F1E9;text-transform:uppercase;line-height:1;display:flex;flex-direction:column;gap:3px;text-decoration:none;}
+.sh .nav-logo em{font-style:normal;font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-size:8.6px;letter-spacing:.3em;color:#C4963E;opacity:1;}
+.sh-menu{position:static;display:flex;align-items:center;gap:1.7rem;margin:0;padding:0;background:none;}
+.sh-menu a{font-family:'Atkinson Hyperlegible',system-ui,sans-serif;font-size:11px;font-weight:400;letter-spacing:.14em;text-transform:uppercase;color:rgba(246,241,233,.8);text-decoration:none;padding:.3rem 0;border-bottom:1px solid transparent;transition:color .1s;}
+.sh-menu a:hover{color:#F6F1E9;}
+.sh-menu a[aria-current="page"]{color:#F6F1E9;border-bottom-color:#C4963E;}
+.sh-menu a.sh-cta{border:1px solid rgba(196,150,62,.6);color:#C4963E;padding:.45rem 1.1rem;border-radius:40px;}
+.sh-menu a.sh-cta:hover{background:#C4963E;color:#0F0C0A;}
+.sh-toggle{display:none;font:700 11px 'Atkinson Hyperlegible',system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#F6F1E9;background:none;border:1px solid rgba(246,241,233,.4);border-radius:40px;padding:.5rem 1rem;cursor:pointer;}
+.sh :focus-visible,.sf :focus-visible{outline:3px solid #C4963E;outline-offset:3px;border-radius:3px;}
+@media(max-width:960px){
+  .sh{padding:.9rem 1.2rem;flex-wrap:wrap;}
+  .sh-toggle{display:inline-block;}
+  .sh-menu{display:none;width:100%;flex-direction:column;align-items:flex-start;gap:.2rem;padding:.8rem 0 .4rem;}
+  .sh-menu.open{display:flex;}
+  .sh-menu a{font-size:13px;padding:.6rem 0;}
+  .sh-menu a.sh-cta{margin-top:.4rem;padding:.6rem 1.2rem;}
+}
+.sf{background:#1A1A1A;color:#F6F1E9;padding:3rem;font-family:'Atkinson Hyperlegible',system-ui,sans-serif;box-sizing:border-box;width:100%;margin:0;}
+.sf *{box-sizing:border-box;}
+.sf-inner{max-width:1100px;margin:0 auto;display:flex;flex-direction:column;gap:1.4rem;}
+.sf-scope{font-size:14px;line-height:1.7;color:rgba(246,241,233,.72);max-width:48rem;margin:0;}
+.sf-scope strong{color:#C4963E;}
+.sf-links{display:flex;flex-wrap:wrap;gap:.5rem 1.6rem;margin:0;padding:0;}
+.sf-links a{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#C4963E;text-decoration:none;}
+.sf-links a:hover{color:#F6F1E9;}
+.sf-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:1rem;padding-top:1.4rem;border-top:1px solid rgba(246,241,233,.12);}
+.sf-bottom p,.sf-bottom a{font-size:12.5px;color:rgba(246,241,233,.66);margin:0;text-decoration:none;}
+.sf-bottom a:hover{color:#F6F1E9;}
+.sf-legal{display:flex;gap:1.4rem;}
+@media(max-width:860px){.sf{padding:2.4rem 1.4rem;}}

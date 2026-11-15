@@ -27,7 +27,7 @@
 
     /* NAV */
     #nav{position:sticky;top:0;z-index:900;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:#2A1F1A;}
-    .nav-back{font-family:var(--body);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,.6);display:flex;align-items:center;gap:.5rem;transition:color .1s cubic-bezier(0.22,1,0.36,1);}
+    .nav-back{font-family:var(--body);font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(246,241,233,0.66);display:flex;align-items:center;gap:.5rem;transition:color .1s cubic-bezier(0.22,1,0.36,1);}
     .nav-back:hover{color:#F6F1E9;}
 
     /* PAGE */
@@ -48,7 +48,7 @@
     select option{background:#fff;color:var(--ink);}
     .form-divider{height:1px;background:var(--cream-d);margin:2rem 0;}
     .btn-submit{background:var(--purple);color:#fff;font-family:var(--body);font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:1rem 2.4rem;border:none;cursor:pointer;transition:background .1s cubic-bezier(0.22,1,0.36,1),transform .1s cubic-bezier(0.22,1,0.36,1);border-radius:40px;margin-top:.5rem;}
-    .btn-submit:hover{background:var(--lilac);transform:translateY(-1px);color:#fff}
+    .btn-submit:hover{background:var(--ink);transform:translateY(-1px);color:#fff}
 
     /* DIRECT CONTACT */
     .direct-block{margin-top:3.5rem;padding-top:2.5rem;border-top:1px solid var(--cream-d);}
@@ -59,7 +59,7 @@
 
     /* FOOTER */
     footer{background:#1A1A1A;padding:3rem 3rem 2rem;color:#F6F1E9;margin-top:auto;}
-    .ft-legal{font-size:.7rem;color:rgba(246,241,233,.35);line-height:1.6;text-align:center;}
+    .ft-legal{font-size:.7rem;color:rgba(246,241,233,0.66);line-height:1.6;text-align:center;}
 
     @media(max-width:600px){
       #nav{padding:.9rem 1.2rem;}
@@ -95,9 +95,9 @@
     .ft-col ul a{font-size:.82rem;color:rgba(246,241,233,.8);text-decoration:none;transition:color .1s cubic-bezier(0.22,1,0.36,1);}
     .ft-col ul a:hover{color:#F6F1E9;}
     .ft-bot{max-width:1200px;margin:2rem auto 0;padding:2rem 3.5rem 0;border-top:1px solid rgba(246,241,233,.15);display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;}
-    .ft-legal{font-size:.72rem;color:rgba(246,241,233,.55);margin:0;line-height:1.6;}
+    .ft-legal{font-size:.72rem;color:rgba(246,241,233,0.66);margin:0;line-height:1.6;}
     .ft-legal-links{display:flex;flex-wrap:wrap;gap:1.2rem;}
-    .ft-legal-links a{font-size:.72rem;color:rgba(246,241,233,.5);text-decoration:none;transition:color .1s cubic-bezier(0.22,1,0.36,1);}
+    .ft-legal-links a{font-size:.72rem;color:rgba(246,241,233,0.66);text-decoration:none;transition:color .1s cubic-bezier(0.22,1,0.36,1);}
     .ft-legal-links a:hover{color:rgba(246,241,233,.85);}
     @media(max-width:1024px){.ft-inner{grid-template-columns:1fr 1fr;gap:3rem;}}
     @media(max-width:600px){
@@ -108,43 +108,19 @@
 
   @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rv,.rvl,.rvr,.ncrv{opacity:1!important;transform:none!important}}
 </style>
+<link rel="stylesheet" href="shell.css">
 </head>
 <body>
-
-<nav id="nav">
+<a class="nc-skip" href="#main">Skip to main content</a>
+<header class="sh">
   <a href="index.html" class="nav-logo">NUANCED CO.<em>Neurodivergent Consultancy</em></a>
-  <ul class="nav-list">
-    <li><a href="about.html">About</a></li>
-    <li class="nav-dd"><a href="the-unmasked-life.html">The Unmasked Life &#9662;</a>
-      <div class="nav-dd-menu">
-        <a href="the-unmasked-life.html">About the course</a>
-        <a href="the-unmasked-life-coming-soon.html">Join the course waitlist</a>
-      </div>
-    </li>
-    <li class="nav-dd"><a href="links.html">Resources &#9662;</a>
-      <div class="nav-dd-menu">
-        <a href="https://stan.store/NuancedCo/p/the-late-diagnosis-life-review" target="_blank" rel="noopener">The Late Diagnosis Life Review</a>
-        <a href="links.html">All resources</a>
-        <a href="evidence.html">Our evidence approach</a>
-        <a href="workplace.html">Workplace consulting</a>
-      </div>
-    </li>
-    <li><a href="support.html">Support</a></li>
-    <li><a href="contact.html">Contact</a></li>
-    <li><a href="book.html" class="ncta btn">Book a Call</a></li>
-  </ul>
-  <div class="hamburger" onclick="openMob()"><span></span><span></span><span></span></div>
-</nav>
-<div class="mob-nav" id="mobNav">
-  <span class="mob-close" onclick="closeMob()">&#x2715;</span>
-  <a href="index.html" onclick="closeMob()">Home</a>
-  <a href="about.html" onclick="closeMob()">About</a>
-  <a href="faq.html" onclick="closeMob()">FAQ</a>
-  <a href="how-i-work.html" onclick="closeMob()">How We Work</a>
-  <a href="the-unmasked-life.html" onclick="closeMob()">Courses</a>
-  <a href="community-waitlist.html" onclick="closeMob()">Community</a>
-  <a href="book.html" onclick="closeMob()">Book a Call</a>
-</div>
+  <button type="button" class="sh-toggle" aria-expanded="false" aria-controls="sh-menu" onclick="var m=document.getElementById('sh-menu');var o=m.classList.toggle('open');this.setAttribute('aria-expanded',o)">Menu</button>
+  <nav class="sh-menu" id="sh-menu" aria-label="Main"><a href="about.html">About</a><a href="work-with-me.html">Work with me</a><a href="grief-course/index.html">Grief course</a><a href="resources.html">Free resources</a><a href="media.html">Media &amp; speaking</a><a href="book.html" class="sh-cta">Book a call</a></nav>
+</header>
+<div id="main" tabindex="-1"></div>
+
+
+
 
 <div class="page-wrap">
   <p class="page-eyebrow">Get in touch</p>
@@ -169,7 +145,7 @@
       <label for="enquiry-type">What is your enquiry about? <span class="req">*</span></label>
       <select id="enquiry-type" name="enquiry-type" required>
         <option value="" disabled selected>Select one</option>
-        <option value="course">The Unmasked Life™ course</option>
+        <option value="course">Grief After Diagnosis course</option>
         <option value="consultation">1:1 Consultation</option>
         <option value="workplace">Workplace consulting</option>
         <option value="media">Media or press</option>
@@ -192,49 +168,7 @@
   </div>
 </div>
 
-<footer>
-  <div class="ft-inner">
-    <div class="ft-subscribe">
-      <h3>Stay in the loop</h3>
-      <p>Get updates about new guides, courses, community spaces and Nuanced Co. resources.</p>
-      <a href="community-waitlist.html" class="ft-email-btn">Join updates</a>
-    </div>
-    <div class="ft-col">
-      <h4>Explore</h4>
-      <ul>
-        <li><a href="services.html">Services</a></li>
-        <li><a href="the-unmasked-life.html">Courses</a></li>
-        <li><a href="links.html">Resources</a></li>
-        <li><a href="media.html">Articles &amp; Media</a></li>
-      </ul>
-    </div>
-    <div class="ft-col">
-      <h4>About</h4>
-      <ul>
-        <li><a href="about.html">About</a></li>
-        <li><a href="faq.html">FAQ</a></li>
-        <li><a href="how-i-work.html">How We Work</a></li>
-        <li><a href="who-i-work-with.html">Who We Work With</a></li>
-      </ul>
-    </div>
-    <div class="ft-col">
-      <h4>Contact</h4>
-      <ul>
-        <li><a href="book.html">Book a Call</a></li>
-        <li><a href="contact.html">Contact</a></li>
-        <li><a href="mailto:hello@nuancedco.com.au">hello@nuancedco.com.au</a></li>
-      </ul>
-    </div>
-  </div>
-  <div class="ft-bot">
-    <p class="ft-legal">&copy; 2026 Nuanced Co. All rights reserved. ABN 71 926 185 491. Educational and reflective content only. Not clinical advice.</p>
-    <div class="ft-legal-links">
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="refund-policy.html">Refund Policy</a>
-      <a href="terms-of-service.html">Terms of Service</a>
-    </div>
-  </div>
-</footer>
+
 
 <script>
 (function(){
@@ -257,5 +191,11 @@
   els.forEach(function(el){io.observe(el);});
 })();
 </script>
+<div class="sf" role="contentinfo"><div class="sf-inner">
+  <p class="sf-scope"><strong>Please note:</strong> Nuanced Co. offers education, consultation and peer support from lived experience. It is not therapy, diagnosis, medical advice or crisis support. In an emergency call 000, or call Lifeline on 13 11 14.</p>
+  <nav class="sf-links" aria-label="Footer"><a href="contact.html">Contact</a><a href="evidence.html">Our evidence approach</a><a href="quiz.html">Support quiz</a><a href="podcast.html">Podcast</a><a href="links.html">Links</a></nav>
+  <div class="sf-bottom"><p>&copy; 2026 Nuanced Co. ABN 71 926 185 491. Geelong, Victoria.</p>
+  <div class="sf-legal"><a href="privacy.html">Privacy</a><a href="terms-of-service.html">Terms</a><a href="refund-policy.html">Refunds</a></div></div>
+</div></div>
 </body>
 </html>

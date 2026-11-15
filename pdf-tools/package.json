@@ -1,0 +1,18 @@
+{
+  "name": "pdf-tools",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "node build-pdfs.mjs"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "pdf-lib": "^1.17.1",
+    "playwright-core": "^1.61.1"
+  },
+  "private": true
+}

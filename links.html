@@ -71,7 +71,7 @@
     }
     .profile-bio {
       font-size: .85rem;
-      color: rgba(246,241,233,.58);
+      color:rgba(246,241,233,0.66);
       max-width: 300px;
       margin: 0 auto;
       line-height: 1.65;
@@ -135,7 +135,7 @@
     }
     .lc-sub {
       font-size: .72rem;
-      color: rgba(246,241,233,.45);
+      color:rgba(246,241,233,0.66);
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
@@ -152,7 +152,7 @@
       white-space: nowrap;
     }
     .lc-badge.free { background: var(--sage); color: var(--ink-deep); }
-    .lc-badge.soon { background: rgba(246,241,233,.15); color: rgba(246,241,233,.6); }
+    .lc-badge.soon { background: rgba(246,241,233,.15); color:rgba(246,241,233,0.66); }
 
     /* SOCIAL ROW */
     .socials {
@@ -176,15 +176,23 @@
       margin-top: 2.5rem;
       text-align: center;
       font-size: .62rem;
-      color: rgba(246,241,233,.22);
+      color:rgba(246,241,233,0.66);
       letter-spacing: .04em;
       position: relative; z-index: 10;
     }
     .ft a { color: var(--gold); opacity: .6; }
   @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rv,.rvl,.rvr,.ncrv{opacity:1!important;transform:none!important}}
 </style>
+<link rel="stylesheet" href="shell.css">
 </head>
 <body>
+<a class="nc-skip" href="#main">Skip to main content</a>
+<header class="sh">
+  <a href="index.html" class="nav-logo">NUANCED CO.<em>Neurodivergent Consultancy</em></a>
+  <button type="button" class="sh-toggle" aria-expanded="false" aria-controls="sh-menu" onclick="var m=document.getElementById('sh-menu');var o=m.classList.toggle('open');this.setAttribute('aria-expanded',o)">Menu</button>
+  <nav class="sh-menu" id="sh-menu" aria-label="Main"><a href="about.html">About</a><a href="work-with-me.html">Work with me</a><a href="grief-course/index.html">Grief course</a><a href="resources.html">Free resources</a><a href="media.html">Media &amp; speaking</a><a href="book.html" class="sh-cta">Book a call</a></nav>
+</header>
+<div id="main" tabindex="-1"></div>
 <canvas id="grain" aria-hidden="true"></canvas>
 
 <div class="profile">
@@ -207,10 +215,27 @@
     <span class="lc-badge">$19 AUD</span>
   </a>
 
-  <a href="https://nuancedco.com.au/the-unmasked-life" class="link-card">
+  <a href="https://nuancedco.com.au/guides" class="link-card">
+    <div class="lc-icon purple" style="font-size:.62rem;font-weight:700;color:#9668A4;">ALL</div>
+    <div class="lc-content">
+      <div class="lc-title">All paid guides</div>
+      <div class="lc-sub">Current and upcoming PDF guides in one place</div>
+    </div>
+  </a>
+
+  <a href="https://nuancedco.com.au/support" class="link-card">
+    <div class="lc-icon sage" style="font-size:.62rem;font-weight:700;color:#7A8C6E;">PDF</div>
+    <div class="lc-content">
+      <div class="lc-title">Free starting points</div>
+      <div class="lc-sub">Support links and updates. Paid guides are separate.</div>
+    </div>
+    <span class="lc-badge free">Free</span>
+  </a>
+
+  <a href="https://nuancedco.com.au/grief-course/" class="link-card">
     <div class="lc-icon lilac" style="font-size:.62rem;font-weight:700;">TUL</div>
     <div class="lc-content">
-      <div class="lc-title">The Unmasked Life course</div>
+      <div class="lc-title">Grief After Diagnosis course</div>
       <div class="lc-sub">Four-week ADHD education for late-diagnosed adults. Founding beta in preparation.</div>
     </div>
     <span class="lc-badge soon">Waitlist</span>
@@ -295,10 +320,7 @@
   </a>
 </div>
 
-<div class="ft">
-  <a href="https://nuancedco.com.au">nuancedco.com.au</a> &nbsp;&middot;&nbsp;
-  ABN 71 926 185 491 &nbsp;&middot;&nbsp; &copy; 2026 Nuanced Co. All rights reserved.
-</div>
+
 
 <script>
 const gc=document.getElementById('grain'),gx=gc.getContext('2d');let gW,gH;function rg(){gW=gc.width=window.innerWidth;gH=gc.height=window.innerHeight;if(typeof drawGrain==='function')drawGrain();}rg();window.addEventListener('resize',rg);function drawGrain(){const d=gx.createImageData(gW,gH);for(let i=0;i<d.data.length;i+=4){const v=Math.random()*255;d.data[i]=d.data[i+1]=d.data[i+2]=v;d.data[i+3]=15;}gx.putImageData(d,0,0);}drawGrain();
@@ -324,5 +346,11 @@ const gc=document.getElementById('grain'),gx=gc.getContext('2d');let gW,gH;funct
   els.forEach(function(el){io.observe(el);});
 })();
 </script>
+<div class="sf" role="contentinfo"><div class="sf-inner">
+  <p class="sf-scope"><strong>Please note:</strong> Nuanced Co. offers education, consultation and peer support from lived experience. It is not therapy, diagnosis, medical advice or crisis support. In an emergency call 000, or call Lifeline on 13 11 14.</p>
+  <nav class="sf-links" aria-label="Footer"><a href="contact.html">Contact</a><a href="evidence.html">Our evidence approach</a><a href="quiz.html">Support quiz</a><a href="podcast.html">Podcast</a><a href="links.html">Links</a></nav>
+  <div class="sf-bottom"><p>&copy; 2026 Nuanced Co. ABN 71 926 185 491. Geelong, Victoria.</p>
+  <div class="sf-legal"><a href="privacy.html">Privacy</a><a href="terms-of-service.html">Terms</a><a href="refund-policy.html">Refunds</a></div></div>
+</div></div>
 </body>
 </html>
