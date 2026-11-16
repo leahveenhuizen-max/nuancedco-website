@@ -8,7 +8,8 @@
 /contact                     /contact.html                200
 /quiz                        /                            301!
 /quiz.html                   /                            301!
-/podcast                     /podcast.html                200
+/podcast                     https://emergingevidencepodcast.com.au   301!
+/podcast.html                https://emergingevidencepodcast.com.au   301!
 /links                       /links.html                  200
 /evidence                    /evidence.html               200
 /privacy                     /privacy.html                200
