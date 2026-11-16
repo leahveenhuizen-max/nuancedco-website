@@ -116,3 +116,6 @@
 /grief-course/lesson-5-2   /grief-course/   302!
 /grief-course/lesson-5-3.html   /grief-course/   302!
 /grief-course/lesson-5-3   /grief-course/   302!
+
+# Keep site code private
+/netlify/*   /   302!

@@ -286,3 +286,10 @@ td a{font-weight:700;white-space:nowrap;color:var(--purple);}
 .btn-ghost-light{background:transparent;border:1px solid #F6F1E9;color:#F6F1E9;}
 .btn-ghost-light:hover{background:#F6F1E9;color:#2A1F1A;}
 .gx-small-light a{color:#F3D9A4;text-decoration:underline;}
+
+.gc-login{display:flex;flex-direction:column;gap:.5rem;margin:1rem 0 2rem;}
+.gc-login label{font-weight:700;font-size:.85rem;}
+.gc-login input{font-family:var(--body);font-size:1rem;padding:.75rem .9rem;border-radius:8px;border:1px solid #4A3830;background:#fff;color:#2A1F1A;}
+.gc-login input:focus{outline:3px solid #6B4570;outline-offset:2px;}
+.gc-login .btn{align-self:flex-start;margin-top:.8rem;}
+.gc-login-err{background:#F7E4E8;border-left:4px solid #C07A8A;padding:.8rem 1rem;border-radius:6px;color:#2A1F1A;}

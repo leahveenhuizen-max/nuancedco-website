@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Course login | Grief After Diagnosis | Nuanced Co.</title>
+<meta name="description" content="Log in to Grief After Diagnosis.">
+<meta name="robots" content="noindex">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="icon" href="data:,">
+<link rel="stylesheet" href="../shell.css">
+<link rel="stylesheet" href="gc.css">
+<script src="gc.js"></script>
+</head>
+<body>
+<a class="gc-skip" href="#main">Skip to main content</a>
+<header class="sh">
+  <a href="../index.html" class="nav-logo">NUANCED CO.<em>Neurodivergent Consultancy</em></a>
+  <button type="button" class="sh-toggle" aria-expanded="false" aria-controls="sh-menu" onclick="var m=document.getElementById('sh-menu');var o=m.classList.toggle('open');this.setAttribute('aria-expanded',o)">Menu</button>
+  <nav class="sh-menu" id="sh-menu" aria-label="Main"><a href="../about.html">About</a><a href="../work-with-me.html">Work with me</a><a href="index.html" aria-current="page">Grief course</a><a href="../resources.html">Free resources</a><a href="../media.html">Media &amp; speaking</a><a href="../book.html" class="sh-cta">Book a call</a></nav>
+</header>
+<section class="gc-bar" aria-label="Course menu and reading settings">
+  <nav class="gc-subnav" aria-label="Course"><a href="index.html">About the course</a><a href="frameworks.html">Frameworks</a><a href="support.html">Support</a></nav>
+  <div class="gc-tools" role="group" aria-label="Reading comfort">
+    <span class="gc-tools-label">Text size</span>
+    <button type="button" data-gc="size-down" aria-label="A&minus; smaller text">A&minus;</button>
+    <button type="button" data-gc="size-reset" aria-label="A default text size">A</button>
+    <button type="button" data-gc="size-up" aria-label="A+ larger text">A+</button>
+    <button type="button" data-gc="font" aria-pressed="false">Readable font</button>
+    <button type="button" data-gc="motion" aria-pressed="false">Reduce motion</button>
+  </div>
+</section>
+<main id="main" tabindex="-1">
+<header class="page-header"><p class="page-eyebrow">Grief After Diagnosis</p><h1 class="page-title">Welcome back</h1><p class="page-desc">Enter your course password to open your lessons.</p></header>
+<section class="gx-sec"><div class="gc-wrap gc-prose" style="max-width:440px">
+<p class="gc-login-err" id="err" role="alert" hidden>That password didn't work. Check your welcome email and try again.</p>
+<form class="gc-login" method="POST" action="/grief-course/login">
+<input type="hidden" name="next" id="next" value="/grief-course/home.html">
+<label for="pw">Course password</label>
+<input id="pw" name="password" type="password" autocomplete="current-password" required>
+<button class="btn" type="submit">Go to my course</button>
+</form>
+<p>Your password is in your welcome email. Can't find it? Email <a href="mailto:hello@nuancedco.com.au">hello@nuancedco.com.au</a>.</p>
+<p>Not enrolled yet? <a href="index.html#enrol">See the course and prices</a>.</p>
+</div></section>
+<script>(function(){var q=new URLSearchParams(location.search);if(q.get('error'))document.getElementById('err').hidden=false;var n=q.get('next');if(n&&n.indexOf('/grief-course/')===0)document.getElementById('next').value=n;})();</script>
+</main>
+<footer class="gc-footer">
+  <div class="gc-footer-inner">
+    <p class="gc-footer-scope"><strong>Scope note:</strong> This course offers education and peer connection from lived experience. It is not therapy, counselling, diagnosis or medical advice. If you need more support, please speak with your GP or one of the services below.</p>
+    <p class="gc-footer-links"><a href="support.html">Support and resources</a><a href="support.html#crisis">Crisis lines</a><a href="tel:131114">Lifeline 13 11 14</a><a href="tel:000">Emergency 000</a></p>
+    <div class="ft-bottom">
+      <p class="ft-legal">&copy; 2026 Nuanced Co. All rights reserved. ABN 71 926 185 491.</p>
+      <div class="ft-links"><a href="../index.html">Home</a><a href="../contact.html">Contact</a><a href="../privacy.html">Privacy</a></div>
+    </div>
+  </div>
+</footer>
+<aside aria-label="Crisis support"><button type="button" class="gc-crisis-btn" data-gc="crisis-open" aria-haspopup="dialog">Need support now?</button></aside>
+<dialog class="gc-crisis" id="gc-crisis" aria-labelledby="gc-crisis-title">
+  <div class="gc-crisis-head">
+    <h2 id="gc-crisis-title">Crisis and support lines (Australia)</h2>
+    <button type="button" data-gc="crisis-close" class="gc-close">Close</button>
+  </div>
+  <p>If you are in danger right now, call 000. Tap a number to call.</p>
+  <div class="gc-table-wrap"><table><thead><tr><th scope="col">Service</th><th scope="col">Number</th></tr></thead><tbody><tr><th scope="row">Emergency</th><td><a href="tel:000">000</a></td></tr><tr><th scope="row">Lifeline (24/7)</th><td><a href="tel:131114">13 11 14</a></td></tr><tr><th scope="row">Suicide Call Back Service (24/7)</th><td><a href="tel:1300659467">1300 659 467</a></td></tr><tr><th scope="row">13YARN, for Aboriginal and Torres Strait Islander people (24/7)</th><td><a href="tel:139276">13 92 76</a></td></tr><tr><th scope="row">Beyond Blue</th><td><a href="tel:1300224636">1300 22 46 36</a></td></tr><tr><th scope="row">QLife (LGBTIQ+)</th><td><a href="tel:1800184527">1800 184 527</a></td></tr><tr><th scope="row">Medicare Mental Health</th><td><a href="tel:1800595212">1800 595 212</a></td></tr></tbody></table></div>
+  <p><a href="support.html">Go to the full support and resources page</a></p>
+</dialog>
+</body>
+</html>
