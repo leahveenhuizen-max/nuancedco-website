@@ -260,3 +260,29 @@ td a{font-weight:700;white-space:nowrap;color:var(--purple);}
 @media print{.gx-blobs,.gx-enrol::before{display:none;}}
 .gx-num{color:var(--purple)!important;}
 .gx-note a{text-decoration:underline;text-underline-offset:3px;}
+.gx-glance-h{color:#F3D9A4!important;}
+
+.gx-form{text-align:left;display:flex;flex-direction:column;gap:.35rem;}
+.gx-form label{font-size:.72rem;font-weight:700;letter-spacing:.06em;color:#F6F1E9;margin-top:.7rem;}
+.gx-form label span{font-weight:400;color:rgba(246,241,233,.72);}
+.gx-form input:not([type=checkbox]){font-family:var(--body);font-size:.95rem;padding:.7rem .9rem;border-radius:8px;border:1px solid rgba(246,241,233,.35);background:#F6F1E9;color:#2A1F1A;}
+.gx-form input:focus{outline:3px solid var(--gold);outline-offset:2px;}
+.gx-check{display:flex;gap:.6rem;align-items:flex-start;margin-top:1rem;}
+.gx-check input{width:20px;height:20px;margin-top:.15rem;accent-color:var(--gold);flex-shrink:0;}
+.gx-check label{margin-top:0;font-weight:400;letter-spacing:0;font-size:.85rem;}
+.gx-form .btn{align-self:flex-start;margin-top:1.2rem;}
+.gx-hp{position:absolute;left:-9999px;}
+
+.gx-tiers{margin-bottom:1.5rem!important;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;max-width:880px;margin:2rem auto 0;text-align:left;}
+.gx-tiers .gx-enrol-card{margin:0;max-width:none;display:flex;flex-direction:column;}
+.gx-tier-main{border-color:#C4963E;background:rgba(196,150,62,.1);}
+.gx-tier-tag{margin:0!important;font-size:.7rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#F3D9A4;}
+.gx-tier-h{font-family:var(--serif);font-weight:300;font-size:1.9rem;color:#F6F1E9;margin:.4rem 0 0;}
+.gx-price{font-family:var(--serif);font-size:2.6rem;color:#F6F1E9;margin:.6rem 0 0!important;line-height:1;}
+.gx-price span{font-family:var(--body);font-size:.8rem;color:rgba(246,241,233,.72);}
+.gx-tier-note{font-size:.85rem;color:rgba(246,241,233,.8);margin-top:.5rem!important;}
+.gx-tier-list{color:#F6F1E9;font-size:.92rem;padding-left:1.1rem;margin:1rem 0 0;flex:1;}
+.gx-tier-list li{margin:.35rem 0;}
+.btn-ghost-light{background:transparent;border:1px solid #F6F1E9;color:#F6F1E9;}
+.btn-ghost-light:hover{background:#F6F1E9;color:#2A1F1A;}
+.gx-small-light a{color:#F3D9A4;text-decoration:underline;}
