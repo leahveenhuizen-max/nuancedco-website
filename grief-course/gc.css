@@ -293,3 +293,6 @@ td a{font-weight:700;white-space:nowrap;color:var(--purple);}
 .gc-login input:focus{outline:3px solid #6B4570;outline-offset:2px;}
 .gc-login .btn{align-self:flex-start;margin-top:.8rem;}
 .gc-login-err{background:#F7E4E8;border-left:4px solid #C07A8A;padding:.8rem 1rem;border-radius:6px;color:#2A1F1A;}
+
+.gx-login-link{margin-top:1.2rem;font-size:.9rem;color:rgba(246,241,233,.8);}
+.gx-login-link a{color:#F3D9A4;text-decoration:underline;}
