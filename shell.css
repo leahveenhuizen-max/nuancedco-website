@@ -13,7 +13,7 @@
 .sh-menu a.sh-cta:hover{background:#C4963E;color:#0F0C0A;}
 .sh-toggle{display:none;font:700 11px 'Atkinson Hyperlegible',system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#F6F1E9;background:none;border:1px solid rgba(246,241,233,.4);border-radius:40px;padding:.5rem 1rem;cursor:pointer;}
 .sh :focus-visible,.sf :focus-visible{outline:3px solid #C4963E;outline-offset:3px;border-radius:3px;}
-@media(max-width:960px){
+@media(max-width:1120px){
   .sh{padding:.9rem 1.2rem;flex-wrap:wrap;}
   .sh-toggle{display:inline-block;}
   .sh-menu{display:none;width:100%;flex-direction:column;align-items:flex-start;gap:.2rem;padding:.8rem 0 .4rem;}
@@ -34,3 +34,5 @@
 .sf-bottom a:hover{color:#F6F1E9;}
 .sf-legal{display:flex;gap:1.4rem;}
 @media(max-width:860px){.sf{padding:2.4rem 1.4rem;}}
+
+.sh-menu a{white-space:nowrap;}
