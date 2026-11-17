@@ -1,141 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>You're subscribed | Nuanced Co.</title>
 <meta name="robots" content="noindex">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>You're subscribed | Nuanced Co.</title>
-  <meta name="robots" content="noindex, nofollow">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --cream:#F6F1E9;
-      --ink:#2A1F1A;
-      --ink-deep:#2A1F1A;
-      --ink-mid:rgba(42,31,26,.55);
-      --gold:#6B4570;
-      --purple:#6B4570;
-      --sage:#6B4570;
-      --serif:'Cormorant Garamond',Georgia,serif;
-      --body:'Atkinson Hyperlegible',system-ui,sans-serif;
-    }
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
-    html{font-size:18px;}
-    body{
-      background:var(--ink-deep);
-      color:var(--cream);
-      font-family:var(--body);
-      line-height:1.7;
-      min-height:100vh;
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      justify-content:center;
-      padding:3rem 2rem;
-      text-align:center;
-    }
-    .logo{
-      font-family:var(--serif);
-      font-size:.95rem;
-      font-weight:400;
-      letter-spacing:.25em;
-      text-transform:uppercase;
-      color:var(--cream);
-      text-decoration:none;
-      display:flex;
-      flex-direction:column;
-      gap:3px;
-      align-items:center;
-      margin-bottom:3rem;
-    }
-    .logo em{
-      font-style:normal;
-      font-family:var(--body);
-      font-size:.44rem;
-      letter-spacing:.3em;
-      color:var(--gold);
-      opacity:.8;
-    }
-    .rule{width:32px;height:1px;background:var(--gold);opacity:.5;margin:1.6rem auto;}
-    .check{
-      width:52px;height:52px;
-      border-radius:50%;
-      border:1.5px solid rgba(107,69,112,.5);
-      display:flex;align-items:center;justify-content:center;
-      margin:0 auto 1.6rem;
-    }
-    .check svg{width:22px;height:22px;stroke:var(--sage);fill:none;stroke-width:1.5;}
-    h1{
-      font-family:var(--serif);
-      font-size:clamp(2rem,5vw,3.2rem);
-      font-weight:300;
-      color:var(--cream);
-      line-height:1.1;
-      margin-bottom:.8rem;
-    }
-    p{
-      font-size:.88rem;
-      color:rgba(246,241,233,0.66);
-      line-height:1.8;
-      max-width:480px;
-      margin:0 auto .8rem;
-    }
-    .scope-note{
-      font-size:.72rem;
-      color:rgba(246,241,233,0.66);
-      max-width:460px;
-      margin:1.6rem auto 0;
-      line-height:1.7;
-    }
-    .actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap:.8rem;
-      justify-content:center;
-      margin-top:2rem;
-    }
-    .btn-home{
-      display:inline-flex;align-items:center;gap:.5rem;
-      font-family:var(--body);
-      font-size:.6rem;font-weight:700;
-      letter-spacing:.14em;text-transform:uppercase;
-      background:var(--gold);color:var(--ink-deep);
-      padding:.75rem 1.8rem;
-      border-radius:2px;
-      text-decoration:none;
-      transition:opacity .1s cubic-bezier(0.22,1,0.36,1);
-    }
-    .btn-home:hover{opacity:.88;}
-    .btn-contact{
-      display:inline-flex;align-items:center;gap:.5rem;
-      font-size:.6rem;font-weight:700;
-      letter-spacing:.14em;text-transform:uppercase;
-      color:rgba(246,241,233,0.66);
-      border:1px solid rgba(246,241,233,.14);
-      padding:.75rem 1.6rem;
-      border-radius:2px;
-      text-decoration:none;
-      transition:color .1s cubic-bezier(0.22,1,0.36,1),border-color .1s cubic-bezier(0.22,1,0.36,1);
-    }
-    .btn-contact:hover{color:var(--cream);border-color:rgba(246,241,233,.35);}
-    footer{
-      position:fixed;bottom:0;left:0;right:0;
-      background:#2A1F1A;
-      padding:1.2rem 2rem;
-      display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:.6rem;
-      border-top:1px solid rgba(246,241,233,.06);
-    }
-    footer p{font-size:.62rem;color:rgba(246,241,233,0.66);margin:0;}
-    footer a{font-size:.62rem;color:rgba(246,241,233,0.66);text-decoration:none;transition:color .1s cubic-bezier(0.22,1,0.36,1);}
-    footer a:hover{color:rgba(246,241,233,0.66);}
-    .ft-links{display:flex;gap:1.2rem;flex-wrap:wrap;}
-    @media(max-width:500px){
-      footer{position:static;margin-top:4rem;}
-    }
-  @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}.rv,.rvl,.rvr,.ncrv{opacity:1!important;transform:none!important}}
-</style>
+
+<link rel="icon" href="logo.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="site.css">
 <link rel="stylesheet" href="shell.css">
 <!-- analytics:start -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-0ZMMJLTMJD"></script>
@@ -150,52 +23,10 @@
   <button type="button" class="sh-toggle" aria-expanded="false" aria-controls="sh-menu" onclick="var m=document.getElementById('sh-menu');var o=m.classList.toggle('open');this.setAttribute('aria-expanded',o)">Menu</button>
   <nav class="sh-menu" id="sh-menu" aria-label="Main"><a href="about.html">About</a><a href="work-with-me.html">Work with me</a><div class="sh-dd"><button class="sh-dd-btn" type="button" aria-expanded="false" aria-haspopup="true" onclick="var o=this.getAttribute('aria-expanded')==='true';this.setAttribute('aria-expanded',String(!o));this.parentNode.classList.toggle('open',!o)">Courses</button><div class="sh-dd-list"><a href="grief-course/index.html">Grief After Diagnosis</a><a href="/grief-course/login.html">Course login</a></div></div><a href="resources.html">Free resources</a><a href="media.html">Media &amp; speaking</a><a href="book.html" class="sh-cta">Book a call</a></nav>
 </header>
-<div id="main" tabindex="-1"></div>
-
-  <a href="index.html" class="logo">NUANCED CO.<em>Neurodivergent Consultancy</em></a>
-
-  <div class="check">
-    <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
-  </div>
-
-  <h1>You're enrolled.</h1>
-
-  <div class="rule"></div>
-
-  <p>Thank you for enrolling in Grief After Diagnosis. Your payment has gone through.</p>
-  <p>Leah will send your welcome email within two business days. It has the full schedule, your login and everything you need for week 1. The course starts on Tuesday 1 December 2026.</p>
-  <p>If you have any questions in the meantime, email <a href="mailto:hello@nuancedco.com.au" style="color:var(--gold);text-decoration:none;">hello@nuancedco.com.au</a>.</p>
-
-  <p class="scope-note">Nuanced Co. is a consultancy service providing education, reflection and practical support within scope. Sessions and correspondence are not therapy, clinical advice, or crisis support. If you need immediate mental health support, please contact Lifeline on 13 11 14 or visit <a href="support.html" style="color:rgba(246,241,233,0.66);text-decoration:underline;">our support page</a>.</p>
-
-  <div class="actions">
-    <a href="index.html" class="btn-home">Back to home</a>
-    <a href="contact.html" class="btn-contact">Contact page</a>
-  </div>
-
-  
-
-<script>
-(function(){
-  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches||!('IntersectionObserver' in window))return;
-  var s=document.createElement('style');
-  s.textContent='.ncrv{opacity:0;transform:translateY(20px);transition:opacity .8s cubic-bezier(0.22,1,0.36,1),transform .8s cubic-bezier(0.22,1,0.36,1)}.ncrv.in{opacity:1;transform:none}';
-  document.head.appendChild(s);
-  var els=[];
-  function addGroup(grid){if(grid.dataset.ncrv)return;grid.dataset.ncrv='1';Array.prototype.forEach.call(grid.children,function(c,i){c.classList.add('ncrv');c.style.transitionDelay=((i%8)*0.15)+'s';els.push(c);});}
-  document.querySelectorAll('section,.card').forEach(function(sec){
-    if(sec.closest('nav'))return;
-    var grid=sec.querySelector('[class*="grid"],[class*="cards"]');
-    if(grid&&grid.children.length>1&&grid.children.length<13){addGroup(grid);}
-    sec.classList.add('ncrv');els.push(sec);
-  });
-  document.querySelectorAll('.sprint-grid').forEach(addGroup);
-  var io=new IntersectionObserver(function(entries){
-    entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});
-  },{threshold:0.1,rootMargin:'0px 0px -40px 0px'});
-  els.forEach(function(el){io.observe(el);});
-})();
-</script>
+<main id="main" tabindex="-1">
+<header class="ph"><p class="eyebrow">Newsletter</p><h1>You're <em>subscribed.</em></h1><p>Thank you for joining. A welcome email is on its way. If you can't see it in a few minutes, check your spam or promotions folder.</p></header>
+<section class="sec"><div class="wrap" style="text-align:center"><div class="btns" style="justify-content:center"><a class="btn" href="/resources">Get the free guides</a><a class="btn btn-line" href="/grief-course/">See the grief course</a></div></div></section>
+</main>
 <div class="sf" role="contentinfo"><div class="sf-inner">
   <p class="sf-scope"><strong>Please note:</strong> Nuanced Co. offers education, consultation and peer support from lived experience. It is not therapy, diagnosis, medical advice or crisis support. In an emergency call 000, or call Lifeline on 13 11 14.</p>
   <nav class="sf-links" aria-label="Footer"><a href="contact.html">Contact</a><a href="evidence.html">Our evidence approach</a><a href="https://emergingevidencepodcast.com.au" target="_blank" rel="noopener">Podcast<span class="sr-only"> (opens in a new tab)</span></a><a href="links.html">Links</a></nav>

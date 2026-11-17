@@ -100,3 +100,13 @@ p + p{margin-top:1rem;}
 .why-note{margin-top:1.6rem;font-size:.85rem;color:var(--ink-mid);text-align:center;}
 @media(max-width:620px){.intro{padding:2rem 1.2rem .5rem;}.intro img{width:min(280px,72vw);}}
 @media(max-width:620px){.intro{padding:1.2rem 1rem 0;}.intro img{width:min(200px,55vw);}.hero{padding:.5rem 1.2rem 3.5rem;}.hero .small{font-size:1.2rem;}.hero h1{font-size:2.3rem;}}
+
+.gform{margin-top:2.4rem;background:#fff;border:1px solid #EDE6D8;border-top:4px solid #6B4570;border-radius:14px;padding:1.8rem 2rem;}
+.gform h3{margin:0 0 .4rem;}
+.gform p{margin:0 0 1rem;}
+.gform-row{display:flex;flex-wrap:wrap;gap:.7rem;}
+.gform-row input{flex:1 1 200px;min-width:0;font:inherit;font-size:15px;padding:.75rem 1rem;border-radius:40px;border:1px solid #4A3830;background:#F6F1E9;color:#2A1F1A;}
+.gform-row input:focus{outline:3px solid #6B4570;outline-offset:2px;}
+.gform-ok{display:flex;gap:.55rem;align-items:flex-start;margin:.9rem 0 0!important;font-size:.9rem;}
+.gform-ok input{width:18px;height:18px;margin-top:.15rem;accent-color:#6B4570;flex-shrink:0;}
+.gform-err{color:#8A2E3E;font-size:.9rem;margin-top:.6rem!important;}

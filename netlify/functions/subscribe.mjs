@@ -37,7 +37,8 @@ export default async (req) => {
       method: 'POST',
       body: JSON.stringify({ email, fields: name ? { name } : {}, groups: [gid], status: 'active' }),
     });
-    return back(req.url, '/subscribed.html');
+    const next = String(form.get('next') || '');
+    return back(req.url, next === '/free-guides.html' ? '/free-guides.html' : '/subscribed.html');
   } catch (err) {
     console.error(err);
     return back(req.url, safeRet + (safeRet.includes('?') ? '&' : '?') + 'signup=error#newsletter');
