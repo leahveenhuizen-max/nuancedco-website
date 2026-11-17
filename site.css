@@ -91,3 +91,12 @@ p + p{margin-top:1rem;}
 .card{border-radius:16px;transition:transform .15s,box-shadow .15s;}
 .card:hover{transform:translateY(-2px);box-shadow:0 10px 30px rgba(42,31,26,.08);}
 @media(prefers-reduced-motion:reduce){.card:hover{transform:none;}}
+
+.intro{min-height:0;padding:3rem 2rem 1rem;}
+.intro img{width:min(380px,70vw);}
+.hero{padding:1rem 2rem 4.5rem;}
+.hero .hero-lede{font-size:1.05rem;color:var(--ink);max-width:640px;}
+.why .card a{color:var(--purple);text-decoration:underline;}
+.why-note{margin-top:1.6rem;font-size:.85rem;color:var(--ink-mid);text-align:center;}
+@media(max-width:620px){.intro{padding:2rem 1.2rem .5rem;}.intro img{width:min(280px,72vw);}}
+@media(max-width:620px){.intro{padding:1.2rem 1rem 0;}.intro img{width:min(200px,55vw);}.hero{padding:.5rem 1.2rem 3.5rem;}.hero .small{font-size:1.2rem;}.hero h1{font-size:2.3rem;}}
