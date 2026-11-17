@@ -166,6 +166,18 @@ window.addEventListener('scroll',()=>{nav.classList.toggle('scrolled',window.scr
 })();
 </script>
 <div class="sf" role="contentinfo"><div class="sf-inner">
+<!-- newsletter:start -->
+<section class="nl" id="newsletter" aria-labelledby="nl-h"><div class="nl-copy"><h2 id="nl-h">Join the Nuanced Co. newsletter</h2><p>Plain-language research, new free guides and course dates for late-diagnosed ADHD, autistic and AuDHD adults. No spam, unsubscribe anytime.</p></div>
+<form class="nl-form" method="POST" action="/api/subscribe">
+<input type="hidden" name="return" value="/privacy">
+<p class="nl-hp"><label>Leave this empty <input name="website" tabindex="-1" autocomplete="off"></label></p>
+<div class="nl-row"><label for="nl-email" class="sr-only">Email address</label><input id="nl-email" type="email" name="email" placeholder="Your email address" required autocomplete="email"><button type="submit" data-track="newsletter_signup">Subscribe</button></div>
+<p class="nl-consent"><input type="checkbox" id="nl-ok" name="consent" value="yes" required><label for="nl-ok">I'm happy to receive emails from Nuanced Co.</label></p>
+<p class="nl-err" role="alert" hidden>That didn't go through. Check your email address and tick the box, then try again.</p>
+</form>
+<script>if(/[?&]signup=error/.test(location.search)){document.querySelector('.nl-err').hidden=false;}</script>
+</section>
+<!-- newsletter:end -->
   <p class="sf-scope"><strong>Please note:</strong> Nuanced Co. offers education, consultation and peer support from lived experience. It is not therapy, diagnosis, medical advice or crisis support. In an emergency call 000, or call Lifeline on 13 11 14.</p>
   <nav class="sf-links" aria-label="Footer"><a href="contact.html">Contact</a><a href="evidence.html">Our evidence approach</a><a href="https://emergingevidencepodcast.com.au" target="_blank" rel="noopener">Podcast<span class="sr-only"> (opens in a new tab)</span></a><a href="links.html">Links</a></nav>
   <div class="sf-bottom"><p>&copy; 2026 Nuanced Co. ABN 71 926 185 491. Geelong, Victoria.</p>
